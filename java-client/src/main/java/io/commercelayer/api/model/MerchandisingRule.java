@@ -8,7 +8,7 @@ import com.google.gson.annotations.SerializedName;
 /**
  * MerchandisingRule
  */
-public class MerchandisingRule extends ApiObject {
+public class MerchandisingRule extends ApiResource {
 
 	@SerializedName("environment_id")
 	private String environmentId = null;

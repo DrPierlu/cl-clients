@@ -8,7 +8,7 @@ import com.google.gson.annotations.SerializedName;
 /**
  * Organization
  */
-public class Organization extends ApiObject {
+public class Organization extends ApiResource {
 	
 	@SerializedName("name")
 	private String name = null;

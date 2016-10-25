@@ -33,7 +33,7 @@ import com.google.gson.annotations.SerializedName;
 /**
  * ConsumerRole
  */
-public class ConsumerRole extends ApiObject {
+public class ConsumerRole extends ApiResource {
 
   @SerializedName("environment_id")
   private String environmentId = null;

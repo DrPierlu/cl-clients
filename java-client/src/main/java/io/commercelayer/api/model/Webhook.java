@@ -9,7 +9,7 @@ import com.google.gson.annotations.SerializedName;
 /**
  * Webhook
  */
-public class Webhook extends ApiObject {
+public class Webhook extends ApiResource {
 	
 	@SerializedName("environment_id")
 	private String environmentId = null;

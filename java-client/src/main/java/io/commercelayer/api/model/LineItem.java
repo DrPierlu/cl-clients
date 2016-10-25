@@ -8,7 +8,7 @@ import com.google.gson.annotations.SerializedName;
 /**
  * LineItem
  */
-public class LineItem extends ApiObject {
+public class LineItem extends ApiResource {
 	
 	@SerializedName("environment_id")
 	private String environmentId = null;

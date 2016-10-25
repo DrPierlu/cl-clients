@@ -7,10 +7,10 @@ import io.commercelayer.api.http.HttpClientFactory;
 import io.commercelayer.api.http.HttpException;
 import io.commercelayer.api.http.HttpRequest;
 import io.commercelayer.api.http.HttpResponse;
-import io.commercelayer.api.model.ApiObject;
+import io.commercelayer.api.model.ApiResource;
 import io.commercelayer.api.security.ApiAuth;
 
-public abstract class ApiCaller<T extends ApiObject> {
+public abstract class ApiCaller<T extends ApiResource> {
 	
 	private final HttpClient httpClient;
 	private final ApiAuth authentication;

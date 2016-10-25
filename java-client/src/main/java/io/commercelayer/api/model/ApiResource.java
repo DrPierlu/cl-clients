@@ -6,7 +6,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import com.google.gson.annotations.SerializedName;
 
-public abstract class ApiObject {
+public abstract class ApiResource {
 
 	@SerializedName("resource_name")
 	protected String resourceName = null;

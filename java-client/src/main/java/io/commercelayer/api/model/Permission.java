@@ -8,7 +8,7 @@ import com.google.gson.annotations.SerializedName;
 /**
  * Permission
  */
-public class Permission extends ApiObject {
+public class Permission extends ApiResource {
  
   @SerializedName("role_id")
   private String roleId = null;

@@ -9,7 +9,7 @@ import com.google.gson.annotations.SerializedName;
 /**
  * Country
  */
-public class Country extends ApiObject {
+public class Country extends ApiResource {
 
   @SerializedName("environment_id")
   private String environmentId = null;

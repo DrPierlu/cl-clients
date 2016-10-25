@@ -3,12 +3,12 @@ package io.commercelayer.api.json;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import io.commercelayer.api.model.ApiObject;
+import io.commercelayer.api.model.ApiResource;
 
 public final class GsonCodec implements JsonCodec {
 
 	@Override
-	public <T extends ApiObject> T fromJSON(String json, Class<T> type) {
+	public <T extends ApiResource> T fromJSON(String json, Class<T> type) {
 
 		GsonBuilder builder = new GsonBuilder().excludeFieldsWithoutExposeAnnotation();
 		// if (formatted) builder.setPrettyPrinting();
@@ -19,7 +19,7 @@ public final class GsonCodec implements JsonCodec {
 	}
 
 	@Override
-	public String toJSON(ApiObject object) {
+	public String toJSON(ApiResource object) {
 
 		GsonBuilder builder = new GsonBuilder().excludeFieldsWithoutExposeAnnotation();
 		Gson gson = builder.create();

@@ -1,11 +1,11 @@
 package io.commercelayer.api.json;
 
-import io.commercelayer.api.model.ApiObject;
+import io.commercelayer.api.model.ApiResource;
 
 public interface JsonCodec {
 
-	public <T extends ApiObject> T fromJSON(String json, Class<T> type);
+	public <T extends ApiResource> T fromJSON(String json, Class<T> type);
 	
-	public String toJSON(ApiObject object);
+	public String toJSON(ApiResource object);
 	
 }
