@@ -1,6 +1,7 @@
 package io.commercelayer.api.http;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class HttpRequest {
 
@@ -10,8 +11,14 @@ public class HttpRequest {
 
 	private Method method;
 	private String url;
-	private HashMap<String, String> header = new HashMap<>();
+	private Map<String, String> headers;
 	private String body;
+	private String contentType;
+	
+	public HttpRequest(Method httpMethod) {
+		this.method = (httpMethod == null)? Method.GET : httpMethod;
+		this.headers = new HashMap<>();
+	}
 
 	public String getUrl() {
 		return url;
@@ -21,12 +28,12 @@ public class HttpRequest {
 		this.url = url;
 	}
 
-	public HashMap<String, String> getHeaders() {
-		return header;
+	public Map<String, String> getHeaders() {
+		return headers;
 	}
 
-	public void setHeaders(HashMap<String, String> header) {
-		this.header = header;
+	public void setHeaders(Map<String, String> header) {
+		this.headers = header;
 	}
 
 	public String getBody() {
@@ -38,11 +45,11 @@ public class HttpRequest {
 	}
 
 	public void addHeader(String header, String value) {
-		this.header.put(header, value);
+		this.headers.put(header, value);
 	}
 
 	public String getHeader(String header) {
-		return this.header.get(header);
+		return this.headers.get(header);
 	}
 
 	public Method getMethod() {
@@ -51,6 +58,22 @@ public class HttpRequest {
 
 	public void setMethod(Method method) {
 		this.method = method;
+	}
+
+	public boolean hasHeaders() {
+		return (this.headers != null) && !this.headers.isEmpty();
+	}
+
+	public boolean containsHeader(String header) {
+		return hasHeaders() && (this.headers.containsKey(header));
+	}
+
+	public String getContentType() {
+		return contentType;
+	}
+
+	public void setContentType(String contentType) {
+		this.contentType = contentType;
 	}
 
 }

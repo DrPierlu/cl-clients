@@ -2,8 +2,14 @@ package io.commercelayer.api.http;
 
 public abstract class HttpClient {
 
-	public HttpResponse send(HttpRequest request) throws HttpException {
-		return new HttpResponse();
-	}
+	public abstract HttpResponse send(HttpRequest httpRequest) throws HttpException;
+	
+//	public void setTimeout(int timeout) {
+//		
+//	}
+//	
+//	public void setProxy(Proxy proxy) {
+//		
+//	}
 	
 }

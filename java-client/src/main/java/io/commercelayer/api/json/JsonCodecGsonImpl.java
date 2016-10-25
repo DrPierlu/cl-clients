@@ -5,7 +5,7 @@ import com.google.gson.GsonBuilder;
 
 import io.commercelayer.api.model.ApiResource;
 
-public final class GsonCodec implements JsonCodec {
+public final class JsonCodecGsonImpl implements JsonCodec {
 
 	@Override
 	public <T extends ApiResource> T fromJSON(String json, Class<T> type) {

@@ -4,24 +4,24 @@ import java.util.HashMap;
 
 public class HttpResponse {
 
-	private String code;
-	private HashMap<String, String> header = new HashMap<>();
+	private int code;
+	private HashMap<String, String> headers = new HashMap<>();
 	private String body;
 
-	public String getCode() {
+	public int getCode() {
 		return code;
 	}
 
-	public void setCode(String code) {
+	public void setCode(int code) {
 		this.code = code;
 	}
 
 	public HashMap<String, String> getHeaders() {
-		return header;
+		return headers;
 	}
 
 	public void setHeaders(HashMap<String, String> header) {
-		this.header = header;
+		this.headers = header;
 	}
 
 	public String getBody() {
@@ -33,11 +33,11 @@ public class HttpResponse {
 	}
 	
 	public void addHeader(String header, String value) {
-		this.header.put(header, value);
+		this.headers.put(header, value);
 	}
 
 	public String getHeader(String header) {
-		return this.header.get(header);
+		return this.headers.get(header);
 	}
 
 }
