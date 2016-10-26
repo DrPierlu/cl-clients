@@ -10,7 +10,7 @@ import com.google.gson.annotations.SerializedName;
  * Webhook
  */
 public class Webhook extends ApiResource {
-	
+
 	@SerializedName("environment_id")
 	private String environmentId = null;
 
@@ -31,12 +31,6 @@ public class Webhook extends ApiResource {
 
 	@SerializedName("last_failed_at")
 	private LocalDateTime lastFailedAt = null;
-
-	@SerializedName("creator_id")
-	private String creatorId = null;
-
-	@SerializedName("creator_resource")
-	private String creatorResource = null;
 
 	public Webhook environmentId(String environmentId) {
 		this.environmentId = environmentId;
@@ -134,27 +128,10 @@ public class Webhook extends ApiResource {
 		return this;
 	}
 
-	public String getCreatorId() {
-		return creatorId;
-	}
-
-	public void setCreatorId(String creatorId) {
-		this.creatorId = creatorId;
-	}
-
 	public Webhook creatorResource(String creatorResource) {
 		this.creatorResource = creatorResource;
 		return this;
 	}
-
-	public String getCreatorResource() {
-		return creatorResource;
-	}
-
-	public void setCreatorResource(String creatorResource) {
-		this.creatorResource = creatorResource;
-	}
-
 
 	@Override
 	public boolean equals(java.lang.Object o) {

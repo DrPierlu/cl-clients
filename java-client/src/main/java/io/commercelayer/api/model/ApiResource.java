@@ -29,11 +29,11 @@ public abstract class ApiResource {
 	@SerializedName("expanded")
 	protected String expanded = null;
 
-//	@SuppressWarnings("unchecked")
-//	public T resourceName(String resourceName) {
-//		this.resourceName = resourceName;
-//		return (T)this;
-//	}
+	// @SuppressWarnings("unchecked")
+	// public T resourceName(String resourceName) {
+	// this.resourceName = resourceName;
+	// return (T)this;
+	// }
 
 	public String getResourceName() {
 		return resourceName;
@@ -43,11 +43,11 @@ public abstract class ApiResource {
 		this.resourceName = resourceName;
 	}
 
-//	@SuppressWarnings("unchecked")
-//	public T id(String id) {
-//		this.id = id;
-//		return (T)this;
-//	}
+	// @SuppressWarnings("unchecked")
+	// public T id(String id) {
+	// this.id = id;
+	// return (T)this;
+	// }
 
 	public String getId() {
 		return id;
@@ -57,11 +57,11 @@ public abstract class ApiResource {
 		this.id = id;
 	}
 
-//	@SuppressWarnings("unchecked")
-//	public T creatorId(String creatorId) {
-//		this.creatorId = creatorId;
-//		return (T)this;
-//	}
+	// @SuppressWarnings("unchecked")
+	// public T creatorId(String creatorId) {
+	// this.creatorId = creatorId;
+	// return (T)this;
+	// }
 
 	public String getCreatorId() {
 		return creatorId;
@@ -71,11 +71,11 @@ public abstract class ApiResource {
 		this.creatorId = creatorId;
 	}
 
-//	@SuppressWarnings("unchecked")
-//	public T creatorResource(String creatorResource) {
-//		this.creatorResource = creatorResource;
-//		return (T)this;
-//	}
+	// @SuppressWarnings("unchecked")
+	// public T creatorResource(String creatorResource) {
+	// this.creatorResource = creatorResource;
+	// return (T)this;
+	// }
 
 	public String getCreatorResource() {
 		return creatorResource;
@@ -85,11 +85,11 @@ public abstract class ApiResource {
 		this.creatorResource = creatorResource;
 	}
 
-//	@SuppressWarnings("unchecked")
-//	public T createdAt(DateTime createdAt) {
-//		this.createdAt = createdAt;
-//		return (T)this;
-//	}
+	// @SuppressWarnings("unchecked")
+	// public T createdAt(DateTime createdAt) {
+	// this.createdAt = createdAt;
+	// return (T)this;
+	// }
 
 	public LocalDateTime getCreatedAt() {
 		return createdAt;
@@ -99,11 +99,11 @@ public abstract class ApiResource {
 		this.createdAt = createdAt;
 	}
 
-//	@SuppressWarnings("unchecked")
-//	public T updatedAt(DateTime updatedAt) {
-//		this.updatedAt = updatedAt;
-//		return (T)this;
-//	}
+	// @SuppressWarnings("unchecked")
+	// public T updatedAt(DateTime updatedAt) {
+	// this.updatedAt = updatedAt;
+	// return (T)this;
+	// }
 
 	public LocalDateTime getUpdatedAt() {
 		return updatedAt;
@@ -113,11 +113,11 @@ public abstract class ApiResource {
 		this.updatedAt = updatedAt;
 	}
 
-//	@SuppressWarnings("unchecked")
-//	public T expanded(String expanded) {
-//		this.expanded = expanded;
-//		return (T)this;
-//	}
+	// @SuppressWarnings("unchecked")
+	// public T expanded(String expanded) {
+	// this.expanded = expanded;
+	// return (T)this;
+	// }
 
 	public String getExpanded() {
 		return expanded;
@@ -131,5 +131,5 @@ public abstract class ApiResource {
 	public String toString() {
 		return ToStringBuilder.reflectionToString(this);
 	}
-	
+
 }

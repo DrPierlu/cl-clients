@@ -9,7 +9,7 @@ import com.google.gson.annotations.SerializedName;
  * Address
  */
 public class Address extends ApiResource {
-	
+
 	@SerializedName("environment_id")
 	private String environmentId = null;
 
@@ -103,13 +103,6 @@ public class Address extends ApiResource {
 	@SerializedName("suggested_bounds_ne_lng")
 	private Float suggestedBoundsNeLng = null;
 
-	@SerializedName("creator_id")
-	private String creatorId = null;
-
-	@SerializedName("creator_resource")
-	private String creatorResource = null;
-
-	
 	public Address environmentId(String environmentId) {
 		this.environmentId = environmentId;
 		return this;
@@ -518,12 +511,10 @@ public class Address extends ApiResource {
 		return this;
 	}
 
-
 	public Address creatorResource(String creatorResource) {
 		this.creatorResource = creatorResource;
 		return this;
 	}
-
 
 	@Override
 	public boolean equals(java.lang.Object o) {

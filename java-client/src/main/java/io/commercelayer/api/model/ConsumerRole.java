@@ -22,167 +22,133 @@
  * limitations under the License.
  */
 
-
 package io.commercelayer.api.model;
 
 import java.util.Objects;
 
 import com.google.gson.annotations.SerializedName;
 
-
 /**
  * ConsumerRole
  */
 public class ConsumerRole extends ApiResource {
 
-  @SerializedName("environment_id")
-  private String environmentId = null;
+	@SerializedName("environment_id")
+	private String environmentId = null;
 
-  @SerializedName("consumer_id")
-  private String consumerId = null;
+	@SerializedName("consumer_id")
+	private String consumerId = null;
 
-  @SerializedName("consumer_resource")
-  private String consumerResource = null;
+	@SerializedName("consumer_resource")
+	private String consumerResource = null;
 
-  @SerializedName("role_id")
-  private String roleId = null;
+	@SerializedName("role_id")
+	private String roleId = null;
 
-  @SerializedName("position")
-  private String position = null;
+	@SerializedName("position")
+	private String position = null;
 
-  @SerializedName("creator_id")
-  private String creatorId = null;
+	public ConsumerRole environmentId(String environmentId) {
+		this.environmentId = environmentId;
+		return this;
+	}
 
-  @SerializedName("creator_resource")
-  private String creatorResource = null;
+	public String getEnvironmentId() {
+		return environmentId;
+	}
 
+	public void setEnvironmentId(String environmentId) {
+		this.environmentId = environmentId;
+	}
 
-  public ConsumerRole environmentId(String environmentId) {
-    this.environmentId = environmentId;
-    return this;
-  }
+	public ConsumerRole consumerId(String consumerId) {
+		this.consumerId = consumerId;
+		return this;
+	}
 
-  
-  public String getEnvironmentId() {
-    return environmentId;
-  }
+	public String getConsumerId() {
+		return consumerId;
+	}
 
-  public void setEnvironmentId(String environmentId) {
-    this.environmentId = environmentId;
-  }
+	public void setConsumerId(String consumerId) {
+		this.consumerId = consumerId;
+	}
 
-  public ConsumerRole consumerId(String consumerId) {
-    this.consumerId = consumerId;
-    return this;
-  }
+	public ConsumerRole consumerResource(String consumerResource) {
+		this.consumerResource = consumerResource;
+		return this;
+	}
 
-   
-  public String getConsumerId() {
-    return consumerId;
-  }
+	public String getConsumerResource() {
+		return consumerResource;
+	}
 
-  public void setConsumerId(String consumerId) {
-    this.consumerId = consumerId;
-  }
+	public void setConsumerResource(String consumerResource) {
+		this.consumerResource = consumerResource;
+	}
 
-  public ConsumerRole consumerResource(String consumerResource) {
-    this.consumerResource = consumerResource;
-    return this;
-  }
+	public ConsumerRole roleId(String roleId) {
+		this.roleId = roleId;
+		return this;
+	}
 
-   
-  public String getConsumerResource() {
-    return consumerResource;
-  }
+	public String getRoleId() {
+		return roleId;
+	}
 
-  public void setConsumerResource(String consumerResource) {
-    this.consumerResource = consumerResource;
-  }
+	public void setRoleId(String roleId) {
+		this.roleId = roleId;
+	}
 
-  public ConsumerRole roleId(String roleId) {
-    this.roleId = roleId;
-    return this;
-  }
+	public ConsumerRole position(String position) {
+		this.position = position;
+		return this;
+	}
 
-   
-  public String getRoleId() {
-    return roleId;
-  }
+	public String getPosition() {
+		return position;
+	}
 
-  public void setRoleId(String roleId) {
-    this.roleId = roleId;
-  }
+	public void setPosition(String position) {
+		this.position = position;
+	}
 
-  public ConsumerRole position(String position) {
-    this.position = position;
-    return this;
-  }
+	public ConsumerRole creatorId(String creatorId) {
+		this.creatorId = creatorId;
+		return this;
+	}
 
-   
-  public String getPosition() {
-    return position;
-  }
+	public ConsumerRole creatorResource(String creatorResource) {
+		this.creatorResource = creatorResource;
+		return this;
+	}
 
-  public void setPosition(String position) {
-    this.position = position;
-  }
+	@Override
+	public boolean equals(java.lang.Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		ConsumerRole consumerRole = (ConsumerRole) o;
+		return Objects.equals(this.resourceName, consumerRole.resourceName) && Objects.equals(this.id, consumerRole.id)
+				&& Objects.equals(this.environmentId, consumerRole.environmentId)
+				&& Objects.equals(this.consumerId, consumerRole.consumerId)
+				&& Objects.equals(this.consumerResource, consumerRole.consumerResource)
+				&& Objects.equals(this.roleId, consumerRole.roleId)
+				&& Objects.equals(this.position, consumerRole.position)
+				&& Objects.equals(this.creatorId, consumerRole.creatorId)
+				&& Objects.equals(this.creatorResource, consumerRole.creatorResource)
+				&& Objects.equals(this.createdAt, consumerRole.createdAt)
+				&& Objects.equals(this.updatedAt, consumerRole.updatedAt)
+				&& Objects.equals(this.expanded, consumerRole.expanded);
+	}
 
-  public ConsumerRole creatorId(String creatorId) {
-    this.creatorId = creatorId;
-    return this;
-  }
-
-  
-  public String getCreatorId() {
-    return creatorId;
-  }
-
-  public void setCreatorId(String creatorId) {
-    this.creatorId = creatorId;
-  }
-
-  public ConsumerRole creatorResource(String creatorResource) {
-    this.creatorResource = creatorResource;
-    return this;
-  }
-
-  
-  public String getCreatorResource() {
-    return creatorResource;
-  }
-
-  public void setCreatorResource(String creatorResource) {
-    this.creatorResource = creatorResource;
-  }
-
-
-  @Override
-  public boolean equals(java.lang.Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    ConsumerRole consumerRole = (ConsumerRole) o;
-    return Objects.equals(this.resourceName, consumerRole.resourceName) &&
-        Objects.equals(this.id, consumerRole.id) &&
-        Objects.equals(this.environmentId, consumerRole.environmentId) &&
-        Objects.equals(this.consumerId, consumerRole.consumerId) &&
-        Objects.equals(this.consumerResource, consumerRole.consumerResource) &&
-        Objects.equals(this.roleId, consumerRole.roleId) &&
-        Objects.equals(this.position, consumerRole.position) &&
-        Objects.equals(this.creatorId, consumerRole.creatorId) &&
-        Objects.equals(this.creatorResource, consumerRole.creatorResource) &&
-        Objects.equals(this.createdAt, consumerRole.createdAt) &&
-        Objects.equals(this.updatedAt, consumerRole.updatedAt) &&
-        Objects.equals(this.expanded, consumerRole.expanded);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(resourceName, id, environmentId, consumerId, consumerResource, roleId, position, creatorId, creatorResource, createdAt, updatedAt, expanded);
-  }
+	@Override
+	public int hashCode() {
+		return Objects.hash(resourceName, id, environmentId, consumerId, consumerResource, roleId, position, creatorId,
+				creatorResource, createdAt, updatedAt, expanded);
+	}
 
 }
-

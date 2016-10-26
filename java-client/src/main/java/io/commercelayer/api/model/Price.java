@@ -9,7 +9,7 @@ import com.google.gson.annotations.SerializedName;
  * Price
  */
 public class Price extends ApiResource {
-	
+
 	@SerializedName("environment_id")
 	private String environmentId = null;
 
@@ -24,12 +24,6 @@ public class Price extends ApiResource {
 
 	@SerializedName("amount")
 	private Float amount = null;
-
-	@SerializedName("creator_id")
-	private String creatorId = null;
-
-	@SerializedName("creator_resource")
-	private String creatorResource = null;
 
 	@SerializedName("formatted")
 	private String formatted = null;
@@ -107,25 +101,9 @@ public class Price extends ApiResource {
 		return this;
 	}
 
-	public String getCreatorId() {
-		return creatorId;
-	}
-
-	public void setCreatorId(String creatorId) {
-		this.creatorId = creatorId;
-	}
-
 	public Price creatorResource(String creatorResource) {
 		this.creatorResource = creatorResource;
 		return this;
-	}
-
-	public String getCreatorResource() {
-		return creatorResource;
-	}
-
-	public void setCreatorResource(String creatorResource) {
-		this.creatorResource = creatorResource;
 	}
 
 	public Price formatted(String formatted) {

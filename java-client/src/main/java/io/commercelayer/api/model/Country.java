@@ -5,118 +5,91 @@ import java.util.Objects;
 
 import com.google.gson.annotations.SerializedName;
 
-
 /**
  * Country
  */
 public class Country extends ApiResource {
 
-  @SerializedName("environment_id")
-  private String environmentId = null;
+	@SerializedName("environment_id")
+	private String environmentId = null;
 
-  @SerializedName("country_group_id")
-  private String countryGroupId = null;
+	@SerializedName("country_group_id")
+	private String countryGroupId = null;
 
-  @SerializedName("code")
-  private String code = null;
+	@SerializedName("code")
+	private String code = null;
 
-  @SerializedName("creator_id")
-  private String creatorId = null;
+	public Country environmentId(String environmentId) {
+		this.environmentId = environmentId;
+		return this;
+	}
 
-  @SerializedName("creator_resource")
-  private String creatorResource = null;
+	public String getEnvironmentId() {
+		return environmentId;
+	}
 
-  public Country environmentId(String environmentId) {
-    this.environmentId = environmentId;
-    return this;
-  }
+	public void setEnvironmentId(String environmentId) {
+		this.environmentId = environmentId;
+	}
 
-  public String getEnvironmentId() {
-    return environmentId;
-  }
+	public Country countryGroupId(String countryGroupId) {
+		this.countryGroupId = countryGroupId;
+		return this;
+	}
 
-  public void setEnvironmentId(String environmentId) {
-    this.environmentId = environmentId;
-  }
+	public String getCountryGroupId() {
+		return countryGroupId;
+	}
 
-  public Country countryGroupId(String countryGroupId) {
-    this.countryGroupId = countryGroupId;
-    return this;
-  }
+	public void setCountryGroupId(String countryGroupId) {
+		this.countryGroupId = countryGroupId;
+	}
 
-  public String getCountryGroupId() {
-    return countryGroupId;
-  }
+	public Country code(String code) {
+		this.code = code;
+		return this;
+	}
 
-  public void setCountryGroupId(String countryGroupId) {
-    this.countryGroupId = countryGroupId;
-  }
+	public String getCode() {
+		return code;
+	}
 
-  public Country code(String code) {
-    this.code = code;
-    return this;
-  }
+	public void setCode(String code) {
+		this.code = code;
+	}
 
-  public String getCode() {
-    return code;
-  }
+	public Country creatorId(String creatorId) {
+		this.creatorId = creatorId;
+		return this;
+	}
 
-  public void setCode(String code) {
-    this.code = code;
-  }
+	public Country creatorResource(String creatorResource) {
+		this.creatorResource = creatorResource;
+		return this;
+	}
 
-  public Country creatorId(String creatorId) {
-    this.creatorId = creatorId;
-    return this;
-  }
+	@Override
+	public boolean equals(java.lang.Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		Country country = (Country) o;
+		return Objects.equals(this.resourceName, country.resourceName) && Objects.equals(this.id, country.id)
+				&& Objects.equals(this.environmentId, country.environmentId)
+				&& Objects.equals(this.countryGroupId, country.countryGroupId)
+				&& Objects.equals(this.code, country.code) && Objects.equals(this.creatorId, country.creatorId)
+				&& Objects.equals(this.creatorResource, country.creatorResource)
+				&& Objects.equals(this.createdAt, country.createdAt)
+				&& Objects.equals(this.updatedAt, country.updatedAt) && Objects.equals(this.expanded, country.expanded);
+	}
 
-  public String getCreatorId() {
-    return creatorId;
-  }
-
-  public void setCreatorId(String creatorId) {
-    this.creatorId = creatorId;
-  }
-
-  public Country creatorResource(String creatorResource) {
-    this.creatorResource = creatorResource;
-    return this;
-  }
-
-  public String getCreatorResource() {
-    return creatorResource;
-  }
-
-  public void setCreatorResource(String creatorResource) {
-    this.creatorResource = creatorResource;
-  }
-
-
-  @Override
-  public boolean equals(java.lang.Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    Country country = (Country) o;
-    return Objects.equals(this.resourceName, country.resourceName) &&
-        Objects.equals(this.id, country.id) &&
-        Objects.equals(this.environmentId, country.environmentId) &&
-        Objects.equals(this.countryGroupId, country.countryGroupId) &&
-        Objects.equals(this.code, country.code) &&
-        Objects.equals(this.creatorId, country.creatorId) &&
-        Objects.equals(this.creatorResource, country.creatorResource) &&
-        Objects.equals(this.createdAt, country.createdAt) &&
-        Objects.equals(this.updatedAt, country.updatedAt) &&
-        Objects.equals(this.expanded, country.expanded);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(resourceName, id, environmentId, countryGroupId, code, creatorId, creatorResource, createdAt, updatedAt, expanded);
-  }
+	@Override
+	public int hashCode() {
+		return Objects.hash(resourceName, id, environmentId, countryGroupId, code, creatorId, creatorResource,
+				createdAt, updatedAt, expanded);
+	}
 
 }
-

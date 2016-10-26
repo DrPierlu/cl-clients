@@ -9,7 +9,7 @@ import com.google.gson.annotations.SerializedName;
  * LineItem
  */
 public class LineItem extends ApiResource {
-	
+
 	@SerializedName("environment_id")
 	private String environmentId = null;
 
@@ -39,12 +39,6 @@ public class LineItem extends ApiResource {
 
 	@SerializedName("tax_breakdown")
 	private String taxBreakdown = null;
-
-	@SerializedName("creator_id")
-	private String creatorId = null;
-
-	@SerializedName("creator_resource")
-	private String creatorResource = null;
 
 	@SerializedName("amount")
 	private String amount = null;
@@ -190,25 +184,9 @@ public class LineItem extends ApiResource {
 		return this;
 	}
 
-	public String getCreatorId() {
-		return creatorId;
-	}
-
-	public void setCreatorId(String creatorId) {
-		this.creatorId = creatorId;
-	}
-
 	public LineItem creatorResource(String creatorResource) {
 		this.creatorResource = creatorResource;
 		return this;
-	}
-
-	public String getCreatorResource() {
-		return creatorResource;
-	}
-
-	public void setCreatorResource(String creatorResource) {
-		this.creatorResource = creatorResource;
 	}
 
 	public LineItem amount(String amount) {

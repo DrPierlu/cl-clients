@@ -8,16 +8,26 @@ import io.commercelayer.api.http.HttpException;
 import io.commercelayer.api.http.HttpRequest;
 import io.commercelayer.api.http.HttpRequest.Method;
 import io.commercelayer.api.http.HttpResponse;
+import io.commercelayer.api.json.JsonCodec;
+import io.commercelayer.api.json.JsonCodecFactory;
 import io.commercelayer.api.model.ApiResource;
 import io.commercelayer.api.util.ContentType;
 
 public abstract class ApiCaller<T extends ApiResource> {
 
 	private final HttpClient httpClient;
+	private final JsonCodec jsonCodec;
 
 	public ApiCaller() {
 		this.httpClient = HttpClientFactory.getHttpClientInstance();
+		this.jsonCodec = JsonCodecFactory.getJsonCodecInstance();
 	}
+	
+	public ApiCaller(HttpClient httpClient, JsonCodec jsonCodec) {
+		this.httpClient = (httpClient == null)? HttpClientFactory.getHttpClientInstance() : httpClient;
+		this.jsonCodec = (jsonCodec == null)? JsonCodecFactory.getJsonCodecInstance() : jsonCodec;
+	}
+	
 
 	public List<T> getItemList() throws ApiException {
 
@@ -66,8 +76,6 @@ public abstract class ApiCaller<T extends ApiResource> {
 	public void deleteItem(T item) throws ApiException {
 		deleteItem(item.getId());
 	}
-
-	protected abstract String getItemResourceName();
 
 	private HttpResponse call(HttpRequest request) throws ApiException {
 

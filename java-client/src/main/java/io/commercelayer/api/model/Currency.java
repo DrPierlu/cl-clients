@@ -9,20 +9,13 @@ import com.google.gson.annotations.SerializedName;
  * Currency
  */
 public class Currency extends ApiResource {
-	
+
 	@SerializedName("environment_id")
 	private String environmentId = null;
 
 	@SerializedName("code")
 	private String code = null;
 
-	@SerializedName("creator_id")
-	private String creatorId = null;
-
-	@SerializedName("creator_resource")
-	private String creatorResource = null;
-
-	
 	public Currency environmentId(String environmentId) {
 		this.environmentId = environmentId;
 		return this;
@@ -54,28 +47,11 @@ public class Currency extends ApiResource {
 		return this;
 	}
 
-	public String getCreatorId() {
-		return creatorId;
-	}
-
-	public void setCreatorId(String creatorId) {
-		this.creatorId = creatorId;
-	}
-
 	public Currency creatorResource(String creatorResource) {
 		this.creatorResource = creatorResource;
 		return this;
 	}
 
-	public String getCreatorResource() {
-		return creatorResource;
-	}
-
-	public void setCreatorResource(String creatorResource) {
-		this.creatorResource = creatorResource;
-	}
-
-	
 	@Override
 	public boolean equals(java.lang.Object o) {
 		if (this == o) {

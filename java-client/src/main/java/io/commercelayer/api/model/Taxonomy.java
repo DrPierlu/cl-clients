@@ -16,12 +16,6 @@ public class Taxonomy extends ApiResource {
 	@SerializedName("name")
 	private String name = null;
 
-	@SerializedName("creator_id")
-	private String creatorId = null;
-
-	@SerializedName("creator_resource")
-	private String creatorResource = null;
-
 	public Taxonomy environmentId(String environmentId) {
 		this.environmentId = environmentId;
 		return this;
@@ -53,27 +47,10 @@ public class Taxonomy extends ApiResource {
 		return this;
 	}
 
-	public String getCreatorId() {
-		return creatorId;
-	}
-
-	public void setCreatorId(String creatorId) {
-		this.creatorId = creatorId;
-	}
-
 	public Taxonomy creatorResource(String creatorResource) {
 		this.creatorResource = creatorResource;
 		return this;
 	}
-
-	public String getCreatorResource() {
-		return creatorResource;
-	}
-
-	public void setCreatorResource(String creatorResource) {
-		this.creatorResource = creatorResource;
-	}
-
 
 	@Override
 	public boolean equals(java.lang.Object o) {
@@ -98,5 +75,5 @@ public class Taxonomy extends ApiResource {
 		return Objects.hash(resourceName, id, environmentId, name, creatorId, creatorResource, createdAt, updatedAt,
 				expanded);
 	}
-	
+
 }

@@ -25,12 +25,6 @@ public class User extends ApiResource {
 	@SerializedName("password_salt")
 	private String passwordSalt = null;
 
-	@SerializedName("creator_id")
-	private String creatorId = null;
-
-	@SerializedName("creator_resource")
-	private String creatorResource = null;
-
 	public User firstName(String firstName) {
 		this.firstName = firstName;
 		return this;
@@ -101,27 +95,10 @@ public class User extends ApiResource {
 		return this;
 	}
 
-	public String getCreatorId() {
-		return creatorId;
-	}
-
-	public void setCreatorId(String creatorId) {
-		this.creatorId = creatorId;
-	}
-
 	public User creatorResource(String creatorResource) {
 		this.creatorResource = creatorResource;
 		return this;
 	}
-
-	public String getCreatorResource() {
-		return creatorResource;
-	}
-
-	public void setCreatorResource(String creatorResource) {
-		this.creatorResource = creatorResource;
-	}
-
 
 	@Override
 	public boolean equals(java.lang.Object o) {

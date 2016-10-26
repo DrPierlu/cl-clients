@@ -19,12 +19,6 @@ public class VariantOption extends ApiResource {
 	@SerializedName("option_value_id")
 	private String optionValueId = null;
 
-	@SerializedName("creator_id")
-	private String creatorId = null;
-
-	@SerializedName("creator_resource")
-	private String creatorResource = null;
-
 	public VariantOption environmentId(String environmentId) {
 		this.environmentId = environmentId;
 		return this;
@@ -69,27 +63,10 @@ public class VariantOption extends ApiResource {
 		return this;
 	}
 
-	public String getCreatorId() {
-		return creatorId;
-	}
-
-	public void setCreatorId(String creatorId) {
-		this.creatorId = creatorId;
-	}
-
 	public VariantOption creatorResource(String creatorResource) {
 		this.creatorResource = creatorResource;
 		return this;
 	}
-
-	public String getCreatorResource() {
-		return creatorResource;
-	}
-
-	public void setCreatorResource(String creatorResource) {
-		this.creatorResource = creatorResource;
-	}
-
 
 	@Override
 	public boolean equals(java.lang.Object o) {

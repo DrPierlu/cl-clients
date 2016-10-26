@@ -9,7 +9,7 @@ import com.google.gson.annotations.SerializedName;
  * CountryLanguage
  */
 public class CountryLanguage extends ApiResource {
-	
+
 	@SerializedName("environment_id")
 	private String environmentId = null;
 
@@ -22,13 +22,6 @@ public class CountryLanguage extends ApiResource {
 	@SerializedName("position")
 	private String position = null;
 
-	@SerializedName("creator_id")
-	private String creatorId = null;
-
-	@SerializedName("creator_resource")
-	private String creatorResource = null;
-
-	
 	public CountryLanguage environmentId(String environmentId) {
 		this.environmentId = environmentId;
 		return this;
@@ -86,27 +79,10 @@ public class CountryLanguage extends ApiResource {
 		return this;
 	}
 
-	public String getCreatorId() {
-		return creatorId;
-	}
-
-	public void setCreatorId(String creatorId) {
-		this.creatorId = creatorId;
-	}
-
 	public CountryLanguage creatorResource(String creatorResource) {
 		this.creatorResource = creatorResource;
 		return this;
 	}
-
-	public String getCreatorResource() {
-		return creatorResource;
-	}
-
-	public void setCreatorResource(String creatorResource) {
-		this.creatorResource = creatorResource;
-	}
-
 
 	@Override
 	public boolean equals(java.lang.Object o) {

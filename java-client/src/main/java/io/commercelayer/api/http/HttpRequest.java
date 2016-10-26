@@ -12,12 +12,14 @@ public class HttpRequest {
 	private Method method;
 	private String url;
 	private Map<String, String> headers;
+	private Map<String, String> queryStringParams;
 	private String body;
 	private String contentType;
 	
 	public HttpRequest(Method httpMethod) {
 		this.method = (httpMethod == null)? Method.GET : httpMethod;
 		this.headers = new HashMap<>();
+		this.queryStringParams = new HashMap<>();
 	}
 
 	public String getUrl() {
@@ -74,6 +76,26 @@ public class HttpRequest {
 
 	public void setContentType(String contentType) {
 		this.contentType = contentType;
+	}
+
+	public Map<String, String> getQueryStringParams() {
+		return queryStringParams;
+	}
+
+	public void setQueryStringParams(Map<String, String> queryStringParams) {
+		this.queryStringParams = queryStringParams;
+	}
+	
+	public void addQueryStringParam(String key, String value) {
+		this.queryStringParams.put(key, value);
+	}
+	
+	public String getQueryStringParam(String key) {
+		return this.queryStringParams.get(key);
+	}
+	
+	public boolean hasQueryStringParams() {
+		return (this.queryStringParams != null) && !this.queryStringParams.isEmpty();
 	}
 
 }
