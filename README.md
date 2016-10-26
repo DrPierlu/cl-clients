@@ -1,2 +1,2 @@
-# cl-java-client
-Java Client implementation for Commerce Layer API integration
+# cl-clients
+Client implementations for Commerce Layer API integration
