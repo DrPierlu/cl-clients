@@ -21,9 +21,17 @@ public abstract class HttpClient {
 		
 		if (httpRequest.hasQueryStringParams()) {
 			for (Map.Entry<String, String> param : httpRequest.getQueryStringParams().entrySet()) {
-				
+				if (sb.length() == 0) {
+					if (withQuestionMark) sb.append('?');
+				}
+				else {
+					sb.append('&');
+				}
+				sb.append(param.getKey()).append('=').append(param.getValue());
 			}
 		}
+		
+		return sb.toString();
 		
 	}
 	
