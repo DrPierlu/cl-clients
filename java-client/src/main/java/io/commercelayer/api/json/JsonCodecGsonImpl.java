@@ -7,6 +7,7 @@ import io.commercelayer.api.model.ApiResource;
 
 public final class JsonCodecGsonImpl implements JsonCodec {
 
+	@Override
 	public <T extends ApiResource> T fromJSON(String json, Class<T> type) {
 
 		GsonBuilder builder = new GsonBuilder().excludeFieldsWithoutExposeAnnotation();
@@ -17,6 +18,7 @@ public final class JsonCodecGsonImpl implements JsonCodec {
 
 	}
 
+	@Override
 	public String toJSON(ApiResource object) {
 
 		GsonBuilder builder = new GsonBuilder().excludeFieldsWithoutExposeAnnotation();

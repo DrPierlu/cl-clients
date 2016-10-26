@@ -6,6 +6,10 @@ import java.util.Properties;
 
 public final class ApiConfig {
 	
+	public static enum Group {
+		test, authentication
+	}
+	
 	private static Properties settings = new Properties();
 	
 	static {
@@ -28,6 +32,10 @@ public final class ApiConfig {
 	
 	public static String getProperty(String key) {
 		return (key == null)? null : settings.getProperty(key);
+	}
+	
+	public static String getProperty(Group group, String key) {
+		return (key == null)? null : settings.getProperty(group.name() + '.' + key);
 	}
 
 }

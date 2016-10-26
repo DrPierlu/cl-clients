@@ -11,10 +11,14 @@ import io.commercelayer.api.http.HttpResponse;
 import io.commercelayer.api.json.JsonCodec;
 import io.commercelayer.api.json.JsonCodecFactory;
 import io.commercelayer.api.model.ApiResource;
+import io.commercelayer.api.security.ApiToken;
+import io.commercelayer.api.security.AuthException;
 import io.commercelayer.api.util.ContentType;
 
 public abstract class ApiCaller<T extends ApiResource> {
 
+	private ApiToken apiToken;
+	
 	private final HttpClient httpClient;
 	private final JsonCodec jsonCodec;
 
@@ -28,7 +32,13 @@ public abstract class ApiCaller<T extends ApiResource> {
 		this.jsonCodec = JsonCodecFactory.getJsonCodecInstance();
 	}
 	
+
+	public void setApiToken(ApiToken apiToken) {
+		this.apiToken = apiToken;
+	}
 	
+	
+
 
 	public List<T> getItemList() throws ApiException {
 
@@ -80,8 +90,11 @@ public abstract class ApiCaller<T extends ApiResource> {
 	}
 
 	
-	private HttpResponse call(HttpRequest request) throws ApiException {
+	private HttpResponse call(HttpRequest request) throws ApiException, AuthException {
 
+		if ((apiToken == null) || apiToken.getAccessToken() == null)
+			throw new AuthException("No access_token defined");
+		
 		try {
 
 			HttpResponse response = httpClient.send(request);
@@ -101,17 +114,10 @@ public abstract class ApiCaller<T extends ApiResource> {
 
 		request.setContentType(ContentType.JSON);
 		request.addHeader("Accept", ContentType.JSON);
+		request.addHeader("Authorization", "Bearer " + apiToken.getAccessToken());
 
 		return request;
 
-	}
-
-	
-	public void authenticate() throws ApiException {
-		
-		
-		
-	}
-	
+	}	
 	
 }

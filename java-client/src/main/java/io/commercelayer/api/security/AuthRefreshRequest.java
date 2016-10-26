@@ -1,12 +1,13 @@
 package io.commercelayer.api.security;
 
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class AuthRefreshRequest {
 
-	@SerializedName("grant_type")
+	@Expose @SerializedName("grant_type")
 	private String grantType = "refresh_token";
-	@SerializedName("refresh_token")
+	@Expose @SerializedName("refresh_token")
 	private String refreshToken;
 
 	public String getGrantType() {
