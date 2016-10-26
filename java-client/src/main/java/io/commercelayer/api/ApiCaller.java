@@ -23,10 +23,11 @@ public abstract class ApiCaller<T extends ApiResource> {
 		this.jsonCodec = JsonCodecFactory.getJsonCodecInstance();
 	}
 	
-	public ApiCaller(HttpClient httpClient, JsonCodec jsonCodec) {
+	public ApiCaller(HttpClient httpClient) {
 		this.httpClient = (httpClient == null)? HttpClientFactory.getHttpClientInstance() : httpClient;
-		this.jsonCodec = (jsonCodec == null)? JsonCodecFactory.getJsonCodecInstance() : jsonCodec;
+		this.jsonCodec = JsonCodecFactory.getJsonCodecInstance();
 	}
+	
 	
 
 	public List<T> getItemList() throws ApiException {
@@ -56,7 +57,8 @@ public abstract class ApiCaller<T extends ApiResource> {
 		return null;
 
 	}
-
+	
+	
 	public void updateItem(T item) throws ApiException {
 
 		HttpRequest request = createHttpRequest(Method.PUT);
@@ -77,13 +79,14 @@ public abstract class ApiCaller<T extends ApiResource> {
 		deleteItem(item.getId());
 	}
 
+	
 	private HttpResponse call(HttpRequest request) throws ApiException {
 
 		try {
 
 			HttpResponse response = httpClient.send(request);
 
-			return null;
+			return response;
 
 		} catch (HttpException he) {
 			throw new ApiException();
@@ -91,6 +94,7 @@ public abstract class ApiCaller<T extends ApiResource> {
 
 	}
 
+	
 	private HttpRequest createHttpRequest(Method httpMethod) {
 
 		HttpRequest request = new HttpRequest(httpMethod);
@@ -102,4 +106,12 @@ public abstract class ApiCaller<T extends ApiResource> {
 
 	}
 
+	
+	public void authenticate() throws ApiException {
+		
+		
+		
+	}
+	
+	
 }

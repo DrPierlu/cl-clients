@@ -5,7 +5,7 @@ import java.util.HashMap;
 public class HttpResponse {
 
 	private int code;
-	private HashMap<String, String> headers = new HashMap<>();
+	private HashMap<String, String> headers = new HashMap<String, String>();
 	private String body;
 
 	public int getCode() {
