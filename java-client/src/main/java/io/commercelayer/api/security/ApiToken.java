@@ -2,22 +2,11 @@ package io.commercelayer.api.security;
 
 import java.time.LocalDateTime;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
-
 public final class ApiToken {
 
-	@Expose
-	@SerializedName("access_token")
 	private String accessToken;
-	@Expose
-	@SerializedName("token_type")
 	private String tokenType = "bearer";
-	@Expose
-	@SerializedName("expireIn")
 	private int expiresIn;
-	@Expose
-	@SerializedName("refresh_token")
 	private String refreshToken;
 
 	private LocalDateTime expiresFrom;

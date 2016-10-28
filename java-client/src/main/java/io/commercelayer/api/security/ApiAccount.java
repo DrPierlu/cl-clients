@@ -2,16 +2,12 @@ package io.commercelayer.api.security;
 
 import java.util.Objects;
 
-import com.google.gson.annotations.Expose;
-
 public class ApiAccount {
 
-	@Expose
 	private String username;
-	@Expose
 	private String environment = "development";
-	private String authKey;
-	private String authSecret;
+	private transient String authKey;
+	private transient String authSecret;
 
 	public String getUsername() {
 		return username;

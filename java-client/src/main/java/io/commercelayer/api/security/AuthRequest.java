@@ -1,15 +1,10 @@
 package io.commercelayer.api.security;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
-
 import io.commercelayer.api.json.JsonUtil;
 
 public final class AuthRequest extends ApiAccount {
 
-	@Expose @SerializedName("grant_type")
 	private String grantType = "password";
-	@Expose @SerializedName("password")
 	private String password = "supersecret";
 
 	public String getGrantType() {
@@ -32,6 +27,11 @@ public final class AuthRequest extends ApiAccount {
 		
 		AuthRequest request = new AuthRequest();
 		request.setUsername("user@server.com");
+		request.setAuthKey("test_authKey");
+		request.setAuthSecret("test_authSecret");
+		request.setEnvironment("test_environment");
+		request.setGrantType("test_grantType");
+		request.setPassword("test_password");
 		
 		System.out.println(JsonUtil.toJSON(request));
 		

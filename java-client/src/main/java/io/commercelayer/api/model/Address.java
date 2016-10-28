@@ -3,104 +3,41 @@ package io.commercelayer.api.model;
 
 import java.util.Objects;
 
-import com.google.gson.annotations.SerializedName;
-
 /**
  * Address
  */
 public class Address extends ApiResource {
 
-	@SerializedName("environment_id")
 	private String environmentId = null;
-
-	@SerializedName("geocoding_country")
 	private String geocodingCountry = null;
-
-	@SerializedName("geocoding_zip")
 	private String geocodingZip = null;
-
-	@SerializedName("geocoding_city")
 	private String geocodingCity = null;
-
-	@SerializedName("geocoding_street")
 	private String geocodingStreet = null;
-
-	@SerializedName("geocoding_number")
 	private String geocodingNumber = null;
-
-	@SerializedName("provider")
 	private String provider = null;
-
-	@SerializedName("place_id")
 	private String placeId = null;
-
-	@SerializedName("precision")
 	private String precision = null;
-
-	@SerializedName("accuracy")
 	private String accuracy = null;
-
-	@SerializedName("country_code")
 	private String countryCode = null;
-
-	@SerializedName("country")
 	private String country = null;
-
-	@SerializedName("state_code")
 	private String stateCode = null;
-
-	@SerializedName("state_name")
 	private String stateName = null;
-
-	@SerializedName("state")
 	private String state = null;
-
-	@SerializedName("province")
 	private String province = null;
-
-	@SerializedName("zip")
 	private String zip = null;
-
-	@SerializedName("city")
 	private String city = null;
-
-	@SerializedName("district")
 	private String district = null;
-
-	@SerializedName("street_name")
 	private String streetName = null;
-
-	@SerializedName("street_number")
 	private String streetNumber = null;
-
-	@SerializedName("street_address")
 	private String streetAddress = null;
-
-	@SerializedName("sub_premise")
 	private String subPremise = null;
-
-	@SerializedName("full_address")
 	private String fullAddress = null;
-
-	@SerializedName("formatted_address")
 	private String formattedAddress = null;
-
-	@SerializedName("lat")
 	private Float lat = null;
-
-	@SerializedName("lng")
 	private Float lng = null;
-
-	@SerializedName("suggested_bounds_sw_lat")
 	private Float suggestedBoundsSwLat = null;
-
-	@SerializedName("suggested_bounds_sw_lng")
 	private Float suggestedBoundsSwLng = null;
-
-	@SerializedName("suggested_bounds_ne_lat")
 	private Float suggestedBoundsNeLat = null;
-
-	@SerializedName("suggested_bounds_ne_lng")
 	private Float suggestedBoundsNeLng = null;
 
 	public Address environmentId(String environmentId) {
