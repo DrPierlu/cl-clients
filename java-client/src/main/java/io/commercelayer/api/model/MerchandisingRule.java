@@ -3,29 +3,16 @@ package io.commercelayer.api.model;
 
 import java.util.Objects;
 
-import com.google.gson.annotations.SerializedName;
-
 /**
  * MerchandisingRule
  */
 public class MerchandisingRule extends ApiResource {
 
-	@SerializedName("environment_id")
 	private String environmentId = null;
-
-	@SerializedName("catalog_id")
 	private String catalogId = null;
-
-	@SerializedName("taxon_id")
 	private String taxonId = null;
-
-	@SerializedName("product_id")
 	private String productId = null;
-
-	@SerializedName("position")
 	private String position = null;
-
-	@SerializedName("hero")
 	private String hero = null;
 
 	public MerchandisingRule environmentId(String environmentId) {

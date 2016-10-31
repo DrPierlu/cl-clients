@@ -26,26 +26,15 @@ package io.commercelayer.api.model;
 
 import java.util.Objects;
 
-import com.google.gson.annotations.SerializedName;
-
 /**
  * ConsumerRole
  */
 public class ConsumerRole extends ApiResource {
 
-	@SerializedName("environment_id")
 	private String environmentId = null;
-
-	@SerializedName("consumer_id")
 	private String consumerId = null;
-
-	@SerializedName("consumer_resource")
 	private String consumerResource = null;
-
-	@SerializedName("role_id")
 	private String roleId = null;
-
-	@SerializedName("position")
 	private String position = null;
 
 	public ConsumerRole environmentId(String environmentId) {

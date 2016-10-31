@@ -3,35 +3,18 @@ package io.commercelayer.api.model;
 
 import java.util.Objects;
 
-import com.google.gson.annotations.SerializedName;
-
 /**
  * Market
  */
 public class Market extends ApiResource {
 
-	@SerializedName("environment_id")
 	private String environmentId = null;
-
-	@SerializedName("channel_id")
 	private String channelId = null;
-
-	@SerializedName("country_group_id")
 	private String countryGroupId = null;
-
-	@SerializedName("merchant_id")
 	private String merchantId = null;
-
-	@SerializedName("catalog_id")
 	private String catalogId = null;
-
-	@SerializedName("price_list_id")
 	private String priceListId = null;
-
-	@SerializedName("stock_location_id")
 	private String stockLocationId = null;
-
-	@SerializedName("order_validation_policy_id")
 	private String orderValidationPolicyId = null;
 
 	public Market environmentId(String environmentId) {

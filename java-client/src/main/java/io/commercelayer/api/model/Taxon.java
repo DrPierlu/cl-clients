@@ -3,38 +3,19 @@ package io.commercelayer.api.model;
 
 import java.util.Objects;
 
-import com.google.gson.annotations.SerializedName;
-
 /**
  * Taxon
  */
 public class Taxon extends ApiResource {
 
-	@SerializedName("environment_id")
 	private String environmentId = null;
-
-	@SerializedName("name")
 	private String name = null;
-
-	@SerializedName("taxonomy_id")
 	private String taxonomyId = null;
-
-	@SerializedName("position")
 	private String position = null;
-
-	@SerializedName("parent_id")
 	private String parentId = null;
-
-	@SerializedName("lft")
 	private String lft = null;
-
-	@SerializedName("rgt")
 	private String rgt = null;
-
-	@SerializedName("depth")
 	private String depth = null;
-
-	@SerializedName("children_count")
 	private String childrenCount = null;
 
 	public Taxon environmentId(String environmentId) {

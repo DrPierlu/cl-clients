@@ -3,17 +3,12 @@ package io.commercelayer.api.model;
 
 import java.util.Objects;
 
-import com.google.gson.annotations.SerializedName;
-
 /**
  * Language
  */
 public class Language extends ApiResource {
 
-	@SerializedName("environment_id")
 	private String environmentId = null;
-
-	@SerializedName("code")
 	private String code = null;
 
 	public Language environmentId(String environmentId) {

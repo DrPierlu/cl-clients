@@ -3,38 +3,19 @@ package io.commercelayer.api.model;
 
 import java.util.Objects;
 
-import com.google.gson.annotations.SerializedName;
-
 /**
  * OrderValidationPolicy
  */
 public class OrderValidationPolicy extends ApiResource {
 
-	@SerializedName("environment_id")
 	private String environmentId = null;
-
-	@SerializedName("currency_id")
 	private String currencyId = null;
-
-	@SerializedName("billing_address_required")
 	private String billingAddressRequired = null;
-
-	@SerializedName("order_total_min")
 	private Float orderTotalMin = null;
-
-	@SerializedName("order_total_max")
 	private Float orderTotalMax = null;
-
-	@SerializedName("order_items_min")
 	private String orderItemsMin = null;
-
-	@SerializedName("order_items_max")
 	private String orderItemsMax = null;
-
-	@SerializedName("payment_method_status")
 	private String paymentMethodStatus = null;
-
-	@SerializedName("payment_method_status_percentage")
 	private String paymentMethodStatusPercentage = null;
 
 	public OrderValidationPolicy environmentId(String environmentId) {

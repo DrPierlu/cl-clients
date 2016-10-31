@@ -3,50 +3,23 @@ package io.commercelayer.api.model;
 
 import java.util.Objects;
 
-import com.google.gson.annotations.SerializedName;
-
 /**
  * LineItem
  */
 public class LineItem extends ApiResource {
 
-	@SerializedName("environment_id")
 	private String environmentId = null;
-
-	@SerializedName("order_id")
 	private String orderId = null;
-
-	@SerializedName("sellable_id")
 	private String sellableId = null;
-
-	@SerializedName("sellable_resource")
 	private String sellableResource = null;
-
-	@SerializedName("shipping_address_id")
 	private String shippingAddressId = null;
-
-	@SerializedName("quantity")
 	private String quantity = null;
-
-	@SerializedName("unit_amount")
 	private Float unitAmount = null;
-
-	@SerializedName("tax_rate")
 	private Float taxRate = null;
-
-	@SerializedName("tax_included")
 	private String taxIncluded = null;
-
-	@SerializedName("tax_breakdown")
 	private String taxBreakdown = null;
-
-	@SerializedName("amount")
 	private String amount = null;
-
-	@SerializedName("formatted_unit_amount")
 	private String formattedUnitAmount = null;
-
-	@SerializedName("formatted_amount")
 	private String formattedAmount = null;
 
 	public LineItem environmentId(String environmentId) {

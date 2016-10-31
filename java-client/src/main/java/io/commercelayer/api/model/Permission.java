@@ -3,29 +3,16 @@ package io.commercelayer.api.model;
 
 import java.util.Objects;
 
-import com.google.gson.annotations.SerializedName;
-
 /**
  * Permission
  */
 public class Permission extends ApiResource {
 
-	@SerializedName("role_id")
 	private String roleId = null;
-
-	@SerializedName("ability")
 	private String ability = null;
-
-	@SerializedName("action")
 	private String action = null;
-
-	@SerializedName("resource")
 	private String resource = null;
-
-	@SerializedName("restrictions")
 	private String restrictions = null;
-
-	@SerializedName("position")
 	private String position = null;
 
 	public Permission roleId(String roleId) {

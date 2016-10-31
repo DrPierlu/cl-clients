@@ -3,17 +3,12 @@ package io.commercelayer.api.model;
 
 import java.util.Objects;
 
-import com.google.gson.annotations.SerializedName;
-
 /**
  * Role
  */
 public class Role extends ApiResource {
 
-	@SerializedName("name")
 	private String name = null;
-
-	@SerializedName("description")
 	private String description = null;
 
 	public Role name(String name) {

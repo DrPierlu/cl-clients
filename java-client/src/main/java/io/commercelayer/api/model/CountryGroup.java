@@ -3,17 +3,12 @@ package io.commercelayer.api.model;
 
 import java.util.Objects;
 
-import com.google.gson.annotations.SerializedName;
-
 /**
  * CountryGroup
  */
 public class CountryGroup extends ApiResource {
 
-	@SerializedName("environment_id")
 	private String environmentId = null;
-
-	@SerializedName("name")
 	private String name = null;
 
 	public CountryGroup environmentId(String environmentId) {

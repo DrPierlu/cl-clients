@@ -4,30 +4,14 @@ import java.time.LocalDateTime;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
-
 public abstract class ApiResource {
 
-	@Expose @SerializedName("resource_name")
 	protected String resourceName = null;
-
-	@Expose @SerializedName("id")
 	protected String id = null;
-
-	@Expose @SerializedName("creator_id")
 	protected String creatorId = null;
-
-	@Expose @SerializedName("creator_resource")
 	protected String creatorResource = null;
-
-	@Expose @SerializedName("created_at")
 	protected LocalDateTime createdAt = null;
-
-	@Expose @SerializedName("updated_at")
 	protected LocalDateTime updatedAt = null;
-
-	@Expose (serialize=false) @SerializedName("expanded")
 	protected String expanded = null;
 
 	// @SuppressWarnings("unchecked")

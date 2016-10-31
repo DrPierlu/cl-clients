@@ -3,20 +3,13 @@ package io.commercelayer.api.model;
 
 import java.util.Objects;
 
-import com.google.gson.annotations.SerializedName;
-
 /**
  * Catalog
  */
 public class Catalog extends ApiResource {
 
-	@SerializedName("environment_id")
 	private String environmentId = null;
-
-	@SerializedName("name")
 	private String name = null;
-
-	@SerializedName("description")
 	private String description = null;
 
 	public Catalog environmentId(String environmentId) {

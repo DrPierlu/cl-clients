@@ -3,26 +3,15 @@ package io.commercelayer.api.model;
 
 import java.util.Objects;
 
-import com.google.gson.annotations.SerializedName;
-
 /**
  * ShippingMethod
  */
 public class ShippingMethod extends ApiResource {
 
-	@SerializedName("environment_id")
 	private String environmentId = null;
-
-	@SerializedName("name")
 	private String name = null;
-
-	@SerializedName("description")
 	private String description = null;
-
-	@SerializedName("shipping_zone_id")
 	private String shippingZoneId = null;
-
-	@SerializedName("shipping_category_id")
 	private String shippingCategoryId = null;
 
 	public ShippingMethod environmentId(String environmentId) {

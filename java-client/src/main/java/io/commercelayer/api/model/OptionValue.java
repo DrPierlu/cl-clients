@@ -3,20 +3,13 @@ package io.commercelayer.api.model;
 
 import java.util.Objects;
 
-import com.google.gson.annotations.SerializedName;
-
 /**
  * OptionValue
  */
 public class OptionValue extends ApiResource {
 
-	@SerializedName("environment_id")
 	private String environmentId = null;
-
-	@SerializedName("name")
 	private String name = null;
-
-	@SerializedName("option_type_id")
 	private String optionTypeId = null;
 
 	public OptionValue environmentId(String environmentId) {

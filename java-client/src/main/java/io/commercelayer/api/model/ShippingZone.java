@@ -3,20 +3,13 @@ package io.commercelayer.api.model;
 
 import java.util.Objects;
 
-import com.google.gson.annotations.SerializedName;
-
 /**
  * ShippingZone
  */
 public class ShippingZone extends ApiResource {
 
-	@SerializedName("environment_id")
 	private String environmentId = null;
-
-	@SerializedName("country_group_id")
 	private String countryGroupId = null;
-
-	@SerializedName("name")
 	private String name = null;
 
 	public ShippingZone environmentId(String environmentId) {

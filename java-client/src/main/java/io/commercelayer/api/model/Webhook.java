@@ -4,32 +4,17 @@ package io.commercelayer.api.model;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-import com.google.gson.annotations.SerializedName;
-
 /**
  * Webhook
  */
 public class Webhook extends ApiResource {
 
-	@SerializedName("environment_id")
 	private String environmentId = null;
-
-	@SerializedName("event_subject")
 	private String eventSubject = null;
-
-	@SerializedName("event_action")
 	private String eventAction = null;
-
-	@SerializedName("event_url")
 	private String eventUrl = null;
-
-	@SerializedName("shared_secret")
 	private String sharedSecret = null;
-
-	@SerializedName("last_fired_at")
 	private LocalDateTime lastFiredAt = null;
-
-	@SerializedName("last_failed_at")
 	private LocalDateTime lastFailedAt = null;
 
 	public Webhook environmentId(String environmentId) {

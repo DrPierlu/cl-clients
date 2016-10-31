@@ -3,14 +3,11 @@ package io.commercelayer.api.model;
 
 import java.util.Objects;
 
-import com.google.gson.annotations.SerializedName;
-
 /**
  * Application
  */
 public class Application extends ApiResource {
 
-	@SerializedName("name")
 	private String name = null;
 
 	public Application name(String name) {

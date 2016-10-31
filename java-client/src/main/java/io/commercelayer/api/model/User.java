@@ -3,26 +3,15 @@ package io.commercelayer.api.model;
 
 import java.util.Objects;
 
-import com.google.gson.annotations.SerializedName;
-
 /**
  * User
  */
 public class User extends ApiResource {
 
-	@SerializedName("first_name")
 	private String firstName = null;
-
-	@SerializedName("last_name")
 	private String lastName = null;
-
-	@SerializedName("email")
 	private String email = null;
-
-	@SerializedName("password_hash")
 	private String passwordHash = null;
-
-	@SerializedName("password_salt")
 	private String passwordSalt = null;
 
 	public User firstName(String firstName) {

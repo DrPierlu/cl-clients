@@ -16,7 +16,13 @@ public class HttpClientOkHttpImpl extends HttpClient {
 
 	
 	public HttpClientOkHttpImpl() {
-		this.httpClient = new OkHttpClient();
+		this.httpClient = setupClient();
+	}
+	
+	
+	private OkHttpClient setupClient() {
+		OkHttpClient.Builder builder = new OkHttpClient.Builder();
+		return builder.build();
 	}
 	
 	
@@ -27,8 +33,10 @@ public class HttpClientOkHttpImpl extends HttpClient {
 	
 	public HttpResponse send(HttpRequest httpRequest) throws HttpException {
 		
+		// REQUEST
 		Request.Builder requestBuilder = new Request.Builder().url(httpRequest.getUrl());
 		
+		// HTTP Method & Body
 		switch (httpRequest.getMethod()) {
 			default:
 			case GET: {
@@ -49,16 +57,22 @@ public class HttpClientOkHttpImpl extends HttpClient {
 			}
 		}
 		
-		
+		// HTTP Headers
 		if (httpRequest.hasHeaders()) {
 			for (Map.Entry<String, String> header : httpRequest.getHeaders().entrySet()) {
 				requestBuilder.addHeader(header.getKey(), header.getValue());
 			}
 		}
+		
+		if (httpRequest.getHttpAuth() != null) {
+			requestBuilder.header("Authorization", httpRequest.getHttpAuth().getHttpRequestAuthHeader());
+		}
 				
 		
 		Request request = requestBuilder.build();
-
+		
+		
+		// RESPONSE
 		Response response = null;
 		
 		try {
@@ -70,14 +84,17 @@ public class HttpClientOkHttpImpl extends HttpClient {
 		
 		HttpResponse httpResponse = new HttpResponse();
 		
+		
 		// HTTP Code
 		httpResponse.setCode(response.code());
+		
 		
 		// HTTP Headers
 		Headers responseHeaders = response.headers();
 		for (String hName : responseHeaders.names()) {
 			httpResponse.addHeader(hName, responseHeaders.get(hName));			
 		}
+		
 		
 		try {
 			httpResponse.setBody(response.body().string());
@@ -91,17 +108,28 @@ public class HttpClientOkHttpImpl extends HttpClient {
 	}
 	
 	
-	
-//	client.setAuthenticator(new OkAuthenticator() {
-//		  @Override public Credential authenticate(
-//		      Proxy proxy, URL url, List<Challenge> challenges) throws IOException {
-//		    return Credential.basic("scott", "tiger");
-//		  }
-//
-//		  @Override public Credential authenticateProxy(
-//		      Proxy proxy, URL url, List<Challenge> challenges) throws IOException {
-//		    return null;
-//		  }
-//		});
+//	private void setAuthentication(HttpBasicAuth basicAuth) {
+//		
+//		OkHttpClient.Builder builder = httpClient.newBuilder();
+//		
+//		builder.authenticator(new Authenticator() {
+//			
+//			private int authAttempts = 0;
+//			
+//	        @Override
+//	        public Request authenticate(Route route, Response response) throws IOException {
+//	        	authAttempts++;
+//	            if (authAttempts > 3) {
+//	                return null;
+//	            }
+//	            String credential = Credentials.basic(basicAuth.getUsername(), basicAuth.getPassword());
+//	            return response.request().newBuilder().header("Authorization", credential).build();
+//	        }
+//	    });
+//		builder.connectTimeout(10, TimeUnit.SECONDS);
+//		builder.writeTimeout(10, TimeUnit.SECONDS);
+//		builder.readTimeout(30, TimeUnit.SECONDS);
+//		
+//	}
 
 }

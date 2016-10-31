@@ -10,16 +10,9 @@ import com.google.gson.annotations.SerializedName;
  */
 public class StockItem extends ApiResource {
 
-	@SerializedName("environment_id")
 	private String environmentId = null;
-
-	@SerializedName("stock_location_id")
 	private String stockLocationId = null;
-
-	@SerializedName("stockable_id")
 	private String stockableId = null;
-
-	@SerializedName("stockable_resource")
 	private String stockableResource = null;
 
 	@SerializedName("quantity")

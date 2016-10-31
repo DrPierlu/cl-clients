@@ -2,6 +2,9 @@ package io.commercelayer.api.http;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
+
+import io.commercelayer.api.security.HttpAuth;
 
 public class HttpRequest {
 
@@ -16,9 +19,11 @@ public class HttpRequest {
 	private String body;
 	private String contentType;
 	
+	private HttpAuth httpAuth;
+	
 	public HttpRequest(Method httpMethod) {
 		this.method = (httpMethod == null)? Method.GET : httpMethod;
-		this.headers = new HashMap<>();
+		this.headers = new TreeMap<>();
 		this.queryStringParams = new HashMap<>();
 	}
 
@@ -98,4 +103,12 @@ public class HttpRequest {
 		return (this.queryStringParams != null) && !this.queryStringParams.isEmpty();
 	}
 
+	public HttpAuth getHttpAuth() {
+		return httpAuth;
+	}
+
+	public void setHttpAuth(HttpAuth httpAuth) {
+		this.httpAuth = httpAuth;
+	}
+	
 }

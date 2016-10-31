@@ -3,23 +3,14 @@ package io.commercelayer.api.model;
 
 import java.util.Objects;
 
-import com.google.gson.annotations.SerializedName;
-
 /**
  * PriceList
  */
 public class PriceList extends ApiResource {
 
-	@SerializedName("environment_id")
 	private String environmentId = null;
-
-	@SerializedName("currency_id")
 	private String currencyId = null;
-
-	@SerializedName("name")
 	private String name = null;
-
-	@SerializedName("tax_included")
 	private String taxIncluded = null;
 
 	public PriceList environmentId(String environmentId) {
