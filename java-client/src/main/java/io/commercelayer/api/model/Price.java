@@ -136,14 +136,14 @@ public class Price extends BasicResource {
 				&& Objects.equals(this.amount, price.amount) && Objects.equals(this.creatorId, price.creatorId)
 				&& Objects.equals(this.creatorResource, price.creatorResource)
 				&& Objects.equals(this.createdAt, price.createdAt) && Objects.equals(this.updatedAt, price.updatedAt)
-				&& Objects.equals(this.expanded, price.expanded) && Objects.equals(this.formatted, price.formatted)
+				&& Objects.equals(this.formatted, price.formatted)
 				&& Objects.equals(this.exchanges, price.exchanges);
 	}
 
 	@Override
 	public int hashCode() {
 		return Objects.hash(resourceName, id, environmentId, priceListId, sellableId, sellableResource, amount,
-				creatorId, creatorResource, createdAt, updatedAt, expanded, formatted, exchanges);
+				creatorId, creatorResource, createdAt, updatedAt, formatted, exchanges);
 	}
 
 }

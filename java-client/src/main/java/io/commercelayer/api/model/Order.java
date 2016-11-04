@@ -136,14 +136,13 @@ public class Order extends BasicResource {
 				&& Objects.equals(this.billingAddressId, order.billingAddressId)
 				&& Objects.equals(this.creatorId, order.creatorId)
 				&& Objects.equals(this.creatorResource, order.creatorResource)
-				&& Objects.equals(this.createdAt, order.createdAt) && Objects.equals(this.updatedAt, order.updatedAt)
-				&& Objects.equals(this.expanded, order.expanded);
+				&& Objects.equals(this.createdAt, order.createdAt) && Objects.equals(this.updatedAt, order.updatedAt);
 	}
 
 	@Override
 	public int hashCode() {
 		return Objects.hash(resourceName, id, environmentId, merchantId, channelId, countryId, currencyId,
-				shippingAddressId, billingAddressId, creatorId, creatorResource, createdAt, updatedAt, expanded);
+				shippingAddressId, billingAddressId, creatorId, creatorResource, createdAt, updatedAt);
 	}
 
 }

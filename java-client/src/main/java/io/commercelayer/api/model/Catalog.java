@@ -78,13 +78,13 @@ public class Catalog extends BasicResource {
 				&& Objects.equals(this.creatorId, catalog.creatorId)
 				&& Objects.equals(this.creatorResource, catalog.creatorResource)
 				&& Objects.equals(this.createdAt, catalog.createdAt)
-				&& Objects.equals(this.updatedAt, catalog.updatedAt) && Objects.equals(this.expanded, catalog.expanded);
+				&& Objects.equals(this.updatedAt, catalog.updatedAt);
 	}
 
 	@Override
 	public int hashCode() {
 		return Objects.hash(resourceName, id, environmentId, name, description, creatorId, creatorResource, createdAt,
-				updatedAt, expanded);
+				updatedAt);
 	}
 
 }

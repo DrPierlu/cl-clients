@@ -132,14 +132,13 @@ public class ConsumerRole extends BasicResource {
 				&& Objects.equals(this.creatorId, consumerRole.creatorId)
 				&& Objects.equals(this.creatorResource, consumerRole.creatorResource)
 				&& Objects.equals(this.createdAt, consumerRole.createdAt)
-				&& Objects.equals(this.updatedAt, consumerRole.updatedAt)
-				&& Objects.equals(this.expanded, consumerRole.expanded);
+				&& Objects.equals(this.updatedAt, consumerRole.updatedAt);
 	}
 
 	@Override
 	public int hashCode() {
 		return Objects.hash(resourceName, id, environmentId, consumerId, consumerResource, roleId, position, creatorId,
-				creatorResource, createdAt, updatedAt, expanded);
+				creatorResource, createdAt, updatedAt);
 	}
 
 }

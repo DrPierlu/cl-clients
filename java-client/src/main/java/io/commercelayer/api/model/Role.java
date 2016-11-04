@@ -62,14 +62,12 @@ public class Role extends BasicResource {
 				&& Objects.equals(this.name, role.name) && Objects.equals(this.description, role.description)
 				&& Objects.equals(this.creatorId, role.creatorId)
 				&& Objects.equals(this.creatorResource, role.creatorResource)
-				&& Objects.equals(this.createdAt, role.createdAt) && Objects.equals(this.updatedAt, role.updatedAt)
-				&& Objects.equals(this.expanded, role.expanded);
+				&& Objects.equals(this.createdAt, role.createdAt) && Objects.equals(this.updatedAt, role.updatedAt);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(resourceName, id, name, description, creatorId, creatorResource, createdAt, updatedAt,
-				expanded);
+		return Objects.hash(resourceName, id, name, description, creatorId, creatorResource, createdAt, updatedAt);
 	}
 
 }

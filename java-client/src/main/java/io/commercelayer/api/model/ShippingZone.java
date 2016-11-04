@@ -79,14 +79,13 @@ public class ShippingZone extends BasicResource {
 				&& Objects.equals(this.creatorId, shippingZone.creatorId)
 				&& Objects.equals(this.creatorResource, shippingZone.creatorResource)
 				&& Objects.equals(this.createdAt, shippingZone.createdAt)
-				&& Objects.equals(this.updatedAt, shippingZone.updatedAt)
-				&& Objects.equals(this.expanded, shippingZone.expanded);
+				&& Objects.equals(this.updatedAt, shippingZone.updatedAt);
 	}
 
 	@Override
 	public int hashCode() {
 		return Objects.hash(resourceName, id, environmentId, countryGroupId, name, creatorId, creatorResource,
-				createdAt, updatedAt, expanded);
+				createdAt, updatedAt);
 	}
 
 }

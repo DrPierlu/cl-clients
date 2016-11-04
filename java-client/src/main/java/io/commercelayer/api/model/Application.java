@@ -48,13 +48,12 @@ public class Application extends BasicResource {
 				&& Objects.equals(this.name, application.name) && Objects.equals(this.creatorId, application.creatorId)
 				&& Objects.equals(this.creatorResource, application.creatorResource)
 				&& Objects.equals(this.createdAt, application.createdAt)
-				&& Objects.equals(this.updatedAt, application.updatedAt)
-				&& Objects.equals(this.expanded, application.expanded);
+				&& Objects.equals(this.updatedAt, application.updatedAt);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(resourceName, id, name, creatorId, creatorResource, createdAt, updatedAt, expanded);
+		return Objects.hash(resourceName, id, name, creatorId, creatorResource, createdAt, updatedAt);
 	}
 
 }

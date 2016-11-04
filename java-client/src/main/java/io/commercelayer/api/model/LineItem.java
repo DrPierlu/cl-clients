@@ -227,7 +227,7 @@ public class LineItem extends BasicResource {
 				&& Objects.equals(this.creatorResource, lineItem.creatorResource)
 				&& Objects.equals(this.createdAt, lineItem.createdAt)
 				&& Objects.equals(this.updatedAt, lineItem.updatedAt)
-				&& Objects.equals(this.expanded, lineItem.expanded) && Objects.equals(this.amount, lineItem.amount)
+				&& Objects.equals(this.amount, lineItem.amount)
 				&& Objects.equals(this.formattedUnitAmount, lineItem.formattedUnitAmount)
 				&& Objects.equals(this.formattedAmount, lineItem.formattedAmount);
 	}
@@ -236,7 +236,7 @@ public class LineItem extends BasicResource {
 	public int hashCode() {
 		return Objects.hash(resourceName, id, environmentId, orderId, sellableId, sellableResource, shippingAddressId,
 				quantity, unitAmount, taxRate, taxIncluded, taxBreakdown, creatorId, creatorResource, createdAt,
-				updatedAt, expanded, amount, formattedUnitAmount, formattedAmount);
+				updatedAt, amount, formattedUnitAmount, formattedAmount);
 	}
 
 }

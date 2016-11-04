@@ -492,7 +492,7 @@ public class Address extends BasicResource {
 				&& Objects.equals(this.creatorId, address.creatorId)
 				&& Objects.equals(this.creatorResource, address.creatorResource)
 				&& Objects.equals(this.createdAt, address.createdAt)
-				&& Objects.equals(this.updatedAt, address.updatedAt) && Objects.equals(this.expanded, address.expanded);
+				&& Objects.equals(this.updatedAt, address.updatedAt);
 	}
 
 	@Override
@@ -501,64 +501,7 @@ public class Address extends BasicResource {
 				geocodingStreet, geocodingNumber, provider, placeId, precision, accuracy, countryCode, country,
 				stateCode, stateName, state, province, zip, city, district, streetName, streetNumber, streetAddress,
 				subPremise, fullAddress, formattedAddress, lat, lng, suggestedBoundsSwLat, suggestedBoundsSwLng,
-				suggestedBoundsNeLat, suggestedBoundsNeLng, creatorId, creatorResource, createdAt, updatedAt, expanded);
+				suggestedBoundsNeLat, suggestedBoundsNeLng, creatorId, creatorResource, createdAt, updatedAt);
 	}
 
-	@Override
-	public String toString() {
-		StringBuilder sb = new StringBuilder();
-		sb.append("class Address {\n");
-
-		sb.append("    resourceName: ").append(toIndentedString(resourceName)).append("\n");
-		sb.append("    id: ").append(toIndentedString(id)).append("\n");
-		sb.append("    environmentId: ").append(toIndentedString(environmentId)).append("\n");
-		sb.append("    geocodingCountry: ").append(toIndentedString(geocodingCountry)).append("\n");
-		sb.append("    geocodingZip: ").append(toIndentedString(geocodingZip)).append("\n");
-		sb.append("    geocodingCity: ").append(toIndentedString(geocodingCity)).append("\n");
-		sb.append("    geocodingStreet: ").append(toIndentedString(geocodingStreet)).append("\n");
-		sb.append("    geocodingNumber: ").append(toIndentedString(geocodingNumber)).append("\n");
-		sb.append("    provider: ").append(toIndentedString(provider)).append("\n");
-		sb.append("    placeId: ").append(toIndentedString(placeId)).append("\n");
-		sb.append("    precision: ").append(toIndentedString(precision)).append("\n");
-		sb.append("    accuracy: ").append(toIndentedString(accuracy)).append("\n");
-		sb.append("    countryCode: ").append(toIndentedString(countryCode)).append("\n");
-		sb.append("    country: ").append(toIndentedString(country)).append("\n");
-		sb.append("    stateCode: ").append(toIndentedString(stateCode)).append("\n");
-		sb.append("    stateName: ").append(toIndentedString(stateName)).append("\n");
-		sb.append("    state: ").append(toIndentedString(state)).append("\n");
-		sb.append("    province: ").append(toIndentedString(province)).append("\n");
-		sb.append("    zip: ").append(toIndentedString(zip)).append("\n");
-		sb.append("    city: ").append(toIndentedString(city)).append("\n");
-		sb.append("    district: ").append(toIndentedString(district)).append("\n");
-		sb.append("    streetName: ").append(toIndentedString(streetName)).append("\n");
-		sb.append("    streetNumber: ").append(toIndentedString(streetNumber)).append("\n");
-		sb.append("    streetAddress: ").append(toIndentedString(streetAddress)).append("\n");
-		sb.append("    subPremise: ").append(toIndentedString(subPremise)).append("\n");
-		sb.append("    fullAddress: ").append(toIndentedString(fullAddress)).append("\n");
-		sb.append("    formattedAddress: ").append(toIndentedString(formattedAddress)).append("\n");
-		sb.append("    lat: ").append(toIndentedString(lat)).append("\n");
-		sb.append("    lng: ").append(toIndentedString(lng)).append("\n");
-		sb.append("    suggestedBoundsSwLat: ").append(toIndentedString(suggestedBoundsSwLat)).append("\n");
-		sb.append("    suggestedBoundsSwLng: ").append(toIndentedString(suggestedBoundsSwLng)).append("\n");
-		sb.append("    suggestedBoundsNeLat: ").append(toIndentedString(suggestedBoundsNeLat)).append("\n");
-		sb.append("    suggestedBoundsNeLng: ").append(toIndentedString(suggestedBoundsNeLng)).append("\n");
-		sb.append("    creatorId: ").append(toIndentedString(creatorId)).append("\n");
-		sb.append("    creatorResource: ").append(toIndentedString(creatorResource)).append("\n");
-		sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
-		sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
-		sb.append("    expanded: ").append(toIndentedString(expanded)).append("\n");
-		sb.append("}");
-		return sb.toString();
-	}
-
-	/**
-	 * Convert the given object to string with each line indented by 4 spaces
-	 * (except the first line).
-	 */
-	private String toIndentedString(java.lang.Object o) {
-		if (o == null) {
-			return "null";
-		}
-		return o.toString().replace("\n", "\n    ");
-	}
 }

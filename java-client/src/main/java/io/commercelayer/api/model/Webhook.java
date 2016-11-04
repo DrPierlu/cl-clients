@@ -140,13 +140,13 @@ public class Webhook extends BasicResource {
 				&& Objects.equals(this.creatorId, webhook.creatorId)
 				&& Objects.equals(this.creatorResource, webhook.creatorResource)
 				&& Objects.equals(this.createdAt, webhook.createdAt)
-				&& Objects.equals(this.updatedAt, webhook.updatedAt) && Objects.equals(this.expanded, webhook.expanded);
+				&& Objects.equals(this.updatedAt, webhook.updatedAt);
 	}
 
 	@Override
 	public int hashCode() {
 		return Objects.hash(resourceName, id, environmentId, eventSubject, eventAction, eventUrl, sharedSecret,
-				lastFiredAt, lastFailedAt, creatorId, creatorResource, createdAt, updatedAt, expanded);
+				lastFiredAt, lastFailedAt, creatorId, creatorResource, createdAt, updatedAt);
 	}
 
 }

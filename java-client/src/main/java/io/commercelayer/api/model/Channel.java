@@ -63,13 +63,12 @@ public class Channel extends BasicResource {
 				&& Objects.equals(this.creatorId, channel.creatorId)
 				&& Objects.equals(this.creatorResource, channel.creatorResource)
 				&& Objects.equals(this.createdAt, channel.createdAt)
-				&& Objects.equals(this.updatedAt, channel.updatedAt) && Objects.equals(this.expanded, channel.expanded);
+				&& Objects.equals(this.updatedAt, channel.updatedAt);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(resourceName, id, environmentId, name, creatorId, creatorResource, createdAt, updatedAt,
-				expanded);
+		return Objects.hash(resourceName, id, environmentId, name, creatorId, creatorResource, createdAt, updatedAt);
 	}
 
 }

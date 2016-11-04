@@ -171,15 +171,14 @@ public class OrderValidationPolicy extends BasicResource {
 				&& Objects.equals(this.creatorId, orderValidationPolicy.creatorId)
 				&& Objects.equals(this.creatorResource, orderValidationPolicy.creatorResource)
 				&& Objects.equals(this.createdAt, orderValidationPolicy.createdAt)
-				&& Objects.equals(this.updatedAt, orderValidationPolicy.updatedAt)
-				&& Objects.equals(this.expanded, orderValidationPolicy.expanded);
+				&& Objects.equals(this.updatedAt, orderValidationPolicy.updatedAt);
 	}
 
 	@Override
 	public int hashCode() {
 		return Objects.hash(resourceName, id, environmentId, currencyId, billingAddressRequired, orderTotalMin,
 				orderTotalMax, orderItemsMin, orderItemsMax, paymentMethodStatus, paymentMethodStatusPercentage,
-				creatorId, creatorResource, createdAt, updatedAt, expanded);
+				creatorId, creatorResource, createdAt, updatedAt);
 	}
 
 }

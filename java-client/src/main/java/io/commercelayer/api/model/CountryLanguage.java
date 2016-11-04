@@ -95,14 +95,13 @@ public class CountryLanguage extends BasicResource {
 				&& Objects.equals(this.creatorId, countryLanguage.creatorId)
 				&& Objects.equals(this.creatorResource, countryLanguage.creatorResource)
 				&& Objects.equals(this.createdAt, countryLanguage.createdAt)
-				&& Objects.equals(this.updatedAt, countryLanguage.updatedAt)
-				&& Objects.equals(this.expanded, countryLanguage.expanded);
+				&& Objects.equals(this.updatedAt, countryLanguage.updatedAt);
 	}
 
 	@Override
 	public int hashCode() {
 		return Objects.hash(resourceName, id, environmentId, countryId, languageId, position, creatorId,
-				creatorResource, createdAt, updatedAt, expanded);
+				creatorResource, createdAt, updatedAt);
 	}
 
 }

@@ -106,14 +106,13 @@ public class User extends BasicResource {
 				&& Objects.equals(this.passwordSalt, user.passwordSalt)
 				&& Objects.equals(this.creatorId, user.creatorId)
 				&& Objects.equals(this.creatorResource, user.creatorResource)
-				&& Objects.equals(this.createdAt, user.createdAt) && Objects.equals(this.updatedAt, user.updatedAt)
-				&& Objects.equals(this.expanded, user.expanded);
+				&& Objects.equals(this.createdAt, user.createdAt) && Objects.equals(this.updatedAt, user.updatedAt);
 	}
 
 	@Override
 	public int hashCode() {
 		return Objects.hash(resourceName, id, firstName, lastName, email, passwordHash, passwordSalt, creatorId,
-				creatorResource, createdAt, updatedAt, expanded);
+				creatorResource, createdAt, updatedAt);
 	}
 
 }

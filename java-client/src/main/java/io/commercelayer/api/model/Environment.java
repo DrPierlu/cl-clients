@@ -63,14 +63,12 @@ public class Environment extends BasicResource {
 				&& Objects.equals(this.name, environment.name) && Objects.equals(this.creatorId, environment.creatorId)
 				&& Objects.equals(this.creatorResource, environment.creatorResource)
 				&& Objects.equals(this.createdAt, environment.createdAt)
-				&& Objects.equals(this.updatedAt, environment.updatedAt)
-				&& Objects.equals(this.expanded, environment.expanded);
+				&& Objects.equals(this.updatedAt, environment.updatedAt);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(resourceName, id, organizationId, name, creatorId, creatorResource, createdAt, updatedAt,
-				expanded);
+		return Objects.hash(resourceName, id, organizationId, name, creatorId, creatorResource, createdAt, updatedAt);
 	}
 
 }

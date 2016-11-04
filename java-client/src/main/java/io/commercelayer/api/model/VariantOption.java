@@ -80,14 +80,13 @@ public class VariantOption extends BasicResource {
 				&& Objects.equals(this.creatorId, variantOption.creatorId)
 				&& Objects.equals(this.creatorResource, variantOption.creatorResource)
 				&& Objects.equals(this.createdAt, variantOption.createdAt)
-				&& Objects.equals(this.updatedAt, variantOption.updatedAt)
-				&& Objects.equals(this.expanded, variantOption.expanded);
+				&& Objects.equals(this.updatedAt, variantOption.updatedAt);
 	}
 
 	@Override
 	public int hashCode() {
 		return Objects.hash(resourceName, id, environmentId, variantId, optionValueId, creatorId, creatorResource,
-				createdAt, updatedAt, expanded);
+				createdAt, updatedAt);
 	}
 
 }

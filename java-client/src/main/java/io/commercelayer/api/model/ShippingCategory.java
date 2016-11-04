@@ -65,14 +65,12 @@ public class ShippingCategory extends BasicResource {
 				&& Objects.equals(this.creatorId, shippingCategory.creatorId)
 				&& Objects.equals(this.creatorResource, shippingCategory.creatorResource)
 				&& Objects.equals(this.createdAt, shippingCategory.createdAt)
-				&& Objects.equals(this.updatedAt, shippingCategory.updatedAt)
-				&& Objects.equals(this.expanded, shippingCategory.expanded);
+				&& Objects.equals(this.updatedAt, shippingCategory.updatedAt);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(resourceName, id, environmentId, name, creatorId, creatorResource, createdAt, updatedAt,
-				expanded);
+		return Objects.hash(resourceName, id, environmentId, name, creatorId, creatorResource, createdAt, updatedAt);
 	}
 
 }

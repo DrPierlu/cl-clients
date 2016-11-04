@@ -164,14 +164,13 @@ public class Taxon extends BasicResource {
 				&& Objects.equals(this.childrenCount, taxon.childrenCount)
 				&& Objects.equals(this.creatorId, taxon.creatorId)
 				&& Objects.equals(this.creatorResource, taxon.creatorResource)
-				&& Objects.equals(this.createdAt, taxon.createdAt) && Objects.equals(this.updatedAt, taxon.updatedAt)
-				&& Objects.equals(this.expanded, taxon.expanded);
+				&& Objects.equals(this.createdAt, taxon.createdAt) && Objects.equals(this.updatedAt, taxon.updatedAt);
 	}
 
 	@Override
 	public int hashCode() {
 		return Objects.hash(resourceName, id, environmentId, name, taxonomyId, position, parentId, lft, rgt, depth,
-				childrenCount, creatorId, creatorResource, createdAt, updatedAt, expanded);
+				childrenCount, creatorId, creatorResource, createdAt, updatedAt);
 	}
 
 }

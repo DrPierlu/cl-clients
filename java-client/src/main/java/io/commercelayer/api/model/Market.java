@@ -153,15 +153,13 @@ public class Market extends BasicResource {
 				&& Objects.equals(this.orderValidationPolicyId, market.orderValidationPolicyId)
 				&& Objects.equals(this.creatorId, market.creatorId)
 				&& Objects.equals(this.creatorResource, market.creatorResource)
-				&& Objects.equals(this.createdAt, market.createdAt) && Objects.equals(this.updatedAt, market.updatedAt)
-				&& Objects.equals(this.expanded, market.expanded);
+				&& Objects.equals(this.createdAt, market.createdAt) && Objects.equals(this.updatedAt, market.updatedAt);
 	}
 
 	@Override
 	public int hashCode() {
 		return Objects.hash(resourceName, id, environmentId, channelId, countryGroupId, merchantId, catalogId,
-				priceListId, stockLocationId, orderValidationPolicyId, creatorId, creatorResource, createdAt, updatedAt,
-				expanded);
+				priceListId, stockLocationId, orderValidationPolicyId, creatorId, creatorResource, createdAt, updatedAt);
 	}
 
 }

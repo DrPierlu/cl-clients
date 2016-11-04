@@ -125,14 +125,13 @@ public class MerchandisingRule extends BasicResource {
 				&& Objects.equals(this.creatorId, merchandisingRule.creatorId)
 				&& Objects.equals(this.creatorResource, merchandisingRule.creatorResource)
 				&& Objects.equals(this.createdAt, merchandisingRule.createdAt)
-				&& Objects.equals(this.updatedAt, merchandisingRule.updatedAt)
-				&& Objects.equals(this.expanded, merchandisingRule.expanded);
+				&& Objects.equals(this.updatedAt, merchandisingRule.updatedAt);
 	}
 
 	@Override
 	public int hashCode() {
 		return Objects.hash(resourceName, id, environmentId, catalogId, taxonId, productId, position, hero, creatorId,
-				creatorResource, createdAt, updatedAt, expanded);
+				creatorResource, createdAt, updatedAt);
 	}
 
 }

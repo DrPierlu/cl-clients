@@ -63,14 +63,12 @@ public class OptionType extends BasicResource {
 				&& Objects.equals(this.name, optionType.name) && Objects.equals(this.creatorId, optionType.creatorId)
 				&& Objects.equals(this.creatorResource, optionType.creatorResource)
 				&& Objects.equals(this.createdAt, optionType.createdAt)
-				&& Objects.equals(this.updatedAt, optionType.updatedAt)
-				&& Objects.equals(this.expanded, optionType.expanded);
+				&& Objects.equals(this.updatedAt, optionType.updatedAt);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(resourceName, id, environmentId, name, creatorId, creatorResource, createdAt, updatedAt,
-				expanded);
+		return Objects.hash(resourceName, id, environmentId, name, creatorId, creatorResource, createdAt, updatedAt);
 	}
 
 }

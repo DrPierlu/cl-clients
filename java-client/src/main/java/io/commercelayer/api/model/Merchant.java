@@ -93,14 +93,13 @@ public class Merchant extends BasicResource {
 				&& Objects.equals(this.creatorId, merchant.creatorId)
 				&& Objects.equals(this.creatorResource, merchant.creatorResource)
 				&& Objects.equals(this.createdAt, merchant.createdAt)
-				&& Objects.equals(this.updatedAt, merchant.updatedAt)
-				&& Objects.equals(this.expanded, merchant.expanded);
+				&& Objects.equals(this.updatedAt, merchant.updatedAt);
 	}
 
 	@Override
 	public int hashCode() {
 		return Objects.hash(resourceName, id, environmentId, countryId, name, description, creatorId, creatorResource,
-				createdAt, updatedAt, expanded);
+				createdAt, updatedAt);
 	}
 
 }

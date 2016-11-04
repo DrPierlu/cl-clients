@@ -64,14 +64,12 @@ public class CountryGroup extends BasicResource {
 				&& Objects.equals(this.creatorId, countryGroup.creatorId)
 				&& Objects.equals(this.creatorResource, countryGroup.creatorResource)
 				&& Objects.equals(this.createdAt, countryGroup.createdAt)
-				&& Objects.equals(this.updatedAt, countryGroup.updatedAt)
-				&& Objects.equals(this.expanded, countryGroup.expanded);
+				&& Objects.equals(this.updatedAt, countryGroup.updatedAt);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(resourceName, id, environmentId, name, creatorId, creatorResource, createdAt, updatedAt,
-				expanded);
+		return Objects.hash(resourceName, id, environmentId, name, creatorId, creatorResource, createdAt, updatedAt);
 	}
 
 }

@@ -63,14 +63,12 @@ public class Taxonomy extends BasicResource {
 				&& Objects.equals(this.name, taxonomy.name) && Objects.equals(this.creatorId, taxonomy.creatorId)
 				&& Objects.equals(this.creatorResource, taxonomy.creatorResource)
 				&& Objects.equals(this.createdAt, taxonomy.createdAt)
-				&& Objects.equals(this.updatedAt, taxonomy.updatedAt)
-				&& Objects.equals(this.expanded, taxonomy.expanded);
+				&& Objects.equals(this.updatedAt, taxonomy.updatedAt);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(resourceName, id, environmentId, name, creatorId, creatorResource, createdAt, updatedAt,
-				expanded);
+		return Objects.hash(resourceName, id, environmentId, name, creatorId, creatorResource, createdAt, updatedAt);
 	}
 
 }

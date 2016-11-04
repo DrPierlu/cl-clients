@@ -153,14 +153,13 @@ public class StockLocation extends BasicResource {
 				&& Objects.equals(this.creatorId, stockLocation.creatorId)
 				&& Objects.equals(this.creatorResource, stockLocation.creatorResource)
 				&& Objects.equals(this.createdAt, stockLocation.createdAt)
-				&& Objects.equals(this.updatedAt, stockLocation.updatedAt)
-				&& Objects.equals(this.expanded, stockLocation.expanded);
+				&& Objects.equals(this.updatedAt, stockLocation.updatedAt);
 	}
 
 	@Override
 	public int hashCode() {
 		return Objects.hash(resourceName, id, environmentId, name, position, parentId, lft, rgt, depth, childrenCount,
-				creatorId, creatorResource, createdAt, updatedAt, expanded);
+				creatorId, creatorResource, createdAt, updatedAt);
 	}
 
 }

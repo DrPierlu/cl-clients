@@ -77,14 +77,13 @@ public class State extends BasicResource {
 				&& Objects.equals(this.countryId, state.countryId) && Objects.equals(this.code, state.code)
 				&& Objects.equals(this.creatorId, state.creatorId)
 				&& Objects.equals(this.creatorResource, state.creatorResource)
-				&& Objects.equals(this.createdAt, state.createdAt) && Objects.equals(this.updatedAt, state.updatedAt)
-				&& Objects.equals(this.expanded, state.expanded);
+				&& Objects.equals(this.createdAt, state.createdAt) && Objects.equals(this.updatedAt, state.updatedAt);
 	}
 
 	@Override
 	public int hashCode() {
 		return Objects.hash(resourceName, id, environmentId, countryId, code, creatorId, creatorResource, createdAt,
-				updatedAt, expanded);
+				updatedAt);
 	}
 
 }

@@ -49,13 +49,12 @@ public class Organization extends BasicResource {
 				&& Objects.equals(this.creatorId, organization.creatorId)
 				&& Objects.equals(this.creatorResource, organization.creatorResource)
 				&& Objects.equals(this.createdAt, organization.createdAt)
-				&& Objects.equals(this.updatedAt, organization.updatedAt)
-				&& Objects.equals(this.expanded, organization.expanded);
+				&& Objects.equals(this.updatedAt, organization.updatedAt);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(resourceName, id, name, creatorId, creatorResource, createdAt, updatedAt, expanded);
+		return Objects.hash(resourceName, id, name, creatorId, creatorResource, createdAt, updatedAt);
 	}
 
 }

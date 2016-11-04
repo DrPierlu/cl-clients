@@ -93,14 +93,13 @@ public class PriceList extends BasicResource {
 				&& Objects.equals(this.creatorId, priceList.creatorId)
 				&& Objects.equals(this.creatorResource, priceList.creatorResource)
 				&& Objects.equals(this.createdAt, priceList.createdAt)
-				&& Objects.equals(this.updatedAt, priceList.updatedAt)
-				&& Objects.equals(this.expanded, priceList.expanded);
+				&& Objects.equals(this.updatedAt, priceList.updatedAt);
 	}
 
 	@Override
 	public int hashCode() {
 		return Objects.hash(resourceName, id, environmentId, currencyId, name, taxIncluded, creatorId, creatorResource,
-				createdAt, updatedAt, expanded);
+				createdAt, updatedAt);
 	}
 
 }

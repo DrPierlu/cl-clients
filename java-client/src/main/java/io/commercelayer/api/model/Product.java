@@ -107,13 +107,13 @@ public class Product extends BasicResource {
 				&& Objects.equals(this.taxCode, product.taxCode) && Objects.equals(this.creatorId, product.creatorId)
 				&& Objects.equals(this.creatorResource, product.creatorResource)
 				&& Objects.equals(this.createdAt, product.createdAt)
-				&& Objects.equals(this.updatedAt, product.updatedAt) && Objects.equals(this.expanded, product.expanded);
+				&& Objects.equals(this.updatedAt, product.updatedAt);
 	}
 
 	@Override
 	public int hashCode() {
 		return Objects.hash(resourceName, id, environmentId, name, description, shippingCategoryId, taxCode, creatorId,
-				creatorResource, createdAt, updatedAt, expanded);
+				creatorResource, createdAt, updatedAt);
 	}
 
 }

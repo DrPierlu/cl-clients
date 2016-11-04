@@ -122,14 +122,13 @@ public class Permission extends BasicResource {
 				&& Objects.equals(this.creatorId, permission.creatorId)
 				&& Objects.equals(this.creatorResource, permission.creatorResource)
 				&& Objects.equals(this.createdAt, permission.createdAt)
-				&& Objects.equals(this.updatedAt, permission.updatedAt)
-				&& Objects.equals(this.expanded, permission.expanded);
+				&& Objects.equals(this.updatedAt, permission.updatedAt);
 	}
 
 	@Override
 	public int hashCode() {
 		return Objects.hash(resourceName, id, roleId, ability, action, resource, restrictions, position, creatorId,
-				creatorResource, createdAt, updatedAt, expanded);
+				creatorResource, createdAt, updatedAt);
 	}
 
 }

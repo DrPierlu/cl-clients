@@ -63,14 +63,12 @@ public class Currency extends BasicResource {
 				&& Objects.equals(this.code, currency.code) && Objects.equals(this.creatorId, currency.creatorId)
 				&& Objects.equals(this.creatorResource, currency.creatorResource)
 				&& Objects.equals(this.createdAt, currency.createdAt)
-				&& Objects.equals(this.updatedAt, currency.updatedAt)
-				&& Objects.equals(this.expanded, currency.expanded);
+				&& Objects.equals(this.updatedAt, currency.updatedAt);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(resourceName, id, environmentId, code, creatorId, creatorResource, createdAt, updatedAt,
-				expanded);
+		return Objects.hash(resourceName, id, environmentId, code, creatorId, creatorResource, createdAt, updatedAt);
 	}
 
 }
