@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
-import io.commercelayer.api.security.HttpAuth;
+import io.commercelayer.api.http.auth.HttpAuth;
 
 public class HttpRequest {
 

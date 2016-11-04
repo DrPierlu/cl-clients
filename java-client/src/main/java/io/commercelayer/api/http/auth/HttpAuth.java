@@ -1,4 +1,4 @@
-package io.commercelayer.api.security;
+package io.commercelayer.api.http.auth;
 
 public interface HttpAuth {
 

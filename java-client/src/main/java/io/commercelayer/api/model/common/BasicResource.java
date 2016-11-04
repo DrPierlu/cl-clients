@@ -12,7 +12,6 @@ public abstract class BasicResource extends ApiResource {
 	protected String creatorResource = null;
 	protected LocalDateTime createdAt = null;
 	protected LocalDateTime updatedAt = null;
-	protected String expanded = null;
 
 	// @SuppressWarnings("unchecked")
 	// public T resourceName(String resourceName) {
@@ -96,20 +95,6 @@ public abstract class BasicResource extends ApiResource {
 
 	public void setUpdatedAt(LocalDateTime updatedAt) {
 		this.updatedAt = updatedAt;
-	}
-
-	// @SuppressWarnings("unchecked")
-	// public T expanded(String expanded) {
-	// this.expanded = expanded;
-	// return (T)this;
-	// }
-
-	public String getExpanded() {
-		return expanded;
-	}
-
-	public void setExpanded(String expanded) {
-		this.expanded = expanded;
 	}
 
 	@Override

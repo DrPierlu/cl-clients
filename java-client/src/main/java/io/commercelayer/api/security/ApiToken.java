@@ -2,7 +2,9 @@ package io.commercelayer.api.security;
 
 import java.time.LocalDateTime;
 
-public final class ApiToken {
+import io.commercelayer.api.model.common.ApiResource;
+
+public final class ApiToken extends ApiResource {
 
 	private String accessToken;
 	private String tokenType = "bearer";

@@ -1,4 +1,6 @@
-package io.commercelayer.api.security;
+package io.commercelayer.api.http.auth;
+
+import java.util.Base64;
 
 public class HttpAuthBasic implements HttpAuth {
 
@@ -28,8 +30,7 @@ public class HttpAuthBasic implements HttpAuth {
 
 	@Override
 	public String getHttpRequestAuthHeader() {
-		// TODO Auto-generated method stub
-		return null;
+		return "Basic " + Base64.getEncoder().encodeToString(new String(getUsername().concat(":").concat(getPassword())).getBytes());
 	}
 
 }
