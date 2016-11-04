@@ -2,7 +2,9 @@ package io.commercelayer.api.security;
 
 import java.util.Objects;
 
-public class ApiAccount {
+import io.commercelayer.api.model.common.ApiResource;
+
+public class ApiAccount extends ApiResource {
 
 	private String username;
 	private String environment = "development";

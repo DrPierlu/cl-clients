@@ -1,10 +1,10 @@
-package io.commercelayer.api.model;
+package io.commercelayer.api.model.common;
 
 import java.time.LocalDateTime;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-public abstract class ApiResource {
+public abstract class BasicResource extends ApiResource {
 
 	protected String resourceName = null;
 	protected String id = null;

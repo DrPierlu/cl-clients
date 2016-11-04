@@ -3,10 +3,12 @@ package io.commercelayer.api.model;
 
 import java.util.Objects;
 
+import io.commercelayer.api.model.common.BasicResource;
+
 /**
  * OrderValidationPolicy
  */
-public class OrderValidationPolicy extends ApiResource {
+public class OrderValidationPolicy extends BasicResource {
 
 	private String environmentId = null;
 	private String currencyId = null;

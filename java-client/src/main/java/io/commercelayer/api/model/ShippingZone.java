@@ -3,10 +3,12 @@ package io.commercelayer.api.model;
 
 import java.util.Objects;
 
+import io.commercelayer.api.model.common.BasicResource;
+
 /**
  * ShippingZone
  */
-public class ShippingZone extends ApiResource {
+public class ShippingZone extends BasicResource {
 
 	private String environmentId = null;
 	private String countryGroupId = null;

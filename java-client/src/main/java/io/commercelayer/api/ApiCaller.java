@@ -10,12 +10,12 @@ import io.commercelayer.api.http.HttpRequest.Method;
 import io.commercelayer.api.http.HttpResponse;
 import io.commercelayer.api.json.JsonCodec;
 import io.commercelayer.api.json.JsonCodecFactory;
-import io.commercelayer.api.model.ApiResource;
+import io.commercelayer.api.model.common.BasicResource;
 import io.commercelayer.api.security.ApiToken;
 import io.commercelayer.api.security.AuthException;
 import io.commercelayer.api.util.ContentType;
 
-public abstract class ApiCaller<T extends ApiResource> {
+public abstract class ApiCaller<T extends BasicResource> {
 
 	private ApiToken apiToken;
 	

@@ -4,10 +4,12 @@ package io.commercelayer.api.model;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+import io.commercelayer.api.model.common.BasicResource;
+
 /**
  * Webhook
  */
-public class Webhook extends ApiResource {
+public class Webhook extends BasicResource {
 
 	private String environmentId = null;
 	private String eventSubject = null;

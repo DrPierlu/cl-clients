@@ -3,10 +3,12 @@ package io.commercelayer.api.model;
 
 import java.util.Objects;
 
+import io.commercelayer.api.model.common.BasicResource;
+
 /**
  * LineItem
  */
-public class LineItem extends ApiResource {
+public class LineItem extends BasicResource {
 
 	private String environmentId = null;
 	private String orderId = null;

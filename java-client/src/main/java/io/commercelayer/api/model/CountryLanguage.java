@@ -3,10 +3,12 @@ package io.commercelayer.api.model;
 
 import java.util.Objects;
 
+import io.commercelayer.api.model.common.BasicResource;
+
 /**
  * CountryLanguage
  */
-public class CountryLanguage extends ApiResource {
+public class CountryLanguage extends BasicResource {
 
 	private String environmentId = null;
 	private String countryId = null;

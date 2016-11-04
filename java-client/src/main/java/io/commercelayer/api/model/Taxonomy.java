@@ -3,10 +3,12 @@ package io.commercelayer.api.model;
 
 import java.util.Objects;
 
+import io.commercelayer.api.model.common.BasicResource;
+
 /**
  * Taxonomy
  */
-public class Taxonomy extends ApiResource {
+public class Taxonomy extends BasicResource {
 
 	private String environmentId = null;
 	private String name = null;

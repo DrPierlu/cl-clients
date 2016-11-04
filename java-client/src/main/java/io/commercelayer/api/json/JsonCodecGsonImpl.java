@@ -4,7 +4,7 @@ import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import io.commercelayer.api.model.ApiResource;
+import io.commercelayer.api.model.common.ApiResource;
 
 public final class JsonCodecGsonImpl implements JsonCodec {
 	

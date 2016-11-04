@@ -3,10 +3,12 @@ package io.commercelayer.api.model;
 
 import java.util.Objects;
 
+import io.commercelayer.api.model.common.BasicResource;
+
 /**
  * Permission
  */
-public class Permission extends ApiResource {
+public class Permission extends BasicResource {
 
 	private String roleId = null;
 	private String ability = null;

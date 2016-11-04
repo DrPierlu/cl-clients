@@ -11,10 +11,10 @@ public final class ApiAuthenticator {
 		
 		AuthRequest authRequest = new AuthRequest(account);
 		
-//		HttpRequest httpRequest = new HttpRequest(Method.POST);
-//		httpRequest.setUrl(ApiConfig.getProperty("api.service.url").concat("/auth/token"));
-//		httpRequest.setHttpAuth(new HttpAuthBasic(account.getAuthKey(), account.getAuthSecret()));
-//		httpRequest.setBody(ApiUtil.getJsonCodecInstance().toJSON(object));
+		HttpRequest httpRequest = new HttpRequest(Method.POST);
+		httpRequest.setUrl(ApiUtil.getResourceUrl("/auth/token"));
+		httpRequest.setHttpAuth(new HttpAuthBasic(account.getAuthKey(), account.getAuthSecret()));
+		httpRequest.setBody(ApiUtil.getJsonCodecInstance().toJSON(authRequest));
 		
 		ApiToken token = null;
 		

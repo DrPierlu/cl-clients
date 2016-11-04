@@ -3,10 +3,12 @@ package io.commercelayer.api.model;
 
 import java.util.Objects;
 
+import io.commercelayer.api.model.common.BasicResource;
+
 /**
  * MerchandisingRule
  */
-public class MerchandisingRule extends ApiResource {
+public class MerchandisingRule extends BasicResource {
 
 	private String environmentId = null;
 	private String catalogId = null;

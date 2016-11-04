@@ -3,10 +3,12 @@ package io.commercelayer.api.model;
 
 import java.util.Objects;
 
+import io.commercelayer.api.model.common.BasicResource;
+
 /**
  * Currency
  */
-public class Currency extends ApiResource {
+public class Currency extends BasicResource {
 
 	private String environmentId = null;
 	private String code = null;
