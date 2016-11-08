@@ -8,6 +8,7 @@ import io.commercelayer.api.http.HttpRequest.Method;
 import io.commercelayer.api.http.HttpResponse;
 import io.commercelayer.api.http.auth.HttpAuthBasic;
 import io.commercelayer.api.util.ApiUtil;
+import io.commercelayer.api.util.ContentType;
 
 public final class ApiAuthenticator {
 
@@ -21,6 +22,7 @@ public final class ApiAuthenticator {
 		httpRequest.setUrl(ApiUtil.getResourceUrl("/auth/token"));
 		httpRequest.setHttpAuth(new HttpAuthBasic(account.getAuthKey(), account.getAuthSecret()));
 		httpRequest.setBody(ApiUtil.getJsonCodecInstance().toJSON(authRequest));
+		httpRequest.setContentType(ContentType.JSON);
 
 		HttpResponse httpResponse = null;
 
@@ -34,6 +36,20 @@ public final class ApiAuthenticator {
 
 		return token;
 
+	}
+	
+	
+	public static void main(String[] args) {
+		
+		ApiAccount aa = new ApiAccount();
+		aa.setUsername("pierluigiviti@gmail.com");
+		aa.setAuthKey("8967838eed2ad96d2f7451dad6358112");
+		aa.setAuthSecret("9624e353b807bf2dffdb2855542fd28b6e1918e006800737b8a0d5dd6894a8a7");
+		
+		ApiToken at = authenticate(aa);
+		
+		System.out.println(at);
+		
 	}
 
 }
