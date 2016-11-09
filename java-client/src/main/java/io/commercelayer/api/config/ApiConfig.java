@@ -35,7 +35,15 @@ public final class ApiConfig {
 	}
 	
 	public static String getProperty(Group group, String key) {
-		return (key == null)? null : settings.getProperty(group.name() + '.' + key);
+		return getProperty(group.name() + '.' + key);
+	}
+	
+	public static Boolean getPropertyBoolean(String key) {
+		return Boolean.valueOf(getProperty(key));
+	}
+	
+	public static Boolean getPropertyBoolean(Group group, String key) {
+		return Boolean.valueOf(getProperty(group, key));
 	}
 
 }

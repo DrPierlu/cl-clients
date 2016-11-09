@@ -1,5 +1,7 @@
 package io.commercelayer.api.security;
 
+import java.time.LocalDateTime;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -40,10 +42,12 @@ public final class ApiAuthenticator {
 		}
 		
 		if (httpResponse.getCode() >= 300) throw new AuthException(String.format("HTTP Error Code [%d]", httpResponse.getCode()));
-		if (!ContentType.JSON.equals(httpResponse.getContentType())) throw new AuthException(String.format("Expected JSON Response Content Type [%s]", httpResponse.getContentType()));
+		if (!ContentType.JSON.equals(httpResponse.getContentType())) throw new AuthException(String.format("Expected JSON Content Type [%s]", httpResponse.getContentType()));
 
 
 		ApiToken token = ApiUtil.getJsonCodecInstance().fromJSON(httpResponse.getBody(), ApiToken.class);
+		
+		token.setExpiresFrom(LocalDateTime.now());
 
 		return token;
 
