@@ -7,7 +7,7 @@ import java.util.Properties;
 public final class ApiConfig {
 	
 	public static enum Group {
-		test, authentication
+		test, authentication, http
 	}
 	
 	private static Properties settings = new Properties();

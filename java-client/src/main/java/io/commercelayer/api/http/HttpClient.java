@@ -2,7 +2,13 @@ package io.commercelayer.api.http;
 
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public abstract class HttpClient {
+	
+	protected final Logger logger = LoggerFactory.getLogger(getClass());
+	
 	
 	public abstract HttpResponse send(HttpRequest httpRequest) throws HttpException;
 

@@ -1,5 +1,8 @@
 package io.commercelayer.api.security;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import io.commercelayer.api.http.HttpClient;
 import io.commercelayer.api.http.HttpClientFactory;
 import io.commercelayer.api.http.HttpException;
@@ -11,10 +14,14 @@ import io.commercelayer.api.util.ApiUtil;
 import io.commercelayer.api.util.ContentType;
 
 public final class ApiAuthenticator {
+	
+	private static final Logger logger = LoggerFactory.getLogger(ApiAuthenticator.class);
 
 	private static final HttpClient httpClient = HttpClientFactory.getHttpClientInstance();
 
 	public static ApiToken authenticate(ApiAccount account) throws AuthException {
+		
+		logger.info("Authenticating user {}", account.getUsername());
 
 		AuthRequest authRequest = new AuthRequest(account);
 
@@ -31,6 +38,10 @@ public final class ApiAuthenticator {
 		} catch (HttpException he) {
 			throw new AuthException(String.format("Authentication HTTP error [%s]", account.toString()));
 		}
+		
+		if (httpResponse.getCode() >= 300) throw new AuthException(String.format("HTTP Error Code [%d]", httpResponse.getCode()));
+		if (!ContentType.JSON.equals(httpResponse.getContentType())) throw new AuthException(String.format("Expected JSON Response Content Type [%s]", httpResponse.getContentType()));
+
 
 		ApiToken token = ApiUtil.getJsonCodecInstance().fromJSON(httpResponse.getBody(), ApiToken.class);
 

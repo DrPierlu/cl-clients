@@ -2,6 +2,9 @@ package io.commercelayer.api;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import io.commercelayer.api.http.HttpClient;
 import io.commercelayer.api.http.HttpClientFactory;
 import io.commercelayer.api.http.HttpException;
@@ -16,6 +19,8 @@ import io.commercelayer.api.security.AuthException;
 import io.commercelayer.api.util.ContentType;
 
 public abstract class ApiCaller<T extends BasicResource> {
+	
+	protected final Logger logger = LoggerFactory.getLogger(getClass());
 
 	private ApiToken apiToken;
 	
@@ -98,7 +103,7 @@ public abstract class ApiCaller<T extends BasicResource> {
 		try {
 
 			HttpResponse response = httpClient.send(request);
-
+			
 			return response;
 
 		} catch (HttpException he) {
