@@ -3,22 +3,21 @@ package io.commercelayer.api.http;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.Proxy;
-import java.security.GeneralSecurityException;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
-import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import javax.net.ssl.HostnameVerifier;
-import javax.net.ssl.KeyManager;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSession;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 
+import io.commercelayer.api.config.ApiConfig;
+import io.commercelayer.api.config.ApiConfig.Group;
 import okhttp3.Authenticator;
 import okhttp3.Credentials;
 import okhttp3.Headers;
@@ -59,70 +58,52 @@ public class HttpClientOkHttpImpl extends HttpClient {
 			builder.proxyAuthenticator(proxyAuthenticator);
 
 		}
-		
-		
-		
-		
-		
-		
-        // set up a TrustManager that trusts everything
-        try {
-        	SSLContext sslContext = SSLContext.getInstance("TLS");
-        	
-        	X509TrustManager trustManager = new X509TrustManager() {
-			    public X509Certificate[] getAcceptedIssuers() {
-			        System.out.println("getAcceptedIssuers =============");
-			        return new X509Certificate[0];
-			    }
 
-			    public void checkClientTrusted(X509Certificate[] certs,
-			            String authType) {
-			        System.out.println("checkClientTrusted =============");
-			    }
+		if (ApiConfig.getPropertyBoolean(Group.http, "ssl.trustAll")) sslTrustAll(builder);
 
-			    public void checkServerTrusted(X509Certificate[] certs,
-			            String authType) {
-			        System.out.println("checkServerTrusted =============");
-			    }
-			};
-        	
-			sslContext.init(null, new TrustManager[] { trustManager }, new SecureRandom());
-			 builder.sslSocketFactory(sslContext.getSocketFactory(), trustManager);
-			 builder.hostnameVerifier(new HostnameVerifier() {
-                        public boolean verify(String arg0, SSLSession arg1) {
-                            System.out.println("hostnameVerifier =============");
-                            return true;
-                        }
-                    });
-		} catch (KeyManagementException e) {
-			e.printStackTrace();
-		}
-        catch (NoSuchAlgorithmException e1) {
-			e1.printStackTrace();
-		}
-        
-       
-
-		
-
-		
 		builder.connectTimeout(10, TimeUnit.SECONDS);
 		builder.readTimeout(10, TimeUnit.SECONDS);
 		builder.writeTimeout(10, TimeUnit.SECONDS);
 
-		
 		return builder.build();
 
 	}
-	
-	
-	
+
+	private void sslTrustAll(OkHttpClient.Builder builder) {
+
+		SSLContext sslContext = null;
+		try {
+			sslContext = SSLContext.getInstance("TLS");
+		} catch (NoSuchAlgorithmException nsae) {
+			logger.error("TLS not available", nsae);
+			return;
+		}
+
+		X509TrustManager trustManager = new X509TrustManager() {
+			public X509Certificate[] getAcceptedIssuers() { return new X509Certificate[0]; }
+			public void checkClientTrusted(X509Certificate[] certs, String authType) { }
+			public void checkServerTrusted(X509Certificate[] certs, String authType) { }
+		};
+
+		try {
+			sslContext.init(null, new TrustManager[] { trustManager }, new SecureRandom());
+		} catch (KeyManagementException kme) {
+			logger.error("SSLContext Init error", kme);
+			return;
+		}
+
+		builder.sslSocketFactory(sslContext.getSocketFactory(), trustManager);
+		
+		builder.hostnameVerifier(new HostnameVerifier() {
+			public boolean verify(String arg0, SSLSession arg1) { return true; }
+		});
+
+	}
 
 	private RequestBody getRequestBody(HttpRequest httpRequest) {
 		return RequestBody.create(MediaType.parse(httpRequest.getContentType()), httpRequest.getBody());
 	}
 
-	
 	public HttpResponse send(HttpRequest httpRequest) throws HttpException {
 
 		// REQUEST
@@ -169,7 +150,8 @@ public class HttpClientOkHttpImpl extends HttpClient {
 			response = httpClient.newCall(request).execute();
 		} catch (IOException ioe) {
 			ioe.printStackTrace();
-			throw new HttpException(String.format("HTTP Error calling [%s:%s]", httpRequest.getMethod(), httpRequest.getUrl()));
+			throw new HttpException(
+					String.format("HTTP Error calling [%s:%s]", httpRequest.getMethod(), httpRequest.getUrl()));
 		}
 
 		HttpResponse httpResponse = new HttpResponse();
@@ -187,13 +169,13 @@ public class HttpClientOkHttpImpl extends HttpClient {
 		try {
 			httpResponse.setBody(response.body().string());
 		} catch (IOException ioe) {
-			throw new HttpException(String.format("HTTP Error reading body response [%s:%s]", httpRequest.getMethod(), httpRequest.getUrl()));
+			throw new HttpException(String.format("HTTP Error reading body response [%s:%s]", httpRequest.getMethod(),
+					httpRequest.getUrl()));
 		}
-		
+
 		// HTTP Content Type
 		httpResponse.setContentType(getContentType(response.body().contentType()));
 
-		
 		return httpResponse;
 
 	}
@@ -227,8 +209,9 @@ public class HttpClientOkHttpImpl extends HttpClient {
 
 	private String getContentType(MediaType mediaType) {
 		StringBuilder sb = new StringBuilder(mediaType.type());
-		if (mediaType.subtype() != null) sb.append('/').append(mediaType.subtype());
+		if (mediaType.subtype() != null)
+			sb.append('/').append(mediaType.subtype());
 		return sb.toString();
 	}
-	
+
 }

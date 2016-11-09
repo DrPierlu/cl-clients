@@ -11,7 +11,7 @@ public final class ApiToken extends ApiResource {
 	private int expiresIn;
 	private String refreshToken;
 
-	private LocalDateTime expiresFrom;
+	private LocalDateTime releaseDate;
 
 	public String getAccessToken() {
 		return accessToken;
@@ -45,12 +45,12 @@ public final class ApiToken extends ApiResource {
 		this.refreshToken = refreshToken;
 	}
 
-	public LocalDateTime getExpiresFrom() {
-		return expiresFrom;
+	public LocalDateTime getReleaseDate() {
+		return releaseDate;
 	}
 
-	public void setExpiresFrom(LocalDateTime expiresFrom) {
-		this.expiresFrom = expiresFrom;
+	public void setReleaseDate(LocalDateTime releaseDate) {
+		this.releaseDate = releaseDate;
 	}
 
 }

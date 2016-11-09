@@ -47,7 +47,7 @@ public final class ApiAuthenticator {
 
 		ApiToken token = ApiUtil.getJsonCodecInstance().fromJSON(httpResponse.getBody(), ApiToken.class);
 		
-		token.setExpiresFrom(LocalDateTime.now());
+		token.setReleaseDate(LocalDateTime.now());
 
 		return token;
 

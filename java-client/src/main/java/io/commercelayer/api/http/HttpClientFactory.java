@@ -1,7 +1,5 @@
 package io.commercelayer.api.http;
 
-import org.apache.commons.lang3.StringUtils;
-
 import io.commercelayer.api.config.ApiConfig;
 import io.commercelayer.api.config.ApiConfig.Group;
 
@@ -11,13 +9,11 @@ public final class HttpClientFactory {
 		
 		HttpProxy httpProxy = null;
 		
-		String proxyHost = ApiConfig.getProperty(Group.http, "proxy.host");
-		
-		if (StringUtils.isNotEmpty(proxyHost)) {
+		if (ApiConfig.getPropertyBoolean(Group.http, "proxy.enabled")) {
 			
 			httpProxy = new HttpProxy();
 			
-			httpProxy.setHost(proxyHost);
+			httpProxy.setHost(ApiConfig.getProperty(Group.http, "proxy.host"));
 			httpProxy.setPort(Integer.parseInt(ApiConfig.getProperty(Group.http, "proxy.port")));
 			httpProxy.setUsername(ApiConfig.getProperty(Group.http, "proxy.username"));
 			httpProxy.setPassword(ApiConfig.getProperty(Group.http, "proxy.password"));
