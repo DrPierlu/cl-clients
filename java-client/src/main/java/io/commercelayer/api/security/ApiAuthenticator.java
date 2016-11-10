@@ -23,7 +23,7 @@ public final class ApiAuthenticator {
 
 	public static ApiToken authenticate(ApiAccount account) throws AuthException {
 		
-		logger.info("Authenticating user {}", account.getUsername());
+		logger.info("Authenticating user [{}]", account.getUsername());
 
 		AuthRequest authRequest = new AuthRequest(account);
 
@@ -38,6 +38,7 @@ public final class ApiAuthenticator {
 		try {
 			httpResponse = httpClient.send(httpRequest);
 		} catch (HttpException he) {
+			logger.error("Request HTTP Error: {}", he.getMessage());
 			throw new AuthException(String.format("Authentication HTTP error [%s]", account.toString()));
 		}
 		
@@ -53,6 +54,41 @@ public final class ApiAuthenticator {
 
 	}
 	
+	public static ApiToken refreshToken(ApiAccount account, ApiToken token) throws AuthException {
+		
+		logger.info("Refreshing token [{}]", account.getUsername());
+
+		AuthRefreshRequest authRequest = new AuthRefreshRequest(token.getRefreshToken());
+
+		HttpRequest httpRequest = new HttpRequest(Method.POST);
+		httpRequest.setUrl(ApiUtil.getResourceUrl("/auth/token"));
+		httpRequest.setHttpAuth(new HttpAuthBasic(account.getAuthKey(), account.getAuthSecret()));
+		httpRequest.setBody(ApiUtil.getJsonCodecInstance().toJSON(authRequest));
+		httpRequest.setContentType(ContentType.JSON);
+
+		HttpResponse httpResponse = null;
+
+		try {
+			httpResponse = httpClient.send(httpRequest);
+		} catch (HttpException he) {
+			logger.error("Request HTTP Error: {}", he.getMessage());
+			throw new AuthException("Token refresh error");
+		}
+		
+		if (httpResponse.getCode() >= 300) throw new AuthException(String.format("HTTP Error Code [%d]", httpResponse.getCode()));
+		if (!ContentType.JSON.equals(httpResponse.getContentType())) throw new AuthException(String.format("Expected JSON Content Type [%s]", httpResponse.getContentType()));
+
+
+		ApiToken newToken = ApiUtil.getJsonCodecInstance().fromJSON(httpResponse.getBody(), ApiToken.class);
+		
+		token.setReleaseDate(LocalDateTime.now());
+		token.setAccessToken(newToken.getAccessToken());
+		token.setExpiresIn(newToken.getExpiresIn());
+
+		return token;
+
+	}
+	
 	
 	public static void main(String[] args) {
 		
@@ -61,9 +97,14 @@ public final class ApiAuthenticator {
 		aa.setAuthKey("8967838eed2ad96d2f7451dad6358112");
 		aa.setAuthSecret("9624e353b807bf2dffdb2855542fd28b6e1918e006800737b8a0d5dd6894a8a7");
 		
-		ApiToken at = authenticate(aa);
+		System.out.println("Authentication...");
+		ApiToken t = authenticate(aa);
+		System.out.println(t);
+		System.out.println("Refresh token ...");
+		ApiToken token = refreshToken(aa, t);
+		System.out.println(token);
 		
-		System.out.println(at);
+		
 		
 	}
 

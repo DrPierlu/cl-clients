@@ -13,12 +13,13 @@ import io.commercelayer.api.http.HttpRequest.Method;
 import io.commercelayer.api.http.HttpResponse;
 import io.commercelayer.api.json.JsonCodec;
 import io.commercelayer.api.json.JsonCodecFactory;
+import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.model.common.BasicResource;
 import io.commercelayer.api.security.ApiToken;
 import io.commercelayer.api.security.AuthException;
 import io.commercelayer.api.util.ContentType;
 
-public abstract class ApiCaller<T extends BasicResource> {
+public abstract class ApiCaller {
 	
 	protected final Logger logger = LoggerFactory.getLogger(getClass());
 
@@ -45,7 +46,7 @@ public abstract class ApiCaller<T extends BasicResource> {
 	
 
 
-	public List<T> getItemList() throws ApiException {
+	protected <T> List<T> getItemList() throws ApiException {
 
 		HttpRequest request = createHttpRequest(Method.GET);
 
@@ -55,7 +56,7 @@ public abstract class ApiCaller<T extends BasicResource> {
 
 	}
 
-	public void saveItemList(List<T> itemList) throws ApiException {
+	protected void saveItemList(List<? extends ApiResource> itemList) throws ApiException {
 
 		HttpRequest request = createHttpRequest(Method.PUT);
 
@@ -63,7 +64,7 @@ public abstract class ApiCaller<T extends BasicResource> {
 
 	}
 
-	public T getItem(String id) throws ApiException {
+	protected <T> T getItem(String id, Class<T> class_) throws ApiException {
 
 		HttpRequest request = createHttpRequest(Method.GET);
 
@@ -74,7 +75,7 @@ public abstract class ApiCaller<T extends BasicResource> {
 	}
 	
 	
-	public void updateItem(T item) throws ApiException {
+	protected void updateItem(ApiResource item) throws ApiException {
 
 		HttpRequest request = createHttpRequest(Method.PUT);
 
@@ -82,7 +83,7 @@ public abstract class ApiCaller<T extends BasicResource> {
 
 	}
 
-	public void deleteItem(String id) throws ApiException {
+	protected void deleteItem(String id) throws ApiException {
 
 		HttpRequest request = createHttpRequest(Method.DELETE);
 
@@ -90,7 +91,7 @@ public abstract class ApiCaller<T extends BasicResource> {
 
 	}
 
-	public void deleteItem(T item) throws ApiException {
+	protected void deleteItem(BasicResource item) throws ApiException {
 		deleteItem(item.getId());
 	}
 
@@ -107,7 +108,8 @@ public abstract class ApiCaller<T extends BasicResource> {
 			return response;
 
 		} catch (HttpException he) {
-			throw new ApiException();
+			logger.error("HTTP Error: {}", he.getMessage());
+			throw new ApiException("Error calling CommerceLayer API");
 		}
 
 	}

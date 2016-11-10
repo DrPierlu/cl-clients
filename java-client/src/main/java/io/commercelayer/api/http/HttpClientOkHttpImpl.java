@@ -149,9 +149,7 @@ public class HttpClientOkHttpImpl extends HttpClient {
 		try {
 			response = httpClient.newCall(request).execute();
 		} catch (IOException ioe) {
-			ioe.printStackTrace();
-			throw new HttpException(
-					String.format("HTTP Error calling [%s:%s]", httpRequest.getMethod(), httpRequest.getUrl()));
+			throw new HttpException(String.format("HTTP Error calling [%s:%s]", httpRequest.getMethod(), httpRequest.getUrl()));
 		}
 
 		HttpResponse httpResponse = new HttpResponse();
@@ -169,8 +167,7 @@ public class HttpClientOkHttpImpl extends HttpClient {
 		try {
 			httpResponse.setBody(response.body().string());
 		} catch (IOException ioe) {
-			throw new HttpException(String.format("HTTP Error reading body response [%s:%s]", httpRequest.getMethod(),
-					httpRequest.getUrl()));
+			throw new HttpException(String.format("HTTP Error reading body response [%s:%s]", httpRequest.getMethod(), httpRequest.getUrl()));
 		}
 
 		// HTTP Content Type
