@@ -48,5 +48,9 @@ public class HttpResponse {
 	public void setContentType(String contentType) {
 		this.contentType = contentType;
 	}
+	
+	public boolean hasErrorCode() {
+		return (code >= 300);
+	}
 
 }

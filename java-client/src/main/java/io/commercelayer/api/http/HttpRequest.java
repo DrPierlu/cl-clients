@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import io.commercelayer.api.http.auth.HttpAuth;
+import io.commercelayer.api.util.ContentType;
 
 public class HttpRequest {
 

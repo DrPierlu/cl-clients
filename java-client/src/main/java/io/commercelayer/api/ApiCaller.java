@@ -2,6 +2,8 @@ package io.commercelayer.api;
 
 import java.util.List;
 
+import javax.xml.ws.http.HTTPException;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -17,30 +19,35 @@ import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.model.common.BasicResource;
 import io.commercelayer.api.security.ApiToken;
 import io.commercelayer.api.security.AuthException;
+import io.commercelayer.api.util.ApiUtil;
 import io.commercelayer.api.util.ContentType;
 
 public abstract class ApiCaller {
 	
 	protected final Logger logger = LoggerFactory.getLogger(getClass());
 
-	private ApiToken apiToken;
+	private final ApiToken apiToken;
 	
-	private final HttpClient httpClient;
+	private HttpClient httpClient;
 	private final JsonCodec jsonCodec;
+	
+	protected abstract String getResourcePath();
 
-	public ApiCaller() {
+	public ApiCaller(ApiToken apiToken) {
+		this.apiToken = apiToken;
 		this.httpClient = HttpClientFactory.getHttpClientInstance();
 		this.jsonCodec = JsonCodecFactory.getJsonCodecInstance();
 	}
 	
-	public ApiCaller(HttpClient httpClient) {
+	public ApiCaller(ApiToken apiToken, HttpClient httpClient) {
+		this.apiToken = apiToken;
 		this.httpClient = (httpClient == null)? HttpClientFactory.getHttpClientInstance() : httpClient;
 		this.jsonCodec = JsonCodecFactory.getJsonCodecInstance();
 	}
 	
 
-	public void setApiToken(ApiToken apiToken) {
-		this.apiToken = apiToken;
+	public void setCustomHttpClient(HttpClient httpClient) {
+		this.httpClient = httpClient;
 	}
 	
 	
@@ -82,6 +89,16 @@ public abstract class ApiCaller {
 		HttpResponse response = call(request);
 
 	}
+	
+	protected void insertItem(ApiResource item) throws ApiException {
+
+		HttpRequest request = createHttpRequest(Method.POST);
+		
+		request.setBody(jsonCodec.toJSON(item));
+
+		HttpResponse response = call(request);
+
+	}
 
 	protected void deleteItem(String id) throws ApiException {
 
@@ -101,16 +118,23 @@ public abstract class ApiCaller {
 		if ((apiToken == null) || apiToken.getAccessToken() == null)
 			throw new AuthException("No access_token defined");
 		
+		HttpResponse response = null;
+		
 		try {
-
-			HttpResponse response = httpClient.send(request);
-			
-			return response;
-
+			response = httpClient.send(request);
+			if (response.hasErrorCode() && (response.getCode() != 401))
+				throw new HttpException(String.valueOf(response.getCode()));
 		} catch (HttpException he) {
 			logger.error("HTTP Error: {}", he.getMessage());
 			throw new ApiException("Error calling CommerceLayer API");
 		}
+		
+		if (response.hasErrorCode() && (response.getCode() == 401)) {
+			ApiError apiError = jsonCodec.fromJSON(response.getBody(), ApiError.class);
+			throw new AuthException(apiError);
+		}
+		
+		return response;
 
 	}
 
@@ -119,6 +143,7 @@ public abstract class ApiCaller {
 
 		HttpRequest request = new HttpRequest(httpMethod);
 
+		request.setUrl(ApiUtil.getResourceUrl(getResourcePath()));
 		request.setContentType(ContentType.JSON);
 		request.addHeader("Accept", ContentType.JSON);
 		request.addHeader("Authorization", "Bearer " + apiToken.getAccessToken());
