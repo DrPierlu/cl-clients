@@ -4,9 +4,9 @@ import org.apache.commons.lang3.StringUtils;
 import org.junit.Assert;
 import org.junit.Test;
 
+import io.commercelayer.api.exception.ConnectionException;
 import io.commercelayer.api.http.HttpClient;
 import io.commercelayer.api.http.HttpClientFactory;
-import io.commercelayer.api.http.HttpException;
 import io.commercelayer.api.http.HttpRequest;
 import io.commercelayer.api.http.HttpRequest.Method;
 import io.commercelayer.api.http.HttpResponse;
@@ -26,7 +26,7 @@ public class HttpClientTest {
 
 		try {
 			response = client.send(request);
-		} catch (HttpException he) {
+		} catch (ConnectionException he) {
 			he.printStackTrace();
 		}
 

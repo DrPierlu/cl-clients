@@ -3,12 +3,12 @@ package io.commercelayer.api.model;
 
 import java.util.Objects;
 
-import io.commercelayer.api.model.common.BasicResource;
+import io.commercelayer.api.model.common.ApiResource;
 
 /**
  * Market
  */
-public class Market extends BasicResource {
+public class Market extends ApiResource {
 
 	private String environmentId = null;
 	private String channelId = null;

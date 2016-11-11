@@ -3,12 +3,12 @@ package io.commercelayer.api.model;
 
 import java.util.Objects;
 
-import io.commercelayer.api.model.common.BasicResource;
+import io.commercelayer.api.model.common.ApiResource;
 
 /**
  * User
  */
-public class User extends BasicResource {
+public class User extends ApiResource {
 
 	private String firstName = null;
 	private String lastName = null;

@@ -1,8 +1,8 @@
 package io.commercelayer.api;
 
-import io.commercelayer.api.model.common.ApiResource;
+import io.commercelayer.api.model.common.ApiObject;
 
-public class ApiError extends ApiResource {
+public class ApiError extends ApiObject {
 
 	private String error;
 	private String errorDescription;
@@ -21,6 +21,10 @@ public class ApiError extends ApiResource {
 
 	public void setErrorDescription(String errorDescription) {
 		this.errorDescription = errorDescription;
+	}
+	
+	public String toString() {
+		return "[error=" + error + ", description=" + errorDescription + "]";
 	}
 
 }

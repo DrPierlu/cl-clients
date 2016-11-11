@@ -5,12 +5,12 @@ import java.util.Objects;
 
 import com.google.gson.annotations.SerializedName;
 
-import io.commercelayer.api.model.common.BasicResource;
+import io.commercelayer.api.model.common.ApiResource;
 
 /**
  * StockItem
  */
-public class StockItem extends BasicResource {
+public class StockItem extends ApiResource {
 
 	private String environmentId = null;
 	private String stockLocationId = null;

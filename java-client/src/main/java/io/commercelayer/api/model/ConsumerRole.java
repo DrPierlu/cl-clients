@@ -26,12 +26,12 @@ package io.commercelayer.api.model;
 
 import java.util.Objects;
 
-import io.commercelayer.api.model.common.BasicResource;
+import io.commercelayer.api.model.common.ApiResource;
 
 /**
  * ConsumerRole
  */
-public class ConsumerRole extends BasicResource {
+public class ConsumerRole extends ApiResource {
 
 	private String environmentId = null;
 	private String consumerId = null;

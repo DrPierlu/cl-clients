@@ -1,7 +1,6 @@
 package io.commercelayer.api.test;
 
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -11,10 +10,13 @@ import io.commercelayer.api.security.ApiToken;
 
 public class ApiAuthenticationTest {
 	
+	private static ApiAuthenticator auth;
 	private static ApiAccount account;
 	
 	@BeforeClass
 	public static void initTests() {
+		
+		auth = new ApiAuthenticator();
 		
 		account = new ApiAccount();
 		account.setUsername("pierluigiviti@gmail.com");
@@ -26,7 +28,7 @@ public class ApiAuthenticationTest {
 	@Test
 	public void authenticationTest() {
 		
-		ApiToken at = ApiAuthenticator.authenticate(account);
+		ApiToken at = auth.authenticate(account);
 		
 		Assert.assertNotNull(at.getAccessToken());
 		Assert.assertNotNull(at.getRefreshToken());
@@ -36,9 +38,9 @@ public class ApiAuthenticationTest {
 	@Test
 	public void refreshTokenTest() {
 		
-		ApiToken t = ApiAuthenticator.authenticate(account);
+		ApiToken t = auth.authenticate(account);
 		String accessToken = t.getAccessToken();
-		ApiToken token = ApiAuthenticator.refreshToken(account, t);
+		ApiToken token = auth.refreshToken(account, t);
 		
 		Assert.assertNotNull(token.getAccessToken());
 		Assert.assertNotEquals(token.getAccessToken(), accessToken);

@@ -1,5 +1,8 @@
 package io.commercelayer.api;
 
+import java.util.List;
+
+import io.commercelayer.api.exception.ApiException;
 import io.commercelayer.api.model.Address;
 import io.commercelayer.api.security.ApiToken;
 
@@ -10,26 +13,15 @@ public class AddressesCaller extends ApiCaller {
 	}
 	
 	public void insertAddress(Address address) throws ApiException {
-		
 		insertItem(address);
-		
 	}
 	
+	public Address getAddress(String id) throws ApiException {
+		return getItem(id, Address.class);
+	}
 	
-	public static void main(String[] args) {
-		
-		Address a = new Address();
-		ApiToken t = new ApiToken();
-		t.setAccessToken("xxx");
-		t.setRefreshToken("yyy");
-		
-		try {
-			new AddressesCaller(t).insertAddress(a);
-		} catch (ApiException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+	public List<Address> getAddressList() throws ApiException {
+		return getItemList(Address.class);
 	}
 
 

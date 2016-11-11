@@ -3,8 +3,10 @@ package io.commercelayer.api.json;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 
-import io.commercelayer.api.model.common.ApiResource;
+import io.commercelayer.api.model.common.ApiObject;
 
 public final class JsonCodecGsonImpl implements JsonCodec {
 	
@@ -17,22 +19,25 @@ public final class JsonCodecGsonImpl implements JsonCodec {
 	}
 
 	@Override
-	public <T extends ApiResource> T fromJSON(String json, Class<T> type) {
+	public <T extends ApiObject> T fromJSON(String json, Class<T> type) {
 		return gson.fromJson(json, type);
 	}
 
 	@Override
-	public String toJSON(ApiResource object) {
-		return gson.toJson(object);
+	public String toJSON(ApiObject object, boolean includeRoot) {
 		
-//		if (!withParent)
-//			return gson.toJson(o);
-//		else {
-//			JsonElement je = gson.toJsonTree(o);
-//			JsonObject jo = new JsonObject();
-//			jo.add(o.getClass().getSimpleName().toLowerCase(), je);
-//			return gson.toJson(jo);
-//		}
+		if (!includeRoot) {
+			return gson.toJson(object);
+		}
+		else {
+			
+			JsonElement je = gson.toJsonTree(object);
+			JsonObject jo = new JsonObject();
+			jo.add(object.getClass().getSimpleName().toLowerCase(), je);
+			
+			return gson.toJson(jo);
+			
+		}
 
 	}
 

@@ -1,4 +1,4 @@
-package io.commercelayer.api.security;
+package io.commercelayer.api.exception;
 
 import io.commercelayer.api.ApiError;
 

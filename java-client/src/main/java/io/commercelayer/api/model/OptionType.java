@@ -3,12 +3,12 @@ package io.commercelayer.api.model;
 
 import java.util.Objects;
 
-import io.commercelayer.api.model.common.BasicResource;
+import io.commercelayer.api.model.common.ApiResource;
 
 /**
  * OptionType
  */
-public class OptionType extends BasicResource {
+public class OptionType extends ApiResource {
 
 	private String environmentId = null;
 	private String name = null;

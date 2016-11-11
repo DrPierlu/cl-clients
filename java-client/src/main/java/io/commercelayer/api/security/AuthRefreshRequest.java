@@ -1,8 +1,8 @@
 package io.commercelayer.api.security;
 
-import io.commercelayer.api.model.common.ApiResource;
+import io.commercelayer.api.model.common.ApiObject;
 
-public class AuthRefreshRequest extends ApiResource {
+public class AuthRefreshRequest extends ApiObject {
 
 	private String grantType = "refresh_token";
 	private String refreshToken;

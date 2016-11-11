@@ -18,6 +18,7 @@ import javax.net.ssl.X509TrustManager;
 
 import io.commercelayer.api.config.ApiConfig;
 import io.commercelayer.api.config.ApiConfig.Group;
+import io.commercelayer.api.exception.ConnectionException;
 import okhttp3.Authenticator;
 import okhttp3.Credentials;
 import okhttp3.Headers;
@@ -104,7 +105,7 @@ public class HttpClientOkHttpImpl extends HttpClient {
 		return RequestBody.create(MediaType.parse(httpRequest.getContentType()), httpRequest.getBody());
 	}
 
-	public HttpResponse send(HttpRequest httpRequest) throws HttpException {
+	public HttpResponse send(HttpRequest httpRequest) throws ConnectionException {
 
 		// REQUEST
 		Request.Builder requestBuilder = new Request.Builder().url(httpRequest.getUrl());
@@ -149,7 +150,7 @@ public class HttpClientOkHttpImpl extends HttpClient {
 		try {
 			response = httpClient.newCall(request).execute();
 		} catch (IOException ioe) {
-			throw new HttpException(String.format("HTTP Error calling [%s:%s]", httpRequest.getMethod(), httpRequest.getUrl()));
+			throw new ConnectionException(String.format("HTTP Error calling [%s:%s]", httpRequest.getMethod(), httpRequest.getUrl()));
 		}
 
 		HttpResponse httpResponse = new HttpResponse();
@@ -167,7 +168,7 @@ public class HttpClientOkHttpImpl extends HttpClient {
 		try {
 			httpResponse.setBody(response.body().string());
 		} catch (IOException ioe) {
-			throw new HttpException(String.format("HTTP Error reading body response [%s:%s]", httpRequest.getMethod(), httpRequest.getUrl()));
+			throw new ConnectionException(String.format("HTTP Error reading body response [%s:%s]", httpRequest.getMethod(), httpRequest.getUrl()));
 		}
 
 		// HTTP Content Type
