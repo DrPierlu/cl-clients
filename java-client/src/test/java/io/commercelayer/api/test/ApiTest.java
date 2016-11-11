@@ -14,7 +14,10 @@ public abstract class ApiTest {
 	@BeforeClass
 	public static void initTests() {
 		
-		if (token != null) return;
+		if (token != null) {
+			System.out.println("Api Token già inizializzato");
+			return;
+		}
 		
 		account = new ApiAccount();
 		account.setUsername("pierluigiviti@gmail.com");

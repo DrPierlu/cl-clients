@@ -12,8 +12,8 @@ public class AddressesCaller extends ApiCaller {
 		super(apiToken);
 	}
 	
-	public void insertAddress(Address address) throws ApiException {
-		insertItem(address);
+	public Address insertAddress(Address address) throws ApiException {
+		return (Address)insertItem(address);
 	}
 	
 	public Address getAddress(String id) throws ApiException {

@@ -1,5 +1,6 @@
 package io.commercelayer.api.test;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import io.commercelayer.api.AddressesCaller;
@@ -23,14 +24,16 @@ public class AddressesTest extends ApiTest {
 		
 	}
 	
-//	@Test
-//	public void getAddressTest() throws ApiException {
-//		
-//		Address address = new AddressesCaller(token).getAddress("1");
-//		
-//		System.out.println(address);
-//		
-//	}
+	@Test
+	public void getAddressTest() throws ApiException {
+		
+		Address address = new AddressesCaller(token).getAddress("1");
+		
+		Assert.assertNotNull(address);
+		Assert.assertNotNull(address.getId());
+		Assert.assertNotNull(address.getCreatedAt());
+		
+	}
 	
 //	@Test
 //	public void getAddressListTest() throws ApiException {

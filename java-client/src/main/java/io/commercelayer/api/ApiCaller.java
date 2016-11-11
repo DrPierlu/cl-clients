@@ -77,6 +77,8 @@ public abstract class ApiCaller {
 
 	protected <T extends ApiResource> T getItem(String id, Class<T> class_) throws ApiException {
 
+		logger.info("getItem execution [{}, {}]", id, class_.getName());
+		
 		HttpRequest request = createHttpRequest(Method.GET);
 		request.setUrl(request.getUrl().concat("/").concat(id));
 		
@@ -91,19 +93,29 @@ public abstract class ApiCaller {
 	
 	protected void updateItem(ApiObject item) throws ApiException {
 
+		logger.info("updateItem execution: {}", item);
+		
 		HttpRequest request = createHttpRequest(Method.PUT);
+		
+		request.setBody(jsonCodec.toJSON(item, true));
 
 		HttpResponse response = call(request);
 
 	}
 	
-	protected void insertItem(ApiObject item) throws ApiException {
+	protected ApiResource insertItem(ApiResource item) throws ApiException {
+		
+		logger.info("insertItem execution: {}", item);
 
 		HttpRequest request = createHttpRequest(Method.POST);
 		
 		request.setBody(jsonCodec.toJSON(item, true));
 
 		HttpResponse response = call(request);
+		
+		ApiResource resourceObject = jsonCodec.fromJSON(response.getBody(), item.getClass());
+		
+		return resourceObject;
 
 	}
 
