@@ -100,6 +100,8 @@ public abstract class ApiCaller {
 		request.setBody(jsonCodec.toJSON(item, true));
 
 		HttpResponse response = call(request);
+		
+		System.out.println(response.getBody());
 
 	}
 	
@@ -140,6 +142,8 @@ public abstract class ApiCaller {
 		HttpResponse response = null;
 		
 		response = httpClient.send(request);
+		
+		logger.debug("HTTP Response Code: {}", response.getCode());
 		
 		if (response.hasErrorCode()) {
 			if (response.getCode() == 401) {

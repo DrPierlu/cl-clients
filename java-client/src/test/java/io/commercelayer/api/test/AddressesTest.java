@@ -20,7 +20,26 @@ public class AddressesTest extends ApiTest {
 		a.setGeocodingStreet("Via delle Luglie");
 		a.setGeocodingZip("53100");
 		
-		new AddressesCaller(token).insertAddress(a);
+		Address b = new AddressesCaller(token).insertAddress(a);
+		
+		Assert.assertNotNull(b);
+		Assert.assertEquals(a.getGeocodingCity(), b.getGeocodingCity());
+		
+	}
+	
+	@Test
+	public void updateAddressTest() throws ApiException {
+		
+		Address a = new Address();
+		
+		a.setId("1");
+		a.setGeocodingCity("Calenzano");
+		a.setGeocodingCountry("IT");
+		a.setGeocodingNumber("4");
+		a.setGeocodingStreet("Via Nicolò Paganini");
+		a.setGeocodingZip("50041");
+		
+		new AddressesCaller(token).updateAddress(a);
 		
 	}
 	

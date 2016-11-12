@@ -16,6 +16,10 @@ public class AddressesCaller extends ApiCaller {
 		return (Address)insertItem(address);
 	}
 	
+	public void updateAddress(Address address) throws ApiException {
+		updateItem(address);
+	}
+	
 	public Address getAddress(String id) throws ApiException {
 		return getItem(id, Address.class);
 	}
