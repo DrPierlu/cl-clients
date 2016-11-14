@@ -22,6 +22,7 @@ import io.commercelayer.api.exception.ConnectionException;
 import okhttp3.Authenticator;
 import okhttp3.Credentials;
 import okhttp3.Headers;
+import okhttp3.Interceptor;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -45,6 +46,7 @@ public class HttpClientOkHttpImpl extends HttpClient {
 
 		OkHttpClient.Builder builder = new OkHttpClient.Builder();
 
+		// PROXY
 		if (httpProxy != null) {
 
 			Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress(httpProxy.getHost(), httpProxy.getPort()));
@@ -57,11 +59,19 @@ public class HttpClientOkHttpImpl extends HttpClient {
 				}
 			};
 			builder.proxyAuthenticator(proxyAuthenticator);
+			
+			logger.info("Using Proxy {}:{} ...", httpProxy.getHost(), httpProxy.getPort());
 
 		}
 
+		
+		// HTTPS
 		if (ApiConfig.getPropertyBoolean(Group.http, "ssl.trustAll")) sslTrustAll(builder);
 
+		if (ApiConfig.getPropertyBoolean(Group.http, "debug")) builder.addNetworkInterceptor(new LoggingInterceptor());
+		
+		
+		// TIMEOUTS
 		builder.connectTimeout(10, TimeUnit.SECONDS);
 		builder.readTimeout(10, TimeUnit.SECONDS);
 		builder.writeTimeout(10, TimeUnit.SECONDS);
@@ -81,9 +91,15 @@ public class HttpClientOkHttpImpl extends HttpClient {
 		}
 
 		X509TrustManager trustManager = new X509TrustManager() {
-			public X509Certificate[] getAcceptedIssuers() { return new X509Certificate[0]; }
-			public void checkClientTrusted(X509Certificate[] certs, String authType) { }
-			public void checkServerTrusted(X509Certificate[] certs, String authType) { }
+			public X509Certificate[] getAcceptedIssuers() {
+				return new X509Certificate[0];
+			}
+
+			public void checkClientTrusted(X509Certificate[] certs, String authType) {
+			}
+
+			public void checkServerTrusted(X509Certificate[] certs, String authType) {
+			}
 		};
 
 		try {
@@ -94,9 +110,11 @@ public class HttpClientOkHttpImpl extends HttpClient {
 		}
 
 		builder.sslSocketFactory(sslContext.getSocketFactory(), trustManager);
-		
+
 		builder.hostnameVerifier(new HostnameVerifier() {
-			public boolean verify(String arg0, SSLSession arg1) { return true; }
+			public boolean verify(String arg0, SSLSession arg1) {
+				return true;
+			}
 		});
 
 	}
@@ -112,23 +130,11 @@ public class HttpClientOkHttpImpl extends HttpClient {
 
 		// HTTP Method & Body
 		switch (httpRequest.getMethod()) {
-		default:
-		case GET: {
-			requestBuilder.get();
-			break;
-		}
-		case POST: {
-			requestBuilder.post(getRequestBody(httpRequest));
-			break;
-		}
-		case PUT: {
-			requestBuilder.put(getRequestBody(httpRequest));
-			break;
-		}
-		case DELETE: {
-			requestBuilder.delete();
-			break;
-		}
+			default:
+			case GET: { requestBuilder.get(); break; }
+			case POST: { requestBuilder.post(getRequestBody(httpRequest)); break; }
+			case PUT: { requestBuilder.put(getRequestBody(httpRequest)); break; }
+			case DELETE: { requestBuilder.delete(); break; }
 		}
 
 		// HTTP Headers
@@ -168,7 +174,8 @@ public class HttpClientOkHttpImpl extends HttpClient {
 		try {
 			httpResponse.setBody(response.body().string());
 		} catch (IOException ioe) {
-			throw new ConnectionException(String.format("HTTP Error reading body response [%s:%s]", httpRequest.getMethod(), httpRequest.getUrl()));
+			throw new ConnectionException(String.format("HTTP Error reading body response [%s:%s]",
+					httpRequest.getMethod(), httpRequest.getUrl()));
 		}
 
 		// HTTP Content Type
@@ -210,6 +217,23 @@ public class HttpClientOkHttpImpl extends HttpClient {
 		if (mediaType.subtype() != null)
 			sb.append('/').append(mediaType.subtype());
 		return sb.toString();
+	}
+
+	private final class LoggingInterceptor implements Interceptor {
+		@Override
+		public Response intercept(Interceptor.Chain chain) throws IOException {
+			Request request = chain.request();
+
+			long t1 = System.nanoTime();
+			logger.debug(String.format("Sending request %s on %s%n%s", request.url(), chain.connection(), request.headers()));
+			
+			Response response = chain.proceed(request);
+
+			long t2 = System.nanoTime();
+			logger.debug(String.format("Received response for %s in %.1fms%n%s", response.request().url(), (t2 - t1) / 1e6d, response.headers()));
+
+			return response;
+		}
 	}
 
 }

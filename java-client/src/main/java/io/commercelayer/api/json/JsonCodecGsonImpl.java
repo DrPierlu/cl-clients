@@ -5,8 +5,8 @@ import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.List;
 
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
@@ -19,6 +19,7 @@ import com.google.gson.JsonParseException;
 import com.google.gson.JsonPrimitive;
 import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
+import com.google.gson.reflect.TypeToken;
 
 import io.commercelayer.api.model.common.ApiObject;
 
@@ -35,6 +36,12 @@ public final class JsonCodecGsonImpl implements JsonCodec {
 		
 		gson = builder.create();
 		
+	}
+	
+	@Override
+	public <T extends ApiObject> List<T> fromJSONList(String json, Class<T> resourceType) {
+		Type collectionType = new TypeToken<List<T>>(){}.getType();
+		return gson.fromJson(json, collectionType);	
 	}
 
 	@Override

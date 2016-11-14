@@ -7,7 +7,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 public abstract class ApiResource extends ApiObject {
 
 	protected String resourceName = null;
-	protected String id = null;
+	protected Long id = null;
 	protected String creatorId = null;
 	protected String creatorResource = null;
 	protected LocalDateTime createdAt = null;
@@ -33,11 +33,11 @@ public abstract class ApiResource extends ApiObject {
 	// return (T)this;
 	// }
 
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

@@ -32,11 +32,11 @@ public class AddressesTest extends ApiTest {
 		
 		Address a = new Address();
 		
-		a.setId("1");
+		a.setId(1L);
 		a.setGeocodingCity("Calenzano");
 		a.setGeocodingCountry("IT");
 		a.setGeocodingNumber("4");
-		a.setGeocodingStreet("Via Nicolò Paganini");
+		a.setGeocodingStreet("Via Nicolo' Paganini");
 		a.setGeocodingZip("50041");
 		
 		new AddressesCaller(token).updateAddress(a);
@@ -46,7 +46,7 @@ public class AddressesTest extends ApiTest {
 	@Test
 	public void getAddressTest() throws ApiException {
 		
-		Address address = new AddressesCaller(token).getAddress("1");
+		Address address = new AddressesCaller(token).getAddress(1L);
 		
 		Assert.assertNotNull(address);
 		Assert.assertNotNull(address.getId());
