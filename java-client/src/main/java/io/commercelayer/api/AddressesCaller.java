@@ -20,7 +20,7 @@ public class AddressesCaller extends ApiCaller {
 		updateItem(address);
 	}
 	
-	public Address getAddress(String id) throws ApiException {
+	public Address getAddress(Long id) throws ApiException {
 		return getItem(id, Address.class);
 	}
 	

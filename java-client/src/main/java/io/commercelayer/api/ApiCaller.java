@@ -75,12 +75,12 @@ public abstract class ApiCaller {
 
 	}
 
-	protected <T extends ApiResource> T getItem(String id, Class<T> class_) throws ApiException {
+	protected <T extends ApiResource> T getItem(Long id, Class<T> class_) throws ApiException {
 
 		logger.info("getItem execution [{}, {}]", id, class_.getName());
 		
 		HttpRequest request = createHttpRequest(Method.GET);
-		request.setUrl(request.getUrl().concat("/").concat(id));
+		request.setUrl(request.getUrl().concat("/").concat(String.valueOf(id)));
 		
 		HttpResponse response = call(request);
 
@@ -121,7 +121,7 @@ public abstract class ApiCaller {
 
 	}
 
-	protected void deleteItem(String id) throws ApiException {
+	protected void deleteItem(Long id) throws ApiException {
 
 		HttpRequest request = createHttpRequest(Method.DELETE);
 
@@ -141,9 +141,12 @@ public abstract class ApiCaller {
 		
 		HttpResponse response = null;
 		
+		logger.trace("Body: {}", request.getBody());
+		
 		response = httpClient.send(request);
 		
 		logger.debug("HTTP Response Code: {}", response.getCode());
+		logger.trace("Body: {}", response.getBody());
 		
 		if (response.hasErrorCode()) {
 			if (response.getCode() == 401) {
