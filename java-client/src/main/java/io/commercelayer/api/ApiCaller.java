@@ -88,7 +88,7 @@ public abstract class ApiCaller {
 	}
 	
 	
-	protected void updateItem(ApiResource item) throws ApiException {
+	protected ApiResource updateItem(ApiResource item) throws ApiException {
 
 		logger.info("updateItem execution: {}", item);
 		
@@ -99,7 +99,9 @@ public abstract class ApiCaller {
 
 		HttpResponse response = call(request);
 		
-		System.out.println(response.getBody());
+		ApiResource resourceObject = jsonCodec.fromJSON(response.getBody(), item.getClass());
+		
+		return resourceObject;
 
 	}
 	
