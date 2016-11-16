@@ -75,7 +75,8 @@ public abstract class ApiCaller {
 		HttpResponse response = call(request);
 
 	}
-	
+
+
 	protected <T extends ApiResource> T getItem(Long id, Class<T> class_) throws ApiException {
 
 		logger.info("getItem execution [{}, {}]", id, class_.getName());

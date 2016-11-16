@@ -5,6 +5,7 @@ import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+//github.com/DrPierlu/cl-clients.git
 import java.util.Date;
 import java.util.List;
 
@@ -47,7 +48,7 @@ public final class JsonCodecGsonImpl implements JsonCodec {
 		Type collectionType = new TypeToken<List<T>>(){}.getType();
 		return gson.fromJson(json, collectionType);	
 	}
-
+	
 	@Override
 	public <T extends ApiObject> T fromJSON(String json, Class<T> type) {
 		return gson.fromJson(json, type);

@@ -64,7 +64,7 @@ public class HttpClientOkHttpImpl extends HttpClient {
 
 		}
 
-		
+
 		// HTTPS
 		if (ApiConfig.getPropertyBoolean(Group.http, "ssl.trustAll")) sslTrustAll(builder);
 
@@ -76,6 +76,8 @@ public class HttpClientOkHttpImpl extends HttpClient {
 		builder.connectTimeout(10, TimeUnit.SECONDS);
 		builder.readTimeout(10, TimeUnit.SECONDS);
 		builder.writeTimeout(10, TimeUnit.SECONDS);
+
+		if (ApiConfig.getPropertyBoolean(Group.http, "debug")) builder.addNetworkInterceptor(new LoggingInterceptor());
 
 		return builder.build();
 
@@ -157,7 +159,8 @@ public class HttpClientOkHttpImpl extends HttpClient {
 		try {
 			response = httpClient.newCall(request).execute();
 		} catch (IOException ioe) {
-			throw new ConnectionException(String.format("HTTP Error calling [%s:%s]", httpRequest.getMethod(), httpRequest.getUrl()));
+			throw new ConnectionException(
+					String.format("HTTP Error calling [%s:%s]", httpRequest.getMethod(), httpRequest.getUrl()));
 		}
 
 		HttpResponse httpResponse = new HttpResponse();
