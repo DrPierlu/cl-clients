@@ -68,6 +68,7 @@ public class HttpClientOkHttpImpl extends HttpClient {
 		// HTTPS
 		if (ApiConfig.getPropertyBoolean(Group.http, "ssl.trustAll")) sslTrustAll(builder);
 
+		// Network Interceptor
 		if (ApiConfig.getPropertyBoolean(Group.http, "debug")) builder.addNetworkInterceptor(new LoggingInterceptor());
 		
 		

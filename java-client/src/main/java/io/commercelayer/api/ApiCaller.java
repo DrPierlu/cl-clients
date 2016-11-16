@@ -60,13 +60,17 @@ public abstract class ApiCaller {
 
 		HttpResponse response = call(request);
 		
-		return null;
+		List<T> list = jsonCodec.fromJSONList(response.getBody(), class_);
+		
+		return list;
 
 	}
 
 	protected void saveItemList(List<? extends ApiObject> itemList) throws ApiException {
 
 		HttpRequest request = createHttpRequest(Method.PUT);
+		
+		request.setBody(jsonCodec.toJSONList(itemList));
 
 		HttpResponse response = call(request);
 
@@ -139,7 +143,7 @@ public abstract class ApiCaller {
 	}
 
 	
-	private HttpResponse call(HttpRequest request) throws ConnectionException, ApiException, AuthException {
+	private HttpResponse call(HttpRequest request) throws ConnectionException, ApiException, AuthException, SystemException {
 
 		if ((apiToken == null) || apiToken.getAccessToken() == null)
 			throw new AuthException("No access_token defined");
@@ -148,21 +152,24 @@ public abstract class ApiCaller {
 		
 		logger.trace("Body: {}", request.getBody());
 		
-		response = httpClient.send(request);
+		response = httpClient.send(request);	// Connection Exception
 		
 		logger.debug("HTTP Response Code: {}", response.getCode());
 		logger.trace("Body: {}", response.getBody());
 		
 		if (response.hasErrorCode()) {
+			// Authentication Error
 			if (response.getCode() == 401) {
 				ApiError apiError = jsonCodec.fromJSON(response.getBody(), ApiError.class);
 				throw new AuthException(apiError);
 			}
+			// Data Error
 			else
 			if (response.getCode() == 400) {
 				ApiError apiError = jsonCodec.fromJSON(response.getBody(), ApiError.class);
 				throw new ApiException(apiError);
 			}
+			// System Error
 			else {
 				throw new SystemException("Api System Exception");
 			}

@@ -21,16 +21,20 @@ import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
 import com.google.gson.reflect.TypeToken;
 
+import io.commercelayer.api.config.ApiConfig;
+import io.commercelayer.api.config.ApiConfig.Group;
 import io.commercelayer.api.model.common.ApiObject;
 
 public final class JsonCodecGsonImpl implements JsonCodec {
 
+	private static final Boolean formatted = ApiConfig.getPropertyBoolean(Group.test, "mode");
+	
 	private Gson gson;
 	{
 		
 		GsonBuilder builder = new GsonBuilder();
 		builder.setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES);
-		// if (formatted) builder.setPrettyPrinting();
+		if (formatted) builder.setPrettyPrinting();
 		
 		builder.registerTypeAdapter(LocalDateTime.class, new LocalDateTimeSerializer());
 		
@@ -65,6 +69,16 @@ public final class JsonCodecGsonImpl implements JsonCodec {
 		}
 
 	}
+	
+	@Override
+	public String toJSONList(List<? extends ApiObject> apiResources) {
+//		JsonElement je = gson.toJsonTree(apiResources);
+//		JsonObject jo = new JsonObject();
+//		jo.add("addresses", je);
+//		return gson.toJson(jo);
+		return gson.toJson(apiResources);
+	}
+	
 
 	private class LocalDateTimeSerializer implements JsonSerializer<LocalDateTime>, JsonDeserializer<LocalDateTime> {
 		
