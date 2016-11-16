@@ -13,7 +13,7 @@ import io.commercelayer.api.http.HttpRequest;
 import io.commercelayer.api.http.HttpRequest.Method;
 import io.commercelayer.api.http.HttpResponse;
 import io.commercelayer.api.http.auth.HttpAuthBasic;
-import io.commercelayer.api.util.ApiUtil;
+import io.commercelayer.api.util.ApiUtils;
 import io.commercelayer.api.util.ContentType;
 
 public final class ApiAuthenticator {
@@ -29,9 +29,9 @@ public final class ApiAuthenticator {
 		AuthRequest authRequest = new AuthRequest(account);
 
 		HttpRequest httpRequest = new HttpRequest(Method.POST);
-		httpRequest.setUrl(ApiUtil.getResourceUrl("/auth/token"));
+		httpRequest.setUrl(ApiUtils.getResourceUrl("/auth/token"));
 		httpRequest.setHttpAuth(new HttpAuthBasic(account.getAuthKey(), account.getAuthSecret()));
-		httpRequest.setBody(ApiUtil.getJsonCodecInstance().toJSON(authRequest, false));
+		httpRequest.setBody(ApiUtils.getJsonCodecInstance().toJSON(authRequest, false));
 		httpRequest.setContentType(ContentType.JSON);
 
 		HttpResponse httpResponse = null;
@@ -47,7 +47,7 @@ public final class ApiAuthenticator {
 		if (!ContentType.JSON.equals(httpResponse.getContentType())) throw new AuthException(String.format("Expected JSON Content Type [%s]", httpResponse.getContentType()));
 
 
-		ApiToken token = ApiUtil.getJsonCodecInstance().fromJSON(httpResponse.getBody(), ApiToken.class);
+		ApiToken token = ApiUtils.getJsonCodecInstance().fromJSON(httpResponse.getBody(), ApiToken.class);
 		
 		token.setReleaseDate(LocalDateTime.now());
 
@@ -62,9 +62,9 @@ public final class ApiAuthenticator {
 		AuthRefreshRequest authRequest = new AuthRefreshRequest(token.getRefreshToken());
 
 		HttpRequest httpRequest = new HttpRequest(Method.POST);
-		httpRequest.setUrl(ApiUtil.getResourceUrl("/auth/token"));
+		httpRequest.setUrl(ApiUtils.getResourceUrl("/auth/token"));
 		httpRequest.setHttpAuth(new HttpAuthBasic(account.getAuthKey(), account.getAuthSecret()));
-		httpRequest.setBody(ApiUtil.getJsonCodecInstance().toJSON(authRequest, false));
+		httpRequest.setBody(ApiUtils.getJsonCodecInstance().toJSON(authRequest, false));
 		httpRequest.setContentType(ContentType.JSON);
 
 		HttpResponse httpResponse = null;
@@ -80,7 +80,7 @@ public final class ApiAuthenticator {
 		if (!ContentType.JSON.equals(httpResponse.getContentType())) throw new AuthException(String.format("Expected JSON Content Type [%s]", httpResponse.getContentType()));
 
 
-		ApiToken newToken = ApiUtil.getJsonCodecInstance().fromJSON(httpResponse.getBody(), ApiToken.class);
+		ApiToken newToken = ApiUtils.getJsonCodecInstance().fromJSON(httpResponse.getBody(), ApiToken.class);
 		
 		token.setReleaseDate(LocalDateTime.now());
 		token.setAccessToken(newToken.getAccessToken());

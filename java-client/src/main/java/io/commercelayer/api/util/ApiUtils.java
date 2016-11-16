@@ -4,7 +4,7 @@ import io.commercelayer.api.config.ApiConfig;
 import io.commercelayer.api.json.JsonCodec;
 import io.commercelayer.api.json.JsonCodecFactory;
 
-public final class ApiUtil {
+public final class ApiUtils {
 	
 	private static final JsonCodec jsonCodec = JsonCodecFactory.getJsonCodecInstance();
 	

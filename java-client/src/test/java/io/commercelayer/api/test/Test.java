@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.commercelayer.api.model.Address;
-import io.commercelayer.api.util.ApiUtil;
+import io.commercelayer.api.util.ApiUtils;
 
 public class Test {
 
@@ -30,7 +30,7 @@ public class Test {
 		a2.setGeocodingZip("53100");
 		list.add(a2);
 		
-		String j = ApiUtil.getJsonCodecInstance().toJSONList(list);
+		String j = ApiUtils.getJsonCodecInstance().toJSONList(list);
 		
 		System.out.println(j);
 		

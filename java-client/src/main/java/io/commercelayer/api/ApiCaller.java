@@ -20,7 +20,7 @@ import io.commercelayer.api.json.JsonCodecFactory;
 import io.commercelayer.api.model.common.ApiObject;
 import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.security.ApiToken;
-import io.commercelayer.api.util.ApiUtil;
+import io.commercelayer.api.util.ApiUtils;
 import io.commercelayer.api.util.ContentType;
 
 public abstract class ApiCaller {
@@ -186,7 +186,7 @@ public abstract class ApiCaller {
 
 		HttpRequest request = new HttpRequest(httpMethod);
 
-		request.setUrl(ApiUtil.getResourceUrl(getResourcePath()));
+		request.setUrl(ApiUtils.getResourceUrl(getResourcePath()));
 		request.setContentType(ContentType.JSON);
 		request.addHeader("Accept", ContentType.JSON);
 		request.setHttpAuth(new HttpAuthOAuth2(apiToken.getAccessToken()));
