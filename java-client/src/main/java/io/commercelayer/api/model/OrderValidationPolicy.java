@@ -166,8 +166,7 @@ public class OrderValidationPolicy extends ApiResource {
 				&& Objects.equals(this.orderItemsMin, orderValidationPolicy.orderItemsMin)
 				&& Objects.equals(this.orderItemsMax, orderValidationPolicy.orderItemsMax)
 				&& Objects.equals(this.paymentMethodStatus, orderValidationPolicy.paymentMethodStatus)
-				&& Objects.equals(this.paymentMethodStatusPercentage,
-						orderValidationPolicy.paymentMethodStatusPercentage)
+				&& Objects.equals(this.paymentMethodStatusPercentage, orderValidationPolicy.paymentMethodStatusPercentage)
 				&& Objects.equals(this.creatorId, orderValidationPolicy.creatorId)
 				&& Objects.equals(this.creatorResource, orderValidationPolicy.creatorResource)
 				&& Objects.equals(this.createdAt, orderValidationPolicy.createdAt)

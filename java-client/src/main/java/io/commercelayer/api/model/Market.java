@@ -142,7 +142,8 @@ public class Market extends ApiResource {
 			return false;
 		}
 		Market market = (Market) o;
-		return Objects.equals(this.resourceName, market.resourceName) && Objects.equals(this.id, market.id)
+		return Objects.equals(this.resourceName, market.resourceName) 
+				&& Objects.equals(this.id, market.id)
 				&& Objects.equals(this.environmentId, market.environmentId)
 				&& Objects.equals(this.channelId, market.channelId)
 				&& Objects.equals(this.countryGroupId, market.countryGroupId)
@@ -153,7 +154,8 @@ public class Market extends ApiResource {
 				&& Objects.equals(this.orderValidationPolicyId, market.orderValidationPolicyId)
 				&& Objects.equals(this.creatorId, market.creatorId)
 				&& Objects.equals(this.creatorResource, market.creatorResource)
-				&& Objects.equals(this.createdAt, market.createdAt) && Objects.equals(this.updatedAt, market.updatedAt);
+				&& Objects.equals(this.createdAt, market.createdAt) 
+				&& Objects.equals(this.updatedAt, market.updatedAt);
 	}
 
 	@Override

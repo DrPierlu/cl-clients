@@ -5,6 +5,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import io.commercelayer.api.config.ApiConfig;
 import io.commercelayer.api.exception.ApiException;
 import io.commercelayer.api.exception.AuthException;
 import io.commercelayer.api.exception.ConnectionException;
@@ -17,8 +18,8 @@ import io.commercelayer.api.http.HttpResponse;
 import io.commercelayer.api.http.auth.HttpAuthOAuth2;
 import io.commercelayer.api.json.JsonCodec;
 import io.commercelayer.api.json.JsonCodecFactory;
-import io.commercelayer.api.model.common.ApiObject;
 import io.commercelayer.api.model.common.ApiResource;
+import io.commercelayer.api.model.common.ListFilter;
 import io.commercelayer.api.security.ApiToken;
 import io.commercelayer.api.util.ApiUtils;
 import io.commercelayer.api.util.ContentType;
@@ -48,31 +49,28 @@ public abstract class ApiCaller {
 	
 
 	public void setCustomHttpClient(HttpClient httpClient) {
-		this.httpClient = httpClient;
+		if (httpClient != null) this.httpClient = httpClient;
+		else logger.error("Custom HttpClient implementation required");
 	}
 	
 	
 
 
-	protected <T extends ApiResource> List<T> getItemList(Class<T> class_) throws ApiException {
+	protected <T extends ApiResource> List<T> getItemList(ListFilter listFilter, Class<T> class_) throws ApiException {
 
 		HttpRequest request = createHttpRequest(Method.GET);
+		
+		if (listFilter != null) {
+			if (listFilter.getPage() != null) request.addQueryStringParam("page", listFilter.getPage());
+			if (listFilter.getPerPage() != null) request.addQueryStringParam("perPage", listFilter.getPerPage());
+			if (listFilter.getOffset() != null) request.addQueryStringParam("offset", listFilter.getOffset());
+		}
 
 		HttpResponse response = call(request);
 		
 		List<T> list = jsonCodec.fromJSONList(response.getBody(), class_);
 		
 		return list;
-
-	}
-
-	protected void saveItemList(List<? extends ApiObject> itemList) throws ApiException {
-
-		HttpRequest request = createHttpRequest(Method.PUT);
-		
-		request.setBody(jsonCodec.toJSONList(itemList));
-
-		HttpResponse response = call(request);
 
 	}
 
@@ -133,10 +131,8 @@ public abstract class ApiCaller {
 		HttpRequest request = createHttpRequest(Method.DELETE);
 		request.setUrl(request.getUrl().concat("/").concat(String.valueOf(id)));
 		
-		HttpResponse response = call(request);
+		/*HttpResponse response = */call(request);
 		
-		System.out.println(response.getBody());
-
 	}
 
 	protected void deleteItem(ApiResource item) throws ApiException {
@@ -156,7 +152,7 @@ public abstract class ApiCaller {
 		response = httpClient.send(request);	// Connection Exception
 		
 		logger.debug("HTTP Response Code: {}", response.getCode());
-		logger.trace("Body: {}", response.getBody());
+		logger.trace("Body: {}", ApiConfig.testModeEnabled()? ApiUtils.formatJson(response.getBody()) : response.getBody());
 		
 		if (response.hasErrorCode()) {
 			// Authentication Error
@@ -194,5 +190,37 @@ public abstract class ApiCaller {
 		return request;
 
 	}	
+	
+	
+	
+	
+	
+	/*
+paginazione in query string
+i parametri sono
+page
+per_page
+e nella risposta hai i seguenti header
+X-Total
+X-Total-Pages
+X-Per-Page
+X-Page
+X-Next-Page
+X-Prev-Page
+X-Offset
+per i filtri ci sono un bel po' di opzioni
+ma alcuni esempi
+per un attributo "name"
+q[name_eq]=pierluigi
+q[name_start]=pier
+q[name_cont]=erlu
+che ovviamente possono essere concatenati
+q[name_eq]=pierluigi&q[city_start]=poggi
+ordinamento
+q[s]=name+asc
+q[s]=name+desc
+	 */
+	
+	
 	
 }

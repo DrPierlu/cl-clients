@@ -100,11 +100,14 @@ public class Product extends ApiResource {
 			return false;
 		}
 		Product product = (Product) o;
-		return Objects.equals(this.resourceName, product.resourceName) && Objects.equals(this.id, product.id)
-				&& Objects.equals(this.environmentId, product.environmentId) && Objects.equals(this.name, product.name)
+		return Objects.equals(this.resourceName, product.resourceName) 
+				&& Objects.equals(this.id, product.id)
+				&& Objects.equals(this.environmentId, product.environmentId) 
+				&& Objects.equals(this.name, product.name)
 				&& Objects.equals(this.description, product.description)
 				&& Objects.equals(this.shippingCategoryId, product.shippingCategoryId)
-				&& Objects.equals(this.taxCode, product.taxCode) && Objects.equals(this.creatorId, product.creatorId)
+				&& Objects.equals(this.taxCode, product.taxCode) 
+				&& Objects.equals(this.creatorId, product.creatorId)
 				&& Objects.equals(this.creatorResource, product.creatorResource)
 				&& Objects.equals(this.createdAt, product.createdAt)
 				&& Objects.equals(this.updatedAt, product.updatedAt);

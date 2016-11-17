@@ -128,15 +128,19 @@ public class Order extends ApiResource {
 			return false;
 		}
 		Order order = (Order) o;
-		return Objects.equals(this.resourceName, order.resourceName) && Objects.equals(this.id, order.id)
+		return Objects.equals(this.resourceName, order.resourceName) 
+				&& Objects.equals(this.id, order.id)
 				&& Objects.equals(this.environmentId, order.environmentId)
-				&& Objects.equals(this.merchantId, order.merchantId) && Objects.equals(this.channelId, order.channelId)
-				&& Objects.equals(this.countryId, order.countryId) && Objects.equals(this.currencyId, order.currencyId)
+				&& Objects.equals(this.merchantId, order.merchantId) 
+				&& Objects.equals(this.channelId, order.channelId)
+				&& Objects.equals(this.countryId, order.countryId) 
+				&& Objects.equals(this.currencyId, order.currencyId)
 				&& Objects.equals(this.shippingAddressId, order.shippingAddressId)
 				&& Objects.equals(this.billingAddressId, order.billingAddressId)
 				&& Objects.equals(this.creatorId, order.creatorId)
 				&& Objects.equals(this.creatorResource, order.creatorResource)
-				&& Objects.equals(this.createdAt, order.createdAt) && Objects.equals(this.updatedAt, order.updatedAt);
+				&& Objects.equals(this.createdAt, order.createdAt) 
+				&& Objects.equals(this.updatedAt, order.updatedAt);
 	}
 
 	@Override

@@ -86,9 +86,11 @@ public class Merchant extends ApiResource {
 			return false;
 		}
 		Merchant merchant = (Merchant) o;
-		return Objects.equals(this.resourceName, merchant.resourceName) && Objects.equals(this.id, merchant.id)
+		return Objects.equals(this.resourceName, merchant.resourceName) 
+				&& Objects.equals(this.id, merchant.id)
 				&& Objects.equals(this.environmentId, merchant.environmentId)
-				&& Objects.equals(this.countryId, merchant.countryId) && Objects.equals(this.name, merchant.name)
+				&& Objects.equals(this.countryId, merchant.countryId) 
+				&& Objects.equals(this.name, merchant.name)
 				&& Objects.equals(this.description, merchant.description)
 				&& Objects.equals(this.creatorId, merchant.creatorId)
 				&& Objects.equals(this.creatorResource, merchant.creatorResource)

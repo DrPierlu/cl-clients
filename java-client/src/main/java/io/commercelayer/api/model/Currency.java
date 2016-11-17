@@ -58,9 +58,11 @@ public class Currency extends ApiResource {
 			return false;
 		}
 		Currency currency = (Currency) o;
-		return Objects.equals(this.resourceName, currency.resourceName) && Objects.equals(this.id, currency.id)
+		return Objects.equals(this.resourceName, currency.resourceName) 
+				&& Objects.equals(this.id, currency.id)
 				&& Objects.equals(this.environmentId, currency.environmentId)
-				&& Objects.equals(this.code, currency.code) && Objects.equals(this.creatorId, currency.creatorId)
+				&& Objects.equals(this.code, currency.code) 
+				&& Objects.equals(this.creatorId, currency.creatorId)
 				&& Objects.equals(this.creatorResource, currency.creatorResource)
 				&& Objects.equals(this.createdAt, currency.createdAt)
 				&& Objects.equals(this.updatedAt, currency.updatedAt);

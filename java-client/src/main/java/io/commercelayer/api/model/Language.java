@@ -58,9 +58,11 @@ public class Language extends ApiResource {
 			return false;
 		}
 		Language language = (Language) o;
-		return Objects.equals(this.resourceName, language.resourceName) && Objects.equals(this.id, language.id)
+		return Objects.equals(this.resourceName, language.resourceName) 
+				&& Objects.equals(this.id, language.id)
 				&& Objects.equals(this.environmentId, language.environmentId)
-				&& Objects.equals(this.code, language.code) && Objects.equals(this.creatorId, language.creatorId)
+				&& Objects.equals(this.code, language.code) 
+				&& Objects.equals(this.creatorId, language.creatorId)
 				&& Objects.equals(this.creatorResource, language.creatorResource)
 				&& Objects.equals(this.createdAt, language.createdAt)
 				&& Objects.equals(this.updatedAt, language.updatedAt);

@@ -114,9 +114,12 @@ public class Permission extends ApiResource {
 			return false;
 		}
 		Permission permission = (Permission) o;
-		return Objects.equals(this.resourceName, permission.resourceName) && Objects.equals(this.id, permission.id)
-				&& Objects.equals(this.roleId, permission.roleId) && Objects.equals(this.ability, permission.ability)
-				&& Objects.equals(this.action, permission.action) && Objects.equals(this.resource, permission.resource)
+		return Objects.equals(this.resourceName, permission.resourceName) 
+				&& Objects.equals(this.id, permission.id)
+				&& Objects.equals(this.roleId, permission.roleId) 
+				&& Objects.equals(this.ability, permission.ability)
+				&& Objects.equals(this.action, permission.action) 
+				&& Objects.equals(this.resource, permission.resource)
 				&& Objects.equals(this.restrictions, permission.restrictions)
 				&& Objects.equals(this.position, permission.position)
 				&& Objects.equals(this.creatorId, permission.creatorId)

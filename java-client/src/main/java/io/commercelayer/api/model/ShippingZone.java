@@ -72,7 +72,8 @@ public class ShippingZone extends ApiResource {
 			return false;
 		}
 		ShippingZone shippingZone = (ShippingZone) o;
-		return Objects.equals(this.resourceName, shippingZone.resourceName) && Objects.equals(this.id, shippingZone.id)
+		return Objects.equals(this.resourceName, shippingZone.resourceName) 
+				&& Objects.equals(this.id, shippingZone.id)
 				&& Objects.equals(this.environmentId, shippingZone.environmentId)
 				&& Objects.equals(this.countryGroupId, shippingZone.countryGroupId)
 				&& Objects.equals(this.name, shippingZone.name)

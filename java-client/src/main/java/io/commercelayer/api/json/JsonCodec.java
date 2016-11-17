@@ -12,6 +12,6 @@ public interface JsonCodec {
 	
 	String toJSON(ApiObject apiResource, boolean includeRoot);
 	
-	String toJSONList(List<? extends ApiObject> apiResources);
+//	String toJSONList(List<? extends ApiObject> apiResources);
 	
 }

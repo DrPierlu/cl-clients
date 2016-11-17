@@ -58,8 +58,10 @@ public class Channel extends ApiResource {
 			return false;
 		}
 		Channel channel = (Channel) o;
-		return Objects.equals(this.resourceName, channel.resourceName) && Objects.equals(this.id, channel.id)
-				&& Objects.equals(this.environmentId, channel.environmentId) && Objects.equals(this.name, channel.name)
+		return Objects.equals(this.resourceName, channel.resourceName) 
+				&& Objects.equals(this.id, channel.id)
+				&& Objects.equals(this.environmentId, channel.environmentId) 
+				&& Objects.equals(this.name, channel.name)
 				&& Objects.equals(this.creatorId, channel.creatorId)
 				&& Objects.equals(this.creatorResource, channel.creatorResource)
 				&& Objects.equals(this.createdAt, channel.createdAt)

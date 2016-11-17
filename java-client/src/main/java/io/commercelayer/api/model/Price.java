@@ -128,14 +128,17 @@ public class Price extends ApiResource {
 			return false;
 		}
 		Price price = (Price) o;
-		return Objects.equals(this.resourceName, price.resourceName) && Objects.equals(this.id, price.id)
+		return Objects.equals(this.resourceName, price.resourceName) 
+				&& Objects.equals(this.id, price.id)
 				&& Objects.equals(this.environmentId, price.environmentId)
 				&& Objects.equals(this.priceListId, price.priceListId)
 				&& Objects.equals(this.sellableId, price.sellableId)
 				&& Objects.equals(this.sellableResource, price.sellableResource)
-				&& Objects.equals(this.amount, price.amount) && Objects.equals(this.creatorId, price.creatorId)
+				&& Objects.equals(this.amount, price.amount) 
+				&& Objects.equals(this.creatorId, price.creatorId)
 				&& Objects.equals(this.creatorResource, price.creatorResource)
-				&& Objects.equals(this.createdAt, price.createdAt) && Objects.equals(this.updatedAt, price.updatedAt)
+				&& Objects.equals(this.createdAt, price.createdAt) 
+				&& Objects.equals(this.updatedAt, price.updatedAt)
 				&& Objects.equals(this.formatted, price.formatted)
 				&& Objects.equals(this.exchanges, price.exchanges);
 	}

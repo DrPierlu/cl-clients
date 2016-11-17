@@ -66,10 +66,10 @@ public class HttpClientOkHttpImpl extends HttpClient {
 
 
 		// HTTPS
-		if (ApiConfig.getPropertyBoolean(Group.http, "ssl.trustAll")) sslTrustAll(builder);
+		if (ApiConfig.isPropertyEnabled(Group.http, "ssl.trustAll")) sslTrustAll(builder);
 
 		// Network Interceptor
-		if (ApiConfig.getPropertyBoolean(Group.http, "debug")) builder.addNetworkInterceptor(new LoggingInterceptor());
+		if (ApiConfig.isPropertyEnabled(Group.http, "debug")) builder.addNetworkInterceptor(new LoggingInterceptor());
 		
 		
 		// TIMEOUTS
@@ -77,7 +77,7 @@ public class HttpClientOkHttpImpl extends HttpClient {
 		builder.readTimeout(10, TimeUnit.SECONDS);
 		builder.writeTimeout(10, TimeUnit.SECONDS);
 
-		if (ApiConfig.getPropertyBoolean(Group.http, "debug")) builder.addNetworkInterceptor(new LoggingInterceptor());
+		if (ApiConfig.isPropertyEnabled(Group.http, "debug")) builder.addNetworkInterceptor(new LoggingInterceptor());
 
 		return builder.build();
 

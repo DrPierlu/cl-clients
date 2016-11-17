@@ -91,6 +91,10 @@ public class HttpRequest {
 		this.queryStringParams = queryStringParams;
 	}
 	
+	public void addQueryStringParam(String key, Object value) {
+		this.queryStringParams.put(key, (value == null)? null : value.toString());
+	}
+	
 	public void addQueryStringParam(String key, String value) {
 		this.queryStringParams.put(key, value);
 	}

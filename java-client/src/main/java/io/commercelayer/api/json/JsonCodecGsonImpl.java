@@ -23,12 +23,11 @@ import com.google.gson.JsonSerializer;
 import com.google.gson.reflect.TypeToken;
 
 import io.commercelayer.api.config.ApiConfig;
-import io.commercelayer.api.config.ApiConfig.Group;
 import io.commercelayer.api.model.common.ApiObject;
 
 public final class JsonCodecGsonImpl implements JsonCodec {
 
-	private static final Boolean formatted = ApiConfig.getPropertyBoolean(Group.test, "mode");
+	private static final Boolean formatted = ApiConfig.testModeEnabled();
 	
 	private Gson gson;
 	{
@@ -71,14 +70,14 @@ public final class JsonCodecGsonImpl implements JsonCodec {
 
 	}
 	
-	@Override
-	public String toJSONList(List<? extends ApiObject> apiResources) {
+//	@Override
+//	public String toJSONList(List<? extends ApiObject> apiResources) {
 //		JsonElement je = gson.toJsonTree(apiResources);
 //		JsonObject jo = new JsonObject();
 //		jo.add("addresses", je);
 //		return gson.toJson(jo);
-		return gson.toJson(apiResources);
-	}
+//		return gson.toJson(apiResources);
+//	}
 	
 
 	private class LocalDateTimeSerializer implements JsonSerializer<LocalDateTime>, JsonDeserializer<LocalDateTime> {

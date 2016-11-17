@@ -72,10 +72,12 @@ public class Country extends ApiResource {
 			return false;
 		}
 		Country country = (Country) o;
-		return Objects.equals(this.resourceName, country.resourceName) && Objects.equals(this.id, country.id)
+		return Objects.equals(this.resourceName, country.resourceName) 
+				&& Objects.equals(this.id, country.id)
 				&& Objects.equals(this.environmentId, country.environmentId)
 				&& Objects.equals(this.countryGroupId, country.countryGroupId)
-				&& Objects.equals(this.code, country.code) && Objects.equals(this.creatorId, country.creatorId)
+				&& Objects.equals(this.code, country.code) 
+				&& Objects.equals(this.creatorId, country.creatorId)
 				&& Objects.equals(this.creatorResource, country.creatorResource)
 				&& Objects.equals(this.createdAt, country.createdAt)
 				&& Objects.equals(this.updatedAt, country.updatedAt);

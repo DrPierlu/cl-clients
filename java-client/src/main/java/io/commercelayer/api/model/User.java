@@ -100,13 +100,17 @@ public class User extends ApiResource {
 			return false;
 		}
 		User user = (User) o;
-		return Objects.equals(this.resourceName, user.resourceName) && Objects.equals(this.id, user.id)
-				&& Objects.equals(this.firstName, user.firstName) && Objects.equals(this.lastName, user.lastName)
-				&& Objects.equals(this.email, user.email) && Objects.equals(this.passwordHash, user.passwordHash)
+		return Objects.equals(this.resourceName, user.resourceName) 
+				&& Objects.equals(this.id, user.id)
+				&& Objects.equals(this.firstName, user.firstName) 
+				&& Objects.equals(this.lastName, user.lastName)
+				&& Objects.equals(this.email, user.email) 
+				&& Objects.equals(this.passwordHash, user.passwordHash)
 				&& Objects.equals(this.passwordSalt, user.passwordSalt)
 				&& Objects.equals(this.creatorId, user.creatorId)
 				&& Objects.equals(this.creatorResource, user.creatorResource)
-				&& Objects.equals(this.createdAt, user.createdAt) && Objects.equals(this.updatedAt, user.updatedAt);
+				&& Objects.equals(this.createdAt, user.createdAt) 
+				&& Objects.equals(this.updatedAt, user.updatedAt);
 	}
 
 	@Override

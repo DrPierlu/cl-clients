@@ -123,7 +123,8 @@ public class ConsumerRole extends ApiResource {
 			return false;
 		}
 		ConsumerRole consumerRole = (ConsumerRole) o;
-		return Objects.equals(this.resourceName, consumerRole.resourceName) && Objects.equals(this.id, consumerRole.id)
+		return Objects.equals(this.resourceName, consumerRole.resourceName) 
+				&& Objects.equals(this.id, consumerRole.id)
 				&& Objects.equals(this.environmentId, consumerRole.environmentId)
 				&& Objects.equals(this.consumerId, consumerRole.consumerId)
 				&& Objects.equals(this.consumerResource, consumerRole.consumerResource)

@@ -58,9 +58,11 @@ public class Taxonomy extends ApiResource {
 			return false;
 		}
 		Taxonomy taxonomy = (Taxonomy) o;
-		return Objects.equals(this.resourceName, taxonomy.resourceName) && Objects.equals(this.id, taxonomy.id)
+		return Objects.equals(this.resourceName, taxonomy.resourceName) 
+				&& Objects.equals(this.id, taxonomy.id)
 				&& Objects.equals(this.environmentId, taxonomy.environmentId)
-				&& Objects.equals(this.name, taxonomy.name) && Objects.equals(this.creatorId, taxonomy.creatorId)
+				&& Objects.equals(this.name, taxonomy.name) 
+				&& Objects.equals(this.creatorId, taxonomy.creatorId)
 				&& Objects.equals(this.creatorResource, taxonomy.creatorResource)
 				&& Objects.equals(this.createdAt, taxonomy.createdAt)
 				&& Objects.equals(this.updatedAt, taxonomy.updatedAt);

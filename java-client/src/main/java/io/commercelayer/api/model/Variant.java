@@ -100,11 +100,13 @@ public class Variant extends ApiResource {
 			return false;
 		}
 		Variant variant = (Variant) o;
-		return Objects.equals(this.resourceName, variant.resourceName) && Objects.equals(this.id, variant.id)
+		return Objects.equals(this.resourceName, variant.resourceName) 
+				&& Objects.equals(this.id, variant.id)
 				&& Objects.equals(this.environmentId, variant.environmentId)
 				&& Objects.equals(this.productId, variant.productId)
 				&& Objects.equals(this.shippingCategoryId, variant.shippingCategoryId)
-				&& Objects.equals(this.sku, variant.sku) && Objects.equals(this.taxCode, variant.taxCode)
+				&& Objects.equals(this.sku, variant.sku)
+				&& Objects.equals(this.taxCode, variant.taxCode)
 				&& Objects.equals(this.creatorId, variant.creatorId)
 				&& Objects.equals(this.creatorResource, variant.creatorResource)
 				&& Objects.equals(this.createdAt, variant.createdAt)

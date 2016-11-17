@@ -212,7 +212,8 @@ public class LineItem extends ApiResource {
 			return false;
 		}
 		LineItem lineItem = (LineItem) o;
-		return Objects.equals(this.resourceName, lineItem.resourceName) && Objects.equals(this.id, lineItem.id)
+		return Objects.equals(this.resourceName, lineItem.resourceName) 
+				&& Objects.equals(this.id, lineItem.id)
 				&& Objects.equals(this.environmentId, lineItem.environmentId)
 				&& Objects.equals(this.orderId, lineItem.orderId)
 				&& Objects.equals(this.sellableId, lineItem.sellableId)

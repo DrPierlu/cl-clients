@@ -72,7 +72,8 @@ public class OptionValue extends ApiResource {
 			return false;
 		}
 		OptionValue optionValue = (OptionValue) o;
-		return Objects.equals(this.resourceName, optionValue.resourceName) && Objects.equals(this.id, optionValue.id)
+		return Objects.equals(this.resourceName, optionValue.resourceName) 
+				&& Objects.equals(this.id, optionValue.id)
 				&& Objects.equals(this.environmentId, optionValue.environmentId)
 				&& Objects.equals(this.name, optionValue.name)
 				&& Objects.equals(this.optionTypeId, optionValue.optionTypeId)

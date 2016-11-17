@@ -129,7 +129,8 @@ public class Webhook extends ApiResource {
 			return false;
 		}
 		Webhook webhook = (Webhook) o;
-		return Objects.equals(this.resourceName, webhook.resourceName) && Objects.equals(this.id, webhook.id)
+		return Objects.equals(this.resourceName, webhook.resourceName) 
+				&& Objects.equals(this.id, webhook.id)
 				&& Objects.equals(this.environmentId, webhook.environmentId)
 				&& Objects.equals(this.eventSubject, webhook.eventSubject)
 				&& Objects.equals(this.eventAction, webhook.eventAction)

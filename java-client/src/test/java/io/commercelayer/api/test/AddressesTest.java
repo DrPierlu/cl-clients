@@ -1,6 +1,11 @@
 package io.commercelayer.api.test;
 
-import org.junit.Assert;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
+import java.util.List;
+
 import org.junit.Test;
 
 import io.commercelayer.api.AddressesCaller;
@@ -22,8 +27,8 @@ public class AddressesTest extends ApiTest {
 		
 		Address b = new AddressesCaller(token).insertAddress(a);
 		
-		Assert.assertNotNull(b);
-		Assert.assertEquals(a.getGeocodingCity(), b.getGeocodingCity());
+		assertNotNull(b);
+		assertEquals(a.getGeocodingCity(), b.getGeocodingCity());
 		
 	}
 	
@@ -48,15 +53,20 @@ public class AddressesTest extends ApiTest {
 		
 		Address address = new AddressesCaller(token).getAddress(1L);
 		
-		Assert.assertNotNull(address);
-		Assert.assertNotNull(address.getId());
-		Assert.assertNotNull(address.getCreatedAt());
+		assertNotNull(address);
+		assertNotNull(address.getId());
+		assertNotNull(address.getCreatedAt());
 		
 	}
 	
-//	@Test
-//	public void getAddressListTest() throws ApiException {
-//		List<Address> addresses = new AddressesCaller(token).getAddressList();
-//	}
+	@Test
+	public void getAddressListTest() throws ApiException {
+		
+		List<Address> addresses = new AddressesCaller(token).getAddressList();
+		
+		assertNotNull(addresses);
+		assertTrue(addresses.size() > 0);
+		
+	}
 	
 }

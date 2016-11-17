@@ -58,9 +58,11 @@ public class OptionType extends ApiResource {
 			return false;
 		}
 		OptionType optionType = (OptionType) o;
-		return Objects.equals(this.resourceName, optionType.resourceName) && Objects.equals(this.id, optionType.id)
+		return Objects.equals(this.resourceName, optionType.resourceName) 
+				&& Objects.equals(this.id, optionType.id)
 				&& Objects.equals(this.environmentId, optionType.environmentId)
-				&& Objects.equals(this.name, optionType.name) && Objects.equals(this.creatorId, optionType.creatorId)
+				&& Objects.equals(this.name, optionType.name) 
+				&& Objects.equals(this.creatorId, optionType.creatorId)
 				&& Objects.equals(this.creatorResource, optionType.creatorResource)
 				&& Objects.equals(this.createdAt, optionType.createdAt)
 				&& Objects.equals(this.updatedAt, optionType.updatedAt);

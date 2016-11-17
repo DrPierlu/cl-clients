@@ -72,12 +72,15 @@ public class State extends ApiResource {
 			return false;
 		}
 		State state = (State) o;
-		return Objects.equals(this.resourceName, state.resourceName) && Objects.equals(this.id, state.id)
+		return Objects.equals(this.resourceName, state.resourceName) 
+				&& Objects.equals(this.id, state.id)
 				&& Objects.equals(this.environmentId, state.environmentId)
-				&& Objects.equals(this.countryId, state.countryId) && Objects.equals(this.code, state.code)
+				&& Objects.equals(this.countryId, state.countryId) 
+				&& Objects.equals(this.code, state.code)
 				&& Objects.equals(this.creatorId, state.creatorId)
 				&& Objects.equals(this.creatorResource, state.creatorResource)
-				&& Objects.equals(this.createdAt, state.createdAt) && Objects.equals(this.updatedAt, state.updatedAt);
+				&& Objects.equals(this.createdAt, state.createdAt) 
+				&& Objects.equals(this.updatedAt, state.updatedAt);
 	}
 
 	@Override

@@ -38,12 +38,16 @@ public final class ApiConfig {
 		return getProperty(group.name() + '.' + key);
 	}
 	
-	public static Boolean getPropertyBoolean(String key) {
+	public static Boolean isPropertyEnabled(String key) {
 		return Boolean.valueOf(getProperty(key));
 	}
 	
-	public static Boolean getPropertyBoolean(Group group, String key) {
+	public static Boolean isPropertyEnabled(Group group, String key) {
 		return Boolean.valueOf(getProperty(group, key));
+	}
+	
+	public static boolean testModeEnabled() {
+		return ApiConfig.isPropertyEnabled(Group.test, "mode");
 	}
 
 }

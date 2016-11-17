@@ -58,9 +58,11 @@ public class Environment extends ApiResource {
 			return false;
 		}
 		Environment environment = (Environment) o;
-		return Objects.equals(this.resourceName, environment.resourceName) && Objects.equals(this.id, environment.id)
+		return Objects.equals(this.resourceName, environment.resourceName) 
+				&& Objects.equals(this.id, environment.id)
 				&& Objects.equals(this.organizationId, environment.organizationId)
-				&& Objects.equals(this.name, environment.name) && Objects.equals(this.creatorId, environment.creatorId)
+				&& Objects.equals(this.name, environment.name) 
+				&& Objects.equals(this.creatorId, environment.creatorId)
 				&& Objects.equals(this.creatorResource, environment.creatorResource)
 				&& Objects.equals(this.createdAt, environment.createdAt)
 				&& Objects.equals(this.updatedAt, environment.updatedAt);

@@ -12,6 +12,10 @@ public abstract class ApiResource extends ApiObject {
 	protected String creatorResource = null;
 	protected LocalDateTime createdAt = null;
 	protected LocalDateTime updatedAt = null;
+	
+	public String getPlural() {
+		return getClass().getSimpleName().concat("s");
+	}
 
 	// @SuppressWarnings("unchecked")
 	// public T resourceName(String resourceName) {

@@ -72,8 +72,10 @@ public class Catalog extends ApiResource {
 			return false;
 		}
 		Catalog catalog = (Catalog) o;
-		return Objects.equals(this.resourceName, catalog.resourceName) && Objects.equals(this.id, catalog.id)
-				&& Objects.equals(this.environmentId, catalog.environmentId) && Objects.equals(this.name, catalog.name)
+		return Objects.equals(this.resourceName, catalog.resourceName) 
+				&& Objects.equals(this.id, catalog.id)
+				&& Objects.equals(this.environmentId, catalog.environmentId) 
+				&& Objects.equals(this.name, catalog.name)
 				&& Objects.equals(this.description, catalog.description)
 				&& Objects.equals(this.creatorId, catalog.creatorId)
 				&& Objects.equals(this.creatorResource, catalog.creatorResource)

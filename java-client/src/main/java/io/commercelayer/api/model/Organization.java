@@ -44,7 +44,8 @@ public class Organization extends ApiResource {
 			return false;
 		}
 		Organization organization = (Organization) o;
-		return Objects.equals(this.resourceName, organization.resourceName) && Objects.equals(this.id, organization.id)
+		return Objects.equals(this.resourceName, organization.resourceName) 
+				&& Objects.equals(this.id, organization.id)
 				&& Objects.equals(this.name, organization.name)
 				&& Objects.equals(this.creatorId, organization.creatorId)
 				&& Objects.equals(this.creatorResource, organization.creatorResource)

@@ -104,7 +104,8 @@ public class StockItem extends ApiResource {
 			return false;
 		}
 		StockItem stockItem = (StockItem) o;
-		return Objects.equals(this.resourceName, stockItem.resourceName) && Objects.equals(this.id, stockItem.id)
+		return Objects.equals(this.resourceName, stockItem.resourceName) 
+				&& Objects.equals(this.id, stockItem.id)
 				&& Objects.equals(this.environmentId, stockItem.environmentId)
 				&& Objects.equals(this.stockLocationId, stockItem.stockLocationId)
 				&& Objects.equals(this.stockableId, stockItem.stockableId)
