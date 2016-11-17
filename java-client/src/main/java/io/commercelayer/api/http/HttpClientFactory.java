@@ -9,7 +9,7 @@ public final class HttpClientFactory {
 		
 		HttpProxy httpProxy = null;
 		
-		if (ApiConfig.getPropertyBoolean(Group.http, "proxy.enabled")) {
+		if (ApiConfig.isPropertyEnabled(Group.http, "proxy.enabled")) {
 			
 			httpProxy = new HttpProxy();
 			

@@ -28,7 +28,7 @@ import io.commercelayer.api.model.common.ApiObject;
 
 public final class JsonCodecGsonImpl implements JsonCodec {
 
-	private static final Boolean formatted = ApiConfig.getPropertyBoolean(Group.test, "mode");
+	private static final Boolean formatted = ApiConfig.testModeEnabled();
 	
 	private Gson gson;
 	{

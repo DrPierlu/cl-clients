@@ -5,6 +5,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import io.commercelayer.api.config.ApiConfig;
 import io.commercelayer.api.exception.ApiException;
 import io.commercelayer.api.exception.AuthException;
 import io.commercelayer.api.exception.ConnectionException;
@@ -156,7 +157,7 @@ public abstract class ApiCaller {
 		response = httpClient.send(request);	// Connection Exception
 		
 		logger.debug("HTTP Response Code: {}", response.getCode());
-		logger.trace("Body: {}", response.getBody());
+		logger.trace("Body: {}", ApiConfig.testModeEnabled()? ApiUtils.formatJson(response.getBody()) : response.getBody());
 		
 		if (response.hasErrorCode()) {
 			// Authentication Error

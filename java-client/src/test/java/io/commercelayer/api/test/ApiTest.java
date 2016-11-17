@@ -1,5 +1,8 @@
 package io.commercelayer.api.test;
 
+import java.util.Random;
+
+import org.apache.commons.lang3.StringUtils;
 import org.junit.BeforeClass;
 
 import io.commercelayer.api.security.ApiAccount;
@@ -7,6 +10,8 @@ import io.commercelayer.api.security.ApiAuthenticator;
 import io.commercelayer.api.security.ApiToken;
 
 public abstract class ApiTest {
+	
+	protected static final Random random = new Random(System.currentTimeMillis());
 	
 	protected static ApiAccount account;
 	protected static ApiToken token;
@@ -27,5 +32,22 @@ public abstract class ApiTest {
 		token = new ApiAuthenticator().authenticate(account);
 		
 	}
+	
+	
+	public int randomValue() {
+		return random.nextInt(1000);
+	}
+	
+	public String randomString() {
+		return StringUtils.leftPad(String.valueOf(randomValue()), 6, '0');
+	}
 
+	public String randomField(String field) {
+		if (field == null) return field;
+		else {
+			if (!StringUtils.isEmpty(field)) field = field.concat("_");
+			return field.concat(randomString());
+		}
+	}
+	
 }

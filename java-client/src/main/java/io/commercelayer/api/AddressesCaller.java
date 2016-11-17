@@ -2,6 +2,7 @@ package io.commercelayer.api;
 
 import java.util.List;
 
+import io.commercelayer.api.config.ResourceCatalog;
 import io.commercelayer.api.exception.ApiException;
 import io.commercelayer.api.model.Address;
 import io.commercelayer.api.security.ApiToken;
@@ -31,7 +32,7 @@ public class AddressesCaller extends ApiCaller {
 
 	@Override
 	protected String getResourcePath() {
-		return "/account/addresses";
+		return ResourceCatalog.ADDRESSES.path();
 	}
 
 }
