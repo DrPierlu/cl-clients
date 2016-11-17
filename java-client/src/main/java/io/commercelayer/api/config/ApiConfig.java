@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
+import io.commercelayer.api.config.ApiConfig.Group;
+
 public final class ApiConfig {
 	
 	public static enum Group {
