@@ -1,16 +1,16 @@
-package io.commercelayer.api.model.common;
+package io.commercelayer.api.search;
 
-public final class ListFilter {
+public final class PageFilter {
 
 	public Integer page; // Page offset to fetch
 	public Integer perPage; // Number of results to return per page
 	public Integer offset; // Pad a number of results
 
-	public ListFilter() {
+	public PageFilter() {
 		super();
 	}
 	
-	public ListFilter(Integer page, Integer perPage, Integer offset) {
+	public PageFilter(Integer page, Integer perPage, Integer offset) {
 		this.page = page;
 		this.perPage = perPage;
 		this.offset = offset;

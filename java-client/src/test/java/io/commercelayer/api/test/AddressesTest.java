@@ -11,6 +11,7 @@ import org.junit.Test;
 import io.commercelayer.api.AddressesCaller;
 import io.commercelayer.api.exception.ApiException;
 import io.commercelayer.api.model.Address;
+import io.commercelayer.api.search.ApiSearchResponse;
 
 public class AddressesTest extends ApiTest {
 
@@ -62,7 +63,9 @@ public class AddressesTest extends ApiTest {
 	@Test
 	public void getAddressListTest() throws ApiException {
 		
-		List<Address> addresses = new AddressesCaller(token).getAddressList();
+		ApiSearchResponse<Address> response = new AddressesCaller(token).getAddressList();
+		
+		List<Address> addresses = response.getItemList();
 		
 		assertNotNull(addresses);
 		assertTrue(addresses.size() > 0);

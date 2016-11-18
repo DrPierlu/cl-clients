@@ -40,6 +40,11 @@ public class HttpResponse {
 	public String getHeader(String header) {
 		return this.headers.get(header);
 	}
+	
+	public Integer getHeaderInt(String header) {
+		String h = this.headers.get(header);
+		return (h == null)? null : Integer.valueOf(h);
+	}
 
 	public String getContentType() {
 		return contentType;
