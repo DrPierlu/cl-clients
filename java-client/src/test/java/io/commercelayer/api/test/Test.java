@@ -1,12 +1,8 @@
 package io.commercelayer.api.test;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import io.commercelayer.api.json.JsonCodec;
 import io.commercelayer.api.json.JsonCodecFactory;
 import io.commercelayer.api.model.Address;
-import io.commercelayer.api.util.ApiUtils;
 
 public class Test {
 

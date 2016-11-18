@@ -1,11 +1,32 @@
 package io.commercelayer.api.http;
 
+import org.apache.commons.lang3.StringUtils;
+
 import io.commercelayer.api.config.ApiConfig;
 import io.commercelayer.api.config.ApiConfig.Group;
+import io.commercelayer.api.util.LogUtils;
 
 public final class HttpClientFactory {
+	
+	static {
+		
+		String cusomClientImpl = ApiConfig.getProperty(Group.http, "client.custom.impl");
+		if (StringUtils.isNotBlank(cusomClientImpl)) {
+			try {
+				customClientClass = Class.forName(cusomClientImpl);
+			}
+			catch (ClassNotFoundException cnfe) {
+				LogUtils.singleErrorMessage(HttpClientFactory.class, String.format("HTTP Custom Client class not found [%s]", cusomClientImpl));
+			}
+		}
+		
+	}
+	
+	private static Class<?> customClientClass;
 
 	public static HttpClient getHttpClientInstance() {
+		
+		if (customClientClass != null) return getCustomClientInstance();
 		
 		HttpProxy httpProxy = null;
 		
@@ -30,8 +51,25 @@ public final class HttpClientFactory {
 	}
 	
 	
+	private static HttpClient getCustomClientInstance() {
+		HttpClient client = null;
+		try {
+			client = (HttpClient)customClientClass.newInstance();
+		} catch (InstantiationException | IllegalAccessException e) {
+			LogUtils.singleErrorStackTrace(HttpClientFactory.class, e);
+		}
+		return client;
+	}
+	
+	
 	private HttpClientFactory() {
 		
+	}
+	
+	
+	public static void main(String[] args) {
+		HttpClient client = HttpClientFactory.getHttpClientInstance();
+		LogUtils.singleInfoMessage(HttpClientFactory.class, String.format("HTTP Client implementation: %s", client.getClass().getName()));
 	}
 	
 }

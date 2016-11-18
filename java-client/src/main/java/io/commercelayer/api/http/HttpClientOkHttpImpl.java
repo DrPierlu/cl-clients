@@ -60,7 +60,7 @@ public class HttpClientOkHttpImpl extends HttpClient {
 			};
 			builder.proxyAuthenticator(proxyAuthenticator);
 			
-			logger.debug("Using Proxy {}:{} ...", httpProxy.getHost(), httpProxy.getPort());
+//			logger.debug("Using Proxy {}:{} ...", httpProxy.getHost(), httpProxy.getPort());
 
 		}
 

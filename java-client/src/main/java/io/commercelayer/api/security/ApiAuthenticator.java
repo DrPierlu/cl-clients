@@ -24,7 +24,7 @@ public final class ApiAuthenticator {
 
 	public ApiToken authenticate(ApiAccount account) throws AuthException {
 		
-		logger.info("Authenticating user... [{}]", account.getUsername());
+		logger.info("Authenticating User... [{}]", account.getUsername());
 
 		AuthRequest authRequest = new AuthRequest(account);
 
@@ -66,7 +66,7 @@ public final class ApiAuthenticator {
 	
 	public ApiToken refreshToken(ApiAccount account, ApiToken token) throws AuthException {
 		
-		logger.info("Refreshing token... [{}]", account.getUsername());
+		logger.info("Refreshing Token... [{}]", account.getUsername());
 
 		AuthRefreshRequest authRequest = new AuthRefreshRequest(token.getRefreshToken());
 
@@ -97,27 +97,6 @@ public final class ApiAuthenticator {
 
 		return token;
 
-	}
-	
-	
-	public static void main(String[] args) {
-		
-		ApiAccount aa = new ApiAccount();
-		aa.setUsername("pierluigiviti@gmail.com");
-		aa.setAuthKey("8967838eed2ad96d2f7451dad6358112");
-		aa.setAuthSecret("9624e353b807bf2dffdb2855542fd28b6e1918e006800737b8a0d5dd6894a8a7");
-		
-		ApiAuthenticator auth = new ApiAuthenticator();
-		
-		System.out.println("Authentication...");
-		ApiToken t = auth.authenticate(aa);
-		System.out.println(t);
-		System.out.println("Refresh token ...");
-		ApiToken token = auth.refreshToken(aa, t);
-		System.out.println(token);
-		
-		
-		
 	}
 
 }
