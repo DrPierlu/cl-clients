@@ -4,7 +4,11 @@ import java.util.Random;
 
 import org.apache.commons.lang3.StringUtils;
 import org.junit.BeforeClass;
+import org.junit.Test;
 
+import io.commercelayer.api.config.ApiConfig;
+import io.commercelayer.api.config.ApiConfig.Group;
+import io.commercelayer.api.exception.ApiException;
 import io.commercelayer.api.security.ApiAccount;
 import io.commercelayer.api.security.ApiAuthenticator;
 import io.commercelayer.api.security.ApiToken;
@@ -25,14 +29,17 @@ public abstract class ApiTest {
 		}
 		
 		account = new ApiAccount();
-		account.setUsername("pierluigiviti@gmail.com");
-		account.setAuthKey("8967838eed2ad96d2f7451dad6358112");
-		account.setAuthSecret("9624e353b807bf2dffdb2855542fd28b6e1918e006800737b8a0d5dd6894a8a7");
+		account.setUsername(ApiConfig.getProperty(Group.authentication, "username"));
+		account.setEnvironment(ApiConfig.getProperty(Group.authentication, "environment"));
+		account.setAuthKey(ApiConfig.getProperty(Group.authentication, "authKey"));
+		account.setAuthSecret(ApiConfig.getProperty(Group.authentication, "authSecret"));
 		
 		token = new ApiAuthenticator().authenticate(account);
 		
 	}
 	
+	@Test
+	public abstract void runTest() throws ApiException;
 	
 	public int randomValue() {
 		return random.nextInt(1000);

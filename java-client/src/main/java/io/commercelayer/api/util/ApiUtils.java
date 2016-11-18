@@ -1,6 +1,7 @@
 package io.commercelayer.api.util;
 
 import io.commercelayer.api.config.ApiConfig;
+import io.commercelayer.api.config.ApiConfig.Group;
 import io.commercelayer.api.json.JsonCodec;
 import io.commercelayer.api.json.JsonCodecFactory;
 import io.commercelayer.api.model.Address;
@@ -19,7 +20,7 @@ public final class ApiUtils {
 	}
 	
 	public static String getResourceUrl(String resource) {
-		return ApiConfig.getProperty("api.service.url").concat(resource);
+		return ApiConfig.getProperty(Group.api, "service.url").concat(resource);
 	}
 	
 }

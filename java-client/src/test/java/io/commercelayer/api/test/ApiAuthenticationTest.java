@@ -4,6 +4,8 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import io.commercelayer.api.config.ApiConfig;
+import io.commercelayer.api.config.ApiConfig.Group;
 import io.commercelayer.api.security.ApiAccount;
 import io.commercelayer.api.security.ApiAuthenticator;
 import io.commercelayer.api.security.ApiToken;
@@ -19,9 +21,11 @@ public class ApiAuthenticationTest {
 		auth = new ApiAuthenticator();
 		
 		account = new ApiAccount();
-		account.setUsername("pierluigiviti@gmail.com");
-		account.setAuthKey("8967838eed2ad96d2f7451dad6358112");
-		account.setAuthSecret("9624e353b807bf2dffdb2855542fd28b6e1918e006800737b8a0d5dd6894a8a7");
+		
+		account.setUsername(ApiConfig.getProperty(Group.authentication, "username"));
+		account.setEnvironment(ApiConfig.getProperty(Group.authentication, "environment"));
+		account.setAuthKey(ApiConfig.getProperty(Group.authentication, "authKey"));
+		account.setAuthSecret(ApiConfig.getProperty(Group.authentication, "authSecret"));
 		
 	}
 
@@ -45,7 +49,12 @@ public class ApiAuthenticationTest {
 		Assert.assertNotNull(token.getAccessToken());
 		Assert.assertNotEquals(token.getAccessToken(), accessToken);
 		
-		
+	}
+	
+	
+	public static void main(String[] args) {
+		initTests();
+		auth.authenticate(account);
 	}
 	
 }

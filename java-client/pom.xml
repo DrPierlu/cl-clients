@@ -76,6 +76,12 @@
 				<version>2.6</version>
 			</dependency>
 
+			<!-- https://mvnrepository.com/artifact/io.swagger/swagger-parser -->
+			<dependency>
+				<groupId>io.swagger</groupId>
+				<artifactId>swagger-parser</artifactId>
+				<version>1.0.23</version>
+			</dependency>
 
 		</dependencies>
 
@@ -132,6 +138,12 @@
 			<scope>compile</scope>
 		</dependency>
 
+		<dependency>
+			<groupId>io.swagger</groupId>
+			<artifactId>swagger-parser</artifactId>
+			<scope>compile</scope>
+		</dependency>
+
 	</dependencies>
 
 
@@ -152,7 +164,7 @@
 				<version>3.0.2</version>
 				<configuration>
 					<excludes>
-						<exclude>**/srcgen/*</exclude>
+						<exclude>**/codegen/*</exclude>
 					</excludes>
 				</configuration>
 			</plugin>

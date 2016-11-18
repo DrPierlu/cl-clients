@@ -5,10 +5,10 @@ import java.time.LocalDateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import io.commercelayer.api.http.HttpClient;
-import io.commercelayer.api.http.HttpClientFactory;
 import io.commercelayer.api.exception.AuthException;
 import io.commercelayer.api.exception.ConnectionException;
+import io.commercelayer.api.http.HttpClient;
+import io.commercelayer.api.http.HttpClientFactory;
 import io.commercelayer.api.http.HttpRequest;
 import io.commercelayer.api.http.HttpRequest.Method;
 import io.commercelayer.api.http.HttpResponse;
@@ -24,7 +24,7 @@ public final class ApiAuthenticator {
 
 	public ApiToken authenticate(ApiAccount account) throws AuthException {
 		
-		logger.info("Authenticating user [{}]", account.getUsername());
+		logger.info("Authenticating user... [{}]", account.getUsername());
 
 		AuthRequest authRequest = new AuthRequest(account);
 
@@ -37,15 +37,24 @@ public final class ApiAuthenticator {
 		HttpResponse httpResponse = null;
 
 		try {
-			httpResponse = httpClient.send(httpRequest);
-		} catch (ConnectionException he) {
-			logger.error("Request HTTP Error: {}", he.getMessage());
-			throw new AuthException(String.format("Authentication HTTP error [%s]", account.toString()));
+		
+			try {
+				httpResponse = httpClient.send(httpRequest);
+			} catch (ConnectionException he) {
+				logger.error("Request HTTP Error: {}", he.getMessage());
+				throw new AuthException(String.format("Authentication HTTP error [%s]", account));
+			}
+			
+			if (httpResponse.getCode() >= 300) throw new AuthException(String.format("HTTP Error Code [%d]", httpResponse.getCode()));
+			if (!ContentType.JSON.equals(httpResponse.getContentType())) throw new AuthException(String.format("Expected JSON Content Type [%s]", httpResponse.getContentType()));
+		
+		}
+		catch (AuthException ae) {
+			logger.info("Authentication Failure [{}]", account);
+			throw ae;
 		}
 		
-		if (httpResponse.getCode() >= 300) throw new AuthException(String.format("HTTP Error Code [%d]", httpResponse.getCode()));
-		if (!ContentType.JSON.equals(httpResponse.getContentType())) throw new AuthException(String.format("Expected JSON Content Type [%s]", httpResponse.getContentType()));
-
+		logger.info("Authentication Success [{}]", account);
 
 		ApiToken token = ApiUtils.getJsonCodecInstance().fromJSON(httpResponse.getBody(), ApiToken.class);
 		
@@ -57,7 +66,7 @@ public final class ApiAuthenticator {
 	
 	public ApiToken refreshToken(ApiAccount account, ApiToken token) throws AuthException {
 		
-		logger.info("Refreshing token [{}]", account.getUsername());
+		logger.info("Refreshing token... [{}]", account.getUsername());
 
 		AuthRefreshRequest authRequest = new AuthRefreshRequest(token.getRefreshToken());
 

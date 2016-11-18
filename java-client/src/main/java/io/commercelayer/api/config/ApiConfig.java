@@ -4,12 +4,17 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-import io.commercelayer.api.config.ApiConfig.Group;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import io.commercelayer.api.util.LogUtils;
 
 public final class ApiConfig {
 	
+	private static final Logger logger = LoggerFactory.getLogger(ApiConfig.class);
+	
 	public static enum Group {
-		test, authentication, http
+		api, test, authentication, http
 	}
 	
 	private static Properties settings = new Properties();
@@ -26,11 +31,12 @@ public final class ApiConfig {
 		try {
 			settings.load(configStrieam);
 		} catch (IOException ioe) {
-			ioe.printStackTrace();
+			logger.error(LogUtils.printStackTrace(ioe));
 		}
 		
 	}
-	
+
+
 	
 	public static String getProperty(String key) {
 		return (key == null)? null : settings.getProperty(key);

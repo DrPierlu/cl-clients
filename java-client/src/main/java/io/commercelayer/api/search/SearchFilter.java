@@ -10,7 +10,7 @@ public class SearchFilter {
 	private List<SearchParam> searchParams = new ArrayList<>();
 
 	public List<SearchParam> getSearchParams() {
-		return searchParams;
+		return this.searchParams;
 	}
 
 	public void addSearchParam(MatchType type, String field, String value) {

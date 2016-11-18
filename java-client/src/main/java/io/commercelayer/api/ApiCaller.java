@@ -1,6 +1,5 @@
 package io.commercelayer.api;
 
-import java.util.Collections;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -27,6 +26,7 @@ import io.commercelayer.api.search.PageFilter;
 import io.commercelayer.api.search.SearchFilter;
 import io.commercelayer.api.search.SearchParam;
 import io.commercelayer.api.search.SortFilter;
+import io.commercelayer.api.search.SortParam;
 import io.commercelayer.api.security.ApiToken;
 import io.commercelayer.api.util.ApiUtils;
 import io.commercelayer.api.util.ContentType;
@@ -88,10 +88,15 @@ public abstract class ApiCaller {
 		// Sort Filter
 		final SortFilter sortFilter = searchRequest.getSortFilter();
 		if (sortFilter != null) {
-			//TODO: sortFilter implementation
+			for (SortParam sp : sortFilter.getSortParams()) {
+				StringBuilder v = new StringBuilder();
+				v.append(sp.getField()).append("+").append(sp.getType().order());
+				request.addHeader("q[s]", v.toString());
+			}
 		}
 		
 		
+		// HTTP server call
 		HttpResponse response = call(request);
 		
 		List<T> itemList = jsonCodec.fromJSONList(response.getBody(), class_);
@@ -231,38 +236,6 @@ public abstract class ApiCaller {
 
 		return request;
 
-	}	
-	
-	
-	
-	
-	
-	/*
-paginazione in query string
-i parametri sono
-page
-per_page
-e nella risposta hai i seguenti header
-X-Total
-X-Total-Pages
-X-Per-Page
-X-Page
-X-Next-Page
-X-Prev-Page
-X-Offset
-per i filtri ci sono un bel po' di opzioni
-ma alcuni esempi
-per un attributo "name"
-q[name_eq]=pierluigi
-q[name_start]=pier
-q[name_cont]=erlu
-che ovviamente possono essere concatenati
-q[name_eq]=pierluigi&q[city_start]=poggi
-ordinamento
-q[s]=name+asc
-q[s]=name+desc
-	 */
-	
-	
+	}
 	
 }

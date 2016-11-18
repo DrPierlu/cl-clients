@@ -1,13 +1,10 @@
 package io.commercelayer.api;
 
-import java.util.List;
-
 import io.commercelayer.api.config.ResourceCatalog;
 import io.commercelayer.api.exception.ApiException;
 import io.commercelayer.api.model.Address;
 import io.commercelayer.api.search.ApiSearchRequest;
 import io.commercelayer.api.search.ApiSearchResponse;
-import io.commercelayer.api.search.PageFilter;
 import io.commercelayer.api.security.ApiToken;
 
 public class AddressesCaller extends ApiCaller {
@@ -36,9 +33,6 @@ public class AddressesCaller extends ApiCaller {
 		return getItemList(searchRequest, Address.class);
 	}
 	
-	public ApiSearchResponse<Address> getAddressList() throws ApiException {
-		return getItemList(null, Address.class);
-	}
 	
 
 	@Override

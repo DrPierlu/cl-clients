@@ -60,13 +60,14 @@ public class HttpClientOkHttpImpl extends HttpClient {
 			};
 			builder.proxyAuthenticator(proxyAuthenticator);
 			
-			logger.info("Using Proxy {}:{} ...", httpProxy.getHost(), httpProxy.getPort());
+			logger.debug("Using Proxy {}:{} ...", httpProxy.getHost(), httpProxy.getPort());
 
 		}
 
 
 		// HTTPS
-		if (ApiConfig.isPropertyEnabled(Group.http, "ssl.trustAll")) sslTrustAll(builder);
+		if (ApiConfig.getProperty(Group.api, "service.url").startsWith("https://"))
+			if (ApiConfig.isPropertyEnabled(Group.http, "ssl.trustAll")) sslTrustAll(builder);
 
 		// Network Interceptor
 		if (ApiConfig.isPropertyEnabled(Group.http, "debug")) builder.addNetworkInterceptor(new LoggingInterceptor());
@@ -77,8 +78,7 @@ public class HttpClientOkHttpImpl extends HttpClient {
 		builder.readTimeout(10, TimeUnit.SECONDS);
 		builder.writeTimeout(10, TimeUnit.SECONDS);
 
-		if (ApiConfig.isPropertyEnabled(Group.http, "debug")) builder.addNetworkInterceptor(new LoggingInterceptor());
-
+		
 		return builder.build();
 
 	}
