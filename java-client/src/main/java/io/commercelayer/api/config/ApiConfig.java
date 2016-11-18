@@ -14,7 +14,7 @@ public final class ApiConfig {
 	private static final Logger logger = LoggerFactory.getLogger(ApiConfig.class);
 	
 	public static enum Group {
-		api, test, authentication, http
+		api, test, authentication, http, json
 	}
 	
 	private static Properties settings = new Properties();
