@@ -217,12 +217,18 @@ public class HttpClientOkHttpImpl extends HttpClient {
 	// }
 
 	private String getContentType(MediaType mediaType) {
+		
+		if (mediaType == null) return null;
+		
 		StringBuilder sb = new StringBuilder(mediaType.type());
 		if (mediaType.subtype() != null)
 			sb.append('/').append(mediaType.subtype());
+		
 		return sb.toString();
+		
 	}
 
+	
 	private final class LoggingInterceptor implements Interceptor {
 		@Override
 		public Response intercept(Interceptor.Chain chain) throws IOException {

@@ -7,6 +7,7 @@ import static org.junit.Assert.assertTrue;
 import java.util.List;
 
 import org.junit.FixMethodOrder;
+import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
 import io.commercelayer.api.AddressesCaller;
@@ -63,6 +64,7 @@ public class AddressesTest extends ApiTest {
 		
 	}
 	
+
 	// @Test
 	public void _04_getAddressListTest() throws ApiException {
 		
@@ -84,7 +86,6 @@ public class AddressesTest extends ApiTest {
 		AddressesCaller caller = new AddressesCaller(token);
 		
 		// INSERT
-		System.out.println("insertTest");
 		Address a = new Address();
 		
 		a.setGeocodingCity("Siena");
@@ -96,9 +97,10 @@ public class AddressesTest extends ApiTest {
 		Address b = caller.insertAddress(a);
 		
 		assertNotNull(b);
+		assertNotNull(b.getId());
 		assertEquals(a.getGeocodingCity(), b.getGeocodingCity());
 		
-		
+		b.setId(1L);
 		// GET
 		Address address = caller.getAddress(b.getId());
 		

@@ -81,7 +81,7 @@ public abstract class ApiCaller {
 			for (SearchParam sp : searchFilter.getSearchParams()) {
 				StringBuilder q = new StringBuilder();
 				q.append("q[").append(sp.getField()).append('_').append(sp.getType().operation()).append(']');
-				request.addHeader(q.toString(), sp.getValue());
+				request.addQueryStringParam(q.toString(), sp.getValue());
 			}
 		}
 		
@@ -91,7 +91,7 @@ public abstract class ApiCaller {
 			for (SortParam sp : sortFilter.getSortParams()) {
 				StringBuilder v = new StringBuilder();
 				v.append(sp.getField()).append("+").append(sp.getType().order());
-				request.addHeader("q[s]", v.toString());
+				request.addQueryStringParam("q[s]", v.toString());
 			}
 		}
 		
@@ -194,12 +194,11 @@ public abstract class ApiCaller {
 		
 		HttpResponse response = null;
 		
-		logger.trace("Body: {}", request.getBody());
+		logger.trace("Request Body: {}", request.getBody());
 		
 		response = httpClient.send(request);	// Connection Exception
 		
 		logger.debug("HTTP Response Code: {}", response.getCode());
-		logger.trace("Body: {}", ApiConfig.testModeEnabled()? ApiUtils.formatJson(response.getBody()) : response.getBody());
 		
 		if (response.hasErrorCode()) {
 			// Authentication Error
@@ -215,9 +214,13 @@ public abstract class ApiCaller {
 			}
 			// System Error
 			else {
-				throw new SystemException("Api System Exception");
+				throw new SystemException(String.format("Api System Exception [%d]", response.getCode()));
 			}
 		}
+		
+		
+		// logger.trace("Response Body: {}", ApiConfig.testModeEnabled()? ApiUtils.formatJson(response.getBody()) : response.getBody());
+		logger.trace("Response Body: {}", response.getBody());
 
 		
 		return response;

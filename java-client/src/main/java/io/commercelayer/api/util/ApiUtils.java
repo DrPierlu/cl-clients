@@ -15,6 +15,7 @@ public final class ApiUtils {
 	}
 	
 	public static String formatJson(String json) {
+		if (json == null) return null;
 		JsonCodec jc = getJsonCodecInstance();
 		return jc.toJSON(jc.fromJSON(json, Address.class), false);
 	}
