@@ -201,19 +201,21 @@ public abstract class ApiCaller {
 		logger.debug("HTTP Response Code: {}", response.getCode());
 		
 		if (response.hasErrorCode()) {
-			// Authentication Error
-			if (response.getCode() == 401) {
+			if (response.getCode() <= 308) {	// Redirection
+				// Nothing to do
+			}
+			else
+			if (response.getCode() == 401) {	// Authentication Error
 				ApiError apiError = jsonCodec.fromJSON(response.getBody(), ApiError.class);
 				throw new AuthException(apiError);
 			}
-			// Data Error
 			else
-			if (response.getCode() == 400) {
+			if (response.getCode() == 400) {	// Data Error
 				ApiError apiError = jsonCodec.fromJSON(response.getBody(), ApiError.class);
 				throw new ApiException(apiError);
 			}
-			// System Error
-			else {
+			else
+			if (response.getCode() >= 500) {	// System Error
 				throw new SystemException(String.format("Api System Exception [%d]", response.getCode()));
 			}
 		}
