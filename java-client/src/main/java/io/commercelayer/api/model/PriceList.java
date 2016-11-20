@@ -10,23 +10,10 @@ import io.commercelayer.api.model.common.ApiResource;
  */
 public class PriceList extends ApiResource {
 
-	private String environmentId = null;
 	private String currencyId = null;
 	private String name = null;
 	private String taxIncluded = null;
 
-	public PriceList environmentId(String environmentId) {
-		this.environmentId = environmentId;
-		return this;
-	}
-
-	public String getEnvironmentId() {
-		return environmentId;
-	}
-
-	public void setEnvironmentId(String environmentId) {
-		this.environmentId = environmentId;
-	}
 
 	public PriceList currencyId(String currencyId) {
 		this.currencyId = currencyId;
@@ -86,21 +73,15 @@ public class PriceList extends ApiResource {
 			return false;
 		}
 		PriceList priceList = (PriceList) o;
-		return Objects.equals(this.resourceName, priceList.resourceName) 
-				&& Objects.equals(this.id, priceList.id)
-				&& Objects.equals(this.environmentId, priceList.environmentId)
-				&& Objects.equals(this.currencyId, priceList.currencyId) 
+		return super.equals(o) && 
+			Objects.equals(this.currencyId, priceList.currencyId) 
 				&& Objects.equals(this.name, priceList.name)
-				&& Objects.equals(this.taxIncluded, priceList.taxIncluded)
-				&& Objects.equals(this.creatorId, priceList.creatorId)
-				&& Objects.equals(this.creatorResource, priceList.creatorResource)
-				&& Objects.equals(this.createdAt, priceList.createdAt)
-				&& Objects.equals(this.updatedAt, priceList.updatedAt);
+				&& Objects.equals(this.taxIncluded, priceList.taxIncluded);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(resourceName, id, environmentId, currencyId, name, taxIncluded, creatorId, creatorResource,
+		return Objects.hash(resourceName, id, currencyId, name, taxIncluded, creatorId, creatorResource,
 				createdAt, updatedAt);
 	}
 

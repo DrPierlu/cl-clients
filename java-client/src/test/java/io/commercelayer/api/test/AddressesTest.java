@@ -65,7 +65,7 @@ public class AddressesTest extends ApiTest {
 	}
 	
 
-	// @Test
+	@Test
 	public void _04_getAddressListTest() throws ApiException {
 		
 		ApiSearchRequest request = new ApiSearchRequest();
@@ -100,7 +100,7 @@ public class AddressesTest extends ApiTest {
 		assertNotNull(b.getId());
 		assertEquals(a.getGeocodingCity(), b.getGeocodingCity());
 		
-		b.setId(1L);
+		
 		// GET
 		Address address = caller.getAddress(b.getId());
 		

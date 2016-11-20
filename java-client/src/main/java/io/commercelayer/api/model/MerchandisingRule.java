@@ -10,25 +10,12 @@ import io.commercelayer.api.model.common.ApiResource;
  */
 public class MerchandisingRule extends ApiResource {
 
-	private String environmentId = null;
 	private String catalogId = null;
 	private String taxonId = null;
 	private String productId = null;
 	private String position = null;
 	private String hero = null;
 
-	public MerchandisingRule environmentId(String environmentId) {
-		this.environmentId = environmentId;
-		return this;
-	}
-
-	public String getEnvironmentId() {
-		return environmentId;
-	}
-
-	public void setEnvironmentId(String environmentId) {
-		this.environmentId = environmentId;
-	}
 
 	public MerchandisingRule catalogId(String catalogId) {
 		this.catalogId = catalogId;
@@ -114,23 +101,17 @@ public class MerchandisingRule extends ApiResource {
 			return false;
 		}
 		MerchandisingRule merchandisingRule = (MerchandisingRule) o;
-		return Objects.equals(this.resourceName, merchandisingRule.resourceName)
-				&& Objects.equals(this.id, merchandisingRule.id)
-				&& Objects.equals(this.environmentId, merchandisingRule.environmentId)
-				&& Objects.equals(this.catalogId, merchandisingRule.catalogId)
+		return super.equals(o) && 
+			Objects.equals(this.catalogId, merchandisingRule.catalogId)
 				&& Objects.equals(this.taxonId, merchandisingRule.taxonId)
 				&& Objects.equals(this.productId, merchandisingRule.productId)
 				&& Objects.equals(this.position, merchandisingRule.position)
-				&& Objects.equals(this.hero, merchandisingRule.hero)
-				&& Objects.equals(this.creatorId, merchandisingRule.creatorId)
-				&& Objects.equals(this.creatorResource, merchandisingRule.creatorResource)
-				&& Objects.equals(this.createdAt, merchandisingRule.createdAt)
-				&& Objects.equals(this.updatedAt, merchandisingRule.updatedAt);
+				&& Objects.equals(this.hero, merchandisingRule.hero);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(resourceName, id, environmentId, catalogId, taxonId, productId, position, hero, creatorId,
+		return Objects.hash(resourceName, id, catalogId, taxonId, productId, position, hero, creatorId,
 				creatorResource, createdAt, updatedAt);
 	}
 

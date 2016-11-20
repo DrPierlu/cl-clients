@@ -10,21 +10,8 @@ import io.commercelayer.api.model.common.ApiResource;
  */
 public class CountryGroup extends ApiResource {
 
-	private String environmentId = null;
 	private String name = null;
 
-	public CountryGroup environmentId(String environmentId) {
-		this.environmentId = environmentId;
-		return this;
-	}
-
-	public String getEnvironmentId() {
-		return environmentId;
-	}
-
-	public void setEnvironmentId(String environmentId) {
-		this.environmentId = environmentId;
-	}
 
 	public CountryGroup name(String name) {
 		this.name = name;
@@ -58,19 +45,13 @@ public class CountryGroup extends ApiResource {
 			return false;
 		}
 		CountryGroup countryGroup = (CountryGroup) o;
-		return Objects.equals(this.resourceName, countryGroup.resourceName) 
-				&& Objects.equals(this.id, countryGroup.id)
-				&& Objects.equals(this.environmentId, countryGroup.environmentId)
-				&& Objects.equals(this.name, countryGroup.name)
-				&& Objects.equals(this.creatorId, countryGroup.creatorId)
-				&& Objects.equals(this.creatorResource, countryGroup.creatorResource)
-				&& Objects.equals(this.createdAt, countryGroup.createdAt)
-				&& Objects.equals(this.updatedAt, countryGroup.updatedAt);
+		return super.equals(o) &&
+			Objects.equals(this.name, countryGroup.name);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(resourceName, id, environmentId, name, creatorId, creatorResource, createdAt, updatedAt);
+		return Objects.hash(resourceName, id, name, creatorId, creatorResource, createdAt, updatedAt);
 	}
 
 }

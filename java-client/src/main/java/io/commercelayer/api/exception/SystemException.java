@@ -8,4 +8,8 @@ public class SystemException extends RuntimeException {
 		super(message);
 	}
 	
+	public SystemException(String message, Object... params) {
+		super(String.format(message, params));
+	}
+	
 }

@@ -10,7 +10,6 @@ import io.commercelayer.api.model.common.ApiResource;
  */
 public class StockLocation extends ApiResource {
 
-	private String environmentId = null;
 	private String name = null;
 	private String position = null;
 	private String parentId = null;
@@ -19,18 +18,6 @@ public class StockLocation extends ApiResource {
 	private String depth = null;
 	private String childrenCount = null;
 
-	public StockLocation environmentId(String environmentId) {
-		this.environmentId = environmentId;
-		return this;
-	}
-
-	public String getEnvironmentId() {
-		return environmentId;
-	}
-
-	public void setEnvironmentId(String environmentId) {
-		this.environmentId = environmentId;
-	}
 
 	public StockLocation name(String name) {
 		this.name = name;
@@ -142,25 +129,19 @@ public class StockLocation extends ApiResource {
 			return false;
 		}
 		StockLocation stockLocation = (StockLocation) o;
-		return Objects.equals(this.resourceName, stockLocation.resourceName)
-				&& Objects.equals(this.id, stockLocation.id)
-				&& Objects.equals(this.environmentId, stockLocation.environmentId)
-				&& Objects.equals(this.name, stockLocation.name)
+		return super.equals(o) && 
+			Objects.equals(this.name, stockLocation.name)
 				&& Objects.equals(this.position, stockLocation.position)
 				&& Objects.equals(this.parentId, stockLocation.parentId) 
 				&& Objects.equals(this.lft, stockLocation.lft)
 				&& Objects.equals(this.rgt, stockLocation.rgt) 
 				&& Objects.equals(this.depth, stockLocation.depth)
-				&& Objects.equals(this.childrenCount, stockLocation.childrenCount)
-				&& Objects.equals(this.creatorId, stockLocation.creatorId)
-				&& Objects.equals(this.creatorResource, stockLocation.creatorResource)
-				&& Objects.equals(this.createdAt, stockLocation.createdAt)
-				&& Objects.equals(this.updatedAt, stockLocation.updatedAt);
+				&& Objects.equals(this.childrenCount, stockLocation.childrenCount);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(resourceName, id, environmentId, name, position, parentId, lft, rgt, depth, childrenCount,
+		return Objects.hash(resourceName, id, name, position, parentId, lft, rgt, depth, childrenCount,
 				creatorId, creatorResource, createdAt, updatedAt);
 	}
 

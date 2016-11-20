@@ -10,22 +10,9 @@ import io.commercelayer.api.model.common.ApiResource;
  */
 public class State extends ApiResource {
 
-	private String environmentId = null;
 	private String countryId = null;
 	private String code = null;
 
-	public State environmentId(String environmentId) {
-		this.environmentId = environmentId;
-		return this;
-	}
-
-	public String getEnvironmentId() {
-		return environmentId;
-	}
-
-	public void setEnvironmentId(String environmentId) {
-		this.environmentId = environmentId;
-	}
 
 	public State countryId(String countryId) {
 		this.countryId = countryId;
@@ -72,20 +59,14 @@ public class State extends ApiResource {
 			return false;
 		}
 		State state = (State) o;
-		return Objects.equals(this.resourceName, state.resourceName) 
-				&& Objects.equals(this.id, state.id)
-				&& Objects.equals(this.environmentId, state.environmentId)
-				&& Objects.equals(this.countryId, state.countryId) 
-				&& Objects.equals(this.code, state.code)
-				&& Objects.equals(this.creatorId, state.creatorId)
-				&& Objects.equals(this.creatorResource, state.creatorResource)
-				&& Objects.equals(this.createdAt, state.createdAt) 
-				&& Objects.equals(this.updatedAt, state.updatedAt);
+		return super.equals(o) && 
+			Objects.equals(this.countryId, state.countryId) 
+				&& Objects.equals(this.code, state.code);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(resourceName, id, environmentId, countryId, code, creatorId, creatorResource, createdAt,
+		return Objects.hash(resourceName, id, countryId, code, creatorId, creatorResource, createdAt,
 				updatedAt);
 	}
 

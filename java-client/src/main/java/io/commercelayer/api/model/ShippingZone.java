@@ -10,22 +10,9 @@ import io.commercelayer.api.model.common.ApiResource;
  */
 public class ShippingZone extends ApiResource {
 
-	private String environmentId = null;
 	private String countryGroupId = null;
 	private String name = null;
 
-	public ShippingZone environmentId(String environmentId) {
-		this.environmentId = environmentId;
-		return this;
-	}
-
-	public String getEnvironmentId() {
-		return environmentId;
-	}
-
-	public void setEnvironmentId(String environmentId) {
-		this.environmentId = environmentId;
-	}
 
 	public ShippingZone countryGroupId(String countryGroupId) {
 		this.countryGroupId = countryGroupId;
@@ -72,20 +59,14 @@ public class ShippingZone extends ApiResource {
 			return false;
 		}
 		ShippingZone shippingZone = (ShippingZone) o;
-		return Objects.equals(this.resourceName, shippingZone.resourceName) 
-				&& Objects.equals(this.id, shippingZone.id)
-				&& Objects.equals(this.environmentId, shippingZone.environmentId)
-				&& Objects.equals(this.countryGroupId, shippingZone.countryGroupId)
-				&& Objects.equals(this.name, shippingZone.name)
-				&& Objects.equals(this.creatorId, shippingZone.creatorId)
-				&& Objects.equals(this.creatorResource, shippingZone.creatorResource)
-				&& Objects.equals(this.createdAt, shippingZone.createdAt)
-				&& Objects.equals(this.updatedAt, shippingZone.updatedAt);
+		return super.equals(o) &&
+			Objects.equals(this.countryGroupId, shippingZone.countryGroupId)
+				&& Objects.equals(this.name, shippingZone.name);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(resourceName, id, environmentId, countryGroupId, name, creatorId, creatorResource,
+		return Objects.hash(resourceName, id, countryGroupId, name, creatorId, creatorResource,
 				createdAt, updatedAt);
 	}
 

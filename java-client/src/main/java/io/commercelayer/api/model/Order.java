@@ -10,7 +10,6 @@ import io.commercelayer.api.model.common.ApiResource;
  */
 public class Order extends ApiResource {
 
-	private String environmentId = null;
 	private String merchantId = null;
 	private String channelId = null;
 	private String countryId = null;
@@ -18,18 +17,6 @@ public class Order extends ApiResource {
 	private String shippingAddressId = null;
 	private String billingAddressId = null;
 
-	public Order environmentId(String environmentId) {
-		this.environmentId = environmentId;
-		return this;
-	}
-
-	public String getEnvironmentId() {
-		return environmentId;
-	}
-
-	public void setEnvironmentId(String environmentId) {
-		this.environmentId = environmentId;
-	}
 
 	public Order merchantId(String merchantId) {
 		this.merchantId = merchantId;
@@ -128,24 +115,18 @@ public class Order extends ApiResource {
 			return false;
 		}
 		Order order = (Order) o;
-		return Objects.equals(this.resourceName, order.resourceName) 
-				&& Objects.equals(this.id, order.id)
-				&& Objects.equals(this.environmentId, order.environmentId)
-				&& Objects.equals(this.merchantId, order.merchantId) 
+		return super.equals(o) && 
+			Objects.equals(this.merchantId, order.merchantId) 
 				&& Objects.equals(this.channelId, order.channelId)
 				&& Objects.equals(this.countryId, order.countryId) 
 				&& Objects.equals(this.currencyId, order.currencyId)
 				&& Objects.equals(this.shippingAddressId, order.shippingAddressId)
-				&& Objects.equals(this.billingAddressId, order.billingAddressId)
-				&& Objects.equals(this.creatorId, order.creatorId)
-				&& Objects.equals(this.creatorResource, order.creatorResource)
-				&& Objects.equals(this.createdAt, order.createdAt) 
-				&& Objects.equals(this.updatedAt, order.updatedAt);
+				&& Objects.equals(this.billingAddressId, order.billingAddressId);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(resourceName, id, environmentId, merchantId, channelId, countryId, currencyId,
+		return Objects.hash(resourceName, id, merchantId, channelId, countryId, currencyId,
 				shippingAddressId, billingAddressId, creatorId, creatorResource, createdAt, updatedAt);
 	}
 

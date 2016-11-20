@@ -10,21 +10,8 @@ import io.commercelayer.api.model.common.ApiResource;
  */
 public class OptionType extends ApiResource {
 
-	private String environmentId = null;
 	private String name = null;
 
-	public OptionType environmentId(String environmentId) {
-		this.environmentId = environmentId;
-		return this;
-	}
-
-	public String getEnvironmentId() {
-		return environmentId;
-	}
-
-	public void setEnvironmentId(String environmentId) {
-		this.environmentId = environmentId;
-	}
 
 	public OptionType name(String name) {
 		this.name = name;
@@ -58,19 +45,13 @@ public class OptionType extends ApiResource {
 			return false;
 		}
 		OptionType optionType = (OptionType) o;
-		return Objects.equals(this.resourceName, optionType.resourceName) 
-				&& Objects.equals(this.id, optionType.id)
-				&& Objects.equals(this.environmentId, optionType.environmentId)
-				&& Objects.equals(this.name, optionType.name) 
-				&& Objects.equals(this.creatorId, optionType.creatorId)
-				&& Objects.equals(this.creatorResource, optionType.creatorResource)
-				&& Objects.equals(this.createdAt, optionType.createdAt)
-				&& Objects.equals(this.updatedAt, optionType.updatedAt);
+		return super.equals(o) && 
+			Objects.equals(this.name, optionType.name);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(resourceName, id, environmentId, name, creatorId, creatorResource, createdAt, updatedAt);
+		return Objects.hash(resourceName, id, name, creatorId, creatorResource, createdAt, updatedAt);
 	}
 
 }

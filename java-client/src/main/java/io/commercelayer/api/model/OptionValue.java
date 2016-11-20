@@ -10,22 +10,9 @@ import io.commercelayer.api.model.common.ApiResource;
  */
 public class OptionValue extends ApiResource {
 
-	private String environmentId = null;
 	private String name = null;
 	private String optionTypeId = null;
 
-	public OptionValue environmentId(String environmentId) {
-		this.environmentId = environmentId;
-		return this;
-	}
-
-	public String getEnvironmentId() {
-		return environmentId;
-	}
-
-	public void setEnvironmentId(String environmentId) {
-		this.environmentId = environmentId;
-	}
 
 	public OptionValue name(String name) {
 		this.name = name;
@@ -72,20 +59,14 @@ public class OptionValue extends ApiResource {
 			return false;
 		}
 		OptionValue optionValue = (OptionValue) o;
-		return Objects.equals(this.resourceName, optionValue.resourceName) 
-				&& Objects.equals(this.id, optionValue.id)
-				&& Objects.equals(this.environmentId, optionValue.environmentId)
-				&& Objects.equals(this.name, optionValue.name)
-				&& Objects.equals(this.optionTypeId, optionValue.optionTypeId)
-				&& Objects.equals(this.creatorId, optionValue.creatorId)
-				&& Objects.equals(this.creatorResource, optionValue.creatorResource)
-				&& Objects.equals(this.createdAt, optionValue.createdAt)
-				&& Objects.equals(this.updatedAt, optionValue.updatedAt);
+		return super.equals(o) && 
+			Objects.equals(this.name, optionValue.name)
+				&& Objects.equals(this.optionTypeId, optionValue.optionTypeId);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(resourceName, id, environmentId, name, optionTypeId, creatorId, creatorResource, createdAt,
+		return Objects.hash(resourceName, id, name, optionTypeId, creatorId, creatorResource, createdAt,
 				updatedAt);
 	}
 

@@ -10,24 +10,11 @@ import io.commercelayer.api.model.common.ApiResource;
  */
 public class ShippingMethod extends ApiResource {
 
-	private String environmentId = null;
 	private String name = null;
 	private String description = null;
 	private String shippingZoneId = null;
 	private String shippingCategoryId = null;
 
-	public ShippingMethod environmentId(String environmentId) {
-		this.environmentId = environmentId;
-		return this;
-	}
-
-	public String getEnvironmentId() {
-		return environmentId;
-	}
-
-	public void setEnvironmentId(String environmentId) {
-		this.environmentId = environmentId;
-	}
 
 	public ShippingMethod name(String name) {
 		this.name = name;
@@ -100,22 +87,16 @@ public class ShippingMethod extends ApiResource {
 			return false;
 		}
 		ShippingMethod shippingMethod = (ShippingMethod) o;
-		return Objects.equals(this.resourceName, shippingMethod.resourceName)
-				&& Objects.equals(this.id, shippingMethod.id)
-				&& Objects.equals(this.environmentId, shippingMethod.environmentId)
-				&& Objects.equals(this.name, shippingMethod.name)
+		return super.equals(o) &&
+			Objects.equals(this.name, shippingMethod.name)
 				&& Objects.equals(this.description, shippingMethod.description)
 				&& Objects.equals(this.shippingZoneId, shippingMethod.shippingZoneId)
-				&& Objects.equals(this.shippingCategoryId, shippingMethod.shippingCategoryId)
-				&& Objects.equals(this.creatorId, shippingMethod.creatorId)
-				&& Objects.equals(this.creatorResource, shippingMethod.creatorResource)
-				&& Objects.equals(this.createdAt, shippingMethod.createdAt)
-				&& Objects.equals(this.updatedAt, shippingMethod.updatedAt);
+				&& Objects.equals(this.shippingCategoryId, shippingMethod.shippingCategoryId);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(resourceName, id, environmentId, name, description, shippingZoneId, shippingCategoryId,
+		return Objects.hash(resourceName, id, name, description, shippingZoneId, shippingCategoryId,
 				creatorId, creatorResource, createdAt, updatedAt);
 	}
 

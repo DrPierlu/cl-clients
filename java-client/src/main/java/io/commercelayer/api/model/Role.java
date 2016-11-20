@@ -58,14 +58,9 @@ public class Role extends ApiResource {
 			return false;
 		}
 		Role role = (Role) o;
-		return Objects.equals(this.resourceName, role.resourceName) 
-				&& Objects.equals(this.id, role.id)
-				&& Objects.equals(this.name, role.name) 
-				&& Objects.equals(this.description, role.description)
-				&& Objects.equals(this.creatorId, role.creatorId)
-				&& Objects.equals(this.creatorResource, role.creatorResource)
-				&& Objects.equals(this.createdAt, role.createdAt) 
-				&& Objects.equals(this.updatedAt, role.updatedAt);
+		return super.equals(o) && 
+			Objects.equals(this.name, role.name) 
+				&& Objects.equals(this.description, role.description);
 	}
 
 	@Override

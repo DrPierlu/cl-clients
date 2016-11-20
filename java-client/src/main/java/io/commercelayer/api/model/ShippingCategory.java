@@ -10,21 +10,8 @@ import io.commercelayer.api.model.common.ApiResource;
  */
 public class ShippingCategory extends ApiResource {
 
-	private String environmentId = null;
 	private String name = null;
 
-	public ShippingCategory environmentId(String environmentId) {
-		this.environmentId = environmentId;
-		return this;
-	}
-
-	public String getEnvironmentId() {
-		return environmentId;
-	}
-
-	public void setEnvironmentId(String environmentId) {
-		this.environmentId = environmentId;
-	}
 
 	public ShippingCategory name(String name) {
 		this.name = name;
@@ -58,19 +45,13 @@ public class ShippingCategory extends ApiResource {
 			return false;
 		}
 		ShippingCategory shippingCategory = (ShippingCategory) o;
-		return Objects.equals(this.resourceName, shippingCategory.resourceName)
-				&& Objects.equals(this.id, shippingCategory.id)
-				&& Objects.equals(this.environmentId, shippingCategory.environmentId)
-				&& Objects.equals(this.name, shippingCategory.name)
-				&& Objects.equals(this.creatorId, shippingCategory.creatorId)
-				&& Objects.equals(this.creatorResource, shippingCategory.creatorResource)
-				&& Objects.equals(this.createdAt, shippingCategory.createdAt)
-				&& Objects.equals(this.updatedAt, shippingCategory.updatedAt);
+		return super.equals(o) && 
+			Objects.equals(this.name, shippingCategory.name);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(resourceName, id, environmentId, name, creatorId, creatorResource, createdAt, updatedAt);
+		return Objects.hash(resourceName, id, name, creatorId, creatorResource, createdAt, updatedAt);
 	}
 
 }

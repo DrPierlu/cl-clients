@@ -10,25 +10,12 @@ import io.commercelayer.api.model.common.ApiResource;
  */
 public class Product extends ApiResource {
 
-	private String environmentId = null;
 	private String name = null;
 	private String description = null;
 	private String shippingCategoryId = null;
 	private String taxCode = null;
 
-	public Product environmentId(String environmentId) {
-		this.environmentId = environmentId;
-		return this;
-	}
-
-	public String getEnvironmentId() {
-		return environmentId;
-	}
-
-	public void setEnvironmentId(String environmentId) {
-		this.environmentId = environmentId;
-	}
-
+	
 	public Product name(String name) {
 		this.name = name;
 		return this;
@@ -100,22 +87,16 @@ public class Product extends ApiResource {
 			return false;
 		}
 		Product product = (Product) o;
-		return Objects.equals(this.resourceName, product.resourceName) 
-				&& Objects.equals(this.id, product.id)
-				&& Objects.equals(this.environmentId, product.environmentId) 
-				&& Objects.equals(this.name, product.name)
+		return super.equals(o) && 
+			Objects.equals(this.name, product.name)
 				&& Objects.equals(this.description, product.description)
 				&& Objects.equals(this.shippingCategoryId, product.shippingCategoryId)
-				&& Objects.equals(this.taxCode, product.taxCode) 
-				&& Objects.equals(this.creatorId, product.creatorId)
-				&& Objects.equals(this.creatorResource, product.creatorResource)
-				&& Objects.equals(this.createdAt, product.createdAt)
-				&& Objects.equals(this.updatedAt, product.updatedAt);
+				&& Objects.equals(this.taxCode, product.taxCode);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(resourceName, id, environmentId, name, description, shippingCategoryId, taxCode, creatorId,
+		return Objects.hash(resourceName, id, name, description, shippingCategoryId, taxCode, creatorId,
 				creatorResource, createdAt, updatedAt);
 	}
 

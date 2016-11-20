@@ -5,7 +5,6 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import io.commercelayer.api.config.ApiConfig;
 import io.commercelayer.api.exception.ApiException;
 import io.commercelayer.api.exception.AuthException;
 import io.commercelayer.api.exception.ConnectionException;
@@ -18,6 +17,7 @@ import io.commercelayer.api.http.HttpResponse;
 import io.commercelayer.api.http.auth.HttpAuthOAuth2;
 import io.commercelayer.api.json.JsonCodec;
 import io.commercelayer.api.json.JsonCodecFactory;
+import io.commercelayer.api.model.common.ApiError;
 import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.search.ApiSearchRequest;
 import io.commercelayer.api.search.ApiSearchResponse;

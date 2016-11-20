@@ -10,7 +10,6 @@ import io.commercelayer.api.model.common.ApiResource;
  */
 public class Price extends ApiResource {
 
-	private String environmentId = null;
 	private String priceListId = null;
 	private String sellableId = null;
 	private String sellableResource = null;
@@ -18,19 +17,7 @@ public class Price extends ApiResource {
 	private String formatted = null;
 	private String exchanges = null;
 
-	public Price environmentId(String environmentId) {
-		this.environmentId = environmentId;
-		return this;
-	}
-
-	public String getEnvironmentId() {
-		return environmentId;
-	}
-
-	public void setEnvironmentId(String environmentId) {
-		this.environmentId = environmentId;
-	}
-
+	
 	public Price priceListId(String priceListId) {
 		this.priceListId = priceListId;
 		return this;
@@ -128,25 +115,18 @@ public class Price extends ApiResource {
 			return false;
 		}
 		Price price = (Price) o;
-		return Objects.equals(this.resourceName, price.resourceName) 
-				&& Objects.equals(this.id, price.id)
-				&& Objects.equals(this.environmentId, price.environmentId)
-				&& Objects.equals(this.priceListId, price.priceListId)
+		return super.equals(o) && 
+			Objects.equals(this.priceListId, price.priceListId)
 				&& Objects.equals(this.sellableId, price.sellableId)
 				&& Objects.equals(this.sellableResource, price.sellableResource)
 				&& Objects.equals(this.amount, price.amount) 
-				&& Objects.equals(this.creatorId, price.creatorId)
-				&& Objects.equals(this.creatorResource, price.creatorResource)
-				&& Objects.equals(this.createdAt, price.createdAt) 
-				&& Objects.equals(this.updatedAt, price.updatedAt)
 				&& Objects.equals(this.formatted, price.formatted)
 				&& Objects.equals(this.exchanges, price.exchanges);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(resourceName, id, environmentId, priceListId, sellableId, sellableResource, amount,
-				creatorId, creatorResource, createdAt, updatedAt, formatted, exchanges);
+		return Objects.hash(priceListId, sellableId, sellableResource, amount, formatted, exchanges);
 	}
 
 }

@@ -1,6 +1,4 @@
-package io.commercelayer.api;
-
-import io.commercelayer.api.model.common.ApiObject;
+package io.commercelayer.api.model.common;
 
 public class ApiError extends ApiObject {
 

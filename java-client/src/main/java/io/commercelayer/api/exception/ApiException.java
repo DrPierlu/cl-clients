@@ -1,6 +1,6 @@
 package io.commercelayer.api.exception;
 
-import io.commercelayer.api.ApiError;
+import io.commercelayer.api.model.common.ApiError;
 
 public final class ApiException extends Exception {
 

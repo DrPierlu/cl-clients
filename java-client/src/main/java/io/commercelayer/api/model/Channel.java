@@ -10,21 +10,8 @@ import io.commercelayer.api.model.common.ApiResource;
  */
 public class Channel extends ApiResource {
 
-	private String environmentId = null;
 	private String name = null;
-
-	public Channel environmentId(String environmentId) {
-		this.environmentId = environmentId;
-		return this;
-	}
-
-	public String getEnvironmentId() {
-		return environmentId;
-	}
-
-	public void setEnvironmentId(String environmentId) {
-		this.environmentId = environmentId;
-	}
+	
 
 	public Channel name(String name) {
 		this.name = name;
@@ -58,19 +45,13 @@ public class Channel extends ApiResource {
 			return false;
 		}
 		Channel channel = (Channel) o;
-		return Objects.equals(this.resourceName, channel.resourceName) 
-				&& Objects.equals(this.id, channel.id)
-				&& Objects.equals(this.environmentId, channel.environmentId) 
-				&& Objects.equals(this.name, channel.name)
-				&& Objects.equals(this.creatorId, channel.creatorId)
-				&& Objects.equals(this.creatorResource, channel.creatorResource)
-				&& Objects.equals(this.createdAt, channel.createdAt)
-				&& Objects.equals(this.updatedAt, channel.updatedAt);
+		return super.equals(o) &&
+			Objects.equals(this.name, channel.name);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(resourceName, id, environmentId, name, creatorId, creatorResource, createdAt, updatedAt);
+		return Objects.hash(resourceName, id, name, creatorId, creatorResource, createdAt, updatedAt);
 	}
 
 }

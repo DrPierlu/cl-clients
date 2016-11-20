@@ -10,7 +10,6 @@ import io.commercelayer.api.model.common.ApiResource;
  */
 public class Address extends ApiResource {
 
-	private String environmentId = null;
 	private String geocodingCountry = null;
 	private String geocodingZip = null;
 	private String geocodingCity = null;
@@ -42,18 +41,6 @@ public class Address extends ApiResource {
 	private Float suggestedBoundsNeLat = null;
 	private Float suggestedBoundsNeLng = null;
 
-	public Address environmentId(String environmentId) {
-		this.environmentId = environmentId;
-		return this;
-	}
-
-	public String getEnvironmentId() {
-		return environmentId;
-	}
-
-	public void setEnvironmentId(String environmentId) {
-		this.environmentId = environmentId;
-	}
 
 	public Address geocodingCountry(String geocodingCountry) {
 		this.geocodingCountry = geocodingCountry;
@@ -464,10 +451,8 @@ public class Address extends ApiResource {
 			return false;
 		}
 		Address address = (Address) o;
-		return Objects.equals(this.resourceName, address.resourceName) 
-				&& Objects.equals(this.id, address.id)
-				&& Objects.equals(this.environmentId, address.environmentId)
-				&& Objects.equals(this.geocodingCountry, address.geocodingCountry)
+		return super.equals(o) &&
+			Objects.equals(this.geocodingCountry, address.geocodingCountry)
 				&& Objects.equals(this.geocodingZip, address.geocodingZip)
 				&& Objects.equals(this.geocodingCity, address.geocodingCity)
 				&& Objects.equals(this.geocodingStreet, address.geocodingStreet)
@@ -496,16 +481,13 @@ public class Address extends ApiResource {
 				&& Objects.equals(this.suggestedBoundsSwLat, address.suggestedBoundsSwLat)
 				&& Objects.equals(this.suggestedBoundsSwLng, address.suggestedBoundsSwLng)
 				&& Objects.equals(this.suggestedBoundsNeLat, address.suggestedBoundsNeLat)
-				&& Objects.equals(this.suggestedBoundsNeLng, address.suggestedBoundsNeLng)
-				&& Objects.equals(this.creatorId, address.creatorId)
-				&& Objects.equals(this.creatorResource, address.creatorResource)
-				&& Objects.equals(this.createdAt, address.createdAt)
-				&& Objects.equals(this.updatedAt, address.updatedAt);
+				&& Objects.equals(this.suggestedBoundsNeLng, address.suggestedBoundsNeLng);
+		
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(resourceName, id, environmentId, geocodingCountry, geocodingZip, geocodingCity,
+		return Objects.hash(resourceName, id, geocodingCountry, geocodingZip, geocodingCity,
 				geocodingStreet, geocodingNumber, provider, placeId, precision, accuracy, countryCode, country,
 				stateCode, stateName, state, province, zip, city, district, streetName, streetNumber, streetAddress,
 				subPremise, fullAddress, formattedAddress, lat, lng, suggestedBoundsSwLat, suggestedBoundsSwLng,

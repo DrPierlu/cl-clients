@@ -10,21 +10,8 @@ import io.commercelayer.api.model.common.ApiResource;
  */
 public class Language extends ApiResource {
 
-	private String environmentId = null;
 	private String code = null;
 
-	public Language environmentId(String environmentId) {
-		this.environmentId = environmentId;
-		return this;
-	}
-
-	public String getEnvironmentId() {
-		return environmentId;
-	}
-
-	public void setEnvironmentId(String environmentId) {
-		this.environmentId = environmentId;
-	}
 
 	public Language code(String code) {
 		this.code = code;
@@ -58,19 +45,13 @@ public class Language extends ApiResource {
 			return false;
 		}
 		Language language = (Language) o;
-		return Objects.equals(this.resourceName, language.resourceName) 
-				&& Objects.equals(this.id, language.id)
-				&& Objects.equals(this.environmentId, language.environmentId)
-				&& Objects.equals(this.code, language.code) 
-				&& Objects.equals(this.creatorId, language.creatorId)
-				&& Objects.equals(this.creatorResource, language.creatorResource)
-				&& Objects.equals(this.createdAt, language.createdAt)
-				&& Objects.equals(this.updatedAt, language.updatedAt);
+		return super.equals(o) && 
+			Objects.equals(this.code, language.code);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(resourceName, id, environmentId, code, creatorId, creatorResource, createdAt, updatedAt);
+		return Objects.hash(resourceName, id, code, creatorId, creatorResource, createdAt, updatedAt);
 	}
 
 }

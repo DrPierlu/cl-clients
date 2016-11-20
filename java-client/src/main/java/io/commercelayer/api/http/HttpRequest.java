@@ -26,6 +26,11 @@ public class HttpRequest {
 		this.headers = new TreeMap<>();
 		this.queryStringParams = new HashMap<>();
 	}
+	
+	public HttpRequest(Method httpMethod, String url) {
+		this(httpMethod);
+		this.url = url;
+	}
 
 	public String getUrl() {
 		return url;

@@ -10,24 +10,11 @@ import io.commercelayer.api.model.common.ApiResource;
  */
 public class CountryLanguage extends ApiResource {
 
-	private String environmentId = null;
 	private String countryId = null;
 	private String languageId = null;
 	private String position = null;
 
-	public CountryLanguage environmentId(String environmentId) {
-		this.environmentId = environmentId;
-		return this;
-	}
-
-	public String getEnvironmentId() {
-		return environmentId;
-	}
-
-	public void setEnvironmentId(String environmentId) {
-		this.environmentId = environmentId;
-	}
-
+	
 	public CountryLanguage countryId(String countryId) {
 		this.countryId = countryId;
 		return this;
@@ -86,21 +73,15 @@ public class CountryLanguage extends ApiResource {
 			return false;
 		}
 		CountryLanguage countryLanguage = (CountryLanguage) o;
-		return Objects.equals(this.resourceName, countryLanguage.resourceName)
-				&& Objects.equals(this.id, countryLanguage.id)
-				&& Objects.equals(this.environmentId, countryLanguage.environmentId)
-				&& Objects.equals(this.countryId, countryLanguage.countryId)
+		return super.equals(o) && 
+			Objects.equals(this.countryId, countryLanguage.countryId)
 				&& Objects.equals(this.languageId, countryLanguage.languageId)
-				&& Objects.equals(this.position, countryLanguage.position)
-				&& Objects.equals(this.creatorId, countryLanguage.creatorId)
-				&& Objects.equals(this.creatorResource, countryLanguage.creatorResource)
-				&& Objects.equals(this.createdAt, countryLanguage.createdAt)
-				&& Objects.equals(this.updatedAt, countryLanguage.updatedAt);
+				&& Objects.equals(this.position, countryLanguage.position);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(resourceName, id, environmentId, countryId, languageId, position, creatorId,
+		return Objects.hash(resourceName, id, countryId, languageId, position, creatorId,
 				creatorResource, createdAt, updatedAt);
 	}
 

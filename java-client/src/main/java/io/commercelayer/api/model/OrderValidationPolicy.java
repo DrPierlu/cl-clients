@@ -10,7 +10,6 @@ import io.commercelayer.api.model.common.ApiResource;
  */
 public class OrderValidationPolicy extends ApiResource {
 
-	private String environmentId = null;
 	private String currencyId = null;
 	private String billingAddressRequired = null;
 	private Float orderTotalMin = null;
@@ -20,18 +19,6 @@ public class OrderValidationPolicy extends ApiResource {
 	private String paymentMethodStatus = null;
 	private String paymentMethodStatusPercentage = null;
 
-	public OrderValidationPolicy environmentId(String environmentId) {
-		this.environmentId = environmentId;
-		return this;
-	}
-
-	public String getEnvironmentId() {
-		return environmentId;
-	}
-
-	public void setEnvironmentId(String environmentId) {
-		this.environmentId = environmentId;
-	}
 
 	public OrderValidationPolicy currencyId(String currencyId) {
 		this.currencyId = currencyId;
@@ -156,26 +143,20 @@ public class OrderValidationPolicy extends ApiResource {
 			return false;
 		}
 		OrderValidationPolicy orderValidationPolicy = (OrderValidationPolicy) o;
-		return Objects.equals(this.resourceName, orderValidationPolicy.resourceName)
-				&& Objects.equals(this.id, orderValidationPolicy.id)
-				&& Objects.equals(this.environmentId, orderValidationPolicy.environmentId)
-				&& Objects.equals(this.currencyId, orderValidationPolicy.currencyId)
+		return super.equals(o) && 
+			Objects.equals(this.currencyId, orderValidationPolicy.currencyId)
 				&& Objects.equals(this.billingAddressRequired, orderValidationPolicy.billingAddressRequired)
 				&& Objects.equals(this.orderTotalMin, orderValidationPolicy.orderTotalMin)
 				&& Objects.equals(this.orderTotalMax, orderValidationPolicy.orderTotalMax)
 				&& Objects.equals(this.orderItemsMin, orderValidationPolicy.orderItemsMin)
 				&& Objects.equals(this.orderItemsMax, orderValidationPolicy.orderItemsMax)
 				&& Objects.equals(this.paymentMethodStatus, orderValidationPolicy.paymentMethodStatus)
-				&& Objects.equals(this.paymentMethodStatusPercentage, orderValidationPolicy.paymentMethodStatusPercentage)
-				&& Objects.equals(this.creatorId, orderValidationPolicy.creatorId)
-				&& Objects.equals(this.creatorResource, orderValidationPolicy.creatorResource)
-				&& Objects.equals(this.createdAt, orderValidationPolicy.createdAt)
-				&& Objects.equals(this.updatedAt, orderValidationPolicy.updatedAt);
+				&& Objects.equals(this.paymentMethodStatusPercentage, orderValidationPolicy.paymentMethodStatusPercentage);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(resourceName, id, environmentId, currencyId, billingAddressRequired, orderTotalMin,
+		return Objects.hash(resourceName, id, currencyId, billingAddressRequired, orderTotalMin,
 				orderTotalMax, orderItemsMin, orderItemsMax, paymentMethodStatus, paymentMethodStatusPercentage,
 				creatorId, creatorResource, createdAt, updatedAt);
 	}

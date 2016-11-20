@@ -10,7 +10,6 @@ import io.commercelayer.api.model.common.ApiResource;
  */
 public class Taxon extends ApiResource {
 
-	private String environmentId = null;
 	private String name = null;
 	private String taxonomyId = null;
 	private String position = null;
@@ -20,18 +19,6 @@ public class Taxon extends ApiResource {
 	private String depth = null;
 	private String childrenCount = null;
 
-	public Taxon environmentId(String environmentId) {
-		this.environmentId = environmentId;
-		return this;
-	}
-
-	public String getEnvironmentId() {
-		return environmentId;
-	}
-
-	public void setEnvironmentId(String environmentId) {
-		this.environmentId = environmentId;
-	}
 
 	public Taxon name(String name) {
 		this.name = name;
@@ -156,26 +143,20 @@ public class Taxon extends ApiResource {
 			return false;
 		}
 		Taxon taxon = (Taxon) o;
-		return Objects.equals(this.resourceName, taxon.resourceName) 
-				&& Objects.equals(this.id, taxon.id)
-				&& Objects.equals(this.environmentId, taxon.environmentId) 
-				&& Objects.equals(this.name, taxon.name)
+		return super.equals(o) && 
+			Objects.equals(this.name, taxon.name)
 				&& Objects.equals(this.taxonomyId, taxon.taxonomyId) 
 				&& Objects.equals(this.position, taxon.position)
 				&& Objects.equals(this.parentId, taxon.parentId) 
 				&& Objects.equals(this.lft, taxon.lft)
 				&& Objects.equals(this.rgt, taxon.rgt) 
 				&& Objects.equals(this.depth, taxon.depth)
-				&& Objects.equals(this.childrenCount, taxon.childrenCount)
-				&& Objects.equals(this.creatorId, taxon.creatorId)
-				&& Objects.equals(this.creatorResource, taxon.creatorResource)
-				&& Objects.equals(this.createdAt, taxon.createdAt) 
-				&& Objects.equals(this.updatedAt, taxon.updatedAt);
+				&& Objects.equals(this.childrenCount, taxon.childrenCount);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(resourceName, id, environmentId, name, taxonomyId, position, parentId, lft, rgt, depth,
+		return Objects.hash(resourceName, id, name, taxonomyId, position, parentId, lft, rgt, depth,
 				childrenCount, creatorId, creatorResource, createdAt, updatedAt);
 	}
 

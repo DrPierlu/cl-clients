@@ -11,7 +11,6 @@ import io.commercelayer.api.model.common.ApiResource;
  */
 public class Webhook extends ApiResource {
 
-	private String environmentId = null;
 	private String eventSubject = null;
 	private String eventAction = null;
 	private String eventUrl = null;
@@ -19,18 +18,6 @@ public class Webhook extends ApiResource {
 	private LocalDateTime lastFiredAt = null;
 	private LocalDateTime lastFailedAt = null;
 
-	public Webhook environmentId(String environmentId) {
-		this.environmentId = environmentId;
-		return this;
-	}
-
-	public String getEnvironmentId() {
-		return environmentId;
-	}
-
-	public void setEnvironmentId(String environmentId) {
-		this.environmentId = environmentId;
-	}
 
 	public Webhook eventSubject(String eventSubject) {
 		this.eventSubject = eventSubject;
@@ -129,24 +116,18 @@ public class Webhook extends ApiResource {
 			return false;
 		}
 		Webhook webhook = (Webhook) o;
-		return Objects.equals(this.resourceName, webhook.resourceName) 
-				&& Objects.equals(this.id, webhook.id)
-				&& Objects.equals(this.environmentId, webhook.environmentId)
-				&& Objects.equals(this.eventSubject, webhook.eventSubject)
+		return super.equals(o) && 
+			Objects.equals(this.eventSubject, webhook.eventSubject)
 				&& Objects.equals(this.eventAction, webhook.eventAction)
 				&& Objects.equals(this.eventUrl, webhook.eventUrl)
 				&& Objects.equals(this.sharedSecret, webhook.sharedSecret)
 				&& Objects.equals(this.lastFiredAt, webhook.lastFiredAt)
-				&& Objects.equals(this.lastFailedAt, webhook.lastFailedAt)
-				&& Objects.equals(this.creatorId, webhook.creatorId)
-				&& Objects.equals(this.creatorResource, webhook.creatorResource)
-				&& Objects.equals(this.createdAt, webhook.createdAt)
-				&& Objects.equals(this.updatedAt, webhook.updatedAt);
+				&& Objects.equals(this.lastFailedAt, webhook.lastFailedAt);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(resourceName, id, environmentId, eventSubject, eventAction, eventUrl, sharedSecret,
+		return Objects.hash(resourceName, id, eventSubject, eventAction, eventUrl, sharedSecret,
 				lastFiredAt, lastFailedAt, creatorId, creatorResource, createdAt, updatedAt);
 	}
 

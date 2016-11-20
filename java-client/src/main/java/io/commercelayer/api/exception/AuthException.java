@@ -1,6 +1,6 @@
 package io.commercelayer.api.exception;
 
-import io.commercelayer.api.ApiError;
+import io.commercelayer.api.model.common.ApiError;
 
 public class AuthException extends RuntimeException {
 
@@ -8,6 +8,10 @@ public class AuthException extends RuntimeException {
 
 	public AuthException(String message) {
 		super("Authentication Error: ".concat(message));
+	}
+	
+	public AuthException(String message, Object... params) {
+		super("Authentication Error: ".concat(String.format(message, params)));
 	}
 	
 	public AuthException(ApiError apiError) {

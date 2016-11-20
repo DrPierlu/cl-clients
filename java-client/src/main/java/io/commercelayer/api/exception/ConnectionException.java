@@ -8,6 +8,10 @@ public final class ConnectionException extends RuntimeException {
 		super(message);
 	}
 	
+	public ConnectionException(String message, Object... params) {
+		super(String.format(message, params));
+	}
+	
 	public ConnectionException(Throwable cause) {
 		super(cause);
 	}

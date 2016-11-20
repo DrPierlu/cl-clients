@@ -159,8 +159,7 @@ public class HttpClientOkHttpImpl extends HttpClient {
 		try {
 			response = httpClient.newCall(request).execute();
 		} catch (IOException ioe) {
-			throw new ConnectionException(
-					String.format("HTTP Error calling [%s:%s]", httpRequest.getMethod(), httpRequest.getUrl()));
+			throw new ConnectionException("HTTP Error calling [%s:%s]", httpRequest.getMethod(), httpRequest.getUrl());
 		}
 
 		HttpResponse httpResponse = new HttpResponse();

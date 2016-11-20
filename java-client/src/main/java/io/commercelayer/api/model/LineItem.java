@@ -10,7 +10,6 @@ import io.commercelayer.api.model.common.ApiResource;
  */
 public class LineItem extends ApiResource {
 
-	private String environmentId = null;
 	private String orderId = null;
 	private String sellableId = null;
 	private String sellableResource = null;
@@ -24,18 +23,6 @@ public class LineItem extends ApiResource {
 	private String formattedUnitAmount = null;
 	private String formattedAmount = null;
 
-	public LineItem environmentId(String environmentId) {
-		this.environmentId = environmentId;
-		return this;
-	}
-
-	public String getEnvironmentId() {
-		return environmentId;
-	}
-
-	public void setEnvironmentId(String environmentId) {
-		this.environmentId = environmentId;
-	}
 
 	public LineItem orderId(String orderId) {
 		this.orderId = orderId;
@@ -212,10 +199,8 @@ public class LineItem extends ApiResource {
 			return false;
 		}
 		LineItem lineItem = (LineItem) o;
-		return Objects.equals(this.resourceName, lineItem.resourceName) 
-				&& Objects.equals(this.id, lineItem.id)
-				&& Objects.equals(this.environmentId, lineItem.environmentId)
-				&& Objects.equals(this.orderId, lineItem.orderId)
+		return super.equals(o) && 
+			Objects.equals(this.orderId, lineItem.orderId)
 				&& Objects.equals(this.sellableId, lineItem.sellableId)
 				&& Objects.equals(this.sellableResource, lineItem.sellableResource)
 				&& Objects.equals(this.shippingAddressId, lineItem.shippingAddressId)
@@ -224,10 +209,6 @@ public class LineItem extends ApiResource {
 				&& Objects.equals(this.taxRate, lineItem.taxRate)
 				&& Objects.equals(this.taxIncluded, lineItem.taxIncluded)
 				&& Objects.equals(this.taxBreakdown, lineItem.taxBreakdown)
-				&& Objects.equals(this.creatorId, lineItem.creatorId)
-				&& Objects.equals(this.creatorResource, lineItem.creatorResource)
-				&& Objects.equals(this.createdAt, lineItem.createdAt)
-				&& Objects.equals(this.updatedAt, lineItem.updatedAt)
 				&& Objects.equals(this.amount, lineItem.amount)
 				&& Objects.equals(this.formattedUnitAmount, lineItem.formattedUnitAmount)
 				&& Objects.equals(this.formattedAmount, lineItem.formattedAmount);
@@ -235,7 +216,7 @@ public class LineItem extends ApiResource {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(resourceName, id, environmentId, orderId, sellableId, sellableResource, shippingAddressId,
+		return Objects.hash(resourceName, id, orderId, sellableId, sellableResource, shippingAddressId,
 				quantity, unitAmount, taxRate, taxIncluded, taxBreakdown, creatorId, creatorResource, createdAt,
 				updatedAt, amount, formattedUnitAmount, formattedAmount);
 	}

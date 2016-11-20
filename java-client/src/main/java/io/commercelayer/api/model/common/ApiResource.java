@@ -1,6 +1,7 @@
 package io.commercelayer.api.model.common;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
@@ -104,6 +105,23 @@ public abstract class ApiResource extends ApiObject {
 	@Override
 	public String toString() {
 		return ToStringBuilder.reflectionToString(this);
+	}
+	
+	
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		else
+		if (o == null || getClass() != o.getClass()) return false;
+
+		ApiResource address = (ApiResource) o;
+		
+		return Objects.equals(this.resourceName, address.resourceName) 
+				&& Objects.equals(this.id, address.id)
+				&& Objects.equals(this.creatorId, address.creatorId)
+				&& Objects.equals(this.creatorResource, address.creatorResource)
+				&& Objects.equals(this.createdAt, address.createdAt)
+				&& Objects.equals(this.updatedAt, address.updatedAt);
 	}
 
 }

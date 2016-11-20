@@ -10,23 +10,10 @@ import io.commercelayer.api.model.common.ApiResource;
  */
 public class Merchant extends ApiResource {
 
-	private String environmentId = null;
 	private String countryId = null;
 	private String name = null;
 	private String description = null;
 
-	public Merchant environmentId(String environmentId) {
-		this.environmentId = environmentId;
-		return this;
-	}
-
-	public String getEnvironmentId() {
-		return environmentId;
-	}
-
-	public void setEnvironmentId(String environmentId) {
-		this.environmentId = environmentId;
-	}
 
 	public Merchant countryId(String countryId) {
 		this.countryId = countryId;
@@ -86,21 +73,15 @@ public class Merchant extends ApiResource {
 			return false;
 		}
 		Merchant merchant = (Merchant) o;
-		return Objects.equals(this.resourceName, merchant.resourceName) 
-				&& Objects.equals(this.id, merchant.id)
-				&& Objects.equals(this.environmentId, merchant.environmentId)
-				&& Objects.equals(this.countryId, merchant.countryId) 
+		return super.equals(o) && 
+			Objects.equals(this.countryId, merchant.countryId) 
 				&& Objects.equals(this.name, merchant.name)
-				&& Objects.equals(this.description, merchant.description)
-				&& Objects.equals(this.creatorId, merchant.creatorId)
-				&& Objects.equals(this.creatorResource, merchant.creatorResource)
-				&& Objects.equals(this.createdAt, merchant.createdAt)
-				&& Objects.equals(this.updatedAt, merchant.updatedAt);
+				&& Objects.equals(this.description, merchant.description);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(resourceName, id, environmentId, countryId, name, description, creatorId, creatorResource,
+		return Objects.hash(resourceName, id, countryId, name, description, creatorId, creatorResource,
 				createdAt, updatedAt);
 	}
 

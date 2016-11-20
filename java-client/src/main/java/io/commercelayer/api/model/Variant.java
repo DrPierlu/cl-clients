@@ -10,24 +10,11 @@ import io.commercelayer.api.model.common.ApiResource;
  */
 public class Variant extends ApiResource {
 
-	private String environmentId = null;
 	private String productId = null;
 	private String shippingCategoryId = null;
 	private String sku = null;
 	private String taxCode = null;
 
-	public Variant environmentId(String environmentId) {
-		this.environmentId = environmentId;
-		return this;
-	}
-
-	public String getEnvironmentId() {
-		return environmentId;
-	}
-
-	public void setEnvironmentId(String environmentId) {
-		this.environmentId = environmentId;
-	}
 
 	public Variant productId(String productId) {
 		this.productId = productId;
@@ -100,22 +87,16 @@ public class Variant extends ApiResource {
 			return false;
 		}
 		Variant variant = (Variant) o;
-		return Objects.equals(this.resourceName, variant.resourceName) 
-				&& Objects.equals(this.id, variant.id)
-				&& Objects.equals(this.environmentId, variant.environmentId)
-				&& Objects.equals(this.productId, variant.productId)
+		return super.equals(o) &&
+			Objects.equals(this.productId, variant.productId)
 				&& Objects.equals(this.shippingCategoryId, variant.shippingCategoryId)
 				&& Objects.equals(this.sku, variant.sku)
-				&& Objects.equals(this.taxCode, variant.taxCode)
-				&& Objects.equals(this.creatorId, variant.creatorId)
-				&& Objects.equals(this.creatorResource, variant.creatorResource)
-				&& Objects.equals(this.createdAt, variant.createdAt)
-				&& Objects.equals(this.updatedAt, variant.updatedAt);
+				&& Objects.equals(this.taxCode, variant.taxCode);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(resourceName, id, environmentId, productId, shippingCategoryId, sku, taxCode, creatorId,
+		return Objects.hash(resourceName, id, productId, shippingCategoryId, sku, taxCode, creatorId,
 				creatorResource, createdAt, updatedAt);
 	}
 

@@ -12,7 +12,6 @@ import io.commercelayer.api.model.common.ApiResource;
  */
 public class StockItem extends ApiResource {
 
-	private String environmentId = null;
 	private String stockLocationId = null;
 	private String stockableId = null;
 	private String stockableResource = null;
@@ -20,18 +19,6 @@ public class StockItem extends ApiResource {
 	@SerializedName("quantity")
 	private String quantity = null;
 
-	public StockItem environmentId(String environmentId) {
-		this.environmentId = environmentId;
-		return this;
-	}
-
-	public String getEnvironmentId() {
-		return environmentId;
-	}
-
-	public void setEnvironmentId(String environmentId) {
-		this.environmentId = environmentId;
-	}
 
 	public StockItem stockLocationId(String stockLocationId) {
 		this.stockLocationId = stockLocationId;
@@ -104,22 +91,16 @@ public class StockItem extends ApiResource {
 			return false;
 		}
 		StockItem stockItem = (StockItem) o;
-		return Objects.equals(this.resourceName, stockItem.resourceName) 
-				&& Objects.equals(this.id, stockItem.id)
-				&& Objects.equals(this.environmentId, stockItem.environmentId)
-				&& Objects.equals(this.stockLocationId, stockItem.stockLocationId)
+		return super.equals(o) && 
+			Objects.equals(this.stockLocationId, stockItem.stockLocationId)
 				&& Objects.equals(this.stockableId, stockItem.stockableId)
 				&& Objects.equals(this.stockableResource, stockItem.stockableResource)
-				&& Objects.equals(this.quantity, stockItem.quantity)
-				&& Objects.equals(this.creatorId, stockItem.creatorId)
-				&& Objects.equals(this.creatorResource, stockItem.creatorResource)
-				&& Objects.equals(this.createdAt, stockItem.createdAt)
-				&& Objects.equals(this.updatedAt, stockItem.updatedAt);
+				&& Objects.equals(this.quantity, stockItem.quantity);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(resourceName, id, environmentId, stockLocationId, stockableId, stockableResource, quantity,
+		return Objects.hash(resourceName, id, stockLocationId, stockableId, stockableResource, quantity,
 				creatorId, creatorResource, createdAt, updatedAt);
 	}
 

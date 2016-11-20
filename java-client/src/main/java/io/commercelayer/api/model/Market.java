@@ -10,7 +10,6 @@ import io.commercelayer.api.model.common.ApiResource;
  */
 public class Market extends ApiResource {
 
-	private String environmentId = null;
 	private String channelId = null;
 	private String countryGroupId = null;
 	private String merchantId = null;
@@ -19,18 +18,6 @@ public class Market extends ApiResource {
 	private String stockLocationId = null;
 	private String orderValidationPolicyId = null;
 
-	public Market environmentId(String environmentId) {
-		this.environmentId = environmentId;
-		return this;
-	}
-
-	public String getEnvironmentId() {
-		return environmentId;
-	}
-
-	public void setEnvironmentId(String environmentId) {
-		this.environmentId = environmentId;
-	}
 
 	public Market channelId(String channelId) {
 		this.channelId = channelId;
@@ -142,25 +129,19 @@ public class Market extends ApiResource {
 			return false;
 		}
 		Market market = (Market) o;
-		return Objects.equals(this.resourceName, market.resourceName) 
-				&& Objects.equals(this.id, market.id)
-				&& Objects.equals(this.environmentId, market.environmentId)
-				&& Objects.equals(this.channelId, market.channelId)
+		return super.equals(o) && 
+			Objects.equals(this.channelId, market.channelId)
 				&& Objects.equals(this.countryGroupId, market.countryGroupId)
 				&& Objects.equals(this.merchantId, market.merchantId)
 				&& Objects.equals(this.catalogId, market.catalogId)
 				&& Objects.equals(this.priceListId, market.priceListId)
 				&& Objects.equals(this.stockLocationId, market.stockLocationId)
-				&& Objects.equals(this.orderValidationPolicyId, market.orderValidationPolicyId)
-				&& Objects.equals(this.creatorId, market.creatorId)
-				&& Objects.equals(this.creatorResource, market.creatorResource)
-				&& Objects.equals(this.createdAt, market.createdAt) 
-				&& Objects.equals(this.updatedAt, market.updatedAt);
+				&& Objects.equals(this.orderValidationPolicyId, market.orderValidationPolicyId);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(resourceName, id, environmentId, channelId, countryGroupId, merchantId, catalogId,
+		return Objects.hash(resourceName, id, channelId, countryGroupId, merchantId, catalogId,
 				priceListId, stockLocationId, orderValidationPolicyId, creatorId, creatorResource, createdAt, updatedAt);
 	}
 
