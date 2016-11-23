@@ -12,9 +12,6 @@ import io.swagger.models.Path;
 import io.swagger.models.Swagger;
 import io.swagger.models.parameters.AbstractParameter;
 import io.swagger.models.parameters.AbstractSerializableParameter;
-import io.swagger.models.parameters.FormParameter;
-import io.swagger.models.parameters.PathParameter;
-import io.swagger.models.parameters.QueryParameter;
 import io.swagger.parser.SwaggerParser;
 
 public class ApiParser {
@@ -149,6 +146,5 @@ public class ApiParser {
 		Schema schema = new ApiParser().parse();
 		System.out.println(printOutDefinitions(schema));
 	}
-
 	
 }
