@@ -76,6 +76,7 @@ public class ApiParser {
 						
 						parameter.setInputType(param.getIn());
 						parameter.setDescription(param.getDescription());
+						parameter.setRequired(param.getRequired());
 						
 						if (param instanceof AbstractParameter) {
 							AbstractParameter ap = (AbstractParameter)param;
@@ -136,7 +137,22 @@ public class ApiParser {
 		
 		StringBuilder sb = new StringBuilder();
 		
-		//TODO: print resourcs and operations
+		for (Resource res : schema.getResources()) {
+			sb.append(res.getPath()).append('\n');
+			for (Operation op : res.getOperations()) {
+				sb.append("\t[").append(op.getMethod()).append("] ").append(op.getId()).append('\n');
+				for (Parameter p : op.getParameters()) {
+					sb.append("\t\t[")
+						.append(p.getName()).append(", ")
+						.append(p.getType()).append(", ")
+						.append(p.getFormat()).append(", ")
+						.append(p.getPattern()).append(", ")
+						.append(p.isRequired()? "required" : "optional").append(", ")
+						.append(p.getDescription())
+					.append("]\n");
+				}
+			}
+		}
 		
 		return sb.toString();
 		
@@ -144,7 +160,7 @@ public class ApiParser {
 
 	public static void main(String[] args) {
 		Schema schema = new ApiParser().parse();
-		System.out.println(printOutDefinitions(schema));
+		System.out.println(printOutOperations(schema));
 	}
 	
 }
