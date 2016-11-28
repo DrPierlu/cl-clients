@@ -2,7 +2,10 @@ package io.commercelayer.api.codegen;
 
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+
+import org.apache.commons.lang3.StringUtils;
 
 public class Method extends AbstractModelObject {
 
@@ -33,7 +36,8 @@ public class Method extends AbstractModelObject {
 		return modifier;
 	}
 
-	public void setModifier(Integer modifier) {
+	public void setModifier(Integer modifier) throws IllegalArgumentException {
+		if ((Modifier.methodModifiers() & modifier.intValue()) == 0) throw new IllegalArgumentException("Invalid method modifier: " + modifier);
 		this.modifier = modifier;
 	}
 
@@ -51,6 +55,10 @@ public class Method extends AbstractModelObject {
 
 	public void setSignatureParams(List<Param> signatureParams) {
 		this.signatureParams = signatureParams;
+	}
+	
+	public void setSignatureParams(Param... signatureParams) {
+		this.signatureParams = Arrays.asList(signatureParams);
 	}
 
 	public void addSignatureParam(Param param) {
@@ -73,14 +81,14 @@ public class Method extends AbstractModelObject {
 
 		StringBuilder sb = new StringBuilder();
 		
-		sb.append(Modifier.toString(getModifier()));
-		sb.append((getReturnType() == null)? "void" : getReturnType().getSimpleName());
-		sb.append('(');
+		sb.append(Modifier.toString(getModifier())).append(' ');
+		sb.append((getReturnType() == null)? "void" : getReturnType().getSimpleName()).append(' ');
+		sb.append(getName()).append('(');
 		
 		if (!getSignatureParams().isEmpty()) {
 			int params = 0;
 			for (Param p : getSignatureParams()) {
-				if (params == 0) sb.append(", ");
+				if (params > 0) sb.append(", ");
 				sb.append(p.getType().getSimpleName()).append(' ').append(p.getName());
 				params++;
 			}
@@ -88,7 +96,8 @@ public class Method extends AbstractModelObject {
 		sb.append(") {").append(newLine());
 		
 		for (String l : getBody()) {
-			sb.append(l).append(newLine());
+			if (StringUtils.isNotEmpty(l)) sb.append('\t').append(l);
+			sb.append(newLine());
 		}
 		
 		sb.append('}').append(newLine());
@@ -119,6 +128,35 @@ public class Method extends AbstractModelObject {
 			return name;
 		}
 
+	}
+	
+	public int getLinesBefore() {
+		return 1;
+	}
+	
+	public int getLinesAfter() {
+		return 1;
+	}
+	
+	public static void main(String[] args) {
+		
+		Method m = new Method(Modifier.PUBLIC);
+		m.setName("updateAddress");
+		m.setReturnType(String.class);
+		m.setSignatureParams(new Param(Integer.class, "numCiv"), new Param(String.class, "via"));
+		
+		List<String> b = new ArrayList<>();
+		b.add("this.numCiv = numCiv;");
+		b.add("this.indirizzo = via;");
+		b.add(m.emptyLine());
+		b.add("return new Integer(1);");
+		
+		m.setBody(b);
+		
+		String code = m.generate();
+		
+		System.out.println(code);
+		
 	}
 
 }

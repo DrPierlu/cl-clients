@@ -4,6 +4,7 @@ import java.lang.reflect.Modifier;
 import java.util.List;
 
 import io.commercelayer.api.swagger.Definition;
+import io.commercelayer.api.swagger.Property;
 import io.commercelayer.api.swagger.Schema;
 
 public class ApiCodeGen {
@@ -21,8 +22,13 @@ public class ApiCodeGen {
 		List<Definition> definitions = schema.getDefinitions();
 		for (Definition def : definitions) {
 			
-			ModelClass mc = new ModelClass("test.codegen.def", def.getTitle());
-			mc.setModifier(Modifier.PUBLIC);
+			ModelClass mc = new ModelClass("io.commercelayer.api.codegen.src.model", def.getTitle(), Modifier.PUBLIC);
+
+			for (Property p : def.getProperties()) {
+				
+				
+				
+			}
 			
 			model.addClass(mc);
 			

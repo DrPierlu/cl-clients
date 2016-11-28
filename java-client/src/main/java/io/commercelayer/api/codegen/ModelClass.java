@@ -1,12 +1,15 @@
 package io.commercelayer.api.codegen;
 
+import java.io.Serializable;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 
 import io.commercelayer.api.codegen.Method.Param;
+import io.commercelayer.api.model.common.ApiResource;
 
 public class ModelClass extends AbstractModelObject {
 
@@ -26,8 +29,13 @@ public class ModelClass extends AbstractModelObject {
 
 	public ModelClass(String classPackage, String className) {
 		this();
-		this.name = className;
 		this.classPackage = classPackage;
+		this.name = className;
+	}
+	
+	public ModelClass(String classPackage, String className, Integer modifier) {
+		this(classPackage, className);
+		setModifier(modifier);
 	}
 
 	public String getClassPackage() {
@@ -50,7 +58,8 @@ public class ModelClass extends AbstractModelObject {
 		return modifier;
 	}
 
-	public void setModifier(Integer modifier) {
+	public void setModifier(Integer modifier) throws IllegalArgumentException {
+		if ((Modifier.classModifiers() & modifier.intValue()) == 0) throw new IllegalArgumentException("Invalid class modifier: " + modifier);
 		this.modifier = modifier;
 	}
 
@@ -62,7 +71,8 @@ public class ModelClass extends AbstractModelObject {
 		return extendedClass;
 	}
 
-	public void setExtendedClass(Class<?> extendedClass) {
+	public void setExtendedClass(Class<?> extendedClass) throws IllegalArgumentException {
+		if (extendedClass.isInterface()) throw new IllegalArgumentException("Not valid class [" + extendedClass.getName() + "]");
 		this.extendedClass = extendedClass;
 	}
 
@@ -70,8 +80,14 @@ public class ModelClass extends AbstractModelObject {
 		return implementList;
 	}
 
-	public void setImplementList(List<Class<?>> implementList) {
-		this.implementList = implementList;
+	public void setImplementList(List<Class<?>> implementList) throws IllegalArgumentException {
+		if (implementList != null)
+			for (Class<?> c : implementList) addImplementedInterface(c);
+	}
+	
+	public void addImplementedInterface(Class<?> intf) throws IllegalArgumentException {
+		if (!intf.isInterface()) throw new IllegalArgumentException("Not valid interface [" + intf.getName() + "]");
+		this.implementList.add(intf);
 	}
 
 	public List<Method> getMethodList() {
@@ -99,6 +115,7 @@ public class ModelClass extends AbstractModelObject {
 			m.setName("set".concat(StringUtils.capitalize(field.getName())));
 			m.addSignatureParam(new Param(field));
 			m.addBodyLine("this.".concat(field.getName()).concat(" = ").concat(field.getName()).concat(";"));
+			addMethod(m);
 		}
 
 		if (getter) {
@@ -106,6 +123,7 @@ public class ModelClass extends AbstractModelObject {
 			m.setName("get".concat(StringUtils.capitalize(field.getName())));
 			m.setReturnType(field.getType());
 			m.addBodyLine("return this.".concat(field.getName()).concat(";"));
+			addMethod(m);
 		}
 
 	}
@@ -135,6 +153,8 @@ public class ModelClass extends AbstractModelObject {
 	}
 
 	private void addImportItem(Class<?> class_) {
+		if (class_ == null) return;
+		else
 		if (!class_.getName().startsWith("java.lang") && !this.importList.contains(class_))
 			this.importList.add(class_);
 	}
@@ -142,9 +162,97 @@ public class ModelClass extends AbstractModelObject {
 	public String generate() {
 
 		createImportList();
-
-		return null;
-
+		
+		StringBuilder sb = new StringBuilder();
+		
+		
+		// Package
+		sb.append("package ").append(getClassPackage()).append(';').append(newLine());
+		sb.append(newLine());
+		
+		
+		// Imports
+		for (Class<?> c : getImportList())
+			sb.append("import ").append(c.getName()).append(';').append(newLine());
+		sb.append(newLine());
+		
+		
+		// Class
+		sb.append(Modifier.toString(getModifier())).append(" class ").append(getName());
+		if (getExtendedClass() != null) sb.append(" extends ").append(getExtendedClass().getSimpleName());
+		if (!getImplementList().isEmpty()) {
+			sb.append(" implements ");
+			int i = 0;
+			for (Class<?> c : getImplementList()) {
+				if (i > 0) sb.append(", ");
+				sb.append(c.getSimpleName());
+			}
+		}
+		
+		sb.append(" {").append(newLine());
+		
+		
+		// serialVersionUID
+		sb.append(serialVersionUID());
+		
+		
+		// Fields
+		for (Field f : getFieldList()) {
+			sb.append('\t');
+			sb.append(newLines(f.getLinesBefore()));
+			sb.append(f.generate()).append(newLine());
+			sb.append(newLines(f.getLinesAfter()));
+		}
+		sb.append(newLine());
+		
+		
+		// Methods
+		for (Method m : getMethodList()) {
+			sb.append(newLines(m.getLinesBefore()));
+			sb.append('\t').append(m.generate().replaceAll("\n", "\n\t"));
+			sb.append(newLines(m.getLinesAfter()));
+		}
+		
+		
+		sb.append('}').append(newLine());
+		
+		return sb.toString();
+		
+	}
+	
+	
+	private String serialVersionUID() {
+		
+		String sv = "";
+		
+		for (Class<?> c : getImplementList()) {
+			if (c instanceof Serializable) {
+				sv = "\n\tprivate static final long serialVersionUID = 1L;\n\n";
+				break;
+			}
+		}
+		
+		return sv;
+		
+	}
+	
+	
+	public static void main(String[] args) {
+		
+		ModelClass mc = new ModelClass("io.commercelayer.api.test.codegen", "TestClass", Modifier.PUBLIC);
+		
+		mc.setExtendedClass(ApiResource.class);
+		mc.addImplementedInterface(Serializable.class);
+		
+		mc.addField(new Field(Modifier.PRIVATE, String.class, "campo1"));
+		mc.addField(new Field(Modifier.PRIVATE, Integer.class, "campo2"));
+		mc.addField(new Field(Modifier.PRIVATE, Date.class, "dataDa"), true, true);
+		mc.addField(new Field(Modifier.PRIVATE, Date.class, "dataA"));
+		
+		String code = mc.generate();
+		
+		System.out.println(code);
+		
 	}
 
 }
