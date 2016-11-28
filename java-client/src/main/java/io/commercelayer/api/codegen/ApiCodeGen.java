@@ -22,6 +22,7 @@ public class ApiCodeGen {
 		for (Definition def : definitions) {
 			
 			ModelClass mc = new ModelClass("test.codegen.def", def.getTitle());
+
 			mc.setModifier(Modifier.PUBLIC);
 			
 			model.addClass(mc);

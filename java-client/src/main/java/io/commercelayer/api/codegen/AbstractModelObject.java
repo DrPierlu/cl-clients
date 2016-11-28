@@ -23,8 +23,9 @@ public abstract class AbstractModelObject {
 		this.linesAfter = linesAfter;
 	}
 
+
 	protected String newLine() {
 		return "\n";
 	}
-	
+
 }
