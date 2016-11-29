@@ -22,6 +22,7 @@ public class ApiCodeGen {
 		List<Definition> definitions = schema.getDefinitions();
 		for (Definition def : definitions) {
 			
+
 			ModelClass mc = new ModelClass("io.commercelayer.api.codegen.src.model", def.getTitle(), Modifier.PUBLIC);
 
 			for (Property p : def.getProperties()) {
@@ -29,6 +30,7 @@ public class ApiCodeGen {
 				
 				
 			}
+
 			
 			model.addClass(mc);
 			

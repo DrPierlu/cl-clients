@@ -27,6 +27,7 @@ public abstract class AbstractModelObject {
 		this.linesAfter = linesAfter;
 	}
 
+
 	public String getComment() {
 		return comment;
 	}
@@ -34,10 +35,11 @@ public abstract class AbstractModelObject {
 	public void setComment(String comment) {
 		this.comment = comment;
 	}
-
+	
 	protected String newLine() {
 		return "\n";
 	}
+
 
 	protected String newLines(int numLines) {
 		if (numLines <= 0)
