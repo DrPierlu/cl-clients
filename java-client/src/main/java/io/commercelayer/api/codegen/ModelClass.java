@@ -1,8 +1,7 @@
 package io.commercelayer.api.codegen;
 
-<<<<<<< HEAD
+
 import java.io.Serializable;
-//github.com/DrPierlu/cl-clients.git
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.Date;
