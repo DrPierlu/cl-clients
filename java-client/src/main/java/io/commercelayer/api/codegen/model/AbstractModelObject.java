@@ -1,4 +1,4 @@
-package io.commercelayer.api.codegen;
+package io.commercelayer.api.codegen.model;
 
 import java.util.ArrayList;
 import java.util.List;

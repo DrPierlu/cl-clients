@@ -1,4 +1,4 @@
-package io.commercelayer.api.swagger;
+package io.commercelayer.api.codegen.schema;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package io.commercelayer.api.codegen;
+package io.commercelayer.api.codegen.model;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,6 +13,10 @@ public class Model extends AbstractModelObject {
 	
 	public Map<String, ClassGroup> getClassGroups() {
 		return classGroups;
+	}
+	
+	public ClassGroup getClassGroup(String classPackage) {
+		return getClassGroups().get(classPackage);
 	}
 	
 	public void addClass(ModelClass class_) {

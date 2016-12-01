@@ -1,4 +1,4 @@
-package io.commercelayer.api.codegen;
+package io.commercelayer.api.codegen.model;
 
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
@@ -14,6 +14,7 @@ public class Method extends AbstractModelObject {
 	private Class<?> returnType;
 	private List<Param> signatureParams = new ArrayList<>();
 	private List<String> body = new ArrayList<>();
+	private List<? extends Throwable> exceptionList = new ArrayList<>();
 
 	public Method() {
 		super();
@@ -76,6 +77,15 @@ public class Method extends AbstractModelObject {
 	public void addBodyLine(String line) {
 		this.body.add(line);
 	}
+	
+
+	public List<? extends Throwable> getExceptionList() {
+		return exceptionList;
+	}
+
+	public void setExceptionList(List<? extends Throwable> exceptionList) {
+		if (exceptionList != null) this.exceptionList = exceptionList;
+	}
 
 	public String generate() {
 
@@ -93,7 +103,19 @@ public class Method extends AbstractModelObject {
 				params++;
 			}
 		}
-		sb.append(") {").append(newLine());
+		sb.append(')');
+		
+		if (!getExceptionList().isEmpty()) {
+			sb.append(' ');
+			int items = 0;
+			for (Throwable t : getExceptionList()) {
+				if (items > 0) sb.append(", ");
+				sb.append(t.getClass().getSimpleName());
+				items++;
+			}
+		}
+		
+		sb.append(" {").append(newLine());
 		
 		for (String l : getBody()) {
 			if (StringUtils.isNotEmpty(l)) sb.append('\t').append(l);

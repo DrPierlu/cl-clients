@@ -1,4 +1,4 @@
-package io.commercelayer.api.swagger;
+package io.commercelayer.api.codegen.schema;
 
 public class Property {
 
@@ -7,6 +7,7 @@ public class Property {
 	private String format;
 	private boolean required;
 	private boolean readonly;
+	private String description;
 
 	public String getName() {
 		return name;
@@ -46,6 +47,24 @@ public class Property {
 
 	public void setReadonly(boolean readonly) {
 		this.readonly = readonly;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public static interface Types {
+		String STRING = "string";
+		String INTEGER = "integer";
+	}
+
+	public static interface Formats {
+		String INT32 = "int32";
+		String DATE_TIME = "date-time";
 	}
 
 }
