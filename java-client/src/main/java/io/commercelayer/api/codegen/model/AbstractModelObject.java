@@ -1,4 +1,4 @@
-package io.commercelayer.api.codegen;
+package io.commercelayer.api.codegen.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,6 +62,13 @@ public abstract class AbstractModelObject {
 			for (int i = 0; i < numLines; i++)
 				lines.add("");
 		return lines;
+	}
+	
+	protected String strType(Class<?> type, Class<?> listType) {
+		StringBuffer sb = new StringBuffer();
+		sb.append(type.getSimpleName());
+		if (type.equals(List.class)) sb.append('<').append(listType.getSimpleName()).append('>');
+		return sb.toString();
 	}
 
 }

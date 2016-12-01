@@ -1,4 +1,4 @@
-package io.commercelayer.api.swagger;
+package io.commercelayer.api.codegen.schema;
 
 public class Property {
 
@@ -7,6 +7,8 @@ public class Property {
 	private String format;
 	private boolean required;
 	private boolean readonly;
+	private String description;
+	private String itemType;
 
 	public String getName() {
 		return name;
@@ -46,6 +48,36 @@ public class Property {
 
 	public void setReadonly(boolean readonly) {
 		this.readonly = readonly;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getItemType() {
+		return itemType;
+	}
+
+	public void setItemType(String itemType) {
+		this.itemType = itemType;
+	}
+
+	public static interface Types {
+		String STRING = "string";
+		String INTEGER = "integer";
+		String NUMBER = "number";
+		String OBJECT = "object";
+		String ARRAY = "array";
+	}
+
+	public static interface Formats {
+		String INT32 = "int32";
+		String DATE_TIME = "date-time";
+		String FLOAT = "float";
 	}
 
 }

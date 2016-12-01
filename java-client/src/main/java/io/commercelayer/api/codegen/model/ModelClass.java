@@ -1,4 +1,4 @@
-package io.commercelayer.api.codegen;
+package io.commercelayer.api.codegen.model;
 
 
 import java.io.Serializable;
@@ -9,7 +9,7 @@ import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 
-import io.commercelayer.api.codegen.Method.Param;
+import io.commercelayer.api.codegen.model.Method.Param;
 import io.commercelayer.api.model.common.ApiResource;
 
 public class ModelClass extends AbstractModelObject {
@@ -23,7 +23,8 @@ public class ModelClass extends AbstractModelObject {
 	private List<Class<?>> implementList = new ArrayList<>();
 	private List<Method> methodList = new ArrayList<>();
 	private List<Field> fieldList = new ArrayList<>();
-
+	private List<? extends Throwable> exceptionList = new ArrayList<>();
+	
 	public ModelClass() {
 		super();
 	}
@@ -90,6 +91,14 @@ public class ModelClass extends AbstractModelObject {
 		if (!intf.isInterface()) throw new IllegalArgumentException("Not valid interface [" + intf.getName() + "]");
 		this.implementList.add(intf);
 	}
+	
+	public List<? extends Throwable> getExceptionList() {
+		return exceptionList;
+	}
+
+	public void setExceptionList(List<? extends Throwable> exceptionList) {
+		if (exceptionList != null) this.exceptionList = exceptionList;
+	}
 
 	public List<Method> getMethodList() {
 		return methodList;
@@ -103,13 +112,20 @@ public class ModelClass extends AbstractModelObject {
 		this.methodList.add(method);
 	}
 
-	public void addField(Field field) {
+	public boolean addField(Field field) {
+		if (getExtendedClass() != null)
+			try {
+				if (getExtendedClass().getDeclaredField(field.getName()) != null) return false;
+			} catch (NoSuchFieldException | SecurityException e) {
+				
+			}
 		this.fieldList.add(field);
+		return true;
 	}
 
-	public void addField(Field field, boolean setter, boolean getter) {
+	public boolean addField(Field field, boolean setter, boolean getter) {
 
-		this.fieldList.add(field);
+		if (!addField(field)) return false;
 
 		if (setter) {
 			Method m = new Method(Modifier.PUBLIC);
@@ -123,9 +139,12 @@ public class ModelClass extends AbstractModelObject {
 			Method m = new Method(Modifier.PUBLIC);
 			m.setName("get".concat(StringUtils.capitalize(field.getName())));
 			m.setReturnType(field.getType());
+			m.setListType(field.getListType());
 			m.addBodyLine("return this.".concat(field.getName()).concat(";"));
 			addMethod(m);
 		}
+		
+		return true;
 
 	}
 
@@ -149,6 +168,8 @@ public class ModelClass extends AbstractModelObject {
 			addImportItem(m.getReturnType());
 			for (Param p : m.getSignatureParams())
 				addImportItem(p.getType());
+			for (Throwable t : m.getExceptionList())
+				addImportItem(t.getClass());
 		}
 
 	}
@@ -179,8 +200,14 @@ public class ModelClass extends AbstractModelObject {
 		
 		
 		// Class
+		if (getComment() != null) {
+			sb.append("/**").append(newLine());
+			sb.append(" * ").append(getComment()).append(newLine());
+			sb.append(" */").append(newLine());
+		}
 		sb.append(Modifier.toString(getModifier())).append(" class ").append(getName());
 		if (getExtendedClass() != null) sb.append(" extends ").append(getExtendedClass().getSimpleName());
+		
 		if (!getImplementList().isEmpty()) {
 			sb.append(" implements ");
 			int i = 0;
@@ -190,7 +217,16 @@ public class ModelClass extends AbstractModelObject {
 			}
 		}
 		
-		sb.append(" {").append(newLine());
+		if (!getExceptionList().isEmpty()) {
+			sb.append(' ');
+			int i = 0;
+			for (Throwable t : getExceptionList()) {
+				if (i > 0) sb.append(", ");
+				sb.append(t.getClass().getSimpleName());
+			}
+		}
+		
+		sb.append(" {").append(newLines(2));
 		
 		
 		// serialVersionUID

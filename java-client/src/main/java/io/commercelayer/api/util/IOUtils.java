@@ -19,4 +19,24 @@ public class IOUtils {
 				}
 	}
 	
+	
+	public static String packageToPath(String pkg, String basePath) {
+		
+		final String fileSeparator = "/";
+		
+		StringBuilder sb = new StringBuilder();
+		
+		if (basePath != null) {
+			sb.append(basePath);
+			if (!basePath.endsWith(fileSeparator)) sb.append(fileSeparator);
+		}
+		sb.append(pkg.replaceAll("\\.", fileSeparator));
+		
+		String path = sb.toString();
+		if (!path.endsWith(fileSeparator)) path.concat(fileSeparator);
+		
+		return path;
+		
+	}
+	
 }

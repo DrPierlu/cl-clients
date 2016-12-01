@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+import org.apache.commons.lang3.text.WordUtils;
+
 public class ModelUtils {
 
 	public static enum DigestType {
@@ -125,6 +127,14 @@ public class ModelUtils {
 
 	public static String removeLeadingZeroes(String str) {
 		return str.replaceFirst("^0+(?!$)", "");
+	}
+	
+	public static String toCamelCase(String strWith_) {
+		String cap = WordUtils.capitalize(strWith_, '_').replaceAll("_", "");
+		char c[] = cap.toCharArray();
+		c[0] = Character.toLowerCase(c[0]);
+		cap = new String(c);
+		return cap;
 	}
 
 }
