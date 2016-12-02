@@ -9,7 +9,7 @@ public abstract class ApiResource extends ApiObject {
 
 	protected String resourceName = null;
 	protected Long id = null;
-	protected String creatorId = null;
+//	protected String creatorId = null;
 	protected String creatorResource = null;
 	protected LocalDateTime createdAt = null;
 	protected LocalDateTime updatedAt = null;
@@ -52,13 +52,13 @@ public abstract class ApiResource extends ApiObject {
 	// return (T)this;
 	// }
 
-	public String getCreatorId() {
-		return creatorId;
-	}
-
-	public void setCreatorId(String creatorId) {
-		this.creatorId = creatorId;
-	}
+//	public String getCreatorId() {
+//		return creatorId;
+//	}
+//
+//	public void setCreatorId(String creatorId) {
+//		this.creatorId = creatorId;
+//	}
 
 	// @SuppressWarnings("unchecked")
 	// public T creatorResource(String creatorResource) {
@@ -118,7 +118,7 @@ public abstract class ApiResource extends ApiObject {
 		
 		return Objects.equals(this.resourceName, address.resourceName) 
 				&& Objects.equals(this.id, address.id)
-				&& Objects.equals(this.creatorId, address.creatorId)
+//				&& Objects.equals(this.creatorId, address.creatorId)
 				&& Objects.equals(this.creatorResource, address.creatorResource)
 				&& Objects.equals(this.createdAt, address.createdAt)
 				&& Objects.equals(this.updatedAt, address.updatedAt);

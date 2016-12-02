@@ -432,15 +432,7 @@ public class Address extends ApiResource {
 		this.suggestedBoundsNeLng = suggestedBoundsNeLng;
 	}
 
-	public Address creatorId(String creatorId) {
-		this.creatorId = creatorId;
-		return this;
-	}
-
-	public Address creatorResource(String creatorResource) {
-		this.creatorResource = creatorResource;
-		return this;
-	}
+	
 
 	@Override
 	public boolean equals(java.lang.Object o) {
@@ -491,7 +483,7 @@ public class Address extends ApiResource {
 				geocodingStreet, geocodingNumber, provider, placeId, precision, accuracy, countryCode, country,
 				stateCode, stateName, state, province, zip, city, district, streetName, streetNumber, streetAddress,
 				subPremise, fullAddress, formattedAddress, lat, lng, suggestedBoundsSwLat, suggestedBoundsSwLng,
-				suggestedBoundsNeLat, suggestedBoundsNeLng, creatorId, creatorResource, createdAt, updatedAt);
+				suggestedBoundsNeLat, suggestedBoundsNeLng, creatorResource, createdAt, updatedAt);
 	}
 
 }

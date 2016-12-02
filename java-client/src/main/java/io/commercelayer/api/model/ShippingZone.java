@@ -40,15 +40,6 @@ public class ShippingZone extends ApiResource {
 		this.name = name;
 	}
 
-	public ShippingZone creatorId(String creatorId) {
-		this.creatorId = creatorId;
-		return this;
-	}
-
-	public ShippingZone creatorResource(String creatorResource) {
-		this.creatorResource = creatorResource;
-		return this;
-	}
 
 	@Override
 	public boolean equals(java.lang.Object o) {
@@ -66,7 +57,7 @@ public class ShippingZone extends ApiResource {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(resourceName, id, countryGroupId, name, creatorId, creatorResource,
+		return Objects.hash(resourceName, id, countryGroupId, name, creatorResource,
 				createdAt, updatedAt);
 	}
 

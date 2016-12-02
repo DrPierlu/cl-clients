@@ -54,15 +54,6 @@ public class PriceList extends ApiResource {
 		this.taxIncluded = taxIncluded;
 	}
 
-	public PriceList creatorId(String creatorId) {
-		this.creatorId = creatorId;
-		return this;
-	}
-
-	public PriceList creatorResource(String creatorResource) {
-		this.creatorResource = creatorResource;
-		return this;
-	}
 
 	@Override
 	public boolean equals(java.lang.Object o) {
@@ -81,7 +72,7 @@ public class PriceList extends ApiResource {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(resourceName, id, currencyId, name, taxIncluded, creatorId, creatorResource,
+		return Objects.hash(resourceName, id, currencyId, name, taxIncluded, creatorResource,
 				createdAt, updatedAt);
 	}
 

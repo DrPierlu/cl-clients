@@ -97,15 +97,6 @@ public class Webhook extends ApiResource {
 		this.lastFailedAt = lastFailedAt;
 	}
 
-	public Webhook creatorId(String creatorId) {
-		this.creatorId = creatorId;
-		return this;
-	}
-
-	public Webhook creatorResource(String creatorResource) {
-		this.creatorResource = creatorResource;
-		return this;
-	}
 
 	@Override
 	public boolean equals(java.lang.Object o) {
@@ -128,7 +119,7 @@ public class Webhook extends ApiResource {
 	@Override
 	public int hashCode() {
 		return Objects.hash(resourceName, id, eventSubject, eventAction, eventUrl, sharedSecret,
-				lastFiredAt, lastFailedAt, creatorId, creatorResource, createdAt, updatedAt);
+				lastFiredAt, lastFailedAt, creatorResource, createdAt, updatedAt);
 	}
 
 }

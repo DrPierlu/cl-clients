@@ -26,15 +26,6 @@ public class Currency extends ApiResource {
 		this.code = code;
 	}
 
-	public Currency creatorId(String creatorId) {
-		this.creatorId = creatorId;
-		return this;
-	}
-
-	public Currency creatorResource(String creatorResource) {
-		this.creatorResource = creatorResource;
-		return this;
-	}
 
 	@Override
 	public boolean equals(java.lang.Object o) {
@@ -51,7 +42,7 @@ public class Currency extends ApiResource {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(resourceName, id, code, creatorId, creatorResource, createdAt, updatedAt);
+		return Objects.hash(resourceName, id, code, creatorResource, createdAt, updatedAt);
 	}
 
 }

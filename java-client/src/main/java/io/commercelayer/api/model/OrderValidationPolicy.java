@@ -124,15 +124,6 @@ public class OrderValidationPolicy extends ApiResource {
 		this.paymentMethodStatusPercentage = paymentMethodStatusPercentage;
 	}
 
-	public OrderValidationPolicy creatorId(String creatorId) {
-		this.creatorId = creatorId;
-		return this;
-	}
-
-	public OrderValidationPolicy creatorResource(String creatorResource) {
-		this.creatorResource = creatorResource;
-		return this;
-	}
 
 	@Override
 	public boolean equals(java.lang.Object o) {
@@ -158,7 +149,7 @@ public class OrderValidationPolicy extends ApiResource {
 	public int hashCode() {
 		return Objects.hash(resourceName, id, currencyId, billingAddressRequired, orderTotalMin,
 				orderTotalMax, orderItemsMin, orderItemsMax, paymentMethodStatus, paymentMethodStatusPercentage,
-				creatorId, creatorResource, createdAt, updatedAt);
+				creatorResource, createdAt, updatedAt);
 	}
 
 }

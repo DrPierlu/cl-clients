@@ -82,15 +82,6 @@ public class MerchandisingRule extends ApiResource {
 		this.hero = hero;
 	}
 
-	public MerchandisingRule creatorId(String creatorId) {
-		this.creatorId = creatorId;
-		return this;
-	}
-
-	public MerchandisingRule creatorResource(String creatorResource) {
-		this.creatorResource = creatorResource;
-		return this;
-	}
 
 	@Override
 	public boolean equals(java.lang.Object o) {
@@ -111,7 +102,7 @@ public class MerchandisingRule extends ApiResource {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(resourceName, id, catalogId, taxonId, productId, position, hero, creatorId,
+		return Objects.hash(resourceName, id, catalogId, taxonId, productId, position, hero, 
 				creatorResource, createdAt, updatedAt);
 	}
 

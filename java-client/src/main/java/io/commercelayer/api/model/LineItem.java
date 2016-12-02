@@ -141,15 +141,6 @@ public class LineItem extends ApiResource {
 		this.taxBreakdown = taxBreakdown;
 	}
 
-	public LineItem creatorId(String creatorId) {
-		this.creatorId = creatorId;
-		return this;
-	}
-
-	public LineItem creatorResource(String creatorResource) {
-		this.creatorResource = creatorResource;
-		return this;
-	}
 
 	public LineItem amount(String amount) {
 		this.amount = amount;
@@ -217,7 +208,7 @@ public class LineItem extends ApiResource {
 	@Override
 	public int hashCode() {
 		return Objects.hash(resourceName, id, orderId, sellableId, sellableResource, shippingAddressId,
-				quantity, unitAmount, taxRate, taxIncluded, taxBreakdown, creatorId, creatorResource, createdAt,
+				quantity, unitAmount, taxRate, taxIncluded, taxBreakdown, creatorResource, createdAt,
 				updatedAt, amount, formattedUnitAmount, formattedAmount);
 	}
 

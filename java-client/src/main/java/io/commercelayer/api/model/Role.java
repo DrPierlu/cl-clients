@@ -39,16 +39,7 @@ public class Role extends ApiResource {
 		this.description = description;
 	}
 
-	public Role creatorId(String creatorId) {
-		this.creatorId = creatorId;
-		return this;
-	}
-
-	public Role creatorResource(String creatorResource) {
-		this.creatorResource = creatorResource;
-		return this;
-	}
-
+	
 	@Override
 	public boolean equals(java.lang.Object o) {
 		if (this == o) {
@@ -65,7 +56,7 @@ public class Role extends ApiResource {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(resourceName, id, name, description, creatorId, creatorResource, createdAt, updatedAt);
+		return Objects.hash(resourceName, id, name, description, creatorResource, createdAt, updatedAt);
 	}
 
 }

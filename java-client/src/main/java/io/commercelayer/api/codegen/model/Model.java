@@ -19,7 +19,9 @@ public class Model extends AbstractModelObject {
 		return getClassGroups().get(classPackage);
 	}
 	
-	public void addClass(ModelClass class_) {
+	public boolean addClass(ModelClass class_) {
+		
+		if (class_ == null) return false;
 		
 		String key = class_.getClassPackage();
 		ClassGroup cg = this.classGroups.get(key);
@@ -28,6 +30,8 @@ public class Model extends AbstractModelObject {
 		cg.addClass(class_);
 		
 		this.classGroups.put(key, cg);
+		
+		return true;
 		
 	}
 

@@ -70,15 +70,6 @@ public class Price extends ApiResource {
 		this.amount = amount;
 	}
 
-	public Price creatorId(String creatorId) {
-		this.creatorId = creatorId;
-		return this;
-	}
-
-	public Price creatorResource(String creatorResource) {
-		this.creatorResource = creatorResource;
-		return this;
-	}
 
 	public Price formatted(String formatted) {
 		this.formatted = formatted;
@@ -106,6 +97,7 @@ public class Price extends ApiResource {
 		this.exchanges = exchanges;
 	}
 
+	
 	@Override
 	public boolean equals(java.lang.Object o) {
 		if (this == o) {

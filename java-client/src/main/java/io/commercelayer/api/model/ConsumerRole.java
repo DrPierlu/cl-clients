@@ -68,15 +68,6 @@ public class ConsumerRole extends ApiResource {
 		this.position = position;
 	}
 
-	public ConsumerRole creatorId(String creatorId) {
-		this.creatorId = creatorId;
-		return this;
-	}
-
-	public ConsumerRole creatorResource(String creatorResource) {
-		this.creatorResource = creatorResource;
-		return this;
-	}
 
 	@Override
 	public boolean equals(java.lang.Object o) {
@@ -96,7 +87,7 @@ public class ConsumerRole extends ApiResource {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(resourceName, id, consumerId, consumerResource, roleId, position, creatorId,
+		return Objects.hash(resourceName, id, consumerId, consumerResource, roleId, position, 
 				creatorResource, createdAt, updatedAt);
 	}
 

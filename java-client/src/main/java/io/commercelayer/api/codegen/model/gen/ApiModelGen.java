@@ -4,6 +4,7 @@ import java.lang.reflect.Modifier;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import org.apache.commons.lang3.text.WordUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -16,7 +17,13 @@ import io.commercelayer.api.codegen.schema.Resource;
 import io.commercelayer.api.codegen.schema.Schema;
 import io.commercelayer.api.codegen.schema.parser.ApiParser;
 import io.commercelayer.api.codegen.schema.parser.ApiParserFactory;
+import io.commercelayer.api.config.ResourceCatalog;
+import io.commercelayer.api.exception.ApiException;
+import io.commercelayer.api.model.Address;
 import io.commercelayer.api.model.common.ApiResource;
+import io.commercelayer.api.search.ApiSearchRequest;
+import io.commercelayer.api.search.ApiSearchResponse;
+import io.commercelayer.api.security.ApiToken;
 import io.commercelayer.api.util.ModelUtils;
 
 public class ApiModelGen {
@@ -34,12 +41,17 @@ public class ApiModelGen {
 		
 		List<Definition> definitions = schema.getDefinitions();
 		for (Definition def : definitions) {
-			model.addClass(createObjectClass(PACKAGE_OBJECT, def));
+			if (!model.addClass(createObjectClass(PACKAGE_OBJECT, def))) {
+				logger.warn("Definition skipped: {}", def.getTitle());
+			}
 		}
 		
 		List<Resource> resources = schema.getResources();
 		for (Resource res : resources) {
-			
+			if (!model.addClass(createCallerClass(PACKAGE_CALLER, res))) {
+				if (!res.getPath().endsWith("{id}") || (res.getPath().indexOf('{') != res.getPath().lastIndexOf('{')))
+					logger.warn("Resource skipped: {}", res.getPath());
+			}
 		}
 		
 		return model;
@@ -146,7 +158,7 @@ public class ApiModelGen {
 			}
 			
 			if (!mc.addField(field, true, true)) {
-				logger.warn("Field skipped: {}", field.getName());
+				logger.warn("Field skipped: {}.{}", def.getTitle(), field.getName());
 			}
 			
 		}
@@ -161,6 +173,18 @@ public class ApiModelGen {
 	private ModelClass createCallerClass(String modelPackage, Resource res) {
 		
 		ModelClass mc = new ModelClass();
+		
+		String path = res.getPath();
+		if (path.indexOf('{') != -1) return null;
+		
+		String name = WordUtils.capitalize(path.substring(path.lastIndexOf('/')+1), '_').replaceAll("_", "").concat("Caller");
+		
+		mc.setClassPackage(PACKAGE_CALLER);
+		mc.setComment(name);
+		mc.setName(name);
+		mc.setModifier(Modifier.PUBLIC);
+		
+		
 		
 		return mc;
 		
@@ -179,8 +203,42 @@ public class ApiModelGen {
 		
 		Schema schema = ApiParserFactory.getSwaggerParserInstance().parse(ApiParser.TEST_SCHEMA_PATH);
 		
-		Model model = new ApiModelGen().createModel(schema);
+		ApiModelGen apiGen = new ApiModelGen();
+		
+		Model model = apiGen.createModel(schema);
 		
 	}
+	
+//	public AddressesCaller(ApiToken apiToken) {
+//		super(apiToken);
+//	}
+//	
+//	public Address insertAddress(Address address) throws ApiException {
+//		return (Address)insertItem(address);
+//	}
+//	
+//	public Address updateAddress(Address address) throws ApiException {
+//		return (Address)updateItem(address);
+//	}
+//	
+//	public Address getAddress(Long id) throws ApiException {
+//		return getItem(id, Address.class);
+//	}
+//	
+//	public void deleteAddress(Long id) throws ApiException {
+//		deleteItem(id);
+//	}
+//	
+//	public ApiSearchResponse<Address> getAddressList(ApiSearchRequest searchRequest) throws ApiException {
+//		return getItemList(searchRequest, Address.class);
+//	}
+//	
+//	
+//
+//	@Override
+//	protected String getResourcePath() {
+//		return ResourceCatalog.ADDRESSES.path();
+//	}
 
+	
 }

@@ -72,15 +72,6 @@ public class StockItem extends ApiResource {
 		this.quantity = quantity;
 	}
 
-	public StockItem creatorId(String creatorId) {
-		this.creatorId = creatorId;
-		return this;
-	}
-
-	public StockItem creatorResource(String creatorResource) {
-		this.creatorResource = creatorResource;
-		return this;
-	}
 
 	@Override
 	public boolean equals(java.lang.Object o) {
@@ -101,7 +92,7 @@ public class StockItem extends ApiResource {
 	@Override
 	public int hashCode() {
 		return Objects.hash(resourceName, id, stockLocationId, stockableId, stockableResource, quantity,
-				creatorId, creatorResource, createdAt, updatedAt);
+				creatorResource, createdAt, updatedAt);
 	}
 
 }

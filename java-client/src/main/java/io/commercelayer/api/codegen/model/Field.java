@@ -81,7 +81,7 @@ public class Field extends AbstractModelObject {
 		String code = f.generate();
 
 		System.out.println(code);
-
+		
 	}
 
 }

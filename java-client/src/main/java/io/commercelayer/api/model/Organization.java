@@ -25,15 +25,6 @@ public class Organization extends ApiResource {
 		this.name = name;
 	}
 
-	public Organization creatorId(String creatorId) {
-		this.creatorId = creatorId;
-		return this;
-	}
-
-	public Organization creatorResource(String creatorResource) {
-		this.creatorResource = creatorResource;
-		return this;
-	}
 
 	@Override
 	public boolean equals(java.lang.Object o) {
@@ -50,7 +41,7 @@ public class Organization extends ApiResource {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(resourceName, id, name, creatorId, creatorResource, createdAt, updatedAt);
+		return Objects.hash(resourceName, id, name, creatorResource, createdAt, updatedAt);
 	}
 
 }

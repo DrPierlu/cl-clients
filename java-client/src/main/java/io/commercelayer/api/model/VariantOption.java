@@ -40,15 +40,6 @@ public class VariantOption extends ApiResource {
 		this.optionValueId = optionValueId;
 	}
 
-	public VariantOption creatorId(String creatorId) {
-		this.creatorId = creatorId;
-		return this;
-	}
-
-	public VariantOption creatorResource(String creatorResource) {
-		this.creatorResource = creatorResource;
-		return this;
-	}
 
 	@Override
 	public boolean equals(java.lang.Object o) {
@@ -66,7 +57,7 @@ public class VariantOption extends ApiResource {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(resourceName, id, variantId, optionValueId, creatorId, creatorResource,
+		return Objects.hash(resourceName, id, variantId, optionValueId, creatorResource,
 				createdAt, updatedAt);
 	}
 

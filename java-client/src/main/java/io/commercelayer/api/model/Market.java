@@ -110,15 +110,6 @@ public class Market extends ApiResource {
 		this.orderValidationPolicyId = orderValidationPolicyId;
 	}
 
-	public Market creatorId(String creatorId) {
-		this.creatorId = creatorId;
-		return this;
-	}
-
-	public Market creatorResource(String creatorResource) {
-		this.creatorResource = creatorResource;
-		return this;
-	}
 
 	@Override
 	public boolean equals(java.lang.Object o) {
@@ -142,7 +133,7 @@ public class Market extends ApiResource {
 	@Override
 	public int hashCode() {
 		return Objects.hash(resourceName, id, channelId, countryGroupId, merchantId, catalogId,
-				priceListId, stockLocationId, orderValidationPolicyId, creatorId, creatorResource, createdAt, updatedAt);
+				priceListId, stockLocationId, orderValidationPolicyId, creatorResource, createdAt, updatedAt);
 	}
 
 }

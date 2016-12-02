@@ -40,16 +40,6 @@ public class State extends ApiResource {
 		this.code = code;
 	}
 
-	public State creatorId(String creatorId) {
-		this.creatorId = creatorId;
-		return this;
-	}
-
-	public State creatorResource(String creatorResource) {
-		this.creatorResource = creatorResource;
-		return this;
-	}
-
 	@Override
 	public boolean equals(java.lang.Object o) {
 		if (this == o) {
@@ -66,7 +56,7 @@ public class State extends ApiResource {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(resourceName, id, countryId, code, creatorId, creatorResource, createdAt,
+		return Objects.hash(resourceName, id, countryId, code, creatorResource, createdAt,
 				updatedAt);
 	}
 

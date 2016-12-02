@@ -4,8 +4,15 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Map;
+
+import javax.swing.plaf.DimensionUIResource;
+
+import org.apache.commons.io.FileUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import io.commercelayer.api.codegen.model.Model;
 import io.commercelayer.api.codegen.model.Model.ClassGroup;
@@ -14,35 +21,58 @@ import io.commercelayer.api.codegen.model.gen.ApiModelGen;
 import io.commercelayer.api.codegen.schema.parser.ApiParser;
 import io.commercelayer.api.codegen.schema.parser.ApiParserFactory;
 import io.commercelayer.api.util.IOUtils;
+import io.commercelayer.api.util.LogUtils;
 
 public class ApiModelWriter {
+	
+	private static Logger logger = LoggerFactory.getLogger(ApiModelWriter.class);
 
 	public void writeModel(Model model) {
 		
-		ClassGroup cg = model.getClassGroup(ApiModelGen.PACKAGE_OBJECT);
-		for (ModelClass mc : cg.getGroupClasses()) {
-			if (mc.getName().equals("Address"))
+		for (Map.Entry<String, ClassGroup> cgEntry : model.getClassGroups().entrySet()) {
+			
 			try {
-				writeObjectClass(mc);
+				initClassGroupDirectory(cgEntry.getKey());
 			}
 			catch (IOException ioe) {
-				ioe.printStackTrace();
+				logger.error(LogUtils.printStackTrace(ioe));
+				continue;
 			}
+			
+			ClassGroup cg = model.getClassGroup(cgEntry.getKey());
+			
+			for (ModelClass mc : cg.getGroupClasses()) {
+				try {
+					writeClass(mc);
+				}
+				catch (IOException ioe) {
+					logger.error(LogUtils.printStackTrace(ioe));
+				}
+			}
+			
 		}
 		
 	}
 	
 	
-	private void writeObjectClass(ModelClass mc) throws IOException {
+	private void initClassGroupDirectory(String pkg) throws IOException {
 		
+		Path dirPath = Paths.get(IOUtils.packageToPath(pkg, "src/main/java"));
+		File dir = dirPath.toFile();
+		FileUtils.deleteDirectory(dir);
+		FileUtils.forceMkdir(dir);
+		
+	}
+	
+	
+	private void writeClass(ModelClass mc) throws IOException {
 		try (
-			FileWriter fw = new FileWriter(Paths.get(IOUtils.packageToPath(ApiModelGen.PACKAGE_OBJECT, "src/main/java"), mc.getName().concat(".java")).toFile());
-			BufferedWriter bw = new BufferedWriter(fw);
-		) {
-			bw.write(mc.generate());
-		}
-		
-		
+				FileWriter fw = new FileWriter(Paths.get(IOUtils.packageToPath(mc.getClassPackage(), "src/main/java"), mc.getName().concat(".java")).toFile());
+				BufferedWriter bw = new BufferedWriter(fw);
+			) {
+				
+				bw.write(mc.generate());
+			}
 	}
 	
 	

@@ -39,15 +39,6 @@ public class Environment extends ApiResource {
 		this.name = name;
 	}
 
-	public Environment creatorId(String creatorId) {
-		this.creatorId = creatorId;
-		return this;
-	}
-
-	public Environment creatorResource(String creatorResource) {
-		this.creatorResource = creatorResource;
-		return this;
-	}
 
 	@Override
 	public boolean equals(java.lang.Object o) {
@@ -65,7 +56,7 @@ public class Environment extends ApiResource {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(resourceName, id, organizationId, name, creatorId, creatorResource, createdAt, updatedAt);
+		return Objects.hash(resourceName, id, organizationId, name, creatorResource, createdAt, updatedAt);
 	}
 
 }

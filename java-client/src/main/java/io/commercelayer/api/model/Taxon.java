@@ -124,15 +124,6 @@ public class Taxon extends ApiResource {
 		this.childrenCount = childrenCount;
 	}
 
-	public Taxon creatorId(String creatorId) {
-		this.creatorId = creatorId;
-		return this;
-	}
-
-	public Taxon creatorResource(String creatorResource) {
-		this.creatorResource = creatorResource;
-		return this;
-	}
 
 	@Override
 	public boolean equals(java.lang.Object o) {
@@ -157,7 +148,7 @@ public class Taxon extends ApiResource {
 	@Override
 	public int hashCode() {
 		return Objects.hash(resourceName, id, name, taxonomyId, position, parentId, lft, rgt, depth,
-				childrenCount, creatorId, creatorResource, createdAt, updatedAt);
+				childrenCount, creatorResource, createdAt, updatedAt);
 	}
 
 }

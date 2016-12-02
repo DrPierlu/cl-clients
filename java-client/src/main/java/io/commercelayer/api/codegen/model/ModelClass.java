@@ -144,6 +144,7 @@ public class ModelClass extends AbstractModelObject {
 			addMethod(m);
 		}
 		
+		
 		return true;
 
 	}

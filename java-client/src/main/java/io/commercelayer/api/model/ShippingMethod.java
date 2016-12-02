@@ -68,15 +68,7 @@ public class ShippingMethod extends ApiResource {
 		this.shippingCategoryId = shippingCategoryId;
 	}
 
-	public ShippingMethod creatorId(String creatorId) {
-		this.creatorId = creatorId;
-		return this;
-	}
 
-	public ShippingMethod creatorResource(String creatorResource) {
-		this.creatorResource = creatorResource;
-		return this;
-	}
 
 	@Override
 	public boolean equals(java.lang.Object o) {
@@ -97,7 +89,7 @@ public class ShippingMethod extends ApiResource {
 	@Override
 	public int hashCode() {
 		return Objects.hash(resourceName, id, name, description, shippingZoneId, shippingCategoryId,
-				creatorId, creatorResource, createdAt, updatedAt);
+				creatorResource, createdAt, updatedAt);
 	}
 
 }

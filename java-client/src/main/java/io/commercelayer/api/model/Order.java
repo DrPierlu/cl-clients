@@ -96,15 +96,6 @@ public class Order extends ApiResource {
 		this.billingAddressId = billingAddressId;
 	}
 
-	public Order creatorId(String creatorId) {
-		this.creatorId = creatorId;
-		return this;
-	}
-
-	public Order creatorResource(String creatorResource) {
-		this.creatorResource = creatorResource;
-		return this;
-	}
 
 	@Override
 	public boolean equals(java.lang.Object o) {
@@ -127,7 +118,7 @@ public class Order extends ApiResource {
 	@Override
 	public int hashCode() {
 		return Objects.hash(resourceName, id, merchantId, channelId, countryId, currencyId,
-				shippingAddressId, billingAddressId, creatorId, creatorResource, createdAt, updatedAt);
+				shippingAddressId, billingAddressId, creatorResource, createdAt, updatedAt);
 	}
 
 }

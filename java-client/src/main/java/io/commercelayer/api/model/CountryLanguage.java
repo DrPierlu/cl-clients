@@ -54,15 +54,6 @@ public class CountryLanguage extends ApiResource {
 		this.position = position;
 	}
 
-	public CountryLanguage creatorId(String creatorId) {
-		this.creatorId = creatorId;
-		return this;
-	}
-
-	public CountryLanguage creatorResource(String creatorResource) {
-		this.creatorResource = creatorResource;
-		return this;
-	}
 
 	@Override
 	public boolean equals(java.lang.Object o) {
@@ -81,7 +72,7 @@ public class CountryLanguage extends ApiResource {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(resourceName, id, countryId, languageId, position, creatorId,
+		return Objects.hash(resourceName, id, countryId, languageId, position, 
 				creatorResource, createdAt, updatedAt);
 	}
 

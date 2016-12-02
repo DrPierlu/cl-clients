@@ -68,15 +68,6 @@ public class Variant extends ApiResource {
 		this.taxCode = taxCode;
 	}
 
-	public Variant creatorId(String creatorId) {
-		this.creatorId = creatorId;
-		return this;
-	}
-
-	public Variant creatorResource(String creatorResource) {
-		this.creatorResource = creatorResource;
-		return this;
-	}
 
 	@Override
 	public boolean equals(java.lang.Object o) {
@@ -96,7 +87,7 @@ public class Variant extends ApiResource {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(resourceName, id, productId, shippingCategoryId, sku, taxCode, creatorId,
+		return Objects.hash(resourceName, id, productId, shippingCategoryId, sku, taxCode, 
 				creatorResource, createdAt, updatedAt);
 	}
 

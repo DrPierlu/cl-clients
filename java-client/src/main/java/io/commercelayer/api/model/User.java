@@ -81,15 +81,6 @@ public class User extends ApiResource {
 		this.passwordSalt = passwordSalt;
 	}
 
-	public User creatorId(String creatorId) {
-		this.creatorId = creatorId;
-		return this;
-	}
-
-	public User creatorResource(String creatorResource) {
-		this.creatorResource = creatorResource;
-		return this;
-	}
 
 	@Override
 	public boolean equals(java.lang.Object o) {
@@ -110,7 +101,7 @@ public class User extends ApiResource {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(resourceName, id, firstName, lastName, email, passwordHash, passwordSalt, creatorId,
+		return Objects.hash(resourceName, id, firstName, lastName, email, passwordHash, passwordSalt, 
 				creatorResource, createdAt, updatedAt);
 	}
 
