@@ -17,13 +17,7 @@ import io.commercelayer.api.codegen.schema.Resource;
 import io.commercelayer.api.codegen.schema.Schema;
 import io.commercelayer.api.codegen.schema.parser.ApiParser;
 import io.commercelayer.api.codegen.schema.parser.ApiParserFactory;
-import io.commercelayer.api.config.ResourceCatalog;
-import io.commercelayer.api.exception.ApiException;
-import io.commercelayer.api.model.Address;
 import io.commercelayer.api.model.common.ApiResource;
-import io.commercelayer.api.search.ApiSearchRequest;
-import io.commercelayer.api.search.ApiSearchResponse;
-import io.commercelayer.api.security.ApiToken;
 import io.commercelayer.api.util.ModelUtils;
 
 public class ApiModelGen {
@@ -203,6 +197,7 @@ public class ApiModelGen {
 		
 		Schema schema = ApiParserFactory.getSwaggerParserInstance().parse(ApiParser.TEST_SCHEMA_PATH);
 		
+
 		ApiModelGen apiGen = new ApiModelGen();
 		
 		Model model = apiGen.createModel(schema);
@@ -240,5 +235,4 @@ public class ApiModelGen {
 //		return ResourceCatalog.ADDRESSES.path();
 //	}
 
-	
 }
