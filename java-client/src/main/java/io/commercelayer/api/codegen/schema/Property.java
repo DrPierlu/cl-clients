@@ -8,6 +8,7 @@ public class Property {
 	private boolean required;
 	private boolean readonly;
 	private String description;
+
 	private String itemType;
 
 	public String getName() {
@@ -79,5 +80,5 @@ public class Property {
 		String DATE_TIME = "date-time";
 		String FLOAT = "float";
 	}
-
+	
 }

@@ -63,6 +63,7 @@ public abstract class AbstractModelObject {
 				lines.add("");
 		return lines;
 	}
+
 	
 	protected String strType(Class<?> type, Class<?> listType) {
 		StringBuffer sb = new StringBuffer();

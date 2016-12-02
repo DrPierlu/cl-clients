@@ -182,5 +182,4 @@ public class ApiModelGen {
 		Model model = new ApiModelGen().createModel(schema);
 		
 	}
-
 }
