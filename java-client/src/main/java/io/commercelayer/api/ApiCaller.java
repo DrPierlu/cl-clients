@@ -1,5 +1,6 @@
 package io.commercelayer.api;
 
+import java.lang.reflect.Field;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -30,6 +31,7 @@ import io.commercelayer.api.search.SortParam;
 import io.commercelayer.api.security.ApiToken;
 import io.commercelayer.api.util.ApiUtils;
 import io.commercelayer.api.util.ContentType;
+import io.commercelayer.api.util.LogUtils;
 
 public abstract class ApiCaller {
 	
@@ -65,7 +67,7 @@ public abstract class ApiCaller {
 
 	protected <T extends ApiResource> ApiSearchResponse<T> getItemList(ApiSearchRequest searchRequest, Class<T> class_) throws ApiException {
 
-		HttpRequest request = createHttpRequest(Method.GET);
+		HttpRequest request = createHttpRequest(searchRequest, Method.GET);
 		
 		// Pagination Filter
 		final PageFilter pageFilter = searchRequest.getPageFilter();
@@ -122,12 +124,12 @@ public abstract class ApiCaller {
 	}
 
 
-	protected <T extends ApiResource> T getItem(Long id, Class<T> class_) throws ApiException {
+	protected <T extends ApiResource> T getItem(ApiRequest apiRequest, Class<T> class_) throws ApiException {
 
-		logger.info("getItem execution [{}, {}]", id, class_.getName());
+		logger.info("getItem execution [{}, {}]", apiRequest.getResource().getId(), class_.getName());
 		
-		HttpRequest request = createHttpRequest(Method.GET);
-		request.setUrl(request.getUrl().concat("/").concat(String.valueOf(id)));
+		HttpRequest request = createHttpRequest(apiRequest, Method.GET);
+		request.setUrl(request.getUrl().concat("/").concat(String.valueOf(apiRequest.getResource().getId())));
 		
 		HttpResponse response = call(request);
 
@@ -138,52 +140,48 @@ public abstract class ApiCaller {
 	}
 	
 	
-	protected ApiResource updateItem(ApiResource item) throws ApiException {
+	protected ApiResource updateItem(ApiRequest apiRequest) throws ApiException {
 
-		logger.info("updateItem execution: {}", item);
+		logger.info("updateItem execution: {}", apiRequest.getResource());
 		
-		HttpRequest request = createHttpRequest(Method.PUT);
-		request.setUrl(request.getUrl().concat("/").concat(String.valueOf(item.getId())));
+		HttpRequest request = createHttpRequest(apiRequest, Method.PUT);
+		request.setUrl(request.getUrl().concat("/").concat(String.valueOf(apiRequest.getResource().getId())));
 		
-		request.setBody(jsonCodec.toJSON(item, true));
+		request.setBody(jsonCodec.toJSON(apiRequest.getResource(), true));
 
 		HttpResponse response = call(request);
 		
-		ApiResource resourceObject = jsonCodec.fromJSON(response.getBody(), item.getClass());
+		ApiResource resourceObject = jsonCodec.fromJSON(response.getBody(), apiRequest.getResource().getClass());
 		
 		return resourceObject;
 
 	}
 	
-	protected ApiResource insertItem(ApiResource item) throws ApiException {
+	protected ApiResource insertItem(ApiRequest apiRequest) throws ApiException {
 		
-		logger.info("insertItem execution: {}", item);
+		logger.info("insertItem execution: {}", apiRequest.getResource());
 
-		HttpRequest request = createHttpRequest(Method.POST);
+		HttpRequest request = createHttpRequest(apiRequest, Method.POST);
 		
-		request.setBody(jsonCodec.toJSON(item, true));
+		request.setBody(jsonCodec.toJSON(apiRequest.getResource(), true));
 
 		HttpResponse response = call(request);
 		
-		ApiResource resourceObject = jsonCodec.fromJSON(response.getBody(), item.getClass());
+		ApiResource resourceObject = jsonCodec.fromJSON(response.getBody(), apiRequest.getResource().getClass());
 		
 		return resourceObject;
 
 	}
 
-	protected void deleteItem(Long id) throws ApiException {
+	protected void deleteItem(ApiRequest apiRequest) throws ApiException {
 
-		logger.info("deleteItem execution: {}", id);
+		logger.info("deleteItem execution: {}", apiRequest.getResource().getId());
 
-		HttpRequest request = createHttpRequest(Method.DELETE);
-		request.setUrl(request.getUrl().concat("/").concat(String.valueOf(id)));
+		HttpRequest request = createHttpRequest(apiRequest, Method.DELETE);
+		request.setUrl(request.getUrl().concat("/").concat(String.valueOf(apiRequest.getResource().getId())));
 		
 		/*HttpResponse response = */call(request);
 		
-	}
-
-	protected void deleteItem(ApiResource item) throws ApiException {
-		deleteItem(item.getId());
 	}
 
 	
@@ -230,11 +228,31 @@ public abstract class ApiCaller {
 	}
 
 	
-	private HttpRequest createHttpRequest(Method httpMethod) {
+	private HttpRequest createHttpRequest(ApiRequest apiRequest, Method httpMethod) {
 
 		HttpRequest request = new HttpRequest(httpMethod);
 
-		request.setUrl(ApiUtils.getResourceUrl(getResourcePath()));
+		String url = ApiUtils.getResourceUrl(apiRequest.getPath());
+		
+		int cbIdx = -1;
+		while ((cbIdx = url.indexOf("{")) >= 0) {
+			
+			String fieldName = url.substring(cbIdx, url.indexOf('}'));
+			String fieldValue = null;
+			
+			try {
+				Field field = apiRequest.getClass().getField(fieldName);
+				field.setAccessible(true);
+				fieldValue = String.valueOf(field.get(apiRequest.getResource()));
+			} catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException e) {
+				logger.warn(LogUtils.printStackTrace(e));
+			}
+			
+			url = url.replaceFirst("{[a-zA-Z0-9]+}", fieldValue);
+			
+		}
+		
+		request.setUrl(url);
 		request.setContentType(ContentType.JSON);
 		request.addHeader("Accept", ContentType.JSON);
 		request.setHttpAuth(new HttpAuthOAuth2(apiToken.getAccessToken()));

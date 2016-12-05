@@ -14,6 +14,15 @@ public abstract class ApiResource extends ApiObject {
 	protected LocalDateTime createdAt = null;
 	protected LocalDateTime updatedAt = null;
 	
+	public ApiResource() {
+		super();
+	}
+	
+	public ApiResource(Long id) {
+		this();
+		this.id = id;
+	}
+	
 	public String getPlural() {
 		return getClass().getSimpleName().concat("s");
 	}

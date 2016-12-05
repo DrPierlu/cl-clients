@@ -4,8 +4,6 @@ import java.lang.reflect.Modifier;
 
 public class Field extends AbstractModelObject {
 
-	private String name;
-	private Integer modifier;
 	private Class<?> type;
 	private Class<?> listType;
 
@@ -22,18 +20,6 @@ public class Field extends AbstractModelObject {
 		this(modifier);
 		this.type = type;
 		this.name = name;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public Integer getModifier() {
-		return modifier;
 	}
 
 	public void setModifier(Integer modifier) throws IllegalArgumentException {

@@ -41,6 +41,15 @@ public class Address extends ApiResource {
 	private Float suggestedBoundsNeLat = null;
 	private Float suggestedBoundsNeLng = null;
 
+	public Address() {
+		super();
+	}
+	
+
+	public Address(Long id) {
+		super();
+		this.id = id;
+	}
 
 	public Address geocodingCountry(String geocodingCountry) {
 		this.geocodingCountry = geocodingCountry;

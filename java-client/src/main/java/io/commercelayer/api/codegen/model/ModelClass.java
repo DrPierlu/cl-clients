@@ -15,15 +15,14 @@ import io.commercelayer.api.model.common.ApiResource;
 public class ModelClass extends AbstractModelObject {
 
 	private String classPackage;
-	private String name;
-	private Integer modifier;
 
 	private List<Class<?>> importList = new ArrayList<>();
 	private Class<?> extendedClass;
 	private List<Class<?>> implementList = new ArrayList<>();
 	private List<Method> methodList = new ArrayList<>();
 	private List<Field> fieldList = new ArrayList<>();
-	private List<? extends Throwable> exceptionList = new ArrayList<>();
+	private List<Class<? extends Exception>> exceptionList = new ArrayList<>();
+	private List<Constructor> constructorList = new ArrayList<>();
 	
 	public ModelClass() {
 		super();
@@ -46,18 +45,6 @@ public class ModelClass extends AbstractModelObject {
 
 	public void setClassPackage(String classPackage) {
 		this.classPackage = classPackage;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public Integer getModifier() {
-		return modifier;
 	}
 
 	public void setModifier(Integer modifier) throws IllegalArgumentException {
@@ -92,12 +79,16 @@ public class ModelClass extends AbstractModelObject {
 		this.implementList.add(intf);
 	}
 	
-	public List<? extends Throwable> getExceptionList() {
+	public List<Class<? extends Exception>> getExceptionList() {
 		return exceptionList;
 	}
 
-	public void setExceptionList(List<? extends Throwable> exceptionList) {
+	public void setExceptionList(List<Class<? extends Exception>> exceptionList) {
 		if (exceptionList != null) this.exceptionList = exceptionList;
+	}
+	
+	public void addException(Class<? extends Exception> e) {
+		this.exceptionList.add(e);
 	}
 
 	public List<Method> getMethodList() {
@@ -110,6 +101,16 @@ public class ModelClass extends AbstractModelObject {
 
 	public void addMethod(Method method) {
 		this.methodList.add(method);
+	}
+	
+	
+
+	public List<Constructor> getConstructorList() {
+		return constructorList;
+	}
+	
+	public void addConstructor(Constructor constructor) {
+		this.constructorList.add(constructor);
 	}
 
 	public boolean addField(Field field) {
@@ -169,8 +170,8 @@ public class ModelClass extends AbstractModelObject {
 			addImportItem(m.getReturnType());
 			for (Param p : m.getSignatureParams())
 				addImportItem(p.getType());
-			for (Throwable t : m.getExceptionList())
-				addImportItem(t.getClass());
+			for (Class<? extends Exception> e : m.getExceptionList())
+				addImportItem(e.getClass());
 		}
 
 	}
@@ -221,9 +222,9 @@ public class ModelClass extends AbstractModelObject {
 		if (!getExceptionList().isEmpty()) {
 			sb.append(' ');
 			int i = 0;
-			for (Throwable t : getExceptionList()) {
+			for (Class<? extends Exception> e : getExceptionList()) {
 				if (i > 0) sb.append(", ");
-				sb.append(t.getClass().getSimpleName());
+				sb.append(e.getSimpleName());
 			}
 		}
 		
@@ -243,6 +244,12 @@ public class ModelClass extends AbstractModelObject {
 		}
 		sb.append(newLine());
 		
+		// Constructors
+		for (Constructor c : getConstructorList()) {
+			sb.append(newLines(c.getLinesBefore()));
+			sb.append('\t').append(c.generate().replaceAll("\n", "\n\t"));
+			sb.append(newLines(c.getLinesAfter()));
+		}
 		
 		// Methods
 		for (Method m : getMethodList()) {

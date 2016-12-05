@@ -8,15 +8,20 @@ import org.apache.commons.lang3.text.WordUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import io.commercelayer.api.codegen.model.Constructor;
 import io.commercelayer.api.codegen.model.Field;
+import io.commercelayer.api.codegen.model.Method;
+import io.commercelayer.api.codegen.model.Method.Param;
 import io.commercelayer.api.codegen.model.Model;
 import io.commercelayer.api.codegen.model.ModelClass;
 import io.commercelayer.api.codegen.schema.Definition;
+import io.commercelayer.api.codegen.schema.Operation;
 import io.commercelayer.api.codegen.schema.Property;
 import io.commercelayer.api.codegen.schema.Resource;
 import io.commercelayer.api.codegen.schema.Schema;
 import io.commercelayer.api.codegen.schema.parser.ApiParser;
 import io.commercelayer.api.codegen.schema.parser.ApiParserFactory;
+import io.commercelayer.api.exception.ApiException;
 import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.util.ModelUtils;
 
@@ -139,9 +144,12 @@ public class ApiModelGen {
 	private ModelClass createObjectClass(String modelPackage, Definition def) {
 		
 		ModelClass mc = new ModelClass(modelPackage, def.getTitle(), Modifier.PUBLIC);
-		mc.setComment(def.getTitle());
+		mc.setComment(mc.getName());
 
 		mc.setExtendedClass(ApiResource.class);
+		
+		mc.addConstructor(new Constructor(mc.getName(), Modifier.PUBLIC));
+		mc.addConstructor(new Constructor(mc.getName(), Modifier.PUBLIC, new Param(Long.class, "id")));
 		
 		for (Property p : def.getProperties()) {
 			
@@ -178,11 +186,41 @@ public class ApiModelGen {
 		mc.setName(name);
 		mc.setModifier(Modifier.PUBLIC);
 		
-		
+		for (Operation op : res.getOperations()) {
+			mc.addMethod(buildOperationCall(op));
+		}
 		
 		return mc;
 		
 	}
+	
+	
+	private Method buildOperationCall(Operation op) {
+		
+		Method m = new Method(Modifier.PUBLIC);
+		
+		m.setName(op.getId());
+		m.addException(ApiException.class);
+		
+		switch(op.getMethod()) {
+			case GET: {
+				
+			}
+			case POST: {
+				
+			}
+			case PUT: {
+				
+			}
+			case DELETE: {
+				
+			}
+		}
+		
+		return m;
+		
+	}
+	
 	
 	private ModelClass createTestClass() {
 		

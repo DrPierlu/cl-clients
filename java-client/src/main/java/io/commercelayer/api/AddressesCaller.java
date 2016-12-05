@@ -14,19 +14,19 @@ public class AddressesCaller extends ApiCaller {
 	}
 	
 	public Address insertAddress(Address address) throws ApiException {
-		return (Address)insertItem(address);
+		return (Address)insertItem(new ApiRequest(getResourcePath(), address));
 	}
 	
 	public Address updateAddress(Address address) throws ApiException {
-		return (Address)updateItem(address);
+		return (Address)updateItem(new ApiRequest(getResourcePath(), address));
 	}
 	
 	public Address getAddress(Long id) throws ApiException {
-		return getItem(id, Address.class);
+		return getItem(new ApiRequest(getResourcePath(), new Address(id)), Address.class);
 	}
 	
 	public void deleteAddress(Long id) throws ApiException {
-		deleteItem(id);
+		deleteItem(new ApiRequest(getResourcePath(), new Address(id)));
 	}
 	
 	public ApiSearchResponse<Address> getAddressList(ApiSearchRequest searchRequest) throws ApiException {

@@ -9,34 +9,21 @@ import org.apache.commons.lang3.StringUtils;
 
 public class Method extends AbstractModelObject {
 
-	private String name;
-	private Integer modifier;
 	private Class<?> returnType;
 	private Class<?> listType;
 	private List<Param> signatureParams = new ArrayList<>();
 	private List<String> body = new ArrayList<>();
-	private List<? extends Throwable> exceptionList = new ArrayList<>();
+	private List<Class<? extends Exception>> exceptionList = new ArrayList<>();
 
 	public Method() {
 		super();
 	}
-
+	
 	public Method(Integer modifier) {
 		this();
 		this.modifier = modifier;
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public Integer getModifier() {
-		return modifier;
-	}
 
 	public void setModifier(Integer modifier) throws IllegalArgumentException {
 		if ((Modifier.methodModifiers() & modifier.intValue()) == 0)
@@ -80,15 +67,19 @@ public class Method extends AbstractModelObject {
 		this.body.add(line);
 	}
 
-	public List<? extends Throwable> getExceptionList() {
+	public List<Class<? extends Exception>> getExceptionList() {
 		return exceptionList;
 	}
 
-	public void setExceptionList(List<? extends Throwable> exceptionList) {
+	public void setExceptionList(List<Class<? extends Exception>> exceptionList) {
 		if (exceptionList != null)
 			this.exceptionList = exceptionList;
 	}
-
+	
+	public void addException(Class<? extends Exception> e) {
+		this.exceptionList.add(e);
+	}
+	
 	public Class<?> getListType() {
 		return listType;
 	}
@@ -119,10 +110,10 @@ public class Method extends AbstractModelObject {
 		if (!getExceptionList().isEmpty()) {
 			sb.append(' ');
 			int items = 0;
-			for (Throwable t : getExceptionList()) {
+			for (Class<? extends Exception> e : getExceptionList()) {
 				if (items > 0)
 					sb.append(", ");
-				sb.append(t.getClass().getSimpleName());
+				sb.append(e.getSimpleName());
 				items++;
 			}
 		}
