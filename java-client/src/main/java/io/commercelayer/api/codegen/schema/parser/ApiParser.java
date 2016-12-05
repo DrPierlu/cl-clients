@@ -15,7 +15,7 @@ public abstract class ApiParser {
 	
 	public abstract Schema parse(String schemaPath);
 	
-	public Schema parse() {
+	public Schema parseSchema() {
 		return parse(ApiConfig.getProperty(Group.api, "service.url").concat("/swagger"));
 	}
 	

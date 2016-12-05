@@ -70,7 +70,6 @@ public class ApiModelWriter {
 				FileWriter fw = new FileWriter(Paths.get(IOUtils.packageToPath(mc.getClassPackage(), "src/main/java"), mc.getName().concat(".java")).toFile());
 				BufferedWriter bw = new BufferedWriter(fw);
 			) {
-				
 				bw.write(mc.generate());
 			}
 	}

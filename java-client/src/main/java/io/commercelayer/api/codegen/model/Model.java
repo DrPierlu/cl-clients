@@ -5,7 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Model extends AbstractModelObject {
+import javax.swing.plaf.ListUI;
+
+public class Model {
 
 	private Map<String, ClassGroup> classGroups = new HashMap<>();
 	
@@ -26,10 +28,10 @@ public class Model extends AbstractModelObject {
 		String key = class_.getClassPackage();
 		ClassGroup cg = this.classGroups.get(key);
 		
-		if (cg == null) cg = new ClassGroup();
+		if (cg == null) this.classGroups.put(key, cg = new ClassGroup());
+			
 		cg.addClass(class_);
 		
-		this.classGroups.put(key, cg);
 		
 		return true;
 		
@@ -46,14 +48,29 @@ public class Model extends AbstractModelObject {
 		}
 		
 		public void addClass(ModelClass class_) {
-			this.groupClasses.add(class_);
+			if (!this.groupClasses.contains(class_)) this.groupClasses.add(class_);
+			else {
+				for (ModelClass mc : this.groupClasses)
+					if (mc.equals(class_)) {
+						mc.getMethodList().addAll(class_.getMethodList());
+						break;
+					}
+			}
 		}
 		
 	}
 	
 	
-	public String generate() {
-		return null;
+	public boolean containsClass(String pkg, ModelClass mc) {
+		
+		ClassGroup cg = classGroups.get(pkg);
+		
+		for (ModelClass mc_ : cg.getGroupClasses()) {
+			if (mc_.getName().equals(mc.getName())) return true;
+		}
+		
+		return false;
+		
 	}
-	
+
 }

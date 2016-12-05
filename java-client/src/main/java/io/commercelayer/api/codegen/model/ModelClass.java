@@ -2,6 +2,7 @@ package io.commercelayer.api.codegen.model;
 
 
 import java.io.Serializable;
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.Date;
@@ -152,7 +153,7 @@ public class ModelClass extends AbstractModelObject {
 
 	private void createImportList() {
 
-		this.importList = new ArrayList<>();
+		if (this.importList == null) this.importList = new ArrayList<>();
 
 		// Extended class
 		addImportItem(getExtendedClass());
@@ -164,19 +165,28 @@ public class ModelClass extends AbstractModelObject {
 		// Fields
 		for (Field f : getFieldList())
 			addImportItem(f.getType());
-
+		
+		// Constructors
+		for (Constructor c : getConstructorList()) {
+			for (Param p : c.getSignatureParams())
+				addImportItem(p.getType());
+			if (c instanceof CustomConstructor) {
+				for (Class<? extends Exception> e : ((CustomConstructor)c).getExceptionList())
+					addImportItem(e);
+			}
+		}
+		
 		// Methods
 		for (Method m : getMethodList()) {
 			addImportItem(m.getReturnType());
-			for (Param p : m.getSignatureParams())
-				addImportItem(p.getType());
-			for (Class<? extends Exception> e : m.getExceptionList())
-				addImportItem(e.getClass());
+			for (Param p : m.getSignatureParams()) addImportItem(p.getType());
+			for (Class<? extends Exception> e : m.getExceptionList()) addImportItem(e);
+			for (Class<? extends Annotation> a : m.getAnnotationList()) addImportItem(a);
 		}
 
 	}
 
-	private void addImportItem(Class<?> class_) {
+	public void addImportItem(Class<?> class_) {
 		if (class_ == null) return;
 		else
 		if (!class_.getName().startsWith("java.lang") && !this.importList.contains(class_))
@@ -242,7 +252,8 @@ public class ModelClass extends AbstractModelObject {
 			sb.append(f.generate()).append(newLine());
 			sb.append(newLines(f.getLinesAfter()));
 		}
-		sb.append(newLine());
+		if (!getFieldList().isEmpty()) sb.append(newLine());
+		
 		
 		// Constructors
 		for (Constructor c : getConstructorList()) {
@@ -298,6 +309,13 @@ public class ModelClass extends AbstractModelObject {
 		
 		System.out.println(code);
 		
+	}
+	
+	
+	public boolean equals(Object o) {
+		if (!(o instanceof ModelClass)) return false;
+		ModelClass mc = (ModelClass)o;
+		return (mc.getClassPackage().equals(this.getClassPackage()) && mc.getName().equals(this.getName()));
 	}
 
 }

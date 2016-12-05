@@ -8,6 +8,8 @@ import org.apache.commons.lang3.text.WordUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import io.commercelayer.api.ApiCaller;
+import io.commercelayer.api.ApiRequest;
 import io.commercelayer.api.codegen.model.Constructor;
 import io.commercelayer.api.codegen.model.Field;
 import io.commercelayer.api.codegen.model.Method;
@@ -23,6 +25,7 @@ import io.commercelayer.api.codegen.schema.parser.ApiParser;
 import io.commercelayer.api.codegen.schema.parser.ApiParserFactory;
 import io.commercelayer.api.exception.ApiException;
 import io.commercelayer.api.model.common.ApiResource;
+import io.commercelayer.api.security.ApiToken;
 import io.commercelayer.api.util.ModelUtils;
 
 public class ApiModelGen {
@@ -48,8 +51,7 @@ public class ApiModelGen {
 		List<Resource> resources = schema.getResources();
 		for (Resource res : resources) {
 			if (!model.addClass(createCallerClass(PACKAGE_CALLER, res))) {
-				if (!res.getPath().endsWith("{id}") || (res.getPath().indexOf('{') != res.getPath().lastIndexOf('{')))
-					logger.warn("Resource skipped: {}", res.getPath());
+				logger.warn("Resource skipped: {}", res.getPath());
 			}
 		}
 		
@@ -149,7 +151,7 @@ public class ApiModelGen {
 		mc.setExtendedClass(ApiResource.class);
 		
 		mc.addConstructor(new Constructor(mc.getName(), Modifier.PUBLIC));
-		mc.addConstructor(new Constructor(mc.getName(), Modifier.PUBLIC, new Param(Long.class, "id")));
+		mc.addConstructor(new Constructor(mc.getName(), Modifier.PUBLIC, new Constructor.Param(Long.class, "id")));
 		
 		for (Property p : def.getProperties()) {
 			
@@ -177,17 +179,41 @@ public class ApiModelGen {
 		ModelClass mc = new ModelClass();
 		
 		String path = res.getPath();
-		if (path.indexOf('{') != -1) return null;
 		
-		String name = WordUtils.capitalize(path.substring(path.lastIndexOf('/')+1), '_').replaceAll("_", "").concat("Caller");
+		String[] pathTokens = path.split("/");
+		StringBuilder sb = new StringBuilder();
+		for (String pt : pathTokens)
+			if (!pt.contains("{") && !pt.contains("move_")) sb.append(WordUtils.capitalize(pt, '_').replaceAll("_", ""));
+		
+		if (res.isIdResource()) sb.append("Id");
+		if (res.isMoveableResource()) sb.append("Move");
+		
+		String name = sb.append("Caller").toString();
 		
 		mc.setClassPackage(PACKAGE_CALLER);
 		mc.setComment(name);
 		mc.setName(name);
 		mc.setModifier(Modifier.PUBLIC);
 		
+		mc.setExtendedClass(ApiCaller.class);
+		
+		Constructor c = new Constructor(name, Modifier.PUBLIC, new Constructor.Param(ApiToken.class, "apiToken"));
+		c.setParent(true);
+		mc.addConstructor(c);
+		
+//		Method rm = new Method(Modifier.PUBLIC);
+//		rm.addAnnotation(Override.class);
+//		rm.setName("getResourcePath");
+//		rm.setReturnType(String.class);
+//		rm.addBodyLine("return \"".concat(path).concat("\";"));
+//		mc.addMethod(rm);
+		
+		
+		mc.addImportItem(ApiRequest.class);
+		
 		for (Operation op : res.getOperations()) {
-			mc.addMethod(buildOperationCall(op));
+//			System.out.println("********** " + name + "->" + op.getId());
+			mc.addMethod(buildOperationCall(path, op));
 		}
 		
 		return mc;
@@ -195,7 +221,9 @@ public class ApiModelGen {
 	}
 	
 	
-	private Method buildOperationCall(Operation op) {
+	private Method buildOperationCall(String path, Operation op) {
+		
+//		System.out.println("********** " + path + "->" + op.getId());
 		
 		Method m = new Method(Modifier.PUBLIC);
 		
@@ -204,7 +232,11 @@ public class ApiModelGen {
 		
 		switch(op.getMethod()) {
 			case GET: {
-				
+				if (path.endsWith("{id}")) {
+					m.addSignatureParam(new Param(Long.class, "id"));
+
+				}
+					
 			}
 			case POST: {
 				
@@ -216,6 +248,10 @@ public class ApiModelGen {
 				
 			}
 		}
+		
+		m.addBodyLine("final String path = \"path\";");
+		m.addBodyLine("ApiRequest apiRequest = new ApiRequest(path, %s);", "null");
+		
 		
 		return m;
 		
@@ -242,10 +278,7 @@ public class ApiModelGen {
 		
 	}
 	
-//	public AddressesCaller(ApiToken apiToken) {
-//		super(apiToken);
-//	}
-//	
+
 //	public Address insertAddress(Address address) throws ApiException {
 //		return (Address)insertItem(address);
 //	}
@@ -266,11 +299,6 @@ public class ApiModelGen {
 //		return getItemList(searchRequest, Address.class);
 //	}
 //	
-//	
-//
-//	@Override
-//	protected String getResourcePath() {
-//		return ResourceCatalog.ADDRESSES.path();
-//	}
+
 
 }

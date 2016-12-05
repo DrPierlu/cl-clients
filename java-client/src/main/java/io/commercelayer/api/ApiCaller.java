@@ -42,8 +42,10 @@ public abstract class ApiCaller {
 	private HttpClient httpClient;
 	private final JsonCodec jsonCodec;
 	
-	protected abstract String getResourcePath();
+	
+//	protected abstract String getResourcePath();
 
+	
 	public ApiCaller(ApiToken apiToken) {
 		this.apiToken = apiToken;
 		this.httpClient = HttpClientFactory.getHttpClientInstance();

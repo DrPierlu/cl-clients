@@ -1,5 +1,6 @@
 package io.commercelayer.api.codegen.model;
 
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,6 +15,7 @@ public class Method extends AbstractModelObject {
 	private List<Param> signatureParams = new ArrayList<>();
 	private List<String> body = new ArrayList<>();
 	private List<Class<? extends Exception>> exceptionList = new ArrayList<>();
+	private List<Class<? extends Annotation>> annotationList = new ArrayList<>();
 
 	public Method() {
 		super();
@@ -66,6 +68,10 @@ public class Method extends AbstractModelObject {
 	public void addBodyLine(String line) {
 		this.body.add(line);
 	}
+	
+	public void addBodyLine(String line, Object... params) {
+		addBodyLine(String.format(line, params));
+	}
 
 	public List<Class<? extends Exception>> getExceptionList() {
 		return exceptionList;
@@ -88,10 +94,25 @@ public class Method extends AbstractModelObject {
 		this.listType = listType;
 	}
 
+	public List<Class<? extends Annotation>> getAnnotationList() {
+		return annotationList;
+	}
+	
+	public boolean addAnnotation(Class<? extends Annotation> annotation) {
+		if (!annotation.isAnnotation()) return false;
+		this.annotationList.add(annotation);
+		return true;
+	}
+
 	public String generate() {
 
 		StringBuilder sb = new StringBuilder();
 
+		if (!getAnnotationList().isEmpty()) {
+			for (Class<? extends Annotation> a : getAnnotationList())
+			sb.append('@').append(a.getSimpleName()).append(newLine());
+		}
+		
 		sb.append(Modifier.toString(getModifier())).append(' ');
 		sb.append((getReturnType() == null) ? "void" : strType(getReturnType(), getListType())).append(' ');
 		sb.append(getName()).append('(');
@@ -108,7 +129,7 @@ public class Method extends AbstractModelObject {
 		sb.append(')');
 
 		if (!getExceptionList().isEmpty()) {
-			sb.append(' ');
+			sb.append(" throws ");
 			int items = 0;
 			for (Class<? extends Exception> e : getExceptionList()) {
 				if (items > 0)

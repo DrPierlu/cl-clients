@@ -35,7 +35,7 @@ public class AddressesCaller extends ApiCaller {
 	
 	
 
-	@Override
+//	@Override
 	protected String getResourcePath() {
 		return ResourceCatalog.ADDRESSES.path();
 	}

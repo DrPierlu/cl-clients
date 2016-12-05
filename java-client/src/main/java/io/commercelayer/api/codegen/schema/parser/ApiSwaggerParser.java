@@ -31,6 +31,7 @@ public class ApiSwaggerParser extends ApiParser {
 
 		Schema schema = new Schema();
 		
+		// Definitions
 		Map<String, Model> definitions = swagger.getDefinitions();
 		
 		for (Map.Entry<String, Model> def : definitions.entrySet()) {
@@ -41,45 +42,46 @@ public class ApiSwaggerParser extends ApiParser {
 			Map<String, io.swagger.models.properties.Property> properties = def.getValue().getProperties();
 			for (Map.Entry<String, io.swagger.models.properties.Property> p : properties.entrySet()) {
 //				System.out.println(prop.getKey() + ": " + ToStringBuilder.reflectionToString(prop.getValue(), ToStringStyle.MULTI_LINE_STYLE));
-				
 				definition.addProperty(parseProperty(p.getKey(), p.getValue()));
 			}
 			
 			schema.addDefinition(definition);
 			
+		}
 			
-			Map<String, Path> paths = swagger.getPaths();
+		
+		// Resources
+		Map<String, Path> paths = swagger.getPaths();
+		
+		for (Map.Entry<String, Path> path : paths.entrySet()) {
 			
-			for (Map.Entry<String, Path> path : paths.entrySet()) {
+			Resource resource = new Resource();
+			
+			resource.setPath(path.getKey());
+			
+			Map<HttpMethod, io.swagger.models.Operation> operations = path.getValue().getOperationMap();
+			for (Map.Entry<HttpMethod, io.swagger.models.Operation> op : operations.entrySet()) {
 				
-				Resource resource = new Resource();
+				Operation operation = new Operation();
 				
-				resource.setPath(path.getKey());
+				operation.setId(op.getValue().getOperationId());
+				operation.setMethod(op.getKey().name());
 				
-				Map<HttpMethod, io.swagger.models.Operation> operations = path.getValue().getOperationMap();
-				for (Map.Entry<HttpMethod, io.swagger.models.Operation> op : operations.entrySet()) {
-					
-					Operation operation = new Operation();
-					
-					operation.setId(op.getValue().getOperationId());
-					operation.setMethod(op.getKey().name());
-					
-					List<io.swagger.models.parameters.Parameter> params = op.getValue().getParameters();
-					
-					for (io.swagger.models.parameters.Parameter param : params) {
-						operation.addParameter(parseParameter(param));						
-					}
-					
-					resource.addOperation(operation);
-					
+				List<io.swagger.models.parameters.Parameter> params = op.getValue().getParameters();
+				
+				for (io.swagger.models.parameters.Parameter param : params) {
+					operation.addParameter(parseParameter(param));						
 				}
 				
-				
-				schema.addResource(resource);
+				resource.addOperation(operation);
 				
 			}
 			
+			
+			schema.addResource(resource);
+			
 		}
+			
 		
 		return schema;
 
