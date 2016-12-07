@@ -3,9 +3,10 @@ package io.commercelayer.api.search;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.commercelayer.api.PaginatedResponse;
 import io.commercelayer.api.model.common.ApiResource;
 
-public class ApiSearchResponse<T extends ApiResource> {
+public class ApiSearchResponse<T extends ApiResource> implements PaginatedResponse {
 
 	private List<T> itemList;
 	private PaginationInfo paginationInfo;

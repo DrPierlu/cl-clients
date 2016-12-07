@@ -10,7 +10,7 @@ public interface JsonCodec {
 	
 	<T extends ApiObject> List<T> fromJSONList(String json, Class<T> resourceType);
 	
-	String toJSON(ApiObject apiResource, boolean includeRoot);
+	String toJSON(ApiObject object, boolean includeRoot);
 	
 //	String toJSONList(List<? extends ApiObject> apiResources);
 	
