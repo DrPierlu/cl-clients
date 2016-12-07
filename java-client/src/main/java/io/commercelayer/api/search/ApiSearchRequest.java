@@ -1,8 +1,9 @@
 package io.commercelayer.api.search;
 
 import io.commercelayer.api.ApiRequest;
+import io.commercelayer.api.FilteredCall;
 
-public class ApiSearchRequest extends ApiRequest {
+public class ApiSearchRequest extends ApiRequest implements FilteredCall {
 
 	private PageFilter pageFilter;
 	private SearchFilter searchFilter;

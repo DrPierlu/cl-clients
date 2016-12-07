@@ -32,9 +32,10 @@ public class ApiModelGen {
 	
 	private static final Logger logger = LoggerFactory.getLogger(ApiModelGen.class);
 	
-	public static final String PACKAGE_OBJECT 	= "io.commercelayer.api.codegen.output.object";
-	public static final String PACKAGE_CALLER 	= "io.commercelayer.api.codegen.output.caller";
-	public static final String PACKAGE_TEST 	= "io.commercelayer.api.codegen.output.test";
+	public static final String PACKAGE_OBJECT 		= "io.commercelayer.api.codegen.output.object";
+	public static final String PACKAGE_CALLER 		= "io.commercelayer.api.codegen.output.caller";
+	public static final String PACKAGE_TEST 		= "io.commercelayer.api.codegen.output.test";
+	public static final String PACKAGE_OPERATION 	= "io.commercelayer.api.codegen.output.operation";
 
 	
 	public Model createModel(Schema schema) {

@@ -1,4 +1,4 @@
-package io.commercelayer.api.codegen.src;
+package io.commercelayer.api.codegen.source;
 
 import java.io.BufferedWriter;
 import java.io.File;
