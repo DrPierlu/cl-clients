@@ -1,0 +1,43 @@
+package io.commercelayer.api.operation;
+
+import io.commercelayer.api.FilteredCall;
+import io.commercelayer.api.model.common.ApiResource;
+import io.commercelayer.api.search.PageFilter;
+import io.commercelayer.api.search.SearchFilter;
+import io.commercelayer.api.search.SortFilter;
+
+public class SearchOperation<T extends ApiResource> extends GetOperation<T> implements FilteredCall {
+
+	private PageFilter pageFilter;
+	private SearchFilter searchFilter;
+	private SortFilter sortFilter;
+
+	public SearchOperation(String path) {
+		super(path);
+	}
+
+	public PageFilter getPageFilter() {
+		return pageFilter;
+	}
+
+	public void setPageFilter(PageFilter pageFilter) {
+		this.pageFilter = pageFilter;
+	}
+
+	public SearchFilter getSearchFilter() {
+		return searchFilter;
+	}
+
+	public void setSearchFilter(SearchFilter searchFilter) {
+		this.searchFilter = searchFilter;
+	}
+
+	public SortFilter getSortFilter() {
+		return sortFilter;
+	}
+
+	public void setSortFilter(SortFilter sortFilter) {
+		this.sortFilter = sortFilter;
+	}
+
+}
