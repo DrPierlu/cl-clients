@@ -39,5 +39,12 @@ public final class PageFilter {
 	public void setOffset(Integer offset) {
 		this.offset = offset;
 	}
+	
+	
+	public static interface Params {
+		String PAGE 		= "page";
+		String PER_PAGE 	= "per_page";
+		String OFFSET 		= "offset";
+	}
 
 }

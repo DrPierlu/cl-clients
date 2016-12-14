@@ -1,4 +1,4 @@
-package io.commercelayer.api.util;
+package io.commercelayer.api.domain;
 
 public interface ContentType {
 

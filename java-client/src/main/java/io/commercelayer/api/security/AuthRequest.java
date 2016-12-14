@@ -1,8 +1,10 @@
 package io.commercelayer.api.security;
 
-public final class AuthRequest extends ApiAccount {
+import io.commercelayer.api.domain.AuthenticationDomain;
 
-	private String grantType = "password";
+public final class AuthRequest extends ApiAccount implements AuthenticationDomain {
+
+	private String grantType = GrantType.PASSWORD;
 	private String password = "supersecret";
 
 	public AuthRequest(ApiAccount account) {

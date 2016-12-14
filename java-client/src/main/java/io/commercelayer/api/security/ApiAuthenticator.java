@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import io.commercelayer.api.domain.ContentType;
 import io.commercelayer.api.exception.AuthException;
 import io.commercelayer.api.exception.ConnectionException;
 import io.commercelayer.api.http.HttpClient;
@@ -14,7 +15,6 @@ import io.commercelayer.api.http.HttpRequest.Method;
 import io.commercelayer.api.http.HttpResponse;
 import io.commercelayer.api.http.auth.HttpAuthBasic;
 import io.commercelayer.api.util.ApiUtils;
-import io.commercelayer.api.util.ContentType;
 
 public final class ApiAuthenticator {
 	

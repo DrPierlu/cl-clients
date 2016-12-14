@@ -19,6 +19,7 @@ import javax.net.ssl.X509TrustManager;
 import io.commercelayer.api.config.ApiConfig;
 import io.commercelayer.api.config.ApiConfig.Group;
 import io.commercelayer.api.exception.ConnectionException;
+import io.commercelayer.api.http.HttpRequest.Header;
 import okhttp3.Authenticator;
 import okhttp3.Credentials;
 import okhttp3.Headers;
@@ -55,7 +56,7 @@ public class HttpClientOkHttpImpl extends HttpClient {
 			Authenticator proxyAuthenticator = new Authenticator() {
 				public Request authenticate(Route route, Response response) throws IOException {
 					String credential = Credentials.basic(httpProxy.getUsername(), httpProxy.getPassword());
-					return response.request().newBuilder().header("Proxy-Authorization", credential).build();
+					return response.request().newBuilder().header(Header.PROXY_AUTHORIZATION, credential).build();
 				}
 			};
 			builder.proxyAuthenticator(proxyAuthenticator);
@@ -148,7 +149,7 @@ public class HttpClientOkHttpImpl extends HttpClient {
 		}
 
 		if (httpRequest.getHttpAuth() != null) {
-			requestBuilder.header("Authorization", httpRequest.getHttpAuth().getHttpRequestAuthHeader());
+			requestBuilder.header(Header.AUTHORIZATION, httpRequest.getHttpAuth().getHttpRequestAuthHeader());
 		}
 
 		Request request = requestBuilder.build();

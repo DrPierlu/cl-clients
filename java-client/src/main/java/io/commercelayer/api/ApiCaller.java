@@ -7,6 +7,7 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import io.commercelayer.api.domain.ContentType;
 import io.commercelayer.api.exception.ApiException;
 import io.commercelayer.api.exception.AuthException;
 import io.commercelayer.api.exception.ConnectionException;
@@ -14,6 +15,7 @@ import io.commercelayer.api.exception.SystemException;
 import io.commercelayer.api.http.HttpClient;
 import io.commercelayer.api.http.HttpClientFactory;
 import io.commercelayer.api.http.HttpRequest;
+import io.commercelayer.api.http.HttpRequest.Header;
 import io.commercelayer.api.http.HttpRequest.Method;
 import io.commercelayer.api.http.HttpResponse;
 import io.commercelayer.api.http.auth.HttpAuthOAuth2;
@@ -24,7 +26,6 @@ import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.operation.ApiOperation;
 import io.commercelayer.api.operation.DeleteOperation;
 import io.commercelayer.api.operation.GetOperation;
-import io.commercelayer.api.operation.PostOperation;
 import io.commercelayer.api.operation.SearchOperation;
 import io.commercelayer.api.search.ApiSearchRequest;
 import io.commercelayer.api.search.ApiSearchResponse;
@@ -36,7 +37,6 @@ import io.commercelayer.api.search.SortFilter;
 import io.commercelayer.api.search.SortParam;
 import io.commercelayer.api.security.ApiToken;
 import io.commercelayer.api.util.ApiUtils;
-import io.commercelayer.api.util.ContentType;
 import io.commercelayer.api.util.LogUtils;
 
 public abstract class ApiCaller {
@@ -77,11 +77,11 @@ public abstract class ApiCaller {
 		final PageFilter pageFilter = searchRequest.getPageFilter();
 		if (pageFilter != null) {
 			if (pageFilter.getPage() != null)
-				request.addQueryStringParam("page", pageFilter.getPage());
+				request.addQueryStringParam(PageFilter.Params.PAGE, pageFilter.getPage());
 			if (pageFilter.getPerPage() != null)
-				request.addQueryStringParam("per_page", pageFilter.getPerPage());
+				request.addQueryStringParam(PageFilter.Params.PER_PAGE, pageFilter.getPerPage());
 			if (pageFilter.getOffset() != null)
-				request.addQueryStringParam("offset", pageFilter.getOffset());
+				request.addQueryStringParam(PageFilter.Params.OFFSET, pageFilter.getOffset());
 		}
 
 		// Search Filter
@@ -114,13 +114,13 @@ public abstract class ApiCaller {
 		// Pagination Response
 		PaginationInfo pageInfo = new PaginationInfo();
 
-		pageInfo.setNextPage(response.getHeaderInt("X-Next-Page"));
-		pageInfo.setOffset(response.getHeaderInt("X-Offset"));
-		pageInfo.setPage(response.getHeaderInt("X-Page"));
-		pageInfo.setPerPage(response.getHeaderInt("X-Per-Page"));
-		pageInfo.setPrevPage(response.getHeaderInt("X-Prev-Page"));
-		pageInfo.setTotal(response.getHeaderInt("X-Total"));
-		pageInfo.setTotalPages(response.getHeaderInt("X-Total-Pages"));
+		pageInfo.setNextPage(response.getHeaderInt(PaginationInfo.Params.NEXT_PAGE));
+		pageInfo.setOffset(response.getHeaderInt(PaginationInfo.Params.OFFSET));
+		pageInfo.setPage(response.getHeaderInt(PaginationInfo.Params.PAGE));
+		pageInfo.setPerPage(response.getHeaderInt(PaginationInfo.Params.PER_PAGE));
+		pageInfo.setPrevPage(response.getHeaderInt(PaginationInfo.Params.PREV_PAGE));
+		pageInfo.setTotal(response.getHeaderInt(PaginationInfo.Params.TOTAL));
+		pageInfo.setTotalPages(response.getHeaderInt(PaginationInfo.Params.TOTAL_PAGES));
 
 		searchResponse.setPaginationInfo(pageInfo);
 
@@ -248,7 +248,7 @@ public abstract class ApiCaller {
 
 		request.setUrl(url);
 		request.setContentType(ContentType.JSON);
-		request.addHeader("Accept", ContentType.JSON);
+		request.addHeader(Header.ACCEPT, ContentType.JSON);
 		request.setHttpAuth(new HttpAuthOAuth2(apiToken.getAccessToken()));
 
 		return request;

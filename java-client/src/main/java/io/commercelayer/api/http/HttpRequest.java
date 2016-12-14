@@ -120,4 +120,11 @@ public class HttpRequest {
 		this.httpAuth = httpAuth;
 	}
 	
+	
+	public static interface Header {
+		String ACCEPT 				= "Accept";
+		String PROXY_AUTHORIZATION	= "Proxy-Authorization";
+		String AUTHORIZATION		= "Authorization";
+	}
+	
 }

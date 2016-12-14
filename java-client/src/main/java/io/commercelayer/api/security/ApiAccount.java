@@ -2,12 +2,13 @@ package io.commercelayer.api.security;
 
 import java.util.Objects;
 
+import io.commercelayer.api.domain.AuthenticationDomain;
 import io.commercelayer.api.model.common.ApiObject;
 
-public class ApiAccount extends ApiObject {
+public class ApiAccount extends ApiObject implements AuthenticationDomain {
 
 	private String username;
-	private String environment = "development";
+	private String environment = Environment.DEVELOPMENT;
 	private transient String authKey;
 	private transient String authSecret;
 

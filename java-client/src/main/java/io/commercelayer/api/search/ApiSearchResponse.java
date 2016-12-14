@@ -38,13 +38,13 @@ public class ApiSearchResponse<T extends ApiResource> implements PaginatedRespon
 	 ****************************************/
 	public static final class PaginationInfo {
 
-		private Integer total; // X-Total
+		private Integer total; 		// X-Total
 		private Integer totalPages; // X-Total-Pages
-		private Integer perPage; // X-Per-Page
-		private Integer page; // X-Page
-		private Integer nextPage; // X-Next-Page
-		private Integer prevPage; // X-Prev-Page
-		private Integer offset; // X-Offset
+		private Integer perPage; 	// X-Per-Page
+		private Integer page; 		// X-Page
+		private Integer nextPage; 	// X-Next-Page
+		private Integer prevPage; 	// X-Prev-Page
+		private Integer offset; 	// X-Offset
 
 		public Integer getTotal() {
 			return total;
@@ -102,6 +102,17 @@ public class ApiSearchResponse<T extends ApiResource> implements PaginatedRespon
 			this.offset = offset;
 		}
 
+		
+		public static interface Params {
+			String TOTAL 		= "X-Total";
+			String TOTAL_PAGES 	= "X-Total-Pages";
+			String PER_PAGE 	= "X-Per-Page";
+			String PAGE 		= "X-Page";
+			String NEXT_PAGE 	= "X-Next-Page";
+			String PREV_PAGE 	= "X-Prev-Page";
+			String OFFSET 		= "X-Offset";
+		}
+		
 	}
 
 }
