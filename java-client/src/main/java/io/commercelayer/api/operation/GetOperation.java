@@ -10,6 +10,11 @@ public class GetOperation<T extends ApiResource> extends ApiOperation {
 	public GetOperation(String path) {
 		super(path);
 	}
+	
+	public GetOperation(String path, Class<T> responseObjectType) {
+		super(path);
+		this.responseObjectType = responseObjectType;
+	}
 
 	@Override
 	public Method getMethod() {
@@ -26,10 +31,6 @@ public class GetOperation<T extends ApiResource> extends ApiOperation {
 
 	public Class<T> getResponseObjectType() {
 		return responseObjectType;
-	}
-
-	public void setResponseObjectType(Class<T> responseObjectType) {
-		this.responseObjectType = responseObjectType;
 	}
 
 }

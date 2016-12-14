@@ -1,7 +1,9 @@
 package io.commercelayer.api.search;
 
-public final class PageFilter {
+public final class PageFilter implements RequestFilter {
 
+	private static final long serialVersionUID = 6205032079070692138L;
+	
 	public Integer page; // Page offset to fetch
 	public Integer perPage; // Number of results to return per page
 	public Integer offset; // Pad a number of results

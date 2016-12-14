@@ -142,6 +142,41 @@ public abstract class ApiCaller {
 		return responseBody;
 
 	}
+	
+	public <T extends ApiResource> T get(GetOperation<T> op) throws ApiException {
+
+		logger.info("get execution [{}, {}]", op.getId(), op.getResponseObjectType());
+
+		HttpRequest request = createHttpRequest(op);
+
+		HttpResponse response = call(request);
+
+		T responseBody = jsonCodec.fromJSON(response.getBody(), op.getResponseObjectType());
+
+		return responseBody;
+
+	}
+	
+	
+	public <T extends ApiResource> ApiSearchResponse<T> get(SearchOperation<T> op) throws ApiException {
+
+		HttpRequest request = createHttpRequest(op);
+
+		setRequestFilters(request, (FilteredCall) op);
+
+		// HTTP server call
+		HttpResponse response = call(request);
+
+		List<T> itemList = jsonCodec.fromJSONList(response.getBody(), op.getResponseObjectType());
+
+		ApiSearchResponse<T> searchResponse = new ApiSearchResponse<>(itemList);
+
+		setResponsePagination(searchResponse, response);
+		
+		return searchResponse;
+
+	}
+	
 
 	protected ApiResource updateItem(ApiRequest apiRequest) throws ApiException {
 
@@ -182,6 +217,16 @@ public abstract class ApiCaller {
 
 		HttpRequest request = createHttpRequest(apiRequest, Method.DELETE);
 		request.setUrl(request.getUrl().concat("/").concat(String.valueOf(apiRequest.getResource().getId())));
+
+		/* HttpResponse response = */call(request);
+
+	}
+	
+	public void delete(DeleteOperation op) throws ApiException {
+
+		logger.info("delete execution: {} [{}]", op.getPath(), op.getId());
+
+		HttpRequest request = createHttpRequest(op);
 
 		/* HttpResponse response = */call(request);
 
@@ -254,52 +299,8 @@ public abstract class ApiCaller {
 		return request;
 
 	}
-
-	public void delete(DeleteOperation op) throws ApiException {
-
-		logger.info("delete execution: {} [{}]", op.getPath(), op.getId());
-
-		HttpRequest request = createHttpRequest(op);
-
-		/* HttpResponse response = */call(request);
-
-	}
-
-	protected <T extends ApiResource> T get(GetOperation<T> op) throws ApiException {
-
-		logger.info("getItem execution [{}, {}]", op.getId(), op.getResponseObjectType());
-
-		HttpRequest request = createHttpRequest(op);
-
-		HttpResponse response = call(request);
-
-		T responseBody = jsonCodec.fromJSON(response.getBody(), op.getResponseObjectType());
-
-		return responseBody;
-
-	}
-
-	public <T extends ApiResource> ApiSearchResponse<T> get(SearchOperation<T> op) throws ApiException {
-
-		HttpRequest request = createHttpRequest(op);
-
-		setRequestFilters(request, (FilteredCall) op);
-
-		// HTTP server call
-		HttpResponse response = call(request);
-
-		List<T> itemList = jsonCodec.fromJSONList(response.getBody(), op.getResponseObjectType());
-
-		ApiSearchResponse<T> searchResponse = new ApiSearchResponse<>(itemList);
-
-		setResponsePagination(searchResponse, response);
-		
-		
-		return searchResponse;
-
-	}
 	
-
+	
 	private HttpRequest createHttpRequest(ApiOperation op) {
 
 		HttpRequest request = new HttpRequest(op.getMethod());
@@ -312,12 +313,14 @@ public abstract class ApiCaller {
 		request.setUrl(ApiUtils.getResourceUrl(path));
 
 		request.setContentType(ContentType.JSON);
-		request.addHeader("Accept", ContentType.JSON);
+		request.addHeader(Header.ACCEPT, ContentType.JSON);
 		request.setHttpAuth(new HttpAuthOAuth2(apiToken.getAccessToken()));
 
 		return request;
 
 	}
+
+
 
 	private void setRequestFilters(HttpRequest request, FilteredCall fc) {
 

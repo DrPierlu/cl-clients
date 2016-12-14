@@ -5,8 +5,10 @@ import java.util.List;
 
 import io.commercelayer.api.search.SortParam.OrderType;
 
-public class SortFilter {
+public class SortFilter implements RequestFilter {
 
+	private static final long serialVersionUID = -6656674582184819393L;
+	
 	private List<SortParam> sortParams = new ArrayList<>();
 
 	public List<SortParam> getSortParams() {

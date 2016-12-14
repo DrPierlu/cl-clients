@@ -5,8 +5,10 @@ import java.util.List;
 
 import io.commercelayer.api.search.SearchParam.MatchType;
 
-public class SearchFilter {
+public class SearchFilter implements RequestFilter {
 
+	private static final long serialVersionUID = 2371876649744098587L;
+	
 	private List<SearchParam> searchParams = new ArrayList<>();
 
 	public List<SearchParam> getSearchParams() {
