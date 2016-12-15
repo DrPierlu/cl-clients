@@ -36,6 +36,10 @@ import io.commercelayer.api.util.ModelUtils;
 public class ApiModelGen {
 
 	private static final Logger logger = LoggerFactory.getLogger(ApiModelGen.class);
+	
+	private static final boolean GENERATE_OBJECT_CLASSES 	= true;
+	private static final boolean GENERATE_OPERATION_CLASSES = true;
+	private static final boolean GENERATE_TEST_CLASSES 		= true;
 
 	public static final String PACKAGE_OBJECT = ApiModelWriter.class.getPackage().getName() + ".classes.object";
 	public static final String PACKAGE_TEST = ApiModelWriter.class.getPackage().getName() + ".classes.test";
@@ -47,24 +51,30 @@ public class ApiModelGen {
 
 		
 		// Object classes
-		List<Definition> definitions = schema.getDefinitions();
-		for (Definition def : definitions) {
-			if (!model.addClass(createObjectClass(PACKAGE_OBJECT, def))) {
-				logger.warn("Definition skipped: {}", def.getTitle());
+		if (GENERATE_OBJECT_CLASSES) {
+			List<Definition> definitions = schema.getDefinitions();
+			for (Definition def : definitions) {
+				if (!model.addClass(createObjectClass(PACKAGE_OBJECT, def))) {
+					logger.warn("Definition skipped: {}", def.getTitle());
+				}
 			}
 		}
 
 		// Operation classes
-		List<Resource> resources = schema.getResources();
-		for (Resource res : resources) {
-			for (Operation op : res.getOperations())
-				if (!model.addClass(createOperationClass(PACKAGE_OPERATION, res.getPath(), op))) {
-					logger.warn("Resource skipped: {}", res.getPath());
-				}
+		if (GENERATE_OPERATION_CLASSES) {
+			List<Resource> resources = schema.getResources();
+			for (Resource res : resources) {
+				for (Operation op : res.getOperations())
+					if (!model.addClass(createOperationClass(PACKAGE_OPERATION, res.getPath(), op))) {
+						logger.warn("Resource skipped: {}", res.getPath());
+					}
+			}
 		}
 		
 		// Test classes
-		// TODO: JUnit test classes implementation
+		if (GENERATE_TEST_CLASSES) {
+			// TODO: JUnit test classes implementation
+		}
 
 		
 		return model;
