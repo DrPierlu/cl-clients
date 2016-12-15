@@ -178,13 +178,13 @@ public class ApiModelGen {
 		mc.setExtendedClass(ApiResource.class);
 
 		mc.addConstructor(new Constructor(mc.getName(), Modifier.PUBLIC));
-		mc.addConstructor(new Constructor(mc.getName(), Modifier.PUBLIC, new Constructor.Param(Long.class, "id")));
+		mc.addConstructor(new Constructor(mc.getName(), Modifier.PUBLIC, new Constructor.Param(Long.class, "id", true)));
 
 		for (Property p : def.getProperties()) {
 
 			Field field = new Field(Modifier.PRIVATE, decodePropertyType(p), ModelUtils.toCamelCase(p.getName()));
 
-			if (p.isReadonly())
+			if (p.isReadonly() || field.getType().equals(Object.class))
 				field.addAnnotation(JsonExclude.class);
 
 			if (field.getType().equals(List.class)) {
