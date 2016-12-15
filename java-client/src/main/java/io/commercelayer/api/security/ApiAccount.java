@@ -2,13 +2,13 @@ package io.commercelayer.api.security;
 
 import java.util.Objects;
 
-import io.commercelayer.api.domain.AuthenticationDomain;
+import io.commercelayer.api.domain.Authentication;
 import io.commercelayer.api.model.common.ApiObject;
 
-public class ApiAccount extends ApiObject implements AuthenticationDomain {
+public class ApiAccount extends ApiObject implements Authentication {
 
 	private String username;
-	private String environment = Environment.DEVELOPMENT;
+	private String environmentId = Environment.DEVELOPMENT;
 	private transient String authKey;
 	private transient String authSecret;
 
@@ -20,12 +20,12 @@ public class ApiAccount extends ApiObject implements AuthenticationDomain {
 		this.username = username;
 	}
 
-	public String getEnvironment() {
-		return environment;
+	public String getEnvironmentId() {
+		return environmentId;
 	}
 
-	public void setEnvironment(String environment) {
-		this.environment = environment;
+	public void setEnvironmentId(String environmentId) {
+		this.environmentId = environmentId;
 	}
 
 	public String getAuthKey() {
@@ -52,13 +52,13 @@ public class ApiAccount extends ApiObject implements AuthenticationDomain {
 		if (!(o instanceof ApiAccount)) return false;
 		
 		ApiAccount aa = (ApiAccount)o;
-		return Objects.equals(this.username, aa.username) && Objects.equals(this.environment, aa.environment);
+		return Objects.equals(this.username, aa.username) && Objects.equals(this.environmentId, aa.environmentId);
 		
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(this.username, this.environment);
+		return Objects.hash(this.username, this.environmentId);
 	}
 
 }

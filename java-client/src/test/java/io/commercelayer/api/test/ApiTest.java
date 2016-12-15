@@ -30,7 +30,7 @@ public abstract class ApiTest {
 		
 		account = new ApiAccount();
 		account.setUsername(ApiConfig.getProperty(Group.authentication, "username"));
-		account.setEnvironment(ApiConfig.getProperty(Group.authentication, "environment"));
+		account.setEnvironmentId(ApiConfig.getProperty(Group.authentication, "environmentId"));
 		account.setAuthKey(ApiConfig.getProperty(Group.authentication, "authKey"));
 		account.setAuthSecret(ApiConfig.getProperty(Group.authentication, "authSecret"));
 		

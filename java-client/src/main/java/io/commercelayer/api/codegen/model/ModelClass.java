@@ -195,6 +195,8 @@ public class ModelClass extends AbstractModelObject {
 	public void addImportItem(Class<?> class_) {
 		if (class_ == null) return;
 		else
+		if (class_.isPrimitive()) return;
+		else
 		if (!class_.getName().startsWith("java.lang") && !this.importList.contains(class_))
 			this.importList.add(class_);
 	}
@@ -291,12 +293,17 @@ public class ModelClass extends AbstractModelObject {
 		
 		String sv = "";
 		
+		boolean serializable = ((getExtendedClass() != null) && Serializable.class.isAssignableFrom(getExtendedClass()));
+		
+		if (!serializable)
 		for (Class<?> c : getImplementList()) {
 			if (c instanceof Serializable) {
-				sv = "\n\tprivate static final long serialVersionUID = 1L;\n\n";
+				serializable = true;
 				break;
 			}
 		}
+		
+		if (serializable) sv = String.format("\n\tprivate static final long serialVersionUID = -%dL;\n\n", System.currentTimeMillis());
 		
 		return sv;
 		

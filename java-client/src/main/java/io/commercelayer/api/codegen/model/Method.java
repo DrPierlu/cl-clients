@@ -71,6 +71,7 @@ public class Method extends AbstractModelObject {
 	public void addBodyLine(String line, Object... params) {
 		addBodyLine(String.format(line, params));
 	}
+	
 
 	public List<Class<? extends Exception>> getExceptionList() {
 		return exceptionList;

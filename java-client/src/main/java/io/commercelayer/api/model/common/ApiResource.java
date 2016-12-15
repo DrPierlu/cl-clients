@@ -1,12 +1,15 @@
 package io.commercelayer.api.model.common;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-public abstract class ApiResource extends ApiObject {
+public abstract class ApiResource extends ApiObject implements Serializable {
 
+	private static final long serialVersionUID = -7418858525047434358L;
+	
 	protected String resourceName = null;
 	protected Long id = null;
 //	protected String creatorId = null;

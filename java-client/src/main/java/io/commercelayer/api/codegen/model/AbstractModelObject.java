@@ -70,7 +70,7 @@ public abstract class AbstractModelObject {
 		}
 	}
 
-	protected String emptyLine() {
+	public String emptyLine() {
 		return "";
 	}
 

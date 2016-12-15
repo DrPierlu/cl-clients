@@ -2,7 +2,9 @@ package io.commercelayer.api.codegen.model.gen;
 
 import java.lang.reflect.Modifier;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -11,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import io.commercelayer.api.codegen.model.Constructor;
 import io.commercelayer.api.codegen.model.CustomConstructor;
 import io.commercelayer.api.codegen.model.Field;
+import io.commercelayer.api.codegen.model.Method;
 import io.commercelayer.api.codegen.model.Model;
 import io.commercelayer.api.codegen.model.ModelClass;
 import io.commercelayer.api.codegen.schema.Definition;
@@ -193,10 +196,106 @@ public class ApiModelGen {
 			}
 
 		}
+		
+		
+		createMethodEquals(mc);
+		createMethodHashCode(mc);
+		
 
 		return mc;
 
 	}
+	
+	
+	private void createMethodEquals(final ModelClass mc) {
+		
+		Method m = new Method(Modifier.PUBLIC);
+		
+		m.addAnnotation(Override.class);
+		
+		m.setName("equals");
+		m.setReturnType(boolean.class);
+		m.addSignatureParam(new Method.Param(Object.class, "o"));
+		mc.addImportItem(Objects.class);
+		
+		// Method Body
+		m.addBodyLine(m.emptyLine());
+		
+		m.addBodyLine("if (this == o) return true;");
+		m.addBodyLine("if (o == null || getClass() != o.getClass()) return false;");
+		m.addBodyLine(m.emptyLine());
+		m.addBodyLine("%1$s x = (%1$s) o;", mc.getName());
+		m.addBodyLine(m.emptyLine());
+		m.addBodyLine("return super.equals(o) &&");
+		
+		int i = 0;
+		for (Field f : mc.getFieldList()) {
+			m.addBodyLine("\tObjects.equals(this.%1$s, x.%1$s) %2$s", f.getName(), ((++i == mc.getFieldList().size())? "" : " &&"));
+		}
+		
+		m.addBodyLine(";");
+		m.addBodyLine(m.emptyLine());
+		
+		mc.addMethod(m);
+		
+	}
+	
+	
+	private void createMethodHashCode(ModelClass mc) {
+		
+		Method m = new Method(Modifier.PUBLIC);
+		
+		m.addAnnotation(Override.class);
+		
+		m.setName("hashCode");
+		m.setReturnType(int.class);
+		mc.addImportItem(Objects.class);
+		
+		// Method Body
+		m.addBodyLine(m.emptyLine());
+		
+		m.addBodyLine("return Objects.hash(");
+		
+		List<String> fieldList = new ArrayList<>();
+		if (mc.getExtendedClass() != null)
+			for (java.lang.reflect.Field f : mc.getExtendedClass().getDeclaredFields()) fieldList.add(f.getName());
+		for (Field f : mc.getFieldList()) fieldList.add(f.getName());
+		
+		int i = 0;
+		StringBuilder sb = new StringBuilder("\t");
+		for (String f : fieldList) {
+			sb.append(f);
+			if (++i != fieldList.size()) sb.append(",");
+			if ((i % 5) == 0) {
+				m.addBodyLine(sb.toString());
+				sb = new StringBuilder("\t");
+			}
+			else sb.append(' ');
+		}
+		m.addBodyLine(sb.toString());
+		
+		m.addBodyLine(");");
+		
+		m.addBodyLine(m.emptyLine());
+		
+		mc.addMethod(m);
+		
+	}
+	
+
+
+//	@Override
+//	public int hashCode() {
+//		return Objects.hash(
+//			resourceName, id, geocodingCountry, geocodingZip, geocodingCity,
+//				geocodingStreet, geocodingNumber, provider, placeId, precision, accuracy, countryCode, country,
+//				stateCode, stateName, state, province, zip, city, district, streetName, streetNumber, streetAddress,
+//				subPremise, fullAddress, formattedAddress, lat, lng, suggestedBoundsSwLat, suggestedBoundsSwLng,
+//				suggestedBoundsNeLat, suggestedBoundsNeLng, creatorResource, createdAt, updatedAt);
+//	}
+	
+	
+	
 
 	private ModelClass createOperationClass(String modelPackage, String path, Operation op) {
 

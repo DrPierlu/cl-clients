@@ -1,6 +1,6 @@
 package io.commercelayer.api.domain;
 
-public interface AuthenticationDomain {
+public interface Authentication {
 	
 	public static interface Environment {
 		String DEVELOPMENT 		= "4";

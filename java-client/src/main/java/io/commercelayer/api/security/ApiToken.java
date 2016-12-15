@@ -2,10 +2,10 @@ package io.commercelayer.api.security;
 
 import java.time.LocalDateTime;
 
-import io.commercelayer.api.domain.AuthenticationDomain;
+import io.commercelayer.api.domain.Authentication;
 import io.commercelayer.api.model.common.ApiObject;
 
-public final class ApiToken extends ApiObject implements AuthenticationDomain {
+public final class ApiToken extends ApiObject implements Authentication {
 
 	private String accessToken;
 	private String tokenType = TokenType.BEARER;
