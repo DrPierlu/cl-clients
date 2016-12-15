@@ -6,12 +6,12 @@ import java.util.List;
 import io.commercelayer.api.PaginatedResponse;
 import io.commercelayer.api.model.common.ApiResource;
 
-public class ApiSearchResponse implements PaginatedResponse {
+public class ApiSearchResponse<T extends ApiResource> implements PaginatedResponse {
 
-	private List<? extends ApiResource> itemList;
+	private List<T> itemList;
 	private PaginationInfo paginationInfo;
 	
-	public ApiSearchResponse(List<? extends ApiResource> itemList) {
+	public ApiSearchResponse(List<T> itemList) {
 		super();
 		this.itemList = (itemList == null)? new ArrayList<>() : itemList;
 	}
@@ -20,7 +20,7 @@ public class ApiSearchResponse implements PaginatedResponse {
 		return itemList;
 	}
 
-	public void setItemList(List<? extends ApiResource> itemList) {
+	public void setItemList(List<T> itemList) {
 		this.itemList = itemList;
 	}
 
@@ -32,6 +32,7 @@ public class ApiSearchResponse implements PaginatedResponse {
 		this.paginationInfo = paginationInfo;
 	}
 
+	
 	
 	/****************************************
 	 * PaginationInfo

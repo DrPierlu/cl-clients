@@ -1,215 +1,486 @@
-
 package io.commercelayer.api.model;
 
 import java.util.Objects;
-
 import io.commercelayer.api.model.common.ApiResource;
+import io.commercelayer.api.json.JsonExclude;
+import java.util.List;
 
 /**
  * LineItem
  */
 public class LineItem extends ApiResource {
 
-	private String orderId = null;
-	private String sellableId = null;
-	private String sellableResource = null;
-	private String shippingAddressId = null;
-	private String quantity = null;
-	private Float unitAmount = null;
-	private Float taxRate = null;
-	private String taxIncluded = null;
-	private String taxBreakdown = null;
-	private String amount = null;
-	private String formattedUnitAmount = null;
-	private String formattedAmount = null;
+	private static final long serialVersionUID = -1481805605760L;
 
 
-	public LineItem orderId(String orderId) {
-		this.orderId = orderId;
-		return this;
+	private String orderId;
+	private String marketId;
+	private String countryId;
+	private String currencyId;
+	private String sellableId;
+	private String sellableResource;
+	private String shippingCategoryId;
+	private String trackInventory;
+	private String quantity;
+	private String unitAmountCents;
+	private Float taxRate;
+	private String taxIncluded;
+	@JsonExclude
+	private Object previousChanges;
+	@JsonExclude
+	private Object shippingCategory;
+	@JsonExclude
+	private Object order;
+	@JsonExclude
+	private Object sellable;
+	@JsonExclude
+	private Object market;
+	@JsonExclude
+	private Object country;
+	@JsonExclude
+	private Object currency;
+	private List<String> stockItems;
+	private List<String> shippingServiceStockLocations;
+	private List<String> versions;
+	private List<String> lineItemStocks;
+	private List<String> shippingMethods;
+	private List<String> shipments;
+	private String amount;
+	private String formattedAmount;
+	private String taxableAmount;
+	private String formattedTaxableAmount;
+	private String taxAmount;
+	private String formattedTaxAmount;
+	private String unitAmount;
+	private String formattedUnitAmount;
+	private String defaultShippingMethodId;
+	private String availableShippingServiceIds;
+
+
+	public LineItem() {
+		super();
 	}
+	
 
-	public String getOrderId() {
-		return orderId;
+	public LineItem(Long id) {
+		super(id);
 	}
+	
 
 	public void setOrderId(String orderId) {
 		this.orderId = orderId;
 	}
+	
 
-	public LineItem sellableId(String sellableId) {
-		this.sellableId = sellableId;
-		return this;
+	public String getOrderId() {
+		return this.orderId;
 	}
+	
 
-	public String getSellableId() {
-		return sellableId;
+	public void setMarketId(String marketId) {
+		this.marketId = marketId;
 	}
+	
+
+	public String getMarketId() {
+		return this.marketId;
+	}
+	
+
+	public void setCountryId(String countryId) {
+		this.countryId = countryId;
+	}
+	
+
+	public String getCountryId() {
+		return this.countryId;
+	}
+	
+
+	public void setCurrencyId(String currencyId) {
+		this.currencyId = currencyId;
+	}
+	
+
+	public String getCurrencyId() {
+		return this.currencyId;
+	}
+	
 
 	public void setSellableId(String sellableId) {
 		this.sellableId = sellableId;
 	}
+	
 
-	public LineItem sellableResource(String sellableResource) {
-		this.sellableResource = sellableResource;
-		return this;
+	public String getSellableId() {
+		return this.sellableId;
 	}
-
-	public String getSellableResource() {
-		return sellableResource;
-	}
+	
 
 	public void setSellableResource(String sellableResource) {
 		this.sellableResource = sellableResource;
 	}
+	
 
-	public LineItem shippingAddressId(String shippingAddressId) {
-		this.shippingAddressId = shippingAddressId;
-		return this;
+	public String getSellableResource() {
+		return this.sellableResource;
 	}
+	
 
-	public String getShippingAddressId() {
-		return shippingAddressId;
+	public void setShippingCategoryId(String shippingCategoryId) {
+		this.shippingCategoryId = shippingCategoryId;
 	}
+	
 
-	public void setShippingAddressId(String shippingAddressId) {
-		this.shippingAddressId = shippingAddressId;
+	public String getShippingCategoryId() {
+		return this.shippingCategoryId;
 	}
+	
 
-	public LineItem quantity(String quantity) {
-		this.quantity = quantity;
-		return this;
+	public void setTrackInventory(String trackInventory) {
+		this.trackInventory = trackInventory;
 	}
+	
 
-	public String getQuantity() {
-		return quantity;
+	public String getTrackInventory() {
+		return this.trackInventory;
 	}
+	
 
 	public void setQuantity(String quantity) {
 		this.quantity = quantity;
 	}
+	
 
-	public LineItem unitAmount(Float unitAmount) {
-		this.unitAmount = unitAmount;
-		return this;
+	public String getQuantity() {
+		return this.quantity;
 	}
+	
 
-	public Float getUnitAmount() {
-		return unitAmount;
+	public void setUnitAmountCents(String unitAmountCents) {
+		this.unitAmountCents = unitAmountCents;
 	}
+	
 
-	public void setUnitAmount(Float unitAmount) {
-		this.unitAmount = unitAmount;
+	public String getUnitAmountCents() {
+		return this.unitAmountCents;
 	}
-
-	public LineItem taxRate(Float taxRate) {
-		this.taxRate = taxRate;
-		return this;
-	}
-
-	public Float getTaxRate() {
-		return taxRate;
-	}
+	
 
 	public void setTaxRate(Float taxRate) {
 		this.taxRate = taxRate;
 	}
+	
 
-	public LineItem taxIncluded(String taxIncluded) {
-		this.taxIncluded = taxIncluded;
-		return this;
+	public Float getTaxRate() {
+		return this.taxRate;
 	}
-
-	public String getTaxIncluded() {
-		return taxIncluded;
-	}
+	
 
 	public void setTaxIncluded(String taxIncluded) {
 		this.taxIncluded = taxIncluded;
 	}
+	
 
-	public LineItem taxBreakdown(String taxBreakdown) {
-		this.taxBreakdown = taxBreakdown;
-		return this;
+	public String getTaxIncluded() {
+		return this.taxIncluded;
 	}
+	
 
-	public String getTaxBreakdown() {
-		return taxBreakdown;
+	public void setPreviousChanges(Object previousChanges) {
+		this.previousChanges = previousChanges;
 	}
+	
 
-	public void setTaxBreakdown(String taxBreakdown) {
-		this.taxBreakdown = taxBreakdown;
+	public Object getPreviousChanges() {
+		return this.previousChanges;
 	}
+	
 
-
-	public LineItem amount(String amount) {
-		this.amount = amount;
-		return this;
+	public void setShippingCategory(Object shippingCategory) {
+		this.shippingCategory = shippingCategory;
 	}
+	
 
-	public String getAmount() {
-		return amount;
+	public Object getShippingCategory() {
+		return this.shippingCategory;
 	}
+	
+
+	public void setOrder(Object order) {
+		this.order = order;
+	}
+	
+
+	public Object getOrder() {
+		return this.order;
+	}
+	
+
+	public void setSellable(Object sellable) {
+		this.sellable = sellable;
+	}
+	
+
+	public Object getSellable() {
+		return this.sellable;
+	}
+	
+
+	public void setMarket(Object market) {
+		this.market = market;
+	}
+	
+
+	public Object getMarket() {
+		return this.market;
+	}
+	
+
+	public void setCountry(Object country) {
+		this.country = country;
+	}
+	
+
+	public Object getCountry() {
+		return this.country;
+	}
+	
+
+	public void setCurrency(Object currency) {
+		this.currency = currency;
+	}
+	
+
+	public Object getCurrency() {
+		return this.currency;
+	}
+	
+
+	public void setStockItems(List<String> stockItems) {
+		this.stockItems = stockItems;
+	}
+	
+
+	public List<String> getStockItems() {
+		return this.stockItems;
+	}
+	
+
+	public void setShippingServiceStockLocations(List<String> shippingServiceStockLocations) {
+		this.shippingServiceStockLocations = shippingServiceStockLocations;
+	}
+	
+
+	public List<String> getShippingServiceStockLocations() {
+		return this.shippingServiceStockLocations;
+	}
+	
+
+	public void setVersions(List<String> versions) {
+		this.versions = versions;
+	}
+	
+
+	public List<String> getVersions() {
+		return this.versions;
+	}
+	
+
+	public void setLineItemStocks(List<String> lineItemStocks) {
+		this.lineItemStocks = lineItemStocks;
+	}
+	
+
+	public List<String> getLineItemStocks() {
+		return this.lineItemStocks;
+	}
+	
+
+	public void setShippingMethods(List<String> shippingMethods) {
+		this.shippingMethods = shippingMethods;
+	}
+	
+
+	public List<String> getShippingMethods() {
+		return this.shippingMethods;
+	}
+	
+
+	public void setShipments(List<String> shipments) {
+		this.shipments = shipments;
+	}
+	
+
+	public List<String> getShipments() {
+		return this.shipments;
+	}
+	
 
 	public void setAmount(String amount) {
 		this.amount = amount;
 	}
+	
 
-	public LineItem formattedUnitAmount(String formattedUnitAmount) {
-		this.formattedUnitAmount = formattedUnitAmount;
-		return this;
+	public String getAmount() {
+		return this.amount;
 	}
-
-	public String getFormattedUnitAmount() {
-		return formattedUnitAmount;
-	}
-
-	public void setFormattedUnitAmount(String formattedUnitAmount) {
-		this.formattedUnitAmount = formattedUnitAmount;
-	}
-
-	public LineItem formattedAmount(String formattedAmount) {
-		this.formattedAmount = formattedAmount;
-		return this;
-	}
-
-	public String getFormattedAmount() {
-		return formattedAmount;
-	}
+	
 
 	public void setFormattedAmount(String formattedAmount) {
 		this.formattedAmount = formattedAmount;
 	}
+	
+
+	public String getFormattedAmount() {
+		return this.formattedAmount;
+	}
+	
+
+	public void setTaxableAmount(String taxableAmount) {
+		this.taxableAmount = taxableAmount;
+	}
+	
+
+	public String getTaxableAmount() {
+		return this.taxableAmount;
+	}
+	
+
+	public void setFormattedTaxableAmount(String formattedTaxableAmount) {
+		this.formattedTaxableAmount = formattedTaxableAmount;
+	}
+	
+
+	public String getFormattedTaxableAmount() {
+		return this.formattedTaxableAmount;
+	}
+	
+
+	public void setTaxAmount(String taxAmount) {
+		this.taxAmount = taxAmount;
+	}
+	
+
+	public String getTaxAmount() {
+		return this.taxAmount;
+	}
+	
+
+	public void setFormattedTaxAmount(String formattedTaxAmount) {
+		this.formattedTaxAmount = formattedTaxAmount;
+	}
+	
+
+	public String getFormattedTaxAmount() {
+		return this.formattedTaxAmount;
+	}
+	
+
+	public void setUnitAmount(String unitAmount) {
+		this.unitAmount = unitAmount;
+	}
+	
+
+	public String getUnitAmount() {
+		return this.unitAmount;
+	}
+	
+
+	public void setFormattedUnitAmount(String formattedUnitAmount) {
+		this.formattedUnitAmount = formattedUnitAmount;
+	}
+	
+
+	public String getFormattedUnitAmount() {
+		return this.formattedUnitAmount;
+	}
+	
+
+	public void setDefaultShippingMethodId(String defaultShippingMethodId) {
+		this.defaultShippingMethodId = defaultShippingMethodId;
+	}
+	
+
+	public String getDefaultShippingMethodId() {
+		return this.defaultShippingMethodId;
+	}
+	
+
+	public void setAvailableShippingServiceIds(String availableShippingServiceIds) {
+		this.availableShippingServiceIds = availableShippingServiceIds;
+	}
+	
+
+	public String getAvailableShippingServiceIds() {
+		return this.availableShippingServiceIds;
+	}
+	
 
 	@Override
-	public boolean equals(java.lang.Object o) {
-		if (this == o) {
-			return true;
-		}
-		if (o == null || getClass() != o.getClass()) {
-			return false;
-		}
-		LineItem lineItem = (LineItem) o;
-		return super.equals(o) && 
-			Objects.equals(this.orderId, lineItem.orderId)
-				&& Objects.equals(this.sellableId, lineItem.sellableId)
-				&& Objects.equals(this.sellableResource, lineItem.sellableResource)
-				&& Objects.equals(this.shippingAddressId, lineItem.shippingAddressId)
-				&& Objects.equals(this.quantity, lineItem.quantity)
-				&& Objects.equals(this.unitAmount, lineItem.unitAmount)
-				&& Objects.equals(this.taxRate, lineItem.taxRate)
-				&& Objects.equals(this.taxIncluded, lineItem.taxIncluded)
-				&& Objects.equals(this.taxBreakdown, lineItem.taxBreakdown)
-				&& Objects.equals(this.amount, lineItem.amount)
-				&& Objects.equals(this.formattedUnitAmount, lineItem.formattedUnitAmount)
-				&& Objects.equals(this.formattedAmount, lineItem.formattedAmount);
+	public boolean equals(Object o) {
+	
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+	
+		LineItem x = (LineItem) o;
+	
+		return super.equals(o) &&
+			Objects.equals(this.orderId, x.orderId)  &&
+			Objects.equals(this.marketId, x.marketId)  &&
+			Objects.equals(this.countryId, x.countryId)  &&
+			Objects.equals(this.currencyId, x.currencyId)  &&
+			Objects.equals(this.sellableId, x.sellableId)  &&
+			Objects.equals(this.sellableResource, x.sellableResource)  &&
+			Objects.equals(this.shippingCategoryId, x.shippingCategoryId)  &&
+			Objects.equals(this.trackInventory, x.trackInventory)  &&
+			Objects.equals(this.quantity, x.quantity)  &&
+			Objects.equals(this.unitAmountCents, x.unitAmountCents)  &&
+			Objects.equals(this.taxRate, x.taxRate)  &&
+			Objects.equals(this.taxIncluded, x.taxIncluded)  &&
+			Objects.equals(this.previousChanges, x.previousChanges)  &&
+			Objects.equals(this.shippingCategory, x.shippingCategory)  &&
+			Objects.equals(this.order, x.order)  &&
+			Objects.equals(this.sellable, x.sellable)  &&
+			Objects.equals(this.market, x.market)  &&
+			Objects.equals(this.country, x.country)  &&
+			Objects.equals(this.currency, x.currency)  &&
+			Objects.equals(this.stockItems, x.stockItems)  &&
+			Objects.equals(this.shippingServiceStockLocations, x.shippingServiceStockLocations)  &&
+			Objects.equals(this.versions, x.versions)  &&
+			Objects.equals(this.lineItemStocks, x.lineItemStocks)  &&
+			Objects.equals(this.shippingMethods, x.shippingMethods)  &&
+			Objects.equals(this.shipments, x.shipments)  &&
+			Objects.equals(this.amount, x.amount)  &&
+			Objects.equals(this.formattedAmount, x.formattedAmount)  &&
+			Objects.equals(this.taxableAmount, x.taxableAmount)  &&
+			Objects.equals(this.formattedTaxableAmount, x.formattedTaxableAmount)  &&
+			Objects.equals(this.taxAmount, x.taxAmount)  &&
+			Objects.equals(this.formattedTaxAmount, x.formattedTaxAmount)  &&
+			Objects.equals(this.unitAmount, x.unitAmount)  &&
+			Objects.equals(this.formattedUnitAmount, x.formattedUnitAmount)  &&
+			Objects.equals(this.defaultShippingMethodId, x.defaultShippingMethodId)  &&
+			Objects.equals(this.availableShippingServiceIds, x.availableShippingServiceIds) 
+		;
+	
 	}
+	
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(resourceName, id, orderId, sellableId, sellableResource, shippingAddressId,
-				quantity, unitAmount, taxRate, taxIncluded, taxBreakdown, creatorResource, createdAt,
-				updatedAt, amount, formattedUnitAmount, formattedAmount);
+	
+		return Objects.hash(
+			serialVersionUID, resourceName, id, creatorResource, createdAt,
+			updatedAt, orderId, marketId, countryId, currencyId,
+			sellableId, sellableResource, shippingCategoryId, trackInventory, quantity,
+			unitAmountCents, taxRate, taxIncluded, previousChanges, shippingCategory,
+			order, sellable, market, country, currency,
+			stockItems, shippingServiceStockLocations, versions, lineItemStocks, shippingMethods,
+			shipments, amount, formattedAmount, taxableAmount, formattedTaxableAmount,
+			taxAmount, formattedTaxAmount, unitAmount, formattedUnitAmount, defaultShippingMethodId,
+			availableShippingServiceIds 
+		);
+	
 	}
-
+	
 }

@@ -6,6 +6,7 @@ public class Field extends AbstractModelObject {
 
 	private Class<?> type;
 	private Class<?> listType;
+	private String initialization;
 
 	public Field() {
 		super();
@@ -43,26 +44,37 @@ public class Field extends AbstractModelObject {
 	public void setListType(Class<?> listType) {
 		this.listType = listType;
 	}
-	
-	
+
 	private String strType() {
 		return super.strType(getType(), getListType());
+	}
+
+	public String getInitialization() {
+		return initialization;
+	}
+
+	public void setInitialization(String initialization) {
+		this.initialization = initialization;
 	}
 
 	public String generate() {
 
 		StringBuilder sb = new StringBuilder();
-		
+
 		if (!getAnnotationList().isEmpty()) {
 			for (Class<?> a : getAnnotationList()) {
 				sb.append('@').append(a.getSimpleName());
 				sb.append(newLine());
 			}
 		}
-		
+
 		sb.append(Modifier.toString(modifier)).append(' ');
-		sb.append(strType()).append(' ');
-		sb.append(getName()).append(';');
+		sb.append(strType()).append(' ').append(getName());
+		
+		if (this.initialization != null)
+			sb.append(" = ").append(this.initialization);
+		
+		sb.append(';');
 
 		return sb.toString();
 
@@ -75,7 +87,7 @@ public class Field extends AbstractModelObject {
 		String code = f.generate();
 
 		System.out.println(code);
-		
+
 	}
 
 }

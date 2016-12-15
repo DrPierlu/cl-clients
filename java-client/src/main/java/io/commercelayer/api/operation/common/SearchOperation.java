@@ -1,12 +1,11 @@
-package io.commercelayer.api.operation;
+package io.commercelayer.api.operation.common;
 
-import io.commercelayer.api.FilteredCall;
 import io.commercelayer.api.search.PageFilter;
 import io.commercelayer.api.search.RequestFilter;
 import io.commercelayer.api.search.SearchFilter;
 import io.commercelayer.api.search.SortFilter;
 
-public class SearchOperation extends GetOperation implements FilteredCall {
+public class SearchOperation extends GetOperation {
 
 	private PageFilter pageFilter;
 	private SearchFilter searchFilter;

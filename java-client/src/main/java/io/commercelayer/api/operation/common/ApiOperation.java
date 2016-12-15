@@ -1,4 +1,4 @@
-package io.commercelayer.api.operation;
+package io.commercelayer.api.operation.common;
 
 import java.util.HashMap;
 import java.util.Map;

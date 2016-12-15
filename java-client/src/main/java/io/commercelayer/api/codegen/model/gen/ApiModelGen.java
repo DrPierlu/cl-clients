@@ -26,14 +26,14 @@ import io.commercelayer.api.codegen.schema.parser.ApiParserFactory;
 import io.commercelayer.api.codegen.source.ApiModelWriter;
 import io.commercelayer.api.json.JsonExclude;
 import io.commercelayer.api.model.common.ApiResource;
-import io.commercelayer.api.operation.ApiOperation;
-import io.commercelayer.api.operation.DeleteOperation;
-import io.commercelayer.api.operation.GetIdOperation;
-import io.commercelayer.api.operation.IdOperation;
-import io.commercelayer.api.operation.MoveOperation;
-import io.commercelayer.api.operation.PostOperation;
-import io.commercelayer.api.operation.PutOperation;
-import io.commercelayer.api.operation.SearchOperation;
+import io.commercelayer.api.operation.common.ApiOperation;
+import io.commercelayer.api.operation.common.DeleteOperation;
+import io.commercelayer.api.operation.common.GetIdOperation;
+import io.commercelayer.api.operation.common.IdOperation;
+import io.commercelayer.api.operation.common.MoveOperation;
+import io.commercelayer.api.operation.common.PostOperation;
+import io.commercelayer.api.operation.common.PutOperation;
+import io.commercelayer.api.operation.common.SearchOperation;
 import io.commercelayer.api.util.ModelUtils;
 
 public class ApiModelGen {
@@ -283,20 +283,6 @@ public class ApiModelGen {
 	}
 	
 
-
-//	@Override
-//	public int hashCode() {
-//		return Objects.hash(
-//			resourceName, id, geocodingCountry, geocodingZip, geocodingCity,
-//				geocodingStreet, geocodingNumber, provider, placeId, precision, accuracy, countryCode, country,
-//				stateCode, stateName, state, province, zip, city, district, streetName, streetNumber, streetAddress,
-//				subPremise, fullAddress, formattedAddress, lat, lng, suggestedBoundsSwLat, suggestedBoundsSwLng,
-//				suggestedBoundsNeLat, suggestedBoundsNeLng, creatorResource, createdAt, updatedAt);
-//	}
-	
-	
-	
-
 	private ModelClass createOperationClass(String modelPackage, String path, Operation op) {
 
 		ModelClass mc = new ModelClass(modelPackage, StringUtils.capitalize(op.getId()), Modifier.PUBLIC);
@@ -324,13 +310,19 @@ public class ApiModelGen {
 		}
 
 		mc.setExtendedClass(extClass);
+		
+		final String operationPathField = "OPERATION_PATH";
+		
+		Field pf = new Field(Modifier.PUBLIC|Modifier.STATIC|Modifier.FINAL, String.class, operationPathField);
+		pf.setInitialization(String.format("\"%s\"", path));
+		mc.addField(pf);
 
 
 		CustomConstructor cc = new CustomConstructor();
 		
 		cc.setModifier(Modifier.PUBLIC);
 		cc.setName(mc.getName());
-		cc.addBodyLine("super(\"".concat(path).concat("\");"));
+		cc.addBodyLine("super(".concat(operationPathField).concat(");"));
 		
 		mc.addConstructor(cc);
 		
@@ -342,7 +334,7 @@ public class ApiModelGen {
 			ccid.setModifier(Modifier.PUBLIC);
 			ccid.setName(mc.getName());
 			ccid.addSignatureParam(new Constructor.Param(Long.class, "id"));
-			ccid.addBodyLine("super(\"".concat(path).concat("\", id);"));
+			ccid.addBodyLine("super(".concat(operationPathField).concat(", id);"));
 			
 			mc.addConstructor(ccid);
 			
@@ -368,8 +360,9 @@ public class ApiModelGen {
 
 		ApiModelGen apiGen = new ApiModelGen();
 
+		@SuppressWarnings("unused")
 		Model model = apiGen.createModel(schema);
-
+		
 	}
 
 }

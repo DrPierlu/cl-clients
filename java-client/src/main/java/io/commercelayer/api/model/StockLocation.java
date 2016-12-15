@@ -1,139 +1,138 @@
-
 package io.commercelayer.api.model;
 
 import java.util.Objects;
-
 import io.commercelayer.api.model.common.ApiResource;
+import io.commercelayer.api.json.JsonExclude;
+import java.util.List;
 
 /**
  * StockLocation
  */
 public class StockLocation extends ApiResource {
 
-	private String name = null;
-	private String position = null;
-	private String parentId = null;
-	private String lft = null;
-	private String rgt = null;
-	private String depth = null;
-	private String childrenCount = null;
+	private static final long serialVersionUID = -1481805606114L;
 
 
-	public StockLocation name(String name) {
-		this.name = name;
-		return this;
+	private String name;
+	private String position;
+	@JsonExclude
+	private Object previousChanges;
+	private List<String> stockItems;
+	private List<String> lineItemStocks;
+	private List<String> shippingServiceStockLocations;
+	private List<String> shippingServices;
+
+
+	public StockLocation() {
+		super();
 	}
+	
 
-	public String getName() {
-		return name;
+	public StockLocation(Long id) {
+		super(id);
 	}
+	
 
 	public void setName(String name) {
 		this.name = name;
 	}
+	
 
-	public StockLocation position(String position) {
-		this.position = position;
-		return this;
+	public String getName() {
+		return this.name;
 	}
-
-	public String getPosition() {
-		return position;
-	}
+	
 
 	public void setPosition(String position) {
 		this.position = position;
 	}
+	
 
-	public StockLocation parentId(String parentId) {
-		this.parentId = parentId;
-		return this;
+	public String getPosition() {
+		return this.position;
 	}
+	
 
-	public String getParentId() {
-		return parentId;
+	public void setPreviousChanges(Object previousChanges) {
+		this.previousChanges = previousChanges;
 	}
+	
 
-	public void setParentId(String parentId) {
-		this.parentId = parentId;
+	public Object getPreviousChanges() {
+		return this.previousChanges;
 	}
+	
 
-	public StockLocation lft(String lft) {
-		this.lft = lft;
-		return this;
+	public void setStockItems(List<String> stockItems) {
+		this.stockItems = stockItems;
 	}
+	
 
-	public String getLft() {
-		return lft;
+	public List<String> getStockItems() {
+		return this.stockItems;
 	}
+	
 
-	public void setLft(String lft) {
-		this.lft = lft;
+	public void setLineItemStocks(List<String> lineItemStocks) {
+		this.lineItemStocks = lineItemStocks;
 	}
+	
 
-	public StockLocation rgt(String rgt) {
-		this.rgt = rgt;
-		return this;
+	public List<String> getLineItemStocks() {
+		return this.lineItemStocks;
 	}
+	
 
-	public String getRgt() {
-		return rgt;
+	public void setShippingServiceStockLocations(List<String> shippingServiceStockLocations) {
+		this.shippingServiceStockLocations = shippingServiceStockLocations;
 	}
+	
 
-	public void setRgt(String rgt) {
-		this.rgt = rgt;
+	public List<String> getShippingServiceStockLocations() {
+		return this.shippingServiceStockLocations;
 	}
+	
 
-	public StockLocation depth(String depth) {
-		this.depth = depth;
-		return this;
+	public void setShippingServices(List<String> shippingServices) {
+		this.shippingServices = shippingServices;
 	}
+	
 
-	public String getDepth() {
-		return depth;
+	public List<String> getShippingServices() {
+		return this.shippingServices;
 	}
-
-	public void setDepth(String depth) {
-		this.depth = depth;
-	}
-
-	public StockLocation childrenCount(String childrenCount) {
-		this.childrenCount = childrenCount;
-		return this;
-	}
-
-	public String getChildrenCount() {
-		return childrenCount;
-	}
-
-	public void setChildrenCount(String childrenCount) {
-		this.childrenCount = childrenCount;
-	}
-
+	
 
 	@Override
-	public boolean equals(java.lang.Object o) {
-		if (this == o) {
-			return true;
-		}
-		if (o == null || getClass() != o.getClass()) {
-			return false;
-		}
-		StockLocation stockLocation = (StockLocation) o;
-		return super.equals(o) && 
-			Objects.equals(this.name, stockLocation.name)
-				&& Objects.equals(this.position, stockLocation.position)
-				&& Objects.equals(this.parentId, stockLocation.parentId) 
-				&& Objects.equals(this.lft, stockLocation.lft)
-				&& Objects.equals(this.rgt, stockLocation.rgt) 
-				&& Objects.equals(this.depth, stockLocation.depth)
-				&& Objects.equals(this.childrenCount, stockLocation.childrenCount);
+	public boolean equals(Object o) {
+	
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+	
+		StockLocation x = (StockLocation) o;
+	
+		return super.equals(o) &&
+			Objects.equals(this.name, x.name)  &&
+			Objects.equals(this.position, x.position)  &&
+			Objects.equals(this.previousChanges, x.previousChanges)  &&
+			Objects.equals(this.stockItems, x.stockItems)  &&
+			Objects.equals(this.lineItemStocks, x.lineItemStocks)  &&
+			Objects.equals(this.shippingServiceStockLocations, x.shippingServiceStockLocations)  &&
+			Objects.equals(this.shippingServices, x.shippingServices) 
+		;
+	
 	}
+	
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(resourceName, id, name, position, parentId, lft, rgt, depth, childrenCount,
-				creatorResource, createdAt, updatedAt);
+	
+		return Objects.hash(
+			serialVersionUID, resourceName, id, creatorResource, createdAt,
+			updatedAt, name, position, previousChanges, stockItems,
+			lineItemStocks, shippingServiceStockLocations, shippingServices 
+		);
+	
 	}
-
+	
 }

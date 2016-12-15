@@ -1,4 +1,4 @@
-package io.commercelayer.api.operation;
+package io.commercelayer.api.operation.common;
 
 public interface IdOperation {
 	

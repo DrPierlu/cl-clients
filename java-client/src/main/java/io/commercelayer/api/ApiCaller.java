@@ -21,11 +21,12 @@ import io.commercelayer.api.json.JsonCodec;
 import io.commercelayer.api.json.JsonCodecFactory;
 import io.commercelayer.api.model.common.ApiError;
 import io.commercelayer.api.model.common.ApiResource;
-import io.commercelayer.api.operation.ApiOperation;
-import io.commercelayer.api.operation.DeleteOperation;
-import io.commercelayer.api.operation.GetIdOperation;
-import io.commercelayer.api.operation.PostOperation;
-import io.commercelayer.api.operation.PutOperation;
+import io.commercelayer.api.operation.common.ApiOperation;
+import io.commercelayer.api.operation.common.DeleteOperation;
+import io.commercelayer.api.operation.common.GetIdOperation;
+import io.commercelayer.api.operation.common.PostOperation;
+import io.commercelayer.api.operation.common.PutOperation;
+import io.commercelayer.api.operation.common.SearchOperation;
 import io.commercelayer.api.search.ApiSearchRequest;
 import io.commercelayer.api.search.ApiSearchResponse;
 import io.commercelayer.api.search.ApiSearchResponse.PaginationInfo;
@@ -39,15 +40,14 @@ import io.commercelayer.api.util.ApiUtils;
 
 public class ApiCaller {
 
-	protected final Logger logger = LoggerFactory.getLogger(getClass());
+	private static final Logger logger = LoggerFactory.getLogger(ApiCaller.class);
 
 	private final ApiToken apiToken;
 
 	private HttpClient httpClient;
 	private final JsonCodec jsonCodec;
 
-	// protected abstract String getResourcePath();
-
+	
 	public ApiCaller(ApiToken apiToken) {
 		this.apiToken = apiToken;
 		this.httpClient = HttpClientFactory.getHttpClientInstance();
@@ -67,201 +67,96 @@ public class ApiCaller {
 			logger.error("Custom HttpClient implementation required");
 	}
 
-//	protected <T extends ApiResource> ApiSearchResponse<T> getItemList(ApiSearchRequest searchRequest, Class<T> class_) throws ApiException {
-//
-//		HttpRequest request = createHttpRequest(searchRequest, Method.GET);
-//
-//		// Pagination Filter
-//		final PageFilter pageFilter = searchRequest.getPageFilter();
-//		if (pageFilter != null) {
-//			if (pageFilter.getPage() != null)
-//				request.addQueryStringParam(PageFilter.Params.PAGE, pageFilter.getPage());
-//			if (pageFilter.getPerPage() != null)
-//				request.addQueryStringParam(PageFilter.Params.PER_PAGE, pageFilter.getPerPage());
-//			if (pageFilter.getOffset() != null)
-//				request.addQueryStringParam(PageFilter.Params.OFFSET, pageFilter.getOffset());
-//		}
-//
-//		// Search Filter
-//		final SearchFilter searchFilter = searchRequest.getSearchFilter();
-//		if ((searchFilter != null) && (searchFilter.getSearchParams() != null)) {
-//			for (SearchParam sp : searchFilter.getSearchParams()) {
-//				StringBuilder q = new StringBuilder();
-//				q.append("q[").append(sp.getField()).append('_').append(sp.getType().operation()).append(']');
-//				request.addQueryStringParam(q.toString(), sp.getValue());
-//			}
-//		}
-//
-//		// Sort Filter
-//		final SortFilter sortFilter = searchRequest.getSortFilter();
-//		if (sortFilter != null) {
-//			for (SortParam sp : sortFilter.getSortParams()) {
-//				StringBuilder v = new StringBuilder();
-//				v.append(sp.getField()).append("+").append(sp.getType().order());
-//				request.addQueryStringParam("q[s]", v.toString());
-//			}
-//		}
-//
-//		// HTTP server call
-//		HttpResponse response = call(request);
-//
-//		List<T> itemList = jsonCodec.fromJSONList(response.getBody(), class_);
-//
-//		ApiSearchResponse<T> searchResponse = new ApiSearchResponse<>(itemList);
-//
-//		// Pagination Response
-//		PaginationInfo pageInfo = new PaginationInfo();
-//
-//		pageInfo.setNextPage(response.getHeaderInt(PaginationInfo.Params.NEXT_PAGE));
-//		pageInfo.setOffset(response.getHeaderInt(PaginationInfo.Params.OFFSET));
-//		pageInfo.setPage(response.getHeaderInt(PaginationInfo.Params.PAGE));
-//		pageInfo.setPerPage(response.getHeaderInt(PaginationInfo.Params.PER_PAGE));
-//		pageInfo.setPrevPage(response.getHeaderInt(PaginationInfo.Params.PREV_PAGE));
-//		pageInfo.setTotal(response.getHeaderInt(PaginationInfo.Params.TOTAL));
-//		pageInfo.setTotalPages(response.getHeaderInt(PaginationInfo.Params.TOTAL_PAGES));
-//
-//		searchResponse.setPaginationInfo(pageInfo);
-//
-//		return searchResponse;
-//
-//	}
-
-//	protected <T extends ApiResource> T getItem(ApiRequest apiRequest, Class<T> class_) throws ApiException {
-//
-//		logger.info("getItem execution [{}, {}]", apiRequest.getResource().getId(), class_.getName());
-//
-//		HttpRequest request = createHttpRequest(apiRequest, Method.GET);
-//		request.setUrl(request.getUrl().concat("/").concat(String.valueOf(apiRequest.getResource().getId())));
-//
-//		HttpResponse response = call(request);
-//
-//		T responseBody = jsonCodec.fromJSON(response.getBody(), class_);
-//
-//		return responseBody;
-//
-//	}
 	
-	public ApiResponse get(ApiRequest<GetIdOperation> apiRequest) throws ApiException {
+	public <T extends ApiResource> ApiResponse<T> get(ApiRequest<GetIdOperation> apiRequest, Class<T> returnType) throws ApiException {
 
 		final GetIdOperation operation = apiRequest.getOperation();
 		
-		logger.info("get execution [{}, {}]", operation.getId(), operation.getResponseObjectType());
+		logger.info("get execution [{}, {}]", operation.getPath(), operation.getId());
 
 		HttpRequest request = createHttpRequest(operation);
 
 		HttpResponse response = call(request);
 
-		ApiResource responseBody = jsonCodec.fromJSON(response.getBody(), operation.getResponseObjectType());
+		T responseBody = jsonCodec.fromJSON(response.getBody(), returnType);
 		
-		ApiResponse apiResponse = new ApiResponse(responseBody);
+		ApiResponse<T> apiResponse = new ApiResponse<>(responseBody);
 
 		return apiResponse;
 
 	}
 	
-	public ApiSearchResponse search(ApiSearchRequest searchRequest) throws ApiException {
+	public <T extends ApiResource> ApiSearchResponse<T> search(ApiSearchRequest searchRequest, Class<T> returnType) throws ApiException {
 
-		HttpRequest request = createHttpRequest(searchRequest.getOperation());
+		final SearchOperation operation = searchRequest.getOperation();
+		
+		logger.info("search execution [{}, {}]", operation.getPath(), returnType.getSimpleName());
+		
+		HttpRequest request = createHttpRequest(operation);
 
-		setRequestFilters(request, searchRequest.getOperation());
+		setRequestFilters(request, operation);
 
 		// HTTP server call
 		HttpResponse response = call(request);
 
-		List<? extends ApiResource> itemList = jsonCodec.fromJSONList(response.getBody(), searchRequest.getOperation().getResponseObjectType());
+		List<T> itemList = jsonCodec.fromJSONList(response.getBody(), returnType);
 
-		ApiSearchResponse searchResponse = new ApiSearchResponse(itemList);
+		ApiSearchResponse<T> searchResponse = new ApiSearchResponse<>(itemList);
 
 		setResponsePagination(searchResponse, response);
 		
 		return searchResponse;
 
 	}
+
 	
+	public <T extends ApiResource> ApiResponse<T> update(ApiRequest<PutOperation> apiRequest, Class<T> returnType) throws ApiException {
+		
+		final PutOperation operation = apiRequest.getOperation();
 
-//	protected ApiResource updateItem(ApiRequest apiRequest) throws ApiException {
-//
-//		logger.info("updateItem execution: {}", apiRequest.getResource());
-//
-//		HttpRequest request = createHttpRequest(apiRequest, Method.PUT);
-//		request.setUrl(request.getUrl().concat("/").concat(String.valueOf(apiRequest.getResource().getId())));
-//
-//		request.setBody(jsonCodec.toJSON(apiRequest.getResource(), true));
-//
-//		HttpResponse response = call(request);
-//
-//		ApiResource resourceObject = jsonCodec.fromJSON(response.getBody(), apiRequest.getResource().getClass());
-//
-//		return resourceObject;
-//
-//	}
-	
-	public ApiResponse update(ApiRequest<PutOperation> apiRequest) throws ApiException {
+		logger.info("update execution: {} {}", operation.getPath(), apiRequest.getResource());
 
-		logger.info("update execution: {}", apiRequest.getResource());
-
-		HttpRequest request = createHttpRequest(apiRequest.getOperation());
+		HttpRequest request = createHttpRequest(operation);
 		request.setBody(jsonCodec.toJSON(apiRequest.getResource(), true));
 
 		HttpResponse response = call(request);
 
-		ApiResource resourceObject = jsonCodec.fromJSON(response.getBody(), apiRequest.getResource().getClass());
+		T resourceObject = jsonCodec.fromJSON(response.getBody(), returnType);
 		
-		ApiResponse apiResponse = new ApiResponse(resourceObject);
+		ApiResponse<T> apiResponse = new ApiResponse<>(resourceObject);
 
 		return apiResponse;
 
 	}
 
-//	protected ApiResource insertItem(ApiRequest apiRequest) throws ApiException {
-//
-//		logger.info("insertItem execution: {}", apiRequest.getResource());
-//
-//		HttpRequest request = createHttpRequest(apiRequest, Method.POST);
-//
-//		request.setBody(jsonCodec.toJSON(apiRequest.getResource(), true));
-//
-//		HttpResponse response = call(request);
-//
-//		ApiResource resourceObject = jsonCodec.fromJSON(response.getBody(), apiRequest.getResource().getClass());
-//
-//		return resourceObject;
-//
-//	}
-	
-	public ApiResponse insert(ApiRequest<PostOperation> apiRequest) throws ApiException {
 
-		logger.info("insert execution: {}", apiRequest.getResource());
+	public <T extends ApiResource> ApiResponse<T> insert(ApiRequest<PostOperation> apiRequest, Class<T> responseType) throws ApiException {
 
-		HttpRequest request = createHttpRequest(apiRequest.getOperation());
+		final PostOperation operation = apiRequest.getOperation();
+		
+		logger.info("insert execution: {} {}", operation.getPath(), apiRequest.getResource());
+
+		HttpRequest request = createHttpRequest(operation);
 		request.setBody(jsonCodec.toJSON(apiRequest.getResource(), true));
 
 		HttpResponse response = call(request);
 
-		ApiResource resourceObject = jsonCodec.fromJSON(response.getBody(), apiRequest.getResource().getClass());
+		T resourceObject = jsonCodec.fromJSON(response.getBody(), responseType);
 
-		ApiResponse apiResponse = new ApiResponse(resourceObject);
+		ApiResponse<T> apiResponse = new ApiResponse<>(resourceObject);
 		
 		return apiResponse;
 
 	}
 
-//	protected void deleteItem(ApiRequest apiRequest) throws ApiException {
-//
-//		logger.info("deleteItem execution: {}", apiRequest.getResource().getId());
-//
-//		HttpRequest request = createHttpRequest(apiRequest, Method.DELETE);
-//		request.setUrl(request.getUrl().concat("/").concat(String.valueOf(apiRequest.getResource().getId())));
-//
-//		/* HttpResponse response = */call(request);
-//
-//	}
 	
-	public void delete(DeleteOperation op) throws ApiException {
+	public void delete(ApiRequest<DeleteOperation> apiRequest) throws ApiException {
+		
+		final DeleteOperation operation = apiRequest.getOperation();
 
-		logger.info("delete execution: {} [{}]", op.getPath(), op.getId());
+		logger.info("delete execution: {} [{}]", operation.getPath(), operation.getId());
 
-		HttpRequest request = createHttpRequest(op);
+		HttpRequest request = createHttpRequest(operation);
 
 		/* HttpResponse response = */call(request);
 
@@ -301,39 +196,6 @@ public class ApiCaller {
 		return response;
 
 	}
-
-//	private HttpRequest createHttpRequest(ApiRequest apiRequest, Method httpMethod) {
-//
-//		HttpRequest request = new HttpRequest(httpMethod);
-//
-//		String url = ApiUtils.getResourceUrl(apiRequest.getPath());
-//
-//		int cbIdx = -1;
-//		while ((cbIdx = url.indexOf("{")) >= 0) {
-//
-//			String fieldName = url.substring(cbIdx, url.indexOf('}'));
-//			String fieldValue = null;
-//
-//			try {
-//				Field field = apiRequest.getClass().getField(fieldName);
-//				field.setAccessible(true);
-//				fieldValue = String.valueOf(field.get(apiRequest.getResource()));
-//			} catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException e) {
-//				logger.warn(LogUtils.printStackTrace(e));
-//			}
-//
-//			url = url.replaceFirst("{[a-zA-Z0-9]+}", fieldValue);
-//
-//		}
-//
-//		request.setUrl(url);
-//		request.setContentType(ContentType.JSON);
-//		request.addHeader(Header.ACCEPT, ContentType.JSON);
-//		request.setHttpAuth(new HttpAuthOAuth2(apiToken.getAccessToken()));
-//
-//		return request;
-//
-//	}
 	
 	
 	private HttpRequest createHttpRequest(ApiOperation op) {
@@ -357,10 +219,10 @@ public class ApiCaller {
 
 
 
-	private void setRequestFilters(HttpRequest request, FilteredCall fc) {
+	private void setRequestFilters(HttpRequest request, SearchOperation sop) {
 
 		// Pagination Filter
-		final PageFilter pageFilter = fc.getPageFilter();
+		final PageFilter pageFilter = sop.getPageFilter();
 		if (pageFilter != null) {
 			if (pageFilter.getPage() != null)
 				request.addQueryStringParam("page", pageFilter.getPage());
@@ -371,7 +233,7 @@ public class ApiCaller {
 		}
 
 		// Search Filter
-		final SearchFilter searchFilter = fc.getSearchFilter();
+		final SearchFilter searchFilter = sop.getSearchFilter();
 		if ((searchFilter != null) && (searchFilter.getSearchParams() != null)) {
 			for (SearchParam sp : searchFilter.getSearchParams()) {
 				StringBuilder q = new StringBuilder();
@@ -381,7 +243,7 @@ public class ApiCaller {
 		}
 
 		// Sort Filter
-		final SortFilter sortFilter = fc.getSortFilter();
+		final SortFilter sortFilter = sop.getSortFilter();
 		if (sortFilter != null) {
 			for (SortParam sp : sortFilter.getSortParams()) {
 				StringBuilder v = new StringBuilder();
@@ -392,6 +254,7 @@ public class ApiCaller {
 
 	}
 
+	
 	private void setResponsePagination(PaginatedResponse pr, HttpResponse response) {
 
 		// Pagination Response

@@ -1,123 +1,150 @@
-
 package io.commercelayer.api.model;
 
 import java.util.Objects;
-
 import io.commercelayer.api.model.common.ApiResource;
+import io.commercelayer.api.json.JsonExclude;
 
 /**
  * Permission
  */
 public class Permission extends ApiResource {
 
-	private String roleId = null;
-	private String ability = null;
-	private String action = null;
-	private String resource = null;
-	private String restrictions = null;
-	private String position = null;
+	private static final long serialVersionUID = -1481805605870L;
 
-	public Permission roleId(String roleId) {
-		this.roleId = roleId;
-		return this;
-	}
 
-	public String getRoleId() {
-		return roleId;
+	private String roleId;
+	private String ability;
+	private String action;
+	private String resource;
+	private String restrictions;
+	private String position;
+	@JsonExclude
+	private Object previousChanges;
+	@JsonExclude
+	private Object role;
+
+
+	public Permission() {
+		super();
 	}
+	
+
+	public Permission(Long id) {
+		super(id);
+	}
+	
 
 	public void setRoleId(String roleId) {
 		this.roleId = roleId;
 	}
+	
 
-	public Permission ability(String ability) {
-		this.ability = ability;
-		return this;
+	public String getRoleId() {
+		return this.roleId;
 	}
-
-	public String getAbility() {
-		return ability;
-	}
+	
 
 	public void setAbility(String ability) {
 		this.ability = ability;
 	}
+	
 
-	public Permission action(String action) {
-		this.action = action;
-		return this;
+	public String getAbility() {
+		return this.ability;
 	}
-
-	public String getAction() {
-		return action;
-	}
+	
 
 	public void setAction(String action) {
 		this.action = action;
 	}
+	
 
-	public Permission resource(String resource) {
-		this.resource = resource;
-		return this;
+	public String getAction() {
+		return this.action;
 	}
-
-	public String getResource() {
-		return resource;
-	}
+	
 
 	public void setResource(String resource) {
 		this.resource = resource;
 	}
+	
 
-	public Permission restrictions(String restrictions) {
-		this.restrictions = restrictions;
-		return this;
+	public String getResource() {
+		return this.resource;
 	}
-
-	public String getRestrictions() {
-		return restrictions;
-	}
+	
 
 	public void setRestrictions(String restrictions) {
 		this.restrictions = restrictions;
 	}
+	
 
-	public Permission position(String position) {
-		this.position = position;
-		return this;
+	public String getRestrictions() {
+		return this.restrictions;
 	}
-
-	public String getPosition() {
-		return position;
-	}
+	
 
 	public void setPosition(String position) {
 		this.position = position;
 	}
-
 	
-	@Override
-	public boolean equals(java.lang.Object o) {
-		if (this == o) {
-			return true;
-		}
-		if (o == null || getClass() != o.getClass()) {
-			return false;
-		}
-		Permission permission = (Permission) o;
-		return super.equals(o) && 
-			Objects.equals(this.roleId, permission.roleId) 
-				&& Objects.equals(this.ability, permission.ability)
-				&& Objects.equals(this.action, permission.action) 
-				&& Objects.equals(this.resource, permission.resource)
-				&& Objects.equals(this.restrictions, permission.restrictions)
-				&& Objects.equals(this.position, permission.position);
+
+	public String getPosition() {
+		return this.position;
 	}
+	
+
+	public void setPreviousChanges(Object previousChanges) {
+		this.previousChanges = previousChanges;
+	}
+	
+
+	public Object getPreviousChanges() {
+		return this.previousChanges;
+	}
+	
+
+	public void setRole(Object role) {
+		this.role = role;
+	}
+	
+
+	public Object getRole() {
+		return this.role;
+	}
+	
+
+	@Override
+	public boolean equals(Object o) {
+	
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+	
+		Permission x = (Permission) o;
+	
+		return super.equals(o) &&
+			Objects.equals(this.roleId, x.roleId)  &&
+			Objects.equals(this.ability, x.ability)  &&
+			Objects.equals(this.action, x.action)  &&
+			Objects.equals(this.resource, x.resource)  &&
+			Objects.equals(this.restrictions, x.restrictions)  &&
+			Objects.equals(this.position, x.position)  &&
+			Objects.equals(this.previousChanges, x.previousChanges)  &&
+			Objects.equals(this.role, x.role) 
+		;
+	
+	}
+	
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(resourceName, id, roleId, ability, action, resource, restrictions, position, 
-				creatorResource, createdAt, updatedAt);
+	
+		return Objects.hash(
+			serialVersionUID, resourceName, id, creatorResource, createdAt,
+			updatedAt, roleId, ability, action, resource,
+			restrictions, position, previousChanges, role 
+		);
+	
 	}
-
+	
 }

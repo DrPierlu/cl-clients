@@ -1,125 +1,126 @@
-
 package io.commercelayer.api.model;
 
-import java.time.LocalDateTime;
 import java.util.Objects;
-
 import io.commercelayer.api.model.common.ApiResource;
+import java.time.LocalDateTime;
+import io.commercelayer.api.json.JsonExclude;
 
 /**
  * Webhook
  */
 public class Webhook extends ApiResource {
 
-	private String eventSubject = null;
-	private String eventAction = null;
-	private String eventUrl = null;
-	private String sharedSecret = null;
-	private LocalDateTime lastFiredAt = null;
-	private LocalDateTime lastFailedAt = null;
+	private static final long serialVersionUID = -1481805606159L;
 
 
-	public Webhook eventSubject(String eventSubject) {
-		this.eventSubject = eventSubject;
-		return this;
+	private String eventSubject;
+	private String eventAction;
+	private String eventUrl;
+	private String sharedSecret;
+	private LocalDateTime lastFiredAt;
+	@JsonExclude
+	private Object previousChanges;
+
+
+	public Webhook() {
+		super();
 	}
+	
 
-	public String getEventSubject() {
-		return eventSubject;
+	public Webhook(Long id) {
+		super(id);
 	}
+	
 
 	public void setEventSubject(String eventSubject) {
 		this.eventSubject = eventSubject;
 	}
+	
 
-	public Webhook eventAction(String eventAction) {
-		this.eventAction = eventAction;
-		return this;
+	public String getEventSubject() {
+		return this.eventSubject;
 	}
-
-	public String getEventAction() {
-		return eventAction;
-	}
+	
 
 	public void setEventAction(String eventAction) {
 		this.eventAction = eventAction;
 	}
+	
 
-	public Webhook eventUrl(String eventUrl) {
-		this.eventUrl = eventUrl;
-		return this;
+	public String getEventAction() {
+		return this.eventAction;
 	}
-
-	public String getEventUrl() {
-		return eventUrl;
-	}
+	
 
 	public void setEventUrl(String eventUrl) {
 		this.eventUrl = eventUrl;
 	}
+	
 
-	public Webhook sharedSecret(String sharedSecret) {
-		this.sharedSecret = sharedSecret;
-		return this;
+	public String getEventUrl() {
+		return this.eventUrl;
 	}
-
-	public String getSharedSecret() {
-		return sharedSecret;
-	}
+	
 
 	public void setSharedSecret(String sharedSecret) {
 		this.sharedSecret = sharedSecret;
 	}
+	
 
-	public Webhook lastFiredAt(LocalDateTime lastFiredAt) {
-		this.lastFiredAt = lastFiredAt;
-		return this;
+	public String getSharedSecret() {
+		return this.sharedSecret;
 	}
-
-	public LocalDateTime getLastFiredAt() {
-		return lastFiredAt;
-	}
+	
 
 	public void setLastFiredAt(LocalDateTime lastFiredAt) {
 		this.lastFiredAt = lastFiredAt;
 	}
+	
 
-	public Webhook lastFailedAt(LocalDateTime lastFailedAt) {
-		this.lastFailedAt = lastFailedAt;
-		return this;
+	public LocalDateTime getLastFiredAt() {
+		return this.lastFiredAt;
 	}
+	
 
-	public LocalDateTime getLastFailedAt() {
-		return lastFailedAt;
+	public void setPreviousChanges(Object previousChanges) {
+		this.previousChanges = previousChanges;
 	}
+	
 
-	public void setLastFailedAt(LocalDateTime lastFailedAt) {
-		this.lastFailedAt = lastFailedAt;
+	public Object getPreviousChanges() {
+		return this.previousChanges;
 	}
-
+	
 
 	@Override
-	public boolean equals(java.lang.Object o) {
-		if (this == o) {
-			return true;
-		}
-		if (o == null || getClass() != o.getClass()) {
-			return false;
-		}
-		Webhook webhook = (Webhook) o;
-		return super.equals(o) && 
-			Objects.equals(this.eventSubject, webhook.eventSubject)
-				&& Objects.equals(this.eventAction, webhook.eventAction)
-				&& Objects.equals(this.eventUrl, webhook.eventUrl)
-				&& Objects.equals(this.sharedSecret, webhook.sharedSecret)
-				&& Objects.equals(this.lastFiredAt, webhook.lastFiredAt)
-				&& Objects.equals(this.lastFailedAt, webhook.lastFailedAt);
+	public boolean equals(Object o) {
+	
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+	
+		Webhook x = (Webhook) o;
+	
+		return super.equals(o) &&
+			Objects.equals(this.eventSubject, x.eventSubject)  &&
+			Objects.equals(this.eventAction, x.eventAction)  &&
+			Objects.equals(this.eventUrl, x.eventUrl)  &&
+			Objects.equals(this.sharedSecret, x.sharedSecret)  &&
+			Objects.equals(this.lastFiredAt, x.lastFiredAt)  &&
+			Objects.equals(this.previousChanges, x.previousChanges) 
+		;
+	
 	}
+	
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(resourceName, id, eventSubject, eventAction, eventUrl, sharedSecret,
-				lastFiredAt, lastFailedAt, creatorResource, createdAt, updatedAt);
+	
+		return Objects.hash(
+			serialVersionUID, resourceName, id, creatorResource, createdAt,
+			updatedAt, eventSubject, eventAction, eventUrl, sharedSecret,
+			lastFiredAt, previousChanges 
+		);
+	
 	}
-
+	
 }
