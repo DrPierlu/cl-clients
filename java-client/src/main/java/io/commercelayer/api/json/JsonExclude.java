@@ -1,5 +1,5 @@
 package io.commercelayer.api.json;
 
-public @interface Exclude {
+public @interface JsonExclude {
 	
 }

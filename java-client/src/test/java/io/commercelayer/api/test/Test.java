@@ -1,7 +1,5 @@
 package io.commercelayer.api.test;
 
-import java.lang.reflect.Field;
-
 import io.commercelayer.api.model.common.ApiResource;
 
 public class Test {

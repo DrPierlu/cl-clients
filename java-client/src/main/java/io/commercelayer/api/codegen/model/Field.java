@@ -52,6 +52,14 @@ public class Field extends AbstractModelObject {
 	public String generate() {
 
 		StringBuilder sb = new StringBuilder();
+		
+		if (!getAnnotationList().isEmpty()) {
+			for (Class<?> a : getAnnotationList()) {
+				sb.append('@').append(a.getSimpleName());
+				sb.append(newLine());
+			}
+		}
+		
 		sb.append(Modifier.toString(modifier)).append(' ');
 		sb.append(strType()).append(' ');
 		sb.append(getName()).append(';');

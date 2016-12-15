@@ -27,13 +27,5 @@ public class Resource {
 	public void addOperation(Operation operation) {
 		this.operations.add(operation);
 	}
-
-	public boolean isIdResource() {
-		return (this.path != null) && this.path.endsWith("{id}");
-	}
-	
-	public boolean isMoveableResource() {
-		return (this.path != null) && this.path.contains("/move_");
-	}
 	
 }

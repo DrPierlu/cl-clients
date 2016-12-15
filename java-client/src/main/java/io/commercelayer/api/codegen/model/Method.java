@@ -15,7 +15,6 @@ public class Method extends AbstractModelObject {
 	private List<Param> signatureParams = new ArrayList<>();
 	private List<String> body = new ArrayList<>();
 	private List<Class<? extends Exception>> exceptionList = new ArrayList<>();
-	private List<Class<? extends Annotation>> annotationList = new ArrayList<>();
 
 	public Method() {
 		super();
@@ -94,15 +93,7 @@ public class Method extends AbstractModelObject {
 		this.listType = listType;
 	}
 
-	public List<Class<? extends Annotation>> getAnnotationList() {
-		return annotationList;
-	}
 	
-	public boolean addAnnotation(Class<? extends Annotation> annotation) {
-		if (!annotation.isAnnotation()) return false;
-		this.annotationList.add(annotation);
-		return true;
-	}
 
 	public String generate() {
 

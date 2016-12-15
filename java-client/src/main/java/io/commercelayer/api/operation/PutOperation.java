@@ -3,9 +3,9 @@ package io.commercelayer.api.operation;
 import io.commercelayer.api.http.HttpRequest.Method;
 import io.commercelayer.api.model.common.ApiResource;
 
-public class PutOperation<T extends ApiResource> extends ApiOperation {
+public class PutOperation extends ApiOperation {
 
-	private T payload;
+	private ApiResource payload;
 
 	public PutOperation(String path) {
 		super(path);
@@ -16,19 +16,12 @@ public class PutOperation<T extends ApiResource> extends ApiOperation {
 		return Method.PUT;
 	}
 
-	public Long getId() {
-		return (Long)getPathParam("id");
-	}
 
-	public void setId(Long id) {
-		addPathParam("id", id);
-	}
-
-	public T getPayload() {
+	public ApiResource getPayload() {
 		return payload;
 	}
 
-	public void setPayload(T payload) {
+	public void setPayload(ApiResource payload) {
 		this.payload = payload;
 	}
 

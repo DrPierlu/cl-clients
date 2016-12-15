@@ -15,6 +15,14 @@ public class CustomConstructor extends Constructor {
 	public void setBody(List<String> body) {
 		this.body = body;
 	}
+	
+	public void addBodyLine(String line) {
+		this.body.add(line);
+	}
+	
+	public void addBodyLine(String line, Object... params) {
+		addBodyLine(String.format(line, params));
+	}
 
 	public List<Class<? extends Exception>> getExceptionList() {
 		return exceptionList;
@@ -26,6 +34,16 @@ public class CustomConstructor extends Constructor {
 	
 	public void addException(Class<? extends Exception> e) {
 		this.exceptionList.add(e);
+	}
+	
+	protected StringBuilder generateBody(StringBuilder sb) {
+		
+		for (String line : getBody()) {
+			sb.append('\t').append(line).append(newLine());
+		}
+				
+		return sb;
+		
 	}
 
 }

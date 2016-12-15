@@ -37,6 +37,7 @@ public final class JsonCodecGsonImpl implements JsonCodec {
 		if (formatted) builder.setPrettyPrinting();
 		
 		builder.registerTypeAdapter(LocalDateTime.class, new LocalDateTimeSerializer());
+		builder.addSerializationExclusionStrategy(new GsonExclusionStrategy());
 		
 		gson = builder.create();
 		

@@ -2,8 +2,9 @@ package io.commercelayer.api.search;
 
 import io.commercelayer.api.ApiRequest;
 import io.commercelayer.api.FilteredCall;
+import io.commercelayer.api.operation.SearchOperation;
 
-public class ApiSearchRequest extends ApiRequest implements FilteredCall {
+public class ApiSearchRequest extends ApiRequest<SearchOperation> implements FilteredCall {
 
 	private PageFilter pageFilter;
 	private SearchFilter searchFilter;
@@ -11,6 +12,11 @@ public class ApiSearchRequest extends ApiRequest implements FilteredCall {
 
 	public ApiSearchRequest() {
 		super();
+	}
+	
+	public ApiSearchRequest(SearchOperation searchOperation) {
+		this();
+		setOperation(searchOperation);
 	}
 
 	public ApiSearchRequest(PageFilter pageFilter, SearchFilter searchFilter, SortFilter sortFilter) {
@@ -43,5 +49,5 @@ public class ApiSearchRequest extends ApiRequest implements FilteredCall {
 	public void setSortFilter(SortFilter sortFilter) {
 		this.sortFilter = sortFilter;
 	}
-
+	
 }

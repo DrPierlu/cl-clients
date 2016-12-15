@@ -162,9 +162,15 @@ public class ModelClass extends AbstractModelObject {
 		for (Class<?> c : getImplementList())
 			addImportItem(c);
 
+		// Annotations
+		for (Class<? extends Annotation> a : getAnnotationList())
+			addImportItem(a);
+		
 		// Fields
-		for (Field f : getFieldList())
+		for (Field f : getFieldList()) {
 			addImportItem(f.getType());
+			for (Class<? extends Annotation> a : f.getAnnotationList()) addImportItem(a);
+		}
 		
 		// Constructors
 		for (Constructor c : getConstructorList()) {
@@ -206,8 +212,10 @@ public class ModelClass extends AbstractModelObject {
 		
 		
 		// Imports
-		for (Class<?> c : getImportList())
-			sb.append("import ").append(c.getName()).append(';').append(newLine());
+		for (Class<?> c : getImportList()) {
+			String imp = c.getName().replaceAll("\\$", ".");
+			sb.append("import ").append(imp).append(';').append(newLine());
+		}
 		sb.append(newLine());
 		
 		
@@ -238,7 +246,7 @@ public class ModelClass extends AbstractModelObject {
 			}
 		}
 		
-		sb.append(" {").append(newLines(2));
+		sb.append(" {").append(newLine());
 		
 		
 		// serialVersionUID
@@ -246,13 +254,15 @@ public class ModelClass extends AbstractModelObject {
 		
 		
 		// Fields
-		for (Field f : getFieldList()) {
-			sb.append('\t');
-			sb.append(newLines(f.getLinesBefore()));
-			sb.append(f.generate()).append(newLine());
-			sb.append(newLines(f.getLinesAfter()));
+		if (!getFieldList().isEmpty()) {
+			sb.append(newLine());
+			for (Field f : getFieldList()) {
+				sb.append(newLines(f.getLinesBefore()));
+				sb.append('\t').append(f.generate().replaceAll("\n", "\n\t")).append(newLine());
+				sb.append(newLines(f.getLinesAfter()));
+			}
+			sb.append(newLine());
 		}
-		if (!getFieldList().isEmpty()) sb.append(newLine());
 		
 		
 		// Constructors

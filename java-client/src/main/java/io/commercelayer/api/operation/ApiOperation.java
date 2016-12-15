@@ -7,8 +7,8 @@ import io.commercelayer.api.http.HttpRequest.Method;
 
 public abstract class ApiOperation {
 
-	private Map<String, Object> pathParams = new HashMap<>();
-	private String path;
+	protected Map<String, Object> pathParams = new HashMap<>();
+	protected String path;
 
 	public abstract Method getMethod();
 

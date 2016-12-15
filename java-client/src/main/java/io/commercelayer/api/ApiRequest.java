@@ -1,28 +1,31 @@
 package io.commercelayer.api;
 
 import io.commercelayer.api.model.common.ApiResource;
+import io.commercelayer.api.operation.ApiOperation;
 
-public class ApiRequest {
+public class ApiRequest<T extends ApiOperation> {
 
-	private String path;
+	private T operation;
 	private ApiResource resource;
 	
 	public ApiRequest() {
 		super();
 	}
 	
-	public ApiRequest(String path, ApiResource resource) {
+	public ApiRequest(T operation, ApiResource resource) {
 		this();
-		this.path = path;
+		this.operation = operation;
 		this.resource = resource;
 	}
 
-	public String getPath() {
-		return path;
+	
+
+	public T getOperation() {
+		return operation;
 	}
 
-	public void setPath(String path) {
-		this.path = path;
+	public void setOperation(T operation) {
+		this.operation = operation;
 	}
 
 	public ApiResource getResource() {

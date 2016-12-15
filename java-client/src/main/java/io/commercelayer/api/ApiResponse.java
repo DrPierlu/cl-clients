@@ -2,15 +2,24 @@ package io.commercelayer.api;
 
 import io.commercelayer.api.model.common.ApiResource;
 
-public class ApiResponse<T extends ApiResource> {
+public class ApiResponse {
 
-	private T apiResource;
+	private ApiResource apiResource;
+	
+	public ApiResponse() {
+		super();
+	}
+	
+	public ApiResponse(ApiResource resource) {
+		this();
+		this.apiResource = resource;
+	}
 
-	public T getApiResource() {
+	public ApiResource getApiResource() {
 		return apiResource;
 	}
 
-	public void setApiResource(T apiResource) {
+	public void setApiResource(ApiResource apiResource) {
 		this.apiResource = apiResource;
 	}
 

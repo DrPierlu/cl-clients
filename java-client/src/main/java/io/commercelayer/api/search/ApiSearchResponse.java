@@ -6,21 +6,21 @@ import java.util.List;
 import io.commercelayer.api.PaginatedResponse;
 import io.commercelayer.api.model.common.ApiResource;
 
-public class ApiSearchResponse<T extends ApiResource> implements PaginatedResponse {
+public class ApiSearchResponse implements PaginatedResponse {
 
-	private List<T> itemList;
+	private List<? extends ApiResource> itemList;
 	private PaginationInfo paginationInfo;
 	
-	public ApiSearchResponse(List<T> itemList) {
+	public ApiSearchResponse(List<? extends ApiResource> itemList) {
 		super();
 		this.itemList = (itemList == null)? new ArrayList<>() : itemList;
 	}
 
-	public List<T> getItemList() {
+	public List<? extends ApiResource> getItemList() {
 		return itemList;
 	}
 
-	public void setItemList(List<T> itemList) {
+	public void setItemList(List<? extends ApiResource> itemList) {
 		this.itemList = itemList;
 	}
 

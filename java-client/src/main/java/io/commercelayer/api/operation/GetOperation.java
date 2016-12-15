@@ -3,33 +3,26 @@ package io.commercelayer.api.operation;
 import io.commercelayer.api.http.HttpRequest.Method;
 import io.commercelayer.api.model.common.ApiResource;
 
-public class GetOperation<T extends ApiResource> extends ApiOperation {
-
-	private Class<T> responseObjectType;
+public abstract class GetOperation extends ApiOperation {
+	
+	private Class<? extends ApiResource> responseObjectType;
 
 	public GetOperation(String path) {
 		super(path);
 	}
 	
-	public GetOperation(String path, Class<T> responseObjectType) {
-		super(path);
+	public GetOperation(String path, Class<? extends ApiResource> responseObjectType) {
+		this(path);
 		this.responseObjectType = responseObjectType;
 	}
+		
 
 	@Override
 	public Method getMethod() {
 		return Method.GET;
 	}
-
-	public Long getId() {
-		return (Long) getPathParam("id");
-	}
-
-	public void setId(Long id) {
-		addPathParam("id", id);
-	}
-
-	public Class<T> getResponseObjectType() {
+	
+	public Class<? extends ApiResource> getResponseObjectType() {
 		return responseObjectType;
 	}
 

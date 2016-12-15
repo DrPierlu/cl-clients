@@ -1,5 +1,6 @@
 package io.commercelayer.api.codegen.model;
 
+import java.lang.annotation.Annotation;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +11,7 @@ public abstract class AbstractModelObject {
 	protected String comment;
 	protected int linesBefore = 0;
 	protected int linesAfter = 0;
+	protected List<Class<? extends Annotation>> annotationList = new ArrayList<>();
 
 	public abstract String generate();
 
@@ -86,6 +88,16 @@ public abstract class AbstractModelObject {
 		if (type.equals(List.class))
 			sb.append('<').append(listType.getSimpleName()).append('>');
 		return sb.toString();
+	}
+	
+	public List<Class<? extends Annotation>> getAnnotationList() {
+		return annotationList;
+	}
+	
+	public boolean addAnnotation(Class<? extends Annotation> annotation) {
+		if (!annotation.isAnnotation()) return false;
+		this.annotationList.add(annotation);
+		return true;
 	}
 
 }

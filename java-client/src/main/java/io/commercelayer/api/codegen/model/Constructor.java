@@ -7,7 +7,6 @@ import java.util.List;
 
 public class Constructor extends AbstractModelObject {
 
-	private boolean parent;
 	private List<Constructor.Param> signatureParams = new ArrayList<>();
 
 	public Constructor() {
@@ -43,13 +42,7 @@ public class Constructor extends AbstractModelObject {
 		this.signatureParams.add(param);
 	}
 
-	public boolean isParent() {
-		return parent;
-	}
 
-	public void setParent(boolean parent) {
-		this.parent = parent;
-	}
 
 	public String generate() {
 
@@ -70,32 +63,39 @@ public class Constructor extends AbstractModelObject {
 
 		sb.append(" {").append(newLine());
 
-		if (isParent()) {
-			sb.append("\tsuper(");
-			if (!getSignatureParams().isEmpty()) {
-				int i = 0;
-				for (Constructor.Param p : getSignatureParams()) {
-					if (i++ > 0) sb.append(", ");
-					sb.append(p.getName());
-				}
-			}
-			sb.append(");").append(newLine());
-		}
-		else {
-			sb.append("\tsuper();").append(newLine());
-			if (!getSignatureParams().isEmpty()) {
-				for (Constructor.Param p : getSignatureParams()) {
-					sb.append('\t').append(p.isDeclared()? "this" : "super").append('.');
-					sb.append(p.getName()).append(" = ").append(p.getName()).append(';');
-					sb.append(newLine());
-				}
-			}
-		}
+		sb = generateBody(sb);
 		
 		sb.append('}').append(newLine());
 
 		return sb.toString();
 
+	}
+	
+	
+	protected StringBuilder generateBody(StringBuilder sb) {
+		
+		sb.append("\tsuper(");
+		if (!getSignatureParams().isEmpty()) {
+			int i = 0;
+			for (Constructor.Param p : getSignatureParams()) {
+				if (!p.isParentParam()) continue;
+				if (i++ > 0) sb.append(", ");
+				sb.append(p.getName());
+			}
+		}
+		sb.append(");").append(newLine());
+		
+		if (!getSignatureParams().isEmpty()) {
+			for (Constructor.Param p : getSignatureParams()) {
+				if (p.isParentParam()) continue;
+				sb.append('\t').append("this.");
+				sb.append(p.getName()).append(" = ").append(p.getName()).append(';');
+				sb.append(newLine());
+			}
+		}
+		
+		return sb;
+		
 	}
 
 	public int getLinesBefore() {
@@ -108,23 +108,19 @@ public class Constructor extends AbstractModelObject {
 
 	public static class Param extends Method.Param {
 
-		private boolean declared;
+		private boolean parentParam;
 
 		public Param(Class<?> type, String name) {
 			super(type, name);
 		}
 
-		public Param(Class<?> type, String name, boolean declared) {
+		public Param(Class<?> type, String name, boolean parentParam) {
 			this(type, name);
-			this.declared = declared;
+			this.parentParam = parentParam;
 		}
 
-		public boolean isDeclared() {
-			return declared;
-		}
-
-		public void setDeclared(boolean declared) {
-			this.declared = declared;
+		public boolean isParentParam() {
+			return parentParam;
 		}
 
 	}
