@@ -9,12 +9,12 @@ import io.commercelayer.api.json.JsonExclude;
  */
 public class CountryLanguage extends ApiResource {
 
-	private static final long serialVersionUID = -1481805605683L;
+	private static final long serialVersionUID = -1481927389034L;
 
 
-	private String countryId;
-	private String languageId;
-	private String position;
+	private Integer countryId;
+	private Integer languageId;
+	private Integer position;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
@@ -33,32 +33,32 @@ public class CountryLanguage extends ApiResource {
 	}
 	
 
-	public void setCountryId(String countryId) {
+	public void setCountryId(Integer countryId) {
 		this.countryId = countryId;
 	}
 	
 
-	public String getCountryId() {
+	public Integer getCountryId() {
 		return this.countryId;
 	}
 	
 
-	public void setLanguageId(String languageId) {
+	public void setLanguageId(Integer languageId) {
 		this.languageId = languageId;
 	}
 	
 
-	public String getLanguageId() {
+	public Integer getLanguageId() {
 		return this.languageId;
 	}
 	
 
-	public void setPosition(String position) {
+	public void setPosition(Integer position) {
 		this.position = position;
 	}
 	
 
-	public String getPosition() {
+	public Integer getPosition() {
 		return this.position;
 	}
 	

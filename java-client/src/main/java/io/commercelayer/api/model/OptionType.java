@@ -10,11 +10,11 @@ import java.util.List;
  */
 public class OptionType extends ApiResource {
 
-	private static final long serialVersionUID = -1481805605817L;
+	private static final long serialVersionUID = -1481927389125L;
 
 
 	private String name;
-	private String productTypeId;
+	private Integer productTypeId;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
@@ -46,12 +46,12 @@ public class OptionType extends ApiResource {
 	}
 	
 
-	public void setProductTypeId(String productTypeId) {
+	public void setProductTypeId(Integer productTypeId) {
 		this.productTypeId = productTypeId;
 	}
 	
 
-	public String getProductTypeId() {
+	public Integer getProductTypeId() {
 		return this.productTypeId;
 	}
 	

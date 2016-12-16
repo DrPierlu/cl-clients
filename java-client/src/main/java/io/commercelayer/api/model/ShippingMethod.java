@@ -10,15 +10,15 @@ import java.util.List;
  */
 public class ShippingMethod extends ApiResource {
 
-	private static final long serialVersionUID = -1481805605960L;
+	private static final long serialVersionUID = -1481927389232L;
 
 
-	private String orderId;
-	private String shippingAddressId;
-	private String shippingServiceId;
-	private String shippingPackageId;
-	private String priceCents;
-	private String freeOverAmountCents;
+	private Integer orderId;
+	private Integer shippingAddressId;
+	private Integer shippingServiceId;
+	private Integer shippingPackageId;
+	private Integer priceCents;
+	private Integer freeOverAmountCents;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
@@ -56,62 +56,62 @@ public class ShippingMethod extends ApiResource {
 	}
 	
 
-	public void setOrderId(String orderId) {
+	public void setOrderId(Integer orderId) {
 		this.orderId = orderId;
 	}
 	
 
-	public String getOrderId() {
+	public Integer getOrderId() {
 		return this.orderId;
 	}
 	
 
-	public void setShippingAddressId(String shippingAddressId) {
+	public void setShippingAddressId(Integer shippingAddressId) {
 		this.shippingAddressId = shippingAddressId;
 	}
 	
 
-	public String getShippingAddressId() {
+	public Integer getShippingAddressId() {
 		return this.shippingAddressId;
 	}
 	
 
-	public void setShippingServiceId(String shippingServiceId) {
+	public void setShippingServiceId(Integer shippingServiceId) {
 		this.shippingServiceId = shippingServiceId;
 	}
 	
 
-	public String getShippingServiceId() {
+	public Integer getShippingServiceId() {
 		return this.shippingServiceId;
 	}
 	
 
-	public void setShippingPackageId(String shippingPackageId) {
+	public void setShippingPackageId(Integer shippingPackageId) {
 		this.shippingPackageId = shippingPackageId;
 	}
 	
 
-	public String getShippingPackageId() {
+	public Integer getShippingPackageId() {
 		return this.shippingPackageId;
 	}
 	
 
-	public void setPriceCents(String priceCents) {
+	public void setPriceCents(Integer priceCents) {
 		this.priceCents = priceCents;
 	}
 	
 
-	public String getPriceCents() {
+	public Integer getPriceCents() {
 		return this.priceCents;
 	}
 	
 
-	public void setFreeOverAmountCents(String freeOverAmountCents) {
+	public void setFreeOverAmountCents(Integer freeOverAmountCents) {
 		this.freeOverAmountCents = freeOverAmountCents;
 	}
 	
 
-	public String getFreeOverAmountCents() {
+	public Integer getFreeOverAmountCents() {
 		return this.freeOverAmountCents;
 	}
 	

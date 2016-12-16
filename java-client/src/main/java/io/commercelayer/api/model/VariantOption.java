@@ -9,12 +9,12 @@ import io.commercelayer.api.json.JsonExclude;
  */
 public class VariantOption extends ApiResource {
 
-	private static final long serialVersionUID = -1481805606154L;
+	private static final long serialVersionUID = -1481927389286L;
 
 
-	private String variantId;
-	private String optionTypeId;
-	private String optionValueId;
+	private Integer variantId;
+	private Integer optionTypeId;
+	private Integer optionValueId;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
@@ -35,32 +35,32 @@ public class VariantOption extends ApiResource {
 	}
 	
 
-	public void setVariantId(String variantId) {
+	public void setVariantId(Integer variantId) {
 		this.variantId = variantId;
 	}
 	
 
-	public String getVariantId() {
+	public Integer getVariantId() {
 		return this.variantId;
 	}
 	
 
-	public void setOptionTypeId(String optionTypeId) {
+	public void setOptionTypeId(Integer optionTypeId) {
 		this.optionTypeId = optionTypeId;
 	}
 	
 
-	public String getOptionTypeId() {
+	public Integer getOptionTypeId() {
 		return this.optionTypeId;
 	}
 	
 
-	public void setOptionValueId(String optionValueId) {
+	public void setOptionValueId(Integer optionValueId) {
 		this.optionValueId = optionValueId;
 	}
 	
 
-	public String getOptionValueId() {
+	public Integer getOptionValueId() {
 		return this.optionValueId;
 	}
 	

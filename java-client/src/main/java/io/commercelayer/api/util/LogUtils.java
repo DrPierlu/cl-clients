@@ -4,8 +4,11 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 
+import org.apache.commons.lang3.builder.ToStringStyle;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import io.commercelayer.api.config.ApiConfig;
 
 /**
  * @author p.viti
@@ -13,6 +16,8 @@ import org.slf4j.LoggerFactory;
  */
 public class LogUtils {
 
+	public static final ToStringStyle TO_STRING_STYLE = ApiConfig.testModeEnabled()? ToStringStyle.MULTI_LINE_STYLE : ToStringStyle.SHORT_PREFIX_STYLE;
+	
 	private static final LogUtils instance;
 
 	static {

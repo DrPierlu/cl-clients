@@ -11,15 +11,15 @@ import java.util.List;
  */
 public class Market extends ApiResource {
 
-	private static final long serialVersionUID = -1481805605776L;
+	private static final long serialVersionUID = -1481927389110L;
 
 
-	private String channelId;
-	private String countryGroupId;
-	private String merchantId;
-	private String catalogId;
-	private String priceListId;
-	private String orderValidatorId;
+	private Integer channelId;
+	private Integer countryGroupId;
+	private Integer merchantId;
+	private Integer catalogId;
+	private Integer priceListId;
+	private Integer orderValidatorId;
 	private LocalDateTime lastResetIndexAt;
 	@JsonExclude
 	private Object previousChanges;
@@ -56,62 +56,62 @@ public class Market extends ApiResource {
 	}
 	
 
-	public void setChannelId(String channelId) {
+	public void setChannelId(Integer channelId) {
 		this.channelId = channelId;
 	}
 	
 
-	public String getChannelId() {
+	public Integer getChannelId() {
 		return this.channelId;
 	}
 	
 
-	public void setCountryGroupId(String countryGroupId) {
+	public void setCountryGroupId(Integer countryGroupId) {
 		this.countryGroupId = countryGroupId;
 	}
 	
 
-	public String getCountryGroupId() {
+	public Integer getCountryGroupId() {
 		return this.countryGroupId;
 	}
 	
 
-	public void setMerchantId(String merchantId) {
+	public void setMerchantId(Integer merchantId) {
 		this.merchantId = merchantId;
 	}
 	
 
-	public String getMerchantId() {
+	public Integer getMerchantId() {
 		return this.merchantId;
 	}
 	
 
-	public void setCatalogId(String catalogId) {
+	public void setCatalogId(Integer catalogId) {
 		this.catalogId = catalogId;
 	}
 	
 
-	public String getCatalogId() {
+	public Integer getCatalogId() {
 		return this.catalogId;
 	}
 	
 
-	public void setPriceListId(String priceListId) {
+	public void setPriceListId(Integer priceListId) {
 		this.priceListId = priceListId;
 	}
 	
 
-	public String getPriceListId() {
+	public Integer getPriceListId() {
 		return this.priceListId;
 	}
 	
 
-	public void setOrderValidatorId(String orderValidatorId) {
+	public void setOrderValidatorId(Integer orderValidatorId) {
 		this.orderValidatorId = orderValidatorId;
 	}
 	
 
-	public String getOrderValidatorId() {
+	public Integer getOrderValidatorId() {
 		return this.orderValidatorId;
 	}
 	

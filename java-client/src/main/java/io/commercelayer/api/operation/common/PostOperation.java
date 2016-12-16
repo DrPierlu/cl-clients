@@ -7,7 +7,7 @@ public class PostOperation extends ApiOperation {
 
 	private ApiResource payload;
 
-	public PostOperation(String path) {
+	protected PostOperation(String path) {
 		super(path);
 	}
 

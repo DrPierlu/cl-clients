@@ -13,6 +13,10 @@ public final class ApiToken extends ApiObject implements Authentication {
 	private String refreshToken;
 
 	private LocalDateTime releaseDate;
+	
+	ApiToken() {
+		super();
+	}
 
 	public String getAccessToken() {
 		return accessToken;

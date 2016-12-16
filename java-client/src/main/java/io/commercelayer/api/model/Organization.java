@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class Organization extends ApiResource {
 
-	private static final long serialVersionUID = -1481805605846L;
+	private static final long serialVersionUID = -1481927389146L;
 
 
 	private String name;

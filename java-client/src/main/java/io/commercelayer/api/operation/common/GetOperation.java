@@ -4,7 +4,7 @@ import io.commercelayer.api.http.HttpRequest.Method;
 
 public abstract class GetOperation extends ApiOperation {
 
-	public GetOperation(String path) {
+	protected GetOperation(String path) {
 		super(path);
 	}
 

@@ -4,11 +4,11 @@ import io.commercelayer.api.http.HttpRequest.Method;
 
 public class DeleteOperation extends ApiOperation implements IdOperation {
 
-	public DeleteOperation(String path) {
+	protected DeleteOperation(String path) {
 		super(path);
 	}
 	
-	public DeleteOperation(String path, Long id) {
+	protected DeleteOperation(String path, Long id) {
 		this(path);
 		setId(id);
 	}

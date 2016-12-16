@@ -16,5 +16,9 @@ public final class ApiException extends Exception {
 	public ApiError getApiError() {
 		return apiError;
 	}
+	
+	public String getApiErrorDescription() {
+		return (apiError == null)? "" : apiError.toString();
+	}
 
 }

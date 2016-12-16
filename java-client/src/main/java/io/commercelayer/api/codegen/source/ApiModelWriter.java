@@ -25,7 +25,7 @@ public class ApiModelWriter {
 	
 	private static Logger logger = LoggerFactory.getLogger(ApiModelWriter.class);
 
-	public void writeModel(Model model) {
+	public void writeCode(Model model) {
 		
 		for (Map.Entry<String, ClassGroup> cgEntry : model.getClassGroups().entrySet()) {
 			
@@ -74,7 +74,7 @@ public class ApiModelWriter {
 	
 	
 	public static void main(String[] args) {
-		new ApiModelWriter().writeModel(new ApiModelGen().createModel(ApiParserFactory.getSwaggerParserInstance().parse(ApiParser.TEST_SCHEMA_PATH)));
+		new ApiModelWriter().writeCode(new ApiModelGen().createModel(ApiParserFactory.getSwaggerParserInstance().parseSchema(ApiParser.TEST_SCHEMA_PATH)));
 	}
 	
 }

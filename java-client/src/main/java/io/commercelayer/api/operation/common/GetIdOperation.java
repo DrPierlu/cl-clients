@@ -2,11 +2,11 @@ package io.commercelayer.api.operation.common;
 
 public class GetIdOperation extends GetOperation implements IdOperation {
 	
-	public GetIdOperation(String path) {
+	protected GetIdOperation(String path) {
 		super(path);
 	}
 	
-	public GetIdOperation(String path, Long id) {
+	protected GetIdOperation(String path, Long id) {
 		this(path);
 		setId(id);
 	}

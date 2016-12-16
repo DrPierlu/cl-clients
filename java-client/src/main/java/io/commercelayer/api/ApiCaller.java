@@ -68,20 +68,27 @@ public class ApiCaller {
 	}
 
 	
-	public <T extends ApiResource> ApiResponse<T> get(ApiRequest<GetIdOperation> apiRequest, Class<T> returnType) throws ApiException {
+	public <T extends ApiResource> ApiResponse<T> get(ApiRequest<GetIdOperation> apiRequest, Class<T> responseType) throws ApiException {
 
 		final GetIdOperation operation = apiRequest.getOperation();
 		
-		logger.info("get execution [{}, {}]", operation.getPath(), operation.getId());
+		logger.info("GET execution [{}, {}]", operation.getPath(), operation.getId());
 
 		HttpRequest request = createHttpRequest(operation);
 
-		HttpResponse response = call(request);
-
-		T responseBody = jsonCodec.fromJSON(response.getBody(), returnType);
+		ApiResponse<T> apiResponse = null;
 		
-		ApiResponse<T> apiResponse = new ApiResponse<>(responseBody);
+		try {
+			HttpResponse response = call(request);
+			T resourceObject = jsonCodec.fromJSON(response.getBody(), responseType);
+			apiResponse = new ApiResponse<>(resourceObject);
+		}
+		catch (ApiException ae) {
+			logger.warn("Data Error -> {}", ae.getApiErrorDescription());
+			apiResponse = new ApiResponse<>(ae.getApiError());
+		}
 
+		
 		return apiResponse;
 
 	}
@@ -90,7 +97,7 @@ public class ApiCaller {
 
 		final SearchOperation operation = searchRequest.getOperation();
 		
-		logger.info("search execution [{}, {}]", operation.getPath(), returnType.getSimpleName());
+		logger.info("GET[search] execution [{}, {}]", operation.getPath(), returnType.getSimpleName());
 		
 		HttpRequest request = createHttpRequest(operation);
 
@@ -110,40 +117,53 @@ public class ApiCaller {
 	}
 
 	
-	public <T extends ApiResource> ApiResponse<T> update(ApiRequest<PutOperation> apiRequest, Class<T> returnType) throws ApiException {
+	public <T extends ApiResource> ApiResponse<T> put(ApiRequest<PutOperation> apiRequest, Class<T> responseType) throws ApiException {
 		
 		final PutOperation operation = apiRequest.getOperation();
 
-		logger.info("update execution: {} {}", operation.getPath(), apiRequest.getResource());
+		logger.info("PUT execution: {} {}", operation.getPath(), operation.getPayload());
 
 		HttpRequest request = createHttpRequest(operation);
-		request.setBody(jsonCodec.toJSON(apiRequest.getResource(), true));
+		request.setBody(jsonCodec.toJSON(operation.getPayload(), true));
 
-		HttpResponse response = call(request);
-
-		T resourceObject = jsonCodec.fromJSON(response.getBody(), returnType);
+		ApiResponse<T> apiResponse = null;
 		
-		ApiResponse<T> apiResponse = new ApiResponse<>(resourceObject);
+		try {
+			HttpResponse response = call(request);
+			T resourceObject = jsonCodec.fromJSON(response.getBody(), responseType);
+			apiResponse = new ApiResponse<>(resourceObject);
+		}
+		catch (ApiException ae) {
+			logger.warn("Data Error -> {}", ae.getApiErrorDescription());
+			apiResponse = new ApiResponse<>(ae.getApiError());
+		}
 
 		return apiResponse;
 
 	}
 
 
-	public <T extends ApiResource> ApiResponse<T> insert(ApiRequest<PostOperation> apiRequest, Class<T> responseType) throws ApiException {
+	public <T extends ApiResource> ApiResponse<T> post(ApiRequest<PostOperation> apiRequest, Class<T> responseType) throws ApiException {
 
 		final PostOperation operation = apiRequest.getOperation();
 		
-		logger.info("insert execution: {} {}", operation.getPath(), apiRequest.getResource());
+		logger.info("POST execution: {} {}", operation.getPath(), operation.getPayload());
 
 		HttpRequest request = createHttpRequest(operation);
-		request.setBody(jsonCodec.toJSON(apiRequest.getResource(), true));
+		request.setBody(jsonCodec.toJSON(operation.getPayload(), true));
 
-		HttpResponse response = call(request);
+		ApiResponse<T> apiResponse = null;
+		
+		try {
+			HttpResponse response = call(request);
+			T resourceObject = jsonCodec.fromJSON(response.getBody(), responseType);
+			apiResponse = new ApiResponse<>(resourceObject);
+		}
+		catch (ApiException ae) {
+			logger.warn("Data Error -> {}", ae.getApiErrorDescription());
+			apiResponse = new ApiResponse<>(ae.getApiError());
+		}
 
-		T resourceObject = jsonCodec.fromJSON(response.getBody(), responseType);
-
-		ApiResponse<T> apiResponse = new ApiResponse<>(resourceObject);
 		
 		return apiResponse;
 
@@ -154,7 +174,7 @@ public class ApiCaller {
 		
 		final DeleteOperation operation = apiRequest.getOperation();
 
-		logger.info("delete execution: {} [{}]", operation.getPath(), operation.getId());
+		logger.info("DELETE execution: {} [{}]", operation.getPath(), operation.getId());
 
 		HttpRequest request = createHttpRequest(operation);
 
@@ -176,16 +196,22 @@ public class ApiCaller {
 		logger.debug("HTTP Response Code: {}", response.getCode());
 
 		if (response.hasErrorCode()) {
-			if (response.getCode() <= 308) { // Redirection
-				// Nothing to do
-			} else if (response.getCode() == 401) { // Authentication Error
+			if (response.getCode() >= 500) { // System Error
+				throw new SystemException(String.format("Api System Exception [%d]", response.getCode()));
+			}
+			else
+			if (response.getCode() == 401) { // Authentication Error
 				ApiError apiError = jsonCodec.fromJSON(response.getBody(), ApiError.class);
 				throw new AuthException(apiError);
-			} else if (response.getCode() == 400) { // Data Error
+			}
+			else
+			if (response.getCode() >= 400) { // Data Error
 				ApiError apiError = jsonCodec.fromJSON(response.getBody(), ApiError.class);
 				throw new ApiException(apiError);
-			} else if (response.getCode() >= 500) { // System Error
-				throw new SystemException(String.format("Api System Exception [%d]", response.getCode()));
+			}
+			else
+			if (response.getCode() <= 308) { // Redirection
+				// Nothing to do
 			}
 		}
 
@@ -196,6 +222,30 @@ public class ApiCaller {
 		return response;
 
 	}
+	
+	
+//	private <T extends ApiResource> ApiResponse<T> call(ApiOperation operation, Class<T> responseType) {
+//		
+//		HttpRequest request = createHttpRequest(operation);
+//		request.setBody(jsonCodec.toJSON(operation.getPayload(), true));
+//
+//
+//		ApiResponse<T> apiResponse = null;
+//		
+//		try {
+//			HttpResponse response = call(request);
+//			T resourceObject = jsonCodec.fromJSON(response.getBody(), responseType);
+//			apiResponse = new ApiResponse<>(resourceObject);
+//		}
+//		catch (ApiException ae) {
+//			logger.warn("Data Error -> {}", ae.getApiErrorDescription());
+//			apiResponse = new ApiResponse<>(ae.getApiError());
+//		}
+//		
+//		
+//		return apiResponse;
+//		
+//	}
 	
 	
 	private HttpRequest createHttpRequest(ApiOperation op) {

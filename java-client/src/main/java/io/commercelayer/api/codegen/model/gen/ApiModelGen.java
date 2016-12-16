@@ -356,7 +356,7 @@ public class ApiModelGen {
 
 	public static void main(String[] args) {
 
-		Schema schema = ApiParserFactory.getSwaggerParserInstance().parse(ApiParser.TEST_SCHEMA_PATH);
+		Schema schema = ApiParserFactory.getSwaggerParserInstance().parseSchema(ApiParser.TEST_SCHEMA_PATH);
 
 		ApiModelGen apiGen = new ApiModelGen();
 

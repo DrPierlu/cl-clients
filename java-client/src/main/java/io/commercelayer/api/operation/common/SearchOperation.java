@@ -11,11 +11,11 @@ public class SearchOperation extends GetOperation {
 	private SearchFilter searchFilter;
 	private SortFilter sortFilter;
 
-	public SearchOperation(String path) {
+	protected SearchOperation(String path) {
 		super(path);
 	}
 	
-	public SearchOperation(String path, RequestFilter... filters) {
+	protected SearchOperation(String path, RequestFilter... filters) {
 		this(path);
 		for (RequestFilter filter : filters) {
 			if (filter instanceof PageFilter) this.pageFilter = (PageFilter)filter;

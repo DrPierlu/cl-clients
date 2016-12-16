@@ -4,11 +4,11 @@ public class MoveOperation extends GetOperation implements IdOperation {
 	
 	private static final String PARAM_POSITION = "position";
 
-	public MoveOperation(String path) {
+	protected MoveOperation(String path) {
 		super(path);
 	}
 	
-	public MoveOperation(String path, Long id) {
+	protected MoveOperation(String path, Long id) {
 		this(path);
 		setId(id);
 	}

@@ -10,11 +10,10 @@ import java.util.List;
  */
 public class Role extends ApiResource {
 
-	private static final long serialVersionUID = -1481805605932L;
+	private static final long serialVersionUID = -1481927389222L;
 
 
 	private String name;
-	private String description;
 	@JsonExclude
 	private Object previousChanges;
 	private List<String> consumerRoles;
@@ -39,16 +38,6 @@ public class Role extends ApiResource {
 
 	public String getName() {
 		return this.name;
-	}
-	
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-	
-
-	public String getDescription() {
-		return this.description;
 	}
 	
 
@@ -102,7 +91,6 @@ public class Role extends ApiResource {
 	
 		return super.equals(o) &&
 			Objects.equals(this.name, x.name)  &&
-			Objects.equals(this.description, x.description)  &&
 			Objects.equals(this.previousChanges, x.previousChanges)  &&
 			Objects.equals(this.consumerRoles, x.consumerRoles)  &&
 			Objects.equals(this.consumers, x.consumers)  &&
@@ -117,8 +105,8 @@ public class Role extends ApiResource {
 	
 		return Objects.hash(
 			serialVersionUID, resourceName, id, creatorResource, createdAt,
-			updatedAt, name, description, previousChanges, consumerRoles,
-			consumers, permissions 
+			updatedAt, name, previousChanges, consumerRoles, consumers,
+			permissions 
 		);
 	
 	}

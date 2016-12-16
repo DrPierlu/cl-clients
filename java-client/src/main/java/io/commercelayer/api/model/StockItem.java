@@ -10,14 +10,15 @@ import java.util.List;
  */
 public class StockItem extends ApiResource {
 
-	private static final long serialVersionUID = -1481805606105L;
+	private static final long serialVersionUID = -1481927389252L;
 
 
-	private String stockLocationId;
-	private String stockableId;
+	private Integer stockLocationId;
+	private Integer stockableId;
 	private String stockableResource;
-	private String backorderable;
-	private String quantity;
+	@JsonExclude
+	private Object backorderable;
+	private Integer quantity;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
@@ -38,22 +39,22 @@ public class StockItem extends ApiResource {
 	}
 	
 
-	public void setStockLocationId(String stockLocationId) {
+	public void setStockLocationId(Integer stockLocationId) {
 		this.stockLocationId = stockLocationId;
 	}
 	
 
-	public String getStockLocationId() {
+	public Integer getStockLocationId() {
 		return this.stockLocationId;
 	}
 	
 
-	public void setStockableId(String stockableId) {
+	public void setStockableId(Integer stockableId) {
 		this.stockableId = stockableId;
 	}
 	
 
-	public String getStockableId() {
+	public Integer getStockableId() {
 		return this.stockableId;
 	}
 	
@@ -68,22 +69,22 @@ public class StockItem extends ApiResource {
 	}
 	
 
-	public void setBackorderable(String backorderable) {
+	public void setBackorderable(Object backorderable) {
 		this.backorderable = backorderable;
 	}
 	
 
-	public String getBackorderable() {
+	public Object getBackorderable() {
 		return this.backorderable;
 	}
 	
 
-	public void setQuantity(String quantity) {
+	public void setQuantity(Integer quantity) {
 		this.quantity = quantity;
 	}
 	
 
-	public String getQuantity() {
+	public Integer getQuantity() {
 		return this.quantity;
 	}
 	

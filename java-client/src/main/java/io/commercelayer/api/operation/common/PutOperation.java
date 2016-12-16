@@ -7,7 +7,7 @@ public class PutOperation extends ApiOperation {
 
 	private ApiResource payload;
 
-	public PutOperation(String path) {
+	protected PutOperation(String path) {
 		super(path);
 	}
 

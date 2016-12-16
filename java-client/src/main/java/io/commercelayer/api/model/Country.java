@@ -10,10 +10,10 @@ import java.util.List;
  */
 public class Country extends ApiResource {
 
-	private static final long serialVersionUID = -1481805605688L;
+	private static final long serialVersionUID = -1481927389036L;
 
 
-	private String countryGroupId;
+	private Integer countryGroupId;
 	private String code;
 	@JsonExclude
 	private Object previousChanges;
@@ -36,12 +36,12 @@ public class Country extends ApiResource {
 	}
 	
 
-	public void setCountryGroupId(String countryGroupId) {
+	public void setCountryGroupId(Integer countryGroupId) {
 		this.countryGroupId = countryGroupId;
 	}
 	
 
-	public String getCountryGroupId() {
+	public Integer getCountryGroupId() {
 		return this.countryGroupId;
 	}
 	

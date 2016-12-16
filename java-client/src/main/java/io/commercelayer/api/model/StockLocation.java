@@ -10,11 +10,11 @@ import java.util.List;
  */
 public class StockLocation extends ApiResource {
 
-	private static final long serialVersionUID = -1481805606114L;
+	private static final long serialVersionUID = -1481927389272L;
 
 
 	private String name;
-	private String position;
+	private Integer position;
 	@JsonExclude
 	private Object previousChanges;
 	private List<String> stockItems;
@@ -43,12 +43,12 @@ public class StockLocation extends ApiResource {
 	}
 	
 
-	public void setPosition(String position) {
+	public void setPosition(Integer position) {
 		this.position = position;
 	}
 	
 
-	public String getPosition() {
+	public Integer getPosition() {
 		return this.position;
 	}
 	

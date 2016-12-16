@@ -13,10 +13,14 @@ public abstract class ApiParser {
 
 	public static final String TEST_SCHEMA_PATH = "E:/cl-schema_swagger.json";
 	
-	public abstract Schema parse(String schemaPath);
+	protected abstract Schema parse(String schemaPath);
 	
 	public Schema parseSchema() {
 		return parse(ApiConfig.getProperty(Group.api, "service.url").concat("/swagger"));
+	}
+	
+	public Schema parseSchema(String schemaPath) {
+		return parse(schemaPath);
 	}
 	
 	

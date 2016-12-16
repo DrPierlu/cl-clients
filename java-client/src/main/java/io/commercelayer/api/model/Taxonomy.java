@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class Taxonomy extends ApiResource {
 
-	private static final long serialVersionUID = -1481805606128L;
+	private static final long serialVersionUID = -1481927389277L;
 
 
 	private String name;
