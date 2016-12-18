@@ -24,6 +24,7 @@ import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.operation.common.ApiOperation;
 import io.commercelayer.api.operation.common.DeleteOperation;
 import io.commercelayer.api.operation.common.GetIdOperation;
+import io.commercelayer.api.operation.common.MoveOperation;
 import io.commercelayer.api.operation.common.PostOperation;
 import io.commercelayer.api.operation.common.PutOperation;
 import io.commercelayer.api.operation.common.SearchOperation;
@@ -66,9 +67,14 @@ public class ApiCaller {
 		else
 			logger.error("Custom HttpClient implementation required");
 	}
-
 	
-	public <T extends ApiResource> ApiResponse<T> get(ApiRequest<GetIdOperation> apiRequest, Class<T> responseType) throws ApiException {
+	
+	public <T extends ApiResource> ApiResponse<T> move(ApiRequest<MoveOperation> apiRequest, Class<T> resourceType) throws ApiException {
+		return get(apiRequest, resourceType);
+	}
+	
+	
+	public <T extends ApiResource> ApiResponse<T> get(ApiRequest<? extends GetIdOperation> apiRequest, Class<T> resourceType) throws ApiException {
 
 		final GetIdOperation operation = apiRequest.getOperation();
 		
@@ -80,7 +86,7 @@ public class ApiCaller {
 		
 		try {
 			HttpResponse response = call(request);
-			T resourceObject = jsonCodec.fromJSON(response.getBody(), responseType);
+			T resourceObject = jsonCodec.fromJSON(response.getBody(), resourceType);
 			apiResponse = new ApiResponse<>(resourceObject);
 		}
 		catch (ApiException ae) {
@@ -93,31 +99,37 @@ public class ApiCaller {
 
 	}
 	
-	public <T extends ApiResource> ApiSearchResponse<T> search(ApiSearchRequest searchRequest, Class<T> returnType) throws ApiException {
+	
+	public <T extends ApiResource> ApiSearchResponse<T> search(ApiSearchRequest searchRequest, Class<T> resourceType) throws ApiException {
 
 		final SearchOperation operation = searchRequest.getOperation();
 		
-		logger.info("GET[search] execution [{}, {}]", operation.getPath(), returnType.getSimpleName());
+		logger.info("GET[search] execution [{}, {}]", operation.getPath(), resourceType.getSimpleName());
 		
 		HttpRequest request = createHttpRequest(operation);
 
 		setRequestFilters(request, operation);
 
-		// HTTP server call
-		HttpResponse response = call(request);
-
-		List<T> itemList = jsonCodec.fromJSONList(response.getBody(), returnType);
-
-		ApiSearchResponse<T> searchResponse = new ApiSearchResponse<>(itemList);
-
-		setResponsePagination(searchResponse, response);
+		ApiSearchResponse<T> searchResponse = null;
+		
+		try {
+			HttpResponse response = call(request);
+			List<T> itemList = jsonCodec.fromJSONList(response.getBody(), resourceType);
+			searchResponse = new ApiSearchResponse<>(itemList);
+			setResponsePagination(searchResponse, response);
+		}
+		catch (ApiException ae) {
+			logger.warn("Data Error -> {}", ae.getApiErrorDescription());
+			searchResponse = new ApiSearchResponse<>(ae.getApiError());
+		}
+		
 		
 		return searchResponse;
 
 	}
 
 	
-	public <T extends ApiResource> ApiResponse<T> put(ApiRequest<PutOperation> apiRequest, Class<T> responseType) throws ApiException {
+	public <T extends ApiResource> ApiResponse<T> put(ApiRequest<PutOperation> apiRequest, Class<T> resourceType) throws ApiException {
 		
 		final PutOperation operation = apiRequest.getOperation();
 
@@ -130,7 +142,7 @@ public class ApiCaller {
 		
 		try {
 			HttpResponse response = call(request);
-			T resourceObject = jsonCodec.fromJSON(response.getBody(), responseType);
+			T resourceObject = jsonCodec.fromJSON(response.getBody(), resourceType);
 			apiResponse = new ApiResponse<>(resourceObject);
 		}
 		catch (ApiException ae) {
@@ -143,7 +155,7 @@ public class ApiCaller {
 	}
 
 
-	public <T extends ApiResource> ApiResponse<T> post(ApiRequest<PostOperation> apiRequest, Class<T> responseType) throws ApiException {
+	public <T extends ApiResource> ApiResponse<T> post(ApiRequest<PostOperation> apiRequest, Class<T> resourceType) throws ApiException {
 
 		final PostOperation operation = apiRequest.getOperation();
 		
@@ -156,7 +168,7 @@ public class ApiCaller {
 		
 		try {
 			HttpResponse response = call(request);
-			T resourceObject = jsonCodec.fromJSON(response.getBody(), responseType);
+			T resourceObject = jsonCodec.fromJSON(response.getBody(), resourceType);
 			apiResponse = new ApiResponse<>(resourceObject);
 		}
 		catch (ApiException ae) {
@@ -217,35 +229,12 @@ public class ApiCaller {
 
 		// logger.trace("Response Body: {}", ApiConfig.testModeEnabled()?
 		// ApiUtils.formatJson(response.getBody()) : response.getBody());
-		logger.trace("Response Body: {}", response.getBody());
+		// logger.trace("Response Body: {}", response.getBody());
 
 		return response;
 
 	}
 	
-	
-//	private <T extends ApiResource> ApiResponse<T> call(ApiOperation operation, Class<T> responseType) {
-//		
-//		HttpRequest request = createHttpRequest(operation);
-//		request.setBody(jsonCodec.toJSON(operation.getPayload(), true));
-//
-//
-//		ApiResponse<T> apiResponse = null;
-//		
-//		try {
-//			HttpResponse response = call(request);
-//			T resourceObject = jsonCodec.fromJSON(response.getBody(), responseType);
-//			apiResponse = new ApiResponse<>(resourceObject);
-//		}
-//		catch (ApiException ae) {
-//			logger.warn("Data Error -> {}", ae.getApiErrorDescription());
-//			apiResponse = new ApiResponse<>(ae.getApiError());
-//		}
-//		
-//		
-//		return apiResponse;
-//		
-//	}
 	
 	
 	private HttpRequest createHttpRequest(ApiOperation op) {

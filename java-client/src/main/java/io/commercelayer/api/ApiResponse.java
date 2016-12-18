@@ -8,17 +8,14 @@ public class ApiResponse<T extends ApiResource> {
 	private T resource;
 	private ApiError apiError;
 	
-	public ApiResponse() {
-		super();
-	}
 	
 	public ApiResponse(T resource) {
-		this();
+		super();
 		this.resource = resource;
 	}
 	
 	public ApiResponse(ApiError apiError) {
-		this();
+		super();
 		this.apiError = apiError;
 	}
 

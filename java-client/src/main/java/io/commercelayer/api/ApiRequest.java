@@ -5,17 +5,15 @@ import io.commercelayer.api.operation.common.ApiOperation;
 public class ApiRequest<T extends ApiOperation> {
 
 	private T operation;
-//	private ApiResource resource;
 	
 	public ApiRequest() {
 		super();
 	}
 	
-//	public ApiRequest(T operation, ApiResource resource) {
-//		this();
-//		this.operation = operation;
-//		this.resource = resource;
-//	}
+	public ApiRequest(T operation) {
+		this();
+		this.operation = operation;
+	}
 
 	
 
@@ -26,13 +24,9 @@ public class ApiRequest<T extends ApiOperation> {
 	public void setOperation(T operation) {
 		this.operation = operation;
 	}
-
-//	public ApiResource getResource() {
-//		return resource;
-//	}
-//
-//	public void setResource(ApiResource resource) {
-//		this.resource = resource;
-//	}
+	
+	public String toString() {
+		return getClass().getSimpleName();
+	}
 
 }

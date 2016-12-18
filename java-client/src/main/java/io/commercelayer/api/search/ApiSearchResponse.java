@@ -4,16 +4,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.commercelayer.api.PaginatedResponse;
+import io.commercelayer.api.model.common.ApiError;
 import io.commercelayer.api.model.common.ApiResource;
 
 public class ApiSearchResponse<T extends ApiResource> implements PaginatedResponse {
 
 	private List<T> itemList;
 	private PaginationInfo paginationInfo;
+	private ApiError apiError;
 	
 	public ApiSearchResponse(List<T> itemList) {
 		super();
 		this.itemList = (itemList == null)? new ArrayList<>() : itemList;
+	}
+	
+	public ApiSearchResponse(ApiError apiError) {
+		super();
+		this.apiError = apiError;
 	}
 
 	public List<? extends ApiResource> getItemList() {
@@ -30,6 +37,14 @@ public class ApiSearchResponse<T extends ApiResource> implements PaginatedRespon
 
 	public void setPaginationInfo(PaginationInfo paginationInfo) {
 		this.paginationInfo = paginationInfo;
+	}
+	
+	public ApiError getApiError() {
+		return apiError;
+	}
+	
+	public boolean hasError() {
+		return (apiError != null);
 	}
 
 	
