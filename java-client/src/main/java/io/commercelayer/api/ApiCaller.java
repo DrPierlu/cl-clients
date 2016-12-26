@@ -6,6 +6,7 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import io.commercelayer.api.config.ApiConfig;
 import io.commercelayer.api.domain.ContentType;
 import io.commercelayer.api.exception.ApiException;
 import io.commercelayer.api.exception.AuthException;
@@ -201,9 +202,15 @@ public class ApiCaller {
 
 		HttpResponse response = null;
 
-		logger.trace("Request Body: {}", request.getBody());
+		logger.debug("Request Body: {}", request.getBody());
 
-		response = httpClient.send(request); // Connection Exception
+		try {
+			response = httpClient.send(request); // Connection Exception
+		}
+		catch (ConnectionException ce) {
+			logger.error("ConnectionException: %s", ce.getMessage());
+			throw ce;
+		}
 
 		logger.debug("HTTP Response Code: {}", response.getCode());
 
@@ -227,8 +234,7 @@ public class ApiCaller {
 			}
 		}
 
-		// logger.trace("Response Body: {}", ApiConfig.testModeEnabled()?
-		// ApiUtils.formatJson(response.getBody()) : response.getBody());
+		 logger.trace("Response Body: {}", ApiConfig.testModeEnabled()? ApiUtils.formatJson(response.getBody()) : response.getBody());
 		// logger.trace("Response Body: {}", response.getBody());
 
 		return response;

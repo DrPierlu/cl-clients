@@ -33,6 +33,8 @@ public final class ApiAuthenticator {
 		httpRequest.setHttpAuth(new HttpAuthBasic(account.getAuthKey(), account.getAuthSecret()));
 		httpRequest.setBody(ApiUtils.getJsonCodecInstance().toJSON(authRequest, false));
 		httpRequest.setContentType(ContentType.JSON);
+		
+		logger.debug("Auth Body: {}", httpRequest.getBody());
 
 		HttpResponse httpResponse = null;
 
@@ -75,6 +77,8 @@ public final class ApiAuthenticator {
 		httpRequest.setHttpAuth(new HttpAuthBasic(account.getAuthKey(), account.getAuthSecret()));
 		httpRequest.setBody(ApiUtils.getJsonCodecInstance().toJSON(authRequest, false));
 		httpRequest.setContentType(ContentType.JSON);
+		
+		logger.debug("Auth Body: {}", httpRequest.getBody());
 
 		HttpResponse httpResponse = null;
 

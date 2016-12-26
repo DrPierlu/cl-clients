@@ -6,16 +6,13 @@ import io.commercelayer.api.ApiCaller;
 import io.commercelayer.api.ApiRequest;
 import io.commercelayer.api.ApiResponse;
 import io.commercelayer.api.model.Address;
-import io.commercelayer.api.operation.GetAccountAddresses;
 import io.commercelayer.api.operation.GetAccountAddressesId;
 import io.commercelayer.api.operation.PostAccountAddresses;
 import io.commercelayer.api.operation.PutAccountAddressesId;
 import io.commercelayer.api.operation.common.ApiOperations;
-import io.commercelayer.api.operation.common.GetIdOperation;
-import io.commercelayer.api.operation.common.PostOperation;
 import io.commercelayer.api.test.common.ApiTest;
 
-public class AddressTest extends ApiTest {
+public class AddressTest extends ApiTest<Address> {
 
 	@Override
 	public void runTest() {
@@ -39,7 +36,7 @@ public class AddressTest extends ApiTest {
 		ApiRequest<PostAccountAddresses> postReq = new ApiRequest<>(postOp);
 		ApiResponse<Address> postRes = test (postReq, Address.class, caller);
 		
-		a.setId(postRes.getResource().getId());
+		a = postRes.getResource();
 		
 		
 		// GET
@@ -78,6 +75,11 @@ public class AddressTest extends ApiTest {
 		Assert.assertNotEquals(postRes.getResource().getGeocodingStreet(), putRes.getResource().getGeocodingStreet());
 		Assert.assertNotEquals(postRes.getResource().getGeocodingNumber(), putRes.getResource().getGeocodingNumber());
 		
+	}
+	
+	
+	public static void main(String[] args) {
+		new AddressTest().runTest();
 	}
 	
 }

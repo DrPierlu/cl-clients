@@ -29,7 +29,7 @@ import io.commercelayer.api.security.ApiAuthenticator;
 import io.commercelayer.api.security.ApiToken;
 import io.commercelayer.api.util.LogUtils;
 
-public abstract class ApiTest {
+public abstract class ApiTest<T extends ApiResource> {
 	
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 	
@@ -61,7 +61,7 @@ public abstract class ApiTest {
 	}
 	
 	
-	protected <T extends ApiResource> ApiSearchResponse<T> testSearch(ApiSearchRequest request, Class<T> resourceType, ApiCaller caller) {
+	protected ApiSearchResponse<T> testSearch(ApiSearchRequest request, Class<T> resourceType, ApiCaller caller) {
 		
 		logger.info("Executing test ... [{}, {}]", request.getOperation().getClass().getSimpleName(), resourceType.getSimpleName());
 		
@@ -86,12 +86,12 @@ public abstract class ApiTest {
 	}
 	
 	
-	protected <T extends ApiResource, O extends ApiOperation> ApiResponse<T> test(ApiRequest<O> request, Class<T> resourceType) {
+	protected <O extends ApiOperation> ApiResponse<T> test(ApiRequest<O> request, Class<T> resourceType) {
 		return test(request, resourceType, null);
 	}
 	
 	@SuppressWarnings("unchecked")
-	protected <T extends ApiResource, O extends ApiOperation> ApiResponse<T> test(ApiRequest<O> request, Class<T> resourceType, ApiCaller caller) {
+	protected <O extends ApiOperation> ApiResponse<T> test(ApiRequest<O> request, Class<T> resourceType, ApiCaller caller) {
 		
 		logger.info("Executing test ... [{}, {}]", request.getOperation(), resourceType.getSimpleName());
 		
@@ -141,7 +141,7 @@ public abstract class ApiTest {
 	}
 	
 	
-	private <T extends ApiResource> ApiResponse<T> testGet(ApiRequest<GetIdOperation> request, Class<T> resourceType, ApiCaller caller) throws ApiException {
+	private ApiResponse<T> testGet(ApiRequest<GetIdOperation> request, Class<T> resourceType, ApiCaller caller) throws ApiException {
 		
 		logger.info("Executing testGet ... [{}, {}]", request.getOperation(), resourceType.getSimpleName());
 		
@@ -169,7 +169,7 @@ public abstract class ApiTest {
 	}
 	
 	
-	private <T extends ApiResource> ApiResponse<T> testPost(ApiRequest<PostOperation> request, Class<T> resourceType, ApiCaller caller) throws ApiException {
+	private ApiResponse<T> testPost(ApiRequest<PostOperation> request, Class<T> resourceType, ApiCaller caller) throws ApiException {
 		
 		ApiResponse<T> response = caller.post(request, resourceType);
 		
@@ -183,7 +183,7 @@ public abstract class ApiTest {
 	}
 	
 	
-	private <T extends ApiResource> ApiResponse<T> testPut(ApiRequest<PutOperation> request, Class<T> resourceType, ApiCaller caller) throws ApiException {
+	private ApiResponse<T> testPut(ApiRequest<PutOperation> request, Class<T> resourceType, ApiCaller caller) throws ApiException {
 		
 		ApiResponse<T> response = caller.put(request, resourceType);
 		
@@ -198,7 +198,7 @@ public abstract class ApiTest {
 	}
 	
 	
-	private <T extends ApiResource> void testDelete(ApiRequest<DeleteOperation> request, ApiCaller caller) throws ApiException {
+	private void testDelete(ApiRequest<DeleteOperation> request, ApiCaller caller) throws ApiException {
 		
 		caller.delete(request);
 		
@@ -208,7 +208,7 @@ public abstract class ApiTest {
 	}
 	
 	
-	private <T extends ApiResource> ApiResponse<T> testMove(ApiRequest<MoveOperation> request, Class<T> resourceType, ApiCaller caller) throws ApiException {
+	private ApiResponse<T> testMove(ApiRequest<MoveOperation> request, Class<T> resourceType, ApiCaller caller) throws ApiException {
 		
 		ApiResponse<T> response = caller.move(request, resourceType);
 		
