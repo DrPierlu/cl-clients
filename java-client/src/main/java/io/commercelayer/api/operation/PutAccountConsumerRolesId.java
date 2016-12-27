@@ -17,6 +17,7 @@ public class PutAccountConsumerRolesId extends PutOperation {
 		addRequiredField("id");
 	}
 
+
 	public PutAccountConsumerRolesId() {
 		super(OPERATION_PATH);
 	}

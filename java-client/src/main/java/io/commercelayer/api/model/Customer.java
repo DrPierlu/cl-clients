@@ -10,13 +10,17 @@ import java.util.List;
  */
 public class Customer extends ApiResource {
 
-	private static final long serialVersionUID = -1482845757953L;
+	private static final long serialVersionUID = -1482880735280L;
 
 
+	@JsonExclude
+	private String name;
 	private String email;
 	@JsonExclude
 	private Object previousChanges;
+	@JsonExclude
 	private List<String> resourceImages;
+	@JsonExclude
 	private List<String> images;
 
 
@@ -27,6 +31,16 @@ public class Customer extends ApiResource {
 
 	public Customer(Long id) {
 		super(id);
+	}
+	
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+
+	public String getName() {
+		return this.name;
 	}
 	
 
@@ -74,15 +88,16 @@ public class Customer extends ApiResource {
 	public boolean equals(Object o) {
 	
 		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
+		if ((o == null) || (getClass() != o.getClass())) return false;
 	
-		Customer x = (Customer) o;
+		Customer x = (Customer)o;
 	
-		return super.equals(o) &&
-			Objects.equals(this.email, x.email)  &&
-			Objects.equals(this.previousChanges, x.previousChanges)  &&
-			Objects.equals(this.resourceImages, x.resourceImages)  &&
-			Objects.equals(this.images, x.images) 
+		return super.equals(o)
+			&& Objects.equals(this.name, x.name)
+			&& Objects.equals(this.email, x.email)
+			&& Objects.equals(this.previousChanges, x.previousChanges)
+			&& Objects.equals(this.resourceImages, x.resourceImages)
+			&& Objects.equals(this.images, x.images)
 		;
 	
 	}
@@ -92,10 +107,25 @@ public class Customer extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			serialVersionUID, resourceName, id, creatorResource, createdAt,
-			updatedAt, email, previousChanges, resourceImages, images
+			name, email, previousChanges, resourceImages, images
 			
 		);
+	
+	}
+	
+
+	@Override
+	public Customer clone() {
+	
+		Customer no = new Customer();
+	
+		no.name = this.name;
+		no.email = this.email;
+		no.previousChanges = this.previousChanges;
+		no.resourceImages = this.resourceImages;
+		no.images = this.images;
+	
+		return no;
 	
 	}
 	

@@ -15,6 +15,7 @@ public class PostAccountShippingServiceCategories extends PostOperation {
 		addRequiredField("shippingCategoryId");
 	}
 
+
 	public PostAccountShippingServiceCategories() {
 		super(OPERATION_PATH);
 	}

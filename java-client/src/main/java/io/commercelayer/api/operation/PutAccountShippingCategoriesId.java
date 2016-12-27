@@ -15,6 +15,7 @@ public class PutAccountShippingCategoriesId extends PutOperation {
 		addRequiredField("id");
 	}
 
+
 	public PutAccountShippingCategoriesId() {
 		super(OPERATION_PATH);
 	}

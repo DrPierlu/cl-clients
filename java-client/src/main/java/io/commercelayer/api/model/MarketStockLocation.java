@@ -9,12 +9,15 @@ import io.commercelayer.api.json.JsonExclude;
  */
 public class MarketStockLocation extends ApiResource {
 
-	private static final long serialVersionUID = -1482845758047L;
+	private static final long serialVersionUID = -1482880735301L;
 
 
-	private String marketId;
-	private String stockLocationId;
-	private String position;
+	@JsonExclude
+	private String name;
+	private Integer marketId;
+	private Integer stockLocationId;
+	@JsonExclude
+	private Integer position;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
@@ -33,32 +36,42 @@ public class MarketStockLocation extends ApiResource {
 	}
 	
 
-	public void setMarketId(String marketId) {
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+
+	public String getName() {
+		return this.name;
+	}
+	
+
+	public void setMarketId(Integer marketId) {
 		this.marketId = marketId;
 	}
 	
 
-	public String getMarketId() {
+	public Integer getMarketId() {
 		return this.marketId;
 	}
 	
 
-	public void setStockLocationId(String stockLocationId) {
+	public void setStockLocationId(Integer stockLocationId) {
 		this.stockLocationId = stockLocationId;
 	}
 	
 
-	public String getStockLocationId() {
+	public Integer getStockLocationId() {
 		return this.stockLocationId;
 	}
 	
 
-	public void setPosition(String position) {
+	public void setPosition(Integer position) {
 		this.position = position;
 	}
 	
 
-	public String getPosition() {
+	public Integer getPosition() {
 		return this.position;
 	}
 	
@@ -97,17 +110,18 @@ public class MarketStockLocation extends ApiResource {
 	public boolean equals(Object o) {
 	
 		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
+		if ((o == null) || (getClass() != o.getClass())) return false;
 	
-		MarketStockLocation x = (MarketStockLocation) o;
+		MarketStockLocation x = (MarketStockLocation)o;
 	
-		return super.equals(o) &&
-			Objects.equals(this.marketId, x.marketId)  &&
-			Objects.equals(this.stockLocationId, x.stockLocationId)  &&
-			Objects.equals(this.position, x.position)  &&
-			Objects.equals(this.previousChanges, x.previousChanges)  &&
-			Objects.equals(this.market, x.market)  &&
-			Objects.equals(this.stockLocation, x.stockLocation) 
+		return super.equals(o)
+			&& Objects.equals(this.name, x.name)
+			&& Objects.equals(this.marketId, x.marketId)
+			&& Objects.equals(this.stockLocationId, x.stockLocationId)
+			&& Objects.equals(this.position, x.position)
+			&& Objects.equals(this.previousChanges, x.previousChanges)
+			&& Objects.equals(this.market, x.market)
+			&& Objects.equals(this.stockLocation, x.stockLocation)
 		;
 	
 	}
@@ -117,10 +131,27 @@ public class MarketStockLocation extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			serialVersionUID, resourceName, id, creatorResource, createdAt,
-			updatedAt, marketId, stockLocationId, position, previousChanges,
+			name, marketId, stockLocationId, position, previousChanges,
 			market, stockLocation 
 		);
+	
+	}
+	
+
+	@Override
+	public MarketStockLocation clone() {
+	
+		MarketStockLocation no = new MarketStockLocation();
+	
+		no.name = this.name;
+		no.marketId = this.marketId;
+		no.stockLocationId = this.stockLocationId;
+		no.position = this.position;
+		no.previousChanges = this.previousChanges;
+		no.market = this.market;
+		no.stockLocation = this.stockLocation;
+	
+		return no;
 	
 	}
 	

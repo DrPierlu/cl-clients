@@ -16,6 +16,7 @@ public class PutAccountStockLocationsId extends PutOperation {
 		addRequiredField("id");
 	}
 
+
 	public PutAccountStockLocationsId() {
 		super(OPERATION_PATH);
 	}

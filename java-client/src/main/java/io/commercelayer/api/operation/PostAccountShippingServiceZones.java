@@ -15,6 +15,7 @@ public class PostAccountShippingServiceZones extends PostOperation {
 		addRequiredField("shippingZoneId");
 	}
 
+
 	public PostAccountShippingServiceZones() {
 		super(OPERATION_PATH);
 	}

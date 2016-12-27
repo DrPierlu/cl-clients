@@ -15,6 +15,7 @@ public class PutAccountChannelsId extends PutOperation {
 		addRequiredField("id");
 	}
 
+
 	public PutAccountChannelsId() {
 		super(OPERATION_PATH);
 	}

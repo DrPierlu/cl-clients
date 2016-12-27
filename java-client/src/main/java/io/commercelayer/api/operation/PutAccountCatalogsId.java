@@ -16,6 +16,7 @@ public class PutAccountCatalogsId extends PutOperation {
 		addRequiredField("id");
 	}
 
+
 	public PutAccountCatalogsId() {
 		super(OPERATION_PATH);
 	}

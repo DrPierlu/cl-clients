@@ -10,19 +10,26 @@ import java.util.List;
  */
 public class PropertyType extends ApiResource {
 
-	private static final long serialVersionUID = -1482845758172L;
+	private static final long serialVersionUID = -1482880735336L;
 
 
 	private String name;
-	private String productTypeId;
+	@JsonExclude
+	private String slug;
+	private Integer productTypeId;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
 	private Object productType;
+	@JsonExclude
 	private List<String> resourceImages;
+	@JsonExclude
 	private List<String> images;
+	@JsonExclude
 	private List<String> translations;
+	@JsonExclude
 	private List<String> propertyValues;
+	@JsonExclude
 	private List<String> products;
 
 
@@ -46,12 +53,22 @@ public class PropertyType extends ApiResource {
 	}
 	
 
-	public void setProductTypeId(String productTypeId) {
+	public void setSlug(String slug) {
+		this.slug = slug;
+	}
+	
+
+	public String getSlug() {
+		return this.slug;
+	}
+	
+
+	public void setProductTypeId(Integer productTypeId) {
 		this.productTypeId = productTypeId;
 	}
 	
 
-	public String getProductTypeId() {
+	public Integer getProductTypeId() {
 		return this.productTypeId;
 	}
 	
@@ -130,20 +147,21 @@ public class PropertyType extends ApiResource {
 	public boolean equals(Object o) {
 	
 		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
+		if ((o == null) || (getClass() != o.getClass())) return false;
 	
-		PropertyType x = (PropertyType) o;
+		PropertyType x = (PropertyType)o;
 	
-		return super.equals(o) &&
-			Objects.equals(this.name, x.name)  &&
-			Objects.equals(this.productTypeId, x.productTypeId)  &&
-			Objects.equals(this.previousChanges, x.previousChanges)  &&
-			Objects.equals(this.productType, x.productType)  &&
-			Objects.equals(this.resourceImages, x.resourceImages)  &&
-			Objects.equals(this.images, x.images)  &&
-			Objects.equals(this.translations, x.translations)  &&
-			Objects.equals(this.propertyValues, x.propertyValues)  &&
-			Objects.equals(this.products, x.products) 
+		return super.equals(o)
+			&& Objects.equals(this.name, x.name)
+			&& Objects.equals(this.slug, x.slug)
+			&& Objects.equals(this.productTypeId, x.productTypeId)
+			&& Objects.equals(this.previousChanges, x.previousChanges)
+			&& Objects.equals(this.productType, x.productType)
+			&& Objects.equals(this.resourceImages, x.resourceImages)
+			&& Objects.equals(this.images, x.images)
+			&& Objects.equals(this.translations, x.translations)
+			&& Objects.equals(this.propertyValues, x.propertyValues)
+			&& Objects.equals(this.products, x.products)
 		;
 	
 	}
@@ -153,11 +171,31 @@ public class PropertyType extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			serialVersionUID, resourceName, id, creatorResource, createdAt,
-			updatedAt, name, productTypeId, previousChanges, productType,
+			name, slug, productTypeId, previousChanges, productType,
 			resourceImages, images, translations, propertyValues, products
 			
 		);
+	
+	}
+	
+
+	@Override
+	public PropertyType clone() {
+	
+		PropertyType no = new PropertyType();
+	
+		no.name = this.name;
+		no.slug = this.slug;
+		no.productTypeId = this.productTypeId;
+		no.previousChanges = this.previousChanges;
+		no.productType = this.productType;
+		no.resourceImages = this.resourceImages;
+		no.images = this.images;
+		no.translations = this.translations;
+		no.propertyValues = this.propertyValues;
+		no.products = this.products;
+	
+		return no;
 	
 	}
 	

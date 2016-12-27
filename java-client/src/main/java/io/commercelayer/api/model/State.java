@@ -9,10 +9,12 @@ import io.commercelayer.api.json.JsonExclude;
  */
 public class State extends ApiResource {
 
-	private static final long serialVersionUID = -1482845758281L;
+	private static final long serialVersionUID = -1482880735357L;
 
 
-	private String countryId;
+	@JsonExclude
+	private String name;
+	private Integer countryId;
 	private String code;
 	@JsonExclude
 	private Object previousChanges;
@@ -30,12 +32,22 @@ public class State extends ApiResource {
 	}
 	
 
-	public void setCountryId(String countryId) {
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+
+	public String getName() {
+		return this.name;
+	}
+	
+
+	public void setCountryId(Integer countryId) {
 		this.countryId = countryId;
 	}
 	
 
-	public String getCountryId() {
+	public Integer getCountryId() {
 		return this.countryId;
 	}
 	
@@ -74,15 +86,16 @@ public class State extends ApiResource {
 	public boolean equals(Object o) {
 	
 		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
+		if ((o == null) || (getClass() != o.getClass())) return false;
 	
-		State x = (State) o;
+		State x = (State)o;
 	
-		return super.equals(o) &&
-			Objects.equals(this.countryId, x.countryId)  &&
-			Objects.equals(this.code, x.code)  &&
-			Objects.equals(this.previousChanges, x.previousChanges)  &&
-			Objects.equals(this.country, x.country) 
+		return super.equals(o)
+			&& Objects.equals(this.name, x.name)
+			&& Objects.equals(this.countryId, x.countryId)
+			&& Objects.equals(this.code, x.code)
+			&& Objects.equals(this.previousChanges, x.previousChanges)
+			&& Objects.equals(this.country, x.country)
 		;
 	
 	}
@@ -92,10 +105,25 @@ public class State extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			serialVersionUID, resourceName, id, creatorResource, createdAt,
-			updatedAt, countryId, code, previousChanges, country
+			name, countryId, code, previousChanges, country
 			
 		);
+	
+	}
+	
+
+	@Override
+	public State clone() {
+	
+		State no = new State();
+	
+		no.name = this.name;
+		no.countryId = this.countryId;
+		no.code = this.code;
+		no.previousChanges = this.previousChanges;
+		no.country = this.country;
+	
+		return no;
 	
 	}
 	

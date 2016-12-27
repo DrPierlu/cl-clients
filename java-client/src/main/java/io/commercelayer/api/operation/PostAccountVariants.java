@@ -17,6 +17,7 @@ public class PostAccountVariants extends PostOperation {
 		addRequiredField("trackInventory");
 	}
 
+
 	public PostAccountVariants() {
 		super(OPERATION_PATH);
 	}

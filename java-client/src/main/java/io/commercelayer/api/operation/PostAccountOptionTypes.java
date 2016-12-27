@@ -15,6 +15,7 @@ public class PostAccountOptionTypes extends PostOperation {
 		addRequiredField("productTypeId");
 	}
 
+
 	public PostAccountOptionTypes() {
 		super(OPERATION_PATH);
 	}

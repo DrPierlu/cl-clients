@@ -15,6 +15,7 @@ public class PostAccountCountryLanguages extends PostOperation {
 		addRequiredField("languageId");
 	}
 
+
 	public PostAccountCountryLanguages() {
 		super(OPERATION_PATH);
 	}

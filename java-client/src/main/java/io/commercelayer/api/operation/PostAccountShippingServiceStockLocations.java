@@ -17,6 +17,7 @@ public class PostAccountShippingServiceStockLocations extends PostOperation {
 		addRequiredField("maxLeadTimeHours");
 	}
 
+
 	public PostAccountShippingServiceStockLocations() {
 		super(OPERATION_PATH);
 	}

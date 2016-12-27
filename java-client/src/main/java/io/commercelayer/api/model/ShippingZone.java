@@ -10,22 +10,30 @@ import java.util.List;
  */
 public class ShippingZone extends ApiResource {
 
-	private static final long serialVersionUID = -1482845758265L;
+	private static final long serialVersionUID = -1482880735355L;
 
 
-	private String countryGroupId;
+	private Integer countryGroupId;
 	private String name;
+	@JsonExclude
 	private String countryCodeRegex;
+	@JsonExclude
 	private String notCountryCodeRegex;
+	@JsonExclude
 	private String stateCodeRegex;
+	@JsonExclude
 	private String notStateCodeRegex;
+	@JsonExclude
 	private String zipCodeRegex;
+	@JsonExclude
 	private String notZipCodeRegex;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
 	private Object countryGroup;
+	@JsonExclude
 	private List<String> shippingServiceZones;
+	@JsonExclude
 	private List<String> shippingServices;
 
 
@@ -39,12 +47,12 @@ public class ShippingZone extends ApiResource {
 	}
 	
 
-	public void setCountryGroupId(String countryGroupId) {
+	public void setCountryGroupId(Integer countryGroupId) {
 		this.countryGroupId = countryGroupId;
 	}
 	
 
-	public String getCountryGroupId() {
+	public Integer getCountryGroupId() {
 		return this.countryGroupId;
 	}
 	
@@ -163,23 +171,23 @@ public class ShippingZone extends ApiResource {
 	public boolean equals(Object o) {
 	
 		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
+		if ((o == null) || (getClass() != o.getClass())) return false;
 	
-		ShippingZone x = (ShippingZone) o;
+		ShippingZone x = (ShippingZone)o;
 	
-		return super.equals(o) &&
-			Objects.equals(this.countryGroupId, x.countryGroupId)  &&
-			Objects.equals(this.name, x.name)  &&
-			Objects.equals(this.countryCodeRegex, x.countryCodeRegex)  &&
-			Objects.equals(this.notCountryCodeRegex, x.notCountryCodeRegex)  &&
-			Objects.equals(this.stateCodeRegex, x.stateCodeRegex)  &&
-			Objects.equals(this.notStateCodeRegex, x.notStateCodeRegex)  &&
-			Objects.equals(this.zipCodeRegex, x.zipCodeRegex)  &&
-			Objects.equals(this.notZipCodeRegex, x.notZipCodeRegex)  &&
-			Objects.equals(this.previousChanges, x.previousChanges)  &&
-			Objects.equals(this.countryGroup, x.countryGroup)  &&
-			Objects.equals(this.shippingServiceZones, x.shippingServiceZones)  &&
-			Objects.equals(this.shippingServices, x.shippingServices) 
+		return super.equals(o)
+			&& Objects.equals(this.countryGroupId, x.countryGroupId)
+			&& Objects.equals(this.name, x.name)
+			&& Objects.equals(this.countryCodeRegex, x.countryCodeRegex)
+			&& Objects.equals(this.notCountryCodeRegex, x.notCountryCodeRegex)
+			&& Objects.equals(this.stateCodeRegex, x.stateCodeRegex)
+			&& Objects.equals(this.notStateCodeRegex, x.notStateCodeRegex)
+			&& Objects.equals(this.zipCodeRegex, x.zipCodeRegex)
+			&& Objects.equals(this.notZipCodeRegex, x.notZipCodeRegex)
+			&& Objects.equals(this.previousChanges, x.previousChanges)
+			&& Objects.equals(this.countryGroup, x.countryGroup)
+			&& Objects.equals(this.shippingServiceZones, x.shippingServiceZones)
+			&& Objects.equals(this.shippingServices, x.shippingServices)
 		;
 	
 	}
@@ -189,11 +197,33 @@ public class ShippingZone extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			serialVersionUID, resourceName, id, creatorResource, createdAt,
-			updatedAt, countryGroupId, name, countryCodeRegex, notCountryCodeRegex,
-			stateCodeRegex, notStateCodeRegex, zipCodeRegex, notZipCodeRegex, previousChanges,
-			countryGroup, shippingServiceZones, shippingServices 
+			countryGroupId, name, countryCodeRegex, notCountryCodeRegex, stateCodeRegex,
+			notStateCodeRegex, zipCodeRegex, notZipCodeRegex, previousChanges, countryGroup,
+			shippingServiceZones, shippingServices 
 		);
+	
+	}
+	
+
+	@Override
+	public ShippingZone clone() {
+	
+		ShippingZone no = new ShippingZone();
+	
+		no.countryGroupId = this.countryGroupId;
+		no.name = this.name;
+		no.countryCodeRegex = this.countryCodeRegex;
+		no.notCountryCodeRegex = this.notCountryCodeRegex;
+		no.stateCodeRegex = this.stateCodeRegex;
+		no.notStateCodeRegex = this.notStateCodeRegex;
+		no.zipCodeRegex = this.zipCodeRegex;
+		no.notZipCodeRegex = this.notZipCodeRegex;
+		no.previousChanges = this.previousChanges;
+		no.countryGroup = this.countryGroup;
+		no.shippingServiceZones = this.shippingServiceZones;
+		no.shippingServices = this.shippingServices;
+	
+		return no;
 	
 	}
 	

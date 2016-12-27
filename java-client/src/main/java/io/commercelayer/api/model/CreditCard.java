@@ -10,27 +10,39 @@ import java.util.List;
  */
 public class CreditCard extends ApiResource {
 
-	private static final long serialVersionUID = -1482845757938L;
+	private static final long serialVersionUID = -1482880735278L;
 
 
+	@JsonExclude
+	private String name;
+	@JsonExclude
 	private String token;
+	@JsonExclude
 	private String cardResource;
+	@JsonExclude
 	private String fingerprint;
 	private String firstName;
 	private String lastName;
 	private String number;
+	@JsonExclude
 	private String lastFourDigits;
+	@JsonExclude
 	private String firstSixDigits;
-	private String month;
-	private String year;
+	private Integer month;
+	private Integer year;
+	@JsonExclude
 	private String verificationValue;
+	@JsonExclude
 	private String email;
-	private String data;
+	@JsonExclude
 	private String storageState;
+	@JsonExclude
 	private String eligibleForCardUpdater;
 	@JsonExclude
 	private Object previousChanges;
+	@JsonExclude
 	private List<String> transactions;
+	@JsonExclude
 	private List<String> paymentMethods;
 
 
@@ -41,6 +53,16 @@ public class CreditCard extends ApiResource {
 
 	public CreditCard(Long id) {
 		super(id);
+	}
+	
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+
+	public String getName() {
+		return this.name;
 	}
 	
 
@@ -124,22 +146,22 @@ public class CreditCard extends ApiResource {
 	}
 	
 
-	public void setMonth(String month) {
+	public void setMonth(Integer month) {
 		this.month = month;
 	}
 	
 
-	public String getMonth() {
+	public Integer getMonth() {
 		return this.month;
 	}
 	
 
-	public void setYear(String year) {
+	public void setYear(Integer year) {
 		this.year = year;
 	}
 	
 
-	public String getYear() {
+	public Integer getYear() {
 		return this.year;
 	}
 	
@@ -161,16 +183,6 @@ public class CreditCard extends ApiResource {
 
 	public String getEmail() {
 		return this.email;
-	}
-	
-
-	public void setData(String data) {
-		this.data = data;
-	}
-	
-
-	public String getData() {
-		return this.data;
 	}
 	
 
@@ -228,29 +240,29 @@ public class CreditCard extends ApiResource {
 	public boolean equals(Object o) {
 	
 		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
+		if ((o == null) || (getClass() != o.getClass())) return false;
 	
-		CreditCard x = (CreditCard) o;
+		CreditCard x = (CreditCard)o;
 	
-		return super.equals(o) &&
-			Objects.equals(this.token, x.token)  &&
-			Objects.equals(this.cardResource, x.cardResource)  &&
-			Objects.equals(this.fingerprint, x.fingerprint)  &&
-			Objects.equals(this.firstName, x.firstName)  &&
-			Objects.equals(this.lastName, x.lastName)  &&
-			Objects.equals(this.number, x.number)  &&
-			Objects.equals(this.lastFourDigits, x.lastFourDigits)  &&
-			Objects.equals(this.firstSixDigits, x.firstSixDigits)  &&
-			Objects.equals(this.month, x.month)  &&
-			Objects.equals(this.year, x.year)  &&
-			Objects.equals(this.verificationValue, x.verificationValue)  &&
-			Objects.equals(this.email, x.email)  &&
-			Objects.equals(this.data, x.data)  &&
-			Objects.equals(this.storageState, x.storageState)  &&
-			Objects.equals(this.eligibleForCardUpdater, x.eligibleForCardUpdater)  &&
-			Objects.equals(this.previousChanges, x.previousChanges)  &&
-			Objects.equals(this.transactions, x.transactions)  &&
-			Objects.equals(this.paymentMethods, x.paymentMethods) 
+		return super.equals(o)
+			&& Objects.equals(this.name, x.name)
+			&& Objects.equals(this.token, x.token)
+			&& Objects.equals(this.cardResource, x.cardResource)
+			&& Objects.equals(this.fingerprint, x.fingerprint)
+			&& Objects.equals(this.firstName, x.firstName)
+			&& Objects.equals(this.lastName, x.lastName)
+			&& Objects.equals(this.number, x.number)
+			&& Objects.equals(this.lastFourDigits, x.lastFourDigits)
+			&& Objects.equals(this.firstSixDigits, x.firstSixDigits)
+			&& Objects.equals(this.month, x.month)
+			&& Objects.equals(this.year, x.year)
+			&& Objects.equals(this.verificationValue, x.verificationValue)
+			&& Objects.equals(this.email, x.email)
+			&& Objects.equals(this.storageState, x.storageState)
+			&& Objects.equals(this.eligibleForCardUpdater, x.eligibleForCardUpdater)
+			&& Objects.equals(this.previousChanges, x.previousChanges)
+			&& Objects.equals(this.transactions, x.transactions)
+			&& Objects.equals(this.paymentMethods, x.paymentMethods)
 		;
 	
 	}
@@ -260,12 +272,40 @@ public class CreditCard extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			serialVersionUID, resourceName, id, creatorResource, createdAt,
-			updatedAt, token, cardResource, fingerprint, firstName,
+			name, token, cardResource, fingerprint, firstName,
 			lastName, number, lastFourDigits, firstSixDigits, month,
-			year, verificationValue, email, data, storageState,
-			eligibleForCardUpdater, previousChanges, transactions, paymentMethods 
+			year, verificationValue, email, storageState, eligibleForCardUpdater,
+			previousChanges, transactions, paymentMethods 
 		);
+	
+	}
+	
+
+	@Override
+	public CreditCard clone() {
+	
+		CreditCard no = new CreditCard();
+	
+		no.name = this.name;
+		no.token = this.token;
+		no.cardResource = this.cardResource;
+		no.fingerprint = this.fingerprint;
+		no.firstName = this.firstName;
+		no.lastName = this.lastName;
+		no.number = this.number;
+		no.lastFourDigits = this.lastFourDigits;
+		no.firstSixDigits = this.firstSixDigits;
+		no.month = this.month;
+		no.year = this.year;
+		no.verificationValue = this.verificationValue;
+		no.email = this.email;
+		no.storageState = this.storageState;
+		no.eligibleForCardUpdater = this.eligibleForCardUpdater;
+		no.previousChanges = this.previousChanges;
+		no.transactions = this.transactions;
+		no.paymentMethods = this.paymentMethods;
+	
+		return no;
 	
 	}
 	

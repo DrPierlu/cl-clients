@@ -18,8 +18,19 @@ public class PostChannelLineItemsLineItemIdShippingMethods extends PostOperation
 		addRequiredField("lineItemId");
 	}
 
+
 	public PostChannelLineItemsLineItemIdShippingMethods() {
 		super(OPERATION_PATH);
+	}
+	
+
+	public void setLineItemId(Object lineItemId) {
+		addPathParam("line_item_id", lineItemId);
+	}
+	
+
+	public Object getLineItemId() {
+		return getPathParam("line_item_id");
 	}
 	
 }

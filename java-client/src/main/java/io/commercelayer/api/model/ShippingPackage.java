@@ -10,15 +10,21 @@ import java.util.List;
  */
 public class ShippingPackage extends ApiResource {
 
-	private static final long serialVersionUID = -1482845758234L;
+	private static final long serialVersionUID = -1482880735349L;
 
 
 	private String name;
+	@JsonExclude
+	private String slug;
+	@JsonExclude
 	private String description;
 	@JsonExclude
 	private Object previousChanges;
+	@JsonExclude
 	private List<String> resourceImages;
+	@JsonExclude
 	private List<String> images;
+	@JsonExclude
 	private List<String> translations;
 
 
@@ -39,6 +45,16 @@ public class ShippingPackage extends ApiResource {
 
 	public String getName() {
 		return this.name;
+	}
+	
+
+	public void setSlug(String slug) {
+		this.slug = slug;
+	}
+	
+
+	public String getSlug() {
+		return this.slug;
 	}
 	
 
@@ -96,17 +112,18 @@ public class ShippingPackage extends ApiResource {
 	public boolean equals(Object o) {
 	
 		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
+		if ((o == null) || (getClass() != o.getClass())) return false;
 	
-		ShippingPackage x = (ShippingPackage) o;
+		ShippingPackage x = (ShippingPackage)o;
 	
-		return super.equals(o) &&
-			Objects.equals(this.name, x.name)  &&
-			Objects.equals(this.description, x.description)  &&
-			Objects.equals(this.previousChanges, x.previousChanges)  &&
-			Objects.equals(this.resourceImages, x.resourceImages)  &&
-			Objects.equals(this.images, x.images)  &&
-			Objects.equals(this.translations, x.translations) 
+		return super.equals(o)
+			&& Objects.equals(this.name, x.name)
+			&& Objects.equals(this.slug, x.slug)
+			&& Objects.equals(this.description, x.description)
+			&& Objects.equals(this.previousChanges, x.previousChanges)
+			&& Objects.equals(this.resourceImages, x.resourceImages)
+			&& Objects.equals(this.images, x.images)
+			&& Objects.equals(this.translations, x.translations)
 		;
 	
 	}
@@ -116,10 +133,27 @@ public class ShippingPackage extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			serialVersionUID, resourceName, id, creatorResource, createdAt,
-			updatedAt, name, description, previousChanges, resourceImages,
+			name, slug, description, previousChanges, resourceImages,
 			images, translations 
 		);
+	
+	}
+	
+
+	@Override
+	public ShippingPackage clone() {
+	
+		ShippingPackage no = new ShippingPackage();
+	
+		no.name = this.name;
+		no.slug = this.slug;
+		no.description = this.description;
+		no.previousChanges = this.previousChanges;
+		no.resourceImages = this.resourceImages;
+		no.images = this.images;
+		no.translations = this.translations;
+	
+		return no;
 	
 	}
 	

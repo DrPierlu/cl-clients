@@ -20,6 +20,7 @@ public class PostAccountOrderValidators extends PostOperation {
 		addRequiredField("paymentMethodRequiredPercentage");
 	}
 
+
 	public PostAccountOrderValidators() {
 		super(OPERATION_PATH);
 	}

@@ -10,18 +10,25 @@ import java.util.List;
  */
 public class ProductType extends ApiResource {
 
-	private static final long serialVersionUID = -1482845758156L;
+	private static final long serialVersionUID = -1482880735332L;
 
 
 	private String name;
 	@JsonExclude
 	private Object previousChanges;
+	@JsonExclude
 	private List<String> resourceImages;
+	@JsonExclude
 	private List<String> images;
+	@JsonExclude
 	private List<String> products;
+	@JsonExclude
 	private List<String> optionTypes;
+	@JsonExclude
 	private List<String> propertyTypes;
+	@JsonExclude
 	private List<String> optionValues;
+	@JsonExclude
 	private List<String> propertyValues;
 
 
@@ -129,20 +136,20 @@ public class ProductType extends ApiResource {
 	public boolean equals(Object o) {
 	
 		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
+		if ((o == null) || (getClass() != o.getClass())) return false;
 	
-		ProductType x = (ProductType) o;
+		ProductType x = (ProductType)o;
 	
-		return super.equals(o) &&
-			Objects.equals(this.name, x.name)  &&
-			Objects.equals(this.previousChanges, x.previousChanges)  &&
-			Objects.equals(this.resourceImages, x.resourceImages)  &&
-			Objects.equals(this.images, x.images)  &&
-			Objects.equals(this.products, x.products)  &&
-			Objects.equals(this.optionTypes, x.optionTypes)  &&
-			Objects.equals(this.propertyTypes, x.propertyTypes)  &&
-			Objects.equals(this.optionValues, x.optionValues)  &&
-			Objects.equals(this.propertyValues, x.propertyValues) 
+		return super.equals(o)
+			&& Objects.equals(this.name, x.name)
+			&& Objects.equals(this.previousChanges, x.previousChanges)
+			&& Objects.equals(this.resourceImages, x.resourceImages)
+			&& Objects.equals(this.images, x.images)
+			&& Objects.equals(this.products, x.products)
+			&& Objects.equals(this.optionTypes, x.optionTypes)
+			&& Objects.equals(this.propertyTypes, x.propertyTypes)
+			&& Objects.equals(this.optionValues, x.optionValues)
+			&& Objects.equals(this.propertyValues, x.propertyValues)
 		;
 	
 	}
@@ -152,11 +159,29 @@ public class ProductType extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			serialVersionUID, resourceName, id, creatorResource, createdAt,
-			updatedAt, name, previousChanges, resourceImages, images,
-			products, optionTypes, propertyTypes, optionValues, propertyValues
-			
+			name, previousChanges, resourceImages, images, products,
+			optionTypes, propertyTypes, optionValues, propertyValues 
 		);
+	
+	}
+	
+
+	@Override
+	public ProductType clone() {
+	
+		ProductType no = new ProductType();
+	
+		no.name = this.name;
+		no.previousChanges = this.previousChanges;
+		no.resourceImages = this.resourceImages;
+		no.images = this.images;
+		no.products = this.products;
+		no.optionTypes = this.optionTypes;
+		no.propertyTypes = this.propertyTypes;
+		no.optionValues = this.optionValues;
+		no.propertyValues = this.propertyValues;
+	
+		return no;
 	
 	}
 	

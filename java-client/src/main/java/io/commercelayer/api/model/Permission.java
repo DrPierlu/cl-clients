@@ -9,15 +9,17 @@ import io.commercelayer.api.json.JsonExclude;
  */
 public class Permission extends ApiResource {
 
-	private static final long serialVersionUID = -1482845758125L;
+	private static final long serialVersionUID = -1482880735318L;
 
 
-	private String roleId;
+	@JsonExclude
+	private String name;
+	private Integer roleId;
 	private String ability;
 	private String action;
 	private String resource;
-	private String restrictions;
-	private String position;
+	@JsonExclude
+	private Integer position;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
@@ -34,12 +36,22 @@ public class Permission extends ApiResource {
 	}
 	
 
-	public void setRoleId(String roleId) {
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+
+	public String getName() {
+		return this.name;
+	}
+	
+
+	public void setRoleId(Integer roleId) {
 		this.roleId = roleId;
 	}
 	
 
-	public String getRoleId() {
+	public Integer getRoleId() {
 		return this.roleId;
 	}
 	
@@ -74,22 +86,12 @@ public class Permission extends ApiResource {
 	}
 	
 
-	public void setRestrictions(String restrictions) {
-		this.restrictions = restrictions;
-	}
-	
-
-	public String getRestrictions() {
-		return this.restrictions;
-	}
-	
-
-	public void setPosition(String position) {
+	public void setPosition(Integer position) {
 		this.position = position;
 	}
 	
 
-	public String getPosition() {
+	public Integer getPosition() {
 		return this.position;
 	}
 	
@@ -118,19 +120,19 @@ public class Permission extends ApiResource {
 	public boolean equals(Object o) {
 	
 		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
+		if ((o == null) || (getClass() != o.getClass())) return false;
 	
-		Permission x = (Permission) o;
+		Permission x = (Permission)o;
 	
-		return super.equals(o) &&
-			Objects.equals(this.roleId, x.roleId)  &&
-			Objects.equals(this.ability, x.ability)  &&
-			Objects.equals(this.action, x.action)  &&
-			Objects.equals(this.resource, x.resource)  &&
-			Objects.equals(this.restrictions, x.restrictions)  &&
-			Objects.equals(this.position, x.position)  &&
-			Objects.equals(this.previousChanges, x.previousChanges)  &&
-			Objects.equals(this.role, x.role) 
+		return super.equals(o)
+			&& Objects.equals(this.name, x.name)
+			&& Objects.equals(this.roleId, x.roleId)
+			&& Objects.equals(this.ability, x.ability)
+			&& Objects.equals(this.action, x.action)
+			&& Objects.equals(this.resource, x.resource)
+			&& Objects.equals(this.position, x.position)
+			&& Objects.equals(this.previousChanges, x.previousChanges)
+			&& Objects.equals(this.role, x.role)
 		;
 	
 	}
@@ -140,10 +142,28 @@ public class Permission extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			serialVersionUID, resourceName, id, creatorResource, createdAt,
-			updatedAt, roleId, ability, action, resource,
-			restrictions, position, previousChanges, role 
+			name, roleId, ability, action, resource,
+			position, previousChanges, role 
 		);
+	
+	}
+	
+
+	@Override
+	public Permission clone() {
+	
+		Permission no = new Permission();
+	
+		no.name = this.name;
+		no.roleId = this.roleId;
+		no.ability = this.ability;
+		no.action = this.action;
+		no.resource = this.resource;
+		no.position = this.position;
+		no.previousChanges = this.previousChanges;
+		no.role = this.role;
+	
+		return no;
 	
 	}
 	

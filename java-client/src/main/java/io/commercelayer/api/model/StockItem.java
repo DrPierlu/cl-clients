@@ -10,21 +10,27 @@ import java.util.List;
  */
 public class StockItem extends ApiResource {
 
-	private static final long serialVersionUID = -1482845758281L;
+	private static final long serialVersionUID = -1482880735358L;
 
 
-	private String stockLocationId;
-	private String stockableId;
+	@JsonExclude
+	private String name;
+	private Integer stockLocationId;
+	private Integer stockableId;
 	private String stockableResource;
-	private String backorderable;
-	private String quantity;
+	@JsonExclude
+	private Object backorderable;
+	@JsonExclude
+	private Integer quantity;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
 	private Object stockLocation;
 	@JsonExclude
 	private Object stockable;
+	@JsonExclude
 	private List<String> shippingServiceStockLocations;
+	@JsonExclude
 	private List<String> lineItemStocks;
 
 
@@ -38,22 +44,32 @@ public class StockItem extends ApiResource {
 	}
 	
 
-	public void setStockLocationId(String stockLocationId) {
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+
+	public String getName() {
+		return this.name;
+	}
+	
+
+	public void setStockLocationId(Integer stockLocationId) {
 		this.stockLocationId = stockLocationId;
 	}
 	
 
-	public String getStockLocationId() {
+	public Integer getStockLocationId() {
 		return this.stockLocationId;
 	}
 	
 
-	public void setStockableId(String stockableId) {
+	public void setStockableId(Integer stockableId) {
 		this.stockableId = stockableId;
 	}
 	
 
-	public String getStockableId() {
+	public Integer getStockableId() {
 		return this.stockableId;
 	}
 	
@@ -68,22 +84,22 @@ public class StockItem extends ApiResource {
 	}
 	
 
-	public void setBackorderable(String backorderable) {
+	public void setBackorderable(Object backorderable) {
 		this.backorderable = backorderable;
 	}
 	
 
-	public String getBackorderable() {
+	public Object getBackorderable() {
 		return this.backorderable;
 	}
 	
 
-	public void setQuantity(String quantity) {
+	public void setQuantity(Integer quantity) {
 		this.quantity = quantity;
 	}
 	
 
-	public String getQuantity() {
+	public Integer getQuantity() {
 		return this.quantity;
 	}
 	
@@ -142,21 +158,22 @@ public class StockItem extends ApiResource {
 	public boolean equals(Object o) {
 	
 		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
+		if ((o == null) || (getClass() != o.getClass())) return false;
 	
-		StockItem x = (StockItem) o;
+		StockItem x = (StockItem)o;
 	
-		return super.equals(o) &&
-			Objects.equals(this.stockLocationId, x.stockLocationId)  &&
-			Objects.equals(this.stockableId, x.stockableId)  &&
-			Objects.equals(this.stockableResource, x.stockableResource)  &&
-			Objects.equals(this.backorderable, x.backorderable)  &&
-			Objects.equals(this.quantity, x.quantity)  &&
-			Objects.equals(this.previousChanges, x.previousChanges)  &&
-			Objects.equals(this.stockLocation, x.stockLocation)  &&
-			Objects.equals(this.stockable, x.stockable)  &&
-			Objects.equals(this.shippingServiceStockLocations, x.shippingServiceStockLocations)  &&
-			Objects.equals(this.lineItemStocks, x.lineItemStocks) 
+		return super.equals(o)
+			&& Objects.equals(this.name, x.name)
+			&& Objects.equals(this.stockLocationId, x.stockLocationId)
+			&& Objects.equals(this.stockableId, x.stockableId)
+			&& Objects.equals(this.stockableResource, x.stockableResource)
+			&& Objects.equals(this.backorderable, x.backorderable)
+			&& Objects.equals(this.quantity, x.quantity)
+			&& Objects.equals(this.previousChanges, x.previousChanges)
+			&& Objects.equals(this.stockLocation, x.stockLocation)
+			&& Objects.equals(this.stockable, x.stockable)
+			&& Objects.equals(this.shippingServiceStockLocations, x.shippingServiceStockLocations)
+			&& Objects.equals(this.lineItemStocks, x.lineItemStocks)
 		;
 	
 	}
@@ -166,11 +183,32 @@ public class StockItem extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			serialVersionUID, resourceName, id, creatorResource, createdAt,
-			updatedAt, stockLocationId, stockableId, stockableResource, backorderable,
+			name, stockLocationId, stockableId, stockableResource, backorderable,
 			quantity, previousChanges, stockLocation, stockable, shippingServiceStockLocations,
 			lineItemStocks 
 		);
+	
+	}
+	
+
+	@Override
+	public StockItem clone() {
+	
+		StockItem no = new StockItem();
+	
+		no.name = this.name;
+		no.stockLocationId = this.stockLocationId;
+		no.stockableId = this.stockableId;
+		no.stockableResource = this.stockableResource;
+		no.backorderable = this.backorderable;
+		no.quantity = this.quantity;
+		no.previousChanges = this.previousChanges;
+		no.stockLocation = this.stockLocation;
+		no.stockable = this.stockable;
+		no.shippingServiceStockLocations = this.shippingServiceStockLocations;
+		no.lineItemStocks = this.lineItemStocks;
+	
+		return no;
 	
 	}
 	

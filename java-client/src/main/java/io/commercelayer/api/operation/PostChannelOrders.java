@@ -10,10 +10,6 @@ public class PostChannelOrders extends PostOperation {
 	public static final String OPERATION_PATH = "/channel/orders";
 
 
-	{
-		
-	}
-
 	public PostChannelOrders() {
 		super(OPERATION_PATH);
 	}

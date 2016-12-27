@@ -9,13 +9,16 @@ import io.commercelayer.api.json.JsonExclude;
  */
 public class ConsumerRole extends ApiResource {
 
-	private static final long serialVersionUID = -1482845757906L;
+	private static final long serialVersionUID = -1482880735273L;
 
 
-	private String consumerId;
+	@JsonExclude
+	private String name;
+	private Integer consumerId;
 	private String consumerResource;
-	private String roleId;
-	private String position;
+	private Integer roleId;
+	@JsonExclude
+	private Integer position;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
@@ -34,12 +37,22 @@ public class ConsumerRole extends ApiResource {
 	}
 	
 
-	public void setConsumerId(String consumerId) {
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+
+	public String getName() {
+		return this.name;
+	}
+	
+
+	public void setConsumerId(Integer consumerId) {
 		this.consumerId = consumerId;
 	}
 	
 
-	public String getConsumerId() {
+	public Integer getConsumerId() {
 		return this.consumerId;
 	}
 	
@@ -54,22 +67,22 @@ public class ConsumerRole extends ApiResource {
 	}
 	
 
-	public void setRoleId(String roleId) {
+	public void setRoleId(Integer roleId) {
 		this.roleId = roleId;
 	}
 	
 
-	public String getRoleId() {
+	public Integer getRoleId() {
 		return this.roleId;
 	}
 	
 
-	public void setPosition(String position) {
+	public void setPosition(Integer position) {
 		this.position = position;
 	}
 	
 
-	public String getPosition() {
+	public Integer getPosition() {
 		return this.position;
 	}
 	
@@ -108,18 +121,19 @@ public class ConsumerRole extends ApiResource {
 	public boolean equals(Object o) {
 	
 		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
+		if ((o == null) || (getClass() != o.getClass())) return false;
 	
-		ConsumerRole x = (ConsumerRole) o;
+		ConsumerRole x = (ConsumerRole)o;
 	
-		return super.equals(o) &&
-			Objects.equals(this.consumerId, x.consumerId)  &&
-			Objects.equals(this.consumerResource, x.consumerResource)  &&
-			Objects.equals(this.roleId, x.roleId)  &&
-			Objects.equals(this.position, x.position)  &&
-			Objects.equals(this.previousChanges, x.previousChanges)  &&
-			Objects.equals(this.consumer, x.consumer)  &&
-			Objects.equals(this.role, x.role) 
+		return super.equals(o)
+			&& Objects.equals(this.name, x.name)
+			&& Objects.equals(this.consumerId, x.consumerId)
+			&& Objects.equals(this.consumerResource, x.consumerResource)
+			&& Objects.equals(this.roleId, x.roleId)
+			&& Objects.equals(this.position, x.position)
+			&& Objects.equals(this.previousChanges, x.previousChanges)
+			&& Objects.equals(this.consumer, x.consumer)
+			&& Objects.equals(this.role, x.role)
 		;
 	
 	}
@@ -129,10 +143,28 @@ public class ConsumerRole extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			serialVersionUID, resourceName, id, creatorResource, createdAt,
-			updatedAt, consumerId, consumerResource, roleId, position,
+			name, consumerId, consumerResource, roleId, position,
 			previousChanges, consumer, role 
 		);
+	
+	}
+	
+
+	@Override
+	public ConsumerRole clone() {
+	
+		ConsumerRole no = new ConsumerRole();
+	
+		no.name = this.name;
+		no.consumerId = this.consumerId;
+		no.consumerResource = this.consumerResource;
+		no.roleId = this.roleId;
+		no.position = this.position;
+		no.previousChanges = this.previousChanges;
+		no.consumer = this.consumer;
+		no.role = this.role;
+	
+		return no;
 	
 	}
 	

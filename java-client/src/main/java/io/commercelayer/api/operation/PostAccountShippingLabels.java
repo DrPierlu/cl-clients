@@ -14,6 +14,7 @@ public class PostAccountShippingLabels extends PostOperation {
 		addRequiredField("shipmentId");
 	}
 
+
 	public PostAccountShippingLabels() {
 		super(OPERATION_PATH);
 	}

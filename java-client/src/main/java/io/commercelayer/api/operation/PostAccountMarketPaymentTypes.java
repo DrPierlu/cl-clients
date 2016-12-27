@@ -18,6 +18,7 @@ public class PostAccountMarketPaymentTypes extends PostOperation {
 		addRequiredField("notCountryCodeRegex");
 	}
 
+
 	public PostAccountMarketPaymentTypes() {
 		super(OPERATION_PATH);
 	}

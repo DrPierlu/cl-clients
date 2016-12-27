@@ -10,15 +10,21 @@ import java.util.List;
  */
 public class Currency extends ApiResource {
 
-	private static final long serialVersionUID = -1482845757953L;
+	private static final long serialVersionUID = -1482880735279L;
 
 
+	@JsonExclude
+	private String name;
 	private String code;
 	@JsonExclude
 	private Object previousChanges;
+	@JsonExclude
 	private List<String> priceLists;
+	@JsonExclude
 	private List<String> prices;
+	@JsonExclude
 	private List<String> orders;
+	@JsonExclude
 	private List<String> orderValidators;
 
 
@@ -29,6 +35,16 @@ public class Currency extends ApiResource {
 
 	public Currency(Long id) {
 		super(id);
+	}
+	
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+
+	public String getName() {
+		return this.name;
 	}
 	
 
@@ -96,17 +112,18 @@ public class Currency extends ApiResource {
 	public boolean equals(Object o) {
 	
 		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
+		if ((o == null) || (getClass() != o.getClass())) return false;
 	
-		Currency x = (Currency) o;
+		Currency x = (Currency)o;
 	
-		return super.equals(o) &&
-			Objects.equals(this.code, x.code)  &&
-			Objects.equals(this.previousChanges, x.previousChanges)  &&
-			Objects.equals(this.priceLists, x.priceLists)  &&
-			Objects.equals(this.prices, x.prices)  &&
-			Objects.equals(this.orders, x.orders)  &&
-			Objects.equals(this.orderValidators, x.orderValidators) 
+		return super.equals(o)
+			&& Objects.equals(this.name, x.name)
+			&& Objects.equals(this.code, x.code)
+			&& Objects.equals(this.previousChanges, x.previousChanges)
+			&& Objects.equals(this.priceLists, x.priceLists)
+			&& Objects.equals(this.prices, x.prices)
+			&& Objects.equals(this.orders, x.orders)
+			&& Objects.equals(this.orderValidators, x.orderValidators)
 		;
 	
 	}
@@ -116,10 +133,27 @@ public class Currency extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			serialVersionUID, resourceName, id, creatorResource, createdAt,
-			updatedAt, code, previousChanges, priceLists, prices,
+			name, code, previousChanges, priceLists, prices,
 			orders, orderValidators 
 		);
+	
+	}
+	
+
+	@Override
+	public Currency clone() {
+	
+		Currency no = new Currency();
+	
+		no.name = this.name;
+		no.code = this.code;
+		no.previousChanges = this.previousChanges;
+		no.priceLists = this.priceLists;
+		no.prices = this.prices;
+		no.orders = this.orders;
+		no.orderValidators = this.orderValidators;
+	
+		return no;
 	
 	}
 	

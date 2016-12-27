@@ -10,20 +10,29 @@ import java.util.List;
  */
 public class User extends ApiResource {
 
-	private static final long serialVersionUID = -1482845758328L;
+	private static final long serialVersionUID = -1482880735363L;
 
 
+	@JsonExclude
+	private String name;
 	private String firstName;
 	private String lastName;
 	private String email;
+	@JsonExclude
 	private String passwordHash;
+	@JsonExclude
 	private String passwordSalt;
 	@JsonExclude
 	private Object previousChanges;
+	@JsonExclude
 	private List<String> consumerRoles;
+	@JsonExclude
 	private List<String> roles;
+	@JsonExclude
 	private List<String> permissions;
+	@JsonExclude
 	private List<String> resourceImages;
+	@JsonExclude
 	private List<String> images;
 
 
@@ -34,6 +43,16 @@ public class User extends ApiResource {
 
 	public User(Long id) {
 		super(id);
+	}
+	
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+
+	public String getName() {
+		return this.name;
 	}
 	
 
@@ -151,22 +170,23 @@ public class User extends ApiResource {
 	public boolean equals(Object o) {
 	
 		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
+		if ((o == null) || (getClass() != o.getClass())) return false;
 	
-		User x = (User) o;
+		User x = (User)o;
 	
-		return super.equals(o) &&
-			Objects.equals(this.firstName, x.firstName)  &&
-			Objects.equals(this.lastName, x.lastName)  &&
-			Objects.equals(this.email, x.email)  &&
-			Objects.equals(this.passwordHash, x.passwordHash)  &&
-			Objects.equals(this.passwordSalt, x.passwordSalt)  &&
-			Objects.equals(this.previousChanges, x.previousChanges)  &&
-			Objects.equals(this.consumerRoles, x.consumerRoles)  &&
-			Objects.equals(this.roles, x.roles)  &&
-			Objects.equals(this.permissions, x.permissions)  &&
-			Objects.equals(this.resourceImages, x.resourceImages)  &&
-			Objects.equals(this.images, x.images) 
+		return super.equals(o)
+			&& Objects.equals(this.name, x.name)
+			&& Objects.equals(this.firstName, x.firstName)
+			&& Objects.equals(this.lastName, x.lastName)
+			&& Objects.equals(this.email, x.email)
+			&& Objects.equals(this.passwordHash, x.passwordHash)
+			&& Objects.equals(this.passwordSalt, x.passwordSalt)
+			&& Objects.equals(this.previousChanges, x.previousChanges)
+			&& Objects.equals(this.consumerRoles, x.consumerRoles)
+			&& Objects.equals(this.roles, x.roles)
+			&& Objects.equals(this.permissions, x.permissions)
+			&& Objects.equals(this.resourceImages, x.resourceImages)
+			&& Objects.equals(this.images, x.images)
 		;
 	
 	}
@@ -176,11 +196,33 @@ public class User extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			serialVersionUID, resourceName, id, creatorResource, createdAt,
-			updatedAt, firstName, lastName, email, passwordHash,
+			name, firstName, lastName, email, passwordHash,
 			passwordSalt, previousChanges, consumerRoles, roles, permissions,
 			resourceImages, images 
 		);
+	
+	}
+	
+
+	@Override
+	public User clone() {
+	
+		User no = new User();
+	
+		no.name = this.name;
+		no.firstName = this.firstName;
+		no.lastName = this.lastName;
+		no.email = this.email;
+		no.passwordHash = this.passwordHash;
+		no.passwordSalt = this.passwordSalt;
+		no.previousChanges = this.previousChanges;
+		no.consumerRoles = this.consumerRoles;
+		no.roles = this.roles;
+		no.permissions = this.permissions;
+		no.resourceImages = this.resourceImages;
+		no.images = this.images;
+	
+		return no;
 	
 	}
 	

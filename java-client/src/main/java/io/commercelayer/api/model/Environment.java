@@ -10,68 +10,122 @@ import java.util.List;
  */
 public class Environment extends ApiResource {
 
-	private static final long serialVersionUID = -1482845757969L;
+	private static final long serialVersionUID = -1482880735288L;
 
 
-	private String organizationId;
+	private Integer organizationId;
 	private String name;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
 	private Object organization;
+	@JsonExclude
 	private List<String> addresses;
+	@JsonExclude
 	private List<String> catalogs;
+	@JsonExclude
 	private List<String> channels;
+	@JsonExclude
 	private List<String> countries;
+	@JsonExclude
 	private List<String> countryGroups;
+	@JsonExclude
 	private List<String> countryLanguages;
+	@JsonExclude
 	private List<String> currencies;
+	@JsonExclude
 	private List<String> customers;
+	@JsonExclude
 	private List<String> creditCards;
+	@JsonExclude
 	private List<String> images;
+	@JsonExclude
 	private List<String> languages;
+	@JsonExclude
 	private List<String> lineItems;
+	@JsonExclude
 	private List<String> lineItemStocks;
+	@JsonExclude
 	private List<String> markets;
+	@JsonExclude
 	private List<String> shippingCarriers;
+	@JsonExclude
 	private List<String> marketPaymentTypes;
+	@JsonExclude
 	private List<String> marketShippingServices;
+	@JsonExclude
 	private List<String> marketStockLocations;
+	@JsonExclude
 	private List<String> merchants;
+	@JsonExclude
 	private List<String> merchandisingRules;
+	@JsonExclude
 	private List<String> optionTypes;
+	@JsonExclude
 	private List<String> optionValues;
+	@JsonExclude
 	private List<String> orders;
+	@JsonExclude
 	private List<String> orderValidators;
+	@JsonExclude
 	private List<String> gateways;
+	@JsonExclude
 	private List<String> paymentTypes;
+	@JsonExclude
 	private List<String> paymentMethods;
+	@JsonExclude
 	private List<String> priceLists;
+	@JsonExclude
 	private List<String> prices;
+	@JsonExclude
 	private List<String> products;
+	@JsonExclude
 	private List<String> productTypes;
+	@JsonExclude
 	private List<String> productProperties;
+	@JsonExclude
 	private List<String> propertyTypes;
+	@JsonExclude
 	private List<String> propertyValues;
+	@JsonExclude
 	private List<String> resourceImages;
+	@JsonExclude
 	private List<String> shippingCarrierTypes;
+	@JsonExclude
 	private List<String> shippingCategories;
+	@JsonExclude
 	private List<String> shippingLabels;
+	@JsonExclude
 	private List<String> shippingMethods;
+	@JsonExclude
 	private List<String> shippingPackages;
+	@JsonExclude
 	private List<String> shippingServices;
+	@JsonExclude
 	private List<String> shippingServiceCategories;
+	@JsonExclude
 	private List<String> shippingServiceStockLocations;
+	@JsonExclude
 	private List<String> shippingServiceZones;
+	@JsonExclude
 	private List<String> states;
+	@JsonExclude
 	private List<String> stockLocations;
+	@JsonExclude
 	private List<String> stockItems;
+	@JsonExclude
 	private List<String> taxonomies;
+	@JsonExclude
 	private List<String> taxons;
+	@JsonExclude
 	private List<String> consumerRoles;
+	@JsonExclude
 	private List<String> variantOptions;
+	@JsonExclude
 	private List<String> variants;
+	@JsonExclude
 	private List<String> webhooks;
+	@JsonExclude
 	private List<String> wireTransfers;
 
 
@@ -85,12 +139,12 @@ public class Environment extends ApiResource {
 	}
 	
 
-	public void setOrganizationId(String organizationId) {
+	public void setOrganizationId(Integer organizationId) {
 		this.organizationId = organizationId;
 	}
 	
 
-	public String getOrganizationId() {
+	public Integer getOrganizationId() {
 		return this.organizationId;
 	}
 	
@@ -669,69 +723,69 @@ public class Environment extends ApiResource {
 	public boolean equals(Object o) {
 	
 		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
+		if ((o == null) || (getClass() != o.getClass())) return false;
 	
-		Environment x = (Environment) o;
+		Environment x = (Environment)o;
 	
-		return super.equals(o) &&
-			Objects.equals(this.organizationId, x.organizationId)  &&
-			Objects.equals(this.name, x.name)  &&
-			Objects.equals(this.previousChanges, x.previousChanges)  &&
-			Objects.equals(this.organization, x.organization)  &&
-			Objects.equals(this.addresses, x.addresses)  &&
-			Objects.equals(this.catalogs, x.catalogs)  &&
-			Objects.equals(this.channels, x.channels)  &&
-			Objects.equals(this.countries, x.countries)  &&
-			Objects.equals(this.countryGroups, x.countryGroups)  &&
-			Objects.equals(this.countryLanguages, x.countryLanguages)  &&
-			Objects.equals(this.currencies, x.currencies)  &&
-			Objects.equals(this.customers, x.customers)  &&
-			Objects.equals(this.creditCards, x.creditCards)  &&
-			Objects.equals(this.images, x.images)  &&
-			Objects.equals(this.languages, x.languages)  &&
-			Objects.equals(this.lineItems, x.lineItems)  &&
-			Objects.equals(this.lineItemStocks, x.lineItemStocks)  &&
-			Objects.equals(this.markets, x.markets)  &&
-			Objects.equals(this.shippingCarriers, x.shippingCarriers)  &&
-			Objects.equals(this.marketPaymentTypes, x.marketPaymentTypes)  &&
-			Objects.equals(this.marketShippingServices, x.marketShippingServices)  &&
-			Objects.equals(this.marketStockLocations, x.marketStockLocations)  &&
-			Objects.equals(this.merchants, x.merchants)  &&
-			Objects.equals(this.merchandisingRules, x.merchandisingRules)  &&
-			Objects.equals(this.optionTypes, x.optionTypes)  &&
-			Objects.equals(this.optionValues, x.optionValues)  &&
-			Objects.equals(this.orders, x.orders)  &&
-			Objects.equals(this.orderValidators, x.orderValidators)  &&
-			Objects.equals(this.gateways, x.gateways)  &&
-			Objects.equals(this.paymentTypes, x.paymentTypes)  &&
-			Objects.equals(this.paymentMethods, x.paymentMethods)  &&
-			Objects.equals(this.priceLists, x.priceLists)  &&
-			Objects.equals(this.prices, x.prices)  &&
-			Objects.equals(this.products, x.products)  &&
-			Objects.equals(this.productTypes, x.productTypes)  &&
-			Objects.equals(this.productProperties, x.productProperties)  &&
-			Objects.equals(this.propertyTypes, x.propertyTypes)  &&
-			Objects.equals(this.propertyValues, x.propertyValues)  &&
-			Objects.equals(this.resourceImages, x.resourceImages)  &&
-			Objects.equals(this.shippingCarrierTypes, x.shippingCarrierTypes)  &&
-			Objects.equals(this.shippingCategories, x.shippingCategories)  &&
-			Objects.equals(this.shippingLabels, x.shippingLabels)  &&
-			Objects.equals(this.shippingMethods, x.shippingMethods)  &&
-			Objects.equals(this.shippingPackages, x.shippingPackages)  &&
-			Objects.equals(this.shippingServices, x.shippingServices)  &&
-			Objects.equals(this.shippingServiceCategories, x.shippingServiceCategories)  &&
-			Objects.equals(this.shippingServiceStockLocations, x.shippingServiceStockLocations)  &&
-			Objects.equals(this.shippingServiceZones, x.shippingServiceZones)  &&
-			Objects.equals(this.states, x.states)  &&
-			Objects.equals(this.stockLocations, x.stockLocations)  &&
-			Objects.equals(this.stockItems, x.stockItems)  &&
-			Objects.equals(this.taxonomies, x.taxonomies)  &&
-			Objects.equals(this.taxons, x.taxons)  &&
-			Objects.equals(this.consumerRoles, x.consumerRoles)  &&
-			Objects.equals(this.variantOptions, x.variantOptions)  &&
-			Objects.equals(this.variants, x.variants)  &&
-			Objects.equals(this.webhooks, x.webhooks)  &&
-			Objects.equals(this.wireTransfers, x.wireTransfers) 
+		return super.equals(o)
+			&& Objects.equals(this.organizationId, x.organizationId)
+			&& Objects.equals(this.name, x.name)
+			&& Objects.equals(this.previousChanges, x.previousChanges)
+			&& Objects.equals(this.organization, x.organization)
+			&& Objects.equals(this.addresses, x.addresses)
+			&& Objects.equals(this.catalogs, x.catalogs)
+			&& Objects.equals(this.channels, x.channels)
+			&& Objects.equals(this.countries, x.countries)
+			&& Objects.equals(this.countryGroups, x.countryGroups)
+			&& Objects.equals(this.countryLanguages, x.countryLanguages)
+			&& Objects.equals(this.currencies, x.currencies)
+			&& Objects.equals(this.customers, x.customers)
+			&& Objects.equals(this.creditCards, x.creditCards)
+			&& Objects.equals(this.images, x.images)
+			&& Objects.equals(this.languages, x.languages)
+			&& Objects.equals(this.lineItems, x.lineItems)
+			&& Objects.equals(this.lineItemStocks, x.lineItemStocks)
+			&& Objects.equals(this.markets, x.markets)
+			&& Objects.equals(this.shippingCarriers, x.shippingCarriers)
+			&& Objects.equals(this.marketPaymentTypes, x.marketPaymentTypes)
+			&& Objects.equals(this.marketShippingServices, x.marketShippingServices)
+			&& Objects.equals(this.marketStockLocations, x.marketStockLocations)
+			&& Objects.equals(this.merchants, x.merchants)
+			&& Objects.equals(this.merchandisingRules, x.merchandisingRules)
+			&& Objects.equals(this.optionTypes, x.optionTypes)
+			&& Objects.equals(this.optionValues, x.optionValues)
+			&& Objects.equals(this.orders, x.orders)
+			&& Objects.equals(this.orderValidators, x.orderValidators)
+			&& Objects.equals(this.gateways, x.gateways)
+			&& Objects.equals(this.paymentTypes, x.paymentTypes)
+			&& Objects.equals(this.paymentMethods, x.paymentMethods)
+			&& Objects.equals(this.priceLists, x.priceLists)
+			&& Objects.equals(this.prices, x.prices)
+			&& Objects.equals(this.products, x.products)
+			&& Objects.equals(this.productTypes, x.productTypes)
+			&& Objects.equals(this.productProperties, x.productProperties)
+			&& Objects.equals(this.propertyTypes, x.propertyTypes)
+			&& Objects.equals(this.propertyValues, x.propertyValues)
+			&& Objects.equals(this.resourceImages, x.resourceImages)
+			&& Objects.equals(this.shippingCarrierTypes, x.shippingCarrierTypes)
+			&& Objects.equals(this.shippingCategories, x.shippingCategories)
+			&& Objects.equals(this.shippingLabels, x.shippingLabels)
+			&& Objects.equals(this.shippingMethods, x.shippingMethods)
+			&& Objects.equals(this.shippingPackages, x.shippingPackages)
+			&& Objects.equals(this.shippingServices, x.shippingServices)
+			&& Objects.equals(this.shippingServiceCategories, x.shippingServiceCategories)
+			&& Objects.equals(this.shippingServiceStockLocations, x.shippingServiceStockLocations)
+			&& Objects.equals(this.shippingServiceZones, x.shippingServiceZones)
+			&& Objects.equals(this.states, x.states)
+			&& Objects.equals(this.stockLocations, x.stockLocations)
+			&& Objects.equals(this.stockItems, x.stockItems)
+			&& Objects.equals(this.taxonomies, x.taxonomies)
+			&& Objects.equals(this.taxons, x.taxons)
+			&& Objects.equals(this.consumerRoles, x.consumerRoles)
+			&& Objects.equals(this.variantOptions, x.variantOptions)
+			&& Objects.equals(this.variants, x.variants)
+			&& Objects.equals(this.webhooks, x.webhooks)
+			&& Objects.equals(this.wireTransfers, x.wireTransfers)
 		;
 	
 	}
@@ -741,20 +795,88 @@ public class Environment extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			serialVersionUID, resourceName, id, creatorResource, createdAt,
-			updatedAt, organizationId, name, previousChanges, organization,
-			addresses, catalogs, channels, countries, countryGroups,
-			countryLanguages, currencies, customers, creditCards, images,
-			languages, lineItems, lineItemStocks, markets, shippingCarriers,
-			marketPaymentTypes, marketShippingServices, marketStockLocations, merchants, merchandisingRules,
-			optionTypes, optionValues, orders, orderValidators, gateways,
-			paymentTypes, paymentMethods, priceLists, prices, products,
-			productTypes, productProperties, propertyTypes, propertyValues, resourceImages,
-			shippingCarrierTypes, shippingCategories, shippingLabels, shippingMethods, shippingPackages,
-			shippingServices, shippingServiceCategories, shippingServiceStockLocations, shippingServiceZones, states,
-			stockLocations, stockItems, taxonomies, taxons, consumerRoles,
-			variantOptions, variants, webhooks, wireTransfers 
+			organizationId, name, previousChanges, organization, addresses,
+			catalogs, channels, countries, countryGroups, countryLanguages,
+			currencies, customers, creditCards, images, languages,
+			lineItems, lineItemStocks, markets, shippingCarriers, marketPaymentTypes,
+			marketShippingServices, marketStockLocations, merchants, merchandisingRules, optionTypes,
+			optionValues, orders, orderValidators, gateways, paymentTypes,
+			paymentMethods, priceLists, prices, products, productTypes,
+			productProperties, propertyTypes, propertyValues, resourceImages, shippingCarrierTypes,
+			shippingCategories, shippingLabels, shippingMethods, shippingPackages, shippingServices,
+			shippingServiceCategories, shippingServiceStockLocations, shippingServiceZones, states, stockLocations,
+			stockItems, taxonomies, taxons, consumerRoles, variantOptions,
+			variants, webhooks, wireTransfers 
 		);
+	
+	}
+	
+
+	@Override
+	public Environment clone() {
+	
+		Environment no = new Environment();
+	
+		no.organizationId = this.organizationId;
+		no.name = this.name;
+		no.previousChanges = this.previousChanges;
+		no.organization = this.organization;
+		no.addresses = this.addresses;
+		no.catalogs = this.catalogs;
+		no.channels = this.channels;
+		no.countries = this.countries;
+		no.countryGroups = this.countryGroups;
+		no.countryLanguages = this.countryLanguages;
+		no.currencies = this.currencies;
+		no.customers = this.customers;
+		no.creditCards = this.creditCards;
+		no.images = this.images;
+		no.languages = this.languages;
+		no.lineItems = this.lineItems;
+		no.lineItemStocks = this.lineItemStocks;
+		no.markets = this.markets;
+		no.shippingCarriers = this.shippingCarriers;
+		no.marketPaymentTypes = this.marketPaymentTypes;
+		no.marketShippingServices = this.marketShippingServices;
+		no.marketStockLocations = this.marketStockLocations;
+		no.merchants = this.merchants;
+		no.merchandisingRules = this.merchandisingRules;
+		no.optionTypes = this.optionTypes;
+		no.optionValues = this.optionValues;
+		no.orders = this.orders;
+		no.orderValidators = this.orderValidators;
+		no.gateways = this.gateways;
+		no.paymentTypes = this.paymentTypes;
+		no.paymentMethods = this.paymentMethods;
+		no.priceLists = this.priceLists;
+		no.prices = this.prices;
+		no.products = this.products;
+		no.productTypes = this.productTypes;
+		no.productProperties = this.productProperties;
+		no.propertyTypes = this.propertyTypes;
+		no.propertyValues = this.propertyValues;
+		no.resourceImages = this.resourceImages;
+		no.shippingCarrierTypes = this.shippingCarrierTypes;
+		no.shippingCategories = this.shippingCategories;
+		no.shippingLabels = this.shippingLabels;
+		no.shippingMethods = this.shippingMethods;
+		no.shippingPackages = this.shippingPackages;
+		no.shippingServices = this.shippingServices;
+		no.shippingServiceCategories = this.shippingServiceCategories;
+		no.shippingServiceStockLocations = this.shippingServiceStockLocations;
+		no.shippingServiceZones = this.shippingServiceZones;
+		no.states = this.states;
+		no.stockLocations = this.stockLocations;
+		no.stockItems = this.stockItems;
+		no.taxonomies = this.taxonomies;
+		no.taxons = this.taxons;
+		no.consumerRoles = this.consumerRoles;
+		no.variantOptions = this.variantOptions;
+		no.variants = this.variants;
+		no.webhooks = this.webhooks;
+		no.wireTransfers = this.wireTransfers;
+	
+		return no;
 	
 	}
 	

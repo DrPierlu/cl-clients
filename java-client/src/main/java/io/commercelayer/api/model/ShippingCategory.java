@@ -10,16 +10,21 @@ import java.util.List;
  */
 public class ShippingCategory extends ApiResource {
 
-	private static final long serialVersionUID = -1482845758203L;
+	private static final long serialVersionUID = -1482880735344L;
 
 
 	private String name;
 	@JsonExclude
 	private Object previousChanges;
+	@JsonExclude
 	private List<String> products;
+	@JsonExclude
 	private List<String> variants;
+	@JsonExclude
 	private List<String> shippingServiceCategories;
+	@JsonExclude
 	private List<String> lineItemStocks;
+	@JsonExclude
 	private List<String> shippingServices;
 
 
@@ -107,18 +112,18 @@ public class ShippingCategory extends ApiResource {
 	public boolean equals(Object o) {
 	
 		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
+		if ((o == null) || (getClass() != o.getClass())) return false;
 	
-		ShippingCategory x = (ShippingCategory) o;
+		ShippingCategory x = (ShippingCategory)o;
 	
-		return super.equals(o) &&
-			Objects.equals(this.name, x.name)  &&
-			Objects.equals(this.previousChanges, x.previousChanges)  &&
-			Objects.equals(this.products, x.products)  &&
-			Objects.equals(this.variants, x.variants)  &&
-			Objects.equals(this.shippingServiceCategories, x.shippingServiceCategories)  &&
-			Objects.equals(this.lineItemStocks, x.lineItemStocks)  &&
-			Objects.equals(this.shippingServices, x.shippingServices) 
+		return super.equals(o)
+			&& Objects.equals(this.name, x.name)
+			&& Objects.equals(this.previousChanges, x.previousChanges)
+			&& Objects.equals(this.products, x.products)
+			&& Objects.equals(this.variants, x.variants)
+			&& Objects.equals(this.shippingServiceCategories, x.shippingServiceCategories)
+			&& Objects.equals(this.lineItemStocks, x.lineItemStocks)
+			&& Objects.equals(this.shippingServices, x.shippingServices)
 		;
 	
 	}
@@ -128,10 +133,27 @@ public class ShippingCategory extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			serialVersionUID, resourceName, id, creatorResource, createdAt,
-			updatedAt, name, previousChanges, products, variants,
-			shippingServiceCategories, lineItemStocks, shippingServices 
+			name, previousChanges, products, variants, shippingServiceCategories,
+			lineItemStocks, shippingServices 
 		);
+	
+	}
+	
+
+	@Override
+	public ShippingCategory clone() {
+	
+		ShippingCategory no = new ShippingCategory();
+	
+		no.name = this.name;
+		no.previousChanges = this.previousChanges;
+		no.products = this.products;
+		no.variants = this.variants;
+		no.shippingServiceCategories = this.shippingServiceCategories;
+		no.lineItemStocks = this.lineItemStocks;
+		no.shippingServices = this.shippingServices;
+	
+		return no;
 	
 	}
 	

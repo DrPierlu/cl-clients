@@ -20,6 +20,7 @@ public class PostAccounts extends PostOperation {
 		addRequiredField("merchantCountryCode");
 	}
 
+
 	public PostAccounts() {
 		super(OPERATION_PATH);
 	}

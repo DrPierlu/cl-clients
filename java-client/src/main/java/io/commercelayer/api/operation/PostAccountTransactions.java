@@ -19,6 +19,7 @@ public class PostAccountTransactions extends PostOperation {
 		addRequiredField("amount");
 	}
 
+
 	public PostAccountTransactions() {
 		super(OPERATION_PATH);
 	}

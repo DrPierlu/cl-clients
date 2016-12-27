@@ -10,19 +10,28 @@ import java.util.List;
  */
 public class OptionValue extends ApiResource {
 
-	private static final long serialVersionUID = -1482845758078L;
+	private static final long serialVersionUID = -1482880735306L;
 
 
 	private String name;
-	private String optionTypeId;
+	@JsonExclude
+	private String slug;
+	private Integer optionTypeId;
+	@JsonExclude
+	private Integer position;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
 	private Object optionType;
+	@JsonExclude
 	private List<String> resourceImages;
+	@JsonExclude
 	private List<String> images;
+	@JsonExclude
 	private List<String> translations;
+	@JsonExclude
 	private List<String> variantOptions;
+	@JsonExclude
 	private List<String> variants;
 
 
@@ -46,13 +55,33 @@ public class OptionValue extends ApiResource {
 	}
 	
 
-	public void setOptionTypeId(String optionTypeId) {
+	public void setSlug(String slug) {
+		this.slug = slug;
+	}
+	
+
+	public String getSlug() {
+		return this.slug;
+	}
+	
+
+	public void setOptionTypeId(Integer optionTypeId) {
 		this.optionTypeId = optionTypeId;
 	}
 	
 
-	public String getOptionTypeId() {
+	public Integer getOptionTypeId() {
 		return this.optionTypeId;
+	}
+	
+
+	public void setPosition(Integer position) {
+		this.position = position;
+	}
+	
+
+	public Integer getPosition() {
+		return this.position;
 	}
 	
 
@@ -130,20 +159,22 @@ public class OptionValue extends ApiResource {
 	public boolean equals(Object o) {
 	
 		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
+		if ((o == null) || (getClass() != o.getClass())) return false;
 	
-		OptionValue x = (OptionValue) o;
+		OptionValue x = (OptionValue)o;
 	
-		return super.equals(o) &&
-			Objects.equals(this.name, x.name)  &&
-			Objects.equals(this.optionTypeId, x.optionTypeId)  &&
-			Objects.equals(this.previousChanges, x.previousChanges)  &&
-			Objects.equals(this.optionType, x.optionType)  &&
-			Objects.equals(this.resourceImages, x.resourceImages)  &&
-			Objects.equals(this.images, x.images)  &&
-			Objects.equals(this.translations, x.translations)  &&
-			Objects.equals(this.variantOptions, x.variantOptions)  &&
-			Objects.equals(this.variants, x.variants) 
+		return super.equals(o)
+			&& Objects.equals(this.name, x.name)
+			&& Objects.equals(this.slug, x.slug)
+			&& Objects.equals(this.optionTypeId, x.optionTypeId)
+			&& Objects.equals(this.position, x.position)
+			&& Objects.equals(this.previousChanges, x.previousChanges)
+			&& Objects.equals(this.optionType, x.optionType)
+			&& Objects.equals(this.resourceImages, x.resourceImages)
+			&& Objects.equals(this.images, x.images)
+			&& Objects.equals(this.translations, x.translations)
+			&& Objects.equals(this.variantOptions, x.variantOptions)
+			&& Objects.equals(this.variants, x.variants)
 		;
 	
 	}
@@ -153,11 +184,32 @@ public class OptionValue extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			serialVersionUID, resourceName, id, creatorResource, createdAt,
-			updatedAt, name, optionTypeId, previousChanges, optionType,
-			resourceImages, images, translations, variantOptions, variants
-			
+			name, slug, optionTypeId, position, previousChanges,
+			optionType, resourceImages, images, translations, variantOptions,
+			variants 
 		);
+	
+	}
+	
+
+	@Override
+	public OptionValue clone() {
+	
+		OptionValue no = new OptionValue();
+	
+		no.name = this.name;
+		no.slug = this.slug;
+		no.optionTypeId = this.optionTypeId;
+		no.position = this.position;
+		no.previousChanges = this.previousChanges;
+		no.optionType = this.optionType;
+		no.resourceImages = this.resourceImages;
+		no.images = this.images;
+		no.translations = this.translations;
+		no.variantOptions = this.variantOptions;
+		no.variants = this.variants;
+	
+		return no;
 	
 	}
 	

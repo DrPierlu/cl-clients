@@ -15,6 +15,7 @@ public class PutAccountCurrenciesId extends PutOperation {
 		addRequiredField("id");
 	}
 
+
 	public PutAccountCurrenciesId() {
 		super(OPERATION_PATH);
 	}

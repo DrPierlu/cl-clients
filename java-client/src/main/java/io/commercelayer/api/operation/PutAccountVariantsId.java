@@ -18,6 +18,7 @@ public class PutAccountVariantsId extends PutOperation {
 		addRequiredField("id");
 	}
 
+
 	public PutAccountVariantsId() {
 		super(OPERATION_PATH);
 	}

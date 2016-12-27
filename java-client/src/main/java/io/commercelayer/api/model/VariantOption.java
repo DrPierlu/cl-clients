@@ -9,12 +9,15 @@ import io.commercelayer.api.json.JsonExclude;
  */
 public class VariantOption extends ApiResource {
 
-	private static final long serialVersionUID = -1482845758359L;
+	private static final long serialVersionUID = -1482880735367L;
 
 
-	private String variantId;
-	private String optionTypeId;
-	private String optionValueId;
+	@JsonExclude
+	private String name;
+	private Integer variantId;
+	@JsonExclude
+	private Integer optionTypeId;
+	private Integer optionValueId;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
@@ -35,32 +38,42 @@ public class VariantOption extends ApiResource {
 	}
 	
 
-	public void setVariantId(String variantId) {
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+
+	public String getName() {
+		return this.name;
+	}
+	
+
+	public void setVariantId(Integer variantId) {
 		this.variantId = variantId;
 	}
 	
 
-	public String getVariantId() {
+	public Integer getVariantId() {
 		return this.variantId;
 	}
 	
 
-	public void setOptionTypeId(String optionTypeId) {
+	public void setOptionTypeId(Integer optionTypeId) {
 		this.optionTypeId = optionTypeId;
 	}
 	
 
-	public String getOptionTypeId() {
+	public Integer getOptionTypeId() {
 		return this.optionTypeId;
 	}
 	
 
-	public void setOptionValueId(String optionValueId) {
+	public void setOptionValueId(Integer optionValueId) {
 		this.optionValueId = optionValueId;
 	}
 	
 
-	public String getOptionValueId() {
+	public Integer getOptionValueId() {
 		return this.optionValueId;
 	}
 	
@@ -109,18 +122,19 @@ public class VariantOption extends ApiResource {
 	public boolean equals(Object o) {
 	
 		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
+		if ((o == null) || (getClass() != o.getClass())) return false;
 	
-		VariantOption x = (VariantOption) o;
+		VariantOption x = (VariantOption)o;
 	
-		return super.equals(o) &&
-			Objects.equals(this.variantId, x.variantId)  &&
-			Objects.equals(this.optionTypeId, x.optionTypeId)  &&
-			Objects.equals(this.optionValueId, x.optionValueId)  &&
-			Objects.equals(this.previousChanges, x.previousChanges)  &&
-			Objects.equals(this.variant, x.variant)  &&
-			Objects.equals(this.optionType, x.optionType)  &&
-			Objects.equals(this.optionValue, x.optionValue) 
+		return super.equals(o)
+			&& Objects.equals(this.name, x.name)
+			&& Objects.equals(this.variantId, x.variantId)
+			&& Objects.equals(this.optionTypeId, x.optionTypeId)
+			&& Objects.equals(this.optionValueId, x.optionValueId)
+			&& Objects.equals(this.previousChanges, x.previousChanges)
+			&& Objects.equals(this.variant, x.variant)
+			&& Objects.equals(this.optionType, x.optionType)
+			&& Objects.equals(this.optionValue, x.optionValue)
 		;
 	
 	}
@@ -130,10 +144,28 @@ public class VariantOption extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			serialVersionUID, resourceName, id, creatorResource, createdAt,
-			updatedAt, variantId, optionTypeId, optionValueId, previousChanges,
+			name, variantId, optionTypeId, optionValueId, previousChanges,
 			variant, optionType, optionValue 
 		);
+	
+	}
+	
+
+	@Override
+	public VariantOption clone() {
+	
+		VariantOption no = new VariantOption();
+	
+		no.name = this.name;
+		no.variantId = this.variantId;
+		no.optionTypeId = this.optionTypeId;
+		no.optionValueId = this.optionValueId;
+		no.previousChanges = this.previousChanges;
+		no.variant = this.variant;
+		no.optionType = this.optionType;
+		no.optionValue = this.optionValue;
+	
+		return no;
 	
 	}
 	

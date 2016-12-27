@@ -9,11 +9,14 @@ import io.commercelayer.api.json.JsonExclude;
  */
 public class Image extends ApiResource {
 
-	private static final long serialVersionUID = -1482845758000L;
+	private static final long serialVersionUID = -1482880735292L;
 
 
 	@JsonExclude
+	private String name;
+	@JsonExclude
 	private Object previousChanges;
+	@JsonExclude
 	private String url;
 
 
@@ -24,6 +27,16 @@ public class Image extends ApiResource {
 
 	public Image(Long id) {
 		super(id);
+	}
+	
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+
+	public String getName() {
+		return this.name;
 	}
 	
 
@@ -51,13 +64,14 @@ public class Image extends ApiResource {
 	public boolean equals(Object o) {
 	
 		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
+		if ((o == null) || (getClass() != o.getClass())) return false;
 	
-		Image x = (Image) o;
+		Image x = (Image)o;
 	
-		return super.equals(o) &&
-			Objects.equals(this.previousChanges, x.previousChanges)  &&
-			Objects.equals(this.url, x.url) 
+		return super.equals(o)
+			&& Objects.equals(this.name, x.name)
+			&& Objects.equals(this.previousChanges, x.previousChanges)
+			&& Objects.equals(this.url, x.url)
 		;
 	
 	}
@@ -67,9 +81,22 @@ public class Image extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			serialVersionUID, resourceName, id, creatorResource, createdAt,
-			updatedAt, previousChanges, url 
+			name, previousChanges, url 
 		);
+	
+	}
+	
+
+	@Override
+	public Image clone() {
+	
+		Image no = new Image();
+	
+		no.name = this.name;
+		no.previousChanges = this.previousChanges;
+		no.url = this.url;
+	
+		return no;
 	
 	}
 	

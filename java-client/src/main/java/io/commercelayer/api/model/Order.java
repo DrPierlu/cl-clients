@@ -3,6 +3,7 @@ package io.commercelayer.api.model;
 import java.util.Objects;
 import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.json.JsonExclude;
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -10,22 +11,37 @@ import java.util.List;
  */
 public class Order extends ApiResource {
 
-	private static final long serialVersionUID = -1482845758078L;
+	private static final long serialVersionUID = -1482880735307L;
 
 
-	private String customerId;
-	private String merchantId;
-	private String channelId;
-	private String countryId;
-	private String marketId;
-	private String currencyId;
+	@JsonExclude
+	private String name;
+	@JsonExclude
+	private Integer customerId;
+	@JsonExclude
+	private Integer merchantId;
+	private Integer channelId;
+	private Integer countryId;
+	@JsonExclude
+	private Integer marketId;
+	@JsonExclude
+	private Integer currencyId;
+	@JsonExclude
 	private String token;
-	private String taxIncluded;
+	@JsonExclude
+	private Object taxIncluded;
+	@JsonExclude
 	private Float taxRate;
-	private String hasNexus;
-	private String shippingMethodTaxable;
-	private String paymentMethodTaxable;
+	@JsonExclude
+	private Object hasNexus;
+	@JsonExclude
+	private Object shippingMethodTaxable;
+	@JsonExclude
+	private Object paymentMethodTaxable;
+	@JsonExclude
 	private String taxSource;
+	@JsonExclude
+	private LocalDateTime placedAt;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
@@ -40,53 +56,100 @@ public class Order extends ApiResource {
 	private Object merchant;
 	@JsonExclude
 	private Object currency;
+	@JsonExclude
 	private List<String> lineItems;
+	@JsonExclude
 	private List<String> lineItemStocks;
+	@JsonExclude
 	private List<String> paymentMethods;
+	@JsonExclude
 	private List<String> shippingMethods;
+	@JsonExclude
 	private List<String> shipments;
+	@JsonExclude
 	private List<String> transactions;
+	@JsonExclude
 	private List<String> marketPaymentTypes;
+	@JsonExclude
 	private List<String> paymentTypes;
+	@JsonExclude
 	private List<String> marketShippingServices;
+	@JsonExclude
 	private List<String> shippingServices;
 	@JsonExclude
-	private Object orderConfirmation;
 	private String totalAmountWithTax;
+	@JsonExclude
 	private String formattedTotalAmountWithTax;
+	@JsonExclude
 	private String totalAmount;
+	@JsonExclude
 	private String formattedTotalAmount;
+	@JsonExclude
 	private String totalLineItemAmount;
+	@JsonExclude
 	private String formattedTotalLineItemAmount;
+	@JsonExclude
 	private String totalShippingMethodAmount;
+	@JsonExclude
 	private String formattedTotalShippingMethodAmount;
+	@JsonExclude
 	private String totalPaymentMethodPrice;
+	@JsonExclude
 	private String formattedTotalPaymentMethodPrice;
+	@JsonExclude
 	private String totalAmountWithPaymentMethodRequired;
+	@JsonExclude
 	private String formattedTotalAmountWithPaymentMethodRequired;
+	@JsonExclude
 	private String totalPaymentMethodAmount;
+	@JsonExclude
 	private String formattedTotalPaymentMethodAmount;
+	@JsonExclude
 	private String amountWithMissingPaymentMethod;
+	@JsonExclude
 	private String formattedAmountWithMissingPaymentMethod;
+	@JsonExclude
 	private String totalTaxableAmount;
+	@JsonExclude
 	private String formattedTotalTaxableAmount;
+	@JsonExclude
 	private String totalLineItemTaxableAmount;
+	@JsonExclude
 	private String formattedTotalLineItemTaxableAmount;
+	@JsonExclude
 	private String totalShippingMethodTaxableAmount;
+	@JsonExclude
 	private String formattedTotalShippingMethodTaxableAmount;
+	@JsonExclude
 	private String totalPaymentMethodTaxableAmount;
+	@JsonExclude
 	private String formattedTotalPaymentMethodTaxableAmount;
+	@JsonExclude
 	private String totalTaxAmount;
+	@JsonExclude
 	private String formattedTotalTaxAmount;
+	@JsonExclude
 	private String totalLineItemTaxAmount;
+	@JsonExclude
 	private String formattedTotalLineItemTaxAmount;
+	@JsonExclude
 	private String totalShippingMethodTaxAmount;
+	@JsonExclude
 	private String formattedTotalShippingMethodTaxAmount;
+	@JsonExclude
 	private String totalPaymentMethodTaxAmount;
+	@JsonExclude
 	private String formattedTotalPaymentMethodTaxAmount;
+	@JsonExclude
 	private String defaultShippingMethodId;
+	@JsonExclude
 	private String availableShippingServiceIds;
+	@JsonExclude
 	private String availablePaymentTypeIds;
+	@JsonExclude
+	private String pendingTransactions;
+	@JsonExclude
+	private String placed;
 
 
 	public Order() {
@@ -99,62 +162,72 @@ public class Order extends ApiResource {
 	}
 	
 
-	public void setCustomerId(String customerId) {
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+
+	public String getName() {
+		return this.name;
+	}
+	
+
+	public void setCustomerId(Integer customerId) {
 		this.customerId = customerId;
 	}
 	
 
-	public String getCustomerId() {
+	public Integer getCustomerId() {
 		return this.customerId;
 	}
 	
 
-	public void setMerchantId(String merchantId) {
+	public void setMerchantId(Integer merchantId) {
 		this.merchantId = merchantId;
 	}
 	
 
-	public String getMerchantId() {
+	public Integer getMerchantId() {
 		return this.merchantId;
 	}
 	
 
-	public void setChannelId(String channelId) {
+	public void setChannelId(Integer channelId) {
 		this.channelId = channelId;
 	}
 	
 
-	public String getChannelId() {
+	public Integer getChannelId() {
 		return this.channelId;
 	}
 	
 
-	public void setCountryId(String countryId) {
+	public void setCountryId(Integer countryId) {
 		this.countryId = countryId;
 	}
 	
 
-	public String getCountryId() {
+	public Integer getCountryId() {
 		return this.countryId;
 	}
 	
 
-	public void setMarketId(String marketId) {
+	public void setMarketId(Integer marketId) {
 		this.marketId = marketId;
 	}
 	
 
-	public String getMarketId() {
+	public Integer getMarketId() {
 		return this.marketId;
 	}
 	
 
-	public void setCurrencyId(String currencyId) {
+	public void setCurrencyId(Integer currencyId) {
 		this.currencyId = currencyId;
 	}
 	
 
-	public String getCurrencyId() {
+	public Integer getCurrencyId() {
 		return this.currencyId;
 	}
 	
@@ -169,12 +242,12 @@ public class Order extends ApiResource {
 	}
 	
 
-	public void setTaxIncluded(String taxIncluded) {
+	public void setTaxIncluded(Object taxIncluded) {
 		this.taxIncluded = taxIncluded;
 	}
 	
 
-	public String getTaxIncluded() {
+	public Object getTaxIncluded() {
 		return this.taxIncluded;
 	}
 	
@@ -189,32 +262,32 @@ public class Order extends ApiResource {
 	}
 	
 
-	public void setHasNexus(String hasNexus) {
+	public void setHasNexus(Object hasNexus) {
 		this.hasNexus = hasNexus;
 	}
 	
 
-	public String getHasNexus() {
+	public Object getHasNexus() {
 		return this.hasNexus;
 	}
 	
 
-	public void setShippingMethodTaxable(String shippingMethodTaxable) {
+	public void setShippingMethodTaxable(Object shippingMethodTaxable) {
 		this.shippingMethodTaxable = shippingMethodTaxable;
 	}
 	
 
-	public String getShippingMethodTaxable() {
+	public Object getShippingMethodTaxable() {
 		return this.shippingMethodTaxable;
 	}
 	
 
-	public void setPaymentMethodTaxable(String paymentMethodTaxable) {
+	public void setPaymentMethodTaxable(Object paymentMethodTaxable) {
 		this.paymentMethodTaxable = paymentMethodTaxable;
 	}
 	
 
-	public String getPaymentMethodTaxable() {
+	public Object getPaymentMethodTaxable() {
 		return this.paymentMethodTaxable;
 	}
 	
@@ -226,6 +299,16 @@ public class Order extends ApiResource {
 
 	public String getTaxSource() {
 		return this.taxSource;
+	}
+	
+
+	public void setPlacedAt(LocalDateTime placedAt) {
+		this.placedAt = placedAt;
+	}
+	
+
+	public LocalDateTime getPlacedAt() {
+		return this.placedAt;
 	}
 	
 
@@ -396,16 +479,6 @@ public class Order extends ApiResource {
 
 	public List<String> getShippingServices() {
 		return this.shippingServices;
-	}
-	
-
-	public void setOrderConfirmation(Object orderConfirmation) {
-		this.orderConfirmation = orderConfirmation;
-	}
-	
-
-	public Object getOrderConfirmation() {
-		return this.orderConfirmation;
 	}
 	
 
@@ -759,81 +832,104 @@ public class Order extends ApiResource {
 	}
 	
 
+	public void setPendingTransactions(String pendingTransactions) {
+		this.pendingTransactions = pendingTransactions;
+	}
+	
+
+	public String getPendingTransactions() {
+		return this.pendingTransactions;
+	}
+	
+
+	public void setPlaced(String placed) {
+		this.placed = placed;
+	}
+	
+
+	public String getPlaced() {
+		return this.placed;
+	}
+	
+
 	@Override
 	public boolean equals(Object o) {
 	
 		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
+		if ((o == null) || (getClass() != o.getClass())) return false;
 	
-		Order x = (Order) o;
+		Order x = (Order)o;
 	
-		return super.equals(o) &&
-			Objects.equals(this.customerId, x.customerId)  &&
-			Objects.equals(this.merchantId, x.merchantId)  &&
-			Objects.equals(this.channelId, x.channelId)  &&
-			Objects.equals(this.countryId, x.countryId)  &&
-			Objects.equals(this.marketId, x.marketId)  &&
-			Objects.equals(this.currencyId, x.currencyId)  &&
-			Objects.equals(this.token, x.token)  &&
-			Objects.equals(this.taxIncluded, x.taxIncluded)  &&
-			Objects.equals(this.taxRate, x.taxRate)  &&
-			Objects.equals(this.hasNexus, x.hasNexus)  &&
-			Objects.equals(this.shippingMethodTaxable, x.shippingMethodTaxable)  &&
-			Objects.equals(this.paymentMethodTaxable, x.paymentMethodTaxable)  &&
-			Objects.equals(this.taxSource, x.taxSource)  &&
-			Objects.equals(this.previousChanges, x.previousChanges)  &&
-			Objects.equals(this.customer, x.customer)  &&
-			Objects.equals(this.channel, x.channel)  &&
-			Objects.equals(this.country, x.country)  &&
-			Objects.equals(this.market, x.market)  &&
-			Objects.equals(this.merchant, x.merchant)  &&
-			Objects.equals(this.currency, x.currency)  &&
-			Objects.equals(this.lineItems, x.lineItems)  &&
-			Objects.equals(this.lineItemStocks, x.lineItemStocks)  &&
-			Objects.equals(this.paymentMethods, x.paymentMethods)  &&
-			Objects.equals(this.shippingMethods, x.shippingMethods)  &&
-			Objects.equals(this.shipments, x.shipments)  &&
-			Objects.equals(this.transactions, x.transactions)  &&
-			Objects.equals(this.marketPaymentTypes, x.marketPaymentTypes)  &&
-			Objects.equals(this.paymentTypes, x.paymentTypes)  &&
-			Objects.equals(this.marketShippingServices, x.marketShippingServices)  &&
-			Objects.equals(this.shippingServices, x.shippingServices)  &&
-			Objects.equals(this.orderConfirmation, x.orderConfirmation)  &&
-			Objects.equals(this.totalAmountWithTax, x.totalAmountWithTax)  &&
-			Objects.equals(this.formattedTotalAmountWithTax, x.formattedTotalAmountWithTax)  &&
-			Objects.equals(this.totalAmount, x.totalAmount)  &&
-			Objects.equals(this.formattedTotalAmount, x.formattedTotalAmount)  &&
-			Objects.equals(this.totalLineItemAmount, x.totalLineItemAmount)  &&
-			Objects.equals(this.formattedTotalLineItemAmount, x.formattedTotalLineItemAmount)  &&
-			Objects.equals(this.totalShippingMethodAmount, x.totalShippingMethodAmount)  &&
-			Objects.equals(this.formattedTotalShippingMethodAmount, x.formattedTotalShippingMethodAmount)  &&
-			Objects.equals(this.totalPaymentMethodPrice, x.totalPaymentMethodPrice)  &&
-			Objects.equals(this.formattedTotalPaymentMethodPrice, x.formattedTotalPaymentMethodPrice)  &&
-			Objects.equals(this.totalAmountWithPaymentMethodRequired, x.totalAmountWithPaymentMethodRequired)  &&
-			Objects.equals(this.formattedTotalAmountWithPaymentMethodRequired, x.formattedTotalAmountWithPaymentMethodRequired)  &&
-			Objects.equals(this.totalPaymentMethodAmount, x.totalPaymentMethodAmount)  &&
-			Objects.equals(this.formattedTotalPaymentMethodAmount, x.formattedTotalPaymentMethodAmount)  &&
-			Objects.equals(this.amountWithMissingPaymentMethod, x.amountWithMissingPaymentMethod)  &&
-			Objects.equals(this.formattedAmountWithMissingPaymentMethod, x.formattedAmountWithMissingPaymentMethod)  &&
-			Objects.equals(this.totalTaxableAmount, x.totalTaxableAmount)  &&
-			Objects.equals(this.formattedTotalTaxableAmount, x.formattedTotalTaxableAmount)  &&
-			Objects.equals(this.totalLineItemTaxableAmount, x.totalLineItemTaxableAmount)  &&
-			Objects.equals(this.formattedTotalLineItemTaxableAmount, x.formattedTotalLineItemTaxableAmount)  &&
-			Objects.equals(this.totalShippingMethodTaxableAmount, x.totalShippingMethodTaxableAmount)  &&
-			Objects.equals(this.formattedTotalShippingMethodTaxableAmount, x.formattedTotalShippingMethodTaxableAmount)  &&
-			Objects.equals(this.totalPaymentMethodTaxableAmount, x.totalPaymentMethodTaxableAmount)  &&
-			Objects.equals(this.formattedTotalPaymentMethodTaxableAmount, x.formattedTotalPaymentMethodTaxableAmount)  &&
-			Objects.equals(this.totalTaxAmount, x.totalTaxAmount)  &&
-			Objects.equals(this.formattedTotalTaxAmount, x.formattedTotalTaxAmount)  &&
-			Objects.equals(this.totalLineItemTaxAmount, x.totalLineItemTaxAmount)  &&
-			Objects.equals(this.formattedTotalLineItemTaxAmount, x.formattedTotalLineItemTaxAmount)  &&
-			Objects.equals(this.totalShippingMethodTaxAmount, x.totalShippingMethodTaxAmount)  &&
-			Objects.equals(this.formattedTotalShippingMethodTaxAmount, x.formattedTotalShippingMethodTaxAmount)  &&
-			Objects.equals(this.totalPaymentMethodTaxAmount, x.totalPaymentMethodTaxAmount)  &&
-			Objects.equals(this.formattedTotalPaymentMethodTaxAmount, x.formattedTotalPaymentMethodTaxAmount)  &&
-			Objects.equals(this.defaultShippingMethodId, x.defaultShippingMethodId)  &&
-			Objects.equals(this.availableShippingServiceIds, x.availableShippingServiceIds)  &&
-			Objects.equals(this.availablePaymentTypeIds, x.availablePaymentTypeIds) 
+		return super.equals(o)
+			&& Objects.equals(this.name, x.name)
+			&& Objects.equals(this.customerId, x.customerId)
+			&& Objects.equals(this.merchantId, x.merchantId)
+			&& Objects.equals(this.channelId, x.channelId)
+			&& Objects.equals(this.countryId, x.countryId)
+			&& Objects.equals(this.marketId, x.marketId)
+			&& Objects.equals(this.currencyId, x.currencyId)
+			&& Objects.equals(this.token, x.token)
+			&& Objects.equals(this.taxIncluded, x.taxIncluded)
+			&& Objects.equals(this.taxRate, x.taxRate)
+			&& Objects.equals(this.hasNexus, x.hasNexus)
+			&& Objects.equals(this.shippingMethodTaxable, x.shippingMethodTaxable)
+			&& Objects.equals(this.paymentMethodTaxable, x.paymentMethodTaxable)
+			&& Objects.equals(this.taxSource, x.taxSource)
+			&& Objects.equals(this.placedAt, x.placedAt)
+			&& Objects.equals(this.previousChanges, x.previousChanges)
+			&& Objects.equals(this.customer, x.customer)
+			&& Objects.equals(this.channel, x.channel)
+			&& Objects.equals(this.country, x.country)
+			&& Objects.equals(this.market, x.market)
+			&& Objects.equals(this.merchant, x.merchant)
+			&& Objects.equals(this.currency, x.currency)
+			&& Objects.equals(this.lineItems, x.lineItems)
+			&& Objects.equals(this.lineItemStocks, x.lineItemStocks)
+			&& Objects.equals(this.paymentMethods, x.paymentMethods)
+			&& Objects.equals(this.shippingMethods, x.shippingMethods)
+			&& Objects.equals(this.shipments, x.shipments)
+			&& Objects.equals(this.transactions, x.transactions)
+			&& Objects.equals(this.marketPaymentTypes, x.marketPaymentTypes)
+			&& Objects.equals(this.paymentTypes, x.paymentTypes)
+			&& Objects.equals(this.marketShippingServices, x.marketShippingServices)
+			&& Objects.equals(this.shippingServices, x.shippingServices)
+			&& Objects.equals(this.totalAmountWithTax, x.totalAmountWithTax)
+			&& Objects.equals(this.formattedTotalAmountWithTax, x.formattedTotalAmountWithTax)
+			&& Objects.equals(this.totalAmount, x.totalAmount)
+			&& Objects.equals(this.formattedTotalAmount, x.formattedTotalAmount)
+			&& Objects.equals(this.totalLineItemAmount, x.totalLineItemAmount)
+			&& Objects.equals(this.formattedTotalLineItemAmount, x.formattedTotalLineItemAmount)
+			&& Objects.equals(this.totalShippingMethodAmount, x.totalShippingMethodAmount)
+			&& Objects.equals(this.formattedTotalShippingMethodAmount, x.formattedTotalShippingMethodAmount)
+			&& Objects.equals(this.totalPaymentMethodPrice, x.totalPaymentMethodPrice)
+			&& Objects.equals(this.formattedTotalPaymentMethodPrice, x.formattedTotalPaymentMethodPrice)
+			&& Objects.equals(this.totalAmountWithPaymentMethodRequired, x.totalAmountWithPaymentMethodRequired)
+			&& Objects.equals(this.formattedTotalAmountWithPaymentMethodRequired, x.formattedTotalAmountWithPaymentMethodRequired)
+			&& Objects.equals(this.totalPaymentMethodAmount, x.totalPaymentMethodAmount)
+			&& Objects.equals(this.formattedTotalPaymentMethodAmount, x.formattedTotalPaymentMethodAmount)
+			&& Objects.equals(this.amountWithMissingPaymentMethod, x.amountWithMissingPaymentMethod)
+			&& Objects.equals(this.formattedAmountWithMissingPaymentMethod, x.formattedAmountWithMissingPaymentMethod)
+			&& Objects.equals(this.totalTaxableAmount, x.totalTaxableAmount)
+			&& Objects.equals(this.formattedTotalTaxableAmount, x.formattedTotalTaxableAmount)
+			&& Objects.equals(this.totalLineItemTaxableAmount, x.totalLineItemTaxableAmount)
+			&& Objects.equals(this.formattedTotalLineItemTaxableAmount, x.formattedTotalLineItemTaxableAmount)
+			&& Objects.equals(this.totalShippingMethodTaxableAmount, x.totalShippingMethodTaxableAmount)
+			&& Objects.equals(this.formattedTotalShippingMethodTaxableAmount, x.formattedTotalShippingMethodTaxableAmount)
+			&& Objects.equals(this.totalPaymentMethodTaxableAmount, x.totalPaymentMethodTaxableAmount)
+			&& Objects.equals(this.formattedTotalPaymentMethodTaxableAmount, x.formattedTotalPaymentMethodTaxableAmount)
+			&& Objects.equals(this.totalTaxAmount, x.totalTaxAmount)
+			&& Objects.equals(this.formattedTotalTaxAmount, x.formattedTotalTaxAmount)
+			&& Objects.equals(this.totalLineItemTaxAmount, x.totalLineItemTaxAmount)
+			&& Objects.equals(this.formattedTotalLineItemTaxAmount, x.formattedTotalLineItemTaxAmount)
+			&& Objects.equals(this.totalShippingMethodTaxAmount, x.totalShippingMethodTaxAmount)
+			&& Objects.equals(this.formattedTotalShippingMethodTaxAmount, x.formattedTotalShippingMethodTaxAmount)
+			&& Objects.equals(this.totalPaymentMethodTaxAmount, x.totalPaymentMethodTaxAmount)
+			&& Objects.equals(this.formattedTotalPaymentMethodTaxAmount, x.formattedTotalPaymentMethodTaxAmount)
+			&& Objects.equals(this.defaultShippingMethodId, x.defaultShippingMethodId)
+			&& Objects.equals(this.availableShippingServiceIds, x.availableShippingServiceIds)
+			&& Objects.equals(this.availablePaymentTypeIds, x.availablePaymentTypeIds)
+			&& Objects.equals(this.pendingTransactions, x.pendingTransactions)
+			&& Objects.equals(this.placed, x.placed)
 		;
 	
 	}
@@ -843,22 +939,101 @@ public class Order extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			serialVersionUID, resourceName, id, creatorResource, createdAt,
-			updatedAt, customerId, merchantId, channelId, countryId,
+			name, customerId, merchantId, channelId, countryId,
 			marketId, currencyId, token, taxIncluded, taxRate,
-			hasNexus, shippingMethodTaxable, paymentMethodTaxable, taxSource, previousChanges,
-			customer, channel, country, market, merchant,
-			currency, lineItems, lineItemStocks, paymentMethods, shippingMethods,
-			shipments, transactions, marketPaymentTypes, paymentTypes, marketShippingServices,
-			shippingServices, orderConfirmation, totalAmountWithTax, formattedTotalAmountWithTax, totalAmount,
+			hasNexus, shippingMethodTaxable, paymentMethodTaxable, taxSource, placedAt,
+			previousChanges, customer, channel, country, market,
+			merchant, currency, lineItems, lineItemStocks, paymentMethods,
+			shippingMethods, shipments, transactions, marketPaymentTypes, paymentTypes,
+			marketShippingServices, shippingServices, totalAmountWithTax, formattedTotalAmountWithTax, totalAmount,
 			formattedTotalAmount, totalLineItemAmount, formattedTotalLineItemAmount, totalShippingMethodAmount, formattedTotalShippingMethodAmount,
 			totalPaymentMethodPrice, formattedTotalPaymentMethodPrice, totalAmountWithPaymentMethodRequired, formattedTotalAmountWithPaymentMethodRequired, totalPaymentMethodAmount,
 			formattedTotalPaymentMethodAmount, amountWithMissingPaymentMethod, formattedAmountWithMissingPaymentMethod, totalTaxableAmount, formattedTotalTaxableAmount,
 			totalLineItemTaxableAmount, formattedTotalLineItemTaxableAmount, totalShippingMethodTaxableAmount, formattedTotalShippingMethodTaxableAmount, totalPaymentMethodTaxableAmount,
 			formattedTotalPaymentMethodTaxableAmount, totalTaxAmount, formattedTotalTaxAmount, totalLineItemTaxAmount, formattedTotalLineItemTaxAmount,
 			totalShippingMethodTaxAmount, formattedTotalShippingMethodTaxAmount, totalPaymentMethodTaxAmount, formattedTotalPaymentMethodTaxAmount, defaultShippingMethodId,
-			availableShippingServiceIds, availablePaymentTypeIds 
+			availableShippingServiceIds, availablePaymentTypeIds, pendingTransactions, placed 
 		);
+	
+	}
+	
+
+	@Override
+	public Order clone() {
+	
+		Order no = new Order();
+	
+		no.name = this.name;
+		no.customerId = this.customerId;
+		no.merchantId = this.merchantId;
+		no.channelId = this.channelId;
+		no.countryId = this.countryId;
+		no.marketId = this.marketId;
+		no.currencyId = this.currencyId;
+		no.token = this.token;
+		no.taxIncluded = this.taxIncluded;
+		no.taxRate = this.taxRate;
+		no.hasNexus = this.hasNexus;
+		no.shippingMethodTaxable = this.shippingMethodTaxable;
+		no.paymentMethodTaxable = this.paymentMethodTaxable;
+		no.taxSource = this.taxSource;
+		no.placedAt = this.placedAt;
+		no.previousChanges = this.previousChanges;
+		no.customer = this.customer;
+		no.channel = this.channel;
+		no.country = this.country;
+		no.market = this.market;
+		no.merchant = this.merchant;
+		no.currency = this.currency;
+		no.lineItems = this.lineItems;
+		no.lineItemStocks = this.lineItemStocks;
+		no.paymentMethods = this.paymentMethods;
+		no.shippingMethods = this.shippingMethods;
+		no.shipments = this.shipments;
+		no.transactions = this.transactions;
+		no.marketPaymentTypes = this.marketPaymentTypes;
+		no.paymentTypes = this.paymentTypes;
+		no.marketShippingServices = this.marketShippingServices;
+		no.shippingServices = this.shippingServices;
+		no.totalAmountWithTax = this.totalAmountWithTax;
+		no.formattedTotalAmountWithTax = this.formattedTotalAmountWithTax;
+		no.totalAmount = this.totalAmount;
+		no.formattedTotalAmount = this.formattedTotalAmount;
+		no.totalLineItemAmount = this.totalLineItemAmount;
+		no.formattedTotalLineItemAmount = this.formattedTotalLineItemAmount;
+		no.totalShippingMethodAmount = this.totalShippingMethodAmount;
+		no.formattedTotalShippingMethodAmount = this.formattedTotalShippingMethodAmount;
+		no.totalPaymentMethodPrice = this.totalPaymentMethodPrice;
+		no.formattedTotalPaymentMethodPrice = this.formattedTotalPaymentMethodPrice;
+		no.totalAmountWithPaymentMethodRequired = this.totalAmountWithPaymentMethodRequired;
+		no.formattedTotalAmountWithPaymentMethodRequired = this.formattedTotalAmountWithPaymentMethodRequired;
+		no.totalPaymentMethodAmount = this.totalPaymentMethodAmount;
+		no.formattedTotalPaymentMethodAmount = this.formattedTotalPaymentMethodAmount;
+		no.amountWithMissingPaymentMethod = this.amountWithMissingPaymentMethod;
+		no.formattedAmountWithMissingPaymentMethod = this.formattedAmountWithMissingPaymentMethod;
+		no.totalTaxableAmount = this.totalTaxableAmount;
+		no.formattedTotalTaxableAmount = this.formattedTotalTaxableAmount;
+		no.totalLineItemTaxableAmount = this.totalLineItemTaxableAmount;
+		no.formattedTotalLineItemTaxableAmount = this.formattedTotalLineItemTaxableAmount;
+		no.totalShippingMethodTaxableAmount = this.totalShippingMethodTaxableAmount;
+		no.formattedTotalShippingMethodTaxableAmount = this.formattedTotalShippingMethodTaxableAmount;
+		no.totalPaymentMethodTaxableAmount = this.totalPaymentMethodTaxableAmount;
+		no.formattedTotalPaymentMethodTaxableAmount = this.formattedTotalPaymentMethodTaxableAmount;
+		no.totalTaxAmount = this.totalTaxAmount;
+		no.formattedTotalTaxAmount = this.formattedTotalTaxAmount;
+		no.totalLineItemTaxAmount = this.totalLineItemTaxAmount;
+		no.formattedTotalLineItemTaxAmount = this.formattedTotalLineItemTaxAmount;
+		no.totalShippingMethodTaxAmount = this.totalShippingMethodTaxAmount;
+		no.formattedTotalShippingMethodTaxAmount = this.formattedTotalShippingMethodTaxAmount;
+		no.totalPaymentMethodTaxAmount = this.totalPaymentMethodTaxAmount;
+		no.formattedTotalPaymentMethodTaxAmount = this.formattedTotalPaymentMethodTaxAmount;
+		no.defaultShippingMethodId = this.defaultShippingMethodId;
+		no.availableShippingServiceIds = this.availableShippingServiceIds;
+		no.availablePaymentTypeIds = this.availablePaymentTypeIds;
+		no.pendingTransactions = this.pendingTransactions;
+		no.placed = this.placed;
+	
+		return no;
 	
 	}
 	

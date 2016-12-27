@@ -18,6 +18,7 @@ public class PutChannelShippingMethodsId extends PutOperation {
 		addRequiredField("id");
 	}
 
+
 	public PutChannelShippingMethodsId() {
 		super(OPERATION_PATH);
 	}

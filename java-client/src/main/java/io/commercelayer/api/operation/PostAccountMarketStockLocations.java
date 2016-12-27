@@ -15,6 +15,7 @@ public class PostAccountMarketStockLocations extends PostOperation {
 		addRequiredField("stockLocationId");
 	}
 
+
 	public PostAccountMarketStockLocations() {
 		super(OPERATION_PATH);
 	}

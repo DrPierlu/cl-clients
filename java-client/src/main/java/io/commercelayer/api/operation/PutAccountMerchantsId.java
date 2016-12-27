@@ -17,6 +17,7 @@ public class PutAccountMerchantsId extends PutOperation {
 		addRequiredField("id");
 	}
 
+
 	public PutAccountMerchantsId() {
 		super(OPERATION_PATH);
 	}

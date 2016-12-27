@@ -18,6 +18,7 @@ public class PostAccountPermissions extends PostOperation {
 		addRequiredField("restrictions");
 	}
 
+
 	public PostAccountPermissions() {
 		super(OPERATION_PATH);
 	}

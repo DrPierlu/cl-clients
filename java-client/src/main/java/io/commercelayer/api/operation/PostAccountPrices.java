@@ -17,6 +17,7 @@ public class PostAccountPrices extends PostOperation {
 		addRequiredField("sellableId");
 	}
 
+
 	public PostAccountPrices() {
 		super(OPERATION_PATH);
 	}

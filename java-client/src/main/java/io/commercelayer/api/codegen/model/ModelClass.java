@@ -286,7 +286,7 @@ public class ModelClass extends AbstractModelObject {
 			sb.append(newLine());
 			sb.append('\t').append('{').append(newLine());
 			sb.append('\t').append('\t').append(getInitBlock().replaceAll("\n", "\n\t\t")).append(newLine());
-			sb.append('\t').append('}').append(newLine());
+			sb.append('\t').append('}').append(newLines(2));
 		}
 
 		// Constructors

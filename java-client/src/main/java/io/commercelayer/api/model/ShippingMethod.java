@@ -10,15 +10,19 @@ import java.util.List;
  */
 public class ShippingMethod extends ApiResource {
 
-	private static final long serialVersionUID = -1482845758218L;
+	private static final long serialVersionUID = -1482880735347L;
 
 
-	private String orderId;
-	private String shippingAddressId;
-	private String shippingServiceId;
-	private String shippingPackageId;
-	private String priceCents;
-	private String freeOverAmountCents;
+	@JsonExclude
+	private String name;
+	private Integer orderId;
+	private Integer shippingAddressId;
+	private Integer shippingServiceId;
+	private Integer shippingPackageId;
+	@JsonExclude
+	private Integer priceCents;
+	@JsonExclude
+	private Integer freeOverAmountCents;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
@@ -29,20 +33,35 @@ public class ShippingMethod extends ApiResource {
 	private Object shippingAddress;
 	@JsonExclude
 	private Object shippingService;
+	@JsonExclude
 	private List<String> lineItemStocks;
+	@JsonExclude
 	private List<String> shipments;
+	@JsonExclude
 	private List<String> lineItems;
+	@JsonExclude
 	private String amount;
+	@JsonExclude
 	private String formattedAmount;
+	@JsonExclude
 	private String totalLineItemAmount;
+	@JsonExclude
 	private String formattedTotalLineItemAmount;
+	@JsonExclude
 	private String taxableAmount;
+	@JsonExclude
 	private String formattedTaxableAmount;
+	@JsonExclude
 	private String taxAmount;
+	@JsonExclude
 	private String formattedTaxAmount;
+	@JsonExclude
 	private String price;
+	@JsonExclude
 	private String formattedPrice;
+	@JsonExclude
 	private String freeOverAmount;
+	@JsonExclude
 	private String formattedFreeOverAmount;
 
 
@@ -56,62 +75,72 @@ public class ShippingMethod extends ApiResource {
 	}
 	
 
-	public void setOrderId(String orderId) {
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+
+	public String getName() {
+		return this.name;
+	}
+	
+
+	public void setOrderId(Integer orderId) {
 		this.orderId = orderId;
 	}
 	
 
-	public String getOrderId() {
+	public Integer getOrderId() {
 		return this.orderId;
 	}
 	
 
-	public void setShippingAddressId(String shippingAddressId) {
+	public void setShippingAddressId(Integer shippingAddressId) {
 		this.shippingAddressId = shippingAddressId;
 	}
 	
 
-	public String getShippingAddressId() {
+	public Integer getShippingAddressId() {
 		return this.shippingAddressId;
 	}
 	
 
-	public void setShippingServiceId(String shippingServiceId) {
+	public void setShippingServiceId(Integer shippingServiceId) {
 		this.shippingServiceId = shippingServiceId;
 	}
 	
 
-	public String getShippingServiceId() {
+	public Integer getShippingServiceId() {
 		return this.shippingServiceId;
 	}
 	
 
-	public void setShippingPackageId(String shippingPackageId) {
+	public void setShippingPackageId(Integer shippingPackageId) {
 		this.shippingPackageId = shippingPackageId;
 	}
 	
 
-	public String getShippingPackageId() {
+	public Integer getShippingPackageId() {
 		return this.shippingPackageId;
 	}
 	
 
-	public void setPriceCents(String priceCents) {
+	public void setPriceCents(Integer priceCents) {
 		this.priceCents = priceCents;
 	}
 	
 
-	public String getPriceCents() {
+	public Integer getPriceCents() {
 		return this.priceCents;
 	}
 	
 
-	public void setFreeOverAmountCents(String freeOverAmountCents) {
+	public void setFreeOverAmountCents(Integer freeOverAmountCents) {
 		this.freeOverAmountCents = freeOverAmountCents;
 	}
 	
 
-	public String getFreeOverAmountCents() {
+	public Integer getFreeOverAmountCents() {
 		return this.freeOverAmountCents;
 	}
 	
@@ -320,37 +349,38 @@ public class ShippingMethod extends ApiResource {
 	public boolean equals(Object o) {
 	
 		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
+		if ((o == null) || (getClass() != o.getClass())) return false;
 	
-		ShippingMethod x = (ShippingMethod) o;
+		ShippingMethod x = (ShippingMethod)o;
 	
-		return super.equals(o) &&
-			Objects.equals(this.orderId, x.orderId)  &&
-			Objects.equals(this.shippingAddressId, x.shippingAddressId)  &&
-			Objects.equals(this.shippingServiceId, x.shippingServiceId)  &&
-			Objects.equals(this.shippingPackageId, x.shippingPackageId)  &&
-			Objects.equals(this.priceCents, x.priceCents)  &&
-			Objects.equals(this.freeOverAmountCents, x.freeOverAmountCents)  &&
-			Objects.equals(this.previousChanges, x.previousChanges)  &&
-			Objects.equals(this.order, x.order)  &&
-			Objects.equals(this.shippingPackage, x.shippingPackage)  &&
-			Objects.equals(this.shippingAddress, x.shippingAddress)  &&
-			Objects.equals(this.shippingService, x.shippingService)  &&
-			Objects.equals(this.lineItemStocks, x.lineItemStocks)  &&
-			Objects.equals(this.shipments, x.shipments)  &&
-			Objects.equals(this.lineItems, x.lineItems)  &&
-			Objects.equals(this.amount, x.amount)  &&
-			Objects.equals(this.formattedAmount, x.formattedAmount)  &&
-			Objects.equals(this.totalLineItemAmount, x.totalLineItemAmount)  &&
-			Objects.equals(this.formattedTotalLineItemAmount, x.formattedTotalLineItemAmount)  &&
-			Objects.equals(this.taxableAmount, x.taxableAmount)  &&
-			Objects.equals(this.formattedTaxableAmount, x.formattedTaxableAmount)  &&
-			Objects.equals(this.taxAmount, x.taxAmount)  &&
-			Objects.equals(this.formattedTaxAmount, x.formattedTaxAmount)  &&
-			Objects.equals(this.price, x.price)  &&
-			Objects.equals(this.formattedPrice, x.formattedPrice)  &&
-			Objects.equals(this.freeOverAmount, x.freeOverAmount)  &&
-			Objects.equals(this.formattedFreeOverAmount, x.formattedFreeOverAmount) 
+		return super.equals(o)
+			&& Objects.equals(this.name, x.name)
+			&& Objects.equals(this.orderId, x.orderId)
+			&& Objects.equals(this.shippingAddressId, x.shippingAddressId)
+			&& Objects.equals(this.shippingServiceId, x.shippingServiceId)
+			&& Objects.equals(this.shippingPackageId, x.shippingPackageId)
+			&& Objects.equals(this.priceCents, x.priceCents)
+			&& Objects.equals(this.freeOverAmountCents, x.freeOverAmountCents)
+			&& Objects.equals(this.previousChanges, x.previousChanges)
+			&& Objects.equals(this.order, x.order)
+			&& Objects.equals(this.shippingPackage, x.shippingPackage)
+			&& Objects.equals(this.shippingAddress, x.shippingAddress)
+			&& Objects.equals(this.shippingService, x.shippingService)
+			&& Objects.equals(this.lineItemStocks, x.lineItemStocks)
+			&& Objects.equals(this.shipments, x.shipments)
+			&& Objects.equals(this.lineItems, x.lineItems)
+			&& Objects.equals(this.amount, x.amount)
+			&& Objects.equals(this.formattedAmount, x.formattedAmount)
+			&& Objects.equals(this.totalLineItemAmount, x.totalLineItemAmount)
+			&& Objects.equals(this.formattedTotalLineItemAmount, x.formattedTotalLineItemAmount)
+			&& Objects.equals(this.taxableAmount, x.taxableAmount)
+			&& Objects.equals(this.formattedTaxableAmount, x.formattedTaxableAmount)
+			&& Objects.equals(this.taxAmount, x.taxAmount)
+			&& Objects.equals(this.formattedTaxAmount, x.formattedTaxAmount)
+			&& Objects.equals(this.price, x.price)
+			&& Objects.equals(this.formattedPrice, x.formattedPrice)
+			&& Objects.equals(this.freeOverAmount, x.freeOverAmount)
+			&& Objects.equals(this.formattedFreeOverAmount, x.formattedFreeOverAmount)
 		;
 	
 	}
@@ -360,14 +390,51 @@ public class ShippingMethod extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			serialVersionUID, resourceName, id, creatorResource, createdAt,
-			updatedAt, orderId, shippingAddressId, shippingServiceId, shippingPackageId,
+			name, orderId, shippingAddressId, shippingServiceId, shippingPackageId,
 			priceCents, freeOverAmountCents, previousChanges, order, shippingPackage,
 			shippingAddress, shippingService, lineItemStocks, shipments, lineItems,
 			amount, formattedAmount, totalLineItemAmount, formattedTotalLineItemAmount, taxableAmount,
 			formattedTaxableAmount, taxAmount, formattedTaxAmount, price, formattedPrice,
 			freeOverAmount, formattedFreeOverAmount 
 		);
+	
+	}
+	
+
+	@Override
+	public ShippingMethod clone() {
+	
+		ShippingMethod no = new ShippingMethod();
+	
+		no.name = this.name;
+		no.orderId = this.orderId;
+		no.shippingAddressId = this.shippingAddressId;
+		no.shippingServiceId = this.shippingServiceId;
+		no.shippingPackageId = this.shippingPackageId;
+		no.priceCents = this.priceCents;
+		no.freeOverAmountCents = this.freeOverAmountCents;
+		no.previousChanges = this.previousChanges;
+		no.order = this.order;
+		no.shippingPackage = this.shippingPackage;
+		no.shippingAddress = this.shippingAddress;
+		no.shippingService = this.shippingService;
+		no.lineItemStocks = this.lineItemStocks;
+		no.shipments = this.shipments;
+		no.lineItems = this.lineItems;
+		no.amount = this.amount;
+		no.formattedAmount = this.formattedAmount;
+		no.totalLineItemAmount = this.totalLineItemAmount;
+		no.formattedTotalLineItemAmount = this.formattedTotalLineItemAmount;
+		no.taxableAmount = this.taxableAmount;
+		no.formattedTaxableAmount = this.formattedTaxableAmount;
+		no.taxAmount = this.taxAmount;
+		no.formattedTaxAmount = this.formattedTaxAmount;
+		no.price = this.price;
+		no.formattedPrice = this.formattedPrice;
+		no.freeOverAmount = this.freeOverAmount;
+		no.formattedFreeOverAmount = this.formattedFreeOverAmount;
+	
+		return no;
 	
 	}
 	

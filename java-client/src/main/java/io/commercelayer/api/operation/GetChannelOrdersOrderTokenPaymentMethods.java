@@ -14,4 +14,14 @@ public class GetChannelOrdersOrderTokenPaymentMethods extends SearchOperation {
 		super(OPERATION_PATH);
 	}
 	
+
+	public void setOrderToken(Object orderToken) {
+		addPathParam("order_token", orderToken);
+	}
+	
+
+	public Object getOrderToken() {
+		return getPathParam("order_token");
+	}
+	
 }

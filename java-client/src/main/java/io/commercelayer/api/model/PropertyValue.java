@@ -10,19 +10,28 @@ import java.util.List;
  */
 public class PropertyValue extends ApiResource {
 
-	private static final long serialVersionUID = -1482845758172L;
+	private static final long serialVersionUID = -1482880735338L;
 
 
 	private String name;
-	private String propertyTypeId;
+	@JsonExclude
+	private String slug;
+	private Integer propertyTypeId;
+	@JsonExclude
+	private Integer position;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
 	private Object propertyType;
+	@JsonExclude
 	private List<String> resourceImages;
+	@JsonExclude
 	private List<String> images;
+	@JsonExclude
 	private List<String> translations;
+	@JsonExclude
 	private List<String> productProperties;
+	@JsonExclude
 	private List<String> products;
 
 
@@ -46,13 +55,33 @@ public class PropertyValue extends ApiResource {
 	}
 	
 
-	public void setPropertyTypeId(String propertyTypeId) {
+	public void setSlug(String slug) {
+		this.slug = slug;
+	}
+	
+
+	public String getSlug() {
+		return this.slug;
+	}
+	
+
+	public void setPropertyTypeId(Integer propertyTypeId) {
 		this.propertyTypeId = propertyTypeId;
 	}
 	
 
-	public String getPropertyTypeId() {
+	public Integer getPropertyTypeId() {
 		return this.propertyTypeId;
+	}
+	
+
+	public void setPosition(Integer position) {
+		this.position = position;
+	}
+	
+
+	public Integer getPosition() {
+		return this.position;
 	}
 	
 
@@ -130,20 +159,22 @@ public class PropertyValue extends ApiResource {
 	public boolean equals(Object o) {
 	
 		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
+		if ((o == null) || (getClass() != o.getClass())) return false;
 	
-		PropertyValue x = (PropertyValue) o;
+		PropertyValue x = (PropertyValue)o;
 	
-		return super.equals(o) &&
-			Objects.equals(this.name, x.name)  &&
-			Objects.equals(this.propertyTypeId, x.propertyTypeId)  &&
-			Objects.equals(this.previousChanges, x.previousChanges)  &&
-			Objects.equals(this.propertyType, x.propertyType)  &&
-			Objects.equals(this.resourceImages, x.resourceImages)  &&
-			Objects.equals(this.images, x.images)  &&
-			Objects.equals(this.translations, x.translations)  &&
-			Objects.equals(this.productProperties, x.productProperties)  &&
-			Objects.equals(this.products, x.products) 
+		return super.equals(o)
+			&& Objects.equals(this.name, x.name)
+			&& Objects.equals(this.slug, x.slug)
+			&& Objects.equals(this.propertyTypeId, x.propertyTypeId)
+			&& Objects.equals(this.position, x.position)
+			&& Objects.equals(this.previousChanges, x.previousChanges)
+			&& Objects.equals(this.propertyType, x.propertyType)
+			&& Objects.equals(this.resourceImages, x.resourceImages)
+			&& Objects.equals(this.images, x.images)
+			&& Objects.equals(this.translations, x.translations)
+			&& Objects.equals(this.productProperties, x.productProperties)
+			&& Objects.equals(this.products, x.products)
 		;
 	
 	}
@@ -153,11 +184,32 @@ public class PropertyValue extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			serialVersionUID, resourceName, id, creatorResource, createdAt,
-			updatedAt, name, propertyTypeId, previousChanges, propertyType,
-			resourceImages, images, translations, productProperties, products
-			
+			name, slug, propertyTypeId, position, previousChanges,
+			propertyType, resourceImages, images, translations, productProperties,
+			products 
 		);
+	
+	}
+	
+
+	@Override
+	public PropertyValue clone() {
+	
+		PropertyValue no = new PropertyValue();
+	
+		no.name = this.name;
+		no.slug = this.slug;
+		no.propertyTypeId = this.propertyTypeId;
+		no.position = this.position;
+		no.previousChanges = this.previousChanges;
+		no.propertyType = this.propertyType;
+		no.resourceImages = this.resourceImages;
+		no.images = this.images;
+		no.translations = this.translations;
+		no.productProperties = this.productProperties;
+		no.products = this.products;
+	
+		return no;
 	
 	}
 	

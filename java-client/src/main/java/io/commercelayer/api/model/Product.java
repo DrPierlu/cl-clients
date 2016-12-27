@@ -10,14 +10,22 @@ import java.util.List;
  */
 public class Product extends ApiResource {
 
-	private static final long serialVersionUID = -1482845758140L;
+	private static final long serialVersionUID = -1482880735322L;
 
 
 	private String name;
+	@JsonExclude
+	private String slug;
+	@JsonExclude
 	private String description;
-	private String productTypeId;
-	private String trackInventory;
-	private String shippingCategoryId;
+	private Integer productTypeId;
+	@JsonExclude
+	private Object trackInventory;
+	@JsonExclude
+	private Integer shippingCategoryId;
+	@JsonExclude
+	private String sku;
+	@JsonExclude
 	private String taxCode;
 	@JsonExclude
 	private Object previousChanges;
@@ -25,17 +33,29 @@ public class Product extends ApiResource {
 	private Object shippingCategory;
 	@JsonExclude
 	private Object productType;
+	@JsonExclude
 	private List<String> prices;
+	@JsonExclude
 	private List<String> lineItems;
+	@JsonExclude
 	private List<String> lineItemStocks;
+	@JsonExclude
 	private List<String> stockItems;
+	@JsonExclude
 	private List<String> shippingServiceStockLocations;
+	@JsonExclude
 	private List<String> resourceImages;
+	@JsonExclude
 	private List<String> images;
+	@JsonExclude
 	private List<String> translations;
+	@JsonExclude
 	private List<String> variants;
+	@JsonExclude
 	private List<String> merchandisingRules;
+	@JsonExclude
 	private List<String> productProperties;
+	@JsonExclude
 	private String hasVariants;
 
 
@@ -59,6 +79,16 @@ public class Product extends ApiResource {
 	}
 	
 
+	public void setSlug(String slug) {
+		this.slug = slug;
+	}
+	
+
+	public String getSlug() {
+		return this.slug;
+	}
+	
+
 	public void setDescription(String description) {
 		this.description = description;
 	}
@@ -69,33 +99,43 @@ public class Product extends ApiResource {
 	}
 	
 
-	public void setProductTypeId(String productTypeId) {
+	public void setProductTypeId(Integer productTypeId) {
 		this.productTypeId = productTypeId;
 	}
 	
 
-	public String getProductTypeId() {
+	public Integer getProductTypeId() {
 		return this.productTypeId;
 	}
 	
 
-	public void setTrackInventory(String trackInventory) {
+	public void setTrackInventory(Object trackInventory) {
 		this.trackInventory = trackInventory;
 	}
 	
 
-	public String getTrackInventory() {
+	public Object getTrackInventory() {
 		return this.trackInventory;
 	}
 	
 
-	public void setShippingCategoryId(String shippingCategoryId) {
+	public void setShippingCategoryId(Integer shippingCategoryId) {
 		this.shippingCategoryId = shippingCategoryId;
 	}
 	
 
-	public String getShippingCategoryId() {
+	public Integer getShippingCategoryId() {
 		return this.shippingCategoryId;
+	}
+	
+
+	public void setSku(String sku) {
+		this.sku = sku;
+	}
+	
+
+	public String getSku() {
+		return this.sku;
 	}
 	
 
@@ -263,32 +303,34 @@ public class Product extends ApiResource {
 	public boolean equals(Object o) {
 	
 		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
+		if ((o == null) || (getClass() != o.getClass())) return false;
 	
-		Product x = (Product) o;
+		Product x = (Product)o;
 	
-		return super.equals(o) &&
-			Objects.equals(this.name, x.name)  &&
-			Objects.equals(this.description, x.description)  &&
-			Objects.equals(this.productTypeId, x.productTypeId)  &&
-			Objects.equals(this.trackInventory, x.trackInventory)  &&
-			Objects.equals(this.shippingCategoryId, x.shippingCategoryId)  &&
-			Objects.equals(this.taxCode, x.taxCode)  &&
-			Objects.equals(this.previousChanges, x.previousChanges)  &&
-			Objects.equals(this.shippingCategory, x.shippingCategory)  &&
-			Objects.equals(this.productType, x.productType)  &&
-			Objects.equals(this.prices, x.prices)  &&
-			Objects.equals(this.lineItems, x.lineItems)  &&
-			Objects.equals(this.lineItemStocks, x.lineItemStocks)  &&
-			Objects.equals(this.stockItems, x.stockItems)  &&
-			Objects.equals(this.shippingServiceStockLocations, x.shippingServiceStockLocations)  &&
-			Objects.equals(this.resourceImages, x.resourceImages)  &&
-			Objects.equals(this.images, x.images)  &&
-			Objects.equals(this.translations, x.translations)  &&
-			Objects.equals(this.variants, x.variants)  &&
-			Objects.equals(this.merchandisingRules, x.merchandisingRules)  &&
-			Objects.equals(this.productProperties, x.productProperties)  &&
-			Objects.equals(this.hasVariants, x.hasVariants) 
+		return super.equals(o)
+			&& Objects.equals(this.name, x.name)
+			&& Objects.equals(this.slug, x.slug)
+			&& Objects.equals(this.description, x.description)
+			&& Objects.equals(this.productTypeId, x.productTypeId)
+			&& Objects.equals(this.trackInventory, x.trackInventory)
+			&& Objects.equals(this.shippingCategoryId, x.shippingCategoryId)
+			&& Objects.equals(this.sku, x.sku)
+			&& Objects.equals(this.taxCode, x.taxCode)
+			&& Objects.equals(this.previousChanges, x.previousChanges)
+			&& Objects.equals(this.shippingCategory, x.shippingCategory)
+			&& Objects.equals(this.productType, x.productType)
+			&& Objects.equals(this.prices, x.prices)
+			&& Objects.equals(this.lineItems, x.lineItems)
+			&& Objects.equals(this.lineItemStocks, x.lineItemStocks)
+			&& Objects.equals(this.stockItems, x.stockItems)
+			&& Objects.equals(this.shippingServiceStockLocations, x.shippingServiceStockLocations)
+			&& Objects.equals(this.resourceImages, x.resourceImages)
+			&& Objects.equals(this.images, x.images)
+			&& Objects.equals(this.translations, x.translations)
+			&& Objects.equals(this.variants, x.variants)
+			&& Objects.equals(this.merchandisingRules, x.merchandisingRules)
+			&& Objects.equals(this.productProperties, x.productProperties)
+			&& Objects.equals(this.hasVariants, x.hasVariants)
 		;
 	
 	}
@@ -298,13 +340,46 @@ public class Product extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			serialVersionUID, resourceName, id, creatorResource, createdAt,
-			updatedAt, name, description, productTypeId, trackInventory,
-			shippingCategoryId, taxCode, previousChanges, shippingCategory, productType,
-			prices, lineItems, lineItemStocks, stockItems, shippingServiceStockLocations,
-			resourceImages, images, translations, variants, merchandisingRules,
-			productProperties, hasVariants 
+			name, slug, description, productTypeId, trackInventory,
+			shippingCategoryId, sku, taxCode, previousChanges, shippingCategory,
+			productType, prices, lineItems, lineItemStocks, stockItems,
+			shippingServiceStockLocations, resourceImages, images, translations, variants,
+			merchandisingRules, productProperties, hasVariants 
 		);
+	
+	}
+	
+
+	@Override
+	public Product clone() {
+	
+		Product no = new Product();
+	
+		no.name = this.name;
+		no.slug = this.slug;
+		no.description = this.description;
+		no.productTypeId = this.productTypeId;
+		no.trackInventory = this.trackInventory;
+		no.shippingCategoryId = this.shippingCategoryId;
+		no.sku = this.sku;
+		no.taxCode = this.taxCode;
+		no.previousChanges = this.previousChanges;
+		no.shippingCategory = this.shippingCategory;
+		no.productType = this.productType;
+		no.prices = this.prices;
+		no.lineItems = this.lineItems;
+		no.lineItemStocks = this.lineItemStocks;
+		no.stockItems = this.stockItems;
+		no.shippingServiceStockLocations = this.shippingServiceStockLocations;
+		no.resourceImages = this.resourceImages;
+		no.images = this.images;
+		no.translations = this.translations;
+		no.variants = this.variants;
+		no.merchandisingRules = this.merchandisingRules;
+		no.productProperties = this.productProperties;
+		no.hasVariants = this.hasVariants;
+	
+		return no;
 	
 	}
 	

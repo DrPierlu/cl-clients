@@ -1,5 +1,7 @@
 package io.commercelayer.api.codegen.schema.parser;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -12,6 +14,7 @@ import io.commercelayer.api.codegen.schema.Parameter;
 import io.commercelayer.api.codegen.schema.Property;
 import io.commercelayer.api.codegen.schema.Resource;
 import io.commercelayer.api.codegen.schema.Schema;
+import io.commercelayer.api.util.ModelUtils;
 import io.swagger.models.HttpMethod;
 import io.swagger.models.Model;
 import io.swagger.models.Path;
@@ -34,7 +37,7 @@ public class ApiSwaggerParser extends ApiParser {
 		// Definitions
 		logger.info("Parsing definitions ...");
 		
-		Map<String, Model> definitions = swagger.getDefinitions();
+		final Map<String, Model> definitions = swagger.getDefinitions();
 		
 		for (Map.Entry<String, Model> def : definitions.entrySet()) {
 			
@@ -54,7 +57,7 @@ public class ApiSwaggerParser extends ApiParser {
 		// Resources
 		logger.info("Parsing resources ...");
 		
-		Map<String, Path> paths = swagger.getPaths();
+		final Map<String, Path> paths = swagger.getPaths();
 		
 		for (Map.Entry<String, Path> path : paths.entrySet()) {
 			
@@ -88,8 +91,49 @@ public class ApiSwaggerParser extends ApiParser {
 		
 		logger.info("Schema parsed");
 		
+		setRequiredFieldsByOperations(schema);
+		
 		return schema;
 
+	}
+	
+	
+	private void setRequiredFieldsByOperations(Schema schema) {
+		
+		Map<String, List<String>> requiredObjectFields = new HashMap<>();
+		
+		for (Resource res : schema.getResources()) {
+			for (Operation op : res.getOperations()) {
+				for (Parameter p : op.getParameters()) {
+					
+					if (!"formData".equals(p.getInputType())) continue;
+					if (!p.isRequired()) continue;
+					
+					String oName = ModelUtils.getObjectName(p.getName(), true);
+					String fName = ModelUtils.getObjectField(p.getName(), false);
+					
+					List<String> fieldList = requiredObjectFields.get(oName);
+					if (fieldList == null) fieldList = new ArrayList<>();
+					fieldList.add(fName);
+					requiredObjectFields.put(oName, fieldList);
+					
+				}
+			}
+		}
+		
+		if (requiredObjectFields.isEmpty()) return;
+		
+		for (Definition def : schema.getDefinitions()) {
+			List<String> fieldList = requiredObjectFields.get(def.getTitle());
+			if ((fieldList == null) || fieldList.isEmpty()) continue;
+			for (Property p : def.getProperties()) {
+				boolean required = fieldList.contains(p.getName());
+				if (required) p.setRequired(true);
+				if (!required) p.setReadonly(true);
+			}
+			
+		}
+		
 	}
 	
 	
@@ -112,7 +156,7 @@ public class ApiSwaggerParser extends ApiParser {
 		return prop;
 		
 	}
-	
+
 	
 	private Parameter parseParameter(io.swagger.models.parameters.Parameter param) {
 		
@@ -125,15 +169,15 @@ public class ApiSwaggerParser extends ApiParser {
 		if (param instanceof AbstractParameter) {
 			AbstractParameter ap = (AbstractParameter)param;
 			parameter.setName(ap.getName());
-			parameter.setRequired(ap.getRequired());
 			parameter.setPattern(ap.getPattern());
 		}
 		
-		if (ArrayUtils.contains(new String[]{"path",  "formData", "query"}, parameter.getInputType())) {
+		if (ArrayUtils.contains(new String[]{"path", "formData", "query"}, parameter.getInputType())) {
 			AbstractSerializableParameter<?> asp = (AbstractSerializableParameter<?>)param;
 			parameter.setFormat(asp.getFormat());
 			parameter.setType(asp.getType());
 		}
+		
 		
 		return parameter;
 		

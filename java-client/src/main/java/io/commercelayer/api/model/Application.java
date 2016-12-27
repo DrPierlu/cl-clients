@@ -10,14 +10,17 @@ import java.util.List;
  */
 public class Application extends ApiResource {
 
-	private static final long serialVersionUID = -1482845757875L;
+	private static final long serialVersionUID = -1482880735268L;
 
 
 	private String name;
 	@JsonExclude
 	private Object previousChanges;
+	@JsonExclude
 	private List<String> consumerRoles;
+	@JsonExclude
 	private List<String> roles;
+	@JsonExclude
 	private List<String> permissions;
 	@JsonExclude
 	private Object authCredentials;
@@ -97,17 +100,17 @@ public class Application extends ApiResource {
 	public boolean equals(Object o) {
 	
 		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
+		if ((o == null) || (getClass() != o.getClass())) return false;
 	
-		Application x = (Application) o;
+		Application x = (Application)o;
 	
-		return super.equals(o) &&
-			Objects.equals(this.name, x.name)  &&
-			Objects.equals(this.previousChanges, x.previousChanges)  &&
-			Objects.equals(this.consumerRoles, x.consumerRoles)  &&
-			Objects.equals(this.roles, x.roles)  &&
-			Objects.equals(this.permissions, x.permissions)  &&
-			Objects.equals(this.authCredentials, x.authCredentials) 
+		return super.equals(o)
+			&& Objects.equals(this.name, x.name)
+			&& Objects.equals(this.previousChanges, x.previousChanges)
+			&& Objects.equals(this.consumerRoles, x.consumerRoles)
+			&& Objects.equals(this.roles, x.roles)
+			&& Objects.equals(this.permissions, x.permissions)
+			&& Objects.equals(this.authCredentials, x.authCredentials)
 		;
 	
 	}
@@ -117,10 +120,26 @@ public class Application extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			serialVersionUID, resourceName, id, creatorResource, createdAt,
-			updatedAt, name, previousChanges, consumerRoles, roles,
-			permissions, authCredentials 
+			name, previousChanges, consumerRoles, roles, permissions,
+			authCredentials 
 		);
+	
+	}
+	
+
+	@Override
+	public Application clone() {
+	
+		Application no = new Application();
+	
+		no.name = this.name;
+		no.previousChanges = this.previousChanges;
+		no.consumerRoles = this.consumerRoles;
+		no.roles = this.roles;
+		no.permissions = this.permissions;
+		no.authCredentials = this.authCredentials;
+	
+		return no;
 	
 	}
 	

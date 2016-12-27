@@ -19,6 +19,7 @@ public class PostAccountShippingMethods extends PostOperation {
 		addRequiredField("lineItemDefaultId");
 	}
 
+
 	public PostAccountShippingMethods() {
 		super(OPERATION_PATH);
 	}

@@ -10,41 +10,65 @@ import java.util.List;
  */
 public class Address extends ApiResource {
 
-	private static final long serialVersionUID = -1482845757860L;
+	private static final long serialVersionUID = -1482880735265L;
 
 
+	@JsonExclude
+	private String name;
 	private String geocodingCountry;
 	private String geocodingZip;
 	private String geocodingCity;
 	private String geocodingStreet;
 	private String geocodingNumber;
+	@JsonExclude
 	private String provider;
+	@JsonExclude
 	private String placeId;
+	@JsonExclude
 	private String precision;
-	private String accuracy;
+	@JsonExclude
+	private Integer accuracy;
+	@JsonExclude
 	private String countryCode;
+	@JsonExclude
 	private String country;
+	@JsonExclude
 	private String stateCode;
+	@JsonExclude
 	private String stateName;
+	@JsonExclude
 	private String state;
+	@JsonExclude
 	private String province;
+	@JsonExclude
 	private String zip;
+	@JsonExclude
 	private String city;
+	@JsonExclude
 	private String district;
+	@JsonExclude
 	private String streetName;
+	@JsonExclude
 	private String streetNumber;
+	@JsonExclude
 	private String streetAddress;
+	@JsonExclude
 	private String subPremise;
-	private String fullAddress;
-	private String formattedAddress;
+	@JsonExclude
 	private Float lat;
+	@JsonExclude
 	private Float lng;
+	@JsonExclude
 	private Float suggestedBoundsSwLat;
+	@JsonExclude
 	private Float suggestedBoundsSwLng;
+	@JsonExclude
 	private Float suggestedBoundsNeLat;
+	@JsonExclude
 	private Float suggestedBoundsNeLng;
 	@JsonExclude
 	private Object previousChanges;
+	@JsonExclude
 	private List<String> shippingMethods;
 
 
@@ -55,6 +79,16 @@ public class Address extends ApiResource {
 
 	public Address(Long id) {
 		super(id);
+	}
+	
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+
+	public String getName() {
+		return this.name;
 	}
 	
 
@@ -138,12 +172,12 @@ public class Address extends ApiResource {
 	}
 	
 
-	public void setAccuracy(String accuracy) {
+	public void setAccuracy(Integer accuracy) {
 		this.accuracy = accuracy;
 	}
 	
 
-	public String getAccuracy() {
+	public Integer getAccuracy() {
 		return this.accuracy;
 	}
 	
@@ -278,26 +312,6 @@ public class Address extends ApiResource {
 	}
 	
 
-	public void setFullAddress(String fullAddress) {
-		this.fullAddress = fullAddress;
-	}
-	
-
-	public String getFullAddress() {
-		return this.fullAddress;
-	}
-	
-
-	public void setFormattedAddress(String formattedAddress) {
-		this.formattedAddress = formattedAddress;
-	}
-	
-
-	public String getFormattedAddress() {
-		return this.formattedAddress;
-	}
-	
-
 	public void setLat(Float lat) {
 		this.lat = lat;
 	}
@@ -382,43 +396,42 @@ public class Address extends ApiResource {
 	public boolean equals(Object o) {
 	
 		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
+		if ((o == null) || (getClass() != o.getClass())) return false;
 	
-		Address x = (Address) o;
+		Address x = (Address)o;
 	
-		return super.equals(o) &&
-			Objects.equals(this.geocodingCountry, x.geocodingCountry)  &&
-			Objects.equals(this.geocodingZip, x.geocodingZip)  &&
-			Objects.equals(this.geocodingCity, x.geocodingCity)  &&
-			Objects.equals(this.geocodingStreet, x.geocodingStreet)  &&
-			Objects.equals(this.geocodingNumber, x.geocodingNumber)  &&
-			Objects.equals(this.provider, x.provider)  &&
-			Objects.equals(this.placeId, x.placeId)  &&
-			Objects.equals(this.precision, x.precision)  &&
-			Objects.equals(this.accuracy, x.accuracy)  &&
-			Objects.equals(this.countryCode, x.countryCode)  &&
-			Objects.equals(this.country, x.country)  &&
-			Objects.equals(this.stateCode, x.stateCode)  &&
-			Objects.equals(this.stateName, x.stateName)  &&
-			Objects.equals(this.state, x.state)  &&
-			Objects.equals(this.province, x.province)  &&
-			Objects.equals(this.zip, x.zip)  &&
-			Objects.equals(this.city, x.city)  &&
-			Objects.equals(this.district, x.district)  &&
-			Objects.equals(this.streetName, x.streetName)  &&
-			Objects.equals(this.streetNumber, x.streetNumber)  &&
-			Objects.equals(this.streetAddress, x.streetAddress)  &&
-			Objects.equals(this.subPremise, x.subPremise)  &&
-			Objects.equals(this.fullAddress, x.fullAddress)  &&
-			Objects.equals(this.formattedAddress, x.formattedAddress)  &&
-			Objects.equals(this.lat, x.lat)  &&
-			Objects.equals(this.lng, x.lng)  &&
-			Objects.equals(this.suggestedBoundsSwLat, x.suggestedBoundsSwLat)  &&
-			Objects.equals(this.suggestedBoundsSwLng, x.suggestedBoundsSwLng)  &&
-			Objects.equals(this.suggestedBoundsNeLat, x.suggestedBoundsNeLat)  &&
-			Objects.equals(this.suggestedBoundsNeLng, x.suggestedBoundsNeLng)  &&
-			Objects.equals(this.previousChanges, x.previousChanges)  &&
-			Objects.equals(this.shippingMethods, x.shippingMethods) 
+		return super.equals(o)
+			&& Objects.equals(this.name, x.name)
+			&& Objects.equals(this.geocodingCountry, x.geocodingCountry)
+			&& Objects.equals(this.geocodingZip, x.geocodingZip)
+			&& Objects.equals(this.geocodingCity, x.geocodingCity)
+			&& Objects.equals(this.geocodingStreet, x.geocodingStreet)
+			&& Objects.equals(this.geocodingNumber, x.geocodingNumber)
+			&& Objects.equals(this.provider, x.provider)
+			&& Objects.equals(this.placeId, x.placeId)
+			&& Objects.equals(this.precision, x.precision)
+			&& Objects.equals(this.accuracy, x.accuracy)
+			&& Objects.equals(this.countryCode, x.countryCode)
+			&& Objects.equals(this.country, x.country)
+			&& Objects.equals(this.stateCode, x.stateCode)
+			&& Objects.equals(this.stateName, x.stateName)
+			&& Objects.equals(this.state, x.state)
+			&& Objects.equals(this.province, x.province)
+			&& Objects.equals(this.zip, x.zip)
+			&& Objects.equals(this.city, x.city)
+			&& Objects.equals(this.district, x.district)
+			&& Objects.equals(this.streetName, x.streetName)
+			&& Objects.equals(this.streetNumber, x.streetNumber)
+			&& Objects.equals(this.streetAddress, x.streetAddress)
+			&& Objects.equals(this.subPremise, x.subPremise)
+			&& Objects.equals(this.lat, x.lat)
+			&& Objects.equals(this.lng, x.lng)
+			&& Objects.equals(this.suggestedBoundsSwLat, x.suggestedBoundsSwLat)
+			&& Objects.equals(this.suggestedBoundsSwLng, x.suggestedBoundsSwLng)
+			&& Objects.equals(this.suggestedBoundsNeLat, x.suggestedBoundsNeLat)
+			&& Objects.equals(this.suggestedBoundsNeLng, x.suggestedBoundsNeLng)
+			&& Objects.equals(this.previousChanges, x.previousChanges)
+			&& Objects.equals(this.shippingMethods, x.shippingMethods)
 		;
 	
 	}
@@ -428,15 +441,56 @@ public class Address extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			serialVersionUID, resourceName, id, creatorResource, createdAt,
-			updatedAt, geocodingCountry, geocodingZip, geocodingCity, geocodingStreet,
+			name, geocodingCountry, geocodingZip, geocodingCity, geocodingStreet,
 			geocodingNumber, provider, placeId, precision, accuracy,
 			countryCode, country, stateCode, stateName, state,
 			province, zip, city, district, streetName,
-			streetNumber, streetAddress, subPremise, fullAddress, formattedAddress,
-			lat, lng, suggestedBoundsSwLat, suggestedBoundsSwLng, suggestedBoundsNeLat,
-			suggestedBoundsNeLng, previousChanges, shippingMethods 
+			streetNumber, streetAddress, subPremise, lat, lng,
+			suggestedBoundsSwLat, suggestedBoundsSwLng, suggestedBoundsNeLat, suggestedBoundsNeLng, previousChanges,
+			shippingMethods 
 		);
+	
+	}
+	
+
+	@Override
+	public Address clone() {
+	
+		Address no = new Address();
+	
+		no.name = this.name;
+		no.geocodingCountry = this.geocodingCountry;
+		no.geocodingZip = this.geocodingZip;
+		no.geocodingCity = this.geocodingCity;
+		no.geocodingStreet = this.geocodingStreet;
+		no.geocodingNumber = this.geocodingNumber;
+		no.provider = this.provider;
+		no.placeId = this.placeId;
+		no.precision = this.precision;
+		no.accuracy = this.accuracy;
+		no.countryCode = this.countryCode;
+		no.country = this.country;
+		no.stateCode = this.stateCode;
+		no.stateName = this.stateName;
+		no.state = this.state;
+		no.province = this.province;
+		no.zip = this.zip;
+		no.city = this.city;
+		no.district = this.district;
+		no.streetName = this.streetName;
+		no.streetNumber = this.streetNumber;
+		no.streetAddress = this.streetAddress;
+		no.subPremise = this.subPremise;
+		no.lat = this.lat;
+		no.lng = this.lng;
+		no.suggestedBoundsSwLat = this.suggestedBoundsSwLat;
+		no.suggestedBoundsSwLng = this.suggestedBoundsSwLng;
+		no.suggestedBoundsNeLat = this.suggestedBoundsNeLat;
+		no.suggestedBoundsNeLng = this.suggestedBoundsNeLng;
+		no.previousChanges = this.previousChanges;
+		no.shippingMethods = this.shippingMethods;
+	
+		return no;
 	
 	}
 	

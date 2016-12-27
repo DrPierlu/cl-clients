@@ -9,20 +9,24 @@ import io.commercelayer.api.json.JsonExclude;
  */
 public class ShippingServiceStockLocation extends ApiResource {
 
-	private static final long serialVersionUID = -1482845758250L;
+	private static final long serialVersionUID = -1482880735352L;
 
 
-	private String shippingServiceId;
-	private String stockLocationId;
-	private String minLeadTimeHours;
-	private String maxLeadTimeHours;
+	@JsonExclude
+	private String name;
+	private Integer shippingServiceId;
+	private Integer stockLocationId;
+	private Integer minLeadTimeHours;
+	private Integer maxLeadTimeHours;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
 	private Object shippingService;
 	@JsonExclude
 	private Object stockLocation;
+	@JsonExclude
 	private String minLeadTimeDays;
+	@JsonExclude
 	private String maxLeadTimeDays;
 
 
@@ -36,42 +40,52 @@ public class ShippingServiceStockLocation extends ApiResource {
 	}
 	
 
-	public void setShippingServiceId(String shippingServiceId) {
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+
+	public String getName() {
+		return this.name;
+	}
+	
+
+	public void setShippingServiceId(Integer shippingServiceId) {
 		this.shippingServiceId = shippingServiceId;
 	}
 	
 
-	public String getShippingServiceId() {
+	public Integer getShippingServiceId() {
 		return this.shippingServiceId;
 	}
 	
 
-	public void setStockLocationId(String stockLocationId) {
+	public void setStockLocationId(Integer stockLocationId) {
 		this.stockLocationId = stockLocationId;
 	}
 	
 
-	public String getStockLocationId() {
+	public Integer getStockLocationId() {
 		return this.stockLocationId;
 	}
 	
 
-	public void setMinLeadTimeHours(String minLeadTimeHours) {
+	public void setMinLeadTimeHours(Integer minLeadTimeHours) {
 		this.minLeadTimeHours = minLeadTimeHours;
 	}
 	
 
-	public String getMinLeadTimeHours() {
+	public Integer getMinLeadTimeHours() {
 		return this.minLeadTimeHours;
 	}
 	
 
-	public void setMaxLeadTimeHours(String maxLeadTimeHours) {
+	public void setMaxLeadTimeHours(Integer maxLeadTimeHours) {
 		this.maxLeadTimeHours = maxLeadTimeHours;
 	}
 	
 
-	public String getMaxLeadTimeHours() {
+	public Integer getMaxLeadTimeHours() {
 		return this.maxLeadTimeHours;
 	}
 	
@@ -130,20 +144,21 @@ public class ShippingServiceStockLocation extends ApiResource {
 	public boolean equals(Object o) {
 	
 		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
+		if ((o == null) || (getClass() != o.getClass())) return false;
 	
-		ShippingServiceStockLocation x = (ShippingServiceStockLocation) o;
+		ShippingServiceStockLocation x = (ShippingServiceStockLocation)o;
 	
-		return super.equals(o) &&
-			Objects.equals(this.shippingServiceId, x.shippingServiceId)  &&
-			Objects.equals(this.stockLocationId, x.stockLocationId)  &&
-			Objects.equals(this.minLeadTimeHours, x.minLeadTimeHours)  &&
-			Objects.equals(this.maxLeadTimeHours, x.maxLeadTimeHours)  &&
-			Objects.equals(this.previousChanges, x.previousChanges)  &&
-			Objects.equals(this.shippingService, x.shippingService)  &&
-			Objects.equals(this.stockLocation, x.stockLocation)  &&
-			Objects.equals(this.minLeadTimeDays, x.minLeadTimeDays)  &&
-			Objects.equals(this.maxLeadTimeDays, x.maxLeadTimeDays) 
+		return super.equals(o)
+			&& Objects.equals(this.name, x.name)
+			&& Objects.equals(this.shippingServiceId, x.shippingServiceId)
+			&& Objects.equals(this.stockLocationId, x.stockLocationId)
+			&& Objects.equals(this.minLeadTimeHours, x.minLeadTimeHours)
+			&& Objects.equals(this.maxLeadTimeHours, x.maxLeadTimeHours)
+			&& Objects.equals(this.previousChanges, x.previousChanges)
+			&& Objects.equals(this.shippingService, x.shippingService)
+			&& Objects.equals(this.stockLocation, x.stockLocation)
+			&& Objects.equals(this.minLeadTimeDays, x.minLeadTimeDays)
+			&& Objects.equals(this.maxLeadTimeDays, x.maxLeadTimeDays)
 		;
 	
 	}
@@ -153,11 +168,31 @@ public class ShippingServiceStockLocation extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			serialVersionUID, resourceName, id, creatorResource, createdAt,
-			updatedAt, shippingServiceId, stockLocationId, minLeadTimeHours, maxLeadTimeHours,
+			name, shippingServiceId, stockLocationId, minLeadTimeHours, maxLeadTimeHours,
 			previousChanges, shippingService, stockLocation, minLeadTimeDays, maxLeadTimeDays
 			
 		);
+	
+	}
+	
+
+	@Override
+	public ShippingServiceStockLocation clone() {
+	
+		ShippingServiceStockLocation no = new ShippingServiceStockLocation();
+	
+		no.name = this.name;
+		no.shippingServiceId = this.shippingServiceId;
+		no.stockLocationId = this.stockLocationId;
+		no.minLeadTimeHours = this.minLeadTimeHours;
+		no.maxLeadTimeHours = this.maxLeadTimeHours;
+		no.previousChanges = this.previousChanges;
+		no.shippingService = this.shippingService;
+		no.stockLocation = this.stockLocation;
+		no.minLeadTimeDays = this.minLeadTimeDays;
+		no.maxLeadTimeDays = this.maxLeadTimeDays;
+	
+		return no;
 	
 	}
 	

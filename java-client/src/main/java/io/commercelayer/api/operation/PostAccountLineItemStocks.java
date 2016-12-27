@@ -18,6 +18,7 @@ public class PostAccountLineItemStocks extends PostOperation {
 		addRequiredField("shipmentId");
 	}
 
+
 	public PostAccountLineItemStocks() {
 		super(OPERATION_PATH);
 	}

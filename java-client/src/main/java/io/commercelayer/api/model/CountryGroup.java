@@ -10,14 +10,17 @@ import java.util.List;
  */
 public class CountryGroup extends ApiResource {
 
-	private static final long serialVersionUID = -1482845757922L;
+	private static final long serialVersionUID = -1482880735276L;
 
 
 	private String name;
 	@JsonExclude
 	private Object previousChanges;
+	@JsonExclude
 	private List<String> countries;
+	@JsonExclude
 	private List<String> shippingZones;
+	@JsonExclude
 	private List<String> shippingMethods;
 
 
@@ -85,16 +88,16 @@ public class CountryGroup extends ApiResource {
 	public boolean equals(Object o) {
 	
 		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
+		if ((o == null) || (getClass() != o.getClass())) return false;
 	
-		CountryGroup x = (CountryGroup) o;
+		CountryGroup x = (CountryGroup)o;
 	
-		return super.equals(o) &&
-			Objects.equals(this.name, x.name)  &&
-			Objects.equals(this.previousChanges, x.previousChanges)  &&
-			Objects.equals(this.countries, x.countries)  &&
-			Objects.equals(this.shippingZones, x.shippingZones)  &&
-			Objects.equals(this.shippingMethods, x.shippingMethods) 
+		return super.equals(o)
+			&& Objects.equals(this.name, x.name)
+			&& Objects.equals(this.previousChanges, x.previousChanges)
+			&& Objects.equals(this.countries, x.countries)
+			&& Objects.equals(this.shippingZones, x.shippingZones)
+			&& Objects.equals(this.shippingMethods, x.shippingMethods)
 		;
 	
 	}
@@ -104,10 +107,25 @@ public class CountryGroup extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			serialVersionUID, resourceName, id, creatorResource, createdAt,
-			updatedAt, name, previousChanges, countries, shippingZones,
-			shippingMethods 
+			name, previousChanges, countries, shippingZones, shippingMethods
+			
 		);
+	
+	}
+	
+
+	@Override
+	public CountryGroup clone() {
+	
+		CountryGroup no = new CountryGroup();
+	
+		no.name = this.name;
+		no.previousChanges = this.previousChanges;
+		no.countries = this.countries;
+		no.shippingZones = this.shippingZones;
+		no.shippingMethods = this.shippingMethods;
+	
+		return no;
 	
 	}
 	

@@ -18,6 +18,7 @@ public class PostAccountAddresses extends PostOperation {
 		addRequiredField("geocodingNumber");
 	}
 
+
 	public PostAccountAddresses() {
 		super(OPERATION_PATH);
 	}

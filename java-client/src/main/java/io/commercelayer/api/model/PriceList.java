@@ -10,17 +10,20 @@ import java.util.List;
  */
 public class PriceList extends ApiResource {
 
-	private static final long serialVersionUID = -1482845758140L;
+	private static final long serialVersionUID = -1482880735320L;
 
 
-	private String currencyId;
+	private Integer currencyId;
 	private String name;
-	private String taxIncluded;
+	@JsonExclude
+	private Object taxIncluded;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
 	private Object currency;
+	@JsonExclude
 	private List<String> prices;
+	@JsonExclude
 	private List<String> markets;
 
 
@@ -34,12 +37,12 @@ public class PriceList extends ApiResource {
 	}
 	
 
-	public void setCurrencyId(String currencyId) {
+	public void setCurrencyId(Integer currencyId) {
 		this.currencyId = currencyId;
 	}
 	
 
-	public String getCurrencyId() {
+	public Integer getCurrencyId() {
 		return this.currencyId;
 	}
 	
@@ -54,12 +57,12 @@ public class PriceList extends ApiResource {
 	}
 	
 
-	public void setTaxIncluded(String taxIncluded) {
+	public void setTaxIncluded(Object taxIncluded) {
 		this.taxIncluded = taxIncluded;
 	}
 	
 
-	public String getTaxIncluded() {
+	public Object getTaxIncluded() {
 		return this.taxIncluded;
 	}
 	
@@ -108,18 +111,18 @@ public class PriceList extends ApiResource {
 	public boolean equals(Object o) {
 	
 		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
+		if ((o == null) || (getClass() != o.getClass())) return false;
 	
-		PriceList x = (PriceList) o;
+		PriceList x = (PriceList)o;
 	
-		return super.equals(o) &&
-			Objects.equals(this.currencyId, x.currencyId)  &&
-			Objects.equals(this.name, x.name)  &&
-			Objects.equals(this.taxIncluded, x.taxIncluded)  &&
-			Objects.equals(this.previousChanges, x.previousChanges)  &&
-			Objects.equals(this.currency, x.currency)  &&
-			Objects.equals(this.prices, x.prices)  &&
-			Objects.equals(this.markets, x.markets) 
+		return super.equals(o)
+			&& Objects.equals(this.currencyId, x.currencyId)
+			&& Objects.equals(this.name, x.name)
+			&& Objects.equals(this.taxIncluded, x.taxIncluded)
+			&& Objects.equals(this.previousChanges, x.previousChanges)
+			&& Objects.equals(this.currency, x.currency)
+			&& Objects.equals(this.prices, x.prices)
+			&& Objects.equals(this.markets, x.markets)
 		;
 	
 	}
@@ -129,10 +132,27 @@ public class PriceList extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			serialVersionUID, resourceName, id, creatorResource, createdAt,
-			updatedAt, currencyId, name, taxIncluded, previousChanges,
-			currency, prices, markets 
+			currencyId, name, taxIncluded, previousChanges, currency,
+			prices, markets 
 		);
+	
+	}
+	
+
+	@Override
+	public PriceList clone() {
+	
+		PriceList no = new PriceList();
+	
+		no.currencyId = this.currencyId;
+		no.name = this.name;
+		no.taxIncluded = this.taxIncluded;
+		no.previousChanges = this.previousChanges;
+		no.currency = this.currency;
+		no.prices = this.prices;
+		no.markets = this.markets;
+	
+		return no;
 	
 	}
 	

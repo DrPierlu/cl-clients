@@ -20,6 +20,7 @@ public class PutChannelPaymentMethodsId extends PutOperation {
 		addRequiredField("id");
 	}
 
+
 	public PutChannelPaymentMethodsId() {
 		super(OPERATION_PATH);
 	}

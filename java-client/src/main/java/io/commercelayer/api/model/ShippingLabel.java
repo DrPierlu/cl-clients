@@ -9,10 +9,12 @@ import io.commercelayer.api.json.JsonExclude;
  */
 public class ShippingLabel extends ApiResource {
 
-	private static final long serialVersionUID = -1482845758218L;
+	private static final long serialVersionUID = -1482880735346L;
 
 
-	private String shipmentId;
+	@JsonExclude
+	private String name;
+	private Integer shipmentId;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
@@ -29,12 +31,22 @@ public class ShippingLabel extends ApiResource {
 	}
 	
 
-	public void setShipmentId(String shipmentId) {
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+
+	public String getName() {
+		return this.name;
+	}
+	
+
+	public void setShipmentId(Integer shipmentId) {
 		this.shipmentId = shipmentId;
 	}
 	
 
-	public String getShipmentId() {
+	public Integer getShipmentId() {
 		return this.shipmentId;
 	}
 	
@@ -63,14 +75,15 @@ public class ShippingLabel extends ApiResource {
 	public boolean equals(Object o) {
 	
 		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
+		if ((o == null) || (getClass() != o.getClass())) return false;
 	
-		ShippingLabel x = (ShippingLabel) o;
+		ShippingLabel x = (ShippingLabel)o;
 	
-		return super.equals(o) &&
-			Objects.equals(this.shipmentId, x.shipmentId)  &&
-			Objects.equals(this.previousChanges, x.previousChanges)  &&
-			Objects.equals(this.shipment, x.shipment) 
+		return super.equals(o)
+			&& Objects.equals(this.name, x.name)
+			&& Objects.equals(this.shipmentId, x.shipmentId)
+			&& Objects.equals(this.previousChanges, x.previousChanges)
+			&& Objects.equals(this.shipment, x.shipment)
 		;
 	
 	}
@@ -80,9 +93,23 @@ public class ShippingLabel extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			serialVersionUID, resourceName, id, creatorResource, createdAt,
-			updatedAt, shipmentId, previousChanges, shipment 
+			name, shipmentId, previousChanges, shipment 
 		);
+	
+	}
+	
+
+	@Override
+	public ShippingLabel clone() {
+	
+		ShippingLabel no = new ShippingLabel();
+	
+		no.name = this.name;
+		no.shipmentId = this.shipmentId;
+		no.previousChanges = this.previousChanges;
+		no.shipment = this.shipment;
+	
+		return no;
 	
 	}
 	

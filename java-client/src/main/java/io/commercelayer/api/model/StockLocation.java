@@ -10,16 +10,21 @@ import java.util.List;
  */
 public class StockLocation extends ApiResource {
 
-	private static final long serialVersionUID = -1482845758296L;
+	private static final long serialVersionUID = -1482880735359L;
 
 
 	private String name;
-	private String position;
+	@JsonExclude
+	private Integer position;
 	@JsonExclude
 	private Object previousChanges;
+	@JsonExclude
 	private List<String> stockItems;
+	@JsonExclude
 	private List<String> lineItemStocks;
+	@JsonExclude
 	private List<String> shippingServiceStockLocations;
+	@JsonExclude
 	private List<String> shippingServices;
 
 
@@ -43,12 +48,12 @@ public class StockLocation extends ApiResource {
 	}
 	
 
-	public void setPosition(String position) {
+	public void setPosition(Integer position) {
 		this.position = position;
 	}
 	
 
-	public String getPosition() {
+	public Integer getPosition() {
 		return this.position;
 	}
 	
@@ -107,18 +112,18 @@ public class StockLocation extends ApiResource {
 	public boolean equals(Object o) {
 	
 		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
+		if ((o == null) || (getClass() != o.getClass())) return false;
 	
-		StockLocation x = (StockLocation) o;
+		StockLocation x = (StockLocation)o;
 	
-		return super.equals(o) &&
-			Objects.equals(this.name, x.name)  &&
-			Objects.equals(this.position, x.position)  &&
-			Objects.equals(this.previousChanges, x.previousChanges)  &&
-			Objects.equals(this.stockItems, x.stockItems)  &&
-			Objects.equals(this.lineItemStocks, x.lineItemStocks)  &&
-			Objects.equals(this.shippingServiceStockLocations, x.shippingServiceStockLocations)  &&
-			Objects.equals(this.shippingServices, x.shippingServices) 
+		return super.equals(o)
+			&& Objects.equals(this.name, x.name)
+			&& Objects.equals(this.position, x.position)
+			&& Objects.equals(this.previousChanges, x.previousChanges)
+			&& Objects.equals(this.stockItems, x.stockItems)
+			&& Objects.equals(this.lineItemStocks, x.lineItemStocks)
+			&& Objects.equals(this.shippingServiceStockLocations, x.shippingServiceStockLocations)
+			&& Objects.equals(this.shippingServices, x.shippingServices)
 		;
 	
 	}
@@ -128,10 +133,27 @@ public class StockLocation extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			serialVersionUID, resourceName, id, creatorResource, createdAt,
-			updatedAt, name, position, previousChanges, stockItems,
-			lineItemStocks, shippingServiceStockLocations, shippingServices 
+			name, position, previousChanges, stockItems, lineItemStocks,
+			shippingServiceStockLocations, shippingServices 
 		);
+	
+	}
+	
+
+	@Override
+	public StockLocation clone() {
+	
+		StockLocation no = new StockLocation();
+	
+		no.name = this.name;
+		no.position = this.position;
+		no.previousChanges = this.previousChanges;
+		no.stockItems = this.stockItems;
+		no.lineItemStocks = this.lineItemStocks;
+		no.shippingServiceStockLocations = this.shippingServiceStockLocations;
+		no.shippingServices = this.shippingServices;
+	
+		return no;
 	
 	}
 	

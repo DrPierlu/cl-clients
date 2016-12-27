@@ -14,6 +14,7 @@ public class PostAccountShippingPackages extends PostOperation {
 		addRequiredField("name");
 	}
 
+
 	public PostAccountShippingPackages() {
 		super(OPERATION_PATH);
 	}

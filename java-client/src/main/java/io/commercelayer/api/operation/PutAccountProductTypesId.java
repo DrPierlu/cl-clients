@@ -15,6 +15,7 @@ public class PutAccountProductTypesId extends PutOperation {
 		addRequiredField("id");
 	}
 
+
 	public PutAccountProductTypesId() {
 		super(OPERATION_PATH);
 	}

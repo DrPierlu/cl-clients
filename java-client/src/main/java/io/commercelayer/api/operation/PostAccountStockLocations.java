@@ -15,6 +15,7 @@ public class PostAccountStockLocations extends PostOperation {
 		addRequiredField("parentId");
 	}
 
+
 	public PostAccountStockLocations() {
 		super(OPERATION_PATH);
 	}

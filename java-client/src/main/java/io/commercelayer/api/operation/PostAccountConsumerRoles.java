@@ -16,6 +16,7 @@ public class PostAccountConsumerRoles extends PostOperation {
 		addRequiredField("roleId");
 	}
 
+
 	public PostAccountConsumerRoles() {
 		super(OPERATION_PATH);
 	}

@@ -2,7 +2,7 @@ package io.commercelayer.api.operation.common;
 
 public class MoveOperation extends GetIdOperation {
 	
-	private static final String PARAM_POSITION = "position";
+	public static final String PARAM_POSITION = "position";
 
 	protected MoveOperation(String path) {
 		super(path);

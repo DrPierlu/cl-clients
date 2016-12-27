@@ -14,6 +14,7 @@ public class PostAccountChannels extends PostOperation {
 		addRequiredField("name");
 	}
 
+
 	public PostAccountChannels() {
 		super(OPERATION_PATH);
 	}

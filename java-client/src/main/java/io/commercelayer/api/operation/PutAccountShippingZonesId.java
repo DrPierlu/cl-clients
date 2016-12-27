@@ -22,6 +22,7 @@ public class PutAccountShippingZonesId extends PutOperation {
 		addRequiredField("id");
 	}
 
+
 	public PutAccountShippingZonesId() {
 		super(OPERATION_PATH);
 	}

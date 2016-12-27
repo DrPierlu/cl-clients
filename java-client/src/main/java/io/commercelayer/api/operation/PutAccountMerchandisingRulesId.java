@@ -19,6 +19,7 @@ public class PutAccountMerchandisingRulesId extends PutOperation {
 		addRequiredField("id");
 	}
 
+
 	public PutAccountMerchandisingRulesId() {
 		super(OPERATION_PATH);
 	}

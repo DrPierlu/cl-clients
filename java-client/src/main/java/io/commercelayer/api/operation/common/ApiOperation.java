@@ -32,13 +32,9 @@ public abstract class ApiOperation {
 	public Object getPathParam(String key) {
 		return this.pathParams.get(key);
 	}
-
-	public String getOrderToken() {
-		return (String)this.pathParams.get("order_token");
-	}
-
-	public void setOrderToken(String orderToken) {
-		this.pathParams.put("order_token", orderToken);
+	
+	public String toString() {
+		return getClass().getSimpleName();
 	}
 
 }

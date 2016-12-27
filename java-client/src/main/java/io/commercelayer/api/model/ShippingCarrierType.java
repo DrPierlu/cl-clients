@@ -9,7 +9,7 @@ import io.commercelayer.api.json.JsonExclude;
  */
 public class ShippingCarrierType extends ApiResource {
 
-	private static final long serialVersionUID = -1482845758203L;
+	private static final long serialVersionUID = -1482880735343L;
 
 
 	private String name;
@@ -51,13 +51,13 @@ public class ShippingCarrierType extends ApiResource {
 	public boolean equals(Object o) {
 	
 		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
+		if ((o == null) || (getClass() != o.getClass())) return false;
 	
-		ShippingCarrierType x = (ShippingCarrierType) o;
+		ShippingCarrierType x = (ShippingCarrierType)o;
 	
-		return super.equals(o) &&
-			Objects.equals(this.name, x.name)  &&
-			Objects.equals(this.previousChanges, x.previousChanges) 
+		return super.equals(o)
+			&& Objects.equals(this.name, x.name)
+			&& Objects.equals(this.previousChanges, x.previousChanges)
 		;
 	
 	}
@@ -67,9 +67,21 @@ public class ShippingCarrierType extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			serialVersionUID, resourceName, id, creatorResource, createdAt,
-			updatedAt, name, previousChanges 
+			name, previousChanges 
 		);
+	
+	}
+	
+
+	@Override
+	public ShippingCarrierType clone() {
+	
+		ShippingCarrierType no = new ShippingCarrierType();
+	
+		no.name = this.name;
+		no.previousChanges = this.previousChanges;
+	
+		return no;
 	
 	}
 	

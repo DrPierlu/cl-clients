@@ -14,6 +14,7 @@ public class PostAccountTaxonomies extends PostOperation {
 		addRequiredField("name");
 	}
 
+
 	public PostAccountTaxonomies() {
 		super(OPERATION_PATH);
 	}

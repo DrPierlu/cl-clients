@@ -9,12 +9,15 @@ import io.commercelayer.api.json.JsonExclude;
  */
 public class ProductProperty extends ApiResource {
 
-	private static final long serialVersionUID = -1482845758156L;
+	private static final long serialVersionUID = -1482880735333L;
 
 
-	private String productId;
-	private String propertyTypeId;
-	private String propertyValueId;
+	@JsonExclude
+	private String name;
+	private Integer productId;
+	@JsonExclude
+	private Integer propertyTypeId;
+	private Integer propertyValueId;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
@@ -35,32 +38,42 @@ public class ProductProperty extends ApiResource {
 	}
 	
 
-	public void setProductId(String productId) {
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+
+	public String getName() {
+		return this.name;
+	}
+	
+
+	public void setProductId(Integer productId) {
 		this.productId = productId;
 	}
 	
 
-	public String getProductId() {
+	public Integer getProductId() {
 		return this.productId;
 	}
 	
 
-	public void setPropertyTypeId(String propertyTypeId) {
+	public void setPropertyTypeId(Integer propertyTypeId) {
 		this.propertyTypeId = propertyTypeId;
 	}
 	
 
-	public String getPropertyTypeId() {
+	public Integer getPropertyTypeId() {
 		return this.propertyTypeId;
 	}
 	
 
-	public void setPropertyValueId(String propertyValueId) {
+	public void setPropertyValueId(Integer propertyValueId) {
 		this.propertyValueId = propertyValueId;
 	}
 	
 
-	public String getPropertyValueId() {
+	public Integer getPropertyValueId() {
 		return this.propertyValueId;
 	}
 	
@@ -109,18 +122,19 @@ public class ProductProperty extends ApiResource {
 	public boolean equals(Object o) {
 	
 		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
+		if ((o == null) || (getClass() != o.getClass())) return false;
 	
-		ProductProperty x = (ProductProperty) o;
+		ProductProperty x = (ProductProperty)o;
 	
-		return super.equals(o) &&
-			Objects.equals(this.productId, x.productId)  &&
-			Objects.equals(this.propertyTypeId, x.propertyTypeId)  &&
-			Objects.equals(this.propertyValueId, x.propertyValueId)  &&
-			Objects.equals(this.previousChanges, x.previousChanges)  &&
-			Objects.equals(this.product, x.product)  &&
-			Objects.equals(this.propertyType, x.propertyType)  &&
-			Objects.equals(this.propertyValue, x.propertyValue) 
+		return super.equals(o)
+			&& Objects.equals(this.name, x.name)
+			&& Objects.equals(this.productId, x.productId)
+			&& Objects.equals(this.propertyTypeId, x.propertyTypeId)
+			&& Objects.equals(this.propertyValueId, x.propertyValueId)
+			&& Objects.equals(this.previousChanges, x.previousChanges)
+			&& Objects.equals(this.product, x.product)
+			&& Objects.equals(this.propertyType, x.propertyType)
+			&& Objects.equals(this.propertyValue, x.propertyValue)
 		;
 	
 	}
@@ -130,10 +144,28 @@ public class ProductProperty extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			serialVersionUID, resourceName, id, creatorResource, createdAt,
-			updatedAt, productId, propertyTypeId, propertyValueId, previousChanges,
+			name, productId, propertyTypeId, propertyValueId, previousChanges,
 			product, propertyType, propertyValue 
 		);
+	
+	}
+	
+
+	@Override
+	public ProductProperty clone() {
+	
+		ProductProperty no = new ProductProperty();
+	
+		no.name = this.name;
+		no.productId = this.productId;
+		no.propertyTypeId = this.propertyTypeId;
+		no.propertyValueId = this.propertyValueId;
+		no.previousChanges = this.previousChanges;
+		no.product = this.product;
+		no.propertyType = this.propertyType;
+		no.propertyValue = this.propertyValue;
+	
+		return no;
 	
 	}
 	

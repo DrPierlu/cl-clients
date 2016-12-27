@@ -14,6 +14,7 @@ public class PostAccountMarketsIdResetIndex extends PostOperation {
 		addRequiredField("id");
 	}
 
+
 	public PostAccountMarketsIdResetIndex() {
 		super(OPERATION_PATH);
 	}

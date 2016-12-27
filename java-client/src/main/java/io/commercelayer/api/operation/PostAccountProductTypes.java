@@ -14,6 +14,7 @@ public class PostAccountProductTypes extends PostOperation {
 		addRequiredField("name");
 	}
 
+
 	public PostAccountProductTypes() {
 		super(OPERATION_PATH);
 	}

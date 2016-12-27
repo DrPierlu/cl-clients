@@ -37,7 +37,7 @@ public class AddressTest extends ApiTest<Address> {
 		ApiRequest<PostAccountAddresses> postReq = new ApiRequest<>(postOp);
 		ApiResponse<Address> postRes = test (postReq, Address.class, caller);
 		
-		a = postRes.getResource();
+		a.setId(postRes.getResource().getId());
 		
 		
 		// GET
@@ -73,8 +73,8 @@ public class AddressTest extends ApiTest<Address> {
 				
 		getRes = test(getReq, Address.class, caller);
 		
-		Assert.assertNotEquals(postRes.getResource().getGeocodingStreet(), putRes.getResource().getGeocodingStreet());
-		Assert.assertNotEquals(postRes.getResource().getGeocodingNumber(), putRes.getResource().getGeocodingNumber());
+		Assert.assertNotEquals(postRes.getResource().getGeocodingStreet(), getRes.getResource().getGeocodingStreet());
+		Assert.assertNotEquals(postRes.getResource().getGeocodingNumber(), getRes.getResource().getGeocodingNumber());
 		
 		
 		// DELETE
@@ -88,7 +88,7 @@ public class AddressTest extends ApiTest<Address> {
 		
 		
 		// GET
-		getRes = test(getReq, Address.class, caller);
+		getRes = test(getReq, Address.class, caller, false);
 		
 		Assert.assertNull(getRes.getResource());
 		Assert.assertNotNull(getRes.getApiError());

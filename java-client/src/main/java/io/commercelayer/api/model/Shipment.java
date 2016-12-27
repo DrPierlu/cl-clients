@@ -10,12 +10,13 @@ import java.util.List;
  */
 public class Shipment extends ApiResource {
 
-	private static final long serialVersionUID = -1482845758265L;
+	private static final long serialVersionUID = -1482880735356L;
 
 
-	private String orderId;
-	private String stockLocationId;
-	private String shippingMethodId;
+	private String name;
+	private Integer orderId;
+	private Integer stockLocationId;
+	private Integer shippingMethodId;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
@@ -37,32 +38,42 @@ public class Shipment extends ApiResource {
 	}
 	
 
-	public void setOrderId(String orderId) {
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+
+	public String getName() {
+		return this.name;
+	}
+	
+
+	public void setOrderId(Integer orderId) {
 		this.orderId = orderId;
 	}
 	
 
-	public String getOrderId() {
+	public Integer getOrderId() {
 		return this.orderId;
 	}
 	
 
-	public void setStockLocationId(String stockLocationId) {
+	public void setStockLocationId(Integer stockLocationId) {
 		this.stockLocationId = stockLocationId;
 	}
 	
 
-	public String getStockLocationId() {
+	public Integer getStockLocationId() {
 		return this.stockLocationId;
 	}
 	
 
-	public void setShippingMethodId(String shippingMethodId) {
+	public void setShippingMethodId(Integer shippingMethodId) {
 		this.shippingMethodId = shippingMethodId;
 	}
 	
 
-	public String getShippingMethodId() {
+	public Integer getShippingMethodId() {
 		return this.shippingMethodId;
 	}
 	
@@ -121,19 +132,20 @@ public class Shipment extends ApiResource {
 	public boolean equals(Object o) {
 	
 		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
+		if ((o == null) || (getClass() != o.getClass())) return false;
 	
-		Shipment x = (Shipment) o;
+		Shipment x = (Shipment)o;
 	
-		return super.equals(o) &&
-			Objects.equals(this.orderId, x.orderId)  &&
-			Objects.equals(this.stockLocationId, x.stockLocationId)  &&
-			Objects.equals(this.shippingMethodId, x.shippingMethodId)  &&
-			Objects.equals(this.previousChanges, x.previousChanges)  &&
-			Objects.equals(this.order, x.order)  &&
-			Objects.equals(this.stockLocation, x.stockLocation)  &&
-			Objects.equals(this.shippingMethod, x.shippingMethod)  &&
-			Objects.equals(this.lineItemStocks, x.lineItemStocks) 
+		return super.equals(o)
+			&& Objects.equals(this.name, x.name)
+			&& Objects.equals(this.orderId, x.orderId)
+			&& Objects.equals(this.stockLocationId, x.stockLocationId)
+			&& Objects.equals(this.shippingMethodId, x.shippingMethodId)
+			&& Objects.equals(this.previousChanges, x.previousChanges)
+			&& Objects.equals(this.order, x.order)
+			&& Objects.equals(this.stockLocation, x.stockLocation)
+			&& Objects.equals(this.shippingMethod, x.shippingMethod)
+			&& Objects.equals(this.lineItemStocks, x.lineItemStocks)
 		;
 	
 	}
@@ -143,10 +155,29 @@ public class Shipment extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			serialVersionUID, resourceName, id, creatorResource, createdAt,
-			updatedAt, orderId, stockLocationId, shippingMethodId, previousChanges,
+			name, orderId, stockLocationId, shippingMethodId, previousChanges,
 			order, stockLocation, shippingMethod, lineItemStocks 
 		);
+	
+	}
+	
+
+	@Override
+	public Shipment clone() {
+	
+		Shipment no = new Shipment();
+	
+		no.name = this.name;
+		no.orderId = this.orderId;
+		no.stockLocationId = this.stockLocationId;
+		no.shippingMethodId = this.shippingMethodId;
+		no.previousChanges = this.previousChanges;
+		no.order = this.order;
+		no.stockLocation = this.stockLocation;
+		no.shippingMethod = this.shippingMethod;
+		no.lineItemStocks = this.lineItemStocks;
+	
+		return no;
 	
 	}
 	

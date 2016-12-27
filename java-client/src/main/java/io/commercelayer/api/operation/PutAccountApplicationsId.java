@@ -15,6 +15,7 @@ public class PutAccountApplicationsId extends PutOperation {
 		addRequiredField("id");
 	}
 
+
 	public PutAccountApplicationsId() {
 		super(OPERATION_PATH);
 	}

@@ -10,24 +10,33 @@ import java.util.List;
  */
 public class PaymentType extends ApiResource {
 
-	private static final long serialVersionUID = -1482845758109L;
+	private static final long serialVersionUID = -1482880735314L;
 
 
 	private String name;
+	@JsonExclude
+	private String slug;
+	@JsonExclude
 	private String description;
-	private String merchantId;
-	private String gatewayId;
-	private String paymentSourceResource;
+	private Integer merchantId;
+	private Integer gatewayId;
+	@JsonExclude
+	private String paymentSourceKind;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
 	private Object merchant;
 	@JsonExclude
 	private Object gateway;
+	@JsonExclude
 	private List<String> resourceImages;
+	@JsonExclude
 	private List<String> images;
+	@JsonExclude
 	private List<String> translations;
+	@JsonExclude
 	private List<String> marketPaymentTypes;
+	@JsonExclude
 	private List<String> markets;
 
 
@@ -51,6 +60,16 @@ public class PaymentType extends ApiResource {
 	}
 	
 
+	public void setSlug(String slug) {
+		this.slug = slug;
+	}
+	
+
+	public String getSlug() {
+		return this.slug;
+	}
+	
+
 	public void setDescription(String description) {
 		this.description = description;
 	}
@@ -61,33 +80,33 @@ public class PaymentType extends ApiResource {
 	}
 	
 
-	public void setMerchantId(String merchantId) {
+	public void setMerchantId(Integer merchantId) {
 		this.merchantId = merchantId;
 	}
 	
 
-	public String getMerchantId() {
+	public Integer getMerchantId() {
 		return this.merchantId;
 	}
 	
 
-	public void setGatewayId(String gatewayId) {
+	public void setGatewayId(Integer gatewayId) {
 		this.gatewayId = gatewayId;
 	}
 	
 
-	public String getGatewayId() {
+	public Integer getGatewayId() {
 		return this.gatewayId;
 	}
 	
 
-	public void setPaymentSourceResource(String paymentSourceResource) {
-		this.paymentSourceResource = paymentSourceResource;
+	public void setPaymentSourceKind(String paymentSourceKind) {
+		this.paymentSourceKind = paymentSourceKind;
 	}
 	
 
-	public String getPaymentSourceResource() {
-		return this.paymentSourceResource;
+	public String getPaymentSourceKind() {
+		return this.paymentSourceKind;
 	}
 	
 
@@ -175,24 +194,25 @@ public class PaymentType extends ApiResource {
 	public boolean equals(Object o) {
 	
 		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
+		if ((o == null) || (getClass() != o.getClass())) return false;
 	
-		PaymentType x = (PaymentType) o;
+		PaymentType x = (PaymentType)o;
 	
-		return super.equals(o) &&
-			Objects.equals(this.name, x.name)  &&
-			Objects.equals(this.description, x.description)  &&
-			Objects.equals(this.merchantId, x.merchantId)  &&
-			Objects.equals(this.gatewayId, x.gatewayId)  &&
-			Objects.equals(this.paymentSourceResource, x.paymentSourceResource)  &&
-			Objects.equals(this.previousChanges, x.previousChanges)  &&
-			Objects.equals(this.merchant, x.merchant)  &&
-			Objects.equals(this.gateway, x.gateway)  &&
-			Objects.equals(this.resourceImages, x.resourceImages)  &&
-			Objects.equals(this.images, x.images)  &&
-			Objects.equals(this.translations, x.translations)  &&
-			Objects.equals(this.marketPaymentTypes, x.marketPaymentTypes)  &&
-			Objects.equals(this.markets, x.markets) 
+		return super.equals(o)
+			&& Objects.equals(this.name, x.name)
+			&& Objects.equals(this.slug, x.slug)
+			&& Objects.equals(this.description, x.description)
+			&& Objects.equals(this.merchantId, x.merchantId)
+			&& Objects.equals(this.gatewayId, x.gatewayId)
+			&& Objects.equals(this.paymentSourceKind, x.paymentSourceKind)
+			&& Objects.equals(this.previousChanges, x.previousChanges)
+			&& Objects.equals(this.merchant, x.merchant)
+			&& Objects.equals(this.gateway, x.gateway)
+			&& Objects.equals(this.resourceImages, x.resourceImages)
+			&& Objects.equals(this.images, x.images)
+			&& Objects.equals(this.translations, x.translations)
+			&& Objects.equals(this.marketPaymentTypes, x.marketPaymentTypes)
+			&& Objects.equals(this.markets, x.markets)
 		;
 	
 	}
@@ -202,11 +222,35 @@ public class PaymentType extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			serialVersionUID, resourceName, id, creatorResource, createdAt,
-			updatedAt, name, description, merchantId, gatewayId,
-			paymentSourceResource, previousChanges, merchant, gateway, resourceImages,
+			name, slug, description, merchantId, gatewayId,
+			paymentSourceKind, previousChanges, merchant, gateway, resourceImages,
 			images, translations, marketPaymentTypes, markets 
 		);
+	
+	}
+	
+
+	@Override
+	public PaymentType clone() {
+	
+		PaymentType no = new PaymentType();
+	
+		no.name = this.name;
+		no.slug = this.slug;
+		no.description = this.description;
+		no.merchantId = this.merchantId;
+		no.gatewayId = this.gatewayId;
+		no.paymentSourceKind = this.paymentSourceKind;
+		no.previousChanges = this.previousChanges;
+		no.merchant = this.merchant;
+		no.gateway = this.gateway;
+		no.resourceImages = this.resourceImages;
+		no.images = this.images;
+		no.translations = this.translations;
+		no.marketPaymentTypes = this.marketPaymentTypes;
+		no.markets = this.markets;
+	
+		return no;
 	
 	}
 	

@@ -10,15 +10,17 @@ import java.util.List;
  */
 public class Role extends ApiResource {
 
-	private static final long serialVersionUID = -1482845758187L;
+	private static final long serialVersionUID = -1482880735340L;
 
 
 	private String name;
-	private String description;
 	@JsonExclude
 	private Object previousChanges;
+	@JsonExclude
 	private List<String> consumerRoles;
+	@JsonExclude
 	private List<String> consumers;
+	@JsonExclude
 	private List<String> permissions;
 
 
@@ -39,16 +41,6 @@ public class Role extends ApiResource {
 
 	public String getName() {
 		return this.name;
-	}
-	
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-	
-
-	public String getDescription() {
-		return this.description;
 	}
 	
 
@@ -96,17 +88,16 @@ public class Role extends ApiResource {
 	public boolean equals(Object o) {
 	
 		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
+		if ((o == null) || (getClass() != o.getClass())) return false;
 	
-		Role x = (Role) o;
+		Role x = (Role)o;
 	
-		return super.equals(o) &&
-			Objects.equals(this.name, x.name)  &&
-			Objects.equals(this.description, x.description)  &&
-			Objects.equals(this.previousChanges, x.previousChanges)  &&
-			Objects.equals(this.consumerRoles, x.consumerRoles)  &&
-			Objects.equals(this.consumers, x.consumers)  &&
-			Objects.equals(this.permissions, x.permissions) 
+		return super.equals(o)
+			&& Objects.equals(this.name, x.name)
+			&& Objects.equals(this.previousChanges, x.previousChanges)
+			&& Objects.equals(this.consumerRoles, x.consumerRoles)
+			&& Objects.equals(this.consumers, x.consumers)
+			&& Objects.equals(this.permissions, x.permissions)
 		;
 	
 	}
@@ -116,10 +107,25 @@ public class Role extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			serialVersionUID, resourceName, id, creatorResource, createdAt,
-			updatedAt, name, description, previousChanges, consumerRoles,
-			consumers, permissions 
+			name, previousChanges, consumerRoles, consumers, permissions
+			
 		);
+	
+	}
+	
+
+	@Override
+	public Role clone() {
+	
+		Role no = new Role();
+	
+		no.name = this.name;
+		no.previousChanges = this.previousChanges;
+		no.consumerRoles = this.consumerRoles;
+		no.consumers = this.consumers;
+		no.permissions = this.permissions;
+	
+		return no;
 	
 	}
 	

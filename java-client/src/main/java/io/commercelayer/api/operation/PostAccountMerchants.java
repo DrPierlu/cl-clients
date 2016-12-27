@@ -16,6 +16,7 @@ public class PostAccountMerchants extends PostOperation {
 		addRequiredField("description");
 	}
 
+
 	public PostAccountMerchants() {
 		super(OPERATION_PATH);
 	}

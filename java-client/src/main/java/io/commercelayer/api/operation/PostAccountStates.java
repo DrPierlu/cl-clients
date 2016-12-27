@@ -15,6 +15,7 @@ public class PostAccountStates extends PostOperation {
 		addRequiredField("code");
 	}
 
+
 	public PostAccountStates() {
 		super(OPERATION_PATH);
 	}

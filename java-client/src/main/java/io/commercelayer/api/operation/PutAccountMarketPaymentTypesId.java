@@ -19,6 +19,7 @@ public class PutAccountMarketPaymentTypesId extends PutOperation {
 		addRequiredField("id");
 	}
 
+
 	public PutAccountMarketPaymentTypesId() {
 		super(OPERATION_PATH);
 	}

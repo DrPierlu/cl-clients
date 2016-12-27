@@ -15,6 +15,7 @@ public class PostAccountCatalogs extends PostOperation {
 		addRequiredField("description");
 	}
 
+
 	public PostAccountCatalogs() {
 		super(OPERATION_PATH);
 	}

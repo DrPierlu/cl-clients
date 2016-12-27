@@ -17,6 +17,7 @@ public class PostAccountStockItems extends PostOperation {
 		addRequiredField("quantity");
 	}
 
+
 	public PostAccountStockItems() {
 		super(OPERATION_PATH);
 	}

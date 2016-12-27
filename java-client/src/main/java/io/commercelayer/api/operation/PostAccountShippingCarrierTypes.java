@@ -14,6 +14,7 @@ public class PostAccountShippingCarrierTypes extends PostOperation {
 		addRequiredField("name");
 	}
 
+
 	public PostAccountShippingCarrierTypes() {
 		super(OPERATION_PATH);
 	}

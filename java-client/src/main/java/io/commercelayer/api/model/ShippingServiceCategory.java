@@ -9,11 +9,13 @@ import io.commercelayer.api.json.JsonExclude;
  */
 public class ShippingServiceCategory extends ApiResource {
 
-	private static final long serialVersionUID = -1482845758250L;
+	private static final long serialVersionUID = -1482880735351L;
 
 
-	private String shippingServiceId;
-	private String shippingCategoryId;
+	@JsonExclude
+	private String name;
+	private Integer shippingServiceId;
+	private Integer shippingCategoryId;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
@@ -32,22 +34,32 @@ public class ShippingServiceCategory extends ApiResource {
 	}
 	
 
-	public void setShippingServiceId(String shippingServiceId) {
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+
+	public String getName() {
+		return this.name;
+	}
+	
+
+	public void setShippingServiceId(Integer shippingServiceId) {
 		this.shippingServiceId = shippingServiceId;
 	}
 	
 
-	public String getShippingServiceId() {
+	public Integer getShippingServiceId() {
 		return this.shippingServiceId;
 	}
 	
 
-	public void setShippingCategoryId(String shippingCategoryId) {
+	public void setShippingCategoryId(Integer shippingCategoryId) {
 		this.shippingCategoryId = shippingCategoryId;
 	}
 	
 
-	public String getShippingCategoryId() {
+	public Integer getShippingCategoryId() {
 		return this.shippingCategoryId;
 	}
 	
@@ -86,16 +98,17 @@ public class ShippingServiceCategory extends ApiResource {
 	public boolean equals(Object o) {
 	
 		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
+		if ((o == null) || (getClass() != o.getClass())) return false;
 	
-		ShippingServiceCategory x = (ShippingServiceCategory) o;
+		ShippingServiceCategory x = (ShippingServiceCategory)o;
 	
-		return super.equals(o) &&
-			Objects.equals(this.shippingServiceId, x.shippingServiceId)  &&
-			Objects.equals(this.shippingCategoryId, x.shippingCategoryId)  &&
-			Objects.equals(this.previousChanges, x.previousChanges)  &&
-			Objects.equals(this.shippingService, x.shippingService)  &&
-			Objects.equals(this.shippingCategory, x.shippingCategory) 
+		return super.equals(o)
+			&& Objects.equals(this.name, x.name)
+			&& Objects.equals(this.shippingServiceId, x.shippingServiceId)
+			&& Objects.equals(this.shippingCategoryId, x.shippingCategoryId)
+			&& Objects.equals(this.previousChanges, x.previousChanges)
+			&& Objects.equals(this.shippingService, x.shippingService)
+			&& Objects.equals(this.shippingCategory, x.shippingCategory)
 		;
 	
 	}
@@ -105,10 +118,26 @@ public class ShippingServiceCategory extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			serialVersionUID, resourceName, id, creatorResource, createdAt,
-			updatedAt, shippingServiceId, shippingCategoryId, previousChanges, shippingService,
+			name, shippingServiceId, shippingCategoryId, previousChanges, shippingService,
 			shippingCategory 
 		);
+	
+	}
+	
+
+	@Override
+	public ShippingServiceCategory clone() {
+	
+		ShippingServiceCategory no = new ShippingServiceCategory();
+	
+		no.name = this.name;
+		no.shippingServiceId = this.shippingServiceId;
+		no.shippingCategoryId = this.shippingCategoryId;
+		no.previousChanges = this.previousChanges;
+		no.shippingService = this.shippingService;
+		no.shippingCategory = this.shippingCategory;
+	
+		return no;
 	
 	}
 	

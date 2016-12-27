@@ -17,6 +17,7 @@ public class PostAccountMarketShippingServices extends PostOperation {
 		addRequiredField("freeOverAmount");
 	}
 
+
 	public PostAccountMarketShippingServices() {
 		super(OPERATION_PATH);
 	}

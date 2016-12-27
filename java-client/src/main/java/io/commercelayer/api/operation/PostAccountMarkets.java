@@ -19,6 +19,7 @@ public class PostAccountMarkets extends PostOperation {
 		addRequiredField("orderValidatorId");
 	}
 
+
 	public PostAccountMarkets() {
 		super(OPERATION_PATH);
 	}

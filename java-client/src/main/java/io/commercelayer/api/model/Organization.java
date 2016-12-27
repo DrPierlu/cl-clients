@@ -10,12 +10,13 @@ import java.util.List;
  */
 public class Organization extends ApiResource {
 
-	private static final long serialVersionUID = -1482845758109L;
+	private static final long serialVersionUID = -1482880735312L;
 
 
 	private String name;
 	@JsonExclude
 	private Object previousChanges;
+	@JsonExclude
 	private List<String> environments;
 
 
@@ -63,14 +64,14 @@ public class Organization extends ApiResource {
 	public boolean equals(Object o) {
 	
 		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
+		if ((o == null) || (getClass() != o.getClass())) return false;
 	
-		Organization x = (Organization) o;
+		Organization x = (Organization)o;
 	
-		return super.equals(o) &&
-			Objects.equals(this.name, x.name)  &&
-			Objects.equals(this.previousChanges, x.previousChanges)  &&
-			Objects.equals(this.environments, x.environments) 
+		return super.equals(o)
+			&& Objects.equals(this.name, x.name)
+			&& Objects.equals(this.previousChanges, x.previousChanges)
+			&& Objects.equals(this.environments, x.environments)
 		;
 	
 	}
@@ -80,9 +81,22 @@ public class Organization extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			serialVersionUID, resourceName, id, creatorResource, createdAt,
-			updatedAt, name, previousChanges, environments 
+			name, previousChanges, environments 
 		);
+	
+	}
+	
+
+	@Override
+	public Organization clone() {
+	
+		Organization no = new Organization();
+	
+		no.name = this.name;
+		no.previousChanges = this.previousChanges;
+		no.environments = this.environments;
+	
+		return no;
 	
 	}
 	

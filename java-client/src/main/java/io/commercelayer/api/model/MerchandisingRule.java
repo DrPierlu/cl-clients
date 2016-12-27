@@ -9,14 +9,18 @@ import io.commercelayer.api.json.JsonExclude;
  */
 public class MerchandisingRule extends ApiResource {
 
-	private static final long serialVersionUID = -1482845758062L;
+	private static final long serialVersionUID = -1482880735303L;
 
 
-	private String catalogId;
-	private String taxonId;
-	private String productId;
-	private String position;
-	private String hero;
+	@JsonExclude
+	private String name;
+	private Integer catalogId;
+	private Integer taxonId;
+	private Integer productId;
+	@JsonExclude
+	private Integer position;
+	@JsonExclude
+	private Object hero;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
@@ -37,52 +41,62 @@ public class MerchandisingRule extends ApiResource {
 	}
 	
 
-	public void setCatalogId(String catalogId) {
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+
+	public String getName() {
+		return this.name;
+	}
+	
+
+	public void setCatalogId(Integer catalogId) {
 		this.catalogId = catalogId;
 	}
 	
 
-	public String getCatalogId() {
+	public Integer getCatalogId() {
 		return this.catalogId;
 	}
 	
 
-	public void setTaxonId(String taxonId) {
+	public void setTaxonId(Integer taxonId) {
 		this.taxonId = taxonId;
 	}
 	
 
-	public String getTaxonId() {
+	public Integer getTaxonId() {
 		return this.taxonId;
 	}
 	
 
-	public void setProductId(String productId) {
+	public void setProductId(Integer productId) {
 		this.productId = productId;
 	}
 	
 
-	public String getProductId() {
+	public Integer getProductId() {
 		return this.productId;
 	}
 	
 
-	public void setPosition(String position) {
+	public void setPosition(Integer position) {
 		this.position = position;
 	}
 	
 
-	public String getPosition() {
+	public Integer getPosition() {
 		return this.position;
 	}
 	
 
-	public void setHero(String hero) {
+	public void setHero(Object hero) {
 		this.hero = hero;
 	}
 	
 
-	public String getHero() {
+	public Object getHero() {
 		return this.hero;
 	}
 	
@@ -131,20 +145,21 @@ public class MerchandisingRule extends ApiResource {
 	public boolean equals(Object o) {
 	
 		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
+		if ((o == null) || (getClass() != o.getClass())) return false;
 	
-		MerchandisingRule x = (MerchandisingRule) o;
+		MerchandisingRule x = (MerchandisingRule)o;
 	
-		return super.equals(o) &&
-			Objects.equals(this.catalogId, x.catalogId)  &&
-			Objects.equals(this.taxonId, x.taxonId)  &&
-			Objects.equals(this.productId, x.productId)  &&
-			Objects.equals(this.position, x.position)  &&
-			Objects.equals(this.hero, x.hero)  &&
-			Objects.equals(this.previousChanges, x.previousChanges)  &&
-			Objects.equals(this.catalog, x.catalog)  &&
-			Objects.equals(this.taxon, x.taxon)  &&
-			Objects.equals(this.product, x.product) 
+		return super.equals(o)
+			&& Objects.equals(this.name, x.name)
+			&& Objects.equals(this.catalogId, x.catalogId)
+			&& Objects.equals(this.taxonId, x.taxonId)
+			&& Objects.equals(this.productId, x.productId)
+			&& Objects.equals(this.position, x.position)
+			&& Objects.equals(this.hero, x.hero)
+			&& Objects.equals(this.previousChanges, x.previousChanges)
+			&& Objects.equals(this.catalog, x.catalog)
+			&& Objects.equals(this.taxon, x.taxon)
+			&& Objects.equals(this.product, x.product)
 		;
 	
 	}
@@ -154,11 +169,31 @@ public class MerchandisingRule extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			serialVersionUID, resourceName, id, creatorResource, createdAt,
-			updatedAt, catalogId, taxonId, productId, position,
+			name, catalogId, taxonId, productId, position,
 			hero, previousChanges, catalog, taxon, product
 			
 		);
+	
+	}
+	
+
+	@Override
+	public MerchandisingRule clone() {
+	
+		MerchandisingRule no = new MerchandisingRule();
+	
+		no.name = this.name;
+		no.catalogId = this.catalogId;
+		no.taxonId = this.taxonId;
+		no.productId = this.productId;
+		no.position = this.position;
+		no.hero = this.hero;
+		no.previousChanges = this.previousChanges;
+		no.catalog = this.catalog;
+		no.taxon = this.taxon;
+		no.product = this.product;
+	
+		return no;
 	
 	}
 	

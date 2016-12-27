@@ -19,6 +19,7 @@ public class PutAccountLineItemStocksId extends PutOperation {
 		addRequiredField("id");
 	}
 
+
 	public PutAccountLineItemStocksId() {
 		super(OPERATION_PATH);
 	}

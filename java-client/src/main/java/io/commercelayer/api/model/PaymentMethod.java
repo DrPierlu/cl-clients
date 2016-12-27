@@ -9,17 +9,25 @@ import io.commercelayer.api.json.JsonExclude;
  */
 public class PaymentMethod extends ApiResource {
 
-	private static final long serialVersionUID = -1482845758109L;
+	private static final long serialVersionUID = -1482880735315L;
 
 
-	private String orderId;
-	private String paymentTypeId;
-	private String paymentSourceId;
+	@JsonExclude
+	private String name;
+	private Integer orderId;
+	@JsonExclude
+	private Integer paymentTypeId;
+	private Integer paymentSourceId;
 	private String paymentSourceResource;
-	private String gatewayId;
-	private String billingAddressId;
-	private String priceCents;
-	private String amountCents;
+	@JsonExclude
+	private Integer gatewayId;
+	private Integer billingAddressId;
+	@JsonExclude
+	private Integer priceCents;
+	@JsonExclude
+	private Integer amountCents;
+	@JsonExclude
+	private String redirectUrl;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
@@ -32,13 +40,21 @@ public class PaymentMethod extends ApiResource {
 	private Object gateway;
 	@JsonExclude
 	private Object billingAddress;
+	@JsonExclude
 	private String taxableAmount;
+	@JsonExclude
 	private String formattedTaxableAmount;
+	@JsonExclude
 	private String taxAmount;
+	@JsonExclude
 	private String formattedTaxAmount;
+	@JsonExclude
 	private String price;
+	@JsonExclude
 	private String formattedPrice;
+	@JsonExclude
 	private String amount;
+	@JsonExclude
 	private String formattedAmount;
 
 
@@ -52,32 +68,42 @@ public class PaymentMethod extends ApiResource {
 	}
 	
 
-	public void setOrderId(String orderId) {
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+
+	public String getName() {
+		return this.name;
+	}
+	
+
+	public void setOrderId(Integer orderId) {
 		this.orderId = orderId;
 	}
 	
 
-	public String getOrderId() {
+	public Integer getOrderId() {
 		return this.orderId;
 	}
 	
 
-	public void setPaymentTypeId(String paymentTypeId) {
+	public void setPaymentTypeId(Integer paymentTypeId) {
 		this.paymentTypeId = paymentTypeId;
 	}
 	
 
-	public String getPaymentTypeId() {
+	public Integer getPaymentTypeId() {
 		return this.paymentTypeId;
 	}
 	
 
-	public void setPaymentSourceId(String paymentSourceId) {
+	public void setPaymentSourceId(Integer paymentSourceId) {
 		this.paymentSourceId = paymentSourceId;
 	}
 	
 
-	public String getPaymentSourceId() {
+	public Integer getPaymentSourceId() {
 		return this.paymentSourceId;
 	}
 	
@@ -92,43 +118,53 @@ public class PaymentMethod extends ApiResource {
 	}
 	
 
-	public void setGatewayId(String gatewayId) {
+	public void setGatewayId(Integer gatewayId) {
 		this.gatewayId = gatewayId;
 	}
 	
 
-	public String getGatewayId() {
+	public Integer getGatewayId() {
 		return this.gatewayId;
 	}
 	
 
-	public void setBillingAddressId(String billingAddressId) {
+	public void setBillingAddressId(Integer billingAddressId) {
 		this.billingAddressId = billingAddressId;
 	}
 	
 
-	public String getBillingAddressId() {
+	public Integer getBillingAddressId() {
 		return this.billingAddressId;
 	}
 	
 
-	public void setPriceCents(String priceCents) {
+	public void setPriceCents(Integer priceCents) {
 		this.priceCents = priceCents;
 	}
 	
 
-	public String getPriceCents() {
+	public Integer getPriceCents() {
 		return this.priceCents;
 	}
 	
 
-	public void setAmountCents(String amountCents) {
+	public void setAmountCents(Integer amountCents) {
 		this.amountCents = amountCents;
 	}
 	
 
-	public String getAmountCents() {
+	public Integer getAmountCents() {
 		return this.amountCents;
+	}
+	
+
+	public void setRedirectUrl(String redirectUrl) {
+		this.redirectUrl = redirectUrl;
+	}
+	
+
+	public String getRedirectUrl() {
+		return this.redirectUrl;
 	}
 	
 
@@ -276,33 +312,35 @@ public class PaymentMethod extends ApiResource {
 	public boolean equals(Object o) {
 	
 		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
+		if ((o == null) || (getClass() != o.getClass())) return false;
 	
-		PaymentMethod x = (PaymentMethod) o;
+		PaymentMethod x = (PaymentMethod)o;
 	
-		return super.equals(o) &&
-			Objects.equals(this.orderId, x.orderId)  &&
-			Objects.equals(this.paymentTypeId, x.paymentTypeId)  &&
-			Objects.equals(this.paymentSourceId, x.paymentSourceId)  &&
-			Objects.equals(this.paymentSourceResource, x.paymentSourceResource)  &&
-			Objects.equals(this.gatewayId, x.gatewayId)  &&
-			Objects.equals(this.billingAddressId, x.billingAddressId)  &&
-			Objects.equals(this.priceCents, x.priceCents)  &&
-			Objects.equals(this.amountCents, x.amountCents)  &&
-			Objects.equals(this.previousChanges, x.previousChanges)  &&
-			Objects.equals(this.order, x.order)  &&
-			Objects.equals(this.paymentType, x.paymentType)  &&
-			Objects.equals(this.paymentSource, x.paymentSource)  &&
-			Objects.equals(this.gateway, x.gateway)  &&
-			Objects.equals(this.billingAddress, x.billingAddress)  &&
-			Objects.equals(this.taxableAmount, x.taxableAmount)  &&
-			Objects.equals(this.formattedTaxableAmount, x.formattedTaxableAmount)  &&
-			Objects.equals(this.taxAmount, x.taxAmount)  &&
-			Objects.equals(this.formattedTaxAmount, x.formattedTaxAmount)  &&
-			Objects.equals(this.price, x.price)  &&
-			Objects.equals(this.formattedPrice, x.formattedPrice)  &&
-			Objects.equals(this.amount, x.amount)  &&
-			Objects.equals(this.formattedAmount, x.formattedAmount) 
+		return super.equals(o)
+			&& Objects.equals(this.name, x.name)
+			&& Objects.equals(this.orderId, x.orderId)
+			&& Objects.equals(this.paymentTypeId, x.paymentTypeId)
+			&& Objects.equals(this.paymentSourceId, x.paymentSourceId)
+			&& Objects.equals(this.paymentSourceResource, x.paymentSourceResource)
+			&& Objects.equals(this.gatewayId, x.gatewayId)
+			&& Objects.equals(this.billingAddressId, x.billingAddressId)
+			&& Objects.equals(this.priceCents, x.priceCents)
+			&& Objects.equals(this.amountCents, x.amountCents)
+			&& Objects.equals(this.redirectUrl, x.redirectUrl)
+			&& Objects.equals(this.previousChanges, x.previousChanges)
+			&& Objects.equals(this.order, x.order)
+			&& Objects.equals(this.paymentType, x.paymentType)
+			&& Objects.equals(this.paymentSource, x.paymentSource)
+			&& Objects.equals(this.gateway, x.gateway)
+			&& Objects.equals(this.billingAddress, x.billingAddress)
+			&& Objects.equals(this.taxableAmount, x.taxableAmount)
+			&& Objects.equals(this.formattedTaxableAmount, x.formattedTaxableAmount)
+			&& Objects.equals(this.taxAmount, x.taxAmount)
+			&& Objects.equals(this.formattedTaxAmount, x.formattedTaxAmount)
+			&& Objects.equals(this.price, x.price)
+			&& Objects.equals(this.formattedPrice, x.formattedPrice)
+			&& Objects.equals(this.amount, x.amount)
+			&& Objects.equals(this.formattedAmount, x.formattedAmount)
 		;
 	
 	}
@@ -312,13 +350,47 @@ public class PaymentMethod extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			serialVersionUID, resourceName, id, creatorResource, createdAt,
-			updatedAt, orderId, paymentTypeId, paymentSourceId, paymentSourceResource,
-			gatewayId, billingAddressId, priceCents, amountCents, previousChanges,
-			order, paymentType, paymentSource, gateway, billingAddress,
-			taxableAmount, formattedTaxableAmount, taxAmount, formattedTaxAmount, price,
-			formattedPrice, amount, formattedAmount 
+			name, orderId, paymentTypeId, paymentSourceId, paymentSourceResource,
+			gatewayId, billingAddressId, priceCents, amountCents, redirectUrl,
+			previousChanges, order, paymentType, paymentSource, gateway,
+			billingAddress, taxableAmount, formattedTaxableAmount, taxAmount, formattedTaxAmount,
+			price, formattedPrice, amount, formattedAmount 
 		);
+	
+	}
+	
+
+	@Override
+	public PaymentMethod clone() {
+	
+		PaymentMethod no = new PaymentMethod();
+	
+		no.name = this.name;
+		no.orderId = this.orderId;
+		no.paymentTypeId = this.paymentTypeId;
+		no.paymentSourceId = this.paymentSourceId;
+		no.paymentSourceResource = this.paymentSourceResource;
+		no.gatewayId = this.gatewayId;
+		no.billingAddressId = this.billingAddressId;
+		no.priceCents = this.priceCents;
+		no.amountCents = this.amountCents;
+		no.redirectUrl = this.redirectUrl;
+		no.previousChanges = this.previousChanges;
+		no.order = this.order;
+		no.paymentType = this.paymentType;
+		no.paymentSource = this.paymentSource;
+		no.gateway = this.gateway;
+		no.billingAddress = this.billingAddress;
+		no.taxableAmount = this.taxableAmount;
+		no.formattedTaxableAmount = this.formattedTaxableAmount;
+		no.taxAmount = this.taxAmount;
+		no.formattedTaxAmount = this.formattedTaxAmount;
+		no.price = this.price;
+		no.formattedPrice = this.formattedPrice;
+		no.amount = this.amount;
+		no.formattedAmount = this.formattedAmount;
+	
+		return no;
 	
 	}
 	

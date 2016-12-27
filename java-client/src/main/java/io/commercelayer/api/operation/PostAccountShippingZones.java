@@ -21,6 +21,7 @@ public class PostAccountShippingZones extends PostOperation {
 		addRequiredField("notZipCodeRegex");
 	}
 
+
 	public PostAccountShippingZones() {
 		super(OPERATION_PATH);
 	}

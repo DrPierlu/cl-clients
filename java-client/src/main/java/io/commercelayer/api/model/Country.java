@@ -10,19 +10,26 @@ import java.util.List;
  */
 public class Country extends ApiResource {
 
-	private static final long serialVersionUID = -1482845757922L;
+	private static final long serialVersionUID = -1482880735275L;
 
 
-	private String countryGroupId;
+	@JsonExclude
+	private String name;
+	private Integer countryGroupId;
 	private String code;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
 	private Object countryGroup;
+	@JsonExclude
 	private List<String> countryLanguages;
+	@JsonExclude
 	private List<String> states;
+	@JsonExclude
 	private List<String> orders;
+	@JsonExclude
 	private List<String> lineItemStocks;
+	@JsonExclude
 	private List<String> languages;
 
 
@@ -36,12 +43,22 @@ public class Country extends ApiResource {
 	}
 	
 
-	public void setCountryGroupId(String countryGroupId) {
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+
+	public String getName() {
+		return this.name;
+	}
+	
+
+	public void setCountryGroupId(Integer countryGroupId) {
 		this.countryGroupId = countryGroupId;
 	}
 	
 
-	public String getCountryGroupId() {
+	public Integer getCountryGroupId() {
 		return this.countryGroupId;
 	}
 	
@@ -130,20 +147,21 @@ public class Country extends ApiResource {
 	public boolean equals(Object o) {
 	
 		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
+		if ((o == null) || (getClass() != o.getClass())) return false;
 	
-		Country x = (Country) o;
+		Country x = (Country)o;
 	
-		return super.equals(o) &&
-			Objects.equals(this.countryGroupId, x.countryGroupId)  &&
-			Objects.equals(this.code, x.code)  &&
-			Objects.equals(this.previousChanges, x.previousChanges)  &&
-			Objects.equals(this.countryGroup, x.countryGroup)  &&
-			Objects.equals(this.countryLanguages, x.countryLanguages)  &&
-			Objects.equals(this.states, x.states)  &&
-			Objects.equals(this.orders, x.orders)  &&
-			Objects.equals(this.lineItemStocks, x.lineItemStocks)  &&
-			Objects.equals(this.languages, x.languages) 
+		return super.equals(o)
+			&& Objects.equals(this.name, x.name)
+			&& Objects.equals(this.countryGroupId, x.countryGroupId)
+			&& Objects.equals(this.code, x.code)
+			&& Objects.equals(this.previousChanges, x.previousChanges)
+			&& Objects.equals(this.countryGroup, x.countryGroup)
+			&& Objects.equals(this.countryLanguages, x.countryLanguages)
+			&& Objects.equals(this.states, x.states)
+			&& Objects.equals(this.orders, x.orders)
+			&& Objects.equals(this.lineItemStocks, x.lineItemStocks)
+			&& Objects.equals(this.languages, x.languages)
 		;
 	
 	}
@@ -153,11 +171,31 @@ public class Country extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			serialVersionUID, resourceName, id, creatorResource, createdAt,
-			updatedAt, countryGroupId, code, previousChanges, countryGroup,
+			name, countryGroupId, code, previousChanges, countryGroup,
 			countryLanguages, states, orders, lineItemStocks, languages
 			
 		);
+	
+	}
+	
+
+	@Override
+	public Country clone() {
+	
+		Country no = new Country();
+	
+		no.name = this.name;
+		no.countryGroupId = this.countryGroupId;
+		no.code = this.code;
+		no.previousChanges = this.previousChanges;
+		no.countryGroup = this.countryGroup;
+		no.countryLanguages = this.countryLanguages;
+		no.states = this.states;
+		no.orders = this.orders;
+		no.lineItemStocks = this.lineItemStocks;
+		no.languages = this.languages;
+	
+		return no;
 	
 	}
 	

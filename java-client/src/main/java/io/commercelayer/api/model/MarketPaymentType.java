@@ -9,21 +9,28 @@ import io.commercelayer.api.json.JsonExclude;
  */
 public class MarketPaymentType extends ApiResource {
 
-	private static final long serialVersionUID = -1482845758031L;
+	private static final long serialVersionUID = -1482880735298L;
 
 
-	private String marketId;
-	private String paymentTypeId;
+	@JsonExclude
+	private String name;
+	private Integer marketId;
+	private Integer paymentTypeId;
+	@JsonExclude
 	private String countryCodeRegex;
+	@JsonExclude
 	private String notCountryCodeRegex;
-	private String priceCents;
+	@JsonExclude
+	private Integer priceCents;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
 	private Object market;
 	@JsonExclude
 	private Object paymentType;
+	@JsonExclude
 	private String price;
+	@JsonExclude
 	private String formattedPrice;
 
 
@@ -37,22 +44,32 @@ public class MarketPaymentType extends ApiResource {
 	}
 	
 
-	public void setMarketId(String marketId) {
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+
+	public String getName() {
+		return this.name;
+	}
+	
+
+	public void setMarketId(Integer marketId) {
 		this.marketId = marketId;
 	}
 	
 
-	public String getMarketId() {
+	public Integer getMarketId() {
 		return this.marketId;
 	}
 	
 
-	public void setPaymentTypeId(String paymentTypeId) {
+	public void setPaymentTypeId(Integer paymentTypeId) {
 		this.paymentTypeId = paymentTypeId;
 	}
 	
 
-	public String getPaymentTypeId() {
+	public Integer getPaymentTypeId() {
 		return this.paymentTypeId;
 	}
 	
@@ -77,12 +94,12 @@ public class MarketPaymentType extends ApiResource {
 	}
 	
 
-	public void setPriceCents(String priceCents) {
+	public void setPriceCents(Integer priceCents) {
 		this.priceCents = priceCents;
 	}
 	
 
-	public String getPriceCents() {
+	public Integer getPriceCents() {
 		return this.priceCents;
 	}
 	
@@ -141,21 +158,22 @@ public class MarketPaymentType extends ApiResource {
 	public boolean equals(Object o) {
 	
 		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
+		if ((o == null) || (getClass() != o.getClass())) return false;
 	
-		MarketPaymentType x = (MarketPaymentType) o;
+		MarketPaymentType x = (MarketPaymentType)o;
 	
-		return super.equals(o) &&
-			Objects.equals(this.marketId, x.marketId)  &&
-			Objects.equals(this.paymentTypeId, x.paymentTypeId)  &&
-			Objects.equals(this.countryCodeRegex, x.countryCodeRegex)  &&
-			Objects.equals(this.notCountryCodeRegex, x.notCountryCodeRegex)  &&
-			Objects.equals(this.priceCents, x.priceCents)  &&
-			Objects.equals(this.previousChanges, x.previousChanges)  &&
-			Objects.equals(this.market, x.market)  &&
-			Objects.equals(this.paymentType, x.paymentType)  &&
-			Objects.equals(this.price, x.price)  &&
-			Objects.equals(this.formattedPrice, x.formattedPrice) 
+		return super.equals(o)
+			&& Objects.equals(this.name, x.name)
+			&& Objects.equals(this.marketId, x.marketId)
+			&& Objects.equals(this.paymentTypeId, x.paymentTypeId)
+			&& Objects.equals(this.countryCodeRegex, x.countryCodeRegex)
+			&& Objects.equals(this.notCountryCodeRegex, x.notCountryCodeRegex)
+			&& Objects.equals(this.priceCents, x.priceCents)
+			&& Objects.equals(this.previousChanges, x.previousChanges)
+			&& Objects.equals(this.market, x.market)
+			&& Objects.equals(this.paymentType, x.paymentType)
+			&& Objects.equals(this.price, x.price)
+			&& Objects.equals(this.formattedPrice, x.formattedPrice)
 		;
 	
 	}
@@ -165,11 +183,32 @@ public class MarketPaymentType extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			serialVersionUID, resourceName, id, creatorResource, createdAt,
-			updatedAt, marketId, paymentTypeId, countryCodeRegex, notCountryCodeRegex,
+			name, marketId, paymentTypeId, countryCodeRegex, notCountryCodeRegex,
 			priceCents, previousChanges, market, paymentType, price,
 			formattedPrice 
 		);
+	
+	}
+	
+
+	@Override
+	public MarketPaymentType clone() {
+	
+		MarketPaymentType no = new MarketPaymentType();
+	
+		no.name = this.name;
+		no.marketId = this.marketId;
+		no.paymentTypeId = this.paymentTypeId;
+		no.countryCodeRegex = this.countryCodeRegex;
+		no.notCountryCodeRegex = this.notCountryCodeRegex;
+		no.priceCents = this.priceCents;
+		no.previousChanges = this.previousChanges;
+		no.market = this.market;
+		no.paymentType = this.paymentType;
+		no.price = this.price;
+		no.formattedPrice = this.formattedPrice;
+	
+		return no;
 	
 	}
 	

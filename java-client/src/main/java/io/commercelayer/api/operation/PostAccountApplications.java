@@ -14,6 +14,7 @@ public class PostAccountApplications extends PostOperation {
 		addRequiredField("name");
 	}
 
+
 	public PostAccountApplications() {
 		super(OPERATION_PATH);
 	}

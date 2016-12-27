@@ -9,12 +9,15 @@ import io.commercelayer.api.json.JsonExclude;
  */
 public class CountryLanguage extends ApiResource {
 
-	private static final long serialVersionUID = -1482845757906L;
+	private static final long serialVersionUID = -1482880735274L;
 
 
-	private String countryId;
-	private String languageId;
-	private String position;
+	@JsonExclude
+	private String name;
+	private Integer countryId;
+	private Integer languageId;
+	@JsonExclude
+	private Integer position;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
@@ -33,32 +36,42 @@ public class CountryLanguage extends ApiResource {
 	}
 	
 
-	public void setCountryId(String countryId) {
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+
+	public String getName() {
+		return this.name;
+	}
+	
+
+	public void setCountryId(Integer countryId) {
 		this.countryId = countryId;
 	}
 	
 
-	public String getCountryId() {
+	public Integer getCountryId() {
 		return this.countryId;
 	}
 	
 
-	public void setLanguageId(String languageId) {
+	public void setLanguageId(Integer languageId) {
 		this.languageId = languageId;
 	}
 	
 
-	public String getLanguageId() {
+	public Integer getLanguageId() {
 		return this.languageId;
 	}
 	
 
-	public void setPosition(String position) {
+	public void setPosition(Integer position) {
 		this.position = position;
 	}
 	
 
-	public String getPosition() {
+	public Integer getPosition() {
 		return this.position;
 	}
 	
@@ -97,17 +110,18 @@ public class CountryLanguage extends ApiResource {
 	public boolean equals(Object o) {
 	
 		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
+		if ((o == null) || (getClass() != o.getClass())) return false;
 	
-		CountryLanguage x = (CountryLanguage) o;
+		CountryLanguage x = (CountryLanguage)o;
 	
-		return super.equals(o) &&
-			Objects.equals(this.countryId, x.countryId)  &&
-			Objects.equals(this.languageId, x.languageId)  &&
-			Objects.equals(this.position, x.position)  &&
-			Objects.equals(this.previousChanges, x.previousChanges)  &&
-			Objects.equals(this.country, x.country)  &&
-			Objects.equals(this.language, x.language) 
+		return super.equals(o)
+			&& Objects.equals(this.name, x.name)
+			&& Objects.equals(this.countryId, x.countryId)
+			&& Objects.equals(this.languageId, x.languageId)
+			&& Objects.equals(this.position, x.position)
+			&& Objects.equals(this.previousChanges, x.previousChanges)
+			&& Objects.equals(this.country, x.country)
+			&& Objects.equals(this.language, x.language)
 		;
 	
 	}
@@ -117,10 +131,27 @@ public class CountryLanguage extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			serialVersionUID, resourceName, id, creatorResource, createdAt,
-			updatedAt, countryId, languageId, position, previousChanges,
+			name, countryId, languageId, position, previousChanges,
 			country, language 
 		);
+	
+	}
+	
+
+	@Override
+	public CountryLanguage clone() {
+	
+		CountryLanguage no = new CountryLanguage();
+	
+		no.name = this.name;
+		no.countryId = this.countryId;
+		no.languageId = this.languageId;
+		no.position = this.position;
+		no.previousChanges = this.previousChanges;
+		no.country = this.country;
+		no.language = this.language;
+	
+		return no;
 	
 	}
 	

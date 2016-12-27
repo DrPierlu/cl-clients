@@ -16,6 +16,7 @@ public class PostAccountPriceLists extends PostOperation {
 		addRequiredField("taxIncluded");
 	}
 
+
 	public PostAccountPriceLists() {
 		super(OPERATION_PATH);
 	}

@@ -20,6 +20,7 @@ public class PutAccountTransactionsId extends PutOperation {
 		addRequiredField("id");
 	}
 
+
 	public PutAccountTransactionsId() {
 		super(OPERATION_PATH);
 	}

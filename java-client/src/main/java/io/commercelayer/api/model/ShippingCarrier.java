@@ -10,15 +10,16 @@ import java.util.List;
  */
 public class ShippingCarrier extends ApiResource {
 
-	private static final long serialVersionUID = -1482845758203L;
+	private static final long serialVersionUID = -1482880735342L;
 
 
-	private String shippingCarrierTypeId;
+	private Integer shippingCarrierTypeId;
 	private String name;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
 	private Object shippingCarrierType;
+	@JsonExclude
 	private List<String> shippingServices;
 
 
@@ -32,12 +33,12 @@ public class ShippingCarrier extends ApiResource {
 	}
 	
 
-	public void setShippingCarrierTypeId(String shippingCarrierTypeId) {
+	public void setShippingCarrierTypeId(Integer shippingCarrierTypeId) {
 		this.shippingCarrierTypeId = shippingCarrierTypeId;
 	}
 	
 
-	public String getShippingCarrierTypeId() {
+	public Integer getShippingCarrierTypeId() {
 		return this.shippingCarrierTypeId;
 	}
 	
@@ -86,16 +87,16 @@ public class ShippingCarrier extends ApiResource {
 	public boolean equals(Object o) {
 	
 		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
+		if ((o == null) || (getClass() != o.getClass())) return false;
 	
-		ShippingCarrier x = (ShippingCarrier) o;
+		ShippingCarrier x = (ShippingCarrier)o;
 	
-		return super.equals(o) &&
-			Objects.equals(this.shippingCarrierTypeId, x.shippingCarrierTypeId)  &&
-			Objects.equals(this.name, x.name)  &&
-			Objects.equals(this.previousChanges, x.previousChanges)  &&
-			Objects.equals(this.shippingCarrierType, x.shippingCarrierType)  &&
-			Objects.equals(this.shippingServices, x.shippingServices) 
+		return super.equals(o)
+			&& Objects.equals(this.shippingCarrierTypeId, x.shippingCarrierTypeId)
+			&& Objects.equals(this.name, x.name)
+			&& Objects.equals(this.previousChanges, x.previousChanges)
+			&& Objects.equals(this.shippingCarrierType, x.shippingCarrierType)
+			&& Objects.equals(this.shippingServices, x.shippingServices)
 		;
 	
 	}
@@ -105,10 +106,25 @@ public class ShippingCarrier extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			serialVersionUID, resourceName, id, creatorResource, createdAt,
-			updatedAt, shippingCarrierTypeId, name, previousChanges, shippingCarrierType,
-			shippingServices 
+			shippingCarrierTypeId, name, previousChanges, shippingCarrierType, shippingServices
+			
 		);
+	
+	}
+	
+
+	@Override
+	public ShippingCarrier clone() {
+	
+		ShippingCarrier no = new ShippingCarrier();
+	
+		no.shippingCarrierTypeId = this.shippingCarrierTypeId;
+		no.name = this.name;
+		no.previousChanges = this.previousChanges;
+		no.shippingCarrierType = this.shippingCarrierType;
+		no.shippingServices = this.shippingServices;
+	
+		return no;
 	
 	}
 	

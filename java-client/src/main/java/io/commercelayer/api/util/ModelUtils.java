@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.text.WordUtils;
 
 public class ModelUtils {
@@ -135,6 +136,19 @@ public class ModelUtils {
 		c[0] = Character.toLowerCase(c[0]);
 		cap = new String(c);
 		return cap;
+	}
+	
+	
+	public static String getObjectField(String nameWithSquaredBrackets, boolean toCamelCase) {
+		String field = nameWithSquaredBrackets;
+		if (field.indexOf('[') != -1) field = field.substring(field.indexOf('[')+1, field.indexOf(']'));
+		return toCamelCase? toCamelCase(field) : field;
+	}
+	
+	public static String getObjectName(String nameWithSquaredBrackets, boolean toCamelCase) {
+		String name = nameWithSquaredBrackets;
+		if (name.indexOf('[') != -1) name = name.substring(0, name.indexOf('['));
+		return toCamelCase? StringUtils.capitalize(toCamelCase(name)) : name;
 	}
 
 }

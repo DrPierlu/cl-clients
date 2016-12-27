@@ -17,6 +17,7 @@ public class PostAccountPaymentTypes extends PostOperation {
 		addRequiredField("description");
 	}
 
+
 	public PostAccountPaymentTypes() {
 		super(OPERATION_PATH);
 	}

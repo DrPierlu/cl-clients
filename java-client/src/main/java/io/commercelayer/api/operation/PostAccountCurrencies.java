@@ -14,6 +14,7 @@ public class PostAccountCurrencies extends PostOperation {
 		addRequiredField("code");
 	}
 
+
 	public PostAccountCurrencies() {
 		super(OPERATION_PATH);
 	}

@@ -18,6 +18,7 @@ public class PostAccountMerchandisingRules extends PostOperation {
 		addRequiredField("hero");
 	}
 
+
 	public PostAccountMerchandisingRules() {
 		super(OPERATION_PATH);
 	}

@@ -15,6 +15,7 @@ public class PostAccountVariantOptions extends PostOperation {
 		addRequiredField("optionValueId");
 	}
 
+
 	public PostAccountVariantOptions() {
 		super(OPERATION_PATH);
 	}

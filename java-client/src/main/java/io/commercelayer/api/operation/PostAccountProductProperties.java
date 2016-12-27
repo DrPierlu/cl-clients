@@ -15,6 +15,7 @@ public class PostAccountProductProperties extends PostOperation {
 		addRequiredField("propertyValueId");
 	}
 
+
 	public PostAccountProductProperties() {
 		super(OPERATION_PATH);
 	}

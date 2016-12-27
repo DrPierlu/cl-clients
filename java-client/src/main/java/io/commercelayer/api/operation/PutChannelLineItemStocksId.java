@@ -16,6 +16,7 @@ public class PutChannelLineItemStocksId extends PutOperation {
 		addRequiredField("id");
 	}
 
+
 	public PutChannelLineItemStocksId() {
 		super(OPERATION_PATH);
 	}

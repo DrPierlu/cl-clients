@@ -18,6 +18,7 @@ public class PostAccountPaymentMethods extends PostOperation {
 		addRequiredField("amount");
 	}
 
+
 	public PostAccountPaymentMethods() {
 		super(OPERATION_PATH);
 	}

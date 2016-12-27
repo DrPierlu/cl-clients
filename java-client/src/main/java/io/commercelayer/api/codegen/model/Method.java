@@ -11,6 +11,7 @@ import org.apache.commons.lang3.StringUtils;
 public class Method extends AbstractModelObject {
 
 	private Class<?> returnType;
+	private String returnTypeNew;
 	private Class<?> listType;
 	private List<Param> signatureParams = new ArrayList<>();
 	private List<String> body = new ArrayList<>();
@@ -96,6 +97,14 @@ public class Method extends AbstractModelObject {
 
 	
 
+	public String getReturnTypeNew() {
+		return returnTypeNew;
+	}
+
+	public void setReturnTypeNew(String returnTypeNew) {
+		this.returnTypeNew = returnTypeNew;
+	}
+
 	public String generate() {
 
 		StringBuilder sb = new StringBuilder();
@@ -106,8 +115,12 @@ public class Method extends AbstractModelObject {
 		}
 		
 		sb.append(Modifier.toString(getModifier())).append(' ');
-		sb.append((getReturnType() == null) ? "void" : strType(getReturnType(), getListType())).append(' ');
-		sb.append(getName()).append('(');
+		
+		if (getReturnType() == null)
+			if (getReturnTypeNew() == null) sb.append(Void.TYPE.getSimpleName());
+			else sb.append(getReturnTypeNew());
+		else sb.append(strType(getReturnType(), getListType()));
+		sb.append(' ').append(getName()).append('(');
 
 		if (!getSignatureParams().isEmpty()) {
 			int params = 0;

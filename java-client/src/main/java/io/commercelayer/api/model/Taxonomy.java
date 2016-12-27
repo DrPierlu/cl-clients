@@ -10,16 +10,23 @@ import java.util.List;
  */
 public class Taxonomy extends ApiResource {
 
-	private static final long serialVersionUID = -1482845758312L;
+	private static final long serialVersionUID = -1482880735362L;
 
 
 	private String name;
 	@JsonExclude
+	private String slug;
+	@JsonExclude
 	private Object previousChanges;
+	@JsonExclude
 	private List<String> resourceImages;
+	@JsonExclude
 	private List<String> images;
+	@JsonExclude
 	private List<String> translations;
+	@JsonExclude
 	private List<String> taxons;
+	@JsonExclude
 	private List<String> products;
 
 
@@ -40,6 +47,16 @@ public class Taxonomy extends ApiResource {
 
 	public String getName() {
 		return this.name;
+	}
+	
+
+	public void setSlug(String slug) {
+		this.slug = slug;
+	}
+	
+
+	public String getSlug() {
+		return this.slug;
 	}
 	
 
@@ -107,18 +124,19 @@ public class Taxonomy extends ApiResource {
 	public boolean equals(Object o) {
 	
 		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
+		if ((o == null) || (getClass() != o.getClass())) return false;
 	
-		Taxonomy x = (Taxonomy) o;
+		Taxonomy x = (Taxonomy)o;
 	
-		return super.equals(o) &&
-			Objects.equals(this.name, x.name)  &&
-			Objects.equals(this.previousChanges, x.previousChanges)  &&
-			Objects.equals(this.resourceImages, x.resourceImages)  &&
-			Objects.equals(this.images, x.images)  &&
-			Objects.equals(this.translations, x.translations)  &&
-			Objects.equals(this.taxons, x.taxons)  &&
-			Objects.equals(this.products, x.products) 
+		return super.equals(o)
+			&& Objects.equals(this.name, x.name)
+			&& Objects.equals(this.slug, x.slug)
+			&& Objects.equals(this.previousChanges, x.previousChanges)
+			&& Objects.equals(this.resourceImages, x.resourceImages)
+			&& Objects.equals(this.images, x.images)
+			&& Objects.equals(this.translations, x.translations)
+			&& Objects.equals(this.taxons, x.taxons)
+			&& Objects.equals(this.products, x.products)
 		;
 	
 	}
@@ -128,10 +146,28 @@ public class Taxonomy extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			serialVersionUID, resourceName, id, creatorResource, createdAt,
-			updatedAt, name, previousChanges, resourceImages, images,
+			name, slug, previousChanges, resourceImages, images,
 			translations, taxons, products 
 		);
+	
+	}
+	
+
+	@Override
+	public Taxonomy clone() {
+	
+		Taxonomy no = new Taxonomy();
+	
+		no.name = this.name;
+		no.slug = this.slug;
+		no.previousChanges = this.previousChanges;
+		no.resourceImages = this.resourceImages;
+		no.images = this.images;
+		no.translations = this.translations;
+		no.taxons = this.taxons;
+		no.products = this.products;
+	
+		return no;
 	
 	}
 	

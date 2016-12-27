@@ -10,24 +10,36 @@ import java.util.List;
  */
 public class ShippingService extends ApiResource {
 
-	private static final long serialVersionUID = -1482845758234L;
+	private static final long serialVersionUID = -1482880735350L;
 
 
 	private String name;
+	@JsonExclude
+	private String slug;
+	@JsonExclude
 	private String description;
-	private String shippingCarrierId;
+	private Integer shippingCarrierId;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
 	private Object shippingCarrier;
+	@JsonExclude
 	private List<String> translations;
+	@JsonExclude
 	private List<String> marketShippingServices;
+	@JsonExclude
 	private List<String> shippingServiceCategories;
+	@JsonExclude
 	private List<String> shippingServiceZones;
+	@JsonExclude
 	private List<String> shippingServiceStockLocations;
+	@JsonExclude
 	private List<String> markets;
+	@JsonExclude
 	private List<String> shippingCategories;
+	@JsonExclude
 	private List<String> stockLocations;
+	@JsonExclude
 	private List<String> shippingZones;
 
 
@@ -51,6 +63,16 @@ public class ShippingService extends ApiResource {
 	}
 	
 
+	public void setSlug(String slug) {
+		this.slug = slug;
+	}
+	
+
+	public String getSlug() {
+		return this.slug;
+	}
+	
+
 	public void setDescription(String description) {
 		this.description = description;
 	}
@@ -61,12 +83,12 @@ public class ShippingService extends ApiResource {
 	}
 	
 
-	public void setShippingCarrierId(String shippingCarrierId) {
+	public void setShippingCarrierId(Integer shippingCarrierId) {
 		this.shippingCarrierId = shippingCarrierId;
 	}
 	
 
-	public String getShippingCarrierId() {
+	public Integer getShippingCarrierId() {
 		return this.shippingCarrierId;
 	}
 	
@@ -185,25 +207,26 @@ public class ShippingService extends ApiResource {
 	public boolean equals(Object o) {
 	
 		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
+		if ((o == null) || (getClass() != o.getClass())) return false;
 	
-		ShippingService x = (ShippingService) o;
+		ShippingService x = (ShippingService)o;
 	
-		return super.equals(o) &&
-			Objects.equals(this.name, x.name)  &&
-			Objects.equals(this.description, x.description)  &&
-			Objects.equals(this.shippingCarrierId, x.shippingCarrierId)  &&
-			Objects.equals(this.previousChanges, x.previousChanges)  &&
-			Objects.equals(this.shippingCarrier, x.shippingCarrier)  &&
-			Objects.equals(this.translations, x.translations)  &&
-			Objects.equals(this.marketShippingServices, x.marketShippingServices)  &&
-			Objects.equals(this.shippingServiceCategories, x.shippingServiceCategories)  &&
-			Objects.equals(this.shippingServiceZones, x.shippingServiceZones)  &&
-			Objects.equals(this.shippingServiceStockLocations, x.shippingServiceStockLocations)  &&
-			Objects.equals(this.markets, x.markets)  &&
-			Objects.equals(this.shippingCategories, x.shippingCategories)  &&
-			Objects.equals(this.stockLocations, x.stockLocations)  &&
-			Objects.equals(this.shippingZones, x.shippingZones) 
+		return super.equals(o)
+			&& Objects.equals(this.name, x.name)
+			&& Objects.equals(this.slug, x.slug)
+			&& Objects.equals(this.description, x.description)
+			&& Objects.equals(this.shippingCarrierId, x.shippingCarrierId)
+			&& Objects.equals(this.previousChanges, x.previousChanges)
+			&& Objects.equals(this.shippingCarrier, x.shippingCarrier)
+			&& Objects.equals(this.translations, x.translations)
+			&& Objects.equals(this.marketShippingServices, x.marketShippingServices)
+			&& Objects.equals(this.shippingServiceCategories, x.shippingServiceCategories)
+			&& Objects.equals(this.shippingServiceZones, x.shippingServiceZones)
+			&& Objects.equals(this.shippingServiceStockLocations, x.shippingServiceStockLocations)
+			&& Objects.equals(this.markets, x.markets)
+			&& Objects.equals(this.shippingCategories, x.shippingCategories)
+			&& Objects.equals(this.stockLocations, x.stockLocations)
+			&& Objects.equals(this.shippingZones, x.shippingZones)
 		;
 	
 	}
@@ -213,12 +236,37 @@ public class ShippingService extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			serialVersionUID, resourceName, id, creatorResource, createdAt,
-			updatedAt, name, description, shippingCarrierId, previousChanges,
+			name, slug, description, shippingCarrierId, previousChanges,
 			shippingCarrier, translations, marketShippingServices, shippingServiceCategories, shippingServiceZones,
 			shippingServiceStockLocations, markets, shippingCategories, stockLocations, shippingZones
 			
 		);
+	
+	}
+	
+
+	@Override
+	public ShippingService clone() {
+	
+		ShippingService no = new ShippingService();
+	
+		no.name = this.name;
+		no.slug = this.slug;
+		no.description = this.description;
+		no.shippingCarrierId = this.shippingCarrierId;
+		no.previousChanges = this.previousChanges;
+		no.shippingCarrier = this.shippingCarrier;
+		no.translations = this.translations;
+		no.marketShippingServices = this.marketShippingServices;
+		no.shippingServiceCategories = this.shippingServiceCategories;
+		no.shippingServiceZones = this.shippingServiceZones;
+		no.shippingServiceStockLocations = this.shippingServiceStockLocations;
+		no.markets = this.markets;
+		no.shippingCategories = this.shippingCategories;
+		no.stockLocations = this.stockLocations;
+		no.shippingZones = this.shippingZones;
+	
+		return no;
 	
 	}
 	

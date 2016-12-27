@@ -6,7 +6,6 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import io.commercelayer.api.config.ApiConfig;
 import io.commercelayer.api.domain.ContentType;
 import io.commercelayer.api.exception.ApiException;
 import io.commercelayer.api.exception.AuthException;
@@ -204,37 +203,36 @@ public class ApiCaller {
 
 		logger.debug("Request Body: {}", request.getBody());
 
-		try {
-			response = httpClient.send(request); // Connection Exception
-		}
-		catch (ConnectionException ce) {
-			logger.error("ConnectionException: %s", ce.getMessage());
-			throw ce;
-		}
-
-		logger.debug("HTTP Response Code: {}", response.getCode());
+		response = httpClient.send(request); // Connection Exception
+				
 
 		if (response.hasErrorCode()) {
-			if (response.getCode() >= 500) { // System Error
-				throw new SystemException(String.format("Api System Exception [%d]", response.getCode()));
+			logger.warn("HTTP Response Code: {}", response.getCode());
+			try {
+				if (response.getCode() >= 500) { // System Error
+					throw new SystemException(String.format("Api System Exception [%d] - %s", response.getCode(), response.getBody()));
+				}
+				else
+				if (response.getCode() == 401) { // Authentication Error
+					ApiError apiError = jsonCodec.fromJSON(response.getBody(), ApiError.class);
+					throw new AuthException(apiError);
+				}
+				else
+				if (response.getCode() >= 400) { // Data Error
+					ApiError apiError = jsonCodec.fromJSON(response.getBody(), ApiError.class);
+					throw new ApiException(apiError);
+				}
+				else
+				if (response.getCode() <= 308) { // Redirection
+					// Nothing to do
+				}
 			}
-			else
-			if (response.getCode() == 401) { // Authentication Error
-				ApiError apiError = jsonCodec.fromJSON(response.getBody(), ApiError.class);
-				throw new AuthException(apiError);
-			}
-			else
-			if (response.getCode() >= 400) { // Data Error
-				ApiError apiError = jsonCodec.fromJSON(response.getBody(), ApiError.class);
-				throw new ApiException(apiError);
-			}
-			else
-			if (response.getCode() <= 308) { // Redirection
-				// Nothing to do
+			catch (AuthException | ConnectionException | SystemException re) {
+				logger.error("RuntimeException: {}", re.getMessage());
 			}
 		}
 
-		 logger.trace("Response Body: {}", ApiConfig.testModeEnabled()? ApiUtils.formatJson(response.getBody()) : response.getBody());
+		//  logger.trace("Response Body: {}", ApiConfig.testModeEnabled()? ApiUtils.formatJson(response.getBody()) : response.getBody());
 		// logger.trace("Response Body: {}", response.getBody());
 
 		return response;
