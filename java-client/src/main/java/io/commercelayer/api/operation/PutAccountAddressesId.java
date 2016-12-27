@@ -10,8 +10,22 @@ public class PutAccountAddressesId extends PutOperation {
 	public static final String OPERATION_PATH = "/account/addresses/{id}";
 
 
+	{
+		addRequiredField("geocodingCountry");
+		addRequiredField("geocodingZip");
+		addRequiredField("geocodingCity");
+		addRequiredField("geocodingStreet");
+		addRequiredField("geocodingNumber");
+		addRequiredField("id");
+	}
+
 	public PutAccountAddressesId() {
 		super(OPERATION_PATH);
+	}
+	
+
+	public PutAccountAddressesId(Long id) {
+		super(OPERATION_PATH, id);
 	}
 	
 }

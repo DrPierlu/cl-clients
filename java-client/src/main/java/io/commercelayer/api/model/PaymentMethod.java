@@ -9,17 +9,17 @@ import io.commercelayer.api.json.JsonExclude;
  */
 public class PaymentMethod extends ApiResource {
 
-	private static final long serialVersionUID = -1481927389151L;
+	private static final long serialVersionUID = -1482845758109L;
 
 
-	private Integer orderId;
-	private Integer paymentTypeId;
-	private Integer paymentSourceId;
+	private String orderId;
+	private String paymentTypeId;
+	private String paymentSourceId;
 	private String paymentSourceResource;
-	private Integer gatewayId;
-	private Integer billingAddressId;
-	private Integer priceCents;
-	private Integer amountCents;
+	private String gatewayId;
+	private String billingAddressId;
+	private String priceCents;
+	private String amountCents;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
@@ -52,32 +52,32 @@ public class PaymentMethod extends ApiResource {
 	}
 	
 
-	public void setOrderId(Integer orderId) {
+	public void setOrderId(String orderId) {
 		this.orderId = orderId;
 	}
 	
 
-	public Integer getOrderId() {
+	public String getOrderId() {
 		return this.orderId;
 	}
 	
 
-	public void setPaymentTypeId(Integer paymentTypeId) {
+	public void setPaymentTypeId(String paymentTypeId) {
 		this.paymentTypeId = paymentTypeId;
 	}
 	
 
-	public Integer getPaymentTypeId() {
+	public String getPaymentTypeId() {
 		return this.paymentTypeId;
 	}
 	
 
-	public void setPaymentSourceId(Integer paymentSourceId) {
+	public void setPaymentSourceId(String paymentSourceId) {
 		this.paymentSourceId = paymentSourceId;
 	}
 	
 
-	public Integer getPaymentSourceId() {
+	public String getPaymentSourceId() {
 		return this.paymentSourceId;
 	}
 	
@@ -92,42 +92,42 @@ public class PaymentMethod extends ApiResource {
 	}
 	
 
-	public void setGatewayId(Integer gatewayId) {
+	public void setGatewayId(String gatewayId) {
 		this.gatewayId = gatewayId;
 	}
 	
 
-	public Integer getGatewayId() {
+	public String getGatewayId() {
 		return this.gatewayId;
 	}
 	
 
-	public void setBillingAddressId(Integer billingAddressId) {
+	public void setBillingAddressId(String billingAddressId) {
 		this.billingAddressId = billingAddressId;
 	}
 	
 
-	public Integer getBillingAddressId() {
+	public String getBillingAddressId() {
 		return this.billingAddressId;
 	}
 	
 
-	public void setPriceCents(Integer priceCents) {
+	public void setPriceCents(String priceCents) {
 		this.priceCents = priceCents;
 	}
 	
 
-	public Integer getPriceCents() {
+	public String getPriceCents() {
 		return this.priceCents;
 	}
 	
 
-	public void setAmountCents(Integer amountCents) {
+	public void setAmountCents(String amountCents) {
 		this.amountCents = amountCents;
 	}
 	
 
-	public Integer getAmountCents() {
+	public String getAmountCents() {
 		return this.amountCents;
 	}
 	

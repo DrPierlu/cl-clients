@@ -9,13 +9,13 @@ import io.commercelayer.api.json.JsonExclude;
  */
 public class ConsumerRole extends ApiResource {
 
-	private static final long serialVersionUID = -1481927389031L;
+	private static final long serialVersionUID = -1482845757906L;
 
 
-	private Integer consumerId;
+	private String consumerId;
 	private String consumerResource;
-	private Integer roleId;
-	private Integer position;
+	private String roleId;
+	private String position;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
@@ -34,12 +34,12 @@ public class ConsumerRole extends ApiResource {
 	}
 	
 
-	public void setConsumerId(Integer consumerId) {
+	public void setConsumerId(String consumerId) {
 		this.consumerId = consumerId;
 	}
 	
 
-	public Integer getConsumerId() {
+	public String getConsumerId() {
 		return this.consumerId;
 	}
 	
@@ -54,22 +54,22 @@ public class ConsumerRole extends ApiResource {
 	}
 	
 
-	public void setRoleId(Integer roleId) {
+	public void setRoleId(String roleId) {
 		this.roleId = roleId;
 	}
 	
 
-	public Integer getRoleId() {
+	public String getRoleId() {
 		return this.roleId;
 	}
 	
 
-	public void setPosition(Integer position) {
+	public void setPosition(String position) {
 		this.position = position;
 	}
 	
 
-	public Integer getPosition() {
+	public String getPosition() {
 		return this.position;
 	}
 	

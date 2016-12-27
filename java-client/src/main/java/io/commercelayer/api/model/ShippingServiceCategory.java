@@ -9,11 +9,11 @@ import io.commercelayer.api.json.JsonExclude;
  */
 public class ShippingServiceCategory extends ApiResource {
 
-	private static final long serialVersionUID = -1481927389240L;
+	private static final long serialVersionUID = -1482845758250L;
 
 
-	private Integer shippingServiceId;
-	private Integer shippingCategoryId;
+	private String shippingServiceId;
+	private String shippingCategoryId;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
@@ -32,22 +32,22 @@ public class ShippingServiceCategory extends ApiResource {
 	}
 	
 
-	public void setShippingServiceId(Integer shippingServiceId) {
+	public void setShippingServiceId(String shippingServiceId) {
 		this.shippingServiceId = shippingServiceId;
 	}
 	
 
-	public Integer getShippingServiceId() {
+	public String getShippingServiceId() {
 		return this.shippingServiceId;
 	}
 	
 
-	public void setShippingCategoryId(Integer shippingCategoryId) {
+	public void setShippingCategoryId(String shippingCategoryId) {
 		this.shippingCategoryId = shippingCategoryId;
 	}
 	
 
-	public Integer getShippingCategoryId() {
+	public String getShippingCategoryId() {
 		return this.shippingCategoryId;
 	}
 	

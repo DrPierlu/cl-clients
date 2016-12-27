@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class Address extends ApiResource {
 
-	private static final long serialVersionUID = -1481927388991L;
+	private static final long serialVersionUID = -1482845757860L;
 
 
 	private String geocodingCountry;
@@ -21,7 +21,7 @@ public class Address extends ApiResource {
 	private String provider;
 	private String placeId;
 	private String precision;
-	private Integer accuracy;
+	private String accuracy;
 	private String countryCode;
 	private String country;
 	private String stateCode;
@@ -35,6 +35,8 @@ public class Address extends ApiResource {
 	private String streetNumber;
 	private String streetAddress;
 	private String subPremise;
+	private String fullAddress;
+	private String formattedAddress;
 	private Float lat;
 	private Float lng;
 	private Float suggestedBoundsSwLat;
@@ -136,12 +138,12 @@ public class Address extends ApiResource {
 	}
 	
 
-	public void setAccuracy(Integer accuracy) {
+	public void setAccuracy(String accuracy) {
 		this.accuracy = accuracy;
 	}
 	
 
-	public Integer getAccuracy() {
+	public String getAccuracy() {
 		return this.accuracy;
 	}
 	
@@ -276,6 +278,26 @@ public class Address extends ApiResource {
 	}
 	
 
+	public void setFullAddress(String fullAddress) {
+		this.fullAddress = fullAddress;
+	}
+	
+
+	public String getFullAddress() {
+		return this.fullAddress;
+	}
+	
+
+	public void setFormattedAddress(String formattedAddress) {
+		this.formattedAddress = formattedAddress;
+	}
+	
+
+	public String getFormattedAddress() {
+		return this.formattedAddress;
+	}
+	
+
 	public void setLat(Float lat) {
 		this.lat = lat;
 	}
@@ -387,6 +409,8 @@ public class Address extends ApiResource {
 			Objects.equals(this.streetNumber, x.streetNumber)  &&
 			Objects.equals(this.streetAddress, x.streetAddress)  &&
 			Objects.equals(this.subPremise, x.subPremise)  &&
+			Objects.equals(this.fullAddress, x.fullAddress)  &&
+			Objects.equals(this.formattedAddress, x.formattedAddress)  &&
 			Objects.equals(this.lat, x.lat)  &&
 			Objects.equals(this.lng, x.lng)  &&
 			Objects.equals(this.suggestedBoundsSwLat, x.suggestedBoundsSwLat)  &&
@@ -409,9 +433,9 @@ public class Address extends ApiResource {
 			geocodingNumber, provider, placeId, precision, accuracy,
 			countryCode, country, stateCode, stateName, state,
 			province, zip, city, district, streetName,
-			streetNumber, streetAddress, subPremise, lat, lng,
-			suggestedBoundsSwLat, suggestedBoundsSwLng, suggestedBoundsNeLat, suggestedBoundsNeLng, previousChanges,
-			shippingMethods 
+			streetNumber, streetAddress, subPremise, fullAddress, formattedAddress,
+			lat, lng, suggestedBoundsSwLat, suggestedBoundsSwLng, suggestedBoundsNeLat,
+			suggestedBoundsNeLng, previousChanges, shippingMethods 
 		);
 	
 	}

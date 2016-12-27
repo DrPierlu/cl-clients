@@ -9,15 +9,14 @@ import io.commercelayer.api.json.JsonExclude;
  */
 public class MerchandisingRule extends ApiResource {
 
-	private static final long serialVersionUID = -1481927389123L;
+	private static final long serialVersionUID = -1482845758062L;
 
 
-	private Integer catalogId;
-	private Integer taxonId;
-	private Integer productId;
-	private Integer position;
-	@JsonExclude
-	private Object hero;
+	private String catalogId;
+	private String taxonId;
+	private String productId;
+	private String position;
+	private String hero;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
@@ -38,52 +37,52 @@ public class MerchandisingRule extends ApiResource {
 	}
 	
 
-	public void setCatalogId(Integer catalogId) {
+	public void setCatalogId(String catalogId) {
 		this.catalogId = catalogId;
 	}
 	
 
-	public Integer getCatalogId() {
+	public String getCatalogId() {
 		return this.catalogId;
 	}
 	
 
-	public void setTaxonId(Integer taxonId) {
+	public void setTaxonId(String taxonId) {
 		this.taxonId = taxonId;
 	}
 	
 
-	public Integer getTaxonId() {
+	public String getTaxonId() {
 		return this.taxonId;
 	}
 	
 
-	public void setProductId(Integer productId) {
+	public void setProductId(String productId) {
 		this.productId = productId;
 	}
 	
 
-	public Integer getProductId() {
+	public String getProductId() {
 		return this.productId;
 	}
 	
 
-	public void setPosition(Integer position) {
+	public void setPosition(String position) {
 		this.position = position;
 	}
 	
 
-	public Integer getPosition() {
+	public String getPosition() {
 		return this.position;
 	}
 	
 
-	public void setHero(Object hero) {
+	public void setHero(String hero) {
 		this.hero = hero;
 	}
 	
 
-	public Object getHero() {
+	public String getHero() {
 		return this.hero;
 	}
 	

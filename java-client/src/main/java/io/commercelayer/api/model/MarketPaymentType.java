@@ -9,14 +9,14 @@ import io.commercelayer.api.json.JsonExclude;
  */
 public class MarketPaymentType extends ApiResource {
 
-	private static final long serialVersionUID = -1481927389113L;
+	private static final long serialVersionUID = -1482845758031L;
 
 
-	private Integer marketId;
-	private Integer paymentTypeId;
+	private String marketId;
+	private String paymentTypeId;
 	private String countryCodeRegex;
 	private String notCountryCodeRegex;
-	private Integer priceCents;
+	private String priceCents;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
@@ -37,22 +37,22 @@ public class MarketPaymentType extends ApiResource {
 	}
 	
 
-	public void setMarketId(Integer marketId) {
+	public void setMarketId(String marketId) {
 		this.marketId = marketId;
 	}
 	
 
-	public Integer getMarketId() {
+	public String getMarketId() {
 		return this.marketId;
 	}
 	
 
-	public void setPaymentTypeId(Integer paymentTypeId) {
+	public void setPaymentTypeId(String paymentTypeId) {
 		this.paymentTypeId = paymentTypeId;
 	}
 	
 
-	public Integer getPaymentTypeId() {
+	public String getPaymentTypeId() {
 		return this.paymentTypeId;
 	}
 	
@@ -77,12 +77,12 @@ public class MarketPaymentType extends ApiResource {
 	}
 	
 
-	public void setPriceCents(Integer priceCents) {
+	public void setPriceCents(String priceCents) {
 		this.priceCents = priceCents;
 	}
 	
 
-	public Integer getPriceCents() {
+	public String getPriceCents() {
 		return this.priceCents;
 	}
 	

@@ -18,6 +18,7 @@ import io.commercelayer.api.codegen.model.Model;
 import io.commercelayer.api.codegen.model.ModelClass;
 import io.commercelayer.api.codegen.schema.Definition;
 import io.commercelayer.api.codegen.schema.Operation;
+import io.commercelayer.api.codegen.schema.Parameter;
 import io.commercelayer.api.codegen.schema.Property;
 import io.commercelayer.api.codegen.schema.Resource;
 import io.commercelayer.api.codegen.schema.Schema;
@@ -31,6 +32,7 @@ import io.commercelayer.api.operation.common.DeleteOperation;
 import io.commercelayer.api.operation.common.GetIdOperation;
 import io.commercelayer.api.operation.common.IdOperation;
 import io.commercelayer.api.operation.common.MoveOperation;
+import io.commercelayer.api.operation.common.PayloadOperation;
 import io.commercelayer.api.operation.common.PostOperation;
 import io.commercelayer.api.operation.common.PutOperation;
 import io.commercelayer.api.operation.common.SearchOperation;
@@ -45,8 +47,8 @@ public class ApiModelGen {
 	private static final boolean GENERATE_TEST_CLASSES 		= true;
 
 	public static final String PACKAGE_OBJECT 		= ApiModelWriter.class.getPackage().getName() + ".classes.object";
-	public static final String PACKAGE_TEST 		= ApiModelWriter.class.getPackage().getName() + ".classes.test";
 	public static final String PACKAGE_OPERATION	= ApiModelWriter.class.getPackage().getName() + ".classes.operation";
+	public static final String PACKAGE_TEST 		= ApiModelWriter.class.getPackage().getName() + ".classes.test";
 
 	public Model createModel(Schema schema) {
 		
@@ -348,6 +350,22 @@ public class ApiModelGen {
 			ccid.addBodyLine("super(".concat(operationPathField).concat(", id);"));
 			
 			mc.addConstructor(ccid);
+			
+		}
+		
+		
+		if (PayloadOperation.class.isAssignableFrom(mc.getExtendedClass())) {
+			
+			StringBuilder sb = new StringBuilder();
+			
+			for (Parameter p : op.getParameters()) {
+				if (sb.length() > 0) sb.append('\n');
+				String name = p.getName();
+				if (name.indexOf('[') != -1) name = name.substring(p.getName().indexOf('[')+1, p.getName().indexOf(']'));
+				sb.append("addRequiredField(\"").append(ModelUtils.toCamelCase(name)).append("\");");
+			}
+			
+			mc.setInitBlock(sb.toString());
 			
 		}
 		

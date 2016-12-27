@@ -10,6 +10,14 @@ public class PostAccountMerchandisingRules extends PostOperation {
 	public static final String OPERATION_PATH = "/account/merchandising_rules";
 
 
+	{
+		addRequiredField("catalogId");
+		addRequiredField("productId");
+		addRequiredField("taxonId");
+		addRequiredField("position");
+		addRequiredField("hero");
+	}
+
 	public PostAccountMerchandisingRules() {
 		super(OPERATION_PATH);
 	}

@@ -9,17 +9,17 @@ import io.commercelayer.api.json.JsonExclude;
  */
 public class Transaction extends ApiResource {
 
-	private static final long serialVersionUID = -1481927389282L;
+	private static final long serialVersionUID = -1482845758328L;
 
 
-	private Integer orderId;
-	private Integer gatewayId;
-	private Integer currencyId;
-	private Integer paymentSourceId;
+	private String orderId;
+	private String gatewayId;
+	private String currencyId;
+	private String paymentSourceId;
 	private String paymentSourceResource;
 	private String token;
 	private String kind;
-	private Integer amountCents;
+	private String amountCents;
 	private String state;
 	private String message;
 	private String avsCode;
@@ -50,42 +50,42 @@ public class Transaction extends ApiResource {
 	}
 	
 
-	public void setOrderId(Integer orderId) {
+	public void setOrderId(String orderId) {
 		this.orderId = orderId;
 	}
 	
 
-	public Integer getOrderId() {
+	public String getOrderId() {
 		return this.orderId;
 	}
 	
 
-	public void setGatewayId(Integer gatewayId) {
+	public void setGatewayId(String gatewayId) {
 		this.gatewayId = gatewayId;
 	}
 	
 
-	public Integer getGatewayId() {
+	public String getGatewayId() {
 		return this.gatewayId;
 	}
 	
 
-	public void setCurrencyId(Integer currencyId) {
+	public void setCurrencyId(String currencyId) {
 		this.currencyId = currencyId;
 	}
 	
 
-	public Integer getCurrencyId() {
+	public String getCurrencyId() {
 		return this.currencyId;
 	}
 	
 
-	public void setPaymentSourceId(Integer paymentSourceId) {
+	public void setPaymentSourceId(String paymentSourceId) {
 		this.paymentSourceId = paymentSourceId;
 	}
 	
 
-	public Integer getPaymentSourceId() {
+	public String getPaymentSourceId() {
 		return this.paymentSourceId;
 	}
 	
@@ -120,12 +120,12 @@ public class Transaction extends ApiResource {
 	}
 	
 
-	public void setAmountCents(Integer amountCents) {
+	public void setAmountCents(String amountCents) {
 		this.amountCents = amountCents;
 	}
 	
 
-	public Integer getAmountCents() {
+	public String getAmountCents() {
 		return this.amountCents;
 	}
 	

@@ -57,6 +57,7 @@ public class Field extends AbstractModelObject {
 		this.initialization = initialization;
 	}
 
+
 	public String generate() {
 
 		StringBuilder sb = new StringBuilder();
@@ -70,11 +71,12 @@ public class Field extends AbstractModelObject {
 
 		sb.append(Modifier.toString(modifier)).append(' ');
 		sb.append(strType()).append(' ').append(getName());
-		
+
 		if (this.initialization != null)
 			sb.append(" = ").append(this.initialization);
-		
+
 		sb.append(';');
+		
 
 		return sb.toString();
 

@@ -10,6 +10,11 @@ public class PostAccountCatalogs extends PostOperation {
 	public static final String OPERATION_PATH = "/account/catalogs";
 
 
+	{
+		addRequiredField("name");
+		addRequiredField("description");
+	}
+
 	public PostAccountCatalogs() {
 		super(OPERATION_PATH);
 	}

@@ -10,6 +10,11 @@ public class PostAccountStockLocations extends PostOperation {
 	public static final String OPERATION_PATH = "/account/stock_locations";
 
 
+	{
+		addRequiredField("name");
+		addRequiredField("parentId");
+	}
+
 	public PostAccountStockLocations() {
 		super(OPERATION_PATH);
 	}

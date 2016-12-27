@@ -9,7 +9,7 @@ import io.commercelayer.api.json.JsonExclude;
  */
 public class Image extends ApiResource {
 
-	private static final long serialVersionUID = -1481927389103L;
+	private static final long serialVersionUID = -1482845758000L;
 
 
 	@JsonExclude

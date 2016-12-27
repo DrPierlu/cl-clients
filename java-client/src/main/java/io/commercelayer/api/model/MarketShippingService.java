@@ -9,13 +9,13 @@ import io.commercelayer.api.json.JsonExclude;
  */
 public class MarketShippingService extends ApiResource {
 
-	private static final long serialVersionUID = -1481927389115L;
+	private static final long serialVersionUID = -1482845758047L;
 
 
-	private Integer marketId;
-	private Integer shippingServiceId;
-	private Integer priceCents;
-	private Integer freeOverAmountCents;
+	private String marketId;
+	private String shippingServiceId;
+	private String priceCents;
+	private String freeOverAmountCents;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
@@ -38,42 +38,42 @@ public class MarketShippingService extends ApiResource {
 	}
 	
 
-	public void setMarketId(Integer marketId) {
+	public void setMarketId(String marketId) {
 		this.marketId = marketId;
 	}
 	
 
-	public Integer getMarketId() {
+	public String getMarketId() {
 		return this.marketId;
 	}
 	
 
-	public void setShippingServiceId(Integer shippingServiceId) {
+	public void setShippingServiceId(String shippingServiceId) {
 		this.shippingServiceId = shippingServiceId;
 	}
 	
 
-	public Integer getShippingServiceId() {
+	public String getShippingServiceId() {
 		return this.shippingServiceId;
 	}
 	
 
-	public void setPriceCents(Integer priceCents) {
+	public void setPriceCents(String priceCents) {
 		this.priceCents = priceCents;
 	}
 	
 
-	public Integer getPriceCents() {
+	public String getPriceCents() {
 		return this.priceCents;
 	}
 	
 
-	public void setFreeOverAmountCents(Integer freeOverAmountCents) {
+	public void setFreeOverAmountCents(String freeOverAmountCents) {
 		this.freeOverAmountCents = freeOverAmountCents;
 	}
 	
 
-	public Integer getFreeOverAmountCents() {
+	public String getFreeOverAmountCents() {
 		return this.freeOverAmountCents;
 	}
 	

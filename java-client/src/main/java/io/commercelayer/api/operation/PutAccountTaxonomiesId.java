@@ -10,8 +10,18 @@ public class PutAccountTaxonomiesId extends PutOperation {
 	public static final String OPERATION_PATH = "/account/taxonomies/{id}";
 
 
+	{
+		addRequiredField("name");
+		addRequiredField("id");
+	}
+
 	public PutAccountTaxonomiesId() {
 		super(OPERATION_PATH);
+	}
+	
+
+	public PutAccountTaxonomiesId(Long id) {
+		super(OPERATION_PATH, id);
 	}
 	
 }

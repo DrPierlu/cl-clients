@@ -10,13 +10,13 @@ import java.util.List;
  */
 public class Taxon extends ApiResource {
 
-	private static final long serialVersionUID = -1481927389274L;
+	private static final long serialVersionUID = -1482845758312L;
 
 
 	private String name;
-	private Integer taxonomyId;
-	private Integer position;
-	private Integer parentId;
+	private String taxonomyId;
+	private String position;
+	private String parentId;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
@@ -55,32 +55,32 @@ public class Taxon extends ApiResource {
 	}
 	
 
-	public void setTaxonomyId(Integer taxonomyId) {
+	public void setTaxonomyId(String taxonomyId) {
 		this.taxonomyId = taxonomyId;
 	}
 	
 
-	public Integer getTaxonomyId() {
+	public String getTaxonomyId() {
 		return this.taxonomyId;
 	}
 	
 
-	public void setPosition(Integer position) {
+	public void setPosition(String position) {
 		this.position = position;
 	}
 	
 
-	public Integer getPosition() {
+	public String getPosition() {
 		return this.position;
 	}
 	
 
-	public void setParentId(Integer parentId) {
+	public void setParentId(String parentId) {
 		this.parentId = parentId;
 	}
 	
 
-	public Integer getParentId() {
+	public String getParentId() {
 		return this.parentId;
 	}
 	

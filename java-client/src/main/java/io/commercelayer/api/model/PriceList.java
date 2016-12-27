@@ -10,13 +10,12 @@ import java.util.List;
  */
 public class PriceList extends ApiResource {
 
-	private static final long serialVersionUID = -1481927389158L;
+	private static final long serialVersionUID = -1482845758140L;
 
 
-	private Integer currencyId;
+	private String currencyId;
 	private String name;
-	@JsonExclude
-	private Object taxIncluded;
+	private String taxIncluded;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
@@ -35,12 +34,12 @@ public class PriceList extends ApiResource {
 	}
 	
 
-	public void setCurrencyId(Integer currencyId) {
+	public void setCurrencyId(String currencyId) {
 		this.currencyId = currencyId;
 	}
 	
 
-	public Integer getCurrencyId() {
+	public String getCurrencyId() {
 		return this.currencyId;
 	}
 	
@@ -55,12 +54,12 @@ public class PriceList extends ApiResource {
 	}
 	
 
-	public void setTaxIncluded(Object taxIncluded) {
+	public void setTaxIncluded(String taxIncluded) {
 		this.taxIncluded = taxIncluded;
 	}
 	
 
-	public Object getTaxIncluded() {
+	public String getTaxIncluded() {
 		return this.taxIncluded;
 	}
 	

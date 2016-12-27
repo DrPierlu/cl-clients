@@ -10,8 +10,22 @@ public class PutAccountMarketPaymentTypesId extends PutOperation {
 	public static final String OPERATION_PATH = "/account/market_payment_types/{id}";
 
 
+	{
+		addRequiredField("marketId");
+		addRequiredField("paymentTypeId");
+		addRequiredField("price");
+		addRequiredField("countryCodeRegex");
+		addRequiredField("notCountryCodeRegex");
+		addRequiredField("id");
+	}
+
 	public PutAccountMarketPaymentTypesId() {
 		super(OPERATION_PATH);
+	}
+	
+
+	public PutAccountMarketPaymentTypesId(Long id) {
+		super(OPERATION_PATH, id);
 	}
 	
 }

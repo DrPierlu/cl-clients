@@ -10,25 +10,21 @@ import java.util.List;
  */
 public class Order extends ApiResource {
 
-	private static final long serialVersionUID = -1481927389130L;
+	private static final long serialVersionUID = -1482845758078L;
 
 
-	private Integer customerId;
-	private Integer merchantId;
-	private Integer channelId;
-	private Integer countryId;
-	private Integer marketId;
-	private Integer currencyId;
+	private String customerId;
+	private String merchantId;
+	private String channelId;
+	private String countryId;
+	private String marketId;
+	private String currencyId;
 	private String token;
-	@JsonExclude
-	private Object taxIncluded;
+	private String taxIncluded;
 	private Float taxRate;
-	@JsonExclude
-	private Object hasNexus;
-	@JsonExclude
-	private Object shippingMethodTaxable;
-	@JsonExclude
-	private Object paymentMethodTaxable;
+	private String hasNexus;
+	private String shippingMethodTaxable;
+	private String paymentMethodTaxable;
 	private String taxSource;
 	@JsonExclude
 	private Object previousChanges;
@@ -103,62 +99,62 @@ public class Order extends ApiResource {
 	}
 	
 
-	public void setCustomerId(Integer customerId) {
+	public void setCustomerId(String customerId) {
 		this.customerId = customerId;
 	}
 	
 
-	public Integer getCustomerId() {
+	public String getCustomerId() {
 		return this.customerId;
 	}
 	
 
-	public void setMerchantId(Integer merchantId) {
+	public void setMerchantId(String merchantId) {
 		this.merchantId = merchantId;
 	}
 	
 
-	public Integer getMerchantId() {
+	public String getMerchantId() {
 		return this.merchantId;
 	}
 	
 
-	public void setChannelId(Integer channelId) {
+	public void setChannelId(String channelId) {
 		this.channelId = channelId;
 	}
 	
 
-	public Integer getChannelId() {
+	public String getChannelId() {
 		return this.channelId;
 	}
 	
 
-	public void setCountryId(Integer countryId) {
+	public void setCountryId(String countryId) {
 		this.countryId = countryId;
 	}
 	
 
-	public Integer getCountryId() {
+	public String getCountryId() {
 		return this.countryId;
 	}
 	
 
-	public void setMarketId(Integer marketId) {
+	public void setMarketId(String marketId) {
 		this.marketId = marketId;
 	}
 	
 
-	public Integer getMarketId() {
+	public String getMarketId() {
 		return this.marketId;
 	}
 	
 
-	public void setCurrencyId(Integer currencyId) {
+	public void setCurrencyId(String currencyId) {
 		this.currencyId = currencyId;
 	}
 	
 
-	public Integer getCurrencyId() {
+	public String getCurrencyId() {
 		return this.currencyId;
 	}
 	
@@ -173,12 +169,12 @@ public class Order extends ApiResource {
 	}
 	
 
-	public void setTaxIncluded(Object taxIncluded) {
+	public void setTaxIncluded(String taxIncluded) {
 		this.taxIncluded = taxIncluded;
 	}
 	
 
-	public Object getTaxIncluded() {
+	public String getTaxIncluded() {
 		return this.taxIncluded;
 	}
 	
@@ -193,32 +189,32 @@ public class Order extends ApiResource {
 	}
 	
 
-	public void setHasNexus(Object hasNexus) {
+	public void setHasNexus(String hasNexus) {
 		this.hasNexus = hasNexus;
 	}
 	
 
-	public Object getHasNexus() {
+	public String getHasNexus() {
 		return this.hasNexus;
 	}
 	
 
-	public void setShippingMethodTaxable(Object shippingMethodTaxable) {
+	public void setShippingMethodTaxable(String shippingMethodTaxable) {
 		this.shippingMethodTaxable = shippingMethodTaxable;
 	}
 	
 
-	public Object getShippingMethodTaxable() {
+	public String getShippingMethodTaxable() {
 		return this.shippingMethodTaxable;
 	}
 	
 
-	public void setPaymentMethodTaxable(Object paymentMethodTaxable) {
+	public void setPaymentMethodTaxable(String paymentMethodTaxable) {
 		this.paymentMethodTaxable = paymentMethodTaxable;
 	}
 	
 
-	public Object getPaymentMethodTaxable() {
+	public String getPaymentMethodTaxable() {
 		return this.paymentMethodTaxable;
 	}
 	

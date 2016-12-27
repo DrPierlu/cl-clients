@@ -9,7 +9,7 @@ import io.commercelayer.api.json.JsonExclude;
  */
 public class ShippingCarrierType extends ApiResource {
 
-	private static final long serialVersionUID = -1481927389226L;
+	private static final long serialVersionUID = -1482845758203L;
 
 
 	private String name;

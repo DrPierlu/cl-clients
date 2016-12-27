@@ -9,12 +9,12 @@ import io.commercelayer.api.json.JsonExclude;
  */
 public class ProductProperty extends ApiResource {
 
-	private static final long serialVersionUID = -1481927389167L;
+	private static final long serialVersionUID = -1482845758156L;
 
 
-	private Integer productId;
-	private Integer propertyTypeId;
-	private Integer propertyValueId;
+	private String productId;
+	private String propertyTypeId;
+	private String propertyValueId;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
@@ -35,32 +35,32 @@ public class ProductProperty extends ApiResource {
 	}
 	
 
-	public void setProductId(Integer productId) {
+	public void setProductId(String productId) {
 		this.productId = productId;
 	}
 	
 
-	public Integer getProductId() {
+	public String getProductId() {
 		return this.productId;
 	}
 	
 
-	public void setPropertyTypeId(Integer propertyTypeId) {
+	public void setPropertyTypeId(String propertyTypeId) {
 		this.propertyTypeId = propertyTypeId;
 	}
 	
 
-	public Integer getPropertyTypeId() {
+	public String getPropertyTypeId() {
 		return this.propertyTypeId;
 	}
 	
 
-	public void setPropertyValueId(Integer propertyValueId) {
+	public void setPropertyValueId(String propertyValueId) {
 		this.propertyValueId = propertyValueId;
 	}
 	
 
-	public Integer getPropertyValueId() {
+	public String getPropertyValueId() {
 		return this.propertyValueId;
 	}
 	

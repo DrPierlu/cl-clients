@@ -10,8 +10,18 @@ public class PutAccountLanguagesId extends PutOperation {
 	public static final String OPERATION_PATH = "/account/languages/{id}";
 
 
+	{
+		addRequiredField("code");
+		addRequiredField("id");
+	}
+
 	public PutAccountLanguagesId() {
 		super(OPERATION_PATH);
+	}
+	
+
+	public PutAccountLanguagesId(Long id) {
+		super(OPERATION_PATH, id);
 	}
 	
 }

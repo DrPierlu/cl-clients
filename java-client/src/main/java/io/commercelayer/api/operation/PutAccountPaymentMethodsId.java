@@ -10,8 +10,22 @@ public class PutAccountPaymentMethodsId extends PutOperation {
 	public static final String OPERATION_PATH = "/account/payment_methods/{id}";
 
 
+	{
+		addRequiredField("orderId");
+		addRequiredField("paymentSourceResource");
+		addRequiredField("paymentSourceId");
+		addRequiredField("billingAddressId");
+		addRequiredField("amount");
+		addRequiredField("id");
+	}
+
 	public PutAccountPaymentMethodsId() {
 		super(OPERATION_PATH);
+	}
+	
+
+	public PutAccountPaymentMethodsId(Long id) {
+		super(OPERATION_PATH, id);
 	}
 	
 }

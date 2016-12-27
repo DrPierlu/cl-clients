@@ -10,13 +10,12 @@ import java.util.List;
  */
 public class Variant extends ApiResource {
 
-	private static final long serialVersionUID = -1481927389284L;
+	private static final long serialVersionUID = -1482845758343L;
 
 
-	private Integer productId;
-	@JsonExclude
-	private Object trackInventory;
-	private Integer shippingCategoryId;
+	private String productId;
+	private String trackInventory;
+	private String shippingCategoryId;
 	private String sku;
 	private String taxCode;
 	@JsonExclude
@@ -45,32 +44,32 @@ public class Variant extends ApiResource {
 	}
 	
 
-	public void setProductId(Integer productId) {
+	public void setProductId(String productId) {
 		this.productId = productId;
 	}
 	
 
-	public Integer getProductId() {
+	public String getProductId() {
 		return this.productId;
 	}
 	
 
-	public void setTrackInventory(Object trackInventory) {
+	public void setTrackInventory(String trackInventory) {
 		this.trackInventory = trackInventory;
 	}
 	
 
-	public Object getTrackInventory() {
+	public String getTrackInventory() {
 		return this.trackInventory;
 	}
 	
 
-	public void setShippingCategoryId(Integer shippingCategoryId) {
+	public void setShippingCategoryId(String shippingCategoryId) {
 		this.shippingCategoryId = shippingCategoryId;
 	}
 	
 
-	public Integer getShippingCategoryId() {
+	public String getShippingCategoryId() {
 		return this.shippingCategoryId;
 	}
 	

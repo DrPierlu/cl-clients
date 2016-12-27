@@ -10,7 +10,7 @@ import io.commercelayer.api.json.JsonExclude;
  */
 public class Webhook extends ApiResource {
 
-	private static final long serialVersionUID = -1481927389289L;
+	private static final long serialVersionUID = -1482845758359L;
 
 
 	private String eventSubject;

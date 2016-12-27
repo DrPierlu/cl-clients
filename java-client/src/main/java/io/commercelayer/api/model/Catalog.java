@@ -10,10 +10,11 @@ import java.util.List;
  */
 public class Catalog extends ApiResource {
 
-	private static final long serialVersionUID = -1481927389025L;
+	private static final long serialVersionUID = -1482845757891L;
 
 
 	private String name;
+	private String description;
 	@JsonExclude
 	private Object previousChanges;
 	private List<String> merchandisingRules;
@@ -39,6 +40,16 @@ public class Catalog extends ApiResource {
 
 	public String getName() {
 		return this.name;
+	}
+	
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
+
+	public String getDescription() {
+		return this.description;
 	}
 	
 
@@ -102,6 +113,7 @@ public class Catalog extends ApiResource {
 	
 		return super.equals(o) &&
 			Objects.equals(this.name, x.name)  &&
+			Objects.equals(this.description, x.description)  &&
 			Objects.equals(this.previousChanges, x.previousChanges)  &&
 			Objects.equals(this.merchandisingRules, x.merchandisingRules)  &&
 			Objects.equals(this.products, x.products)  &&
@@ -117,8 +129,8 @@ public class Catalog extends ApiResource {
 	
 		return Objects.hash(
 			serialVersionUID, resourceName, id, creatorResource, createdAt,
-			updatedAt, name, previousChanges, merchandisingRules, products,
-			taxons, taxonomies 
+			updatedAt, name, description, previousChanges, merchandisingRules,
+			products, taxons, taxonomies 
 		);
 	
 	}

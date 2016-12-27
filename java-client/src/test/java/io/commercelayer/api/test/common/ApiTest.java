@@ -43,7 +43,7 @@ public abstract class ApiTest<T extends ApiResource> {
 	@Test
 	public abstract void runTest() throws ApiException;
 	
-	
+		
 	public int randomValue() {
 		return random.nextInt(1000);
 	}
@@ -88,6 +88,10 @@ public abstract class ApiTest<T extends ApiResource> {
 	
 	protected <O extends ApiOperation> ApiResponse<T> test(ApiRequest<O> request, Class<T> resourceType) {
 		return test(request, resourceType, null);
+	}
+	
+	protected <O extends ApiOperation> ApiResponse<T> test(ApiRequest<O> request, ApiCaller caller) {
+		return test(request, null, caller);
 	}
 	
 	@SuppressWarnings("unchecked")

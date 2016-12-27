@@ -52,7 +52,7 @@ public class ApiModelWriter {
 			
 		}
 		
-		logger.info("Java classes written");
+		logger.info("Java classes created");
 		
 	}
 	

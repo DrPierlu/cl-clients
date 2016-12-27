@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class Language extends ApiResource {
 
-	private static final long serialVersionUID = -1481927389100L;
+	private static final long serialVersionUID = -1482845758000L;
 
 
 	private String code;

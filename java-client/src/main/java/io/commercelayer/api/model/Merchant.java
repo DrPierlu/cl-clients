@@ -10,10 +10,10 @@ import java.util.List;
  */
 public class Merchant extends ApiResource {
 
-	private static final long serialVersionUID = -1481927389120L;
+	private static final long serialVersionUID = -1482845758062L;
 
 
-	private Integer countryId;
+	private String countryId;
 	private String name;
 	private String description;
 	@JsonExclude
@@ -36,12 +36,12 @@ public class Merchant extends ApiResource {
 	}
 	
 
-	public void setCountryId(Integer countryId) {
+	public void setCountryId(String countryId) {
 		this.countryId = countryId;
 	}
 	
 
-	public Integer getCountryId() {
+	public String getCountryId() {
 		return this.countryId;
 	}
 	

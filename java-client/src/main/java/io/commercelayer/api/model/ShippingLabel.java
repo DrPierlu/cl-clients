@@ -9,10 +9,10 @@ import io.commercelayer.api.json.JsonExclude;
  */
 public class ShippingLabel extends ApiResource {
 
-	private static final long serialVersionUID = -1481927389230L;
+	private static final long serialVersionUID = -1482845758218L;
 
 
-	private Integer shipmentId;
+	private String shipmentId;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
@@ -29,12 +29,12 @@ public class ShippingLabel extends ApiResource {
 	}
 	
 
-	public void setShipmentId(Integer shipmentId) {
+	public void setShipmentId(String shipmentId) {
 		this.shipmentId = shipmentId;
 	}
 	
 
-	public Integer getShipmentId() {
+	public String getShipmentId() {
 		return this.shipmentId;
 	}
 	

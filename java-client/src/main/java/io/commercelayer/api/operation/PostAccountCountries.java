@@ -10,6 +10,11 @@ public class PostAccountCountries extends PostOperation {
 	public static final String OPERATION_PATH = "/account/countries";
 
 
+	{
+		addRequiredField("countryGroupId");
+		addRequiredField("code");
+	}
+
 	public PostAccountCountries() {
 		super(OPERATION_PATH);
 	}

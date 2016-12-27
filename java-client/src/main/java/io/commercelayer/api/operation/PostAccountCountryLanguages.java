@@ -10,6 +10,11 @@ public class PostAccountCountryLanguages extends PostOperation {
 	public static final String OPERATION_PATH = "/account/country_languages";
 
 
+	{
+		addRequiredField("countryId");
+		addRequiredField("languageId");
+	}
+
 	public PostAccountCountryLanguages() {
 		super(OPERATION_PATH);
 	}

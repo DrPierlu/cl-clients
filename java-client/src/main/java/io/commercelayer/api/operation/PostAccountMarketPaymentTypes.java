@@ -10,6 +10,14 @@ public class PostAccountMarketPaymentTypes extends PostOperation {
 	public static final String OPERATION_PATH = "/account/market_payment_types";
 
 
+	{
+		addRequiredField("marketId");
+		addRequiredField("paymentTypeId");
+		addRequiredField("price");
+		addRequiredField("countryCodeRegex");
+		addRequiredField("notCountryCodeRegex");
+	}
+
 	public PostAccountMarketPaymentTypes() {
 		super(OPERATION_PATH);
 	}

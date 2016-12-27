@@ -10,13 +10,13 @@ import java.util.List;
  */
 public class PaymentType extends ApiResource {
 
-	private static final long serialVersionUID = -1481927389148L;
+	private static final long serialVersionUID = -1482845758109L;
 
 
 	private String name;
 	private String description;
-	private Integer merchantId;
-	private Integer gatewayId;
+	private String merchantId;
+	private String gatewayId;
 	private String paymentSourceResource;
 	@JsonExclude
 	private Object previousChanges;
@@ -61,22 +61,22 @@ public class PaymentType extends ApiResource {
 	}
 	
 
-	public void setMerchantId(Integer merchantId) {
+	public void setMerchantId(String merchantId) {
 		this.merchantId = merchantId;
 	}
 	
 
-	public Integer getMerchantId() {
+	public String getMerchantId() {
 		return this.merchantId;
 	}
 	
 
-	public void setGatewayId(Integer gatewayId) {
+	public void setGatewayId(String gatewayId) {
 		this.gatewayId = gatewayId;
 	}
 	
 
-	public Integer getGatewayId() {
+	public String getGatewayId() {
 		return this.gatewayId;
 	}
 	

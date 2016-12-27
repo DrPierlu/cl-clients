@@ -9,13 +9,13 @@ import io.commercelayer.api.json.JsonExclude;
  */
 public class ResourceImage extends ApiResource {
 
-	private static final long serialVersionUID = -1481927389219L;
+	private static final long serialVersionUID = -1482845758187L;
 
 
-	private Integer imageableId;
+	private String imageableId;
 	private String imageableResource;
-	private Integer imageId;
-	private Integer position;
+	private String imageId;
+	private String position;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
@@ -34,12 +34,12 @@ public class ResourceImage extends ApiResource {
 	}
 	
 
-	public void setImageableId(Integer imageableId) {
+	public void setImageableId(String imageableId) {
 		this.imageableId = imageableId;
 	}
 	
 
-	public Integer getImageableId() {
+	public String getImageableId() {
 		return this.imageableId;
 	}
 	
@@ -54,22 +54,22 @@ public class ResourceImage extends ApiResource {
 	}
 	
 
-	public void setImageId(Integer imageId) {
+	public void setImageId(String imageId) {
 		this.imageId = imageId;
 	}
 	
 
-	public Integer getImageId() {
+	public String getImageId() {
 		return this.imageId;
 	}
 	
 
-	public void setPosition(Integer position) {
+	public void setPosition(String position) {
 		this.position = position;
 	}
 	
 
-	public Integer getPosition() {
+	public String getPosition() {
 		return this.position;
 	}
 	

@@ -9,10 +9,10 @@ import io.commercelayer.api.json.JsonExclude;
  */
 public class State extends ApiResource {
 
-	private static final long serialVersionUID = -1481927389250L;
+	private static final long serialVersionUID = -1482845758281L;
 
 
-	private Integer countryId;
+	private String countryId;
 	private String code;
 	@JsonExclude
 	private Object previousChanges;
@@ -30,12 +30,12 @@ public class State extends ApiResource {
 	}
 	
 
-	public void setCountryId(Integer countryId) {
+	public void setCountryId(String countryId) {
 		this.countryId = countryId;
 	}
 	
 
-	public Integer getCountryId() {
+	public String getCountryId() {
 		return this.countryId;
 	}
 	

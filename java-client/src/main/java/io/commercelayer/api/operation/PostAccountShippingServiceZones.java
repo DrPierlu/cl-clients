@@ -10,6 +10,11 @@ public class PostAccountShippingServiceZones extends PostOperation {
 	public static final String OPERATION_PATH = "/account/shipping_service_zones";
 
 
+	{
+		addRequiredField("shippingServiceId");
+		addRequiredField("shippingZoneId");
+	}
+
 	public PostAccountShippingServiceZones() {
 		super(OPERATION_PATH);
 	}

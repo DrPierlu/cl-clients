@@ -10,6 +10,10 @@ public class PostAccountImages extends PostOperation {
 	public static final String OPERATION_PATH = "/account/images";
 
 
+	{
+		addRequiredField("attachment");
+	}
+
 	public PostAccountImages() {
 		super(OPERATION_PATH);
 	}

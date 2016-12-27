@@ -10,6 +10,12 @@ public class PostAccountWebhooks extends PostOperation {
 	public static final String OPERATION_PATH = "/account/webhooks";
 
 
+	{
+		addRequiredField("eventSubject");
+		addRequiredField("eventAction");
+		addRequiredField("eventUrl");
+	}
+
 	public PostAccountWebhooks() {
 		super(OPERATION_PATH);
 	}

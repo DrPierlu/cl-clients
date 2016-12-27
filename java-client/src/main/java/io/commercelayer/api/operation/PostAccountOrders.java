@@ -10,6 +10,11 @@ public class PostAccountOrders extends PostOperation {
 	public static final String OPERATION_PATH = "/account/orders";
 
 
+	{
+		addRequiredField("channelId");
+		addRequiredField("countryId");
+	}
+
 	public PostAccountOrders() {
 		super(OPERATION_PATH);
 	}

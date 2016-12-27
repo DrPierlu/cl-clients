@@ -10,6 +10,10 @@ public class PostAccountCurrencies extends PostOperation {
 	public static final String OPERATION_PATH = "/account/currencies";
 
 
+	{
+		addRequiredField("code");
+	}
+
 	public PostAccountCurrencies() {
 		super(OPERATION_PATH);
 	}

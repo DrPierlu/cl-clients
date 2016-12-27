@@ -10,6 +10,10 @@ public class PostAccountProductTypes extends PostOperation {
 	public static final String OPERATION_PATH = "/account/product_types";
 
 
+	{
+		addRequiredField("name");
+	}
+
 	public PostAccountProductTypes() {
 		super(OPERATION_PATH);
 	}

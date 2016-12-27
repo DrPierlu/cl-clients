@@ -10,12 +10,12 @@ import java.util.List;
  */
 public class Shipment extends ApiResource {
 
-	private static final long serialVersionUID = -1481927389248L;
+	private static final long serialVersionUID = -1482845758265L;
 
 
-	private Integer orderId;
-	private Integer stockLocationId;
-	private Integer shippingMethodId;
+	private String orderId;
+	private String stockLocationId;
+	private String shippingMethodId;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
@@ -37,32 +37,32 @@ public class Shipment extends ApiResource {
 	}
 	
 
-	public void setOrderId(Integer orderId) {
+	public void setOrderId(String orderId) {
 		this.orderId = orderId;
 	}
 	
 
-	public Integer getOrderId() {
+	public String getOrderId() {
 		return this.orderId;
 	}
 	
 
-	public void setStockLocationId(Integer stockLocationId) {
+	public void setStockLocationId(String stockLocationId) {
 		this.stockLocationId = stockLocationId;
 	}
 	
 
-	public Integer getStockLocationId() {
+	public String getStockLocationId() {
 		return this.stockLocationId;
 	}
 	
 
-	public void setShippingMethodId(Integer shippingMethodId) {
+	public void setShippingMethodId(String shippingMethodId) {
 		this.shippingMethodId = shippingMethodId;
 	}
 	
 
-	public Integer getShippingMethodId() {
+	public String getShippingMethodId() {
 		return this.shippingMethodId;
 	}
 	

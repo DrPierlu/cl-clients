@@ -10,6 +10,7 @@ import io.commercelayer.api.operation.GetAccountAddressesId;
 import io.commercelayer.api.operation.PostAccountAddresses;
 import io.commercelayer.api.operation.PutAccountAddressesId;
 import io.commercelayer.api.operation.common.ApiOperations;
+import io.commercelayer.api.operation.common.DeleteOperation;
 import io.commercelayer.api.test.common.ApiTest;
 
 public class AddressTest extends ApiTest<Address> {
@@ -60,7 +61,7 @@ public class AddressTest extends ApiTest<Address> {
 		putOp.setPayload(a);
 		
 		ApiRequest<PutAccountAddressesId> putReq = new ApiRequest<>(putOp);
-		ApiResponse<Address> putRes = test (putReq, Address.class, caller);
+		ApiResponse<Address> putRes = test(putReq, Address.class, caller);
 		
 
 		// GET
@@ -74,6 +75,23 @@ public class AddressTest extends ApiTest<Address> {
 		
 		Assert.assertNotEquals(postRes.getResource().getGeocodingStreet(), putRes.getResource().getGeocodingStreet());
 		Assert.assertNotEquals(postRes.getResource().getGeocodingNumber(), putRes.getResource().getGeocodingNumber());
+		
+		
+		// DELETE
+		
+		DeleteOperation delOp = ApiOperations.DeleteAccountAddressesId();
+		delOp.setId(getOp.getId());
+		
+		ApiRequest<DeleteOperation> delRes = new ApiRequest<>(delOp);
+		
+		test(delRes, caller);
+		
+		
+		// GET
+		getRes = test(getReq, Address.class, caller);
+		
+		Assert.assertNull(getRes.getResource());
+		Assert.assertNotNull(getRes.getApiError());
 		
 	}
 	

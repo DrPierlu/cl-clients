@@ -10,6 +10,16 @@ public class PostAccountOrderValidators extends PostOperation {
 	public static final String OPERATION_PATH = "/account/order_validators";
 
 
+	{
+		addRequiredField("currencyCode");
+		addRequiredField("orderTotalMin");
+		addRequiredField("orderTotalMax");
+		addRequiredField("orderItemsMin");
+		addRequiredField("orderItemsMax");
+		addRequiredField("paymentMethodAction");
+		addRequiredField("paymentMethodRequiredPercentage");
+	}
+
 	public PostAccountOrderValidators() {
 		super(OPERATION_PATH);
 	}

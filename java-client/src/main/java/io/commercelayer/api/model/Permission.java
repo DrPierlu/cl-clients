@@ -9,14 +9,15 @@ import io.commercelayer.api.json.JsonExclude;
  */
 public class Permission extends ApiResource {
 
-	private static final long serialVersionUID = -1481927389153L;
+	private static final long serialVersionUID = -1482845758125L;
 
 
-	private Integer roleId;
+	private String roleId;
 	private String ability;
 	private String action;
 	private String resource;
-	private Integer position;
+	private String restrictions;
+	private String position;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
@@ -33,12 +34,12 @@ public class Permission extends ApiResource {
 	}
 	
 
-	public void setRoleId(Integer roleId) {
+	public void setRoleId(String roleId) {
 		this.roleId = roleId;
 	}
 	
 
-	public Integer getRoleId() {
+	public String getRoleId() {
 		return this.roleId;
 	}
 	
@@ -73,12 +74,22 @@ public class Permission extends ApiResource {
 	}
 	
 
-	public void setPosition(Integer position) {
+	public void setRestrictions(String restrictions) {
+		this.restrictions = restrictions;
+	}
+	
+
+	public String getRestrictions() {
+		return this.restrictions;
+	}
+	
+
+	public void setPosition(String position) {
 		this.position = position;
 	}
 	
 
-	public Integer getPosition() {
+	public String getPosition() {
 		return this.position;
 	}
 	
@@ -116,6 +127,7 @@ public class Permission extends ApiResource {
 			Objects.equals(this.ability, x.ability)  &&
 			Objects.equals(this.action, x.action)  &&
 			Objects.equals(this.resource, x.resource)  &&
+			Objects.equals(this.restrictions, x.restrictions)  &&
 			Objects.equals(this.position, x.position)  &&
 			Objects.equals(this.previousChanges, x.previousChanges)  &&
 			Objects.equals(this.role, x.role) 
@@ -130,7 +142,7 @@ public class Permission extends ApiResource {
 		return Objects.hash(
 			serialVersionUID, resourceName, id, creatorResource, createdAt,
 			updatedAt, roleId, ability, action, resource,
-			position, previousChanges, role 
+			restrictions, position, previousChanges, role 
 		);
 	
 	}

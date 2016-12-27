@@ -10,6 +10,11 @@ public class PostAccountRoles extends PostOperation {
 	public static final String OPERATION_PATH = "/account/roles";
 
 
+	{
+		addRequiredField("name");
+		addRequiredField("description");
+	}
+
 	public PostAccountRoles() {
 		super(OPERATION_PATH);
 	}

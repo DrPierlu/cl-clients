@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class CreditCard extends ApiResource {
 
-	private static final long serialVersionUID = -1481927389064L;
+	private static final long serialVersionUID = -1482845757938L;
 
 
 	private String token;
@@ -21,10 +21,11 @@ public class CreditCard extends ApiResource {
 	private String number;
 	private String lastFourDigits;
 	private String firstSixDigits;
-	private Integer month;
-	private Integer year;
+	private String month;
+	private String year;
 	private String verificationValue;
 	private String email;
+	private String data;
 	private String storageState;
 	private String eligibleForCardUpdater;
 	@JsonExclude
@@ -123,22 +124,22 @@ public class CreditCard extends ApiResource {
 	}
 	
 
-	public void setMonth(Integer month) {
+	public void setMonth(String month) {
 		this.month = month;
 	}
 	
 
-	public Integer getMonth() {
+	public String getMonth() {
 		return this.month;
 	}
 	
 
-	public void setYear(Integer year) {
+	public void setYear(String year) {
 		this.year = year;
 	}
 	
 
-	public Integer getYear() {
+	public String getYear() {
 		return this.year;
 	}
 	
@@ -160,6 +161,16 @@ public class CreditCard extends ApiResource {
 
 	public String getEmail() {
 		return this.email;
+	}
+	
+
+	public void setData(String data) {
+		this.data = data;
+	}
+	
+
+	public String getData() {
+		return this.data;
 	}
 	
 
@@ -234,6 +245,7 @@ public class CreditCard extends ApiResource {
 			Objects.equals(this.year, x.year)  &&
 			Objects.equals(this.verificationValue, x.verificationValue)  &&
 			Objects.equals(this.email, x.email)  &&
+			Objects.equals(this.data, x.data)  &&
 			Objects.equals(this.storageState, x.storageState)  &&
 			Objects.equals(this.eligibleForCardUpdater, x.eligibleForCardUpdater)  &&
 			Objects.equals(this.previousChanges, x.previousChanges)  &&
@@ -251,8 +263,8 @@ public class CreditCard extends ApiResource {
 			serialVersionUID, resourceName, id, creatorResource, createdAt,
 			updatedAt, token, cardResource, fingerprint, firstName,
 			lastName, number, lastFourDigits, firstSixDigits, month,
-			year, verificationValue, email, storageState, eligibleForCardUpdater,
-			previousChanges, transactions, paymentMethods 
+			year, verificationValue, email, data, storageState,
+			eligibleForCardUpdater, previousChanges, transactions, paymentMethods 
 		);
 	
 	}

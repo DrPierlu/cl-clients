@@ -10,6 +10,10 @@ public class PostAccountChannels extends PostOperation {
 	public static final String OPERATION_PATH = "/account/channels";
 
 
+	{
+		addRequiredField("name");
+	}
+
 	public PostAccountChannels() {
 		super(OPERATION_PATH);
 	}

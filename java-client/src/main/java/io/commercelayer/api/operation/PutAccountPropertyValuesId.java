@@ -10,8 +10,19 @@ public class PutAccountPropertyValuesId extends PutOperation {
 	public static final String OPERATION_PATH = "/account/property_values/{id}";
 
 
+	{
+		addRequiredField("propertyTypeId");
+		addRequiredField("name");
+		addRequiredField("id");
+	}
+
 	public PutAccountPropertyValuesId() {
 		super(OPERATION_PATH);
+	}
+	
+
+	public PutAccountPropertyValuesId(Long id) {
+		super(OPERATION_PATH, id);
 	}
 	
 }

@@ -5,9 +5,7 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
 
-import io.commercelayer.api.config.ApiConfig;
 import io.commercelayer.api.util.LogUtils;
 
 public abstract class ApiResource extends ApiObject implements Serializable {

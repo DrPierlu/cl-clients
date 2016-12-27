@@ -9,12 +9,12 @@ import io.commercelayer.api.json.JsonExclude;
  */
 public class MarketStockLocation extends ApiResource {
 
-	private static final long serialVersionUID = -1481927389118L;
+	private static final long serialVersionUID = -1482845758047L;
 
 
-	private Integer marketId;
-	private Integer stockLocationId;
-	private Integer position;
+	private String marketId;
+	private String stockLocationId;
+	private String position;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
@@ -33,32 +33,32 @@ public class MarketStockLocation extends ApiResource {
 	}
 	
 
-	public void setMarketId(Integer marketId) {
+	public void setMarketId(String marketId) {
 		this.marketId = marketId;
 	}
 	
 
-	public Integer getMarketId() {
+	public String getMarketId() {
 		return this.marketId;
 	}
 	
 
-	public void setStockLocationId(Integer stockLocationId) {
+	public void setStockLocationId(String stockLocationId) {
 		this.stockLocationId = stockLocationId;
 	}
 	
 
-	public Integer getStockLocationId() {
+	public String getStockLocationId() {
 		return this.stockLocationId;
 	}
 	
 
-	public void setPosition(Integer position) {
+	public void setPosition(String position) {
 		this.position = position;
 	}
 	
 
-	public Integer getPosition() {
+	public String getPosition() {
 		return this.position;
 	}
 	

@@ -10,11 +10,11 @@ import java.util.List;
  */
 public class PropertyValue extends ApiResource {
 
-	private static final long serialVersionUID = -1481927389217L;
+	private static final long serialVersionUID = -1482845758172L;
 
 
 	private String name;
-	private Integer propertyTypeId;
+	private String propertyTypeId;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
@@ -46,12 +46,12 @@ public class PropertyValue extends ApiResource {
 	}
 	
 
-	public void setPropertyTypeId(Integer propertyTypeId) {
+	public void setPropertyTypeId(String propertyTypeId) {
 		this.propertyTypeId = propertyTypeId;
 	}
 	
 
-	public Integer getPropertyTypeId() {
+	public String getPropertyTypeId() {
 		return this.propertyTypeId;
 	}
 	

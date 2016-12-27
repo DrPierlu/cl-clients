@@ -9,13 +9,13 @@ import io.commercelayer.api.json.JsonExclude;
  */
 public class ShippingServiceStockLocation extends ApiResource {
 
-	private static final long serialVersionUID = -1481927389242L;
+	private static final long serialVersionUID = -1482845758250L;
 
 
-	private Integer shippingServiceId;
-	private Integer stockLocationId;
-	private Integer minLeadTimeHours;
-	private Integer maxLeadTimeHours;
+	private String shippingServiceId;
+	private String stockLocationId;
+	private String minLeadTimeHours;
+	private String maxLeadTimeHours;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
@@ -36,42 +36,42 @@ public class ShippingServiceStockLocation extends ApiResource {
 	}
 	
 
-	public void setShippingServiceId(Integer shippingServiceId) {
+	public void setShippingServiceId(String shippingServiceId) {
 		this.shippingServiceId = shippingServiceId;
 	}
 	
 
-	public Integer getShippingServiceId() {
+	public String getShippingServiceId() {
 		return this.shippingServiceId;
 	}
 	
 
-	public void setStockLocationId(Integer stockLocationId) {
+	public void setStockLocationId(String stockLocationId) {
 		this.stockLocationId = stockLocationId;
 	}
 	
 
-	public Integer getStockLocationId() {
+	public String getStockLocationId() {
 		return this.stockLocationId;
 	}
 	
 
-	public void setMinLeadTimeHours(Integer minLeadTimeHours) {
+	public void setMinLeadTimeHours(String minLeadTimeHours) {
 		this.minLeadTimeHours = minLeadTimeHours;
 	}
 	
 
-	public Integer getMinLeadTimeHours() {
+	public String getMinLeadTimeHours() {
 		return this.minLeadTimeHours;
 	}
 	
 
-	public void setMaxLeadTimeHours(Integer maxLeadTimeHours) {
+	public void setMaxLeadTimeHours(String maxLeadTimeHours) {
 		this.maxLeadTimeHours = maxLeadTimeHours;
 	}
 	
 
-	public Integer getMaxLeadTimeHours() {
+	public String getMaxLeadTimeHours() {
 		return this.maxLeadTimeHours;
 	}
 	

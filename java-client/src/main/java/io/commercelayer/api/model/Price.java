@@ -9,14 +9,14 @@ import io.commercelayer.api.json.JsonExclude;
  */
 public class Price extends ApiResource {
 
-	private static final long serialVersionUID = -1481927389155L;
+	private static final long serialVersionUID = -1482845758140L;
 
 
-	private Integer priceListId;
-	private Integer sellableId;
+	private String priceListId;
+	private String sellableId;
 	private String sellableResource;
-	private Integer amountCents;
-	private Integer compareAtAmountCents;
+	private String amountCents;
+	private String compareAtAmountCents;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
@@ -44,22 +44,22 @@ public class Price extends ApiResource {
 	}
 	
 
-	public void setPriceListId(Integer priceListId) {
+	public void setPriceListId(String priceListId) {
 		this.priceListId = priceListId;
 	}
 	
 
-	public Integer getPriceListId() {
+	public String getPriceListId() {
 		return this.priceListId;
 	}
 	
 
-	public void setSellableId(Integer sellableId) {
+	public void setSellableId(String sellableId) {
 		this.sellableId = sellableId;
 	}
 	
 
-	public Integer getSellableId() {
+	public String getSellableId() {
 		return this.sellableId;
 	}
 	
@@ -74,22 +74,22 @@ public class Price extends ApiResource {
 	}
 	
 
-	public void setAmountCents(Integer amountCents) {
+	public void setAmountCents(String amountCents) {
 		this.amountCents = amountCents;
 	}
 	
 
-	public Integer getAmountCents() {
+	public String getAmountCents() {
 		return this.amountCents;
 	}
 	
 
-	public void setCompareAtAmountCents(Integer compareAtAmountCents) {
+	public void setCompareAtAmountCents(String compareAtAmountCents) {
 		this.compareAtAmountCents = compareAtAmountCents;
 	}
 	
 
-	public Integer getCompareAtAmountCents() {
+	public String getCompareAtAmountCents() {
 		return this.compareAtAmountCents;
 	}
 	
