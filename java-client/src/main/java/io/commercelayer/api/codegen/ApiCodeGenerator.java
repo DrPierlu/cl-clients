@@ -1,6 +1,7 @@
 package io.commercelayer.api.codegen;
 
 import io.commercelayer.api.codegen.model.gen.ApiModelGen;
+import io.commercelayer.api.codegen.schema.parser.ApiParser;
 import io.commercelayer.api.codegen.schema.parser.ApiParserFactory;
 import io.commercelayer.api.codegen.source.ApiModelWriter;
 
@@ -11,7 +12,7 @@ public final class ApiCodeGenerator {
 	}
 	
 	public static void main(String[] args) {
-		new ApiModelWriter().writeCode(new ApiModelGen().createModel(ApiParserFactory.getSwaggerParserInstance().parseSchema()));
+		new ApiModelWriter().writeCode(new ApiModelGen().createModel(ApiParserFactory.getSwaggerParserInstance().parseSchema(ApiParser.TEST_SCHEMA_PATH)));
 	}
 	
 }

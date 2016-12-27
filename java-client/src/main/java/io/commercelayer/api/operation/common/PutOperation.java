@@ -3,12 +3,17 @@ package io.commercelayer.api.operation.common;
 import io.commercelayer.api.http.HttpRequest.Method;
 import io.commercelayer.api.model.common.ApiResource;
 
-public class PutOperation extends ApiOperation implements IdOperation {
+public class PutOperation extends ApiOperation implements IdOperation, PayloadOperation {
 
 	private ApiResource payload;
 
 	protected PutOperation(String path) {
 		super(path);
+	}
+	
+	protected PutOperation(String path, Long id) {
+		this(path);
+		setId(id);
 	}
 
 	@Override

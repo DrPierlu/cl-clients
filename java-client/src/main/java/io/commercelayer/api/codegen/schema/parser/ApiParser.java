@@ -1,5 +1,8 @@
 package io.commercelayer.api.codegen.schema.parser;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import io.commercelayer.api.codegen.schema.Definition;
 import io.commercelayer.api.codegen.schema.Operation;
 import io.commercelayer.api.codegen.schema.Parameter;
@@ -13,13 +16,22 @@ public abstract class ApiParser {
 
 	public static final String TEST_SCHEMA_PATH = "E:/cl-schema_swagger.json";
 	
+	protected final Logger logger = LoggerFactory.getLogger(getClass());
+	
+	
 	protected abstract Schema parse(String schemaPath);
 	
 	public Schema parseSchema() {
-		return parse(ApiConfig.getProperty(Group.api, "service.url").concat("/swagger"));
+		return parse_(ApiConfig.getProperty(Group.api, "service.url").concat("/swagger"));
 	}
 	
 	public Schema parseSchema(String schemaPath) {
+		return parse_(schemaPath);
+	}
+	
+	private Schema parse_(String schemaPath) {
+		logger.info("Parsing Schema ... {}", schemaPath);
+		logger.info("Executing Parser {}", getClass().getName());
 		return parse(schemaPath);
 	}
 	

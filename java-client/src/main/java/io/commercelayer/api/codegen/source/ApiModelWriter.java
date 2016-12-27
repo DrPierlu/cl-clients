@@ -27,6 +27,8 @@ public class ApiModelWriter {
 
 	public void writeCode(Model model) {
 		
+		logger.info("Writing Java code ...");
+		
 		for (Map.Entry<String, ClassGroup> cgEntry : model.getClassGroups().entrySet()) {
 			
 			try {
@@ -49,6 +51,8 @@ public class ApiModelWriter {
 			}
 			
 		}
+		
+		logger.info("Java classes written");
 		
 	}
 	

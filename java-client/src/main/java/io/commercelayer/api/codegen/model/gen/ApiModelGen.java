@@ -49,28 +49,36 @@ public class ApiModelGen {
 	public static final String PACKAGE_OPERATION	= ApiModelWriter.class.getPackage().getName() + ".classes.operation";
 
 	public Model createModel(Schema schema) {
+		
+		logger.info("Creating API Model ...");
 
 		Model model = new Model();
 
 		
 		// Object classes
+		logger.info("Generating model objects ...");
+		
 		if (GENERATE_OBJECT_CLASSES) {
 			List<Definition> definitions = schema.getDefinitions();
 			for (Definition def : definitions) {
-				if (!model.addClass(createObjectClass(PACKAGE_OBJECT, def))) {
+				if (model.addClass(createObjectClass(PACKAGE_OBJECT, def)))
+					logger.info("Definition: {}", def.getTitle());
+				else
 					logger.warn("Definition skipped: {}", def.getTitle());
-				}
 			}
 		}
 
 		// Operation classes
+		logger.info("Generating operations ...");
+		
 		if (GENERATE_OPERATION_CLASSES) {
 			List<Resource> resources = schema.getResources();
 			for (Resource res : resources) {
 				for (Operation op : res.getOperations())
-					if (!model.addClass(createOperationClass(PACKAGE_OPERATION, res.getPath(), op))) {
+					if (model.addClass(createOperationClass(PACKAGE_OPERATION, res.getPath(), op)))
+						logger.info("Resource: {}", res.getPath());
+					else
 						logger.warn("Resource skipped: {}", res.getPath());
-					}
 			}
 		}
 		
@@ -79,6 +87,8 @@ public class ApiModelGen {
 			// TODO: JUnit test classes implementation
 		}
 
+		
+		logger.info("Model generated");
 		
 		return model;
 
@@ -192,7 +202,7 @@ public class ApiModelGen {
 			}
 
 			if (!mc.addField(field, true, true)) {
-				logger.warn("Field skipped: {}.{}", def.getTitle(), field.getName());
+				// logger.warn("Field skipped: {}.{}", def.getTitle(), field.getName());
 			}
 
 		}
@@ -310,6 +320,7 @@ public class ApiModelGen {
 		}
 
 		mc.setExtendedClass(extClass);
+		
 		
 		final String operationPathField = "OPERATION_PATH";
 		

@@ -24,7 +24,7 @@ import io.swagger.parser.SwaggerParser;
 public class ApiSwaggerParser extends ApiParser {
 	
 	public Schema parse(String schemaPath) {
-
+		
 		SwaggerParser parser = new SwaggerParser();
 
 		Swagger swagger = parser.read(schemaPath);
@@ -32,6 +32,8 @@ public class ApiSwaggerParser extends ApiParser {
 		Schema schema = new Schema();
 		
 		// Definitions
+		logger.info("Parsing definitions ...");
+		
 		Map<String, Model> definitions = swagger.getDefinitions();
 		
 		for (Map.Entry<String, Model> def : definitions.entrySet()) {
@@ -41,7 +43,6 @@ public class ApiSwaggerParser extends ApiParser {
 			
 			Map<String, io.swagger.models.properties.Property> properties = def.getValue().getProperties();
 			for (Map.Entry<String, io.swagger.models.properties.Property> p : properties.entrySet()) {
-//				System.out.println(prop.getKey() + ": " + ToStringBuilder.reflectionToString(prop.getValue(), ToStringStyle.MULTI_LINE_STYLE));
 				definition.addProperty(parseProperty(p.getKey(), p.getValue()));
 			}
 			
@@ -51,6 +52,8 @@ public class ApiSwaggerParser extends ApiParser {
 			
 		
 		// Resources
+		logger.info("Parsing resources ...");
+		
 		Map<String, Path> paths = swagger.getPaths();
 		
 		for (Map.Entry<String, Path> path : paths.entrySet()) {
@@ -70,7 +73,7 @@ public class ApiSwaggerParser extends ApiParser {
 				List<io.swagger.models.parameters.Parameter> params = op.getValue().getParameters();
 				
 				for (io.swagger.models.parameters.Parameter param : params) {
-					operation.addParameter(parseParameter(param));						
+					operation.addParameter(parseParameter(param));
 				}
 				
 				resource.addOperation(operation);
@@ -81,7 +84,9 @@ public class ApiSwaggerParser extends ApiParser {
 			schema.addResource(resource);
 			
 		}
-			
+		
+		
+		logger.info("Schema parsed");
 		
 		return schema;
 
