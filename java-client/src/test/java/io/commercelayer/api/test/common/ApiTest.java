@@ -35,9 +35,6 @@ public abstract class ApiTest<T extends ApiResource> {
 	
 	protected static final Random random = new Random(System.currentTimeMillis());
 	
-//	protected static ApiAccount account;
-//	protected static ApiToken token;
-	
 	
 	
 	@Test

@@ -53,9 +53,8 @@ public class Constructor extends AbstractModelObject {
 		if (!getSignatureParams().isEmpty()) {
 			int params = 0;
 			for (Constructor.Param p : getSignatureParams()) {
-				if (params > 0)
-					sb.append(", ");
-				sb.append(strType(p.getType(), p.getListType())).append(' ').append(p.getName());
+				if (params > 0) sb.append(", ");
+				sb.append(p.getType().getNameGen()).append(' ').append(p.getName());
 				params++;
 			}
 		}
@@ -110,13 +109,21 @@ public class Constructor extends AbstractModelObject {
 
 		private boolean parentParam;
 
+		public Param(Type type, String name) {
+			super(type, name);
+		}
+		
 		public Param(Class<?> type, String name) {
 			super(type, name);
 		}
 
-		public Param(Class<?> type, String name, boolean parentParam) {
+		public Param(Type type, String name, boolean parentParam) {
 			this(type, name);
 			this.parentParam = parentParam;
+		}
+		
+		public Param(Class<?> type, String name, boolean parentParam) {
+			this(new Type(type), name, parentParam);
 		}
 
 		public boolean isParentParam() {

@@ -82,13 +82,13 @@ public abstract class AbstractModelObject {
 		return lines;
 	}
 
-	protected String strType(Class<?> type, Class<?> listType) {
-		StringBuffer sb = new StringBuffer();
-		sb.append(type.getSimpleName());
-		if (type.equals(List.class))
-			sb.append('<').append(listType.getSimpleName()).append('>');
-		return sb.toString();
-	}
+//	protected String strType(Class<?> type, Class<?> typeGen) {
+//		StringBuffer sb = new StringBuffer();
+//		sb.append(type.getSimpleName());
+//		if (type.equals(List.class) || (typeGen != null))
+//			sb.append('<').append(typeGen.getSimpleName()).append('>');
+//		return sb.toString();
+//	}
 	
 	public List<Class<? extends Annotation>> getAnnotationList() {
 		return annotationList;

@@ -21,6 +21,7 @@ import io.commercelayer.api.codegen.model.Method;
 import io.commercelayer.api.codegen.model.Method.Param;
 import io.commercelayer.api.codegen.model.Model;
 import io.commercelayer.api.codegen.model.ModelClass;
+import io.commercelayer.api.codegen.model.Type;
 import io.commercelayer.api.codegen.schema.Definition;
 import io.commercelayer.api.codegen.schema.Operation;
 import io.commercelayer.api.codegen.schema.Parameter;
@@ -66,27 +67,28 @@ public class ApiModelGen {
 		if (GENERATE_OBJECT_CLASSES) {
 			List<Definition> definitions = schema.getDefinitions();
 			for (Definition def : definitions) {
-				if (model.addClass(createObjectClass(PACKAGE_OBJECT, def)))
-					logger.info("Definition: {}", def.getTitle());
-				else
-					logger.warn("Definition skipped: {}", def.getTitle());
+				ModelClass objClass = createObjectClass(PACKAGE_OBJECT, def);
+				if (model.addClass(objClass)) logger.info("Definition: {}", def.getTitle());
+				else logger.warn("Definition skipped: {}", def.getTitle());
 			}
 		}
 
+		
 		// Operation classes
 		logger.info("Generating operations ...");
 
 		if (GENERATE_OPERATION_CLASSES) {
 			List<Resource> resources = schema.getResources();
 			for (Resource res : resources) {
-				for (Operation op : res.getOperations())
-					if (model.addClass(createOperationClass(PACKAGE_OPERATION, res.getPath(), op)))
-						logger.info("Resource: {}", res.getPath());
-					else
-						logger.warn("Resource skipped: {}", res.getPath());
+				for (Operation op : res.getOperations()) {
+					ModelClass opClass = createOperationClass(PACKAGE_OPERATION, res.getPath(), op);
+					if (model.addClass(opClass)) logger.info("Operation: {} {}", op.getMethod(), res.getPath());
+					else logger.warn("Operation skipped: {} {}", op.getMethod(), res.getPath());
+				}
 			}
 		}
-
+		
+		
 		// Test classes
 		if (GENERATE_TEST_CLASSES) {
 			// TODO: JUnit test classes implementation
@@ -98,44 +100,18 @@ public class ApiModelGen {
 
 	}
 
-	private Class<?> decodePropertyTypeSimple(String p) {
+
+	private Type decodePropertyType(Property p) {
 
 		Class<?> type = null;
-
-		switch (p) {
-			case Property.Types.STRING: {
-				type = String.class;
-				break;
-			}
-			case Property.Types.INTEGER: {
-				type = Integer.class;
-				break;
-			}
-			case Property.Types.NUMBER: {
-				type = Integer.class;
-				break;
-			}
-			case Property.Types.OBJECT:
-			default: type = Object.class;
-		}
-
-		return type;
-
-	}
-
-	private Class<?> decodePropertyType(Property p) {
-
-		Class<?> type = null;
+		Class<?> typeGen = null;
 
 		switch (p.getType()) {
 			case Property.Types.STRING: {
 				type = String.class;
 				if (p.getFormat() != null) {
 					switch (p.getFormat()) {
-						case Property.Formats.DATE_TIME: {
-							type = LocalDateTime.class;
-							break;
-						}
+						case Property.Formats.DATE_TIME: { type = LocalDateTime.class; break; }
 						default: type = String.class;
 					}
 				}
@@ -145,10 +121,7 @@ public class ApiModelGen {
 				type = Integer.class;
 				if (p.getFormat() != null) {
 					switch (p.getFormat()) {
-						case Property.Formats.INT32: {
-							type = Integer.class;
-							break;
-						}
+						case Property.Formats.INT32: { type = Integer.class; break; }
 						default: type = Integer.class;
 					}
 				}
@@ -158,10 +131,7 @@ public class ApiModelGen {
 				type = Integer.class;
 				if (p.getFormat() != null) {
 					switch (p.getFormat()) {
-						case Property.Formats.FLOAT: {
-							type = Float.class;
-							break;
-						}
+						case Property.Formats.FLOAT: { type = Float.class; break; }
 						default: type = Integer.class;
 					}
 				}
@@ -169,15 +139,25 @@ public class ApiModelGen {
 			}
 			case Property.Types.ARRAY: {
 				type = List.class;
+				if (p.getItemType() != null)
+					switch (p.getItemType()) {
+						case Property.Types.STRING: { typeGen = String.class; break; }
+						case Property.Types.INTEGER: { typeGen = Integer.class; break; }
+						case Property.Types.NUMBER: { typeGen = Integer.class; break; }
+						case Property.Types.OBJECT:
+						default: typeGen = Object.class;
+					}
 				break;
 			}
 			case Property.Types.OBJECT:
 			default: type = Object.class;
 		}
+		
 
-		return type;
+		return new Type(type, typeGen);
 
 	}
+	
 
 	private ModelClass createObjectClass(String modelPackage, Definition def) {
 
@@ -193,12 +173,8 @@ public class ApiModelGen {
 
 			Field field = new Field(Modifier.PRIVATE, decodePropertyType(p), ModelUtils.toCamelCase(p.getName()));
 
-			if (p.isReadonly() || field.getType().equals(Object.class))
+			if (p.isReadonly() || Object.class.equals(field.getType().getTypeClass()))
 				field.addAnnotation(JsonExclude.class);
-
-			if (field.getType().equals(List.class)) {
-				field.setListType(decodePropertyTypeSimple(p.getItemType()));
-			}
 
 			if (!mc.addField(field, true, true, true)) {
 				// logger.warn("Field skipped: {}.{}", def.getTitle(), field.getName());
@@ -299,7 +275,7 @@ public class ApiModelGen {
 		m.addAnnotation(Override.class);
 
 		m.setName("clone");
-		m.setReturnTypeNew(mc.getName());
+		m.setReturnType(new Type(mc.getName()));
 
 		// Method Body
 		m.addBodyLine(m.emptyLine());
@@ -447,12 +423,34 @@ public class ApiModelGen {
 
 	}
 
-	private ModelClass createTestClass() {
+	private ModelClass createTestClass(String testPackage, Definition def) {
 
-		ModelClass mc = new ModelClass();
-
+		ModelClass mc = new ModelClass(testPackage, def.getTitle().concat("Test"), Modifier.PUBLIC);
+//		mc.setComment(mc.getName());
+//
+//		mc.setExtendedClass(IntegrationTest.class);
+//
+//		// Test Insert Method
+//		Method tim = new Method(Modifier.PUBLIC);
+//		tim.addAnnotation(Override.class);
+//		tim.setReturnTypeStr(String.format("%s<%s>", ApiResource.class.getSimpleName(), def.getTitle()));
+//		tim.setName("testInsert");
+//		tim.addSignatureParam(new Param(ApiCaller.class, "caller"));
+//		
+//		// Test Update Method
+//		Method tum = new Method(Modifier.PUBLIC);
+//		tum.addAnnotation(Override.class);
+//		tum.setReturnTypeStr(String.format("%s<%s>", ApiResource.class.getSimpleName(), def.getTitle()));
+//		tum.setName("testUpdate");
+//		tum.addSignatureParams(new Param(), new Param(ApiCaller.class, "caller"));
+		
+		
+//		protected abstract ApiResponse<T> testUpdate(T oldRes, ApiCaller caller);
+		
+//		protected abstract ApiResponse<T> testDelete(T res, ApiCaller caller);
+		
 		return mc;
-
+		
 	}
 
 	public static void main(String[] args) {

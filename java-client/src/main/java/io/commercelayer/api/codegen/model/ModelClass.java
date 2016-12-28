@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
@@ -14,7 +15,7 @@ public class ModelClass extends AbstractModelObject {
 
 	private String classPackage;
 
-	private List<Class<?>> importList = new ArrayList<>();
+	private List<Type> importList = new ArrayList<>();
 	private Class<?> extendedClass;
 	private List<Class<?>> implementList = new ArrayList<>();
 	private List<Method> methodList = new ArrayList<>();
@@ -52,7 +53,7 @@ public class ModelClass extends AbstractModelObject {
 		this.modifier = modifier;
 	}
 
-	public List<Class<?>> getImportList() {
+	public List<Type> getImportList() {
 		return importList;
 	}
 
@@ -148,7 +149,6 @@ public class ModelClass extends AbstractModelObject {
 			Method m = new Method(Modifier.PUBLIC);
 			m.setName("get".concat(StringUtils.capitalize(field.getName())));
 			m.setReturnType(field.getType());
-			m.setListType(field.getListType());
 			m.addBodyLine("return this.%s;", field.getName());
 			addMethod(m);
 		}
@@ -157,7 +157,7 @@ public class ModelClass extends AbstractModelObject {
 			if (setter) {
 				Method m = new Method(Modifier.PUBLIC);
 				m.setName(field.getName());
-				m.setReturnTypeNew(getName());
+				m.setReturnType(new Type(getName()));
 				m.addSignatureParam(new Param(field));
 				m.addBodyLine("set%s(%s);", StringUtils.capitalize(field.getName()), field.getName());
 				m.addBodyLine("return this;");
@@ -167,7 +167,6 @@ public class ModelClass extends AbstractModelObject {
 				Method m = new Method(Modifier.PUBLIC);
 				m.setName(field.getName());
 				m.setReturnType(field.getType());
-				m.setListType(field.getListType());
 				m.addBodyLine("return get%s();", StringUtils.capitalize(field.getName()));
 				addMethod(m);
 			}
@@ -230,14 +229,21 @@ public class ModelClass extends AbstractModelObject {
 		}
 
 	}
-
+	
+	
+	public void addImportItem(Type type) {
+		if (type == null) return;
+		else {
+			if ((type.getTypeClass() != null) && (type.getTypeClass().isPrimitive())) return;
+			String pkg = type.getPackage();
+			if ((pkg == null) || (pkg.startsWith("java.lang"))) return;
+			if (!this.importList.contains(type)) this.importList.add(type);
+		}
+		
+	}
+	
 	public void addImportItem(Class<?> class_) {
-		if (class_ == null)
-			return;
-		else if (class_.isPrimitive())
-			return;
-		else if (!class_.getName().startsWith("java.lang") && !this.importList.contains(class_))
-			this.importList.add(class_);
+		addImportItem(new Type(class_));
 	}
 
 	public String generate() {
@@ -251,8 +257,8 @@ public class ModelClass extends AbstractModelObject {
 		sb.append(newLine());
 
 		// Imports
-		for (Class<?> c : getImportList()) {
-			String imp = c.getName().replaceAll("\\$", ".");
+		for (Type t : getImportList()) {
+			String imp = t.getImport().replaceAll("\\$", ".");
 			sb.append("import ").append(imp).append(';').append(newLine());
 		}
 		sb.append(newLine());
@@ -271,8 +277,7 @@ public class ModelClass extends AbstractModelObject {
 			sb.append(" implements ");
 			int i = 0;
 			for (Class<?> c : getImplementList()) {
-				if (i > 0)
-					sb.append(", ");
+				if (i > 0) sb.append(", ");
 				sb.append(c.getSimpleName());
 			}
 		}
@@ -281,8 +286,7 @@ public class ModelClass extends AbstractModelObject {
 			sb.append(' ');
 			int i = 0;
 			for (Class<? extends Exception> e : getExceptionList()) {
-				if (i > 0)
-					sb.append(", ");
+				if (i > 0) sb.append(", ");
 				sb.append(e.getSimpleName());
 			}
 		}
@@ -294,6 +298,7 @@ public class ModelClass extends AbstractModelObject {
 
 		// Fields
 		if (!getFieldList().isEmpty()) {
+			Collections.sort(getFieldList());
 			sb.append(newLine());
 			for (Field f : getFieldList()) {
 				sb.append(newLines(f.getLinesBefore()));

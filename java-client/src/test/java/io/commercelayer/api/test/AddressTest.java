@@ -5,20 +5,19 @@ import org.junit.Assert;
 import io.commercelayer.api.ApiCaller;
 import io.commercelayer.api.ApiRequest;
 import io.commercelayer.api.ApiResponse;
+import io.commercelayer.api.exception.ApiException;
 import io.commercelayer.api.model.Address;
 import io.commercelayer.api.operation.GetAccountAddressesId;
 import io.commercelayer.api.operation.PostAccountAddresses;
 import io.commercelayer.api.operation.PutAccountAddressesId;
 import io.commercelayer.api.operation.common.ApiOperations;
 import io.commercelayer.api.operation.common.DeleteOperation;
-import io.commercelayer.api.test.common.ApiTest;
+import io.commercelayer.api.test.common.IntegrationTest;
 
-public class AddressTest extends ApiTest<Address> {
+public class AddressTest extends IntegrationTest<Address> {
 
 	@Override
-	public void runTest() {
-		
-		ApiCaller caller = getApiCaller();
+	public ApiResponse<Address> testInsert(ApiCaller caller) {
 		
 		// POST
 		
@@ -35,7 +34,7 @@ public class AddressTest extends ApiTest<Address> {
 		postOp.setPayload(a);
 		
 		ApiRequest<PostAccountAddresses> postReq = new ApiRequest<>(postOp);
-		ApiResponse<Address> postRes = test (postReq, Address.class, caller);
+		ApiResponse<Address> postRes = test(postReq, Address.class, caller);
 		
 		a.setId(postRes.getResource().getId());
 		
@@ -49,11 +48,23 @@ public class AddressTest extends ApiTest<Address> {
 		
 		ApiResponse<Address> getRes = test(getReq, Address.class, caller);
 		
+		Assert.assertNotNull(getRes.getResource().getLat());
+		Assert.assertNotNull(getRes.getResource().getLng());
+		
+		return postRes;
+		
+	}
+
+
+	@Override
+	public ApiResponse<Address> testUpdate(Address insRes, ApiCaller caller) {
 		
 		// PUT
 		
 		PutAccountAddressesId putOp = ApiOperations.PutAccountAddressesId();
-		putOp.setId(getRes.getResource().getId());
+		putOp.setId(insRes.getId());
+		
+		Address a = new Address();
 		
 		a.setGeocodingStreet("Viale Sardegna");
 		a.setGeocodingNumber("2");
@@ -61,45 +72,59 @@ public class AddressTest extends ApiTest<Address> {
 		putOp.setPayload(a);
 		
 		ApiRequest<PutAccountAddressesId> putReq = new ApiRequest<>(putOp);
-		@SuppressWarnings("unused")
 		ApiResponse<Address> putRes = test(putReq, Address.class, caller);
 		
 
 		// GET
 		
-		getOp = ApiOperations.GetAccountAddressesId();
-		getOp.setId(postRes.getResource().getId());
+		GetAccountAddressesId getOp = ApiOperations.GetAccountAddressesId();
+		getOp.setId(insRes.getId());
 				
-		getReq = new ApiRequest<>(getOp);
+		ApiRequest<GetAccountAddressesId> getReq = new ApiRequest<>(getOp);
 				
-		getRes = test(getReq, Address.class, caller);
+		ApiResponse<Address> getRes = test(getReq, Address.class, caller);
 		
-		Assert.assertNotEquals(postRes.getResource().getGeocodingStreet(), getRes.getResource().getGeocodingStreet());
-		Assert.assertNotEquals(postRes.getResource().getGeocodingNumber(), getRes.getResource().getGeocodingNumber());
-		Assert.assertNotEquals(postRes.getResource().getLat(), getRes.getResource().getLat());
-		Assert.assertNotEquals(postRes.getResource().getLng(), getRes.getResource().getLng());
+		Assert.assertNotEquals(insRes.getGeocodingStreet(), getRes.getResource().getGeocodingStreet());
+		Assert.assertNotEquals(insRes.getGeocodingNumber(), getRes.getResource().getGeocodingNumber());
+		Assert.assertNotEquals(insRes.getLat(), getRes.getResource().getLat());
+		Assert.assertNotEquals(insRes.getLng(), getRes.getResource().getLng());
 		
+		return putRes;
+
+	}
+
+
+	@Override
+	public ApiResponse<Address> testDelete(Address updRes, ApiCaller caller) {
 		
 		// DELETE
 		
 		DeleteOperation delOp = ApiOperations.DeleteAccountAddressesId();
-		delOp.setId(getOp.getId());
+		delOp.setId(updRes.getId());
 		
-		ApiRequest<DeleteOperation> delRes = new ApiRequest<>(delOp);
+		ApiRequest<DeleteOperation> delReq = new ApiRequest<>(delOp);
 		
-		test(delRes, caller);
+		ApiResponse<Address> delRes = test(delReq, caller);
 		
 		
 		// GET
-		getRes = test(getReq, Address.class, caller, false);
+		
+		GetAccountAddressesId getOp = ApiOperations.GetAccountAddressesId();
+		getOp.setId(updRes.getId());
+				
+		ApiRequest<GetAccountAddressesId> getReq = new ApiRequest<>(getOp);
+				
+		ApiResponse<Address> getRes = test(getReq, Address.class, caller);
 		
 		Assert.assertNull(getRes.getResource());
 		Assert.assertNotNull(getRes.getApiError());
 		
+		return delRes;
+		
 	}
 	
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ApiException {
 		new AddressTest().runTest();
 	}
 	

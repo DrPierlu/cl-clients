@@ -10,7 +10,6 @@ public class Model {
 	private Map<String, ClassGroup> classGroups = new HashMap<>();
 	
 	
-	
 	public Map<String, ClassGroup> getClassGroups() {
 		return classGroups;
 	}

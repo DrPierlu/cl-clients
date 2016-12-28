@@ -8,7 +8,7 @@ import io.commercelayer.api.operation.PutAccountAddressesId;
 
 public final class ApiOperations {
 
-	// Address
+	// ********** OPERATIONS **********//
 	public static GetAccountAddressesId GetAccountAddressesId() 		{ return new GetAccountAddressesId(); }
 	public static GetAccountAddresses GetAccountAddresses() 			{ return new GetAccountAddresses(); }
 	public static PostAccountAddresses PostAccountAddresses() 			{ return new PostAccountAddresses(); }

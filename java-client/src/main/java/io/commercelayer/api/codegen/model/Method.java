@@ -10,9 +10,7 @@ import org.apache.commons.lang3.StringUtils;
 
 public class Method extends AbstractModelObject {
 
-	private Class<?> returnType;
-	private String returnTypeNew;
-	private Class<?> listType;
+	private Type returnType;
 	private List<Param> signatureParams = new ArrayList<>();
 	private List<String> body = new ArrayList<>();
 	private List<Class<? extends Exception>> exceptionList = new ArrayList<>();
@@ -33,12 +31,16 @@ public class Method extends AbstractModelObject {
 		this.modifier = modifier;
 	}
 
-	public Class<?> getReturnType() {
+	public Type getReturnType() {
 		return returnType;
 	}
 
-	public void setReturnType(Class<?> returnType) {
+	public void setReturnType(Type returnType) {
 		this.returnType = returnType;
+	}
+	
+	public void setReturnType(Class<?> returnType) {
+		this.returnType = new Type(returnType);
 	}
 
 	public List<Param> getSignatureParams() {
@@ -87,24 +89,7 @@ public class Method extends AbstractModelObject {
 		this.exceptionList.add(e);
 	}
 	
-	public Class<?> getListType() {
-		return listType;
-	}
-
-	public void setListType(Class<?> listType) {
-		this.listType = listType;
-	}
-
 	
-
-	public String getReturnTypeNew() {
-		return returnTypeNew;
-	}
-
-	public void setReturnTypeNew(String returnTypeNew) {
-		this.returnTypeNew = returnTypeNew;
-	}
-
 	public String generate() {
 
 		StringBuilder sb = new StringBuilder();
@@ -116,10 +101,8 @@ public class Method extends AbstractModelObject {
 		
 		sb.append(Modifier.toString(getModifier())).append(' ');
 		
-		if (getReturnType() == null)
-			if (getReturnTypeNew() == null) sb.append(Void.TYPE.getSimpleName());
-			else sb.append(getReturnTypeNew());
-		else sb.append(strType(getReturnType(), getListType()));
+		if (getReturnType() == null) sb.append(Void.TYPE.getSimpleName());
+		else sb.append(getReturnType().getNameGen());
 		sb.append(' ').append(getName()).append('(');
 
 		if (!getSignatureParams().isEmpty()) {
@@ -127,7 +110,7 @@ public class Method extends AbstractModelObject {
 			for (Param p : getSignatureParams()) {
 				if (params > 0)
 					sb.append(", ");
-				sb.append(strType(p.getType(), p.getListType())).append(' ').append(p.getName());
+				sb.append(p.getType().getNameGen()).append(' ').append(p.getName());
 				params++;
 			}
 		}
@@ -160,34 +143,30 @@ public class Method extends AbstractModelObject {
 
 	public static class Param {
 
-		private Class<?> type;
+		private Type type;
 		private String name;
-		private Class<?> listType;
 
 		public Param(Field field) {
 			this(field.getType(), field.getName());
-			this.listType = field.getListType();
+			this.type = field.getType();
 		}
 
-		public Param(Class<?> type, String name) {
+		public Param(Type type, String name) {
 			this.type = type;
 			this.name = name;
 		}
+		
+		public Param(Class<?> type, String name) {
+			this.type = new Type(type);
+			this.name = name;
+		}
 
-		public Class<?> getType() {
+		public Type getType() {
 			return type;
 		}
 
 		public String getName() {
 			return name;
-		}
-
-		public Class<?> getListType() {
-			return listType;
-		}
-
-		public void setListType(Class<?> listType) {
-			this.listType = listType;
 		}
 
 	}

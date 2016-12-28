@@ -2,10 +2,9 @@ package io.commercelayer.api.codegen.model;
 
 import java.lang.reflect.Modifier;
 
-public class Field extends AbstractModelObject {
+public class Field extends AbstractModelObject implements Comparable<Field> {
 
-	private Class<?> type;
-	private Class<?> listType;
+	private Type type;
 	private String initialization;
 
 	public Field() {
@@ -17,10 +16,14 @@ public class Field extends AbstractModelObject {
 		setModifier(modifier);
 	}
 
-	public Field(Integer modifier, Class<?> type, String name) {
+	public Field(Integer modifier, Type type, String name) {
 		this(modifier);
 		this.type = type;
 		this.name = name;
+	}
+	
+	public Field(Integer modifier, Class<?> type, String name) {
+		this(modifier, new Type(type), name);
 	}
 
 	public void setModifier(Integer modifier) throws IllegalArgumentException {
@@ -29,26 +32,15 @@ public class Field extends AbstractModelObject {
 		this.modifier = modifier;
 	}
 
-	public Class<?> getType() {
+	public Type getType() {
 		return type;
 	}
 
-	public void setType(Class<?> type) {
+	public void setType(Type type) {
 		this.type = type;
 	}
 
-	public Class<?> getListType() {
-		return listType;
-	}
-
-	public void setListType(Class<?> listType) {
-		this.listType = listType;
-	}
-
-	private String strType() {
-		return super.strType(getType(), getListType());
-	}
-
+	
 	public String getInitialization() {
 		return initialization;
 	}
@@ -70,7 +62,7 @@ public class Field extends AbstractModelObject {
 		}
 
 		sb.append(Modifier.toString(modifier)).append(' ');
-		sb.append(strType()).append(' ').append(getName());
+		sb.append(getType().getNameGen()).append(' ').append(getName());
 
 		if (this.initialization != null)
 			sb.append(" = ").append(this.initialization);
@@ -84,12 +76,21 @@ public class Field extends AbstractModelObject {
 
 	public static void main(String[] args) {
 
-		Field f = new Field(Modifier.PRIVATE, String.class, "shippingMethod");
+		Field f = new Field(Modifier.PRIVATE, new Type(String.class), "shippingMethod");
 
 		String code = f.generate();
 
 		System.out.println(code);
 
+	}
+
+	@Override
+	public int compareTo(Field o) {
+		if (getAnnotationList().isEmpty() && !o.getAnnotationList().isEmpty()) return -1;
+		else
+		if (!getAnnotationList().isEmpty() && o.getAnnotationList().isEmpty()) return 1;
+		else
+		return getName().compareTo(o.getName());
 	}
 
 }
