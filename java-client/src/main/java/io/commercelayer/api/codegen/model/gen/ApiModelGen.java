@@ -13,6 +13,8 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import io.commercelayer.api.ApiCaller;
+import io.commercelayer.api.ApiResponse;
 import io.commercelayer.api.codegen.ApiCodeGenerator;
 import io.commercelayer.api.codegen.model.Constructor;
 import io.commercelayer.api.codegen.model.CustomConstructor;
@@ -41,6 +43,7 @@ import io.commercelayer.api.operation.common.PayloadOperation;
 import io.commercelayer.api.operation.common.PostOperation;
 import io.commercelayer.api.operation.common.PutOperation;
 import io.commercelayer.api.operation.common.SearchOperation;
+import io.commercelayer.api.test.common.IntegrationTest;
 import io.commercelayer.api.util.ModelUtils;
 
 public class ApiModelGen {
@@ -68,7 +71,7 @@ public class ApiModelGen {
 			List<Definition> definitions = schema.getDefinitions();
 			for (Definition def : definitions) {
 				ModelClass objClass = createObjectClass(PACKAGE_OBJECT, def);
-				if (model.addClass(objClass)) logger.info("Definition: {}", def.getTitle());
+				if (model.addClass(objClass)) logger.info("Definition: {}", objClass.getName());
 				else logger.warn("Definition skipped: {}", def.getTitle());
 			}
 		}
@@ -90,8 +93,15 @@ public class ApiModelGen {
 		
 		
 		// Test classes
+		logger.info("Generating tests ...");
+		
 		if (GENERATE_TEST_CLASSES) {
-			// TODO: JUnit test classes implementation
+			List<Definition> definitions = schema.getDefinitions();
+			for (Definition def : definitions) {
+				ModelClass testClass = createTestClass(PACKAGE_TEST, def);
+				if (model.addClass(testClass)) logger.info("Test: {}", testClass.getName());
+				else logger.warn("Definition skipped: {}", def.getTitle());
+			}
 		}
 
 		logger.info("Model generated");
@@ -239,8 +249,8 @@ public class ApiModelGen {
 		m.addBodyLine("return Objects.hash(");
 
 		List<String> fieldList = new ArrayList<>();
-		if (mc.getExtendedClass() != null)
-		for (java.lang.reflect.Field f : mc.getExtendedClass().getDeclaredFields())
+		if ((mc.getExtendedClass() != null) && (mc.getExtendedClass().getTypeClass() != null))
+		for (java.lang.reflect.Field f : mc.getExtendedClass().getTypeClass().getDeclaredFields())
 			if (Modifier.isPrivate(f.getModifiers()) && !Modifier.isStatic(f.getModifiers()))
 				fieldList.add(f.getName());
 		for (Field f : mc.getFieldList())
@@ -283,8 +293,8 @@ public class ApiModelGen {
 		m.addBodyLine(m.emptyLine());
 
 		List<String> fieldList = new ArrayList<>();
-		if (mc.getExtendedClass() != null)
-			for (java.lang.reflect.Field f : mc.getExtendedClass().getDeclaredFields())
+		if ((mc.getExtendedClass() != null) && (mc.getExtendedClass().getTypeClass() != null))
+			for (java.lang.reflect.Field f : mc.getExtendedClass().getTypeClass().getDeclaredFields())
 				if (Modifier.isPrivate(f.getModifiers()) && !Modifier.isStatic(f.getModifiers()))
 					fieldList.add(f.getName());
 		for (Field f : mc.getFieldList())
@@ -350,7 +360,8 @@ public class ApiModelGen {
 		
 		
 		// IdOperation
-		if (IdOperation.class.isAssignableFrom(mc.getExtendedClass())) {
+		if ((mc.getExtendedClass() != null) && (mc.getExtendedClass().getTypeClass() != null))
+		if (IdOperation.class.isAssignableFrom(mc.getExtendedClass().getTypeClass())) {
 			
 			CustomConstructor ccid = new CustomConstructor();
 			
@@ -365,7 +376,8 @@ public class ApiModelGen {
 		
 		
 		// PayloadOperation
-		if (PayloadOperation.class.isAssignableFrom(mc.getExtendedClass()))
+		if ((mc.getExtendedClass() != null) && (mc.getExtendedClass().getTypeClass() != null))
+		if (PayloadOperation.class.isAssignableFrom(mc.getExtendedClass().getTypeClass()))
 		if (!op.getParameters().isEmpty()) {
 		
 			StringBuilder sb = new StringBuilder();
@@ -426,28 +438,48 @@ public class ApiModelGen {
 	private ModelClass createTestClass(String testPackage, Definition def) {
 
 		ModelClass mc = new ModelClass(testPackage, def.getTitle().concat("Test"), Modifier.PUBLIC);
-//		mc.setComment(mc.getName());
-//
-//		mc.setExtendedClass(IntegrationTest.class);
-//
-//		// Test Insert Method
-//		Method tim = new Method(Modifier.PUBLIC);
-//		tim.addAnnotation(Override.class);
-//		tim.setReturnTypeStr(String.format("%s<%s>", ApiResource.class.getSimpleName(), def.getTitle()));
-//		tim.setName("testInsert");
-//		tim.addSignatureParam(new Param(ApiCaller.class, "caller"));
-//		
-//		// Test Update Method
-//		Method tum = new Method(Modifier.PUBLIC);
-//		tum.addAnnotation(Override.class);
-//		tum.setReturnTypeStr(String.format("%s<%s>", ApiResource.class.getSimpleName(), def.getTitle()));
-//		tum.setName("testUpdate");
-//		tum.addSignatureParams(new Param(), new Param(ApiCaller.class, "caller"));
+		mc.setComment(mc.getName());
+
+		mc.setExtendedClass(new Type("io.commercelayer.api.test.common.IntegrationTest", def.getTitle()));
+		
+		final String res = ApiResource.class.getPackage().getName().replace(".common", ".").concat(def.getTitle());
+
+		
+		// Test Insert Method
+		Method tim = new Method(Modifier.PUBLIC);
+		
+		tim.addAnnotation(Override.class);
+		tim.setReturnType(new Type(ApiResponse.class, res));
+		tim.setName("testInsert");
+		tim.addSignatureParam(new Param(ApiCaller.class, "caller"));
+		tim.addBodyLine("return null;");
+		
+		mc.addMethod(tim);
 		
 		
-//		protected abstract ApiResponse<T> testUpdate(T oldRes, ApiCaller caller);
+		// Test Update Method
+		Method tum = new Method(Modifier.PUBLIC);
 		
-//		protected abstract ApiResponse<T> testDelete(T res, ApiCaller caller);
+		tum.addAnnotation(Override.class);
+		tum.setReturnType(new Type(ApiResponse.class, res));
+		tum.setName("testUpdate");
+		tum.setSignatureParams(new Param(new Type(res), "oldRes"), new Param(ApiCaller.class, "caller"));
+		tum.addBodyLine("return null;");
+		
+		mc.addMethod(tum);
+		
+		
+		// Test Delete Method
+		Method tdm = new Method(Modifier.PUBLIC);
+		
+		tdm.addAnnotation(Override.class);
+		tdm.setReturnType(new Type(ApiResponse.class, res));
+		tdm.setName("testDelete");
+		tdm.setSignatureParams(new Param(new Type(res), "res"), new Param(ApiCaller.class, "caller"));
+		tdm.addBodyLine("return null;");
+		
+		mc.addMethod(tdm);
+		
 		
 		return mc;
 		

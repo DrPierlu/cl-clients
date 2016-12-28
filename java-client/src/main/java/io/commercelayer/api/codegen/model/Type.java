@@ -20,6 +20,11 @@ public class Type {
 		this.typeClassGen = typeClassGen;
 	}
 	
+	public Type(Class<?> typeClass, String typeStrGen) {
+		this(typeClass);
+		this.typeStrGen = typeStrGen;
+	}
+	
 	public Type(String typeStr) {
 		super();
 		this.typeStr = typeStr;

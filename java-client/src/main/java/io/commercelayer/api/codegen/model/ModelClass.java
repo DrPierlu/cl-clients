@@ -16,7 +16,7 @@ public class ModelClass extends AbstractModelObject {
 	private String classPackage;
 
 	private List<Type> importList = new ArrayList<>();
-	private Class<?> extendedClass;
+	private Type extendedClass;
 	private List<Class<?>> implementList = new ArrayList<>();
 	private List<Method> methodList = new ArrayList<>();
 	private List<Field> fieldList = new ArrayList<>();
@@ -57,12 +57,16 @@ public class ModelClass extends AbstractModelObject {
 		return importList;
 	}
 
-	public Class<?> getExtendedClass() {
+	public Type getExtendedClass() {
 		return extendedClass;
 	}
 
 	public void setExtendedClass(Class<?> extendedClass) throws IllegalArgumentException {
-		if (extendedClass.isInterface())
+		setExtendedClass(new Type(extendedClass));
+	}
+	
+	public void setExtendedClass(Type extendedClass) throws IllegalArgumentException {
+		if ((extendedClass.getTypeClass() != null) && extendedClass.getTypeClass().isInterface())
 			throw new IllegalArgumentException("Not valid class [" + extendedClass.getName() + "]");
 		this.extendedClass = extendedClass;
 	}
@@ -117,9 +121,9 @@ public class ModelClass extends AbstractModelObject {
 	}
 
 	public boolean addField(Field field) {
-		if (getExtendedClass() != null)
+		if ((getExtendedClass() != null) && (getExtendedClass().getTypeClass() != null))
 			try {
-				if (getExtendedClass().getDeclaredField(field.getName()) != null)
+				if (getExtendedClass().getTypeClass().getDeclaredField(field.getName()) != null)
 					return false;
 			} catch (NoSuchFieldException | SecurityException e) {
 
@@ -271,7 +275,7 @@ public class ModelClass extends AbstractModelObject {
 		}
 		sb.append(Modifier.toString(getModifier())).append(" class ").append(getName());
 		if (getExtendedClass() != null)
-			sb.append(" extends ").append(getExtendedClass().getSimpleName());
+			sb.append(" extends ").append(getExtendedClass().getNameGen());
 
 		if (!getImplementList().isEmpty()) {
 			sb.append(" implements ");
@@ -340,7 +344,9 @@ public class ModelClass extends AbstractModelObject {
 
 		String sv = "";
 
-		boolean serializable = ((getExtendedClass() != null) && Serializable.class.isAssignableFrom(getExtendedClass()));
+		boolean serializable = ((getExtendedClass() != null) 
+				&& (getExtendedClass().getTypeClass() != null) 
+				&& Serializable.class.isAssignableFrom(getExtendedClass().getTypeClass()));
 
 		if (!serializable)
 			for (Class<?> c : getImplementList()) {
