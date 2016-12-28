@@ -10,12 +10,10 @@ import java.util.List;
  */
 public class Taxonomy extends ApiResource {
 
-	private static final long serialVersionUID = -1482880735362L;
+	private static final long serialVersionUID = -1482914098071L;
 
 
 	private String name;
-	@JsonExclude
-	private String slug;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
@@ -50,13 +48,14 @@ public class Taxonomy extends ApiResource {
 	}
 	
 
-	public void setSlug(String slug) {
-		this.slug = slug;
+	public Taxonomy name(String name) {
+		setName(name);
+		return this;
 	}
 	
 
-	public String getSlug() {
-		return this.slug;
+	public String name() {
+		return getName();
 	}
 	
 
@@ -70,6 +69,17 @@ public class Taxonomy extends ApiResource {
 	}
 	
 
+	public Taxonomy previousChanges(Object previousChanges) {
+		setPreviousChanges(previousChanges);
+		return this;
+	}
+	
+
+	public Object previousChanges() {
+		return getPreviousChanges();
+	}
+	
+
 	public void setResourceImages(List<String> resourceImages) {
 		this.resourceImages = resourceImages;
 	}
@@ -77,6 +87,17 @@ public class Taxonomy extends ApiResource {
 
 	public List<String> getResourceImages() {
 		return this.resourceImages;
+	}
+	
+
+	public Taxonomy resourceImages(List<String> resourceImages) {
+		setResourceImages(resourceImages);
+		return this;
+	}
+	
+
+	public List<String> resourceImages() {
+		return getResourceImages();
 	}
 	
 
@@ -90,6 +111,17 @@ public class Taxonomy extends ApiResource {
 	}
 	
 
+	public Taxonomy images(List<String> images) {
+		setImages(images);
+		return this;
+	}
+	
+
+	public List<String> images() {
+		return getImages();
+	}
+	
+
 	public void setTranslations(List<String> translations) {
 		this.translations = translations;
 	}
@@ -97,6 +129,17 @@ public class Taxonomy extends ApiResource {
 
 	public List<String> getTranslations() {
 		return this.translations;
+	}
+	
+
+	public Taxonomy translations(List<String> translations) {
+		setTranslations(translations);
+		return this;
+	}
+	
+
+	public List<String> translations() {
+		return getTranslations();
 	}
 	
 
@@ -110,6 +153,17 @@ public class Taxonomy extends ApiResource {
 	}
 	
 
+	public Taxonomy taxons(List<String> taxons) {
+		setTaxons(taxons);
+		return this;
+	}
+	
+
+	public List<String> taxons() {
+		return getTaxons();
+	}
+	
+
 	public void setProducts(List<String> products) {
 		this.products = products;
 	}
@@ -117,6 +171,17 @@ public class Taxonomy extends ApiResource {
 
 	public List<String> getProducts() {
 		return this.products;
+	}
+	
+
+	public Taxonomy products(List<String> products) {
+		setProducts(products);
+		return this;
+	}
+	
+
+	public List<String> products() {
+		return getProducts();
 	}
 	
 
@@ -130,7 +195,6 @@ public class Taxonomy extends ApiResource {
 	
 		return super.equals(o)
 			&& Objects.equals(this.name, x.name)
-			&& Objects.equals(this.slug, x.slug)
 			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.resourceImages, x.resourceImages)
 			&& Objects.equals(this.images, x.images)
@@ -146,8 +210,8 @@ public class Taxonomy extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, slug, previousChanges, resourceImages, images,
-			translations, taxons, products 
+			name, previousChanges, resourceImages, images, translations,
+			taxons, products 
 		);
 	
 	}
@@ -159,7 +223,6 @@ public class Taxonomy extends ApiResource {
 		Taxonomy no = new Taxonomy();
 	
 		no.name = this.name;
-		no.slug = this.slug;
 		no.previousChanges = this.previousChanges;
 		no.resourceImages = this.resourceImages;
 		no.images = this.images;

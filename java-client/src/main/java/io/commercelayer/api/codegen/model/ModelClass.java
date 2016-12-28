@@ -4,13 +4,11 @@ import java.io.Serializable;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 
 import io.commercelayer.api.codegen.model.Method.Param;
-import io.commercelayer.api.model.common.ApiResource;
 
 public class ModelClass extends AbstractModelObject {
 
@@ -130,6 +128,10 @@ public class ModelClass extends AbstractModelObject {
 	}
 
 	public boolean addField(Field field, boolean setter, boolean getter) {
+		return addField(field, setter, getter, false);
+	}
+	
+	public boolean addField(Field field, boolean setter, boolean getter, boolean newStyle) {
 
 		if (!addField(field))
 			return false;
@@ -138,7 +140,7 @@ public class ModelClass extends AbstractModelObject {
 			Method m = new Method(Modifier.PUBLIC);
 			m.setName("set".concat(StringUtils.capitalize(field.getName())));
 			m.addSignatureParam(new Param(field));
-			m.addBodyLine("this.".concat(field.getName()).concat(" = ").concat(field.getName()).concat(";"));
+			m.addBodyLine("this.%1$s = %1$s;", field.getName());
 			addMethod(m);
 		}
 
@@ -147,8 +149,28 @@ public class ModelClass extends AbstractModelObject {
 			m.setName("get".concat(StringUtils.capitalize(field.getName())));
 			m.setReturnType(field.getType());
 			m.setListType(field.getListType());
-			m.addBodyLine("return this.".concat(field.getName()).concat(";"));
+			m.addBodyLine("return this.%s;", field.getName());
 			addMethod(m);
+		}
+		
+		if (newStyle) {
+			if (setter) {
+				Method m = new Method(Modifier.PUBLIC);
+				m.setName(field.getName());
+				m.setReturnTypeNew(getName());
+				m.addSignatureParam(new Param(field));
+				m.addBodyLine("set%s(%s);", StringUtils.capitalize(field.getName()), field.getName());
+				m.addBodyLine("return this;");
+				addMethod(m);
+			}
+			if (getter) {
+				Method m = new Method(Modifier.PUBLIC);
+				m.setName(field.getName());
+				m.setReturnType(field.getType());
+				m.setListType(field.getListType());
+				m.addBodyLine("return get%s();", StringUtils.capitalize(field.getName()));
+				addMethod(m);
+			}
 		}
 
 		return true;
@@ -327,24 +349,6 @@ public class ModelClass extends AbstractModelObject {
 			sv = String.format("\n\tprivate static final long serialVersionUID = -%dL;\n\n", System.currentTimeMillis());
 
 		return sv;
-
-	}
-
-	public static void main(String[] args) {
-
-		ModelClass mc = new ModelClass("io.commercelayer.api.test.codegen", "TestClass", Modifier.PUBLIC);
-
-		mc.setExtendedClass(ApiResource.class);
-		mc.addImplementedInterface(Serializable.class);
-
-		mc.addField(new Field(Modifier.PRIVATE, String.class, "campo1"));
-		mc.addField(new Field(Modifier.PRIVATE, Integer.class, "campo2"));
-		mc.addField(new Field(Modifier.PRIVATE, Date.class, "dataDa"), true, true);
-		mc.addField(new Field(Modifier.PRIVATE, Date.class, "dataA"));
-
-		String code = mc.generate();
-
-		System.out.println(code);
 
 	}
 

@@ -9,13 +9,11 @@ import io.commercelayer.api.json.JsonExclude;
  */
 public class ShippingServiceZone extends ApiResource {
 
-	private static final long serialVersionUID = -1482880735354L;
+	private static final long serialVersionUID = -1482914098022L;
 
 
-	@JsonExclude
-	private String name;
-	private Integer shippingServiceId;
-	private Integer shippingZoneId;
+	private String shippingServiceId;
+	private String shippingZoneId;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
@@ -34,33 +32,45 @@ public class ShippingServiceZone extends ApiResource {
 	}
 	
 
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-
-	public String getName() {
-		return this.name;
-	}
-	
-
-	public void setShippingServiceId(Integer shippingServiceId) {
+	public void setShippingServiceId(String shippingServiceId) {
 		this.shippingServiceId = shippingServiceId;
 	}
 	
 
-	public Integer getShippingServiceId() {
+	public String getShippingServiceId() {
 		return this.shippingServiceId;
 	}
 	
 
-	public void setShippingZoneId(Integer shippingZoneId) {
+	public ShippingServiceZone shippingServiceId(String shippingServiceId) {
+		setShippingServiceId(shippingServiceId);
+		return this;
+	}
+	
+
+	public String shippingServiceId() {
+		return getShippingServiceId();
+	}
+	
+
+	public void setShippingZoneId(String shippingZoneId) {
 		this.shippingZoneId = shippingZoneId;
 	}
 	
 
-	public Integer getShippingZoneId() {
+	public String getShippingZoneId() {
 		return this.shippingZoneId;
+	}
+	
+
+	public ShippingServiceZone shippingZoneId(String shippingZoneId) {
+		setShippingZoneId(shippingZoneId);
+		return this;
+	}
+	
+
+	public String shippingZoneId() {
+		return getShippingZoneId();
 	}
 	
 
@@ -74,6 +84,17 @@ public class ShippingServiceZone extends ApiResource {
 	}
 	
 
+	public ShippingServiceZone previousChanges(Object previousChanges) {
+		setPreviousChanges(previousChanges);
+		return this;
+	}
+	
+
+	public Object previousChanges() {
+		return getPreviousChanges();
+	}
+	
+
 	public void setShippingService(Object shippingService) {
 		this.shippingService = shippingService;
 	}
@@ -81,6 +102,17 @@ public class ShippingServiceZone extends ApiResource {
 
 	public Object getShippingService() {
 		return this.shippingService;
+	}
+	
+
+	public ShippingServiceZone shippingService(Object shippingService) {
+		setShippingService(shippingService);
+		return this;
+	}
+	
+
+	public Object shippingService() {
+		return getShippingService();
 	}
 	
 
@@ -94,6 +126,17 @@ public class ShippingServiceZone extends ApiResource {
 	}
 	
 
+	public ShippingServiceZone shippingZone(Object shippingZone) {
+		setShippingZone(shippingZone);
+		return this;
+	}
+	
+
+	public Object shippingZone() {
+		return getShippingZone();
+	}
+	
+
 	@Override
 	public boolean equals(Object o) {
 	
@@ -103,7 +146,6 @@ public class ShippingServiceZone extends ApiResource {
 		ShippingServiceZone x = (ShippingServiceZone)o;
 	
 		return super.equals(o)
-			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.shippingServiceId, x.shippingServiceId)
 			&& Objects.equals(this.shippingZoneId, x.shippingZoneId)
 			&& Objects.equals(this.previousChanges, x.previousChanges)
@@ -118,8 +160,8 @@ public class ShippingServiceZone extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, shippingServiceId, shippingZoneId, previousChanges, shippingService,
-			shippingZone 
+			shippingServiceId, shippingZoneId, previousChanges, shippingService, shippingZone
+			
 		);
 	
 	}
@@ -130,7 +172,6 @@ public class ShippingServiceZone extends ApiResource {
 	
 		ShippingServiceZone no = new ShippingServiceZone();
 	
-		no.name = this.name;
 		no.shippingServiceId = this.shippingServiceId;
 		no.shippingZoneId = this.shippingZoneId;
 		no.previousChanges = this.previousChanges;

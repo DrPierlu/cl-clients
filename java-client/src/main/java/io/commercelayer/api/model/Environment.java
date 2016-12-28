@@ -10,10 +10,10 @@ import java.util.List;
  */
 public class Environment extends ApiResource {
 
-	private static final long serialVersionUID = -1482880735288L;
+	private static final long serialVersionUID = -1482914097555L;
 
 
-	private Integer organizationId;
+	private String organizationId;
 	private String name;
 	@JsonExclude
 	private Object previousChanges;
@@ -139,13 +139,24 @@ public class Environment extends ApiResource {
 	}
 	
 
-	public void setOrganizationId(Integer organizationId) {
+	public void setOrganizationId(String organizationId) {
 		this.organizationId = organizationId;
 	}
 	
 
-	public Integer getOrganizationId() {
+	public String getOrganizationId() {
 		return this.organizationId;
+	}
+	
+
+	public Environment organizationId(String organizationId) {
+		setOrganizationId(organizationId);
+		return this;
+	}
+	
+
+	public String organizationId() {
+		return getOrganizationId();
 	}
 	
 
@@ -159,6 +170,17 @@ public class Environment extends ApiResource {
 	}
 	
 
+	public Environment name(String name) {
+		setName(name);
+		return this;
+	}
+	
+
+	public String name() {
+		return getName();
+	}
+	
+
 	public void setPreviousChanges(Object previousChanges) {
 		this.previousChanges = previousChanges;
 	}
@@ -166,6 +188,17 @@ public class Environment extends ApiResource {
 
 	public Object getPreviousChanges() {
 		return this.previousChanges;
+	}
+	
+
+	public Environment previousChanges(Object previousChanges) {
+		setPreviousChanges(previousChanges);
+		return this;
+	}
+	
+
+	public Object previousChanges() {
+		return getPreviousChanges();
 	}
 	
 
@@ -179,6 +212,17 @@ public class Environment extends ApiResource {
 	}
 	
 
+	public Environment organization(Object organization) {
+		setOrganization(organization);
+		return this;
+	}
+	
+
+	public Object organization() {
+		return getOrganization();
+	}
+	
+
 	public void setAddresses(List<String> addresses) {
 		this.addresses = addresses;
 	}
@@ -186,6 +230,17 @@ public class Environment extends ApiResource {
 
 	public List<String> getAddresses() {
 		return this.addresses;
+	}
+	
+
+	public Environment addresses(List<String> addresses) {
+		setAddresses(addresses);
+		return this;
+	}
+	
+
+	public List<String> addresses() {
+		return getAddresses();
 	}
 	
 
@@ -199,6 +254,17 @@ public class Environment extends ApiResource {
 	}
 	
 
+	public Environment catalogs(List<String> catalogs) {
+		setCatalogs(catalogs);
+		return this;
+	}
+	
+
+	public List<String> catalogs() {
+		return getCatalogs();
+	}
+	
+
 	public void setChannels(List<String> channels) {
 		this.channels = channels;
 	}
@@ -206,6 +272,17 @@ public class Environment extends ApiResource {
 
 	public List<String> getChannels() {
 		return this.channels;
+	}
+	
+
+	public Environment channels(List<String> channels) {
+		setChannels(channels);
+		return this;
+	}
+	
+
+	public List<String> channels() {
+		return getChannels();
 	}
 	
 
@@ -219,6 +296,17 @@ public class Environment extends ApiResource {
 	}
 	
 
+	public Environment countries(List<String> countries) {
+		setCountries(countries);
+		return this;
+	}
+	
+
+	public List<String> countries() {
+		return getCountries();
+	}
+	
+
 	public void setCountryGroups(List<String> countryGroups) {
 		this.countryGroups = countryGroups;
 	}
@@ -226,6 +314,17 @@ public class Environment extends ApiResource {
 
 	public List<String> getCountryGroups() {
 		return this.countryGroups;
+	}
+	
+
+	public Environment countryGroups(List<String> countryGroups) {
+		setCountryGroups(countryGroups);
+		return this;
+	}
+	
+
+	public List<String> countryGroups() {
+		return getCountryGroups();
 	}
 	
 
@@ -239,6 +338,17 @@ public class Environment extends ApiResource {
 	}
 	
 
+	public Environment countryLanguages(List<String> countryLanguages) {
+		setCountryLanguages(countryLanguages);
+		return this;
+	}
+	
+
+	public List<String> countryLanguages() {
+		return getCountryLanguages();
+	}
+	
+
 	public void setCurrencies(List<String> currencies) {
 		this.currencies = currencies;
 	}
@@ -246,6 +356,17 @@ public class Environment extends ApiResource {
 
 	public List<String> getCurrencies() {
 		return this.currencies;
+	}
+	
+
+	public Environment currencies(List<String> currencies) {
+		setCurrencies(currencies);
+		return this;
+	}
+	
+
+	public List<String> currencies() {
+		return getCurrencies();
 	}
 	
 
@@ -259,6 +380,17 @@ public class Environment extends ApiResource {
 	}
 	
 
+	public Environment customers(List<String> customers) {
+		setCustomers(customers);
+		return this;
+	}
+	
+
+	public List<String> customers() {
+		return getCustomers();
+	}
+	
+
 	public void setCreditCards(List<String> creditCards) {
 		this.creditCards = creditCards;
 	}
@@ -266,6 +398,17 @@ public class Environment extends ApiResource {
 
 	public List<String> getCreditCards() {
 		return this.creditCards;
+	}
+	
+
+	public Environment creditCards(List<String> creditCards) {
+		setCreditCards(creditCards);
+		return this;
+	}
+	
+
+	public List<String> creditCards() {
+		return getCreditCards();
 	}
 	
 
@@ -279,6 +422,17 @@ public class Environment extends ApiResource {
 	}
 	
 
+	public Environment images(List<String> images) {
+		setImages(images);
+		return this;
+	}
+	
+
+	public List<String> images() {
+		return getImages();
+	}
+	
+
 	public void setLanguages(List<String> languages) {
 		this.languages = languages;
 	}
@@ -286,6 +440,17 @@ public class Environment extends ApiResource {
 
 	public List<String> getLanguages() {
 		return this.languages;
+	}
+	
+
+	public Environment languages(List<String> languages) {
+		setLanguages(languages);
+		return this;
+	}
+	
+
+	public List<String> languages() {
+		return getLanguages();
 	}
 	
 
@@ -299,6 +464,17 @@ public class Environment extends ApiResource {
 	}
 	
 
+	public Environment lineItems(List<String> lineItems) {
+		setLineItems(lineItems);
+		return this;
+	}
+	
+
+	public List<String> lineItems() {
+		return getLineItems();
+	}
+	
+
 	public void setLineItemStocks(List<String> lineItemStocks) {
 		this.lineItemStocks = lineItemStocks;
 	}
@@ -306,6 +482,17 @@ public class Environment extends ApiResource {
 
 	public List<String> getLineItemStocks() {
 		return this.lineItemStocks;
+	}
+	
+
+	public Environment lineItemStocks(List<String> lineItemStocks) {
+		setLineItemStocks(lineItemStocks);
+		return this;
+	}
+	
+
+	public List<String> lineItemStocks() {
+		return getLineItemStocks();
 	}
 	
 
@@ -319,6 +506,17 @@ public class Environment extends ApiResource {
 	}
 	
 
+	public Environment markets(List<String> markets) {
+		setMarkets(markets);
+		return this;
+	}
+	
+
+	public List<String> markets() {
+		return getMarkets();
+	}
+	
+
 	public void setShippingCarriers(List<String> shippingCarriers) {
 		this.shippingCarriers = shippingCarriers;
 	}
@@ -326,6 +524,17 @@ public class Environment extends ApiResource {
 
 	public List<String> getShippingCarriers() {
 		return this.shippingCarriers;
+	}
+	
+
+	public Environment shippingCarriers(List<String> shippingCarriers) {
+		setShippingCarriers(shippingCarriers);
+		return this;
+	}
+	
+
+	public List<String> shippingCarriers() {
+		return getShippingCarriers();
 	}
 	
 
@@ -339,6 +548,17 @@ public class Environment extends ApiResource {
 	}
 	
 
+	public Environment marketPaymentTypes(List<String> marketPaymentTypes) {
+		setMarketPaymentTypes(marketPaymentTypes);
+		return this;
+	}
+	
+
+	public List<String> marketPaymentTypes() {
+		return getMarketPaymentTypes();
+	}
+	
+
 	public void setMarketShippingServices(List<String> marketShippingServices) {
 		this.marketShippingServices = marketShippingServices;
 	}
@@ -346,6 +566,17 @@ public class Environment extends ApiResource {
 
 	public List<String> getMarketShippingServices() {
 		return this.marketShippingServices;
+	}
+	
+
+	public Environment marketShippingServices(List<String> marketShippingServices) {
+		setMarketShippingServices(marketShippingServices);
+		return this;
+	}
+	
+
+	public List<String> marketShippingServices() {
+		return getMarketShippingServices();
 	}
 	
 
@@ -359,6 +590,17 @@ public class Environment extends ApiResource {
 	}
 	
 
+	public Environment marketStockLocations(List<String> marketStockLocations) {
+		setMarketStockLocations(marketStockLocations);
+		return this;
+	}
+	
+
+	public List<String> marketStockLocations() {
+		return getMarketStockLocations();
+	}
+	
+
 	public void setMerchants(List<String> merchants) {
 		this.merchants = merchants;
 	}
@@ -366,6 +608,17 @@ public class Environment extends ApiResource {
 
 	public List<String> getMerchants() {
 		return this.merchants;
+	}
+	
+
+	public Environment merchants(List<String> merchants) {
+		setMerchants(merchants);
+		return this;
+	}
+	
+
+	public List<String> merchants() {
+		return getMerchants();
 	}
 	
 
@@ -379,6 +632,17 @@ public class Environment extends ApiResource {
 	}
 	
 
+	public Environment merchandisingRules(List<String> merchandisingRules) {
+		setMerchandisingRules(merchandisingRules);
+		return this;
+	}
+	
+
+	public List<String> merchandisingRules() {
+		return getMerchandisingRules();
+	}
+	
+
 	public void setOptionTypes(List<String> optionTypes) {
 		this.optionTypes = optionTypes;
 	}
@@ -386,6 +650,17 @@ public class Environment extends ApiResource {
 
 	public List<String> getOptionTypes() {
 		return this.optionTypes;
+	}
+	
+
+	public Environment optionTypes(List<String> optionTypes) {
+		setOptionTypes(optionTypes);
+		return this;
+	}
+	
+
+	public List<String> optionTypes() {
+		return getOptionTypes();
 	}
 	
 
@@ -399,6 +674,17 @@ public class Environment extends ApiResource {
 	}
 	
 
+	public Environment optionValues(List<String> optionValues) {
+		setOptionValues(optionValues);
+		return this;
+	}
+	
+
+	public List<String> optionValues() {
+		return getOptionValues();
+	}
+	
+
 	public void setOrders(List<String> orders) {
 		this.orders = orders;
 	}
@@ -406,6 +692,17 @@ public class Environment extends ApiResource {
 
 	public List<String> getOrders() {
 		return this.orders;
+	}
+	
+
+	public Environment orders(List<String> orders) {
+		setOrders(orders);
+		return this;
+	}
+	
+
+	public List<String> orders() {
+		return getOrders();
 	}
 	
 
@@ -419,6 +716,17 @@ public class Environment extends ApiResource {
 	}
 	
 
+	public Environment orderValidators(List<String> orderValidators) {
+		setOrderValidators(orderValidators);
+		return this;
+	}
+	
+
+	public List<String> orderValidators() {
+		return getOrderValidators();
+	}
+	
+
 	public void setGateways(List<String> gateways) {
 		this.gateways = gateways;
 	}
@@ -426,6 +734,17 @@ public class Environment extends ApiResource {
 
 	public List<String> getGateways() {
 		return this.gateways;
+	}
+	
+
+	public Environment gateways(List<String> gateways) {
+		setGateways(gateways);
+		return this;
+	}
+	
+
+	public List<String> gateways() {
+		return getGateways();
 	}
 	
 
@@ -439,6 +758,17 @@ public class Environment extends ApiResource {
 	}
 	
 
+	public Environment paymentTypes(List<String> paymentTypes) {
+		setPaymentTypes(paymentTypes);
+		return this;
+	}
+	
+
+	public List<String> paymentTypes() {
+		return getPaymentTypes();
+	}
+	
+
 	public void setPaymentMethods(List<String> paymentMethods) {
 		this.paymentMethods = paymentMethods;
 	}
@@ -446,6 +776,17 @@ public class Environment extends ApiResource {
 
 	public List<String> getPaymentMethods() {
 		return this.paymentMethods;
+	}
+	
+
+	public Environment paymentMethods(List<String> paymentMethods) {
+		setPaymentMethods(paymentMethods);
+		return this;
+	}
+	
+
+	public List<String> paymentMethods() {
+		return getPaymentMethods();
 	}
 	
 
@@ -459,6 +800,17 @@ public class Environment extends ApiResource {
 	}
 	
 
+	public Environment priceLists(List<String> priceLists) {
+		setPriceLists(priceLists);
+		return this;
+	}
+	
+
+	public List<String> priceLists() {
+		return getPriceLists();
+	}
+	
+
 	public void setPrices(List<String> prices) {
 		this.prices = prices;
 	}
@@ -466,6 +818,17 @@ public class Environment extends ApiResource {
 
 	public List<String> getPrices() {
 		return this.prices;
+	}
+	
+
+	public Environment prices(List<String> prices) {
+		setPrices(prices);
+		return this;
+	}
+	
+
+	public List<String> prices() {
+		return getPrices();
 	}
 	
 
@@ -479,6 +842,17 @@ public class Environment extends ApiResource {
 	}
 	
 
+	public Environment products(List<String> products) {
+		setProducts(products);
+		return this;
+	}
+	
+
+	public List<String> products() {
+		return getProducts();
+	}
+	
+
 	public void setProductTypes(List<String> productTypes) {
 		this.productTypes = productTypes;
 	}
@@ -486,6 +860,17 @@ public class Environment extends ApiResource {
 
 	public List<String> getProductTypes() {
 		return this.productTypes;
+	}
+	
+
+	public Environment productTypes(List<String> productTypes) {
+		setProductTypes(productTypes);
+		return this;
+	}
+	
+
+	public List<String> productTypes() {
+		return getProductTypes();
 	}
 	
 
@@ -499,6 +884,17 @@ public class Environment extends ApiResource {
 	}
 	
 
+	public Environment productProperties(List<String> productProperties) {
+		setProductProperties(productProperties);
+		return this;
+	}
+	
+
+	public List<String> productProperties() {
+		return getProductProperties();
+	}
+	
+
 	public void setPropertyTypes(List<String> propertyTypes) {
 		this.propertyTypes = propertyTypes;
 	}
@@ -506,6 +902,17 @@ public class Environment extends ApiResource {
 
 	public List<String> getPropertyTypes() {
 		return this.propertyTypes;
+	}
+	
+
+	public Environment propertyTypes(List<String> propertyTypes) {
+		setPropertyTypes(propertyTypes);
+		return this;
+	}
+	
+
+	public List<String> propertyTypes() {
+		return getPropertyTypes();
 	}
 	
 
@@ -519,6 +926,17 @@ public class Environment extends ApiResource {
 	}
 	
 
+	public Environment propertyValues(List<String> propertyValues) {
+		setPropertyValues(propertyValues);
+		return this;
+	}
+	
+
+	public List<String> propertyValues() {
+		return getPropertyValues();
+	}
+	
+
 	public void setResourceImages(List<String> resourceImages) {
 		this.resourceImages = resourceImages;
 	}
@@ -526,6 +944,17 @@ public class Environment extends ApiResource {
 
 	public List<String> getResourceImages() {
 		return this.resourceImages;
+	}
+	
+
+	public Environment resourceImages(List<String> resourceImages) {
+		setResourceImages(resourceImages);
+		return this;
+	}
+	
+
+	public List<String> resourceImages() {
+		return getResourceImages();
 	}
 	
 
@@ -539,6 +968,17 @@ public class Environment extends ApiResource {
 	}
 	
 
+	public Environment shippingCarrierTypes(List<String> shippingCarrierTypes) {
+		setShippingCarrierTypes(shippingCarrierTypes);
+		return this;
+	}
+	
+
+	public List<String> shippingCarrierTypes() {
+		return getShippingCarrierTypes();
+	}
+	
+
 	public void setShippingCategories(List<String> shippingCategories) {
 		this.shippingCategories = shippingCategories;
 	}
@@ -546,6 +986,17 @@ public class Environment extends ApiResource {
 
 	public List<String> getShippingCategories() {
 		return this.shippingCategories;
+	}
+	
+
+	public Environment shippingCategories(List<String> shippingCategories) {
+		setShippingCategories(shippingCategories);
+		return this;
+	}
+	
+
+	public List<String> shippingCategories() {
+		return getShippingCategories();
 	}
 	
 
@@ -559,6 +1010,17 @@ public class Environment extends ApiResource {
 	}
 	
 
+	public Environment shippingLabels(List<String> shippingLabels) {
+		setShippingLabels(shippingLabels);
+		return this;
+	}
+	
+
+	public List<String> shippingLabels() {
+		return getShippingLabels();
+	}
+	
+
 	public void setShippingMethods(List<String> shippingMethods) {
 		this.shippingMethods = shippingMethods;
 	}
@@ -566,6 +1028,17 @@ public class Environment extends ApiResource {
 
 	public List<String> getShippingMethods() {
 		return this.shippingMethods;
+	}
+	
+
+	public Environment shippingMethods(List<String> shippingMethods) {
+		setShippingMethods(shippingMethods);
+		return this;
+	}
+	
+
+	public List<String> shippingMethods() {
+		return getShippingMethods();
 	}
 	
 
@@ -579,6 +1052,17 @@ public class Environment extends ApiResource {
 	}
 	
 
+	public Environment shippingPackages(List<String> shippingPackages) {
+		setShippingPackages(shippingPackages);
+		return this;
+	}
+	
+
+	public List<String> shippingPackages() {
+		return getShippingPackages();
+	}
+	
+
 	public void setShippingServices(List<String> shippingServices) {
 		this.shippingServices = shippingServices;
 	}
@@ -586,6 +1070,17 @@ public class Environment extends ApiResource {
 
 	public List<String> getShippingServices() {
 		return this.shippingServices;
+	}
+	
+
+	public Environment shippingServices(List<String> shippingServices) {
+		setShippingServices(shippingServices);
+		return this;
+	}
+	
+
+	public List<String> shippingServices() {
+		return getShippingServices();
 	}
 	
 
@@ -599,6 +1094,17 @@ public class Environment extends ApiResource {
 	}
 	
 
+	public Environment shippingServiceCategories(List<String> shippingServiceCategories) {
+		setShippingServiceCategories(shippingServiceCategories);
+		return this;
+	}
+	
+
+	public List<String> shippingServiceCategories() {
+		return getShippingServiceCategories();
+	}
+	
+
 	public void setShippingServiceStockLocations(List<String> shippingServiceStockLocations) {
 		this.shippingServiceStockLocations = shippingServiceStockLocations;
 	}
@@ -606,6 +1112,17 @@ public class Environment extends ApiResource {
 
 	public List<String> getShippingServiceStockLocations() {
 		return this.shippingServiceStockLocations;
+	}
+	
+
+	public Environment shippingServiceStockLocations(List<String> shippingServiceStockLocations) {
+		setShippingServiceStockLocations(shippingServiceStockLocations);
+		return this;
+	}
+	
+
+	public List<String> shippingServiceStockLocations() {
+		return getShippingServiceStockLocations();
 	}
 	
 
@@ -619,6 +1136,17 @@ public class Environment extends ApiResource {
 	}
 	
 
+	public Environment shippingServiceZones(List<String> shippingServiceZones) {
+		setShippingServiceZones(shippingServiceZones);
+		return this;
+	}
+	
+
+	public List<String> shippingServiceZones() {
+		return getShippingServiceZones();
+	}
+	
+
 	public void setStates(List<String> states) {
 		this.states = states;
 	}
@@ -626,6 +1154,17 @@ public class Environment extends ApiResource {
 
 	public List<String> getStates() {
 		return this.states;
+	}
+	
+
+	public Environment states(List<String> states) {
+		setStates(states);
+		return this;
+	}
+	
+
+	public List<String> states() {
+		return getStates();
 	}
 	
 
@@ -639,6 +1178,17 @@ public class Environment extends ApiResource {
 	}
 	
 
+	public Environment stockLocations(List<String> stockLocations) {
+		setStockLocations(stockLocations);
+		return this;
+	}
+	
+
+	public List<String> stockLocations() {
+		return getStockLocations();
+	}
+	
+
 	public void setStockItems(List<String> stockItems) {
 		this.stockItems = stockItems;
 	}
@@ -646,6 +1196,17 @@ public class Environment extends ApiResource {
 
 	public List<String> getStockItems() {
 		return this.stockItems;
+	}
+	
+
+	public Environment stockItems(List<String> stockItems) {
+		setStockItems(stockItems);
+		return this;
+	}
+	
+
+	public List<String> stockItems() {
+		return getStockItems();
 	}
 	
 
@@ -659,6 +1220,17 @@ public class Environment extends ApiResource {
 	}
 	
 
+	public Environment taxonomies(List<String> taxonomies) {
+		setTaxonomies(taxonomies);
+		return this;
+	}
+	
+
+	public List<String> taxonomies() {
+		return getTaxonomies();
+	}
+	
+
 	public void setTaxons(List<String> taxons) {
 		this.taxons = taxons;
 	}
@@ -666,6 +1238,17 @@ public class Environment extends ApiResource {
 
 	public List<String> getTaxons() {
 		return this.taxons;
+	}
+	
+
+	public Environment taxons(List<String> taxons) {
+		setTaxons(taxons);
+		return this;
+	}
+	
+
+	public List<String> taxons() {
+		return getTaxons();
 	}
 	
 
@@ -679,6 +1262,17 @@ public class Environment extends ApiResource {
 	}
 	
 
+	public Environment consumerRoles(List<String> consumerRoles) {
+		setConsumerRoles(consumerRoles);
+		return this;
+	}
+	
+
+	public List<String> consumerRoles() {
+		return getConsumerRoles();
+	}
+	
+
 	public void setVariantOptions(List<String> variantOptions) {
 		this.variantOptions = variantOptions;
 	}
@@ -686,6 +1280,17 @@ public class Environment extends ApiResource {
 
 	public List<String> getVariantOptions() {
 		return this.variantOptions;
+	}
+	
+
+	public Environment variantOptions(List<String> variantOptions) {
+		setVariantOptions(variantOptions);
+		return this;
+	}
+	
+
+	public List<String> variantOptions() {
+		return getVariantOptions();
 	}
 	
 
@@ -699,6 +1304,17 @@ public class Environment extends ApiResource {
 	}
 	
 
+	public Environment variants(List<String> variants) {
+		setVariants(variants);
+		return this;
+	}
+	
+
+	public List<String> variants() {
+		return getVariants();
+	}
+	
+
 	public void setWebhooks(List<String> webhooks) {
 		this.webhooks = webhooks;
 	}
@@ -709,6 +1325,17 @@ public class Environment extends ApiResource {
 	}
 	
 
+	public Environment webhooks(List<String> webhooks) {
+		setWebhooks(webhooks);
+		return this;
+	}
+	
+
+	public List<String> webhooks() {
+		return getWebhooks();
+	}
+	
+
 	public void setWireTransfers(List<String> wireTransfers) {
 		this.wireTransfers = wireTransfers;
 	}
@@ -716,6 +1343,17 @@ public class Environment extends ApiResource {
 
 	public List<String> getWireTransfers() {
 		return this.wireTransfers;
+	}
+	
+
+	public Environment wireTransfers(List<String> wireTransfers) {
+		setWireTransfers(wireTransfers);
+		return this;
+	}
+	
+
+	public List<String> wireTransfers() {
+		return getWireTransfers();
 	}
 	
 

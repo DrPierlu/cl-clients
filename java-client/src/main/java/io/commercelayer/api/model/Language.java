@@ -10,11 +10,9 @@ import java.util.List;
  */
 public class Language extends ApiResource {
 
-	private static final long serialVersionUID = -1482880735290L;
+	private static final long serialVersionUID = -1482914097567L;
 
 
-	@JsonExclude
-	private String name;
 	private String code;
 	@JsonExclude
 	private Object previousChanges;
@@ -34,16 +32,6 @@ public class Language extends ApiResource {
 	}
 	
 
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-
-	public String getName() {
-		return this.name;
-	}
-	
-
 	public void setCode(String code) {
 		this.code = code;
 	}
@@ -51,6 +39,17 @@ public class Language extends ApiResource {
 
 	public String getCode() {
 		return this.code;
+	}
+	
+
+	public Language code(String code) {
+		setCode(code);
+		return this;
+	}
+	
+
+	public String code() {
+		return getCode();
 	}
 	
 
@@ -64,6 +63,17 @@ public class Language extends ApiResource {
 	}
 	
 
+	public Language previousChanges(Object previousChanges) {
+		setPreviousChanges(previousChanges);
+		return this;
+	}
+	
+
+	public Object previousChanges() {
+		return getPreviousChanges();
+	}
+	
+
 	public void setCountryLanguages(List<String> countryLanguages) {
 		this.countryLanguages = countryLanguages;
 	}
@@ -71,6 +81,17 @@ public class Language extends ApiResource {
 
 	public List<String> getCountryLanguages() {
 		return this.countryLanguages;
+	}
+	
+
+	public Language countryLanguages(List<String> countryLanguages) {
+		setCountryLanguages(countryLanguages);
+		return this;
+	}
+	
+
+	public List<String> countryLanguages() {
+		return getCountryLanguages();
 	}
 	
 
@@ -84,6 +105,17 @@ public class Language extends ApiResource {
 	}
 	
 
+	public Language countries(List<String> countries) {
+		setCountries(countries);
+		return this;
+	}
+	
+
+	public List<String> countries() {
+		return getCountries();
+	}
+	
+
 	@Override
 	public boolean equals(Object o) {
 	
@@ -93,7 +125,6 @@ public class Language extends ApiResource {
 		Language x = (Language)o;
 	
 		return super.equals(o)
-			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.code, x.code)
 			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.countryLanguages, x.countryLanguages)
@@ -107,8 +138,7 @@ public class Language extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, code, previousChanges, countryLanguages, countries
-			
+			code, previousChanges, countryLanguages, countries 
 		);
 	
 	}
@@ -119,7 +149,6 @@ public class Language extends ApiResource {
 	
 		Language no = new Language();
 	
-		no.name = this.name;
 		no.code = this.code;
 		no.previousChanges = this.previousChanges;
 		no.countryLanguages = this.countryLanguages;

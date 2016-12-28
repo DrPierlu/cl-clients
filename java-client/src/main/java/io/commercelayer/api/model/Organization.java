@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class Organization extends ApiResource {
 
-	private static final long serialVersionUID = -1482880735312L;
+	private static final long serialVersionUID = -1482914097790L;
 
 
 	private String name;
@@ -40,6 +40,17 @@ public class Organization extends ApiResource {
 	}
 	
 
+	public Organization name(String name) {
+		setName(name);
+		return this;
+	}
+	
+
+	public String name() {
+		return getName();
+	}
+	
+
 	public void setPreviousChanges(Object previousChanges) {
 		this.previousChanges = previousChanges;
 	}
@@ -50,6 +61,17 @@ public class Organization extends ApiResource {
 	}
 	
 
+	public Organization previousChanges(Object previousChanges) {
+		setPreviousChanges(previousChanges);
+		return this;
+	}
+	
+
+	public Object previousChanges() {
+		return getPreviousChanges();
+	}
+	
+
 	public void setEnvironments(List<String> environments) {
 		this.environments = environments;
 	}
@@ -57,6 +79,17 @@ public class Organization extends ApiResource {
 
 	public List<String> getEnvironments() {
 		return this.environments;
+	}
+	
+
+	public Organization environments(List<String> environments) {
+		setEnvironments(environments);
+		return this;
+	}
+	
+
+	public List<String> environments() {
+		return getEnvironments();
 	}
 	
 

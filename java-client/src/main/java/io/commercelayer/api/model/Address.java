@@ -10,24 +10,22 @@ import java.util.List;
  */
 public class Address extends ApiResource {
 
-	private static final long serialVersionUID = -1482880735265L;
+	private static final long serialVersionUID = -1482914097406L;
 
 
-	@JsonExclude
-	private String name;
 	private String geocodingCountry;
 	private String geocodingZip;
 	private String geocodingCity;
 	private String geocodingStreet;
 	private String geocodingNumber;
-	@JsonExclude
+	@JsonExclude 
 	private String provider;
 	@JsonExclude
 	private String placeId;
 	@JsonExclude
 	private String precision;
 	@JsonExclude
-	private Integer accuracy;
+	private String accuracy;
 	@JsonExclude
 	private String countryCode;
 	@JsonExclude
@@ -54,6 +52,10 @@ public class Address extends ApiResource {
 	private String streetAddress;
 	@JsonExclude
 	private String subPremise;
+	@JsonExclude
+	private String fullAddress;
+	@JsonExclude
+	private String formattedAddress;
 	@JsonExclude
 	private Float lat;
 	@JsonExclude
@@ -82,16 +84,6 @@ public class Address extends ApiResource {
 	}
 	
 
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-
-	public String getName() {
-		return this.name;
-	}
-	
-
 	public void setGeocodingCountry(String geocodingCountry) {
 		this.geocodingCountry = geocodingCountry;
 	}
@@ -99,6 +91,17 @@ public class Address extends ApiResource {
 
 	public String getGeocodingCountry() {
 		return this.geocodingCountry;
+	}
+	
+
+	public Address geocodingCountry(String geocodingCountry) {
+		setGeocodingCountry(geocodingCountry);
+		return this;
+	}
+	
+
+	public String geocodingCountry() {
+		return getGeocodingCountry();
 	}
 	
 
@@ -112,6 +115,17 @@ public class Address extends ApiResource {
 	}
 	
 
+	public Address geocodingZip(String geocodingZip) {
+		setGeocodingZip(geocodingZip);
+		return this;
+	}
+	
+
+	public String geocodingZip() {
+		return getGeocodingZip();
+	}
+	
+
 	public void setGeocodingCity(String geocodingCity) {
 		this.geocodingCity = geocodingCity;
 	}
@@ -119,6 +133,17 @@ public class Address extends ApiResource {
 
 	public String getGeocodingCity() {
 		return this.geocodingCity;
+	}
+	
+
+	public Address geocodingCity(String geocodingCity) {
+		setGeocodingCity(geocodingCity);
+		return this;
+	}
+	
+
+	public String geocodingCity() {
+		return getGeocodingCity();
 	}
 	
 
@@ -132,6 +157,17 @@ public class Address extends ApiResource {
 	}
 	
 
+	public Address geocodingStreet(String geocodingStreet) {
+		setGeocodingStreet(geocodingStreet);
+		return this;
+	}
+	
+
+	public String geocodingStreet() {
+		return getGeocodingStreet();
+	}
+	
+
 	public void setGeocodingNumber(String geocodingNumber) {
 		this.geocodingNumber = geocodingNumber;
 	}
@@ -139,6 +175,17 @@ public class Address extends ApiResource {
 
 	public String getGeocodingNumber() {
 		return this.geocodingNumber;
+	}
+	
+
+	public Address geocodingNumber(String geocodingNumber) {
+		setGeocodingNumber(geocodingNumber);
+		return this;
+	}
+	
+
+	public String geocodingNumber() {
+		return getGeocodingNumber();
 	}
 	
 
@@ -152,6 +199,17 @@ public class Address extends ApiResource {
 	}
 	
 
+	public Address provider(String provider) {
+		setProvider(provider);
+		return this;
+	}
+	
+
+	public String provider() {
+		return getProvider();
+	}
+	
+
 	public void setPlaceId(String placeId) {
 		this.placeId = placeId;
 	}
@@ -159,6 +217,17 @@ public class Address extends ApiResource {
 
 	public String getPlaceId() {
 		return this.placeId;
+	}
+	
+
+	public Address placeId(String placeId) {
+		setPlaceId(placeId);
+		return this;
+	}
+	
+
+	public String placeId() {
+		return getPlaceId();
 	}
 	
 
@@ -172,13 +241,35 @@ public class Address extends ApiResource {
 	}
 	
 
-	public void setAccuracy(Integer accuracy) {
+	public Address precision(String precision) {
+		setPrecision(precision);
+		return this;
+	}
+	
+
+	public String precision() {
+		return getPrecision();
+	}
+	
+
+	public void setAccuracy(String accuracy) {
 		this.accuracy = accuracy;
 	}
 	
 
-	public Integer getAccuracy() {
+	public String getAccuracy() {
 		return this.accuracy;
+	}
+	
+
+	public Address accuracy(String accuracy) {
+		setAccuracy(accuracy);
+		return this;
+	}
+	
+
+	public String accuracy() {
+		return getAccuracy();
 	}
 	
 
@@ -192,6 +283,17 @@ public class Address extends ApiResource {
 	}
 	
 
+	public Address countryCode(String countryCode) {
+		setCountryCode(countryCode);
+		return this;
+	}
+	
+
+	public String countryCode() {
+		return getCountryCode();
+	}
+	
+
 	public void setCountry(String country) {
 		this.country = country;
 	}
@@ -199,6 +301,17 @@ public class Address extends ApiResource {
 
 	public String getCountry() {
 		return this.country;
+	}
+	
+
+	public Address country(String country) {
+		setCountry(country);
+		return this;
+	}
+	
+
+	public String country() {
+		return getCountry();
 	}
 	
 
@@ -212,6 +325,17 @@ public class Address extends ApiResource {
 	}
 	
 
+	public Address stateCode(String stateCode) {
+		setStateCode(stateCode);
+		return this;
+	}
+	
+
+	public String stateCode() {
+		return getStateCode();
+	}
+	
+
 	public void setStateName(String stateName) {
 		this.stateName = stateName;
 	}
@@ -219,6 +343,17 @@ public class Address extends ApiResource {
 
 	public String getStateName() {
 		return this.stateName;
+	}
+	
+
+	public Address stateName(String stateName) {
+		setStateName(stateName);
+		return this;
+	}
+	
+
+	public String stateName() {
+		return getStateName();
 	}
 	
 
@@ -232,6 +367,17 @@ public class Address extends ApiResource {
 	}
 	
 
+	public Address state(String state) {
+		setState(state);
+		return this;
+	}
+	
+
+	public String state() {
+		return getState();
+	}
+	
+
 	public void setProvince(String province) {
 		this.province = province;
 	}
@@ -239,6 +385,17 @@ public class Address extends ApiResource {
 
 	public String getProvince() {
 		return this.province;
+	}
+	
+
+	public Address province(String province) {
+		setProvince(province);
+		return this;
+	}
+	
+
+	public String province() {
+		return getProvince();
 	}
 	
 
@@ -252,6 +409,17 @@ public class Address extends ApiResource {
 	}
 	
 
+	public Address zip(String zip) {
+		setZip(zip);
+		return this;
+	}
+	
+
+	public String zip() {
+		return getZip();
+	}
+	
+
 	public void setCity(String city) {
 		this.city = city;
 	}
@@ -259,6 +427,17 @@ public class Address extends ApiResource {
 
 	public String getCity() {
 		return this.city;
+	}
+	
+
+	public Address city(String city) {
+		setCity(city);
+		return this;
+	}
+	
+
+	public String city() {
+		return getCity();
 	}
 	
 
@@ -272,6 +451,17 @@ public class Address extends ApiResource {
 	}
 	
 
+	public Address district(String district) {
+		setDistrict(district);
+		return this;
+	}
+	
+
+	public String district() {
+		return getDistrict();
+	}
+	
+
 	public void setStreetName(String streetName) {
 		this.streetName = streetName;
 	}
@@ -279,6 +469,17 @@ public class Address extends ApiResource {
 
 	public String getStreetName() {
 		return this.streetName;
+	}
+	
+
+	public Address streetName(String streetName) {
+		setStreetName(streetName);
+		return this;
+	}
+	
+
+	public String streetName() {
+		return getStreetName();
 	}
 	
 
@@ -292,6 +493,17 @@ public class Address extends ApiResource {
 	}
 	
 
+	public Address streetNumber(String streetNumber) {
+		setStreetNumber(streetNumber);
+		return this;
+	}
+	
+
+	public String streetNumber() {
+		return getStreetNumber();
+	}
+	
+
 	public void setStreetAddress(String streetAddress) {
 		this.streetAddress = streetAddress;
 	}
@@ -299,6 +511,17 @@ public class Address extends ApiResource {
 
 	public String getStreetAddress() {
 		return this.streetAddress;
+	}
+	
+
+	public Address streetAddress(String streetAddress) {
+		setStreetAddress(streetAddress);
+		return this;
+	}
+	
+
+	public String streetAddress() {
+		return getStreetAddress();
 	}
 	
 
@@ -312,6 +535,59 @@ public class Address extends ApiResource {
 	}
 	
 
+	public Address subPremise(String subPremise) {
+		setSubPremise(subPremise);
+		return this;
+	}
+	
+
+	public String subPremise() {
+		return getSubPremise();
+	}
+	
+
+	public void setFullAddress(String fullAddress) {
+		this.fullAddress = fullAddress;
+	}
+	
+
+	public String getFullAddress() {
+		return this.fullAddress;
+	}
+	
+
+	public Address fullAddress(String fullAddress) {
+		setFullAddress(fullAddress);
+		return this;
+	}
+	
+
+	public String fullAddress() {
+		return getFullAddress();
+	}
+	
+
+	public void setFormattedAddress(String formattedAddress) {
+		this.formattedAddress = formattedAddress;
+	}
+	
+
+	public String getFormattedAddress() {
+		return this.formattedAddress;
+	}
+	
+
+	public Address formattedAddress(String formattedAddress) {
+		setFormattedAddress(formattedAddress);
+		return this;
+	}
+	
+
+	public String formattedAddress() {
+		return getFormattedAddress();
+	}
+	
+
 	public void setLat(Float lat) {
 		this.lat = lat;
 	}
@@ -319,6 +595,17 @@ public class Address extends ApiResource {
 
 	public Float getLat() {
 		return this.lat;
+	}
+	
+
+	public Address lat(Float lat) {
+		setLat(lat);
+		return this;
+	}
+	
+
+	public Float lat() {
+		return getLat();
 	}
 	
 
@@ -332,6 +619,17 @@ public class Address extends ApiResource {
 	}
 	
 
+	public Address lng(Float lng) {
+		setLng(lng);
+		return this;
+	}
+	
+
+	public Float lng() {
+		return getLng();
+	}
+	
+
 	public void setSuggestedBoundsSwLat(Float suggestedBoundsSwLat) {
 		this.suggestedBoundsSwLat = suggestedBoundsSwLat;
 	}
@@ -339,6 +637,17 @@ public class Address extends ApiResource {
 
 	public Float getSuggestedBoundsSwLat() {
 		return this.suggestedBoundsSwLat;
+	}
+	
+
+	public Address suggestedBoundsSwLat(Float suggestedBoundsSwLat) {
+		setSuggestedBoundsSwLat(suggestedBoundsSwLat);
+		return this;
+	}
+	
+
+	public Float suggestedBoundsSwLat() {
+		return getSuggestedBoundsSwLat();
 	}
 	
 
@@ -352,6 +661,17 @@ public class Address extends ApiResource {
 	}
 	
 
+	public Address suggestedBoundsSwLng(Float suggestedBoundsSwLng) {
+		setSuggestedBoundsSwLng(suggestedBoundsSwLng);
+		return this;
+	}
+	
+
+	public Float suggestedBoundsSwLng() {
+		return getSuggestedBoundsSwLng();
+	}
+	
+
 	public void setSuggestedBoundsNeLat(Float suggestedBoundsNeLat) {
 		this.suggestedBoundsNeLat = suggestedBoundsNeLat;
 	}
@@ -359,6 +679,17 @@ public class Address extends ApiResource {
 
 	public Float getSuggestedBoundsNeLat() {
 		return this.suggestedBoundsNeLat;
+	}
+	
+
+	public Address suggestedBoundsNeLat(Float suggestedBoundsNeLat) {
+		setSuggestedBoundsNeLat(suggestedBoundsNeLat);
+		return this;
+	}
+	
+
+	public Float suggestedBoundsNeLat() {
+		return getSuggestedBoundsNeLat();
 	}
 	
 
@@ -372,6 +703,17 @@ public class Address extends ApiResource {
 	}
 	
 
+	public Address suggestedBoundsNeLng(Float suggestedBoundsNeLng) {
+		setSuggestedBoundsNeLng(suggestedBoundsNeLng);
+		return this;
+	}
+	
+
+	public Float suggestedBoundsNeLng() {
+		return getSuggestedBoundsNeLng();
+	}
+	
+
 	public void setPreviousChanges(Object previousChanges) {
 		this.previousChanges = previousChanges;
 	}
@@ -379,6 +721,17 @@ public class Address extends ApiResource {
 
 	public Object getPreviousChanges() {
 		return this.previousChanges;
+	}
+	
+
+	public Address previousChanges(Object previousChanges) {
+		setPreviousChanges(previousChanges);
+		return this;
+	}
+	
+
+	public Object previousChanges() {
+		return getPreviousChanges();
 	}
 	
 
@@ -392,6 +745,17 @@ public class Address extends ApiResource {
 	}
 	
 
+	public Address shippingMethods(List<String> shippingMethods) {
+		setShippingMethods(shippingMethods);
+		return this;
+	}
+	
+
+	public List<String> shippingMethods() {
+		return getShippingMethods();
+	}
+	
+
 	@Override
 	public boolean equals(Object o) {
 	
@@ -401,7 +765,6 @@ public class Address extends ApiResource {
 		Address x = (Address)o;
 	
 		return super.equals(o)
-			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.geocodingCountry, x.geocodingCountry)
 			&& Objects.equals(this.geocodingZip, x.geocodingZip)
 			&& Objects.equals(this.geocodingCity, x.geocodingCity)
@@ -424,6 +787,8 @@ public class Address extends ApiResource {
 			&& Objects.equals(this.streetNumber, x.streetNumber)
 			&& Objects.equals(this.streetAddress, x.streetAddress)
 			&& Objects.equals(this.subPremise, x.subPremise)
+			&& Objects.equals(this.fullAddress, x.fullAddress)
+			&& Objects.equals(this.formattedAddress, x.formattedAddress)
 			&& Objects.equals(this.lat, x.lat)
 			&& Objects.equals(this.lng, x.lng)
 			&& Objects.equals(this.suggestedBoundsSwLat, x.suggestedBoundsSwLat)
@@ -441,13 +806,13 @@ public class Address extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, geocodingCountry, geocodingZip, geocodingCity, geocodingStreet,
-			geocodingNumber, provider, placeId, precision, accuracy,
-			countryCode, country, stateCode, stateName, state,
-			province, zip, city, district, streetName,
-			streetNumber, streetAddress, subPremise, lat, lng,
-			suggestedBoundsSwLat, suggestedBoundsSwLng, suggestedBoundsNeLat, suggestedBoundsNeLng, previousChanges,
-			shippingMethods 
+			geocodingCountry, geocodingZip, geocodingCity, geocodingStreet, geocodingNumber,
+			provider, placeId, precision, accuracy, countryCode,
+			country, stateCode, stateName, state, province,
+			zip, city, district, streetName, streetNumber,
+			streetAddress, subPremise, fullAddress, formattedAddress, lat,
+			lng, suggestedBoundsSwLat, suggestedBoundsSwLng, suggestedBoundsNeLat, suggestedBoundsNeLng,
+			previousChanges, shippingMethods 
 		);
 	
 	}
@@ -458,7 +823,6 @@ public class Address extends ApiResource {
 	
 		Address no = new Address();
 	
-		no.name = this.name;
 		no.geocodingCountry = this.geocodingCountry;
 		no.geocodingZip = this.geocodingZip;
 		no.geocodingCity = this.geocodingCity;
@@ -481,6 +845,8 @@ public class Address extends ApiResource {
 		no.streetNumber = this.streetNumber;
 		no.streetAddress = this.streetAddress;
 		no.subPremise = this.subPremise;
+		no.fullAddress = this.fullAddress;
+		no.formattedAddress = this.formattedAddress;
 		no.lat = this.lat;
 		no.lng = this.lng;
 		no.suggestedBoundsSwLat = this.suggestedBoundsSwLat;

@@ -12,11 +12,11 @@ import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import io.commercelayer.api.codegen.ApiCodeGenerator;
 import io.commercelayer.api.codegen.model.Model;
 import io.commercelayer.api.codegen.model.Model.ClassGroup;
 import io.commercelayer.api.codegen.model.ModelClass;
 import io.commercelayer.api.codegen.model.gen.ApiModelGen;
-import io.commercelayer.api.codegen.schema.parser.ApiParser;
 import io.commercelayer.api.codegen.schema.parser.ApiParserFactory;
 import io.commercelayer.api.util.IOUtils;
 import io.commercelayer.api.util.LogUtils;
@@ -78,7 +78,7 @@ public class ApiModelWriter {
 	
 	
 	public static void main(String[] args) {
-		new ApiModelWriter().writeCode(new ApiModelGen().createModel(ApiParserFactory.getSwaggerParserInstance().parseSchema(ApiParser.TEST_SCHEMA_PATH)));
+		new ApiModelWriter().writeCode(new ApiModelGen().createModel(ApiParserFactory.getSwaggerParserInstance().parseSchema(ApiCodeGenerator.TEST_SCHEMA_PATH)));
 	}
 	
 }

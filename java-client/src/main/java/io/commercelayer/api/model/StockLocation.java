@@ -10,12 +10,12 @@ import java.util.List;
  */
 public class StockLocation extends ApiResource {
 
-	private static final long serialVersionUID = -1482880735359L;
+	private static final long serialVersionUID = -1482914098056L;
 
 
 	private String name;
 	@JsonExclude
-	private Integer position;
+	private String position;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
@@ -48,13 +48,35 @@ public class StockLocation extends ApiResource {
 	}
 	
 
-	public void setPosition(Integer position) {
+	public StockLocation name(String name) {
+		setName(name);
+		return this;
+	}
+	
+
+	public String name() {
+		return getName();
+	}
+	
+
+	public void setPosition(String position) {
 		this.position = position;
 	}
 	
 
-	public Integer getPosition() {
+	public String getPosition() {
 		return this.position;
+	}
+	
+
+	public StockLocation position(String position) {
+		setPosition(position);
+		return this;
+	}
+	
+
+	public String position() {
+		return getPosition();
 	}
 	
 
@@ -68,6 +90,17 @@ public class StockLocation extends ApiResource {
 	}
 	
 
+	public StockLocation previousChanges(Object previousChanges) {
+		setPreviousChanges(previousChanges);
+		return this;
+	}
+	
+
+	public Object previousChanges() {
+		return getPreviousChanges();
+	}
+	
+
 	public void setStockItems(List<String> stockItems) {
 		this.stockItems = stockItems;
 	}
@@ -75,6 +108,17 @@ public class StockLocation extends ApiResource {
 
 	public List<String> getStockItems() {
 		return this.stockItems;
+	}
+	
+
+	public StockLocation stockItems(List<String> stockItems) {
+		setStockItems(stockItems);
+		return this;
+	}
+	
+
+	public List<String> stockItems() {
+		return getStockItems();
 	}
 	
 
@@ -88,6 +132,17 @@ public class StockLocation extends ApiResource {
 	}
 	
 
+	public StockLocation lineItemStocks(List<String> lineItemStocks) {
+		setLineItemStocks(lineItemStocks);
+		return this;
+	}
+	
+
+	public List<String> lineItemStocks() {
+		return getLineItemStocks();
+	}
+	
+
 	public void setShippingServiceStockLocations(List<String> shippingServiceStockLocations) {
 		this.shippingServiceStockLocations = shippingServiceStockLocations;
 	}
@@ -98,6 +153,17 @@ public class StockLocation extends ApiResource {
 	}
 	
 
+	public StockLocation shippingServiceStockLocations(List<String> shippingServiceStockLocations) {
+		setShippingServiceStockLocations(shippingServiceStockLocations);
+		return this;
+	}
+	
+
+	public List<String> shippingServiceStockLocations() {
+		return getShippingServiceStockLocations();
+	}
+	
+
 	public void setShippingServices(List<String> shippingServices) {
 		this.shippingServices = shippingServices;
 	}
@@ -105,6 +171,17 @@ public class StockLocation extends ApiResource {
 
 	public List<String> getShippingServices() {
 		return this.shippingServices;
+	}
+	
+
+	public StockLocation shippingServices(List<String> shippingServices) {
+		setShippingServices(shippingServices);
+		return this;
+	}
+	
+
+	public List<String> shippingServices() {
+		return getShippingServices();
 	}
 	
 

@@ -10,10 +10,10 @@ import java.util.List;
  */
 public class ShippingCarrier extends ApiResource {
 
-	private static final long serialVersionUID = -1482880735342L;
+	private static final long serialVersionUID = -1482914097957L;
 
 
-	private Integer shippingCarrierTypeId;
+	private String shippingCarrierTypeId;
 	private String name;
 	@JsonExclude
 	private Object previousChanges;
@@ -33,13 +33,24 @@ public class ShippingCarrier extends ApiResource {
 	}
 	
 
-	public void setShippingCarrierTypeId(Integer shippingCarrierTypeId) {
+	public void setShippingCarrierTypeId(String shippingCarrierTypeId) {
 		this.shippingCarrierTypeId = shippingCarrierTypeId;
 	}
 	
 
-	public Integer getShippingCarrierTypeId() {
+	public String getShippingCarrierTypeId() {
 		return this.shippingCarrierTypeId;
+	}
+	
+
+	public ShippingCarrier shippingCarrierTypeId(String shippingCarrierTypeId) {
+		setShippingCarrierTypeId(shippingCarrierTypeId);
+		return this;
+	}
+	
+
+	public String shippingCarrierTypeId() {
+		return getShippingCarrierTypeId();
 	}
 	
 
@@ -53,6 +64,17 @@ public class ShippingCarrier extends ApiResource {
 	}
 	
 
+	public ShippingCarrier name(String name) {
+		setName(name);
+		return this;
+	}
+	
+
+	public String name() {
+		return getName();
+	}
+	
+
 	public void setPreviousChanges(Object previousChanges) {
 		this.previousChanges = previousChanges;
 	}
@@ -60,6 +82,17 @@ public class ShippingCarrier extends ApiResource {
 
 	public Object getPreviousChanges() {
 		return this.previousChanges;
+	}
+	
+
+	public ShippingCarrier previousChanges(Object previousChanges) {
+		setPreviousChanges(previousChanges);
+		return this;
+	}
+	
+
+	public Object previousChanges() {
+		return getPreviousChanges();
 	}
 	
 
@@ -73,6 +106,17 @@ public class ShippingCarrier extends ApiResource {
 	}
 	
 
+	public ShippingCarrier shippingCarrierType(Object shippingCarrierType) {
+		setShippingCarrierType(shippingCarrierType);
+		return this;
+	}
+	
+
+	public Object shippingCarrierType() {
+		return getShippingCarrierType();
+	}
+	
+
 	public void setShippingServices(List<String> shippingServices) {
 		this.shippingServices = shippingServices;
 	}
@@ -80,6 +124,17 @@ public class ShippingCarrier extends ApiResource {
 
 	public List<String> getShippingServices() {
 		return this.shippingServices;
+	}
+	
+
+	public ShippingCarrier shippingServices(List<String> shippingServices) {
+		setShippingServices(shippingServices);
+		return this;
+	}
+	
+
+	public List<String> shippingServices() {
+		return getShippingServices();
 	}
 	
 

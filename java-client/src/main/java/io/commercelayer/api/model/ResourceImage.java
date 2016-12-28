@@ -9,24 +9,20 @@ import io.commercelayer.api.json.JsonExclude;
  */
 public class ResourceImage extends ApiResource {
 
-	private static final long serialVersionUID = -1482880735339L;
+	private static final long serialVersionUID = -1482914097944L;
 
 
-	@JsonExclude
-	private String name;
-	private Integer imageableId;
+	private String imageableId;
 	private String imageableResource;
-	private Integer imageId;
+	private String imageId;
 	@JsonExclude
-	private Integer position;
+	private String position;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
 	private Object imageable;
 	@JsonExclude
 	private Object image;
-	@JsonExclude
-	private String sluggedUrl;
 
 
 	public ResourceImage() {
@@ -39,23 +35,24 @@ public class ResourceImage extends ApiResource {
 	}
 	
 
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-
-	public String getName() {
-		return this.name;
-	}
-	
-
-	public void setImageableId(Integer imageableId) {
+	public void setImageableId(String imageableId) {
 		this.imageableId = imageableId;
 	}
 	
 
-	public Integer getImageableId() {
+	public String getImageableId() {
 		return this.imageableId;
+	}
+	
+
+	public ResourceImage imageableId(String imageableId) {
+		setImageableId(imageableId);
+		return this;
+	}
+	
+
+	public String imageableId() {
+		return getImageableId();
 	}
 	
 
@@ -69,23 +66,56 @@ public class ResourceImage extends ApiResource {
 	}
 	
 
-	public void setImageId(Integer imageId) {
+	public ResourceImage imageableResource(String imageableResource) {
+		setImageableResource(imageableResource);
+		return this;
+	}
+	
+
+	public String imageableResource() {
+		return getImageableResource();
+	}
+	
+
+	public void setImageId(String imageId) {
 		this.imageId = imageId;
 	}
 	
 
-	public Integer getImageId() {
+	public String getImageId() {
 		return this.imageId;
 	}
 	
 
-	public void setPosition(Integer position) {
+	public ResourceImage imageId(String imageId) {
+		setImageId(imageId);
+		return this;
+	}
+	
+
+	public String imageId() {
+		return getImageId();
+	}
+	
+
+	public void setPosition(String position) {
 		this.position = position;
 	}
 	
 
-	public Integer getPosition() {
+	public String getPosition() {
 		return this.position;
+	}
+	
+
+	public ResourceImage position(String position) {
+		setPosition(position);
+		return this;
+	}
+	
+
+	public String position() {
+		return getPosition();
 	}
 	
 
@@ -99,6 +129,17 @@ public class ResourceImage extends ApiResource {
 	}
 	
 
+	public ResourceImage previousChanges(Object previousChanges) {
+		setPreviousChanges(previousChanges);
+		return this;
+	}
+	
+
+	public Object previousChanges() {
+		return getPreviousChanges();
+	}
+	
+
 	public void setImageable(Object imageable) {
 		this.imageable = imageable;
 	}
@@ -106,6 +147,17 @@ public class ResourceImage extends ApiResource {
 
 	public Object getImageable() {
 		return this.imageable;
+	}
+	
+
+	public ResourceImage imageable(Object imageable) {
+		setImageable(imageable);
+		return this;
+	}
+	
+
+	public Object imageable() {
+		return getImageable();
 	}
 	
 
@@ -119,13 +171,14 @@ public class ResourceImage extends ApiResource {
 	}
 	
 
-	public void setSluggedUrl(String sluggedUrl) {
-		this.sluggedUrl = sluggedUrl;
+	public ResourceImage image(Object image) {
+		setImage(image);
+		return this;
 	}
 	
 
-	public String getSluggedUrl() {
-		return this.sluggedUrl;
+	public Object image() {
+		return getImage();
 	}
 	
 
@@ -138,7 +191,6 @@ public class ResourceImage extends ApiResource {
 		ResourceImage x = (ResourceImage)o;
 	
 		return super.equals(o)
-			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.imageableId, x.imageableId)
 			&& Objects.equals(this.imageableResource, x.imageableResource)
 			&& Objects.equals(this.imageId, x.imageId)
@@ -146,7 +198,6 @@ public class ResourceImage extends ApiResource {
 			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.imageable, x.imageable)
 			&& Objects.equals(this.image, x.image)
-			&& Objects.equals(this.sluggedUrl, x.sluggedUrl)
 		;
 	
 	}
@@ -156,8 +207,8 @@ public class ResourceImage extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, imageableId, imageableResource, imageId, position,
-			previousChanges, imageable, image, sluggedUrl 
+			imageableId, imageableResource, imageId, position, previousChanges,
+			imageable, image 
 		);
 	
 	}
@@ -168,7 +219,6 @@ public class ResourceImage extends ApiResource {
 	
 		ResourceImage no = new ResourceImage();
 	
-		no.name = this.name;
 		no.imageableId = this.imageableId;
 		no.imageableResource = this.imageableResource;
 		no.imageId = this.imageId;
@@ -176,7 +226,6 @@ public class ResourceImage extends ApiResource {
 		no.previousChanges = this.previousChanges;
 		no.imageable = this.imageable;
 		no.image = this.image;
-		no.sluggedUrl = this.sluggedUrl;
 	
 		return no;
 	

@@ -2,8 +2,8 @@ package io.commercelayer.api.model;
 
 import java.util.Objects;
 import io.commercelayer.api.model.common.ApiResource;
-import io.commercelayer.api.json.JsonExclude;
 import java.time.LocalDateTime;
+import io.commercelayer.api.json.JsonExclude;
 import java.util.List;
 
 /**
@@ -11,17 +11,15 @@ import java.util.List;
  */
 public class Market extends ApiResource {
 
-	private static final long serialVersionUID = -1482880735296L;
+	private static final long serialVersionUID = -1482914097605L;
 
 
-	@JsonExclude
-	private String name;
-	private Integer channelId;
-	private Integer countryGroupId;
-	private Integer merchantId;
-	private Integer catalogId;
-	private Integer priceListId;
-	private Integer orderValidatorId;
+	private String channelId;
+	private String countryGroupId;
+	private String merchantId;
+	private String catalogId;
+	private String priceListId;
+	private String orderValidatorId;
 	@JsonExclude
 	private LocalDateTime lastResetIndexAt;
 	@JsonExclude
@@ -56,8 +54,6 @@ public class Market extends ApiResource {
 	private List<String> paymentTypes;
 	@JsonExclude
 	private List<String> shippingZones;
-	@JsonExclude
-	private List<String> countries;
 
 
 	public Market() {
@@ -70,73 +66,129 @@ public class Market extends ApiResource {
 	}
 	
 
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-
-	public String getName() {
-		return this.name;
-	}
-	
-
-	public void setChannelId(Integer channelId) {
+	public void setChannelId(String channelId) {
 		this.channelId = channelId;
 	}
 	
 
-	public Integer getChannelId() {
+	public String getChannelId() {
 		return this.channelId;
 	}
 	
 
-	public void setCountryGroupId(Integer countryGroupId) {
+	public Market channelId(String channelId) {
+		setChannelId(channelId);
+		return this;
+	}
+	
+
+	public String channelId() {
+		return getChannelId();
+	}
+	
+
+	public void setCountryGroupId(String countryGroupId) {
 		this.countryGroupId = countryGroupId;
 	}
 	
 
-	public Integer getCountryGroupId() {
+	public String getCountryGroupId() {
 		return this.countryGroupId;
 	}
 	
 
-	public void setMerchantId(Integer merchantId) {
+	public Market countryGroupId(String countryGroupId) {
+		setCountryGroupId(countryGroupId);
+		return this;
+	}
+	
+
+	public String countryGroupId() {
+		return getCountryGroupId();
+	}
+	
+
+	public void setMerchantId(String merchantId) {
 		this.merchantId = merchantId;
 	}
 	
 
-	public Integer getMerchantId() {
+	public String getMerchantId() {
 		return this.merchantId;
 	}
 	
 
-	public void setCatalogId(Integer catalogId) {
+	public Market merchantId(String merchantId) {
+		setMerchantId(merchantId);
+		return this;
+	}
+	
+
+	public String merchantId() {
+		return getMerchantId();
+	}
+	
+
+	public void setCatalogId(String catalogId) {
 		this.catalogId = catalogId;
 	}
 	
 
-	public Integer getCatalogId() {
+	public String getCatalogId() {
 		return this.catalogId;
 	}
 	
 
-	public void setPriceListId(Integer priceListId) {
+	public Market catalogId(String catalogId) {
+		setCatalogId(catalogId);
+		return this;
+	}
+	
+
+	public String catalogId() {
+		return getCatalogId();
+	}
+	
+
+	public void setPriceListId(String priceListId) {
 		this.priceListId = priceListId;
 	}
 	
 
-	public Integer getPriceListId() {
+	public String getPriceListId() {
 		return this.priceListId;
 	}
 	
 
-	public void setOrderValidatorId(Integer orderValidatorId) {
+	public Market priceListId(String priceListId) {
+		setPriceListId(priceListId);
+		return this;
+	}
+	
+
+	public String priceListId() {
+		return getPriceListId();
+	}
+	
+
+	public void setOrderValidatorId(String orderValidatorId) {
 		this.orderValidatorId = orderValidatorId;
 	}
 	
 
-	public Integer getOrderValidatorId() {
+	public String getOrderValidatorId() {
 		return this.orderValidatorId;
+	}
+	
+
+	public Market orderValidatorId(String orderValidatorId) {
+		setOrderValidatorId(orderValidatorId);
+		return this;
+	}
+	
+
+	public String orderValidatorId() {
+		return getOrderValidatorId();
 	}
 	
 
@@ -150,6 +202,17 @@ public class Market extends ApiResource {
 	}
 	
 
+	public Market lastResetIndexAt(LocalDateTime lastResetIndexAt) {
+		setLastResetIndexAt(lastResetIndexAt);
+		return this;
+	}
+	
+
+	public LocalDateTime lastResetIndexAt() {
+		return getLastResetIndexAt();
+	}
+	
+
 	public void setPreviousChanges(Object previousChanges) {
 		this.previousChanges = previousChanges;
 	}
@@ -157,6 +220,17 @@ public class Market extends ApiResource {
 
 	public Object getPreviousChanges() {
 		return this.previousChanges;
+	}
+	
+
+	public Market previousChanges(Object previousChanges) {
+		setPreviousChanges(previousChanges);
+		return this;
+	}
+	
+
+	public Object previousChanges() {
+		return getPreviousChanges();
 	}
 	
 
@@ -170,6 +244,17 @@ public class Market extends ApiResource {
 	}
 	
 
+	public Market merchant(Object merchant) {
+		setMerchant(merchant);
+		return this;
+	}
+	
+
+	public Object merchant() {
+		return getMerchant();
+	}
+	
+
 	public void setCountryGroup(Object countryGroup) {
 		this.countryGroup = countryGroup;
 	}
@@ -177,6 +262,17 @@ public class Market extends ApiResource {
 
 	public Object getCountryGroup() {
 		return this.countryGroup;
+	}
+	
+
+	public Market countryGroup(Object countryGroup) {
+		setCountryGroup(countryGroup);
+		return this;
+	}
+	
+
+	public Object countryGroup() {
+		return getCountryGroup();
 	}
 	
 
@@ -190,6 +286,17 @@ public class Market extends ApiResource {
 	}
 	
 
+	public Market catalog(Object catalog) {
+		setCatalog(catalog);
+		return this;
+	}
+	
+
+	public Object catalog() {
+		return getCatalog();
+	}
+	
+
 	public void setPriceList(Object priceList) {
 		this.priceList = priceList;
 	}
@@ -197,6 +304,17 @@ public class Market extends ApiResource {
 
 	public Object getPriceList() {
 		return this.priceList;
+	}
+	
+
+	public Market priceList(Object priceList) {
+		setPriceList(priceList);
+		return this;
+	}
+	
+
+	public Object priceList() {
+		return getPriceList();
 	}
 	
 
@@ -210,6 +328,17 @@ public class Market extends ApiResource {
 	}
 	
 
+	public Market channel(Object channel) {
+		setChannel(channel);
+		return this;
+	}
+	
+
+	public Object channel() {
+		return getChannel();
+	}
+	
+
 	public void setOrderValidator(Object orderValidator) {
 		this.orderValidator = orderValidator;
 	}
@@ -217,6 +346,17 @@ public class Market extends ApiResource {
 
 	public Object getOrderValidator() {
 		return this.orderValidator;
+	}
+	
+
+	public Market orderValidator(Object orderValidator) {
+		setOrderValidator(orderValidator);
+		return this;
+	}
+	
+
+	public Object orderValidator() {
+		return getOrderValidator();
 	}
 	
 
@@ -230,6 +370,17 @@ public class Market extends ApiResource {
 	}
 	
 
+	public Market marketStockLocations(List<String> marketStockLocations) {
+		setMarketStockLocations(marketStockLocations);
+		return this;
+	}
+	
+
+	public List<String> marketStockLocations() {
+		return getMarketStockLocations();
+	}
+	
+
 	public void setMarketShippingServices(List<String> marketShippingServices) {
 		this.marketShippingServices = marketShippingServices;
 	}
@@ -237,6 +388,17 @@ public class Market extends ApiResource {
 
 	public List<String> getMarketShippingServices() {
 		return this.marketShippingServices;
+	}
+	
+
+	public Market marketShippingServices(List<String> marketShippingServices) {
+		setMarketShippingServices(marketShippingServices);
+		return this;
+	}
+	
+
+	public List<String> marketShippingServices() {
+		return getMarketShippingServices();
 	}
 	
 
@@ -250,6 +412,17 @@ public class Market extends ApiResource {
 	}
 	
 
+	public Market marketPaymentTypes(List<String> marketPaymentTypes) {
+		setMarketPaymentTypes(marketPaymentTypes);
+		return this;
+	}
+	
+
+	public List<String> marketPaymentTypes() {
+		return getMarketPaymentTypes();
+	}
+	
+
 	public void setLineItemStocks(List<String> lineItemStocks) {
 		this.lineItemStocks = lineItemStocks;
 	}
@@ -257,6 +430,17 @@ public class Market extends ApiResource {
 
 	public List<String> getLineItemStocks() {
 		return this.lineItemStocks;
+	}
+	
+
+	public Market lineItemStocks(List<String> lineItemStocks) {
+		setLineItemStocks(lineItemStocks);
+		return this;
+	}
+	
+
+	public List<String> lineItemStocks() {
+		return getLineItemStocks();
 	}
 	
 
@@ -270,6 +454,17 @@ public class Market extends ApiResource {
 	}
 	
 
+	public Market stockLocations(List<String> stockLocations) {
+		setStockLocations(stockLocations);
+		return this;
+	}
+	
+
+	public List<String> stockLocations() {
+		return getStockLocations();
+	}
+	
+
 	public void setStockItems(List<String> stockItems) {
 		this.stockItems = stockItems;
 	}
@@ -277,6 +472,17 @@ public class Market extends ApiResource {
 
 	public List<String> getStockItems() {
 		return this.stockItems;
+	}
+	
+
+	public Market stockItems(List<String> stockItems) {
+		setStockItems(stockItems);
+		return this;
+	}
+	
+
+	public List<String> stockItems() {
+		return getStockItems();
 	}
 	
 
@@ -290,6 +496,17 @@ public class Market extends ApiResource {
 	}
 	
 
+	public Market shippingServices(List<String> shippingServices) {
+		setShippingServices(shippingServices);
+		return this;
+	}
+	
+
+	public List<String> shippingServices() {
+		return getShippingServices();
+	}
+	
+
 	public void setPaymentTypes(List<String> paymentTypes) {
 		this.paymentTypes = paymentTypes;
 	}
@@ -297,6 +514,17 @@ public class Market extends ApiResource {
 
 	public List<String> getPaymentTypes() {
 		return this.paymentTypes;
+	}
+	
+
+	public Market paymentTypes(List<String> paymentTypes) {
+		setPaymentTypes(paymentTypes);
+		return this;
+	}
+	
+
+	public List<String> paymentTypes() {
+		return getPaymentTypes();
 	}
 	
 
@@ -310,13 +538,14 @@ public class Market extends ApiResource {
 	}
 	
 
-	public void setCountries(List<String> countries) {
-		this.countries = countries;
+	public Market shippingZones(List<String> shippingZones) {
+		setShippingZones(shippingZones);
+		return this;
 	}
 	
 
-	public List<String> getCountries() {
-		return this.countries;
+	public List<String> shippingZones() {
+		return getShippingZones();
 	}
 	
 
@@ -329,7 +558,6 @@ public class Market extends ApiResource {
 		Market x = (Market)o;
 	
 		return super.equals(o)
-			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.channelId, x.channelId)
 			&& Objects.equals(this.countryGroupId, x.countryGroupId)
 			&& Objects.equals(this.merchantId, x.merchantId)
@@ -353,7 +581,6 @@ public class Market extends ApiResource {
 			&& Objects.equals(this.shippingServices, x.shippingServices)
 			&& Objects.equals(this.paymentTypes, x.paymentTypes)
 			&& Objects.equals(this.shippingZones, x.shippingZones)
-			&& Objects.equals(this.countries, x.countries)
 		;
 	
 	}
@@ -363,12 +590,11 @@ public class Market extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, channelId, countryGroupId, merchantId, catalogId,
-			priceListId, orderValidatorId, lastResetIndexAt, previousChanges, merchant,
-			countryGroup, catalog, priceList, channel, orderValidator,
-			marketStockLocations, marketShippingServices, marketPaymentTypes, lineItemStocks, stockLocations,
-			stockItems, shippingServices, paymentTypes, shippingZones, countries
-			
+			channelId, countryGroupId, merchantId, catalogId, priceListId,
+			orderValidatorId, lastResetIndexAt, previousChanges, merchant, countryGroup,
+			catalog, priceList, channel, orderValidator, marketStockLocations,
+			marketShippingServices, marketPaymentTypes, lineItemStocks, stockLocations, stockItems,
+			shippingServices, paymentTypes, shippingZones 
 		);
 	
 	}
@@ -379,7 +605,6 @@ public class Market extends ApiResource {
 	
 		Market no = new Market();
 	
-		no.name = this.name;
 		no.channelId = this.channelId;
 		no.countryGroupId = this.countryGroupId;
 		no.merchantId = this.merchantId;
@@ -403,7 +628,6 @@ public class Market extends ApiResource {
 		no.shippingServices = this.shippingServices;
 		no.paymentTypes = this.paymentTypes;
 		no.shippingZones = this.shippingZones;
-		no.countries = this.countries;
 	
 		return no;
 	

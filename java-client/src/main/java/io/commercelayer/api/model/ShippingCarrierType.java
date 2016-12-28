@@ -9,7 +9,7 @@ import io.commercelayer.api.json.JsonExclude;
  */
 public class ShippingCarrierType extends ApiResource {
 
-	private static final long serialVersionUID = -1482880735343L;
+	private static final long serialVersionUID = -1482914097962L;
 
 
 	private String name;
@@ -37,6 +37,17 @@ public class ShippingCarrierType extends ApiResource {
 	}
 	
 
+	public ShippingCarrierType name(String name) {
+		setName(name);
+		return this;
+	}
+	
+
+	public String name() {
+		return getName();
+	}
+	
+
 	public void setPreviousChanges(Object previousChanges) {
 		this.previousChanges = previousChanges;
 	}
@@ -44,6 +55,17 @@ public class ShippingCarrierType extends ApiResource {
 
 	public Object getPreviousChanges() {
 		return this.previousChanges;
+	}
+	
+
+	public ShippingCarrierType previousChanges(Object previousChanges) {
+		setPreviousChanges(previousChanges);
+		return this;
+	}
+	
+
+	public Object previousChanges() {
+		return getPreviousChanges();
 	}
 	
 

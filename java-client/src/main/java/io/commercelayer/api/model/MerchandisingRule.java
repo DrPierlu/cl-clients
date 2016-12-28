@@ -9,18 +9,16 @@ import io.commercelayer.api.json.JsonExclude;
  */
 public class MerchandisingRule extends ApiResource {
 
-	private static final long serialVersionUID = -1482880735303L;
+	private static final long serialVersionUID = -1482914097715L;
 
 
+	private String catalogId;
+	private String taxonId;
+	private String productId;
 	@JsonExclude
-	private String name;
-	private Integer catalogId;
-	private Integer taxonId;
-	private Integer productId;
+	private String position;
 	@JsonExclude
-	private Integer position;
-	@JsonExclude
-	private Object hero;
+	private String hero;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
@@ -41,63 +39,108 @@ public class MerchandisingRule extends ApiResource {
 	}
 	
 
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-
-	public String getName() {
-		return this.name;
-	}
-	
-
-	public void setCatalogId(Integer catalogId) {
+	public void setCatalogId(String catalogId) {
 		this.catalogId = catalogId;
 	}
 	
 
-	public Integer getCatalogId() {
+	public String getCatalogId() {
 		return this.catalogId;
 	}
 	
 
-	public void setTaxonId(Integer taxonId) {
+	public MerchandisingRule catalogId(String catalogId) {
+		setCatalogId(catalogId);
+		return this;
+	}
+	
+
+	public String catalogId() {
+		return getCatalogId();
+	}
+	
+
+	public void setTaxonId(String taxonId) {
 		this.taxonId = taxonId;
 	}
 	
 
-	public Integer getTaxonId() {
+	public String getTaxonId() {
 		return this.taxonId;
 	}
 	
 
-	public void setProductId(Integer productId) {
+	public MerchandisingRule taxonId(String taxonId) {
+		setTaxonId(taxonId);
+		return this;
+	}
+	
+
+	public String taxonId() {
+		return getTaxonId();
+	}
+	
+
+	public void setProductId(String productId) {
 		this.productId = productId;
 	}
 	
 
-	public Integer getProductId() {
+	public String getProductId() {
 		return this.productId;
 	}
 	
 
-	public void setPosition(Integer position) {
+	public MerchandisingRule productId(String productId) {
+		setProductId(productId);
+		return this;
+	}
+	
+
+	public String productId() {
+		return getProductId();
+	}
+	
+
+	public void setPosition(String position) {
 		this.position = position;
 	}
 	
 
-	public Integer getPosition() {
+	public String getPosition() {
 		return this.position;
 	}
 	
 
-	public void setHero(Object hero) {
+	public MerchandisingRule position(String position) {
+		setPosition(position);
+		return this;
+	}
+	
+
+	public String position() {
+		return getPosition();
+	}
+	
+
+	public void setHero(String hero) {
 		this.hero = hero;
 	}
 	
 
-	public Object getHero() {
+	public String getHero() {
 		return this.hero;
+	}
+	
+
+	public MerchandisingRule hero(String hero) {
+		setHero(hero);
+		return this;
+	}
+	
+
+	public String hero() {
+		return getHero();
 	}
 	
 
@@ -111,6 +154,17 @@ public class MerchandisingRule extends ApiResource {
 	}
 	
 
+	public MerchandisingRule previousChanges(Object previousChanges) {
+		setPreviousChanges(previousChanges);
+		return this;
+	}
+	
+
+	public Object previousChanges() {
+		return getPreviousChanges();
+	}
+	
+
 	public void setCatalog(Object catalog) {
 		this.catalog = catalog;
 	}
@@ -118,6 +172,17 @@ public class MerchandisingRule extends ApiResource {
 
 	public Object getCatalog() {
 		return this.catalog;
+	}
+	
+
+	public MerchandisingRule catalog(Object catalog) {
+		setCatalog(catalog);
+		return this;
+	}
+	
+
+	public Object catalog() {
+		return getCatalog();
 	}
 	
 
@@ -131,6 +196,17 @@ public class MerchandisingRule extends ApiResource {
 	}
 	
 
+	public MerchandisingRule taxon(Object taxon) {
+		setTaxon(taxon);
+		return this;
+	}
+	
+
+	public Object taxon() {
+		return getTaxon();
+	}
+	
+
 	public void setProduct(Object product) {
 		this.product = product;
 	}
@@ -138,6 +214,17 @@ public class MerchandisingRule extends ApiResource {
 
 	public Object getProduct() {
 		return this.product;
+	}
+	
+
+	public MerchandisingRule product(Object product) {
+		setProduct(product);
+		return this;
+	}
+	
+
+	public Object product() {
+		return getProduct();
 	}
 	
 
@@ -150,7 +237,6 @@ public class MerchandisingRule extends ApiResource {
 		MerchandisingRule x = (MerchandisingRule)o;
 	
 		return super.equals(o)
-			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.catalogId, x.catalogId)
 			&& Objects.equals(this.taxonId, x.taxonId)
 			&& Objects.equals(this.productId, x.productId)
@@ -169,9 +255,8 @@ public class MerchandisingRule extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, catalogId, taxonId, productId, position,
-			hero, previousChanges, catalog, taxon, product
-			
+			catalogId, taxonId, productId, position, hero,
+			previousChanges, catalog, taxon, product 
 		);
 	
 	}
@@ -182,7 +267,6 @@ public class MerchandisingRule extends ApiResource {
 	
 		MerchandisingRule no = new MerchandisingRule();
 	
-		no.name = this.name;
 		no.catalogId = this.catalogId;
 		no.taxonId = this.taxonId;
 		no.productId = this.productId;

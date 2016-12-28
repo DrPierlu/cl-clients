@@ -10,11 +10,9 @@ import java.util.List;
  */
 public class User extends ApiResource {
 
-	private static final long serialVersionUID = -1482880735363L;
+	private static final long serialVersionUID = -1482914098077L;
 
 
-	@JsonExclude
-	private String name;
 	private String firstName;
 	private String lastName;
 	private String email;
@@ -46,16 +44,6 @@ public class User extends ApiResource {
 	}
 	
 
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-
-	public String getName() {
-		return this.name;
-	}
-	
-
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
@@ -63,6 +51,17 @@ public class User extends ApiResource {
 
 	public String getFirstName() {
 		return this.firstName;
+	}
+	
+
+	public User firstName(String firstName) {
+		setFirstName(firstName);
+		return this;
+	}
+	
+
+	public String firstName() {
+		return getFirstName();
 	}
 	
 
@@ -76,6 +75,17 @@ public class User extends ApiResource {
 	}
 	
 
+	public User lastName(String lastName) {
+		setLastName(lastName);
+		return this;
+	}
+	
+
+	public String lastName() {
+		return getLastName();
+	}
+	
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
@@ -83,6 +93,17 @@ public class User extends ApiResource {
 
 	public String getEmail() {
 		return this.email;
+	}
+	
+
+	public User email(String email) {
+		setEmail(email);
+		return this;
+	}
+	
+
+	public String email() {
+		return getEmail();
 	}
 	
 
@@ -96,6 +117,17 @@ public class User extends ApiResource {
 	}
 	
 
+	public User passwordHash(String passwordHash) {
+		setPasswordHash(passwordHash);
+		return this;
+	}
+	
+
+	public String passwordHash() {
+		return getPasswordHash();
+	}
+	
+
 	public void setPasswordSalt(String passwordSalt) {
 		this.passwordSalt = passwordSalt;
 	}
@@ -103,6 +135,17 @@ public class User extends ApiResource {
 
 	public String getPasswordSalt() {
 		return this.passwordSalt;
+	}
+	
+
+	public User passwordSalt(String passwordSalt) {
+		setPasswordSalt(passwordSalt);
+		return this;
+	}
+	
+
+	public String passwordSalt() {
+		return getPasswordSalt();
 	}
 	
 
@@ -116,6 +159,17 @@ public class User extends ApiResource {
 	}
 	
 
+	public User previousChanges(Object previousChanges) {
+		setPreviousChanges(previousChanges);
+		return this;
+	}
+	
+
+	public Object previousChanges() {
+		return getPreviousChanges();
+	}
+	
+
 	public void setConsumerRoles(List<String> consumerRoles) {
 		this.consumerRoles = consumerRoles;
 	}
@@ -123,6 +177,17 @@ public class User extends ApiResource {
 
 	public List<String> getConsumerRoles() {
 		return this.consumerRoles;
+	}
+	
+
+	public User consumerRoles(List<String> consumerRoles) {
+		setConsumerRoles(consumerRoles);
+		return this;
+	}
+	
+
+	public List<String> consumerRoles() {
+		return getConsumerRoles();
 	}
 	
 
@@ -136,6 +201,17 @@ public class User extends ApiResource {
 	}
 	
 
+	public User roles(List<String> roles) {
+		setRoles(roles);
+		return this;
+	}
+	
+
+	public List<String> roles() {
+		return getRoles();
+	}
+	
+
 	public void setPermissions(List<String> permissions) {
 		this.permissions = permissions;
 	}
@@ -143,6 +219,17 @@ public class User extends ApiResource {
 
 	public List<String> getPermissions() {
 		return this.permissions;
+	}
+	
+
+	public User permissions(List<String> permissions) {
+		setPermissions(permissions);
+		return this;
+	}
+	
+
+	public List<String> permissions() {
+		return getPermissions();
 	}
 	
 
@@ -156,6 +243,17 @@ public class User extends ApiResource {
 	}
 	
 
+	public User resourceImages(List<String> resourceImages) {
+		setResourceImages(resourceImages);
+		return this;
+	}
+	
+
+	public List<String> resourceImages() {
+		return getResourceImages();
+	}
+	
+
 	public void setImages(List<String> images) {
 		this.images = images;
 	}
@@ -163,6 +261,17 @@ public class User extends ApiResource {
 
 	public List<String> getImages() {
 		return this.images;
+	}
+	
+
+	public User images(List<String> images) {
+		setImages(images);
+		return this;
+	}
+	
+
+	public List<String> images() {
+		return getImages();
 	}
 	
 
@@ -175,7 +284,6 @@ public class User extends ApiResource {
 		User x = (User)o;
 	
 		return super.equals(o)
-			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.firstName, x.firstName)
 			&& Objects.equals(this.lastName, x.lastName)
 			&& Objects.equals(this.email, x.email)
@@ -196,9 +304,9 @@ public class User extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, firstName, lastName, email, passwordHash,
-			passwordSalt, previousChanges, consumerRoles, roles, permissions,
-			resourceImages, images 
+			firstName, lastName, email, passwordHash, passwordSalt,
+			previousChanges, consumerRoles, roles, permissions, resourceImages,
+			images 
 		);
 	
 	}
@@ -209,7 +317,6 @@ public class User extends ApiResource {
 	
 		User no = new User();
 	
-		no.name = this.name;
 		no.firstName = this.firstName;
 		no.lastName = this.lastName;
 		no.email = this.email;

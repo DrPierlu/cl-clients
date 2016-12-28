@@ -8,6 +8,7 @@ import java.util.Map;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.BooleanUtils;
 
+import io.commercelayer.api.codegen.ApiCodeGenerator;
 import io.commercelayer.api.codegen.schema.Definition;
 import io.commercelayer.api.codegen.schema.Operation;
 import io.commercelayer.api.codegen.schema.Parameter;
@@ -186,7 +187,7 @@ public class ApiSwaggerParser extends ApiParser {
 
 	public static void main(String[] args) {
 		ApiParser parser = ApiParserFactory.getSwaggerParserInstance();
-		Schema schema = parser.parse(TEST_SCHEMA_PATH);
+		Schema schema = parser.parse(ApiCodeGenerator.TEST_SCHEMA_PATH);
 		System.out.println(parser.printOutDefinitions(schema));
 		System.out.println(parser.printOutOperations(schema));
 	}

@@ -10,13 +10,13 @@ import java.util.List;
  */
 public class PriceList extends ApiResource {
 
-	private static final long serialVersionUID = -1482880735320L;
+	private static final long serialVersionUID = -1482914097880L;
 
 
-	private Integer currencyId;
+	private String currencyId;
 	private String name;
 	@JsonExclude
-	private Object taxIncluded;
+	private String taxIncluded;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
@@ -37,13 +37,24 @@ public class PriceList extends ApiResource {
 	}
 	
 
-	public void setCurrencyId(Integer currencyId) {
+	public void setCurrencyId(String currencyId) {
 		this.currencyId = currencyId;
 	}
 	
 
-	public Integer getCurrencyId() {
+	public String getCurrencyId() {
 		return this.currencyId;
+	}
+	
+
+	public PriceList currencyId(String currencyId) {
+		setCurrencyId(currencyId);
+		return this;
+	}
+	
+
+	public String currencyId() {
+		return getCurrencyId();
 	}
 	
 
@@ -57,13 +68,35 @@ public class PriceList extends ApiResource {
 	}
 	
 
-	public void setTaxIncluded(Object taxIncluded) {
+	public PriceList name(String name) {
+		setName(name);
+		return this;
+	}
+	
+
+	public String name() {
+		return getName();
+	}
+	
+
+	public void setTaxIncluded(String taxIncluded) {
 		this.taxIncluded = taxIncluded;
 	}
 	
 
-	public Object getTaxIncluded() {
+	public String getTaxIncluded() {
 		return this.taxIncluded;
+	}
+	
+
+	public PriceList taxIncluded(String taxIncluded) {
+		setTaxIncluded(taxIncluded);
+		return this;
+	}
+	
+
+	public String taxIncluded() {
+		return getTaxIncluded();
 	}
 	
 
@@ -77,6 +110,17 @@ public class PriceList extends ApiResource {
 	}
 	
 
+	public PriceList previousChanges(Object previousChanges) {
+		setPreviousChanges(previousChanges);
+		return this;
+	}
+	
+
+	public Object previousChanges() {
+		return getPreviousChanges();
+	}
+	
+
 	public void setCurrency(Object currency) {
 		this.currency = currency;
 	}
@@ -84,6 +128,17 @@ public class PriceList extends ApiResource {
 
 	public Object getCurrency() {
 		return this.currency;
+	}
+	
+
+	public PriceList currency(Object currency) {
+		setCurrency(currency);
+		return this;
+	}
+	
+
+	public Object currency() {
+		return getCurrency();
 	}
 	
 
@@ -97,6 +152,17 @@ public class PriceList extends ApiResource {
 	}
 	
 
+	public PriceList prices(List<String> prices) {
+		setPrices(prices);
+		return this;
+	}
+	
+
+	public List<String> prices() {
+		return getPrices();
+	}
+	
+
 	public void setMarkets(List<String> markets) {
 		this.markets = markets;
 	}
@@ -104,6 +170,17 @@ public class PriceList extends ApiResource {
 
 	public List<String> getMarkets() {
 		return this.markets;
+	}
+	
+
+	public PriceList markets(List<String> markets) {
+		setMarkets(markets);
+		return this;
+	}
+	
+
+	public List<String> markets() {
+		return getMarkets();
 	}
 	
 

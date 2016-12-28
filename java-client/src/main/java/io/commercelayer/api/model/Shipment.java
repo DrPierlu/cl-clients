@@ -10,13 +10,12 @@ import java.util.List;
  */
 public class Shipment extends ApiResource {
 
-	private static final long serialVersionUID = -1482880735356L;
+	private static final long serialVersionUID = -1482914098035L;
 
 
-	private String name;
-	private Integer orderId;
-	private Integer stockLocationId;
-	private Integer shippingMethodId;
+	private String orderId;
+	private String stockLocationId;
+	private String shippingMethodId;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
@@ -38,43 +37,66 @@ public class Shipment extends ApiResource {
 	}
 	
 
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-
-	public String getName() {
-		return this.name;
-	}
-	
-
-	public void setOrderId(Integer orderId) {
+	public void setOrderId(String orderId) {
 		this.orderId = orderId;
 	}
 	
 
-	public Integer getOrderId() {
+	public String getOrderId() {
 		return this.orderId;
 	}
 	
 
-	public void setStockLocationId(Integer stockLocationId) {
+	public Shipment orderId(String orderId) {
+		setOrderId(orderId);
+		return this;
+	}
+	
+
+	public String orderId() {
+		return getOrderId();
+	}
+	
+
+	public void setStockLocationId(String stockLocationId) {
 		this.stockLocationId = stockLocationId;
 	}
 	
 
-	public Integer getStockLocationId() {
+	public String getStockLocationId() {
 		return this.stockLocationId;
 	}
 	
 
-	public void setShippingMethodId(Integer shippingMethodId) {
+	public Shipment stockLocationId(String stockLocationId) {
+		setStockLocationId(stockLocationId);
+		return this;
+	}
+	
+
+	public String stockLocationId() {
+		return getStockLocationId();
+	}
+	
+
+	public void setShippingMethodId(String shippingMethodId) {
 		this.shippingMethodId = shippingMethodId;
 	}
 	
 
-	public Integer getShippingMethodId() {
+	public String getShippingMethodId() {
 		return this.shippingMethodId;
+	}
+	
+
+	public Shipment shippingMethodId(String shippingMethodId) {
+		setShippingMethodId(shippingMethodId);
+		return this;
+	}
+	
+
+	public String shippingMethodId() {
+		return getShippingMethodId();
 	}
 	
 
@@ -88,6 +110,17 @@ public class Shipment extends ApiResource {
 	}
 	
 
+	public Shipment previousChanges(Object previousChanges) {
+		setPreviousChanges(previousChanges);
+		return this;
+	}
+	
+
+	public Object previousChanges() {
+		return getPreviousChanges();
+	}
+	
+
 	public void setOrder(Object order) {
 		this.order = order;
 	}
@@ -95,6 +128,17 @@ public class Shipment extends ApiResource {
 
 	public Object getOrder() {
 		return this.order;
+	}
+	
+
+	public Shipment order(Object order) {
+		setOrder(order);
+		return this;
+	}
+	
+
+	public Object order() {
+		return getOrder();
 	}
 	
 
@@ -108,6 +152,17 @@ public class Shipment extends ApiResource {
 	}
 	
 
+	public Shipment stockLocation(Object stockLocation) {
+		setStockLocation(stockLocation);
+		return this;
+	}
+	
+
+	public Object stockLocation() {
+		return getStockLocation();
+	}
+	
+
 	public void setShippingMethod(Object shippingMethod) {
 		this.shippingMethod = shippingMethod;
 	}
@@ -115,6 +170,17 @@ public class Shipment extends ApiResource {
 
 	public Object getShippingMethod() {
 		return this.shippingMethod;
+	}
+	
+
+	public Shipment shippingMethod(Object shippingMethod) {
+		setShippingMethod(shippingMethod);
+		return this;
+	}
+	
+
+	public Object shippingMethod() {
+		return getShippingMethod();
 	}
 	
 
@@ -128,6 +194,17 @@ public class Shipment extends ApiResource {
 	}
 	
 
+	public Shipment lineItemStocks(List<String> lineItemStocks) {
+		setLineItemStocks(lineItemStocks);
+		return this;
+	}
+	
+
+	public List<String> lineItemStocks() {
+		return getLineItemStocks();
+	}
+	
+
 	@Override
 	public boolean equals(Object o) {
 	
@@ -137,7 +214,6 @@ public class Shipment extends ApiResource {
 		Shipment x = (Shipment)o;
 	
 		return super.equals(o)
-			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.orderId, x.orderId)
 			&& Objects.equals(this.stockLocationId, x.stockLocationId)
 			&& Objects.equals(this.shippingMethodId, x.shippingMethodId)
@@ -155,8 +231,8 @@ public class Shipment extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, orderId, stockLocationId, shippingMethodId, previousChanges,
-			order, stockLocation, shippingMethod, lineItemStocks 
+			orderId, stockLocationId, shippingMethodId, previousChanges, order,
+			stockLocation, shippingMethod, lineItemStocks 
 		);
 	
 	}
@@ -167,7 +243,6 @@ public class Shipment extends ApiResource {
 	
 		Shipment no = new Shipment();
 	
-		no.name = this.name;
 		no.orderId = this.orderId;
 		no.stockLocationId = this.stockLocationId;
 		no.shippingMethodId = this.shippingMethodId;

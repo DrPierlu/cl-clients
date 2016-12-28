@@ -10,18 +10,14 @@ import java.time.LocalDateTime;
  */
 public class Webhook extends ApiResource {
 
-	private static final long serialVersionUID = -1482880735368L;
+	private static final long serialVersionUID = -1482914098206L;
 
 
-	@JsonExclude
-	private String name;
 	private String eventSubject;
 	private String eventAction;
 	private String eventUrl;
 	@JsonExclude
 	private String sharedSecret;
-	@JsonExclude
-	private String expand;
 	@JsonExclude
 	private LocalDateTime lastFiredAt;
 	@JsonExclude
@@ -38,16 +34,6 @@ public class Webhook extends ApiResource {
 	}
 	
 
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-
-	public String getName() {
-		return this.name;
-	}
-	
-
 	public void setEventSubject(String eventSubject) {
 		this.eventSubject = eventSubject;
 	}
@@ -55,6 +41,17 @@ public class Webhook extends ApiResource {
 
 	public String getEventSubject() {
 		return this.eventSubject;
+	}
+	
+
+	public Webhook eventSubject(String eventSubject) {
+		setEventSubject(eventSubject);
+		return this;
+	}
+	
+
+	public String eventSubject() {
+		return getEventSubject();
 	}
 	
 
@@ -68,6 +65,17 @@ public class Webhook extends ApiResource {
 	}
 	
 
+	public Webhook eventAction(String eventAction) {
+		setEventAction(eventAction);
+		return this;
+	}
+	
+
+	public String eventAction() {
+		return getEventAction();
+	}
+	
+
 	public void setEventUrl(String eventUrl) {
 		this.eventUrl = eventUrl;
 	}
@@ -75,6 +83,17 @@ public class Webhook extends ApiResource {
 
 	public String getEventUrl() {
 		return this.eventUrl;
+	}
+	
+
+	public Webhook eventUrl(String eventUrl) {
+		setEventUrl(eventUrl);
+		return this;
+	}
+	
+
+	public String eventUrl() {
+		return getEventUrl();
 	}
 	
 
@@ -88,13 +107,14 @@ public class Webhook extends ApiResource {
 	}
 	
 
-	public void setExpand(String expand) {
-		this.expand = expand;
+	public Webhook sharedSecret(String sharedSecret) {
+		setSharedSecret(sharedSecret);
+		return this;
 	}
 	
 
-	public String getExpand() {
-		return this.expand;
+	public String sharedSecret() {
+		return getSharedSecret();
 	}
 	
 
@@ -108,6 +128,17 @@ public class Webhook extends ApiResource {
 	}
 	
 
+	public Webhook lastFiredAt(LocalDateTime lastFiredAt) {
+		setLastFiredAt(lastFiredAt);
+		return this;
+	}
+	
+
+	public LocalDateTime lastFiredAt() {
+		return getLastFiredAt();
+	}
+	
+
 	public void setPreviousChanges(Object previousChanges) {
 		this.previousChanges = previousChanges;
 	}
@@ -115,6 +146,17 @@ public class Webhook extends ApiResource {
 
 	public Object getPreviousChanges() {
 		return this.previousChanges;
+	}
+	
+
+	public Webhook previousChanges(Object previousChanges) {
+		setPreviousChanges(previousChanges);
+		return this;
+	}
+	
+
+	public Object previousChanges() {
+		return getPreviousChanges();
 	}
 	
 
@@ -127,12 +169,10 @@ public class Webhook extends ApiResource {
 		Webhook x = (Webhook)o;
 	
 		return super.equals(o)
-			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.eventSubject, x.eventSubject)
 			&& Objects.equals(this.eventAction, x.eventAction)
 			&& Objects.equals(this.eventUrl, x.eventUrl)
 			&& Objects.equals(this.sharedSecret, x.sharedSecret)
-			&& Objects.equals(this.expand, x.expand)
 			&& Objects.equals(this.lastFiredAt, x.lastFiredAt)
 			&& Objects.equals(this.previousChanges, x.previousChanges)
 		;
@@ -144,8 +184,8 @@ public class Webhook extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, eventSubject, eventAction, eventUrl, sharedSecret,
-			expand, lastFiredAt, previousChanges 
+			eventSubject, eventAction, eventUrl, sharedSecret, lastFiredAt,
+			previousChanges 
 		);
 	
 	}
@@ -156,12 +196,10 @@ public class Webhook extends ApiResource {
 	
 		Webhook no = new Webhook();
 	
-		no.name = this.name;
 		no.eventSubject = this.eventSubject;
 		no.eventAction = this.eventAction;
 		no.eventUrl = this.eventUrl;
 		no.sharedSecret = this.sharedSecret;
-		no.expand = this.expand;
 		no.lastFiredAt = this.lastFiredAt;
 		no.previousChanges = this.previousChanges;
 	

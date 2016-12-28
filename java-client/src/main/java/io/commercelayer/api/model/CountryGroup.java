@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class CountryGroup extends ApiResource {
 
-	private static final long serialVersionUID = -1482880735276L;
+	private static final long serialVersionUID = -1482914097524L;
 
 
 	private String name;
@@ -44,6 +44,17 @@ public class CountryGroup extends ApiResource {
 	}
 	
 
+	public CountryGroup name(String name) {
+		setName(name);
+		return this;
+	}
+	
+
+	public String name() {
+		return getName();
+	}
+	
+
 	public void setPreviousChanges(Object previousChanges) {
 		this.previousChanges = previousChanges;
 	}
@@ -51,6 +62,17 @@ public class CountryGroup extends ApiResource {
 
 	public Object getPreviousChanges() {
 		return this.previousChanges;
+	}
+	
+
+	public CountryGroup previousChanges(Object previousChanges) {
+		setPreviousChanges(previousChanges);
+		return this;
+	}
+	
+
+	public Object previousChanges() {
+		return getPreviousChanges();
 	}
 	
 
@@ -64,6 +86,17 @@ public class CountryGroup extends ApiResource {
 	}
 	
 
+	public CountryGroup countries(List<String> countries) {
+		setCountries(countries);
+		return this;
+	}
+	
+
+	public List<String> countries() {
+		return getCountries();
+	}
+	
+
 	public void setShippingZones(List<String> shippingZones) {
 		this.shippingZones = shippingZones;
 	}
@@ -74,6 +107,17 @@ public class CountryGroup extends ApiResource {
 	}
 	
 
+	public CountryGroup shippingZones(List<String> shippingZones) {
+		setShippingZones(shippingZones);
+		return this;
+	}
+	
+
+	public List<String> shippingZones() {
+		return getShippingZones();
+	}
+	
+
 	public void setShippingMethods(List<String> shippingMethods) {
 		this.shippingMethods = shippingMethods;
 	}
@@ -81,6 +125,17 @@ public class CountryGroup extends ApiResource {
 
 	public List<String> getShippingMethods() {
 		return this.shippingMethods;
+	}
+	
+
+	public CountryGroup shippingMethods(List<String> shippingMethods) {
+		setShippingMethods(shippingMethods);
+		return this;
+	}
+	
+
+	public List<String> shippingMethods() {
+		return getShippingMethods();
 	}
 	
 

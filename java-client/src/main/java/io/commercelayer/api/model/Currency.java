@@ -10,11 +10,9 @@ import java.util.List;
  */
 public class Currency extends ApiResource {
 
-	private static final long serialVersionUID = -1482880735279L;
+	private static final long serialVersionUID = -1482914097540L;
 
 
-	@JsonExclude
-	private String name;
 	private String code;
 	@JsonExclude
 	private Object previousChanges;
@@ -38,16 +36,6 @@ public class Currency extends ApiResource {
 	}
 	
 
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-
-	public String getName() {
-		return this.name;
-	}
-	
-
 	public void setCode(String code) {
 		this.code = code;
 	}
@@ -55,6 +43,17 @@ public class Currency extends ApiResource {
 
 	public String getCode() {
 		return this.code;
+	}
+	
+
+	public Currency code(String code) {
+		setCode(code);
+		return this;
+	}
+	
+
+	public String code() {
+		return getCode();
 	}
 	
 
@@ -68,6 +67,17 @@ public class Currency extends ApiResource {
 	}
 	
 
+	public Currency previousChanges(Object previousChanges) {
+		setPreviousChanges(previousChanges);
+		return this;
+	}
+	
+
+	public Object previousChanges() {
+		return getPreviousChanges();
+	}
+	
+
 	public void setPriceLists(List<String> priceLists) {
 		this.priceLists = priceLists;
 	}
@@ -75,6 +85,17 @@ public class Currency extends ApiResource {
 
 	public List<String> getPriceLists() {
 		return this.priceLists;
+	}
+	
+
+	public Currency priceLists(List<String> priceLists) {
+		setPriceLists(priceLists);
+		return this;
+	}
+	
+
+	public List<String> priceLists() {
+		return getPriceLists();
 	}
 	
 
@@ -88,6 +109,17 @@ public class Currency extends ApiResource {
 	}
 	
 
+	public Currency prices(List<String> prices) {
+		setPrices(prices);
+		return this;
+	}
+	
+
+	public List<String> prices() {
+		return getPrices();
+	}
+	
+
 	public void setOrders(List<String> orders) {
 		this.orders = orders;
 	}
@@ -95,6 +127,17 @@ public class Currency extends ApiResource {
 
 	public List<String> getOrders() {
 		return this.orders;
+	}
+	
+
+	public Currency orders(List<String> orders) {
+		setOrders(orders);
+		return this;
+	}
+	
+
+	public List<String> orders() {
+		return getOrders();
 	}
 	
 
@@ -108,6 +151,17 @@ public class Currency extends ApiResource {
 	}
 	
 
+	public Currency orderValidators(List<String> orderValidators) {
+		setOrderValidators(orderValidators);
+		return this;
+	}
+	
+
+	public List<String> orderValidators() {
+		return getOrderValidators();
+	}
+	
+
 	@Override
 	public boolean equals(Object o) {
 	
@@ -117,7 +171,6 @@ public class Currency extends ApiResource {
 		Currency x = (Currency)o;
 	
 		return super.equals(o)
-			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.code, x.code)
 			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.priceLists, x.priceLists)
@@ -133,8 +186,8 @@ public class Currency extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, code, previousChanges, priceLists, prices,
-			orders, orderValidators 
+			code, previousChanges, priceLists, prices, orders,
+			orderValidators 
 		);
 	
 	}
@@ -145,7 +198,6 @@ public class Currency extends ApiResource {
 	
 		Currency no = new Currency();
 	
-		no.name = this.name;
 		no.code = this.code;
 		no.previousChanges = this.previousChanges;
 		no.priceLists = this.priceLists;

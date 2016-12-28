@@ -13,6 +13,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import io.commercelayer.api.codegen.ApiCodeGenerator;
 import io.commercelayer.api.codegen.model.Constructor;
 import io.commercelayer.api.codegen.model.CustomConstructor;
 import io.commercelayer.api.codegen.model.Field;
@@ -26,7 +27,6 @@ import io.commercelayer.api.codegen.schema.Parameter;
 import io.commercelayer.api.codegen.schema.Property;
 import io.commercelayer.api.codegen.schema.Resource;
 import io.commercelayer.api.codegen.schema.Schema;
-import io.commercelayer.api.codegen.schema.parser.ApiParser;
 import io.commercelayer.api.codegen.schema.parser.ApiParserFactory;
 import io.commercelayer.api.codegen.source.ApiModelWriter;
 import io.commercelayer.api.json.JsonExclude;
@@ -200,7 +200,7 @@ public class ApiModelGen {
 				field.setListType(decodePropertyTypeSimple(p.getItemType()));
 			}
 
-			if (!mc.addField(field, true, true)) {
+			if (!mc.addField(field, true, true, true)) {
 				// logger.warn("Field skipped: {}.{}", def.getTitle(), field.getName());
 			}
 
@@ -457,7 +457,7 @@ public class ApiModelGen {
 
 	public static void main(String[] args) {
 
-		Schema schema = ApiParserFactory.getSwaggerParserInstance().parseSchema(ApiParser.TEST_SCHEMA_PATH);
+		Schema schema = ApiParserFactory.getSwaggerParserInstance().parseSchema(ApiCodeGenerator.TEST_SCHEMA_PATH);
 
 		ApiModelGen apiGen = new ApiModelGen();
 

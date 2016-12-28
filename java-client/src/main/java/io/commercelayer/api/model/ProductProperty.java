@@ -9,15 +9,13 @@ import io.commercelayer.api.json.JsonExclude;
  */
 public class ProductProperty extends ApiResource {
 
-	private static final long serialVersionUID = -1482880735333L;
+	private static final long serialVersionUID = -1482914097902L;
 
 
+	private String productId;
 	@JsonExclude
-	private String name;
-	private Integer productId;
-	@JsonExclude
-	private Integer propertyTypeId;
-	private Integer propertyValueId;
+	private String propertyTypeId;
+	private String propertyValueId;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
@@ -38,43 +36,66 @@ public class ProductProperty extends ApiResource {
 	}
 	
 
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-
-	public String getName() {
-		return this.name;
-	}
-	
-
-	public void setProductId(Integer productId) {
+	public void setProductId(String productId) {
 		this.productId = productId;
 	}
 	
 
-	public Integer getProductId() {
+	public String getProductId() {
 		return this.productId;
 	}
 	
 
-	public void setPropertyTypeId(Integer propertyTypeId) {
+	public ProductProperty productId(String productId) {
+		setProductId(productId);
+		return this;
+	}
+	
+
+	public String productId() {
+		return getProductId();
+	}
+	
+
+	public void setPropertyTypeId(String propertyTypeId) {
 		this.propertyTypeId = propertyTypeId;
 	}
 	
 
-	public Integer getPropertyTypeId() {
+	public String getPropertyTypeId() {
 		return this.propertyTypeId;
 	}
 	
 
-	public void setPropertyValueId(Integer propertyValueId) {
+	public ProductProperty propertyTypeId(String propertyTypeId) {
+		setPropertyTypeId(propertyTypeId);
+		return this;
+	}
+	
+
+	public String propertyTypeId() {
+		return getPropertyTypeId();
+	}
+	
+
+	public void setPropertyValueId(String propertyValueId) {
 		this.propertyValueId = propertyValueId;
 	}
 	
 
-	public Integer getPropertyValueId() {
+	public String getPropertyValueId() {
 		return this.propertyValueId;
+	}
+	
+
+	public ProductProperty propertyValueId(String propertyValueId) {
+		setPropertyValueId(propertyValueId);
+		return this;
+	}
+	
+
+	public String propertyValueId() {
+		return getPropertyValueId();
 	}
 	
 
@@ -88,6 +109,17 @@ public class ProductProperty extends ApiResource {
 	}
 	
 
+	public ProductProperty previousChanges(Object previousChanges) {
+		setPreviousChanges(previousChanges);
+		return this;
+	}
+	
+
+	public Object previousChanges() {
+		return getPreviousChanges();
+	}
+	
+
 	public void setProduct(Object product) {
 		this.product = product;
 	}
@@ -95,6 +127,17 @@ public class ProductProperty extends ApiResource {
 
 	public Object getProduct() {
 		return this.product;
+	}
+	
+
+	public ProductProperty product(Object product) {
+		setProduct(product);
+		return this;
+	}
+	
+
+	public Object product() {
+		return getProduct();
 	}
 	
 
@@ -108,6 +151,17 @@ public class ProductProperty extends ApiResource {
 	}
 	
 
+	public ProductProperty propertyType(Object propertyType) {
+		setPropertyType(propertyType);
+		return this;
+	}
+	
+
+	public Object propertyType() {
+		return getPropertyType();
+	}
+	
+
 	public void setPropertyValue(Object propertyValue) {
 		this.propertyValue = propertyValue;
 	}
@@ -115,6 +169,17 @@ public class ProductProperty extends ApiResource {
 
 	public Object getPropertyValue() {
 		return this.propertyValue;
+	}
+	
+
+	public ProductProperty propertyValue(Object propertyValue) {
+		setPropertyValue(propertyValue);
+		return this;
+	}
+	
+
+	public Object propertyValue() {
+		return getPropertyValue();
 	}
 	
 
@@ -127,7 +192,6 @@ public class ProductProperty extends ApiResource {
 		ProductProperty x = (ProductProperty)o;
 	
 		return super.equals(o)
-			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.productId, x.productId)
 			&& Objects.equals(this.propertyTypeId, x.propertyTypeId)
 			&& Objects.equals(this.propertyValueId, x.propertyValueId)
@@ -144,8 +208,8 @@ public class ProductProperty extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, productId, propertyTypeId, propertyValueId, previousChanges,
-			product, propertyType, propertyValue 
+			productId, propertyTypeId, propertyValueId, previousChanges, product,
+			propertyType, propertyValue 
 		);
 	
 	}
@@ -156,7 +220,6 @@ public class ProductProperty extends ApiResource {
 	
 		ProductProperty no = new ProductProperty();
 	
-		no.name = this.name;
 		no.productId = this.productId;
 		no.propertyTypeId = this.propertyTypeId;
 		no.propertyValueId = this.propertyValueId;

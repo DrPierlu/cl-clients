@@ -10,12 +10,10 @@ import java.util.List;
  */
 public class Country extends ApiResource {
 
-	private static final long serialVersionUID = -1482880735275L;
+	private static final long serialVersionUID = -1482914097516L;
 
 
-	@JsonExclude
-	private String name;
-	private Integer countryGroupId;
+	private String countryGroupId;
 	private String code;
 	@JsonExclude
 	private Object previousChanges;
@@ -43,23 +41,24 @@ public class Country extends ApiResource {
 	}
 	
 
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-
-	public String getName() {
-		return this.name;
-	}
-	
-
-	public void setCountryGroupId(Integer countryGroupId) {
+	public void setCountryGroupId(String countryGroupId) {
 		this.countryGroupId = countryGroupId;
 	}
 	
 
-	public Integer getCountryGroupId() {
+	public String getCountryGroupId() {
 		return this.countryGroupId;
+	}
+	
+
+	public Country countryGroupId(String countryGroupId) {
+		setCountryGroupId(countryGroupId);
+		return this;
+	}
+	
+
+	public String countryGroupId() {
+		return getCountryGroupId();
 	}
 	
 
@@ -73,6 +72,17 @@ public class Country extends ApiResource {
 	}
 	
 
+	public Country code(String code) {
+		setCode(code);
+		return this;
+	}
+	
+
+	public String code() {
+		return getCode();
+	}
+	
+
 	public void setPreviousChanges(Object previousChanges) {
 		this.previousChanges = previousChanges;
 	}
@@ -80,6 +90,17 @@ public class Country extends ApiResource {
 
 	public Object getPreviousChanges() {
 		return this.previousChanges;
+	}
+	
+
+	public Country previousChanges(Object previousChanges) {
+		setPreviousChanges(previousChanges);
+		return this;
+	}
+	
+
+	public Object previousChanges() {
+		return getPreviousChanges();
 	}
 	
 
@@ -93,6 +114,17 @@ public class Country extends ApiResource {
 	}
 	
 
+	public Country countryGroup(Object countryGroup) {
+		setCountryGroup(countryGroup);
+		return this;
+	}
+	
+
+	public Object countryGroup() {
+		return getCountryGroup();
+	}
+	
+
 	public void setCountryLanguages(List<String> countryLanguages) {
 		this.countryLanguages = countryLanguages;
 	}
@@ -100,6 +132,17 @@ public class Country extends ApiResource {
 
 	public List<String> getCountryLanguages() {
 		return this.countryLanguages;
+	}
+	
+
+	public Country countryLanguages(List<String> countryLanguages) {
+		setCountryLanguages(countryLanguages);
+		return this;
+	}
+	
+
+	public List<String> countryLanguages() {
+		return getCountryLanguages();
 	}
 	
 
@@ -113,6 +156,17 @@ public class Country extends ApiResource {
 	}
 	
 
+	public Country states(List<String> states) {
+		setStates(states);
+		return this;
+	}
+	
+
+	public List<String> states() {
+		return getStates();
+	}
+	
+
 	public void setOrders(List<String> orders) {
 		this.orders = orders;
 	}
@@ -120,6 +174,17 @@ public class Country extends ApiResource {
 
 	public List<String> getOrders() {
 		return this.orders;
+	}
+	
+
+	public Country orders(List<String> orders) {
+		setOrders(orders);
+		return this;
+	}
+	
+
+	public List<String> orders() {
+		return getOrders();
 	}
 	
 
@@ -133,6 +198,17 @@ public class Country extends ApiResource {
 	}
 	
 
+	public Country lineItemStocks(List<String> lineItemStocks) {
+		setLineItemStocks(lineItemStocks);
+		return this;
+	}
+	
+
+	public List<String> lineItemStocks() {
+		return getLineItemStocks();
+	}
+	
+
 	public void setLanguages(List<String> languages) {
 		this.languages = languages;
 	}
@@ -140,6 +216,17 @@ public class Country extends ApiResource {
 
 	public List<String> getLanguages() {
 		return this.languages;
+	}
+	
+
+	public Country languages(List<String> languages) {
+		setLanguages(languages);
+		return this;
+	}
+	
+
+	public List<String> languages() {
+		return getLanguages();
 	}
 	
 
@@ -152,7 +239,6 @@ public class Country extends ApiResource {
 		Country x = (Country)o;
 	
 		return super.equals(o)
-			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.countryGroupId, x.countryGroupId)
 			&& Objects.equals(this.code, x.code)
 			&& Objects.equals(this.previousChanges, x.previousChanges)
@@ -171,9 +257,8 @@ public class Country extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, countryGroupId, code, previousChanges, countryGroup,
-			countryLanguages, states, orders, lineItemStocks, languages
-			
+			countryGroupId, code, previousChanges, countryGroup, countryLanguages,
+			states, orders, lineItemStocks, languages 
 		);
 	
 	}
@@ -184,7 +269,6 @@ public class Country extends ApiResource {
 	
 		Country no = new Country();
 	
-		no.name = this.name;
 		no.countryGroupId = this.countryGroupId;
 		no.code = this.code;
 		no.previousChanges = this.previousChanges;

@@ -10,12 +10,10 @@ import java.util.List;
  */
 public class ShippingPackage extends ApiResource {
 
-	private static final long serialVersionUID = -1482880735349L;
+	private static final long serialVersionUID = -1482914097993L;
 
 
 	private String name;
-	@JsonExclude
-	private String slug;
 	@JsonExclude
 	private String description;
 	@JsonExclude
@@ -48,13 +46,14 @@ public class ShippingPackage extends ApiResource {
 	}
 	
 
-	public void setSlug(String slug) {
-		this.slug = slug;
+	public ShippingPackage name(String name) {
+		setName(name);
+		return this;
 	}
 	
 
-	public String getSlug() {
-		return this.slug;
+	public String name() {
+		return getName();
 	}
 	
 
@@ -68,6 +67,17 @@ public class ShippingPackage extends ApiResource {
 	}
 	
 
+	public ShippingPackage description(String description) {
+		setDescription(description);
+		return this;
+	}
+	
+
+	public String description() {
+		return getDescription();
+	}
+	
+
 	public void setPreviousChanges(Object previousChanges) {
 		this.previousChanges = previousChanges;
 	}
@@ -75,6 +85,17 @@ public class ShippingPackage extends ApiResource {
 
 	public Object getPreviousChanges() {
 		return this.previousChanges;
+	}
+	
+
+	public ShippingPackage previousChanges(Object previousChanges) {
+		setPreviousChanges(previousChanges);
+		return this;
+	}
+	
+
+	public Object previousChanges() {
+		return getPreviousChanges();
 	}
 	
 
@@ -88,6 +109,17 @@ public class ShippingPackage extends ApiResource {
 	}
 	
 
+	public ShippingPackage resourceImages(List<String> resourceImages) {
+		setResourceImages(resourceImages);
+		return this;
+	}
+	
+
+	public List<String> resourceImages() {
+		return getResourceImages();
+	}
+	
+
 	public void setImages(List<String> images) {
 		this.images = images;
 	}
@@ -95,6 +127,17 @@ public class ShippingPackage extends ApiResource {
 
 	public List<String> getImages() {
 		return this.images;
+	}
+	
+
+	public ShippingPackage images(List<String> images) {
+		setImages(images);
+		return this;
+	}
+	
+
+	public List<String> images() {
+		return getImages();
 	}
 	
 
@@ -108,6 +151,17 @@ public class ShippingPackage extends ApiResource {
 	}
 	
 
+	public ShippingPackage translations(List<String> translations) {
+		setTranslations(translations);
+		return this;
+	}
+	
+
+	public List<String> translations() {
+		return getTranslations();
+	}
+	
+
 	@Override
 	public boolean equals(Object o) {
 	
@@ -118,7 +172,6 @@ public class ShippingPackage extends ApiResource {
 	
 		return super.equals(o)
 			&& Objects.equals(this.name, x.name)
-			&& Objects.equals(this.slug, x.slug)
 			&& Objects.equals(this.description, x.description)
 			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.resourceImages, x.resourceImages)
@@ -133,8 +186,8 @@ public class ShippingPackage extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, slug, description, previousChanges, resourceImages,
-			images, translations 
+			name, description, previousChanges, resourceImages, images,
+			translations 
 		);
 	
 	}
@@ -146,7 +199,6 @@ public class ShippingPackage extends ApiResource {
 		ShippingPackage no = new ShippingPackage();
 	
 		no.name = this.name;
-		no.slug = this.slug;
 		no.description = this.description;
 		no.previousChanges = this.previousChanges;
 		no.resourceImages = this.resourceImages;

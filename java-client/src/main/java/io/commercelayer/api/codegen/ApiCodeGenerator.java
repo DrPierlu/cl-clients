@@ -5,14 +5,17 @@ import io.commercelayer.api.codegen.schema.parser.ApiParserFactory;
 import io.commercelayer.api.codegen.source.ApiModelWriter;
 
 public final class ApiCodeGenerator {
+	
+	public static final String TEST_SCHEMA_PATH = "E:/cl-schema_swagger.json";
+	
 
 	private ApiCodeGenerator() {
 		super();
 	}
 	
 	public static void main(String[] args) {
-//		new ApiModelWriter().writeCode(new ApiModelGen().createModel(ApiParserFactory.getSwaggerParserInstance().parseSchema(ApiParser.TEST_SCHEMA_PATH)));
-		new ApiModelWriter().writeCode(new ApiModelGen().createModel(ApiParserFactory.getSwaggerParserInstance().parseSchema()));
+		new ApiModelWriter().writeCode(new ApiModelGen().createModel(ApiParserFactory.getSwaggerParserInstance().parseSchema(TEST_SCHEMA_PATH)));
+//		new ApiModelWriter().writeCode(new ApiModelGen().createModel(ApiParserFactory.getSwaggerParserInstance().parseSchema()));
 	}
 	
 }

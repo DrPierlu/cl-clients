@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class ProductType extends ApiResource {
 
-	private static final long serialVersionUID = -1482880735332L;
+	private static final long serialVersionUID = -1482914097895L;
 
 
 	private String name;
@@ -52,6 +52,17 @@ public class ProductType extends ApiResource {
 	}
 	
 
+	public ProductType name(String name) {
+		setName(name);
+		return this;
+	}
+	
+
+	public String name() {
+		return getName();
+	}
+	
+
 	public void setPreviousChanges(Object previousChanges) {
 		this.previousChanges = previousChanges;
 	}
@@ -59,6 +70,17 @@ public class ProductType extends ApiResource {
 
 	public Object getPreviousChanges() {
 		return this.previousChanges;
+	}
+	
+
+	public ProductType previousChanges(Object previousChanges) {
+		setPreviousChanges(previousChanges);
+		return this;
+	}
+	
+
+	public Object previousChanges() {
+		return getPreviousChanges();
 	}
 	
 
@@ -72,6 +94,17 @@ public class ProductType extends ApiResource {
 	}
 	
 
+	public ProductType resourceImages(List<String> resourceImages) {
+		setResourceImages(resourceImages);
+		return this;
+	}
+	
+
+	public List<String> resourceImages() {
+		return getResourceImages();
+	}
+	
+
 	public void setImages(List<String> images) {
 		this.images = images;
 	}
@@ -79,6 +112,17 @@ public class ProductType extends ApiResource {
 
 	public List<String> getImages() {
 		return this.images;
+	}
+	
+
+	public ProductType images(List<String> images) {
+		setImages(images);
+		return this;
+	}
+	
+
+	public List<String> images() {
+		return getImages();
 	}
 	
 
@@ -92,6 +136,17 @@ public class ProductType extends ApiResource {
 	}
 	
 
+	public ProductType products(List<String> products) {
+		setProducts(products);
+		return this;
+	}
+	
+
+	public List<String> products() {
+		return getProducts();
+	}
+	
+
 	public void setOptionTypes(List<String> optionTypes) {
 		this.optionTypes = optionTypes;
 	}
@@ -99,6 +154,17 @@ public class ProductType extends ApiResource {
 
 	public List<String> getOptionTypes() {
 		return this.optionTypes;
+	}
+	
+
+	public ProductType optionTypes(List<String> optionTypes) {
+		setOptionTypes(optionTypes);
+		return this;
+	}
+	
+
+	public List<String> optionTypes() {
+		return getOptionTypes();
 	}
 	
 
@@ -112,6 +178,17 @@ public class ProductType extends ApiResource {
 	}
 	
 
+	public ProductType propertyTypes(List<String> propertyTypes) {
+		setPropertyTypes(propertyTypes);
+		return this;
+	}
+	
+
+	public List<String> propertyTypes() {
+		return getPropertyTypes();
+	}
+	
+
 	public void setOptionValues(List<String> optionValues) {
 		this.optionValues = optionValues;
 	}
@@ -122,6 +199,17 @@ public class ProductType extends ApiResource {
 	}
 	
 
+	public ProductType optionValues(List<String> optionValues) {
+		setOptionValues(optionValues);
+		return this;
+	}
+	
+
+	public List<String> optionValues() {
+		return getOptionValues();
+	}
+	
+
 	public void setPropertyValues(List<String> propertyValues) {
 		this.propertyValues = propertyValues;
 	}
@@ -129,6 +217,17 @@ public class ProductType extends ApiResource {
 
 	public List<String> getPropertyValues() {
 		return this.propertyValues;
+	}
+	
+
+	public ProductType propertyValues(List<String> propertyValues) {
+		setPropertyValues(propertyValues);
+		return this;
+	}
+	
+
+	public List<String> propertyValues() {
+		return getPropertyValues();
 	}
 	
 

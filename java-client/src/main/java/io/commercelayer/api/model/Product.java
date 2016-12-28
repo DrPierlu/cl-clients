@@ -10,21 +10,17 @@ import java.util.List;
  */
 public class Product extends ApiResource {
 
-	private static final long serialVersionUID = -1482880735322L;
+	private static final long serialVersionUID = -1482914097886L;
 
 
 	private String name;
 	@JsonExclude
-	private String slug;
-	@JsonExclude
 	private String description;
-	private Integer productTypeId;
+	private String productTypeId;
 	@JsonExclude
-	private Object trackInventory;
+	private String trackInventory;
 	@JsonExclude
-	private Integer shippingCategoryId;
-	@JsonExclude
-	private String sku;
+	private String shippingCategoryId;
 	@JsonExclude
 	private String taxCode;
 	@JsonExclude
@@ -79,13 +75,14 @@ public class Product extends ApiResource {
 	}
 	
 
-	public void setSlug(String slug) {
-		this.slug = slug;
+	public Product name(String name) {
+		setName(name);
+		return this;
 	}
 	
 
-	public String getSlug() {
-		return this.slug;
+	public String name() {
+		return getName();
 	}
 	
 
@@ -99,43 +96,77 @@ public class Product extends ApiResource {
 	}
 	
 
-	public void setProductTypeId(Integer productTypeId) {
+	public Product description(String description) {
+		setDescription(description);
+		return this;
+	}
+	
+
+	public String description() {
+		return getDescription();
+	}
+	
+
+	public void setProductTypeId(String productTypeId) {
 		this.productTypeId = productTypeId;
 	}
 	
 
-	public Integer getProductTypeId() {
+	public String getProductTypeId() {
 		return this.productTypeId;
 	}
 	
 
-	public void setTrackInventory(Object trackInventory) {
+	public Product productTypeId(String productTypeId) {
+		setProductTypeId(productTypeId);
+		return this;
+	}
+	
+
+	public String productTypeId() {
+		return getProductTypeId();
+	}
+	
+
+	public void setTrackInventory(String trackInventory) {
 		this.trackInventory = trackInventory;
 	}
 	
 
-	public Object getTrackInventory() {
+	public String getTrackInventory() {
 		return this.trackInventory;
 	}
 	
 
-	public void setShippingCategoryId(Integer shippingCategoryId) {
+	public Product trackInventory(String trackInventory) {
+		setTrackInventory(trackInventory);
+		return this;
+	}
+	
+
+	public String trackInventory() {
+		return getTrackInventory();
+	}
+	
+
+	public void setShippingCategoryId(String shippingCategoryId) {
 		this.shippingCategoryId = shippingCategoryId;
 	}
 	
 
-	public Integer getShippingCategoryId() {
+	public String getShippingCategoryId() {
 		return this.shippingCategoryId;
 	}
 	
 
-	public void setSku(String sku) {
-		this.sku = sku;
+	public Product shippingCategoryId(String shippingCategoryId) {
+		setShippingCategoryId(shippingCategoryId);
+		return this;
 	}
 	
 
-	public String getSku() {
-		return this.sku;
+	public String shippingCategoryId() {
+		return getShippingCategoryId();
 	}
 	
 
@@ -149,6 +180,17 @@ public class Product extends ApiResource {
 	}
 	
 
+	public Product taxCode(String taxCode) {
+		setTaxCode(taxCode);
+		return this;
+	}
+	
+
+	public String taxCode() {
+		return getTaxCode();
+	}
+	
+
 	public void setPreviousChanges(Object previousChanges) {
 		this.previousChanges = previousChanges;
 	}
@@ -156,6 +198,17 @@ public class Product extends ApiResource {
 
 	public Object getPreviousChanges() {
 		return this.previousChanges;
+	}
+	
+
+	public Product previousChanges(Object previousChanges) {
+		setPreviousChanges(previousChanges);
+		return this;
+	}
+	
+
+	public Object previousChanges() {
+		return getPreviousChanges();
 	}
 	
 
@@ -169,6 +222,17 @@ public class Product extends ApiResource {
 	}
 	
 
+	public Product shippingCategory(Object shippingCategory) {
+		setShippingCategory(shippingCategory);
+		return this;
+	}
+	
+
+	public Object shippingCategory() {
+		return getShippingCategory();
+	}
+	
+
 	public void setProductType(Object productType) {
 		this.productType = productType;
 	}
@@ -176,6 +240,17 @@ public class Product extends ApiResource {
 
 	public Object getProductType() {
 		return this.productType;
+	}
+	
+
+	public Product productType(Object productType) {
+		setProductType(productType);
+		return this;
+	}
+	
+
+	public Object productType() {
+		return getProductType();
 	}
 	
 
@@ -189,6 +264,17 @@ public class Product extends ApiResource {
 	}
 	
 
+	public Product prices(List<String> prices) {
+		setPrices(prices);
+		return this;
+	}
+	
+
+	public List<String> prices() {
+		return getPrices();
+	}
+	
+
 	public void setLineItems(List<String> lineItems) {
 		this.lineItems = lineItems;
 	}
@@ -196,6 +282,17 @@ public class Product extends ApiResource {
 
 	public List<String> getLineItems() {
 		return this.lineItems;
+	}
+	
+
+	public Product lineItems(List<String> lineItems) {
+		setLineItems(lineItems);
+		return this;
+	}
+	
+
+	public List<String> lineItems() {
+		return getLineItems();
 	}
 	
 
@@ -209,6 +306,17 @@ public class Product extends ApiResource {
 	}
 	
 
+	public Product lineItemStocks(List<String> lineItemStocks) {
+		setLineItemStocks(lineItemStocks);
+		return this;
+	}
+	
+
+	public List<String> lineItemStocks() {
+		return getLineItemStocks();
+	}
+	
+
 	public void setStockItems(List<String> stockItems) {
 		this.stockItems = stockItems;
 	}
@@ -216,6 +324,17 @@ public class Product extends ApiResource {
 
 	public List<String> getStockItems() {
 		return this.stockItems;
+	}
+	
+
+	public Product stockItems(List<String> stockItems) {
+		setStockItems(stockItems);
+		return this;
+	}
+	
+
+	public List<String> stockItems() {
+		return getStockItems();
 	}
 	
 
@@ -229,6 +348,17 @@ public class Product extends ApiResource {
 	}
 	
 
+	public Product shippingServiceStockLocations(List<String> shippingServiceStockLocations) {
+		setShippingServiceStockLocations(shippingServiceStockLocations);
+		return this;
+	}
+	
+
+	public List<String> shippingServiceStockLocations() {
+		return getShippingServiceStockLocations();
+	}
+	
+
 	public void setResourceImages(List<String> resourceImages) {
 		this.resourceImages = resourceImages;
 	}
@@ -236,6 +366,17 @@ public class Product extends ApiResource {
 
 	public List<String> getResourceImages() {
 		return this.resourceImages;
+	}
+	
+
+	public Product resourceImages(List<String> resourceImages) {
+		setResourceImages(resourceImages);
+		return this;
+	}
+	
+
+	public List<String> resourceImages() {
+		return getResourceImages();
 	}
 	
 
@@ -249,6 +390,17 @@ public class Product extends ApiResource {
 	}
 	
 
+	public Product images(List<String> images) {
+		setImages(images);
+		return this;
+	}
+	
+
+	public List<String> images() {
+		return getImages();
+	}
+	
+
 	public void setTranslations(List<String> translations) {
 		this.translations = translations;
 	}
@@ -256,6 +408,17 @@ public class Product extends ApiResource {
 
 	public List<String> getTranslations() {
 		return this.translations;
+	}
+	
+
+	public Product translations(List<String> translations) {
+		setTranslations(translations);
+		return this;
+	}
+	
+
+	public List<String> translations() {
+		return getTranslations();
 	}
 	
 
@@ -269,6 +432,17 @@ public class Product extends ApiResource {
 	}
 	
 
+	public Product variants(List<String> variants) {
+		setVariants(variants);
+		return this;
+	}
+	
+
+	public List<String> variants() {
+		return getVariants();
+	}
+	
+
 	public void setMerchandisingRules(List<String> merchandisingRules) {
 		this.merchandisingRules = merchandisingRules;
 	}
@@ -276,6 +450,17 @@ public class Product extends ApiResource {
 
 	public List<String> getMerchandisingRules() {
 		return this.merchandisingRules;
+	}
+	
+
+	public Product merchandisingRules(List<String> merchandisingRules) {
+		setMerchandisingRules(merchandisingRules);
+		return this;
+	}
+	
+
+	public List<String> merchandisingRules() {
+		return getMerchandisingRules();
 	}
 	
 
@@ -289,6 +474,17 @@ public class Product extends ApiResource {
 	}
 	
 
+	public Product productProperties(List<String> productProperties) {
+		setProductProperties(productProperties);
+		return this;
+	}
+	
+
+	public List<String> productProperties() {
+		return getProductProperties();
+	}
+	
+
 	public void setHasVariants(String hasVariants) {
 		this.hasVariants = hasVariants;
 	}
@@ -296,6 +492,17 @@ public class Product extends ApiResource {
 
 	public String getHasVariants() {
 		return this.hasVariants;
+	}
+	
+
+	public Product hasVariants(String hasVariants) {
+		setHasVariants(hasVariants);
+		return this;
+	}
+	
+
+	public String hasVariants() {
+		return getHasVariants();
 	}
 	
 
@@ -309,12 +516,10 @@ public class Product extends ApiResource {
 	
 		return super.equals(o)
 			&& Objects.equals(this.name, x.name)
-			&& Objects.equals(this.slug, x.slug)
 			&& Objects.equals(this.description, x.description)
 			&& Objects.equals(this.productTypeId, x.productTypeId)
 			&& Objects.equals(this.trackInventory, x.trackInventory)
 			&& Objects.equals(this.shippingCategoryId, x.shippingCategoryId)
-			&& Objects.equals(this.sku, x.sku)
 			&& Objects.equals(this.taxCode, x.taxCode)
 			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.shippingCategory, x.shippingCategory)
@@ -340,11 +545,11 @@ public class Product extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, slug, description, productTypeId, trackInventory,
-			shippingCategoryId, sku, taxCode, previousChanges, shippingCategory,
-			productType, prices, lineItems, lineItemStocks, stockItems,
-			shippingServiceStockLocations, resourceImages, images, translations, variants,
-			merchandisingRules, productProperties, hasVariants 
+			name, description, productTypeId, trackInventory, shippingCategoryId,
+			taxCode, previousChanges, shippingCategory, productType, prices,
+			lineItems, lineItemStocks, stockItems, shippingServiceStockLocations, resourceImages,
+			images, translations, variants, merchandisingRules, productProperties,
+			hasVariants 
 		);
 	
 	}
@@ -356,12 +561,10 @@ public class Product extends ApiResource {
 		Product no = new Product();
 	
 		no.name = this.name;
-		no.slug = this.slug;
 		no.description = this.description;
 		no.productTypeId = this.productTypeId;
 		no.trackInventory = this.trackInventory;
 		no.shippingCategoryId = this.shippingCategoryId;
-		no.sku = this.sku;
 		no.taxCode = this.taxCode;
 		no.previousChanges = this.previousChanges;
 		no.shippingCategory = this.shippingCategory;

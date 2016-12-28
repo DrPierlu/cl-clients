@@ -61,6 +61,7 @@ public class AddressTest extends ApiTest<Address> {
 		putOp.setPayload(a);
 		
 		ApiRequest<PutAccountAddressesId> putReq = new ApiRequest<>(putOp);
+		@SuppressWarnings("unused")
 		ApiResponse<Address> putRes = test(putReq, Address.class, caller);
 		
 
@@ -75,6 +76,8 @@ public class AddressTest extends ApiTest<Address> {
 		
 		Assert.assertNotEquals(postRes.getResource().getGeocodingStreet(), getRes.getResource().getGeocodingStreet());
 		Assert.assertNotEquals(postRes.getResource().getGeocodingNumber(), getRes.getResource().getGeocodingNumber());
+		Assert.assertNotEquals(postRes.getResource().getLat(), getRes.getResource().getLat());
+		Assert.assertNotEquals(postRes.getResource().getLng(), getRes.getResource().getLng());
 		
 		
 		// DELETE

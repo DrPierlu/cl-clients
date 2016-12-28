@@ -3,7 +3,6 @@ package io.commercelayer.api.model;
 import java.util.Objects;
 import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.json.JsonExclude;
-import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -11,37 +10,33 @@ import java.util.List;
  */
 public class Order extends ApiResource {
 
-	private static final long serialVersionUID = -1482880735307L;
+	private static final long serialVersionUID = -1482914097739L;
 
 
 	@JsonExclude
-	private String name;
+	private String customerId;
 	@JsonExclude
-	private Integer customerId;
+	private String merchantId;
+	private String channelId;
+	private String countryId;
 	@JsonExclude
-	private Integer merchantId;
-	private Integer channelId;
-	private Integer countryId;
+	private String marketId;
 	@JsonExclude
-	private Integer marketId;
-	@JsonExclude
-	private Integer currencyId;
+	private String currencyId;
 	@JsonExclude
 	private String token;
 	@JsonExclude
-	private Object taxIncluded;
+	private String taxIncluded;
 	@JsonExclude
 	private Float taxRate;
 	@JsonExclude
-	private Object hasNexus;
+	private String hasNexus;
 	@JsonExclude
-	private Object shippingMethodTaxable;
+	private String shippingMethodTaxable;
 	@JsonExclude
-	private Object paymentMethodTaxable;
+	private String paymentMethodTaxable;
 	@JsonExclude
 	private String taxSource;
-	@JsonExclude
-	private LocalDateTime placedAt;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
@@ -76,6 +71,8 @@ public class Order extends ApiResource {
 	private List<String> marketShippingServices;
 	@JsonExclude
 	private List<String> shippingServices;
+	@JsonExclude
+	private Object orderConfirmation;
 	@JsonExclude
 	private String totalAmountWithTax;
 	@JsonExclude
@@ -146,10 +143,6 @@ public class Order extends ApiResource {
 	private String availableShippingServiceIds;
 	@JsonExclude
 	private String availablePaymentTypeIds;
-	@JsonExclude
-	private String pendingTransactions;
-	@JsonExclude
-	private String placed;
 
 
 	public Order() {
@@ -162,73 +155,129 @@ public class Order extends ApiResource {
 	}
 	
 
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-
-	public String getName() {
-		return this.name;
-	}
-	
-
-	public void setCustomerId(Integer customerId) {
+	public void setCustomerId(String customerId) {
 		this.customerId = customerId;
 	}
 	
 
-	public Integer getCustomerId() {
+	public String getCustomerId() {
 		return this.customerId;
 	}
 	
 
-	public void setMerchantId(Integer merchantId) {
+	public Order customerId(String customerId) {
+		setCustomerId(customerId);
+		return this;
+	}
+	
+
+	public String customerId() {
+		return getCustomerId();
+	}
+	
+
+	public void setMerchantId(String merchantId) {
 		this.merchantId = merchantId;
 	}
 	
 
-	public Integer getMerchantId() {
+	public String getMerchantId() {
 		return this.merchantId;
 	}
 	
 
-	public void setChannelId(Integer channelId) {
+	public Order merchantId(String merchantId) {
+		setMerchantId(merchantId);
+		return this;
+	}
+	
+
+	public String merchantId() {
+		return getMerchantId();
+	}
+	
+
+	public void setChannelId(String channelId) {
 		this.channelId = channelId;
 	}
 	
 
-	public Integer getChannelId() {
+	public String getChannelId() {
 		return this.channelId;
 	}
 	
 
-	public void setCountryId(Integer countryId) {
+	public Order channelId(String channelId) {
+		setChannelId(channelId);
+		return this;
+	}
+	
+
+	public String channelId() {
+		return getChannelId();
+	}
+	
+
+	public void setCountryId(String countryId) {
 		this.countryId = countryId;
 	}
 	
 
-	public Integer getCountryId() {
+	public String getCountryId() {
 		return this.countryId;
 	}
 	
 
-	public void setMarketId(Integer marketId) {
+	public Order countryId(String countryId) {
+		setCountryId(countryId);
+		return this;
+	}
+	
+
+	public String countryId() {
+		return getCountryId();
+	}
+	
+
+	public void setMarketId(String marketId) {
 		this.marketId = marketId;
 	}
 	
 
-	public Integer getMarketId() {
+	public String getMarketId() {
 		return this.marketId;
 	}
 	
 
-	public void setCurrencyId(Integer currencyId) {
+	public Order marketId(String marketId) {
+		setMarketId(marketId);
+		return this;
+	}
+	
+
+	public String marketId() {
+		return getMarketId();
+	}
+	
+
+	public void setCurrencyId(String currencyId) {
 		this.currencyId = currencyId;
 	}
 	
 
-	public Integer getCurrencyId() {
+	public String getCurrencyId() {
 		return this.currencyId;
+	}
+	
+
+	public Order currencyId(String currencyId) {
+		setCurrencyId(currencyId);
+		return this;
+	}
+	
+
+	public String currencyId() {
+		return getCurrencyId();
 	}
 	
 
@@ -242,13 +291,35 @@ public class Order extends ApiResource {
 	}
 	
 
-	public void setTaxIncluded(Object taxIncluded) {
+	public Order token(String token) {
+		setToken(token);
+		return this;
+	}
+	
+
+	public String token() {
+		return getToken();
+	}
+	
+
+	public void setTaxIncluded(String taxIncluded) {
 		this.taxIncluded = taxIncluded;
 	}
 	
 
-	public Object getTaxIncluded() {
+	public String getTaxIncluded() {
 		return this.taxIncluded;
+	}
+	
+
+	public Order taxIncluded(String taxIncluded) {
+		setTaxIncluded(taxIncluded);
+		return this;
+	}
+	
+
+	public String taxIncluded() {
+		return getTaxIncluded();
 	}
 	
 
@@ -262,33 +333,77 @@ public class Order extends ApiResource {
 	}
 	
 
-	public void setHasNexus(Object hasNexus) {
+	public Order taxRate(Float taxRate) {
+		setTaxRate(taxRate);
+		return this;
+	}
+	
+
+	public Float taxRate() {
+		return getTaxRate();
+	}
+	
+
+	public void setHasNexus(String hasNexus) {
 		this.hasNexus = hasNexus;
 	}
 	
 
-	public Object getHasNexus() {
+	public String getHasNexus() {
 		return this.hasNexus;
 	}
 	
 
-	public void setShippingMethodTaxable(Object shippingMethodTaxable) {
+	public Order hasNexus(String hasNexus) {
+		setHasNexus(hasNexus);
+		return this;
+	}
+	
+
+	public String hasNexus() {
+		return getHasNexus();
+	}
+	
+
+	public void setShippingMethodTaxable(String shippingMethodTaxable) {
 		this.shippingMethodTaxable = shippingMethodTaxable;
 	}
 	
 
-	public Object getShippingMethodTaxable() {
+	public String getShippingMethodTaxable() {
 		return this.shippingMethodTaxable;
 	}
 	
 
-	public void setPaymentMethodTaxable(Object paymentMethodTaxable) {
+	public Order shippingMethodTaxable(String shippingMethodTaxable) {
+		setShippingMethodTaxable(shippingMethodTaxable);
+		return this;
+	}
+	
+
+	public String shippingMethodTaxable() {
+		return getShippingMethodTaxable();
+	}
+	
+
+	public void setPaymentMethodTaxable(String paymentMethodTaxable) {
 		this.paymentMethodTaxable = paymentMethodTaxable;
 	}
 	
 
-	public Object getPaymentMethodTaxable() {
+	public String getPaymentMethodTaxable() {
 		return this.paymentMethodTaxable;
+	}
+	
+
+	public Order paymentMethodTaxable(String paymentMethodTaxable) {
+		setPaymentMethodTaxable(paymentMethodTaxable);
+		return this;
+	}
+	
+
+	public String paymentMethodTaxable() {
+		return getPaymentMethodTaxable();
 	}
 	
 
@@ -302,13 +417,14 @@ public class Order extends ApiResource {
 	}
 	
 
-	public void setPlacedAt(LocalDateTime placedAt) {
-		this.placedAt = placedAt;
+	public Order taxSource(String taxSource) {
+		setTaxSource(taxSource);
+		return this;
 	}
 	
 
-	public LocalDateTime getPlacedAt() {
-		return this.placedAt;
+	public String taxSource() {
+		return getTaxSource();
 	}
 	
 
@@ -322,6 +438,17 @@ public class Order extends ApiResource {
 	}
 	
 
+	public Order previousChanges(Object previousChanges) {
+		setPreviousChanges(previousChanges);
+		return this;
+	}
+	
+
+	public Object previousChanges() {
+		return getPreviousChanges();
+	}
+	
+
 	public void setCustomer(Object customer) {
 		this.customer = customer;
 	}
@@ -329,6 +456,17 @@ public class Order extends ApiResource {
 
 	public Object getCustomer() {
 		return this.customer;
+	}
+	
+
+	public Order customer(Object customer) {
+		setCustomer(customer);
+		return this;
+	}
+	
+
+	public Object customer() {
+		return getCustomer();
 	}
 	
 
@@ -342,6 +480,17 @@ public class Order extends ApiResource {
 	}
 	
 
+	public Order channel(Object channel) {
+		setChannel(channel);
+		return this;
+	}
+	
+
+	public Object channel() {
+		return getChannel();
+	}
+	
+
 	public void setCountry(Object country) {
 		this.country = country;
 	}
@@ -349,6 +498,17 @@ public class Order extends ApiResource {
 
 	public Object getCountry() {
 		return this.country;
+	}
+	
+
+	public Order country(Object country) {
+		setCountry(country);
+		return this;
+	}
+	
+
+	public Object country() {
+		return getCountry();
 	}
 	
 
@@ -362,6 +522,17 @@ public class Order extends ApiResource {
 	}
 	
 
+	public Order market(Object market) {
+		setMarket(market);
+		return this;
+	}
+	
+
+	public Object market() {
+		return getMarket();
+	}
+	
+
 	public void setMerchant(Object merchant) {
 		this.merchant = merchant;
 	}
@@ -369,6 +540,17 @@ public class Order extends ApiResource {
 
 	public Object getMerchant() {
 		return this.merchant;
+	}
+	
+
+	public Order merchant(Object merchant) {
+		setMerchant(merchant);
+		return this;
+	}
+	
+
+	public Object merchant() {
+		return getMerchant();
 	}
 	
 
@@ -382,6 +564,17 @@ public class Order extends ApiResource {
 	}
 	
 
+	public Order currency(Object currency) {
+		setCurrency(currency);
+		return this;
+	}
+	
+
+	public Object currency() {
+		return getCurrency();
+	}
+	
+
 	public void setLineItems(List<String> lineItems) {
 		this.lineItems = lineItems;
 	}
@@ -389,6 +582,17 @@ public class Order extends ApiResource {
 
 	public List<String> getLineItems() {
 		return this.lineItems;
+	}
+	
+
+	public Order lineItems(List<String> lineItems) {
+		setLineItems(lineItems);
+		return this;
+	}
+	
+
+	public List<String> lineItems() {
+		return getLineItems();
 	}
 	
 
@@ -402,6 +606,17 @@ public class Order extends ApiResource {
 	}
 	
 
+	public Order lineItemStocks(List<String> lineItemStocks) {
+		setLineItemStocks(lineItemStocks);
+		return this;
+	}
+	
+
+	public List<String> lineItemStocks() {
+		return getLineItemStocks();
+	}
+	
+
 	public void setPaymentMethods(List<String> paymentMethods) {
 		this.paymentMethods = paymentMethods;
 	}
@@ -409,6 +624,17 @@ public class Order extends ApiResource {
 
 	public List<String> getPaymentMethods() {
 		return this.paymentMethods;
+	}
+	
+
+	public Order paymentMethods(List<String> paymentMethods) {
+		setPaymentMethods(paymentMethods);
+		return this;
+	}
+	
+
+	public List<String> paymentMethods() {
+		return getPaymentMethods();
 	}
 	
 
@@ -422,6 +648,17 @@ public class Order extends ApiResource {
 	}
 	
 
+	public Order shippingMethods(List<String> shippingMethods) {
+		setShippingMethods(shippingMethods);
+		return this;
+	}
+	
+
+	public List<String> shippingMethods() {
+		return getShippingMethods();
+	}
+	
+
 	public void setShipments(List<String> shipments) {
 		this.shipments = shipments;
 	}
@@ -429,6 +666,17 @@ public class Order extends ApiResource {
 
 	public List<String> getShipments() {
 		return this.shipments;
+	}
+	
+
+	public Order shipments(List<String> shipments) {
+		setShipments(shipments);
+		return this;
+	}
+	
+
+	public List<String> shipments() {
+		return getShipments();
 	}
 	
 
@@ -442,6 +690,17 @@ public class Order extends ApiResource {
 	}
 	
 
+	public Order transactions(List<String> transactions) {
+		setTransactions(transactions);
+		return this;
+	}
+	
+
+	public List<String> transactions() {
+		return getTransactions();
+	}
+	
+
 	public void setMarketPaymentTypes(List<String> marketPaymentTypes) {
 		this.marketPaymentTypes = marketPaymentTypes;
 	}
@@ -449,6 +708,17 @@ public class Order extends ApiResource {
 
 	public List<String> getMarketPaymentTypes() {
 		return this.marketPaymentTypes;
+	}
+	
+
+	public Order marketPaymentTypes(List<String> marketPaymentTypes) {
+		setMarketPaymentTypes(marketPaymentTypes);
+		return this;
+	}
+	
+
+	public List<String> marketPaymentTypes() {
+		return getMarketPaymentTypes();
 	}
 	
 
@@ -462,6 +732,17 @@ public class Order extends ApiResource {
 	}
 	
 
+	public Order paymentTypes(List<String> paymentTypes) {
+		setPaymentTypes(paymentTypes);
+		return this;
+	}
+	
+
+	public List<String> paymentTypes() {
+		return getPaymentTypes();
+	}
+	
+
 	public void setMarketShippingServices(List<String> marketShippingServices) {
 		this.marketShippingServices = marketShippingServices;
 	}
@@ -469,6 +750,17 @@ public class Order extends ApiResource {
 
 	public List<String> getMarketShippingServices() {
 		return this.marketShippingServices;
+	}
+	
+
+	public Order marketShippingServices(List<String> marketShippingServices) {
+		setMarketShippingServices(marketShippingServices);
+		return this;
+	}
+	
+
+	public List<String> marketShippingServices() {
+		return getMarketShippingServices();
 	}
 	
 
@@ -482,6 +774,38 @@ public class Order extends ApiResource {
 	}
 	
 
+	public Order shippingServices(List<String> shippingServices) {
+		setShippingServices(shippingServices);
+		return this;
+	}
+	
+
+	public List<String> shippingServices() {
+		return getShippingServices();
+	}
+	
+
+	public void setOrderConfirmation(Object orderConfirmation) {
+		this.orderConfirmation = orderConfirmation;
+	}
+	
+
+	public Object getOrderConfirmation() {
+		return this.orderConfirmation;
+	}
+	
+
+	public Order orderConfirmation(Object orderConfirmation) {
+		setOrderConfirmation(orderConfirmation);
+		return this;
+	}
+	
+
+	public Object orderConfirmation() {
+		return getOrderConfirmation();
+	}
+	
+
 	public void setTotalAmountWithTax(String totalAmountWithTax) {
 		this.totalAmountWithTax = totalAmountWithTax;
 	}
@@ -489,6 +813,17 @@ public class Order extends ApiResource {
 
 	public String getTotalAmountWithTax() {
 		return this.totalAmountWithTax;
+	}
+	
+
+	public Order totalAmountWithTax(String totalAmountWithTax) {
+		setTotalAmountWithTax(totalAmountWithTax);
+		return this;
+	}
+	
+
+	public String totalAmountWithTax() {
+		return getTotalAmountWithTax();
 	}
 	
 
@@ -502,6 +837,17 @@ public class Order extends ApiResource {
 	}
 	
 
+	public Order formattedTotalAmountWithTax(String formattedTotalAmountWithTax) {
+		setFormattedTotalAmountWithTax(formattedTotalAmountWithTax);
+		return this;
+	}
+	
+
+	public String formattedTotalAmountWithTax() {
+		return getFormattedTotalAmountWithTax();
+	}
+	
+
 	public void setTotalAmount(String totalAmount) {
 		this.totalAmount = totalAmount;
 	}
@@ -509,6 +855,17 @@ public class Order extends ApiResource {
 
 	public String getTotalAmount() {
 		return this.totalAmount;
+	}
+	
+
+	public Order totalAmount(String totalAmount) {
+		setTotalAmount(totalAmount);
+		return this;
+	}
+	
+
+	public String totalAmount() {
+		return getTotalAmount();
 	}
 	
 
@@ -522,6 +879,17 @@ public class Order extends ApiResource {
 	}
 	
 
+	public Order formattedTotalAmount(String formattedTotalAmount) {
+		setFormattedTotalAmount(formattedTotalAmount);
+		return this;
+	}
+	
+
+	public String formattedTotalAmount() {
+		return getFormattedTotalAmount();
+	}
+	
+
 	public void setTotalLineItemAmount(String totalLineItemAmount) {
 		this.totalLineItemAmount = totalLineItemAmount;
 	}
@@ -529,6 +897,17 @@ public class Order extends ApiResource {
 
 	public String getTotalLineItemAmount() {
 		return this.totalLineItemAmount;
+	}
+	
+
+	public Order totalLineItemAmount(String totalLineItemAmount) {
+		setTotalLineItemAmount(totalLineItemAmount);
+		return this;
+	}
+	
+
+	public String totalLineItemAmount() {
+		return getTotalLineItemAmount();
 	}
 	
 
@@ -542,6 +921,17 @@ public class Order extends ApiResource {
 	}
 	
 
+	public Order formattedTotalLineItemAmount(String formattedTotalLineItemAmount) {
+		setFormattedTotalLineItemAmount(formattedTotalLineItemAmount);
+		return this;
+	}
+	
+
+	public String formattedTotalLineItemAmount() {
+		return getFormattedTotalLineItemAmount();
+	}
+	
+
 	public void setTotalShippingMethodAmount(String totalShippingMethodAmount) {
 		this.totalShippingMethodAmount = totalShippingMethodAmount;
 	}
@@ -549,6 +939,17 @@ public class Order extends ApiResource {
 
 	public String getTotalShippingMethodAmount() {
 		return this.totalShippingMethodAmount;
+	}
+	
+
+	public Order totalShippingMethodAmount(String totalShippingMethodAmount) {
+		setTotalShippingMethodAmount(totalShippingMethodAmount);
+		return this;
+	}
+	
+
+	public String totalShippingMethodAmount() {
+		return getTotalShippingMethodAmount();
 	}
 	
 
@@ -562,6 +963,17 @@ public class Order extends ApiResource {
 	}
 	
 
+	public Order formattedTotalShippingMethodAmount(String formattedTotalShippingMethodAmount) {
+		setFormattedTotalShippingMethodAmount(formattedTotalShippingMethodAmount);
+		return this;
+	}
+	
+
+	public String formattedTotalShippingMethodAmount() {
+		return getFormattedTotalShippingMethodAmount();
+	}
+	
+
 	public void setTotalPaymentMethodPrice(String totalPaymentMethodPrice) {
 		this.totalPaymentMethodPrice = totalPaymentMethodPrice;
 	}
@@ -569,6 +981,17 @@ public class Order extends ApiResource {
 
 	public String getTotalPaymentMethodPrice() {
 		return this.totalPaymentMethodPrice;
+	}
+	
+
+	public Order totalPaymentMethodPrice(String totalPaymentMethodPrice) {
+		setTotalPaymentMethodPrice(totalPaymentMethodPrice);
+		return this;
+	}
+	
+
+	public String totalPaymentMethodPrice() {
+		return getTotalPaymentMethodPrice();
 	}
 	
 
@@ -582,6 +1005,17 @@ public class Order extends ApiResource {
 	}
 	
 
+	public Order formattedTotalPaymentMethodPrice(String formattedTotalPaymentMethodPrice) {
+		setFormattedTotalPaymentMethodPrice(formattedTotalPaymentMethodPrice);
+		return this;
+	}
+	
+
+	public String formattedTotalPaymentMethodPrice() {
+		return getFormattedTotalPaymentMethodPrice();
+	}
+	
+
 	public void setTotalAmountWithPaymentMethodRequired(String totalAmountWithPaymentMethodRequired) {
 		this.totalAmountWithPaymentMethodRequired = totalAmountWithPaymentMethodRequired;
 	}
@@ -589,6 +1023,17 @@ public class Order extends ApiResource {
 
 	public String getTotalAmountWithPaymentMethodRequired() {
 		return this.totalAmountWithPaymentMethodRequired;
+	}
+	
+
+	public Order totalAmountWithPaymentMethodRequired(String totalAmountWithPaymentMethodRequired) {
+		setTotalAmountWithPaymentMethodRequired(totalAmountWithPaymentMethodRequired);
+		return this;
+	}
+	
+
+	public String totalAmountWithPaymentMethodRequired() {
+		return getTotalAmountWithPaymentMethodRequired();
 	}
 	
 
@@ -602,6 +1047,17 @@ public class Order extends ApiResource {
 	}
 	
 
+	public Order formattedTotalAmountWithPaymentMethodRequired(String formattedTotalAmountWithPaymentMethodRequired) {
+		setFormattedTotalAmountWithPaymentMethodRequired(formattedTotalAmountWithPaymentMethodRequired);
+		return this;
+	}
+	
+
+	public String formattedTotalAmountWithPaymentMethodRequired() {
+		return getFormattedTotalAmountWithPaymentMethodRequired();
+	}
+	
+
 	public void setTotalPaymentMethodAmount(String totalPaymentMethodAmount) {
 		this.totalPaymentMethodAmount = totalPaymentMethodAmount;
 	}
@@ -609,6 +1065,17 @@ public class Order extends ApiResource {
 
 	public String getTotalPaymentMethodAmount() {
 		return this.totalPaymentMethodAmount;
+	}
+	
+
+	public Order totalPaymentMethodAmount(String totalPaymentMethodAmount) {
+		setTotalPaymentMethodAmount(totalPaymentMethodAmount);
+		return this;
+	}
+	
+
+	public String totalPaymentMethodAmount() {
+		return getTotalPaymentMethodAmount();
 	}
 	
 
@@ -622,6 +1089,17 @@ public class Order extends ApiResource {
 	}
 	
 
+	public Order formattedTotalPaymentMethodAmount(String formattedTotalPaymentMethodAmount) {
+		setFormattedTotalPaymentMethodAmount(formattedTotalPaymentMethodAmount);
+		return this;
+	}
+	
+
+	public String formattedTotalPaymentMethodAmount() {
+		return getFormattedTotalPaymentMethodAmount();
+	}
+	
+
 	public void setAmountWithMissingPaymentMethod(String amountWithMissingPaymentMethod) {
 		this.amountWithMissingPaymentMethod = amountWithMissingPaymentMethod;
 	}
@@ -629,6 +1107,17 @@ public class Order extends ApiResource {
 
 	public String getAmountWithMissingPaymentMethod() {
 		return this.amountWithMissingPaymentMethod;
+	}
+	
+
+	public Order amountWithMissingPaymentMethod(String amountWithMissingPaymentMethod) {
+		setAmountWithMissingPaymentMethod(amountWithMissingPaymentMethod);
+		return this;
+	}
+	
+
+	public String amountWithMissingPaymentMethod() {
+		return getAmountWithMissingPaymentMethod();
 	}
 	
 
@@ -642,6 +1131,17 @@ public class Order extends ApiResource {
 	}
 	
 
+	public Order formattedAmountWithMissingPaymentMethod(String formattedAmountWithMissingPaymentMethod) {
+		setFormattedAmountWithMissingPaymentMethod(formattedAmountWithMissingPaymentMethod);
+		return this;
+	}
+	
+
+	public String formattedAmountWithMissingPaymentMethod() {
+		return getFormattedAmountWithMissingPaymentMethod();
+	}
+	
+
 	public void setTotalTaxableAmount(String totalTaxableAmount) {
 		this.totalTaxableAmount = totalTaxableAmount;
 	}
@@ -649,6 +1149,17 @@ public class Order extends ApiResource {
 
 	public String getTotalTaxableAmount() {
 		return this.totalTaxableAmount;
+	}
+	
+
+	public Order totalTaxableAmount(String totalTaxableAmount) {
+		setTotalTaxableAmount(totalTaxableAmount);
+		return this;
+	}
+	
+
+	public String totalTaxableAmount() {
+		return getTotalTaxableAmount();
 	}
 	
 
@@ -662,6 +1173,17 @@ public class Order extends ApiResource {
 	}
 	
 
+	public Order formattedTotalTaxableAmount(String formattedTotalTaxableAmount) {
+		setFormattedTotalTaxableAmount(formattedTotalTaxableAmount);
+		return this;
+	}
+	
+
+	public String formattedTotalTaxableAmount() {
+		return getFormattedTotalTaxableAmount();
+	}
+	
+
 	public void setTotalLineItemTaxableAmount(String totalLineItemTaxableAmount) {
 		this.totalLineItemTaxableAmount = totalLineItemTaxableAmount;
 	}
@@ -669,6 +1191,17 @@ public class Order extends ApiResource {
 
 	public String getTotalLineItemTaxableAmount() {
 		return this.totalLineItemTaxableAmount;
+	}
+	
+
+	public Order totalLineItemTaxableAmount(String totalLineItemTaxableAmount) {
+		setTotalLineItemTaxableAmount(totalLineItemTaxableAmount);
+		return this;
+	}
+	
+
+	public String totalLineItemTaxableAmount() {
+		return getTotalLineItemTaxableAmount();
 	}
 	
 
@@ -682,6 +1215,17 @@ public class Order extends ApiResource {
 	}
 	
 
+	public Order formattedTotalLineItemTaxableAmount(String formattedTotalLineItemTaxableAmount) {
+		setFormattedTotalLineItemTaxableAmount(formattedTotalLineItemTaxableAmount);
+		return this;
+	}
+	
+
+	public String formattedTotalLineItemTaxableAmount() {
+		return getFormattedTotalLineItemTaxableAmount();
+	}
+	
+
 	public void setTotalShippingMethodTaxableAmount(String totalShippingMethodTaxableAmount) {
 		this.totalShippingMethodTaxableAmount = totalShippingMethodTaxableAmount;
 	}
@@ -689,6 +1233,17 @@ public class Order extends ApiResource {
 
 	public String getTotalShippingMethodTaxableAmount() {
 		return this.totalShippingMethodTaxableAmount;
+	}
+	
+
+	public Order totalShippingMethodTaxableAmount(String totalShippingMethodTaxableAmount) {
+		setTotalShippingMethodTaxableAmount(totalShippingMethodTaxableAmount);
+		return this;
+	}
+	
+
+	public String totalShippingMethodTaxableAmount() {
+		return getTotalShippingMethodTaxableAmount();
 	}
 	
 
@@ -702,6 +1257,17 @@ public class Order extends ApiResource {
 	}
 	
 
+	public Order formattedTotalShippingMethodTaxableAmount(String formattedTotalShippingMethodTaxableAmount) {
+		setFormattedTotalShippingMethodTaxableAmount(formattedTotalShippingMethodTaxableAmount);
+		return this;
+	}
+	
+
+	public String formattedTotalShippingMethodTaxableAmount() {
+		return getFormattedTotalShippingMethodTaxableAmount();
+	}
+	
+
 	public void setTotalPaymentMethodTaxableAmount(String totalPaymentMethodTaxableAmount) {
 		this.totalPaymentMethodTaxableAmount = totalPaymentMethodTaxableAmount;
 	}
@@ -709,6 +1275,17 @@ public class Order extends ApiResource {
 
 	public String getTotalPaymentMethodTaxableAmount() {
 		return this.totalPaymentMethodTaxableAmount;
+	}
+	
+
+	public Order totalPaymentMethodTaxableAmount(String totalPaymentMethodTaxableAmount) {
+		setTotalPaymentMethodTaxableAmount(totalPaymentMethodTaxableAmount);
+		return this;
+	}
+	
+
+	public String totalPaymentMethodTaxableAmount() {
+		return getTotalPaymentMethodTaxableAmount();
 	}
 	
 
@@ -722,6 +1299,17 @@ public class Order extends ApiResource {
 	}
 	
 
+	public Order formattedTotalPaymentMethodTaxableAmount(String formattedTotalPaymentMethodTaxableAmount) {
+		setFormattedTotalPaymentMethodTaxableAmount(formattedTotalPaymentMethodTaxableAmount);
+		return this;
+	}
+	
+
+	public String formattedTotalPaymentMethodTaxableAmount() {
+		return getFormattedTotalPaymentMethodTaxableAmount();
+	}
+	
+
 	public void setTotalTaxAmount(String totalTaxAmount) {
 		this.totalTaxAmount = totalTaxAmount;
 	}
@@ -729,6 +1317,17 @@ public class Order extends ApiResource {
 
 	public String getTotalTaxAmount() {
 		return this.totalTaxAmount;
+	}
+	
+
+	public Order totalTaxAmount(String totalTaxAmount) {
+		setTotalTaxAmount(totalTaxAmount);
+		return this;
+	}
+	
+
+	public String totalTaxAmount() {
+		return getTotalTaxAmount();
 	}
 	
 
@@ -742,6 +1341,17 @@ public class Order extends ApiResource {
 	}
 	
 
+	public Order formattedTotalTaxAmount(String formattedTotalTaxAmount) {
+		setFormattedTotalTaxAmount(formattedTotalTaxAmount);
+		return this;
+	}
+	
+
+	public String formattedTotalTaxAmount() {
+		return getFormattedTotalTaxAmount();
+	}
+	
+
 	public void setTotalLineItemTaxAmount(String totalLineItemTaxAmount) {
 		this.totalLineItemTaxAmount = totalLineItemTaxAmount;
 	}
@@ -749,6 +1359,17 @@ public class Order extends ApiResource {
 
 	public String getTotalLineItemTaxAmount() {
 		return this.totalLineItemTaxAmount;
+	}
+	
+
+	public Order totalLineItemTaxAmount(String totalLineItemTaxAmount) {
+		setTotalLineItemTaxAmount(totalLineItemTaxAmount);
+		return this;
+	}
+	
+
+	public String totalLineItemTaxAmount() {
+		return getTotalLineItemTaxAmount();
 	}
 	
 
@@ -762,6 +1383,17 @@ public class Order extends ApiResource {
 	}
 	
 
+	public Order formattedTotalLineItemTaxAmount(String formattedTotalLineItemTaxAmount) {
+		setFormattedTotalLineItemTaxAmount(formattedTotalLineItemTaxAmount);
+		return this;
+	}
+	
+
+	public String formattedTotalLineItemTaxAmount() {
+		return getFormattedTotalLineItemTaxAmount();
+	}
+	
+
 	public void setTotalShippingMethodTaxAmount(String totalShippingMethodTaxAmount) {
 		this.totalShippingMethodTaxAmount = totalShippingMethodTaxAmount;
 	}
@@ -769,6 +1401,17 @@ public class Order extends ApiResource {
 
 	public String getTotalShippingMethodTaxAmount() {
 		return this.totalShippingMethodTaxAmount;
+	}
+	
+
+	public Order totalShippingMethodTaxAmount(String totalShippingMethodTaxAmount) {
+		setTotalShippingMethodTaxAmount(totalShippingMethodTaxAmount);
+		return this;
+	}
+	
+
+	public String totalShippingMethodTaxAmount() {
+		return getTotalShippingMethodTaxAmount();
 	}
 	
 
@@ -782,6 +1425,17 @@ public class Order extends ApiResource {
 	}
 	
 
+	public Order formattedTotalShippingMethodTaxAmount(String formattedTotalShippingMethodTaxAmount) {
+		setFormattedTotalShippingMethodTaxAmount(formattedTotalShippingMethodTaxAmount);
+		return this;
+	}
+	
+
+	public String formattedTotalShippingMethodTaxAmount() {
+		return getFormattedTotalShippingMethodTaxAmount();
+	}
+	
+
 	public void setTotalPaymentMethodTaxAmount(String totalPaymentMethodTaxAmount) {
 		this.totalPaymentMethodTaxAmount = totalPaymentMethodTaxAmount;
 	}
@@ -789,6 +1443,17 @@ public class Order extends ApiResource {
 
 	public String getTotalPaymentMethodTaxAmount() {
 		return this.totalPaymentMethodTaxAmount;
+	}
+	
+
+	public Order totalPaymentMethodTaxAmount(String totalPaymentMethodTaxAmount) {
+		setTotalPaymentMethodTaxAmount(totalPaymentMethodTaxAmount);
+		return this;
+	}
+	
+
+	public String totalPaymentMethodTaxAmount() {
+		return getTotalPaymentMethodTaxAmount();
 	}
 	
 
@@ -802,6 +1467,17 @@ public class Order extends ApiResource {
 	}
 	
 
+	public Order formattedTotalPaymentMethodTaxAmount(String formattedTotalPaymentMethodTaxAmount) {
+		setFormattedTotalPaymentMethodTaxAmount(formattedTotalPaymentMethodTaxAmount);
+		return this;
+	}
+	
+
+	public String formattedTotalPaymentMethodTaxAmount() {
+		return getFormattedTotalPaymentMethodTaxAmount();
+	}
+	
+
 	public void setDefaultShippingMethodId(String defaultShippingMethodId) {
 		this.defaultShippingMethodId = defaultShippingMethodId;
 	}
@@ -809,6 +1485,17 @@ public class Order extends ApiResource {
 
 	public String getDefaultShippingMethodId() {
 		return this.defaultShippingMethodId;
+	}
+	
+
+	public Order defaultShippingMethodId(String defaultShippingMethodId) {
+		setDefaultShippingMethodId(defaultShippingMethodId);
+		return this;
+	}
+	
+
+	public String defaultShippingMethodId() {
+		return getDefaultShippingMethodId();
 	}
 	
 
@@ -822,6 +1509,17 @@ public class Order extends ApiResource {
 	}
 	
 
+	public Order availableShippingServiceIds(String availableShippingServiceIds) {
+		setAvailableShippingServiceIds(availableShippingServiceIds);
+		return this;
+	}
+	
+
+	public String availableShippingServiceIds() {
+		return getAvailableShippingServiceIds();
+	}
+	
+
 	public void setAvailablePaymentTypeIds(String availablePaymentTypeIds) {
 		this.availablePaymentTypeIds = availablePaymentTypeIds;
 	}
@@ -832,23 +1530,14 @@ public class Order extends ApiResource {
 	}
 	
 
-	public void setPendingTransactions(String pendingTransactions) {
-		this.pendingTransactions = pendingTransactions;
+	public Order availablePaymentTypeIds(String availablePaymentTypeIds) {
+		setAvailablePaymentTypeIds(availablePaymentTypeIds);
+		return this;
 	}
 	
 
-	public String getPendingTransactions() {
-		return this.pendingTransactions;
-	}
-	
-
-	public void setPlaced(String placed) {
-		this.placed = placed;
-	}
-	
-
-	public String getPlaced() {
-		return this.placed;
+	public String availablePaymentTypeIds() {
+		return getAvailablePaymentTypeIds();
 	}
 	
 
@@ -861,7 +1550,6 @@ public class Order extends ApiResource {
 		Order x = (Order)o;
 	
 		return super.equals(o)
-			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.customerId, x.customerId)
 			&& Objects.equals(this.merchantId, x.merchantId)
 			&& Objects.equals(this.channelId, x.channelId)
@@ -875,7 +1563,6 @@ public class Order extends ApiResource {
 			&& Objects.equals(this.shippingMethodTaxable, x.shippingMethodTaxable)
 			&& Objects.equals(this.paymentMethodTaxable, x.paymentMethodTaxable)
 			&& Objects.equals(this.taxSource, x.taxSource)
-			&& Objects.equals(this.placedAt, x.placedAt)
 			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.customer, x.customer)
 			&& Objects.equals(this.channel, x.channel)
@@ -893,6 +1580,7 @@ public class Order extends ApiResource {
 			&& Objects.equals(this.paymentTypes, x.paymentTypes)
 			&& Objects.equals(this.marketShippingServices, x.marketShippingServices)
 			&& Objects.equals(this.shippingServices, x.shippingServices)
+			&& Objects.equals(this.orderConfirmation, x.orderConfirmation)
 			&& Objects.equals(this.totalAmountWithTax, x.totalAmountWithTax)
 			&& Objects.equals(this.formattedTotalAmountWithTax, x.formattedTotalAmountWithTax)
 			&& Objects.equals(this.totalAmount, x.totalAmount)
@@ -928,8 +1616,6 @@ public class Order extends ApiResource {
 			&& Objects.equals(this.defaultShippingMethodId, x.defaultShippingMethodId)
 			&& Objects.equals(this.availableShippingServiceIds, x.availableShippingServiceIds)
 			&& Objects.equals(this.availablePaymentTypeIds, x.availablePaymentTypeIds)
-			&& Objects.equals(this.pendingTransactions, x.pendingTransactions)
-			&& Objects.equals(this.placed, x.placed)
 		;
 	
 	}
@@ -939,20 +1625,20 @@ public class Order extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, customerId, merchantId, channelId, countryId,
-			marketId, currencyId, token, taxIncluded, taxRate,
-			hasNexus, shippingMethodTaxable, paymentMethodTaxable, taxSource, placedAt,
-			previousChanges, customer, channel, country, market,
-			merchant, currency, lineItems, lineItemStocks, paymentMethods,
-			shippingMethods, shipments, transactions, marketPaymentTypes, paymentTypes,
-			marketShippingServices, shippingServices, totalAmountWithTax, formattedTotalAmountWithTax, totalAmount,
-			formattedTotalAmount, totalLineItemAmount, formattedTotalLineItemAmount, totalShippingMethodAmount, formattedTotalShippingMethodAmount,
-			totalPaymentMethodPrice, formattedTotalPaymentMethodPrice, totalAmountWithPaymentMethodRequired, formattedTotalAmountWithPaymentMethodRequired, totalPaymentMethodAmount,
-			formattedTotalPaymentMethodAmount, amountWithMissingPaymentMethod, formattedAmountWithMissingPaymentMethod, totalTaxableAmount, formattedTotalTaxableAmount,
-			totalLineItemTaxableAmount, formattedTotalLineItemTaxableAmount, totalShippingMethodTaxableAmount, formattedTotalShippingMethodTaxableAmount, totalPaymentMethodTaxableAmount,
-			formattedTotalPaymentMethodTaxableAmount, totalTaxAmount, formattedTotalTaxAmount, totalLineItemTaxAmount, formattedTotalLineItemTaxAmount,
-			totalShippingMethodTaxAmount, formattedTotalShippingMethodTaxAmount, totalPaymentMethodTaxAmount, formattedTotalPaymentMethodTaxAmount, defaultShippingMethodId,
-			availableShippingServiceIds, availablePaymentTypeIds, pendingTransactions, placed 
+			customerId, merchantId, channelId, countryId, marketId,
+			currencyId, token, taxIncluded, taxRate, hasNexus,
+			shippingMethodTaxable, paymentMethodTaxable, taxSource, previousChanges, customer,
+			channel, country, market, merchant, currency,
+			lineItems, lineItemStocks, paymentMethods, shippingMethods, shipments,
+			transactions, marketPaymentTypes, paymentTypes, marketShippingServices, shippingServices,
+			orderConfirmation, totalAmountWithTax, formattedTotalAmountWithTax, totalAmount, formattedTotalAmount,
+			totalLineItemAmount, formattedTotalLineItemAmount, totalShippingMethodAmount, formattedTotalShippingMethodAmount, totalPaymentMethodPrice,
+			formattedTotalPaymentMethodPrice, totalAmountWithPaymentMethodRequired, formattedTotalAmountWithPaymentMethodRequired, totalPaymentMethodAmount, formattedTotalPaymentMethodAmount,
+			amountWithMissingPaymentMethod, formattedAmountWithMissingPaymentMethod, totalTaxableAmount, formattedTotalTaxableAmount, totalLineItemTaxableAmount,
+			formattedTotalLineItemTaxableAmount, totalShippingMethodTaxableAmount, formattedTotalShippingMethodTaxableAmount, totalPaymentMethodTaxableAmount, formattedTotalPaymentMethodTaxableAmount,
+			totalTaxAmount, formattedTotalTaxAmount, totalLineItemTaxAmount, formattedTotalLineItemTaxAmount, totalShippingMethodTaxAmount,
+			formattedTotalShippingMethodTaxAmount, totalPaymentMethodTaxAmount, formattedTotalPaymentMethodTaxAmount, defaultShippingMethodId, availableShippingServiceIds,
+			availablePaymentTypeIds 
 		);
 	
 	}
@@ -963,7 +1649,6 @@ public class Order extends ApiResource {
 	
 		Order no = new Order();
 	
-		no.name = this.name;
 		no.customerId = this.customerId;
 		no.merchantId = this.merchantId;
 		no.channelId = this.channelId;
@@ -977,7 +1662,6 @@ public class Order extends ApiResource {
 		no.shippingMethodTaxable = this.shippingMethodTaxable;
 		no.paymentMethodTaxable = this.paymentMethodTaxable;
 		no.taxSource = this.taxSource;
-		no.placedAt = this.placedAt;
 		no.previousChanges = this.previousChanges;
 		no.customer = this.customer;
 		no.channel = this.channel;
@@ -995,6 +1679,7 @@ public class Order extends ApiResource {
 		no.paymentTypes = this.paymentTypes;
 		no.marketShippingServices = this.marketShippingServices;
 		no.shippingServices = this.shippingServices;
+		no.orderConfirmation = this.orderConfirmation;
 		no.totalAmountWithTax = this.totalAmountWithTax;
 		no.formattedTotalAmountWithTax = this.formattedTotalAmountWithTax;
 		no.totalAmount = this.totalAmount;
@@ -1030,8 +1715,6 @@ public class Order extends ApiResource {
 		no.defaultShippingMethodId = this.defaultShippingMethodId;
 		no.availableShippingServiceIds = this.availableShippingServiceIds;
 		no.availablePaymentTypeIds = this.availablePaymentTypeIds;
-		no.pendingTransactions = this.pendingTransactions;
-		no.placed = this.placed;
 	
 		return no;
 	

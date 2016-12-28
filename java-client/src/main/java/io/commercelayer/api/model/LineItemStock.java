@@ -9,33 +9,35 @@ import io.commercelayer.api.json.JsonExclude;
  */
 public class LineItemStock extends ApiResource {
 
-	private static final long serialVersionUID = -1482880735294L;
+	private static final long serialVersionUID = -1482914097589L;
 
 
 	@JsonExclude
-	private String name;
+	private String orderId;
 	@JsonExclude
-	private Integer orderId;
+	private String marketId;
 	@JsonExclude
-	private Integer marketId;
+	private String countryId;
 	@JsonExclude
-	private Integer countryId;
+	private String shippingCategoryId;
+	private String lineItemId;
+	private String stockItemId;
 	@JsonExclude
-	private Integer shippingCategoryId;
-	private Integer lineItemId;
-	private Integer stockItemId;
-	@JsonExclude
-	private Integer sellableId;
+	private String sellableId;
 	@JsonExclude
 	private String sellableResource;
 	@JsonExclude
-	private Integer stockLocationId;
+	private String stockLocationId;
 	@JsonExclude
-	private Integer shippingMethodId;
+	private String shippingMethodId;
 	@JsonExclude
-	private Integer shipmentId;
+	private String shipmentId;
 	@JsonExclude
-	private Integer quantity;
+	private String quantity;
+	@JsonExclude
+	private String matchingShippingZoneIds;
+	@JsonExclude
+	private String availableShippingServiceIds;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
@@ -70,83 +72,150 @@ public class LineItemStock extends ApiResource {
 	}
 	
 
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-
-	public String getName() {
-		return this.name;
-	}
-	
-
-	public void setOrderId(Integer orderId) {
+	public void setOrderId(String orderId) {
 		this.orderId = orderId;
 	}
 	
 
-	public Integer getOrderId() {
+	public String getOrderId() {
 		return this.orderId;
 	}
 	
 
-	public void setMarketId(Integer marketId) {
+	public LineItemStock orderId(String orderId) {
+		setOrderId(orderId);
+		return this;
+	}
+	
+
+	public String orderId() {
+		return getOrderId();
+	}
+	
+
+	public void setMarketId(String marketId) {
 		this.marketId = marketId;
 	}
 	
 
-	public Integer getMarketId() {
+	public String getMarketId() {
 		return this.marketId;
 	}
 	
 
-	public void setCountryId(Integer countryId) {
+	public LineItemStock marketId(String marketId) {
+		setMarketId(marketId);
+		return this;
+	}
+	
+
+	public String marketId() {
+		return getMarketId();
+	}
+	
+
+	public void setCountryId(String countryId) {
 		this.countryId = countryId;
 	}
 	
 
-	public Integer getCountryId() {
+	public String getCountryId() {
 		return this.countryId;
 	}
 	
 
-	public void setShippingCategoryId(Integer shippingCategoryId) {
+	public LineItemStock countryId(String countryId) {
+		setCountryId(countryId);
+		return this;
+	}
+	
+
+	public String countryId() {
+		return getCountryId();
+	}
+	
+
+	public void setShippingCategoryId(String shippingCategoryId) {
 		this.shippingCategoryId = shippingCategoryId;
 	}
 	
 
-	public Integer getShippingCategoryId() {
+	public String getShippingCategoryId() {
 		return this.shippingCategoryId;
 	}
 	
 
-	public void setLineItemId(Integer lineItemId) {
+	public LineItemStock shippingCategoryId(String shippingCategoryId) {
+		setShippingCategoryId(shippingCategoryId);
+		return this;
+	}
+	
+
+	public String shippingCategoryId() {
+		return getShippingCategoryId();
+	}
+	
+
+	public void setLineItemId(String lineItemId) {
 		this.lineItemId = lineItemId;
 	}
 	
 
-	public Integer getLineItemId() {
+	public String getLineItemId() {
 		return this.lineItemId;
 	}
 	
 
-	public void setStockItemId(Integer stockItemId) {
+	public LineItemStock lineItemId(String lineItemId) {
+		setLineItemId(lineItemId);
+		return this;
+	}
+	
+
+	public String lineItemId() {
+		return getLineItemId();
+	}
+	
+
+	public void setStockItemId(String stockItemId) {
 		this.stockItemId = stockItemId;
 	}
 	
 
-	public Integer getStockItemId() {
+	public String getStockItemId() {
 		return this.stockItemId;
 	}
 	
 
-	public void setSellableId(Integer sellableId) {
+	public LineItemStock stockItemId(String stockItemId) {
+		setStockItemId(stockItemId);
+		return this;
+	}
+	
+
+	public String stockItemId() {
+		return getStockItemId();
+	}
+	
+
+	public void setSellableId(String sellableId) {
 		this.sellableId = sellableId;
 	}
 	
 
-	public Integer getSellableId() {
+	public String getSellableId() {
 		return this.sellableId;
+	}
+	
+
+	public LineItemStock sellableId(String sellableId) {
+		setSellableId(sellableId);
+		return this;
+	}
+	
+
+	public String sellableId() {
+		return getSellableId();
 	}
 	
 
@@ -160,43 +229,140 @@ public class LineItemStock extends ApiResource {
 	}
 	
 
-	public void setStockLocationId(Integer stockLocationId) {
+	public LineItemStock sellableResource(String sellableResource) {
+		setSellableResource(sellableResource);
+		return this;
+	}
+	
+
+	public String sellableResource() {
+		return getSellableResource();
+	}
+	
+
+	public void setStockLocationId(String stockLocationId) {
 		this.stockLocationId = stockLocationId;
 	}
 	
 
-	public Integer getStockLocationId() {
+	public String getStockLocationId() {
 		return this.stockLocationId;
 	}
 	
 
-	public void setShippingMethodId(Integer shippingMethodId) {
+	public LineItemStock stockLocationId(String stockLocationId) {
+		setStockLocationId(stockLocationId);
+		return this;
+	}
+	
+
+	public String stockLocationId() {
+		return getStockLocationId();
+	}
+	
+
+	public void setShippingMethodId(String shippingMethodId) {
 		this.shippingMethodId = shippingMethodId;
 	}
 	
 
-	public Integer getShippingMethodId() {
+	public String getShippingMethodId() {
 		return this.shippingMethodId;
 	}
 	
 
-	public void setShipmentId(Integer shipmentId) {
+	public LineItemStock shippingMethodId(String shippingMethodId) {
+		setShippingMethodId(shippingMethodId);
+		return this;
+	}
+	
+
+	public String shippingMethodId() {
+		return getShippingMethodId();
+	}
+	
+
+	public void setShipmentId(String shipmentId) {
 		this.shipmentId = shipmentId;
 	}
 	
 
-	public Integer getShipmentId() {
+	public String getShipmentId() {
 		return this.shipmentId;
 	}
 	
 
-	public void setQuantity(Integer quantity) {
+	public LineItemStock shipmentId(String shipmentId) {
+		setShipmentId(shipmentId);
+		return this;
+	}
+	
+
+	public String shipmentId() {
+		return getShipmentId();
+	}
+	
+
+	public void setQuantity(String quantity) {
 		this.quantity = quantity;
 	}
 	
 
-	public Integer getQuantity() {
+	public String getQuantity() {
 		return this.quantity;
+	}
+	
+
+	public LineItemStock quantity(String quantity) {
+		setQuantity(quantity);
+		return this;
+	}
+	
+
+	public String quantity() {
+		return getQuantity();
+	}
+	
+
+	public void setMatchingShippingZoneIds(String matchingShippingZoneIds) {
+		this.matchingShippingZoneIds = matchingShippingZoneIds;
+	}
+	
+
+	public String getMatchingShippingZoneIds() {
+		return this.matchingShippingZoneIds;
+	}
+	
+
+	public LineItemStock matchingShippingZoneIds(String matchingShippingZoneIds) {
+		setMatchingShippingZoneIds(matchingShippingZoneIds);
+		return this;
+	}
+	
+
+	public String matchingShippingZoneIds() {
+		return getMatchingShippingZoneIds();
+	}
+	
+
+	public void setAvailableShippingServiceIds(String availableShippingServiceIds) {
+		this.availableShippingServiceIds = availableShippingServiceIds;
+	}
+	
+
+	public String getAvailableShippingServiceIds() {
+		return this.availableShippingServiceIds;
+	}
+	
+
+	public LineItemStock availableShippingServiceIds(String availableShippingServiceIds) {
+		setAvailableShippingServiceIds(availableShippingServiceIds);
+		return this;
+	}
+	
+
+	public String availableShippingServiceIds() {
+		return getAvailableShippingServiceIds();
 	}
 	
 
@@ -210,6 +376,17 @@ public class LineItemStock extends ApiResource {
 	}
 	
 
+	public LineItemStock previousChanges(Object previousChanges) {
+		setPreviousChanges(previousChanges);
+		return this;
+	}
+	
+
+	public Object previousChanges() {
+		return getPreviousChanges();
+	}
+	
+
 	public void setShippingCategory(Object shippingCategory) {
 		this.shippingCategory = shippingCategory;
 	}
@@ -217,6 +394,17 @@ public class LineItemStock extends ApiResource {
 
 	public Object getShippingCategory() {
 		return this.shippingCategory;
+	}
+	
+
+	public LineItemStock shippingCategory(Object shippingCategory) {
+		setShippingCategory(shippingCategory);
+		return this;
+	}
+	
+
+	public Object shippingCategory() {
+		return getShippingCategory();
 	}
 	
 
@@ -230,6 +418,17 @@ public class LineItemStock extends ApiResource {
 	}
 	
 
+	public LineItemStock order(Object order) {
+		setOrder(order);
+		return this;
+	}
+	
+
+	public Object order() {
+		return getOrder();
+	}
+	
+
 	public void setMarket(Object market) {
 		this.market = market;
 	}
@@ -237,6 +436,17 @@ public class LineItemStock extends ApiResource {
 
 	public Object getMarket() {
 		return this.market;
+	}
+	
+
+	public LineItemStock market(Object market) {
+		setMarket(market);
+		return this;
+	}
+	
+
+	public Object market() {
+		return getMarket();
 	}
 	
 
@@ -250,6 +460,17 @@ public class LineItemStock extends ApiResource {
 	}
 	
 
+	public LineItemStock country(Object country) {
+		setCountry(country);
+		return this;
+	}
+	
+
+	public Object country() {
+		return getCountry();
+	}
+	
+
 	public void setLineItem(Object lineItem) {
 		this.lineItem = lineItem;
 	}
@@ -257,6 +478,17 @@ public class LineItemStock extends ApiResource {
 
 	public Object getLineItem() {
 		return this.lineItem;
+	}
+	
+
+	public LineItemStock lineItem(Object lineItem) {
+		setLineItem(lineItem);
+		return this;
+	}
+	
+
+	public Object lineItem() {
+		return getLineItem();
 	}
 	
 
@@ -270,6 +502,17 @@ public class LineItemStock extends ApiResource {
 	}
 	
 
+	public LineItemStock stockItem(Object stockItem) {
+		setStockItem(stockItem);
+		return this;
+	}
+	
+
+	public Object stockItem() {
+		return getStockItem();
+	}
+	
+
 	public void setSellable(Object sellable) {
 		this.sellable = sellable;
 	}
@@ -277,6 +520,17 @@ public class LineItemStock extends ApiResource {
 
 	public Object getSellable() {
 		return this.sellable;
+	}
+	
+
+	public LineItemStock sellable(Object sellable) {
+		setSellable(sellable);
+		return this;
+	}
+	
+
+	public Object sellable() {
+		return getSellable();
 	}
 	
 
@@ -290,6 +544,17 @@ public class LineItemStock extends ApiResource {
 	}
 	
 
+	public LineItemStock stockLocation(Object stockLocation) {
+		setStockLocation(stockLocation);
+		return this;
+	}
+	
+
+	public Object stockLocation() {
+		return getStockLocation();
+	}
+	
+
 	public void setShippingMethod(Object shippingMethod) {
 		this.shippingMethod = shippingMethod;
 	}
@@ -297,6 +562,17 @@ public class LineItemStock extends ApiResource {
 
 	public Object getShippingMethod() {
 		return this.shippingMethod;
+	}
+	
+
+	public LineItemStock shippingMethod(Object shippingMethod) {
+		setShippingMethod(shippingMethod);
+		return this;
+	}
+	
+
+	public Object shippingMethod() {
+		return getShippingMethod();
 	}
 	
 
@@ -310,6 +586,17 @@ public class LineItemStock extends ApiResource {
 	}
 	
 
+	public LineItemStock shipment(Object shipment) {
+		setShipment(shipment);
+		return this;
+	}
+	
+
+	public Object shipment() {
+		return getShipment();
+	}
+	
+
 	@Override
 	public boolean equals(Object o) {
 	
@@ -319,7 +606,6 @@ public class LineItemStock extends ApiResource {
 		LineItemStock x = (LineItemStock)o;
 	
 		return super.equals(o)
-			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.orderId, x.orderId)
 			&& Objects.equals(this.marketId, x.marketId)
 			&& Objects.equals(this.countryId, x.countryId)
@@ -332,6 +618,8 @@ public class LineItemStock extends ApiResource {
 			&& Objects.equals(this.shippingMethodId, x.shippingMethodId)
 			&& Objects.equals(this.shipmentId, x.shipmentId)
 			&& Objects.equals(this.quantity, x.quantity)
+			&& Objects.equals(this.matchingShippingZoneIds, x.matchingShippingZoneIds)
+			&& Objects.equals(this.availableShippingServiceIds, x.availableShippingServiceIds)
 			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.shippingCategory, x.shippingCategory)
 			&& Objects.equals(this.order, x.order)
@@ -352,11 +640,12 @@ public class LineItemStock extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, orderId, marketId, countryId, shippingCategoryId,
-			lineItemId, stockItemId, sellableId, sellableResource, stockLocationId,
-			shippingMethodId, shipmentId, quantity, previousChanges, shippingCategory,
-			order, market, country, lineItem, stockItem,
-			sellable, stockLocation, shippingMethod, shipment 
+			orderId, marketId, countryId, shippingCategoryId, lineItemId,
+			stockItemId, sellableId, sellableResource, stockLocationId, shippingMethodId,
+			shipmentId, quantity, matchingShippingZoneIds, availableShippingServiceIds, previousChanges,
+			shippingCategory, order, market, country, lineItem,
+			stockItem, sellable, stockLocation, shippingMethod, shipment
+			
 		);
 	
 	}
@@ -367,7 +656,6 @@ public class LineItemStock extends ApiResource {
 	
 		LineItemStock no = new LineItemStock();
 	
-		no.name = this.name;
 		no.orderId = this.orderId;
 		no.marketId = this.marketId;
 		no.countryId = this.countryId;
@@ -380,6 +668,8 @@ public class LineItemStock extends ApiResource {
 		no.shippingMethodId = this.shippingMethodId;
 		no.shipmentId = this.shipmentId;
 		no.quantity = this.quantity;
+		no.matchingShippingZoneIds = this.matchingShippingZoneIds;
+		no.availableShippingServiceIds = this.availableShippingServiceIds;
 		no.previousChanges = this.previousChanges;
 		no.shippingCategory = this.shippingCategory;
 		no.order = this.order;

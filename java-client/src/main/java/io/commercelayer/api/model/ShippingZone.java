@@ -10,10 +10,10 @@ import java.util.List;
  */
 public class ShippingZone extends ApiResource {
 
-	private static final long serialVersionUID = -1482880735355L;
+	private static final long serialVersionUID = -1482914098028L;
 
 
-	private Integer countryGroupId;
+	private String countryGroupId;
 	private String name;
 	@JsonExclude
 	private String countryCodeRegex;
@@ -47,13 +47,24 @@ public class ShippingZone extends ApiResource {
 	}
 	
 
-	public void setCountryGroupId(Integer countryGroupId) {
+	public void setCountryGroupId(String countryGroupId) {
 		this.countryGroupId = countryGroupId;
 	}
 	
 
-	public Integer getCountryGroupId() {
+	public String getCountryGroupId() {
 		return this.countryGroupId;
+	}
+	
+
+	public ShippingZone countryGroupId(String countryGroupId) {
+		setCountryGroupId(countryGroupId);
+		return this;
+	}
+	
+
+	public String countryGroupId() {
+		return getCountryGroupId();
 	}
 	
 
@@ -67,6 +78,17 @@ public class ShippingZone extends ApiResource {
 	}
 	
 
+	public ShippingZone name(String name) {
+		setName(name);
+		return this;
+	}
+	
+
+	public String name() {
+		return getName();
+	}
+	
+
 	public void setCountryCodeRegex(String countryCodeRegex) {
 		this.countryCodeRegex = countryCodeRegex;
 	}
@@ -74,6 +96,17 @@ public class ShippingZone extends ApiResource {
 
 	public String getCountryCodeRegex() {
 		return this.countryCodeRegex;
+	}
+	
+
+	public ShippingZone countryCodeRegex(String countryCodeRegex) {
+		setCountryCodeRegex(countryCodeRegex);
+		return this;
+	}
+	
+
+	public String countryCodeRegex() {
+		return getCountryCodeRegex();
 	}
 	
 
@@ -87,6 +120,17 @@ public class ShippingZone extends ApiResource {
 	}
 	
 
+	public ShippingZone notCountryCodeRegex(String notCountryCodeRegex) {
+		setNotCountryCodeRegex(notCountryCodeRegex);
+		return this;
+	}
+	
+
+	public String notCountryCodeRegex() {
+		return getNotCountryCodeRegex();
+	}
+	
+
 	public void setStateCodeRegex(String stateCodeRegex) {
 		this.stateCodeRegex = stateCodeRegex;
 	}
@@ -94,6 +138,17 @@ public class ShippingZone extends ApiResource {
 
 	public String getStateCodeRegex() {
 		return this.stateCodeRegex;
+	}
+	
+
+	public ShippingZone stateCodeRegex(String stateCodeRegex) {
+		setStateCodeRegex(stateCodeRegex);
+		return this;
+	}
+	
+
+	public String stateCodeRegex() {
+		return getStateCodeRegex();
 	}
 	
 
@@ -107,6 +162,17 @@ public class ShippingZone extends ApiResource {
 	}
 	
 
+	public ShippingZone notStateCodeRegex(String notStateCodeRegex) {
+		setNotStateCodeRegex(notStateCodeRegex);
+		return this;
+	}
+	
+
+	public String notStateCodeRegex() {
+		return getNotStateCodeRegex();
+	}
+	
+
 	public void setZipCodeRegex(String zipCodeRegex) {
 		this.zipCodeRegex = zipCodeRegex;
 	}
@@ -114,6 +180,17 @@ public class ShippingZone extends ApiResource {
 
 	public String getZipCodeRegex() {
 		return this.zipCodeRegex;
+	}
+	
+
+	public ShippingZone zipCodeRegex(String zipCodeRegex) {
+		setZipCodeRegex(zipCodeRegex);
+		return this;
+	}
+	
+
+	public String zipCodeRegex() {
+		return getZipCodeRegex();
 	}
 	
 
@@ -127,6 +204,17 @@ public class ShippingZone extends ApiResource {
 	}
 	
 
+	public ShippingZone notZipCodeRegex(String notZipCodeRegex) {
+		setNotZipCodeRegex(notZipCodeRegex);
+		return this;
+	}
+	
+
+	public String notZipCodeRegex() {
+		return getNotZipCodeRegex();
+	}
+	
+
 	public void setPreviousChanges(Object previousChanges) {
 		this.previousChanges = previousChanges;
 	}
@@ -134,6 +222,17 @@ public class ShippingZone extends ApiResource {
 
 	public Object getPreviousChanges() {
 		return this.previousChanges;
+	}
+	
+
+	public ShippingZone previousChanges(Object previousChanges) {
+		setPreviousChanges(previousChanges);
+		return this;
+	}
+	
+
+	public Object previousChanges() {
+		return getPreviousChanges();
 	}
 	
 
@@ -147,6 +246,17 @@ public class ShippingZone extends ApiResource {
 	}
 	
 
+	public ShippingZone countryGroup(Object countryGroup) {
+		setCountryGroup(countryGroup);
+		return this;
+	}
+	
+
+	public Object countryGroup() {
+		return getCountryGroup();
+	}
+	
+
 	public void setShippingServiceZones(List<String> shippingServiceZones) {
 		this.shippingServiceZones = shippingServiceZones;
 	}
@@ -157,6 +267,17 @@ public class ShippingZone extends ApiResource {
 	}
 	
 
+	public ShippingZone shippingServiceZones(List<String> shippingServiceZones) {
+		setShippingServiceZones(shippingServiceZones);
+		return this;
+	}
+	
+
+	public List<String> shippingServiceZones() {
+		return getShippingServiceZones();
+	}
+	
+
 	public void setShippingServices(List<String> shippingServices) {
 		this.shippingServices = shippingServices;
 	}
@@ -164,6 +285,17 @@ public class ShippingZone extends ApiResource {
 
 	public List<String> getShippingServices() {
 		return this.shippingServices;
+	}
+	
+
+	public ShippingZone shippingServices(List<String> shippingServices) {
+		setShippingServices(shippingServices);
+		return this;
+	}
+	
+
+	public List<String> shippingServices() {
+		return getShippingServices();
 	}
 	
 

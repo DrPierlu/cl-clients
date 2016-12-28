@@ -9,13 +9,11 @@ import io.commercelayer.api.json.JsonExclude;
  */
 public class ShippingServiceCategory extends ApiResource {
 
-	private static final long serialVersionUID = -1482880735351L;
+	private static final long serialVersionUID = -1482914098007L;
 
 
-	@JsonExclude
-	private String name;
-	private Integer shippingServiceId;
-	private Integer shippingCategoryId;
+	private String shippingServiceId;
+	private String shippingCategoryId;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
@@ -34,33 +32,45 @@ public class ShippingServiceCategory extends ApiResource {
 	}
 	
 
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-
-	public String getName() {
-		return this.name;
-	}
-	
-
-	public void setShippingServiceId(Integer shippingServiceId) {
+	public void setShippingServiceId(String shippingServiceId) {
 		this.shippingServiceId = shippingServiceId;
 	}
 	
 
-	public Integer getShippingServiceId() {
+	public String getShippingServiceId() {
 		return this.shippingServiceId;
 	}
 	
 
-	public void setShippingCategoryId(Integer shippingCategoryId) {
+	public ShippingServiceCategory shippingServiceId(String shippingServiceId) {
+		setShippingServiceId(shippingServiceId);
+		return this;
+	}
+	
+
+	public String shippingServiceId() {
+		return getShippingServiceId();
+	}
+	
+
+	public void setShippingCategoryId(String shippingCategoryId) {
 		this.shippingCategoryId = shippingCategoryId;
 	}
 	
 
-	public Integer getShippingCategoryId() {
+	public String getShippingCategoryId() {
 		return this.shippingCategoryId;
+	}
+	
+
+	public ShippingServiceCategory shippingCategoryId(String shippingCategoryId) {
+		setShippingCategoryId(shippingCategoryId);
+		return this;
+	}
+	
+
+	public String shippingCategoryId() {
+		return getShippingCategoryId();
 	}
 	
 
@@ -74,6 +84,17 @@ public class ShippingServiceCategory extends ApiResource {
 	}
 	
 
+	public ShippingServiceCategory previousChanges(Object previousChanges) {
+		setPreviousChanges(previousChanges);
+		return this;
+	}
+	
+
+	public Object previousChanges() {
+		return getPreviousChanges();
+	}
+	
+
 	public void setShippingService(Object shippingService) {
 		this.shippingService = shippingService;
 	}
@@ -81,6 +102,17 @@ public class ShippingServiceCategory extends ApiResource {
 
 	public Object getShippingService() {
 		return this.shippingService;
+	}
+	
+
+	public ShippingServiceCategory shippingService(Object shippingService) {
+		setShippingService(shippingService);
+		return this;
+	}
+	
+
+	public Object shippingService() {
+		return getShippingService();
 	}
 	
 
@@ -94,6 +126,17 @@ public class ShippingServiceCategory extends ApiResource {
 	}
 	
 
+	public ShippingServiceCategory shippingCategory(Object shippingCategory) {
+		setShippingCategory(shippingCategory);
+		return this;
+	}
+	
+
+	public Object shippingCategory() {
+		return getShippingCategory();
+	}
+	
+
 	@Override
 	public boolean equals(Object o) {
 	
@@ -103,7 +146,6 @@ public class ShippingServiceCategory extends ApiResource {
 		ShippingServiceCategory x = (ShippingServiceCategory)o;
 	
 		return super.equals(o)
-			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.shippingServiceId, x.shippingServiceId)
 			&& Objects.equals(this.shippingCategoryId, x.shippingCategoryId)
 			&& Objects.equals(this.previousChanges, x.previousChanges)
@@ -118,8 +160,8 @@ public class ShippingServiceCategory extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, shippingServiceId, shippingCategoryId, previousChanges, shippingService,
-			shippingCategory 
+			shippingServiceId, shippingCategoryId, previousChanges, shippingService, shippingCategory
+			
 		);
 	
 	}
@@ -130,7 +172,6 @@ public class ShippingServiceCategory extends ApiResource {
 	
 		ShippingServiceCategory no = new ShippingServiceCategory();
 	
-		no.name = this.name;
 		no.shippingServiceId = this.shippingServiceId;
 		no.shippingCategoryId = this.shippingCategoryId;
 		no.previousChanges = this.previousChanges;

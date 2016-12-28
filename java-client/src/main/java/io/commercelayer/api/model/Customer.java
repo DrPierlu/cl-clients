@@ -10,11 +10,9 @@ import java.util.List;
  */
 public class Customer extends ApiResource {
 
-	private static final long serialVersionUID = -1482880735280L;
+	private static final long serialVersionUID = -1482914097548L;
 
 
-	@JsonExclude
-	private String name;
 	private String email;
 	@JsonExclude
 	private Object previousChanges;
@@ -34,16 +32,6 @@ public class Customer extends ApiResource {
 	}
 	
 
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-
-	public String getName() {
-		return this.name;
-	}
-	
-
 	public void setEmail(String email) {
 		this.email = email;
 	}
@@ -51,6 +39,17 @@ public class Customer extends ApiResource {
 
 	public String getEmail() {
 		return this.email;
+	}
+	
+
+	public Customer email(String email) {
+		setEmail(email);
+		return this;
+	}
+	
+
+	public String email() {
+		return getEmail();
 	}
 	
 
@@ -64,6 +63,17 @@ public class Customer extends ApiResource {
 	}
 	
 
+	public Customer previousChanges(Object previousChanges) {
+		setPreviousChanges(previousChanges);
+		return this;
+	}
+	
+
+	public Object previousChanges() {
+		return getPreviousChanges();
+	}
+	
+
 	public void setResourceImages(List<String> resourceImages) {
 		this.resourceImages = resourceImages;
 	}
@@ -71,6 +81,17 @@ public class Customer extends ApiResource {
 
 	public List<String> getResourceImages() {
 		return this.resourceImages;
+	}
+	
+
+	public Customer resourceImages(List<String> resourceImages) {
+		setResourceImages(resourceImages);
+		return this;
+	}
+	
+
+	public List<String> resourceImages() {
+		return getResourceImages();
 	}
 	
 
@@ -84,6 +105,17 @@ public class Customer extends ApiResource {
 	}
 	
 
+	public Customer images(List<String> images) {
+		setImages(images);
+		return this;
+	}
+	
+
+	public List<String> images() {
+		return getImages();
+	}
+	
+
 	@Override
 	public boolean equals(Object o) {
 	
@@ -93,7 +125,6 @@ public class Customer extends ApiResource {
 		Customer x = (Customer)o;
 	
 		return super.equals(o)
-			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.email, x.email)
 			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.resourceImages, x.resourceImages)
@@ -107,8 +138,7 @@ public class Customer extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, email, previousChanges, resourceImages, images
-			
+			email, previousChanges, resourceImages, images 
 		);
 	
 	}
@@ -119,7 +149,6 @@ public class Customer extends ApiResource {
 	
 		Customer no = new Customer();
 	
-		no.name = this.name;
 		no.email = this.email;
 		no.previousChanges = this.previousChanges;
 		no.resourceImages = this.resourceImages;

@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class ShippingCategory extends ApiResource {
 
-	private static final long serialVersionUID = -1482880735344L;
+	private static final long serialVersionUID = -1482914097968L;
 
 
 	private String name;
@@ -48,6 +48,17 @@ public class ShippingCategory extends ApiResource {
 	}
 	
 
+	public ShippingCategory name(String name) {
+		setName(name);
+		return this;
+	}
+	
+
+	public String name() {
+		return getName();
+	}
+	
+
 	public void setPreviousChanges(Object previousChanges) {
 		this.previousChanges = previousChanges;
 	}
@@ -55,6 +66,17 @@ public class ShippingCategory extends ApiResource {
 
 	public Object getPreviousChanges() {
 		return this.previousChanges;
+	}
+	
+
+	public ShippingCategory previousChanges(Object previousChanges) {
+		setPreviousChanges(previousChanges);
+		return this;
+	}
+	
+
+	public Object previousChanges() {
+		return getPreviousChanges();
 	}
 	
 
@@ -68,6 +90,17 @@ public class ShippingCategory extends ApiResource {
 	}
 	
 
+	public ShippingCategory products(List<String> products) {
+		setProducts(products);
+		return this;
+	}
+	
+
+	public List<String> products() {
+		return getProducts();
+	}
+	
+
 	public void setVariants(List<String> variants) {
 		this.variants = variants;
 	}
@@ -75,6 +108,17 @@ public class ShippingCategory extends ApiResource {
 
 	public List<String> getVariants() {
 		return this.variants;
+	}
+	
+
+	public ShippingCategory variants(List<String> variants) {
+		setVariants(variants);
+		return this;
+	}
+	
+
+	public List<String> variants() {
+		return getVariants();
 	}
 	
 
@@ -88,6 +132,17 @@ public class ShippingCategory extends ApiResource {
 	}
 	
 
+	public ShippingCategory shippingServiceCategories(List<String> shippingServiceCategories) {
+		setShippingServiceCategories(shippingServiceCategories);
+		return this;
+	}
+	
+
+	public List<String> shippingServiceCategories() {
+		return getShippingServiceCategories();
+	}
+	
+
 	public void setLineItemStocks(List<String> lineItemStocks) {
 		this.lineItemStocks = lineItemStocks;
 	}
@@ -98,6 +153,17 @@ public class ShippingCategory extends ApiResource {
 	}
 	
 
+	public ShippingCategory lineItemStocks(List<String> lineItemStocks) {
+		setLineItemStocks(lineItemStocks);
+		return this;
+	}
+	
+
+	public List<String> lineItemStocks() {
+		return getLineItemStocks();
+	}
+	
+
 	public void setShippingServices(List<String> shippingServices) {
 		this.shippingServices = shippingServices;
 	}
@@ -105,6 +171,17 @@ public class ShippingCategory extends ApiResource {
 
 	public List<String> getShippingServices() {
 		return this.shippingServices;
+	}
+	
+
+	public ShippingCategory shippingServices(List<String> shippingServices) {
+		setShippingServices(shippingServices);
+		return this;
+	}
+	
+
+	public List<String> shippingServices() {
+		return getShippingServices();
 	}
 	
 

@@ -9,12 +9,10 @@ import io.commercelayer.api.json.JsonExclude;
  */
 public class ShippingLabel extends ApiResource {
 
-	private static final long serialVersionUID = -1482880735346L;
+	private static final long serialVersionUID = -1482914097974L;
 
 
-	@JsonExclude
-	private String name;
-	private Integer shipmentId;
+	private String shipmentId;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
@@ -31,23 +29,24 @@ public class ShippingLabel extends ApiResource {
 	}
 	
 
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-
-	public String getName() {
-		return this.name;
-	}
-	
-
-	public void setShipmentId(Integer shipmentId) {
+	public void setShipmentId(String shipmentId) {
 		this.shipmentId = shipmentId;
 	}
 	
 
-	public Integer getShipmentId() {
+	public String getShipmentId() {
 		return this.shipmentId;
+	}
+	
+
+	public ShippingLabel shipmentId(String shipmentId) {
+		setShipmentId(shipmentId);
+		return this;
+	}
+	
+
+	public String shipmentId() {
+		return getShipmentId();
 	}
 	
 
@@ -61,6 +60,17 @@ public class ShippingLabel extends ApiResource {
 	}
 	
 
+	public ShippingLabel previousChanges(Object previousChanges) {
+		setPreviousChanges(previousChanges);
+		return this;
+	}
+	
+
+	public Object previousChanges() {
+		return getPreviousChanges();
+	}
+	
+
 	public void setShipment(Object shipment) {
 		this.shipment = shipment;
 	}
@@ -68,6 +78,17 @@ public class ShippingLabel extends ApiResource {
 
 	public Object getShipment() {
 		return this.shipment;
+	}
+	
+
+	public ShippingLabel shipment(Object shipment) {
+		setShipment(shipment);
+		return this;
+	}
+	
+
+	public Object shipment() {
+		return getShipment();
 	}
 	
 
@@ -80,7 +101,6 @@ public class ShippingLabel extends ApiResource {
 		ShippingLabel x = (ShippingLabel)o;
 	
 		return super.equals(o)
-			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.shipmentId, x.shipmentId)
 			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.shipment, x.shipment)
@@ -93,7 +113,7 @@ public class ShippingLabel extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, shipmentId, previousChanges, shipment 
+			shipmentId, previousChanges, shipment 
 		);
 	
 	}
@@ -104,7 +124,6 @@ public class ShippingLabel extends ApiResource {
 	
 		ShippingLabel no = new ShippingLabel();
 	
-		no.name = this.name;
 		no.shipmentId = this.shipmentId;
 		no.previousChanges = this.previousChanges;
 		no.shipment = this.shipment;

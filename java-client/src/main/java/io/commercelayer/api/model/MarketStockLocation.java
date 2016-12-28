@@ -9,15 +9,13 @@ import io.commercelayer.api.json.JsonExclude;
  */
 public class MarketStockLocation extends ApiResource {
 
-	private static final long serialVersionUID = -1482880735301L;
+	private static final long serialVersionUID = -1482914097638L;
 
 
+	private String marketId;
+	private String stockLocationId;
 	@JsonExclude
-	private String name;
-	private Integer marketId;
-	private Integer stockLocationId;
-	@JsonExclude
-	private Integer position;
+	private String position;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
@@ -36,43 +34,66 @@ public class MarketStockLocation extends ApiResource {
 	}
 	
 
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-
-	public String getName() {
-		return this.name;
-	}
-	
-
-	public void setMarketId(Integer marketId) {
+	public void setMarketId(String marketId) {
 		this.marketId = marketId;
 	}
 	
 
-	public Integer getMarketId() {
+	public String getMarketId() {
 		return this.marketId;
 	}
 	
 
-	public void setStockLocationId(Integer stockLocationId) {
+	public MarketStockLocation marketId(String marketId) {
+		setMarketId(marketId);
+		return this;
+	}
+	
+
+	public String marketId() {
+		return getMarketId();
+	}
+	
+
+	public void setStockLocationId(String stockLocationId) {
 		this.stockLocationId = stockLocationId;
 	}
 	
 
-	public Integer getStockLocationId() {
+	public String getStockLocationId() {
 		return this.stockLocationId;
 	}
 	
 
-	public void setPosition(Integer position) {
+	public MarketStockLocation stockLocationId(String stockLocationId) {
+		setStockLocationId(stockLocationId);
+		return this;
+	}
+	
+
+	public String stockLocationId() {
+		return getStockLocationId();
+	}
+	
+
+	public void setPosition(String position) {
 		this.position = position;
 	}
 	
 
-	public Integer getPosition() {
+	public String getPosition() {
 		return this.position;
+	}
+	
+
+	public MarketStockLocation position(String position) {
+		setPosition(position);
+		return this;
+	}
+	
+
+	public String position() {
+		return getPosition();
 	}
 	
 
@@ -86,6 +107,17 @@ public class MarketStockLocation extends ApiResource {
 	}
 	
 
+	public MarketStockLocation previousChanges(Object previousChanges) {
+		setPreviousChanges(previousChanges);
+		return this;
+	}
+	
+
+	public Object previousChanges() {
+		return getPreviousChanges();
+	}
+	
+
 	public void setMarket(Object market) {
 		this.market = market;
 	}
@@ -93,6 +125,17 @@ public class MarketStockLocation extends ApiResource {
 
 	public Object getMarket() {
 		return this.market;
+	}
+	
+
+	public MarketStockLocation market(Object market) {
+		setMarket(market);
+		return this;
+	}
+	
+
+	public Object market() {
+		return getMarket();
 	}
 	
 
@@ -106,6 +149,17 @@ public class MarketStockLocation extends ApiResource {
 	}
 	
 
+	public MarketStockLocation stockLocation(Object stockLocation) {
+		setStockLocation(stockLocation);
+		return this;
+	}
+	
+
+	public Object stockLocation() {
+		return getStockLocation();
+	}
+	
+
 	@Override
 	public boolean equals(Object o) {
 	
@@ -115,7 +169,6 @@ public class MarketStockLocation extends ApiResource {
 		MarketStockLocation x = (MarketStockLocation)o;
 	
 		return super.equals(o)
-			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.marketId, x.marketId)
 			&& Objects.equals(this.stockLocationId, x.stockLocationId)
 			&& Objects.equals(this.position, x.position)
@@ -131,8 +184,8 @@ public class MarketStockLocation extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, marketId, stockLocationId, position, previousChanges,
-			market, stockLocation 
+			marketId, stockLocationId, position, previousChanges, market,
+			stockLocation 
 		);
 	
 	}
@@ -143,7 +196,6 @@ public class MarketStockLocation extends ApiResource {
 	
 		MarketStockLocation no = new MarketStockLocation();
 	
-		no.name = this.name;
 		no.marketId = this.marketId;
 		no.stockLocationId = this.stockLocationId;
 		no.position = this.position;

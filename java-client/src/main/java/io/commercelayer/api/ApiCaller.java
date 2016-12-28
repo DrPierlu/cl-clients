@@ -25,6 +25,7 @@ import io.commercelayer.api.operation.common.ApiOperation;
 import io.commercelayer.api.operation.common.DeleteOperation;
 import io.commercelayer.api.operation.common.GetIdOperation;
 import io.commercelayer.api.operation.common.MoveOperation;
+import io.commercelayer.api.operation.common.PayloadOperation;
 import io.commercelayer.api.operation.common.PostOperation;
 import io.commercelayer.api.operation.common.PutOperation;
 import io.commercelayer.api.operation.common.SearchOperation;
@@ -69,16 +70,24 @@ public class ApiCaller {
 	}
 	
 	
+	public <T extends ApiResource> ApiResponse<T> move(ApiRequest<MoveOperation> apiRequest) throws ApiException {
+		return get(apiRequest);
+	}
+	
 	public <T extends ApiResource> ApiResponse<T> move(ApiRequest<MoveOperation> apiRequest, Class<T> resourceType) throws ApiException {
 		return get(apiRequest, resourceType);
 	}
 	
 	
+	public <T extends ApiResource> ApiResponse<T> get(ApiRequest<? extends GetIdOperation> apiRequest) throws ApiException {
+		return get(apiRequest, null);
+	}
+	
 	public <T extends ApiResource> ApiResponse<T> get(ApiRequest<? extends GetIdOperation> apiRequest, Class<T> resourceType) throws ApiException {
 
 		final GetIdOperation operation = apiRequest.getOperation();
 		
-		logger.info("GET execution [{}, {}]", operation.getPath(), operation.getId());
+		logger.info("{} execution [{}, {}]", operation.getMethod(), operation.getPath(), operation.getId());
 
 		HttpRequest request = createHttpRequest(operation);
 
@@ -86,7 +95,8 @@ public class ApiCaller {
 		
 		try {
 			HttpResponse response = call(request);
-			T resourceObject = jsonCodec.fromJSON(response.getBody(), resourceType);
+			T resourceObject = null;
+			if (resourceType != null) resourceObject = jsonCodec.fromJSON(response.getBody(), resourceType);
 			apiResponse = new ApiResponse<>(resourceObject);
 		}
 		catch (ApiException ae) {
@@ -129,20 +139,26 @@ public class ApiCaller {
 	}
 
 	
+	public <T extends ApiResource> ApiResponse<T> put(ApiRequest<PutOperation> apiRequest) throws ApiException {
+		return put(apiRequest, null);
+	}
+	
 	public <T extends ApiResource> ApiResponse<T> put(ApiRequest<PutOperation> apiRequest, Class<T> resourceType) throws ApiException {
 		
 		final PutOperation operation = apiRequest.getOperation();
 
-		logger.info("PUT execution: {} {}", operation.getPath(), operation.getPayload());
+		logger.info("{} execution: {} {}", operation.getMethod(), operation.getPath(), operation.getPayload());
 
 		HttpRequest request = createHttpRequest(operation);
-		request.setBody(jsonCodec.toJSON(operation.getPayload(), true));
+		if ((operation instanceof PayloadOperation) && (operation.getPayload() != null))
+			request.setBody(jsonCodec.toJSON(operation.getPayload(), true));
 
 		ApiResponse<T> apiResponse = null;
 		
 		try {
 			HttpResponse response = call(request);
-			T resourceObject = jsonCodec.fromJSON(response.getBody(), resourceType);
+			T resourceObject = null;
+			if (resourceType != null) resourceObject = jsonCodec.fromJSON(response.getBody(), resourceType);
 			apiResponse = new ApiResponse<>(resourceObject);
 		}
 		catch (ApiException ae) {
@@ -150,25 +166,32 @@ public class ApiCaller {
 			apiResponse = new ApiResponse<>(ae.getApiError());
 		}
 
+		
 		return apiResponse;
 
 	}
 
 
+	public <T extends ApiResource> ApiResponse<T> post(ApiRequest<PostOperation> apiRequest) throws ApiException {
+		return post(apiRequest, null);
+	}
+	
 	public <T extends ApiResource> ApiResponse<T> post(ApiRequest<PostOperation> apiRequest, Class<T> resourceType) throws ApiException {
 
 		final PostOperation operation = apiRequest.getOperation();
 		
-		logger.info("POST execution: {} {}", operation.getPath(), operation.getPayload());
+		logger.info("{} execution: {} {}", operation.getMethod(), operation.getPath(), operation.getPayload());
 
 		HttpRequest request = createHttpRequest(operation);
-		request.setBody(jsonCodec.toJSON(operation.getPayload(), true));
+		if ((operation instanceof PayloadOperation) && (operation.getPayload() != null))
+			request.setBody(jsonCodec.toJSON(operation.getPayload(), true));
 
 		ApiResponse<T> apiResponse = null;
 		
 		try {
 			HttpResponse response = call(request);
-			T resourceObject = jsonCodec.fromJSON(response.getBody(), resourceType);
+			T resourceObject = null;
+			if (resourceType != null) resourceObject = jsonCodec.fromJSON(response.getBody(), resourceType);
 			apiResponse = new ApiResponse<>(resourceObject);
 		}
 		catch (ApiException ae) {
@@ -176,24 +199,41 @@ public class ApiCaller {
 			apiResponse = new ApiResponse<>(ae.getApiError());
 		}
 
+		
+		return apiResponse;
+
+	}
+
+	public <T extends ApiResource> ApiResponse<T> delete(ApiRequest<DeleteOperation> apiRequest) throws ApiException {
+		return delete(apiRequest, null);
+	}
+	
+	public <T extends ApiResource> ApiResponse<T> delete(ApiRequest<DeleteOperation> apiRequest, Class<T> resourceType) throws ApiException {
+		
+		final DeleteOperation operation = apiRequest.getOperation();
+
+		logger.info("{} execution: {} [{}]", operation.getMethod(), operation.getPath(), operation.getId());
+
+		HttpRequest request = createHttpRequest(operation);
+		
+		ApiResponse<T> apiResponse = null;
+
+		try {
+			HttpResponse response = call(request);
+			apiResponse = new ApiResponse<>((T)null);
+			if (response.getCode() != 204) logger.warn("{}: Unexpected HTTP Code [{}]", operation.getMethod(), response.getCode());
+			if (response.getBody() != null) logger.warn("{}: Unexpected Response Body", operation.getMethod());
+		}
+		catch (ApiException ae) {
+			logger.warn("Data Error -> {}", ae.getApiErrorDescription());
+			apiResponse = new ApiResponse<>(ae.getApiError());
+		}
 		
 		return apiResponse;
 
 	}
 
 	
-	public void delete(ApiRequest<DeleteOperation> apiRequest) throws ApiException {
-		
-		final DeleteOperation operation = apiRequest.getOperation();
-
-		logger.info("DELETE execution: {} [{}]", operation.getPath(), operation.getId());
-
-		HttpRequest request = createHttpRequest(operation);
-
-		/* HttpResponse response = */call(request);
-
-	}
-
 	private HttpResponse call(HttpRequest request) throws ConnectionException, ApiException, AuthException, SystemException {
 
 		if ((apiToken == null) || apiToken.getAccessToken() == null)

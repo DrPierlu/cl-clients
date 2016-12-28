@@ -45,6 +45,15 @@ public abstract class ApiResource extends ApiObject implements Serializable {
 	public void setResourceName(String resourceName) {
 		this.resourceName = resourceName;
 	}
+	
+	public String resourceName() {
+		return getResourceName();
+	}
+	
+	public ApiResource resourceName(String resourceName) {
+		setResourceName(resourceName);
+		return this;
+	}
 
 
 	public Long getId() {
@@ -53,6 +62,15 @@ public abstract class ApiResource extends ApiObject implements Serializable {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+	
+	public Long id() {
+		return getId();
+	}
+	
+	public ApiResource id(Long id) {
+		setId(id);
+		return this;
 	}
 
 
@@ -63,6 +81,15 @@ public abstract class ApiResource extends ApiObject implements Serializable {
 	public void setCreatorResource(String creatorResource) {
 		this.creatorResource = creatorResource;
 	}
+	
+	public String creatorResource() {
+		return getCreatorResource();
+	}
+	
+	public ApiResource creatorResource(String creatorResource) {
+		setCreatorResource(creatorResource);
+		return this;
+	}
 
 	public LocalDateTime getCreatedAt() {
 		return createdAt;
@@ -71,13 +98,31 @@ public abstract class ApiResource extends ApiObject implements Serializable {
 	public void setCreatedAt(LocalDateTime createdAt) {
 		this.createdAt = createdAt;
 	}
+	
+	public LocalDateTime createdAt() {
+		return getCreatedAt();
+	}
 
+	public ApiResource createdAt(LocalDateTime createdAt) {
+		setCreatedAt(createdAt);
+		return this;
+	}
+	
 	public LocalDateTime getUpdatedAt() {
 		return updatedAt;
 	}
 
 	public void setUpdatedAt(LocalDateTime updatedAt) {
 		this.updatedAt = updatedAt;
+	}
+	
+	public LocalDateTime updatedAt() {
+		return getUpdatedAt();
+	}
+	
+	public ApiResource updatedAt(LocalDateTime updatedAt) {
+		setUpdatedAt(updatedAt);
+		return this;
 	}
 
 	public String toString() {

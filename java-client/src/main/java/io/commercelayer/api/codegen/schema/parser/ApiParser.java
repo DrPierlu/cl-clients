@@ -13,8 +13,6 @@ import io.commercelayer.api.config.ApiConfig;
 import io.commercelayer.api.config.ApiConfig.Group;
 
 public abstract class ApiParser {
-
-	public static final String TEST_SCHEMA_PATH = "E:/cl-schema_swagger.json";
 	
 	protected final Logger logger = LoggerFactory.getLogger(getClass());
 	

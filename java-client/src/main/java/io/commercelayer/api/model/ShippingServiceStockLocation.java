@@ -9,15 +9,13 @@ import io.commercelayer.api.json.JsonExclude;
  */
 public class ShippingServiceStockLocation extends ApiResource {
 
-	private static final long serialVersionUID = -1482880735352L;
+	private static final long serialVersionUID = -1482914098014L;
 
 
-	@JsonExclude
-	private String name;
-	private Integer shippingServiceId;
-	private Integer stockLocationId;
-	private Integer minLeadTimeHours;
-	private Integer maxLeadTimeHours;
+	private String shippingServiceId;
+	private String stockLocationId;
+	private String minLeadTimeHours;
+	private String maxLeadTimeHours;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
@@ -40,53 +38,87 @@ public class ShippingServiceStockLocation extends ApiResource {
 	}
 	
 
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-
-	public String getName() {
-		return this.name;
-	}
-	
-
-	public void setShippingServiceId(Integer shippingServiceId) {
+	public void setShippingServiceId(String shippingServiceId) {
 		this.shippingServiceId = shippingServiceId;
 	}
 	
 
-	public Integer getShippingServiceId() {
+	public String getShippingServiceId() {
 		return this.shippingServiceId;
 	}
 	
 
-	public void setStockLocationId(Integer stockLocationId) {
+	public ShippingServiceStockLocation shippingServiceId(String shippingServiceId) {
+		setShippingServiceId(shippingServiceId);
+		return this;
+	}
+	
+
+	public String shippingServiceId() {
+		return getShippingServiceId();
+	}
+	
+
+	public void setStockLocationId(String stockLocationId) {
 		this.stockLocationId = stockLocationId;
 	}
 	
 
-	public Integer getStockLocationId() {
+	public String getStockLocationId() {
 		return this.stockLocationId;
 	}
 	
 
-	public void setMinLeadTimeHours(Integer minLeadTimeHours) {
+	public ShippingServiceStockLocation stockLocationId(String stockLocationId) {
+		setStockLocationId(stockLocationId);
+		return this;
+	}
+	
+
+	public String stockLocationId() {
+		return getStockLocationId();
+	}
+	
+
+	public void setMinLeadTimeHours(String minLeadTimeHours) {
 		this.minLeadTimeHours = minLeadTimeHours;
 	}
 	
 
-	public Integer getMinLeadTimeHours() {
+	public String getMinLeadTimeHours() {
 		return this.minLeadTimeHours;
 	}
 	
 
-	public void setMaxLeadTimeHours(Integer maxLeadTimeHours) {
+	public ShippingServiceStockLocation minLeadTimeHours(String minLeadTimeHours) {
+		setMinLeadTimeHours(minLeadTimeHours);
+		return this;
+	}
+	
+
+	public String minLeadTimeHours() {
+		return getMinLeadTimeHours();
+	}
+	
+
+	public void setMaxLeadTimeHours(String maxLeadTimeHours) {
 		this.maxLeadTimeHours = maxLeadTimeHours;
 	}
 	
 
-	public Integer getMaxLeadTimeHours() {
+	public String getMaxLeadTimeHours() {
 		return this.maxLeadTimeHours;
+	}
+	
+
+	public ShippingServiceStockLocation maxLeadTimeHours(String maxLeadTimeHours) {
+		setMaxLeadTimeHours(maxLeadTimeHours);
+		return this;
+	}
+	
+
+	public String maxLeadTimeHours() {
+		return getMaxLeadTimeHours();
 	}
 	
 
@@ -100,6 +132,17 @@ public class ShippingServiceStockLocation extends ApiResource {
 	}
 	
 
+	public ShippingServiceStockLocation previousChanges(Object previousChanges) {
+		setPreviousChanges(previousChanges);
+		return this;
+	}
+	
+
+	public Object previousChanges() {
+		return getPreviousChanges();
+	}
+	
+
 	public void setShippingService(Object shippingService) {
 		this.shippingService = shippingService;
 	}
@@ -107,6 +150,17 @@ public class ShippingServiceStockLocation extends ApiResource {
 
 	public Object getShippingService() {
 		return this.shippingService;
+	}
+	
+
+	public ShippingServiceStockLocation shippingService(Object shippingService) {
+		setShippingService(shippingService);
+		return this;
+	}
+	
+
+	public Object shippingService() {
+		return getShippingService();
 	}
 	
 
@@ -120,6 +174,17 @@ public class ShippingServiceStockLocation extends ApiResource {
 	}
 	
 
+	public ShippingServiceStockLocation stockLocation(Object stockLocation) {
+		setStockLocation(stockLocation);
+		return this;
+	}
+	
+
+	public Object stockLocation() {
+		return getStockLocation();
+	}
+	
+
 	public void setMinLeadTimeDays(String minLeadTimeDays) {
 		this.minLeadTimeDays = minLeadTimeDays;
 	}
@@ -127,6 +192,17 @@ public class ShippingServiceStockLocation extends ApiResource {
 
 	public String getMinLeadTimeDays() {
 		return this.minLeadTimeDays;
+	}
+	
+
+	public ShippingServiceStockLocation minLeadTimeDays(String minLeadTimeDays) {
+		setMinLeadTimeDays(minLeadTimeDays);
+		return this;
+	}
+	
+
+	public String minLeadTimeDays() {
+		return getMinLeadTimeDays();
 	}
 	
 
@@ -140,6 +216,17 @@ public class ShippingServiceStockLocation extends ApiResource {
 	}
 	
 
+	public ShippingServiceStockLocation maxLeadTimeDays(String maxLeadTimeDays) {
+		setMaxLeadTimeDays(maxLeadTimeDays);
+		return this;
+	}
+	
+
+	public String maxLeadTimeDays() {
+		return getMaxLeadTimeDays();
+	}
+	
+
 	@Override
 	public boolean equals(Object o) {
 	
@@ -149,7 +236,6 @@ public class ShippingServiceStockLocation extends ApiResource {
 		ShippingServiceStockLocation x = (ShippingServiceStockLocation)o;
 	
 		return super.equals(o)
-			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.shippingServiceId, x.shippingServiceId)
 			&& Objects.equals(this.stockLocationId, x.stockLocationId)
 			&& Objects.equals(this.minLeadTimeHours, x.minLeadTimeHours)
@@ -168,9 +254,8 @@ public class ShippingServiceStockLocation extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, shippingServiceId, stockLocationId, minLeadTimeHours, maxLeadTimeHours,
-			previousChanges, shippingService, stockLocation, minLeadTimeDays, maxLeadTimeDays
-			
+			shippingServiceId, stockLocationId, minLeadTimeHours, maxLeadTimeHours, previousChanges,
+			shippingService, stockLocation, minLeadTimeDays, maxLeadTimeDays 
 		);
 	
 	}
@@ -181,7 +266,6 @@ public class ShippingServiceStockLocation extends ApiResource {
 	
 		ShippingServiceStockLocation no = new ShippingServiceStockLocation();
 	
-		no.name = this.name;
 		no.shippingServiceId = this.shippingServiceId;
 		no.stockLocationId = this.stockLocationId;
 		no.minLeadTimeHours = this.minLeadTimeHours;

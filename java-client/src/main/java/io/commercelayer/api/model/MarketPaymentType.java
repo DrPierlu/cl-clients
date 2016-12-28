@@ -9,19 +9,17 @@ import io.commercelayer.api.json.JsonExclude;
  */
 public class MarketPaymentType extends ApiResource {
 
-	private static final long serialVersionUID = -1482880735298L;
+	private static final long serialVersionUID = -1482914097615L;
 
 
-	@JsonExclude
-	private String name;
-	private Integer marketId;
-	private Integer paymentTypeId;
+	private String marketId;
+	private String paymentTypeId;
 	@JsonExclude
 	private String countryCodeRegex;
 	@JsonExclude
 	private String notCountryCodeRegex;
 	@JsonExclude
-	private Integer priceCents;
+	private String priceCents;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
@@ -44,33 +42,45 @@ public class MarketPaymentType extends ApiResource {
 	}
 	
 
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-
-	public String getName() {
-		return this.name;
-	}
-	
-
-	public void setMarketId(Integer marketId) {
+	public void setMarketId(String marketId) {
 		this.marketId = marketId;
 	}
 	
 
-	public Integer getMarketId() {
+	public String getMarketId() {
 		return this.marketId;
 	}
 	
 
-	public void setPaymentTypeId(Integer paymentTypeId) {
+	public MarketPaymentType marketId(String marketId) {
+		setMarketId(marketId);
+		return this;
+	}
+	
+
+	public String marketId() {
+		return getMarketId();
+	}
+	
+
+	public void setPaymentTypeId(String paymentTypeId) {
 		this.paymentTypeId = paymentTypeId;
 	}
 	
 
-	public Integer getPaymentTypeId() {
+	public String getPaymentTypeId() {
 		return this.paymentTypeId;
+	}
+	
+
+	public MarketPaymentType paymentTypeId(String paymentTypeId) {
+		setPaymentTypeId(paymentTypeId);
+		return this;
+	}
+	
+
+	public String paymentTypeId() {
+		return getPaymentTypeId();
 	}
 	
 
@@ -84,6 +94,17 @@ public class MarketPaymentType extends ApiResource {
 	}
 	
 
+	public MarketPaymentType countryCodeRegex(String countryCodeRegex) {
+		setCountryCodeRegex(countryCodeRegex);
+		return this;
+	}
+	
+
+	public String countryCodeRegex() {
+		return getCountryCodeRegex();
+	}
+	
+
 	public void setNotCountryCodeRegex(String notCountryCodeRegex) {
 		this.notCountryCodeRegex = notCountryCodeRegex;
 	}
@@ -94,13 +115,35 @@ public class MarketPaymentType extends ApiResource {
 	}
 	
 
-	public void setPriceCents(Integer priceCents) {
+	public MarketPaymentType notCountryCodeRegex(String notCountryCodeRegex) {
+		setNotCountryCodeRegex(notCountryCodeRegex);
+		return this;
+	}
+	
+
+	public String notCountryCodeRegex() {
+		return getNotCountryCodeRegex();
+	}
+	
+
+	public void setPriceCents(String priceCents) {
 		this.priceCents = priceCents;
 	}
 	
 
-	public Integer getPriceCents() {
+	public String getPriceCents() {
 		return this.priceCents;
+	}
+	
+
+	public MarketPaymentType priceCents(String priceCents) {
+		setPriceCents(priceCents);
+		return this;
+	}
+	
+
+	public String priceCents() {
+		return getPriceCents();
 	}
 	
 
@@ -114,6 +157,17 @@ public class MarketPaymentType extends ApiResource {
 	}
 	
 
+	public MarketPaymentType previousChanges(Object previousChanges) {
+		setPreviousChanges(previousChanges);
+		return this;
+	}
+	
+
+	public Object previousChanges() {
+		return getPreviousChanges();
+	}
+	
+
 	public void setMarket(Object market) {
 		this.market = market;
 	}
@@ -121,6 +175,17 @@ public class MarketPaymentType extends ApiResource {
 
 	public Object getMarket() {
 		return this.market;
+	}
+	
+
+	public MarketPaymentType market(Object market) {
+		setMarket(market);
+		return this;
+	}
+	
+
+	public Object market() {
+		return getMarket();
 	}
 	
 
@@ -134,6 +199,17 @@ public class MarketPaymentType extends ApiResource {
 	}
 	
 
+	public MarketPaymentType paymentType(Object paymentType) {
+		setPaymentType(paymentType);
+		return this;
+	}
+	
+
+	public Object paymentType() {
+		return getPaymentType();
+	}
+	
+
 	public void setPrice(String price) {
 		this.price = price;
 	}
@@ -141,6 +217,17 @@ public class MarketPaymentType extends ApiResource {
 
 	public String getPrice() {
 		return this.price;
+	}
+	
+
+	public MarketPaymentType price(String price) {
+		setPrice(price);
+		return this;
+	}
+	
+
+	public String price() {
+		return getPrice();
 	}
 	
 
@@ -154,6 +241,17 @@ public class MarketPaymentType extends ApiResource {
 	}
 	
 
+	public MarketPaymentType formattedPrice(String formattedPrice) {
+		setFormattedPrice(formattedPrice);
+		return this;
+	}
+	
+
+	public String formattedPrice() {
+		return getFormattedPrice();
+	}
+	
+
 	@Override
 	public boolean equals(Object o) {
 	
@@ -163,7 +261,6 @@ public class MarketPaymentType extends ApiResource {
 		MarketPaymentType x = (MarketPaymentType)o;
 	
 		return super.equals(o)
-			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.marketId, x.marketId)
 			&& Objects.equals(this.paymentTypeId, x.paymentTypeId)
 			&& Objects.equals(this.countryCodeRegex, x.countryCodeRegex)
@@ -183,9 +280,9 @@ public class MarketPaymentType extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, marketId, paymentTypeId, countryCodeRegex, notCountryCodeRegex,
-			priceCents, previousChanges, market, paymentType, price,
-			formattedPrice 
+			marketId, paymentTypeId, countryCodeRegex, notCountryCodeRegex, priceCents,
+			previousChanges, market, paymentType, price, formattedPrice
+			
 		);
 	
 	}
@@ -196,7 +293,6 @@ public class MarketPaymentType extends ApiResource {
 	
 		MarketPaymentType no = new MarketPaymentType();
 	
-		no.name = this.name;
 		no.marketId = this.marketId;
 		no.paymentTypeId = this.paymentTypeId;
 		no.countryCodeRegex = this.countryCodeRegex;

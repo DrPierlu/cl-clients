@@ -9,11 +9,9 @@ import io.commercelayer.api.json.JsonExclude;
  */
 public class Image extends ApiResource {
 
-	private static final long serialVersionUID = -1482880735292L;
+	private static final long serialVersionUID = -1482914097573L;
 
 
-	@JsonExclude
-	private String name;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
@@ -30,16 +28,6 @@ public class Image extends ApiResource {
 	}
 	
 
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-
-	public String getName() {
-		return this.name;
-	}
-	
-
 	public void setPreviousChanges(Object previousChanges) {
 		this.previousChanges = previousChanges;
 	}
@@ -47,6 +35,17 @@ public class Image extends ApiResource {
 
 	public Object getPreviousChanges() {
 		return this.previousChanges;
+	}
+	
+
+	public Image previousChanges(Object previousChanges) {
+		setPreviousChanges(previousChanges);
+		return this;
+	}
+	
+
+	public Object previousChanges() {
+		return getPreviousChanges();
 	}
 	
 
@@ -60,6 +59,17 @@ public class Image extends ApiResource {
 	}
 	
 
+	public Image url(String url) {
+		setUrl(url);
+		return this;
+	}
+	
+
+	public String url() {
+		return getUrl();
+	}
+	
+
 	@Override
 	public boolean equals(Object o) {
 	
@@ -69,7 +79,6 @@ public class Image extends ApiResource {
 		Image x = (Image)o;
 	
 		return super.equals(o)
-			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.url, x.url)
 		;
@@ -81,7 +90,7 @@ public class Image extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, previousChanges, url 
+			previousChanges, url 
 		);
 	
 	}
@@ -92,7 +101,6 @@ public class Image extends ApiResource {
 	
 		Image no = new Image();
 	
-		no.name = this.name;
 		no.previousChanges = this.previousChanges;
 		no.url = this.url;
 	

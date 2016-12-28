@@ -10,18 +10,16 @@ import java.util.List;
  */
 public class StockItem extends ApiResource {
 
-	private static final long serialVersionUID = -1482880735358L;
+	private static final long serialVersionUID = -1482914098048L;
 
 
-	@JsonExclude
-	private String name;
-	private Integer stockLocationId;
-	private Integer stockableId;
+	private String stockLocationId;
+	private String stockableId;
 	private String stockableResource;
 	@JsonExclude
-	private Object backorderable;
+	private String backorderable;
 	@JsonExclude
-	private Integer quantity;
+	private String quantity;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
@@ -44,33 +42,45 @@ public class StockItem extends ApiResource {
 	}
 	
 
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-
-	public String getName() {
-		return this.name;
-	}
-	
-
-	public void setStockLocationId(Integer stockLocationId) {
+	public void setStockLocationId(String stockLocationId) {
 		this.stockLocationId = stockLocationId;
 	}
 	
 
-	public Integer getStockLocationId() {
+	public String getStockLocationId() {
 		return this.stockLocationId;
 	}
 	
 
-	public void setStockableId(Integer stockableId) {
+	public StockItem stockLocationId(String stockLocationId) {
+		setStockLocationId(stockLocationId);
+		return this;
+	}
+	
+
+	public String stockLocationId() {
+		return getStockLocationId();
+	}
+	
+
+	public void setStockableId(String stockableId) {
 		this.stockableId = stockableId;
 	}
 	
 
-	public Integer getStockableId() {
+	public String getStockableId() {
 		return this.stockableId;
+	}
+	
+
+	public StockItem stockableId(String stockableId) {
+		setStockableId(stockableId);
+		return this;
+	}
+	
+
+	public String stockableId() {
+		return getStockableId();
 	}
 	
 
@@ -84,23 +94,56 @@ public class StockItem extends ApiResource {
 	}
 	
 
-	public void setBackorderable(Object backorderable) {
+	public StockItem stockableResource(String stockableResource) {
+		setStockableResource(stockableResource);
+		return this;
+	}
+	
+
+	public String stockableResource() {
+		return getStockableResource();
+	}
+	
+
+	public void setBackorderable(String backorderable) {
 		this.backorderable = backorderable;
 	}
 	
 
-	public Object getBackorderable() {
+	public String getBackorderable() {
 		return this.backorderable;
 	}
 	
 
-	public void setQuantity(Integer quantity) {
+	public StockItem backorderable(String backorderable) {
+		setBackorderable(backorderable);
+		return this;
+	}
+	
+
+	public String backorderable() {
+		return getBackorderable();
+	}
+	
+
+	public void setQuantity(String quantity) {
 		this.quantity = quantity;
 	}
 	
 
-	public Integer getQuantity() {
+	public String getQuantity() {
 		return this.quantity;
+	}
+	
+
+	public StockItem quantity(String quantity) {
+		setQuantity(quantity);
+		return this;
+	}
+	
+
+	public String quantity() {
+		return getQuantity();
 	}
 	
 
@@ -114,6 +157,17 @@ public class StockItem extends ApiResource {
 	}
 	
 
+	public StockItem previousChanges(Object previousChanges) {
+		setPreviousChanges(previousChanges);
+		return this;
+	}
+	
+
+	public Object previousChanges() {
+		return getPreviousChanges();
+	}
+	
+
 	public void setStockLocation(Object stockLocation) {
 		this.stockLocation = stockLocation;
 	}
@@ -121,6 +175,17 @@ public class StockItem extends ApiResource {
 
 	public Object getStockLocation() {
 		return this.stockLocation;
+	}
+	
+
+	public StockItem stockLocation(Object stockLocation) {
+		setStockLocation(stockLocation);
+		return this;
+	}
+	
+
+	public Object stockLocation() {
+		return getStockLocation();
 	}
 	
 
@@ -134,6 +199,17 @@ public class StockItem extends ApiResource {
 	}
 	
 
+	public StockItem stockable(Object stockable) {
+		setStockable(stockable);
+		return this;
+	}
+	
+
+	public Object stockable() {
+		return getStockable();
+	}
+	
+
 	public void setShippingServiceStockLocations(List<String> shippingServiceStockLocations) {
 		this.shippingServiceStockLocations = shippingServiceStockLocations;
 	}
@@ -141,6 +217,17 @@ public class StockItem extends ApiResource {
 
 	public List<String> getShippingServiceStockLocations() {
 		return this.shippingServiceStockLocations;
+	}
+	
+
+	public StockItem shippingServiceStockLocations(List<String> shippingServiceStockLocations) {
+		setShippingServiceStockLocations(shippingServiceStockLocations);
+		return this;
+	}
+	
+
+	public List<String> shippingServiceStockLocations() {
+		return getShippingServiceStockLocations();
 	}
 	
 
@@ -154,6 +241,17 @@ public class StockItem extends ApiResource {
 	}
 	
 
+	public StockItem lineItemStocks(List<String> lineItemStocks) {
+		setLineItemStocks(lineItemStocks);
+		return this;
+	}
+	
+
+	public List<String> lineItemStocks() {
+		return getLineItemStocks();
+	}
+	
+
 	@Override
 	public boolean equals(Object o) {
 	
@@ -163,7 +261,6 @@ public class StockItem extends ApiResource {
 		StockItem x = (StockItem)o;
 	
 		return super.equals(o)
-			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.stockLocationId, x.stockLocationId)
 			&& Objects.equals(this.stockableId, x.stockableId)
 			&& Objects.equals(this.stockableResource, x.stockableResource)
@@ -183,9 +280,9 @@ public class StockItem extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, stockLocationId, stockableId, stockableResource, backorderable,
-			quantity, previousChanges, stockLocation, stockable, shippingServiceStockLocations,
-			lineItemStocks 
+			stockLocationId, stockableId, stockableResource, backorderable, quantity,
+			previousChanges, stockLocation, stockable, shippingServiceStockLocations, lineItemStocks
+			
 		);
 	
 	}
@@ -196,7 +293,6 @@ public class StockItem extends ApiResource {
 	
 		StockItem no = new StockItem();
 	
-		no.name = this.name;
 		no.stockLocationId = this.stockLocationId;
 		no.stockableId = this.stockableId;
 		no.stockableResource = this.stockableResource;

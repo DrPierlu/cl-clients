@@ -9,12 +9,10 @@ import io.commercelayer.api.json.JsonExclude;
  */
 public class State extends ApiResource {
 
-	private static final long serialVersionUID = -1482880735357L;
+	private static final long serialVersionUID = -1482914098042L;
 
 
-	@JsonExclude
-	private String name;
-	private Integer countryId;
+	private String countryId;
 	private String code;
 	@JsonExclude
 	private Object previousChanges;
@@ -32,23 +30,24 @@ public class State extends ApiResource {
 	}
 	
 
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-
-	public String getName() {
-		return this.name;
-	}
-	
-
-	public void setCountryId(Integer countryId) {
+	public void setCountryId(String countryId) {
 		this.countryId = countryId;
 	}
 	
 
-	public Integer getCountryId() {
+	public String getCountryId() {
 		return this.countryId;
+	}
+	
+
+	public State countryId(String countryId) {
+		setCountryId(countryId);
+		return this;
+	}
+	
+
+	public String countryId() {
+		return getCountryId();
 	}
 	
 
@@ -62,6 +61,17 @@ public class State extends ApiResource {
 	}
 	
 
+	public State code(String code) {
+		setCode(code);
+		return this;
+	}
+	
+
+	public String code() {
+		return getCode();
+	}
+	
+
 	public void setPreviousChanges(Object previousChanges) {
 		this.previousChanges = previousChanges;
 	}
@@ -69,6 +79,17 @@ public class State extends ApiResource {
 
 	public Object getPreviousChanges() {
 		return this.previousChanges;
+	}
+	
+
+	public State previousChanges(Object previousChanges) {
+		setPreviousChanges(previousChanges);
+		return this;
+	}
+	
+
+	public Object previousChanges() {
+		return getPreviousChanges();
 	}
 	
 
@@ -82,6 +103,17 @@ public class State extends ApiResource {
 	}
 	
 
+	public State country(Object country) {
+		setCountry(country);
+		return this;
+	}
+	
+
+	public Object country() {
+		return getCountry();
+	}
+	
+
 	@Override
 	public boolean equals(Object o) {
 	
@@ -91,7 +123,6 @@ public class State extends ApiResource {
 		State x = (State)o;
 	
 		return super.equals(o)
-			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.countryId, x.countryId)
 			&& Objects.equals(this.code, x.code)
 			&& Objects.equals(this.previousChanges, x.previousChanges)
@@ -105,8 +136,7 @@ public class State extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, countryId, code, previousChanges, country
-			
+			countryId, code, previousChanges, country 
 		);
 	
 	}
@@ -117,7 +147,6 @@ public class State extends ApiResource {
 	
 		State no = new State();
 	
-		no.name = this.name;
 		no.countryId = this.countryId;
 		no.code = this.code;
 		no.previousChanges = this.previousChanges;

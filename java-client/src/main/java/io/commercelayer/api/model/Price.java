@@ -9,18 +9,16 @@ import io.commercelayer.api.json.JsonExclude;
  */
 public class Price extends ApiResource {
 
-	private static final long serialVersionUID = -1482880735319L;
+	private static final long serialVersionUID = -1482914097871L;
 
 
-	@JsonExclude
-	private String name;
-	private Integer priceListId;
-	private Integer sellableId;
+	private String priceListId;
+	private String sellableId;
 	private String sellableResource;
 	@JsonExclude
-	private Integer amountCents;
+	private String amountCents;
 	@JsonExclude
-	private Integer compareAtAmountCents;
+	private String compareAtAmountCents;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
@@ -39,8 +37,6 @@ public class Price extends ApiResource {
 	@JsonExclude
 	private String formattedCompareAtAmount;
 	@JsonExclude
-	private String discounted;
-	@JsonExclude
 	private String discountPercentage;
 	@JsonExclude
 	private String discountPercentageRounded;
@@ -58,33 +54,45 @@ public class Price extends ApiResource {
 	}
 	
 
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-
-	public String getName() {
-		return this.name;
-	}
-	
-
-	public void setPriceListId(Integer priceListId) {
+	public void setPriceListId(String priceListId) {
 		this.priceListId = priceListId;
 	}
 	
 
-	public Integer getPriceListId() {
+	public String getPriceListId() {
 		return this.priceListId;
 	}
 	
 
-	public void setSellableId(Integer sellableId) {
+	public Price priceListId(String priceListId) {
+		setPriceListId(priceListId);
+		return this;
+	}
+	
+
+	public String priceListId() {
+		return getPriceListId();
+	}
+	
+
+	public void setSellableId(String sellableId) {
 		this.sellableId = sellableId;
 	}
 	
 
-	public Integer getSellableId() {
+	public String getSellableId() {
 		return this.sellableId;
+	}
+	
+
+	public Price sellableId(String sellableId) {
+		setSellableId(sellableId);
+		return this;
+	}
+	
+
+	public String sellableId() {
+		return getSellableId();
 	}
 	
 
@@ -98,23 +106,56 @@ public class Price extends ApiResource {
 	}
 	
 
-	public void setAmountCents(Integer amountCents) {
+	public Price sellableResource(String sellableResource) {
+		setSellableResource(sellableResource);
+		return this;
+	}
+	
+
+	public String sellableResource() {
+		return getSellableResource();
+	}
+	
+
+	public void setAmountCents(String amountCents) {
 		this.amountCents = amountCents;
 	}
 	
 
-	public Integer getAmountCents() {
+	public String getAmountCents() {
 		return this.amountCents;
 	}
 	
 
-	public void setCompareAtAmountCents(Integer compareAtAmountCents) {
+	public Price amountCents(String amountCents) {
+		setAmountCents(amountCents);
+		return this;
+	}
+	
+
+	public String amountCents() {
+		return getAmountCents();
+	}
+	
+
+	public void setCompareAtAmountCents(String compareAtAmountCents) {
 		this.compareAtAmountCents = compareAtAmountCents;
 	}
 	
 
-	public Integer getCompareAtAmountCents() {
+	public String getCompareAtAmountCents() {
 		return this.compareAtAmountCents;
+	}
+	
+
+	public Price compareAtAmountCents(String compareAtAmountCents) {
+		setCompareAtAmountCents(compareAtAmountCents);
+		return this;
+	}
+	
+
+	public String compareAtAmountCents() {
+		return getCompareAtAmountCents();
 	}
 	
 
@@ -128,6 +169,17 @@ public class Price extends ApiResource {
 	}
 	
 
+	public Price previousChanges(Object previousChanges) {
+		setPreviousChanges(previousChanges);
+		return this;
+	}
+	
+
+	public Object previousChanges() {
+		return getPreviousChanges();
+	}
+	
+
 	public void setPriceList(Object priceList) {
 		this.priceList = priceList;
 	}
@@ -135,6 +187,17 @@ public class Price extends ApiResource {
 
 	public Object getPriceList() {
 		return this.priceList;
+	}
+	
+
+	public Price priceList(Object priceList) {
+		setPriceList(priceList);
+		return this;
+	}
+	
+
+	public Object priceList() {
+		return getPriceList();
 	}
 	
 
@@ -148,6 +211,17 @@ public class Price extends ApiResource {
 	}
 	
 
+	public Price sellable(Object sellable) {
+		setSellable(sellable);
+		return this;
+	}
+	
+
+	public Object sellable() {
+		return getSellable();
+	}
+	
+
 	public void setDiscountAmount(String discountAmount) {
 		this.discountAmount = discountAmount;
 	}
@@ -155,6 +229,17 @@ public class Price extends ApiResource {
 
 	public String getDiscountAmount() {
 		return this.discountAmount;
+	}
+	
+
+	public Price discountAmount(String discountAmount) {
+		setDiscountAmount(discountAmount);
+		return this;
+	}
+	
+
+	public String discountAmount() {
+		return getDiscountAmount();
 	}
 	
 
@@ -168,6 +253,17 @@ public class Price extends ApiResource {
 	}
 	
 
+	public Price formattedDiscountAmount(String formattedDiscountAmount) {
+		setFormattedDiscountAmount(formattedDiscountAmount);
+		return this;
+	}
+	
+
+	public String formattedDiscountAmount() {
+		return getFormattedDiscountAmount();
+	}
+	
+
 	public void setAmount(String amount) {
 		this.amount = amount;
 	}
@@ -175,6 +271,17 @@ public class Price extends ApiResource {
 
 	public String getAmount() {
 		return this.amount;
+	}
+	
+
+	public Price amount(String amount) {
+		setAmount(amount);
+		return this;
+	}
+	
+
+	public String amount() {
+		return getAmount();
 	}
 	
 
@@ -188,6 +295,17 @@ public class Price extends ApiResource {
 	}
 	
 
+	public Price formattedAmount(String formattedAmount) {
+		setFormattedAmount(formattedAmount);
+		return this;
+	}
+	
+
+	public String formattedAmount() {
+		return getFormattedAmount();
+	}
+	
+
 	public void setCompareAtAmount(String compareAtAmount) {
 		this.compareAtAmount = compareAtAmount;
 	}
@@ -195,6 +313,17 @@ public class Price extends ApiResource {
 
 	public String getCompareAtAmount() {
 		return this.compareAtAmount;
+	}
+	
+
+	public Price compareAtAmount(String compareAtAmount) {
+		setCompareAtAmount(compareAtAmount);
+		return this;
+	}
+	
+
+	public String compareAtAmount() {
+		return getCompareAtAmount();
 	}
 	
 
@@ -208,13 +337,14 @@ public class Price extends ApiResource {
 	}
 	
 
-	public void setDiscounted(String discounted) {
-		this.discounted = discounted;
+	public Price formattedCompareAtAmount(String formattedCompareAtAmount) {
+		setFormattedCompareAtAmount(formattedCompareAtAmount);
+		return this;
 	}
 	
 
-	public String getDiscounted() {
-		return this.discounted;
+	public String formattedCompareAtAmount() {
+		return getFormattedCompareAtAmount();
 	}
 	
 
@@ -228,6 +358,17 @@ public class Price extends ApiResource {
 	}
 	
 
+	public Price discountPercentage(String discountPercentage) {
+		setDiscountPercentage(discountPercentage);
+		return this;
+	}
+	
+
+	public String discountPercentage() {
+		return getDiscountPercentage();
+	}
+	
+
 	public void setDiscountPercentageRounded(String discountPercentageRounded) {
 		this.discountPercentageRounded = discountPercentageRounded;
 	}
@@ -235,6 +376,17 @@ public class Price extends ApiResource {
 
 	public String getDiscountPercentageRounded() {
 		return this.discountPercentageRounded;
+	}
+	
+
+	public Price discountPercentageRounded(String discountPercentageRounded) {
+		setDiscountPercentageRounded(discountPercentageRounded);
+		return this;
+	}
+	
+
+	public String discountPercentageRounded() {
+		return getDiscountPercentageRounded();
 	}
 	
 
@@ -248,6 +400,17 @@ public class Price extends ApiResource {
 	}
 	
 
+	public Price exchanges(String exchanges) {
+		setExchanges(exchanges);
+		return this;
+	}
+	
+
+	public String exchanges() {
+		return getExchanges();
+	}
+	
+
 	@Override
 	public boolean equals(Object o) {
 	
@@ -257,7 +420,6 @@ public class Price extends ApiResource {
 		Price x = (Price)o;
 	
 		return super.equals(o)
-			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.priceListId, x.priceListId)
 			&& Objects.equals(this.sellableId, x.sellableId)
 			&& Objects.equals(this.sellableResource, x.sellableResource)
@@ -272,7 +434,6 @@ public class Price extends ApiResource {
 			&& Objects.equals(this.formattedAmount, x.formattedAmount)
 			&& Objects.equals(this.compareAtAmount, x.compareAtAmount)
 			&& Objects.equals(this.formattedCompareAtAmount, x.formattedCompareAtAmount)
-			&& Objects.equals(this.discounted, x.discounted)
 			&& Objects.equals(this.discountPercentage, x.discountPercentage)
 			&& Objects.equals(this.discountPercentageRounded, x.discountPercentageRounded)
 			&& Objects.equals(this.exchanges, x.exchanges)
@@ -285,10 +446,10 @@ public class Price extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, priceListId, sellableId, sellableResource, amountCents,
-			compareAtAmountCents, previousChanges, priceList, sellable, discountAmount,
-			formattedDiscountAmount, amount, formattedAmount, compareAtAmount, formattedCompareAtAmount,
-			discounted, discountPercentage, discountPercentageRounded, exchanges 
+			priceListId, sellableId, sellableResource, amountCents, compareAtAmountCents,
+			previousChanges, priceList, sellable, discountAmount, formattedDiscountAmount,
+			amount, formattedAmount, compareAtAmount, formattedCompareAtAmount, discountPercentage,
+			discountPercentageRounded, exchanges 
 		);
 	
 	}
@@ -299,7 +460,6 @@ public class Price extends ApiResource {
 	
 		Price no = new Price();
 	
-		no.name = this.name;
 		no.priceListId = this.priceListId;
 		no.sellableId = this.sellableId;
 		no.sellableResource = this.sellableResource;
@@ -314,7 +474,6 @@ public class Price extends ApiResource {
 		no.formattedAmount = this.formattedAmount;
 		no.compareAtAmount = this.compareAtAmount;
 		no.formattedCompareAtAmount = this.formattedCompareAtAmount;
-		no.discounted = this.discounted;
 		no.discountPercentage = this.discountPercentage;
 		no.discountPercentageRounded = this.discountPercentageRounded;
 		no.exchanges = this.exchanges;

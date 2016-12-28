@@ -10,15 +10,11 @@ import java.util.List;
  */
 public class PropertyValue extends ApiResource {
 
-	private static final long serialVersionUID = -1482880735338L;
+	private static final long serialVersionUID = -1482914097937L;
 
 
 	private String name;
-	@JsonExclude
-	private String slug;
-	private Integer propertyTypeId;
-	@JsonExclude
-	private Integer position;
+	private String propertyTypeId;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
@@ -55,33 +51,35 @@ public class PropertyValue extends ApiResource {
 	}
 	
 
-	public void setSlug(String slug) {
-		this.slug = slug;
+	public PropertyValue name(String name) {
+		setName(name);
+		return this;
 	}
 	
 
-	public String getSlug() {
-		return this.slug;
+	public String name() {
+		return getName();
 	}
 	
 
-	public void setPropertyTypeId(Integer propertyTypeId) {
+	public void setPropertyTypeId(String propertyTypeId) {
 		this.propertyTypeId = propertyTypeId;
 	}
 	
 
-	public Integer getPropertyTypeId() {
+	public String getPropertyTypeId() {
 		return this.propertyTypeId;
 	}
 	
 
-	public void setPosition(Integer position) {
-		this.position = position;
+	public PropertyValue propertyTypeId(String propertyTypeId) {
+		setPropertyTypeId(propertyTypeId);
+		return this;
 	}
 	
 
-	public Integer getPosition() {
-		return this.position;
+	public String propertyTypeId() {
+		return getPropertyTypeId();
 	}
 	
 
@@ -95,6 +93,17 @@ public class PropertyValue extends ApiResource {
 	}
 	
 
+	public PropertyValue previousChanges(Object previousChanges) {
+		setPreviousChanges(previousChanges);
+		return this;
+	}
+	
+
+	public Object previousChanges() {
+		return getPreviousChanges();
+	}
+	
+
 	public void setPropertyType(Object propertyType) {
 		this.propertyType = propertyType;
 	}
@@ -102,6 +111,17 @@ public class PropertyValue extends ApiResource {
 
 	public Object getPropertyType() {
 		return this.propertyType;
+	}
+	
+
+	public PropertyValue propertyType(Object propertyType) {
+		setPropertyType(propertyType);
+		return this;
+	}
+	
+
+	public Object propertyType() {
+		return getPropertyType();
 	}
 	
 
@@ -115,6 +135,17 @@ public class PropertyValue extends ApiResource {
 	}
 	
 
+	public PropertyValue resourceImages(List<String> resourceImages) {
+		setResourceImages(resourceImages);
+		return this;
+	}
+	
+
+	public List<String> resourceImages() {
+		return getResourceImages();
+	}
+	
+
 	public void setImages(List<String> images) {
 		this.images = images;
 	}
@@ -122,6 +153,17 @@ public class PropertyValue extends ApiResource {
 
 	public List<String> getImages() {
 		return this.images;
+	}
+	
+
+	public PropertyValue images(List<String> images) {
+		setImages(images);
+		return this;
+	}
+	
+
+	public List<String> images() {
+		return getImages();
 	}
 	
 
@@ -135,6 +177,17 @@ public class PropertyValue extends ApiResource {
 	}
 	
 
+	public PropertyValue translations(List<String> translations) {
+		setTranslations(translations);
+		return this;
+	}
+	
+
+	public List<String> translations() {
+		return getTranslations();
+	}
+	
+
 	public void setProductProperties(List<String> productProperties) {
 		this.productProperties = productProperties;
 	}
@@ -142,6 +195,17 @@ public class PropertyValue extends ApiResource {
 
 	public List<String> getProductProperties() {
 		return this.productProperties;
+	}
+	
+
+	public PropertyValue productProperties(List<String> productProperties) {
+		setProductProperties(productProperties);
+		return this;
+	}
+	
+
+	public List<String> productProperties() {
+		return getProductProperties();
 	}
 	
 
@@ -155,6 +219,17 @@ public class PropertyValue extends ApiResource {
 	}
 	
 
+	public PropertyValue products(List<String> products) {
+		setProducts(products);
+		return this;
+	}
+	
+
+	public List<String> products() {
+		return getProducts();
+	}
+	
+
 	@Override
 	public boolean equals(Object o) {
 	
@@ -165,9 +240,7 @@ public class PropertyValue extends ApiResource {
 	
 		return super.equals(o)
 			&& Objects.equals(this.name, x.name)
-			&& Objects.equals(this.slug, x.slug)
 			&& Objects.equals(this.propertyTypeId, x.propertyTypeId)
-			&& Objects.equals(this.position, x.position)
 			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.propertyType, x.propertyType)
 			&& Objects.equals(this.resourceImages, x.resourceImages)
@@ -184,9 +257,8 @@ public class PropertyValue extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, slug, propertyTypeId, position, previousChanges,
-			propertyType, resourceImages, images, translations, productProperties,
-			products 
+			name, propertyTypeId, previousChanges, propertyType, resourceImages,
+			images, translations, productProperties, products 
 		);
 	
 	}
@@ -198,9 +270,7 @@ public class PropertyValue extends ApiResource {
 		PropertyValue no = new PropertyValue();
 	
 		no.name = this.name;
-		no.slug = this.slug;
 		no.propertyTypeId = this.propertyTypeId;
-		no.position = this.position;
 		no.previousChanges = this.previousChanges;
 		no.propertyType = this.propertyType;
 		no.resourceImages = this.resourceImages;

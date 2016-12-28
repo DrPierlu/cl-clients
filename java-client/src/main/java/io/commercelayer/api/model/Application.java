@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class Application extends ApiResource {
 
-	private static final long serialVersionUID = -1482880735268L;
+	private static final long serialVersionUID = -1482914097425L;
 
 
 	private String name;
@@ -46,6 +46,17 @@ public class Application extends ApiResource {
 	}
 	
 
+	public Application name(String name) {
+		setName(name);
+		return this;
+	}
+	
+
+	public String name() {
+		return getName();
+	}
+	
+
 	public void setPreviousChanges(Object previousChanges) {
 		this.previousChanges = previousChanges;
 	}
@@ -53,6 +64,17 @@ public class Application extends ApiResource {
 
 	public Object getPreviousChanges() {
 		return this.previousChanges;
+	}
+	
+
+	public Application previousChanges(Object previousChanges) {
+		setPreviousChanges(previousChanges);
+		return this;
+	}
+	
+
+	public Object previousChanges() {
+		return getPreviousChanges();
 	}
 	
 
@@ -66,6 +88,17 @@ public class Application extends ApiResource {
 	}
 	
 
+	public Application consumerRoles(List<String> consumerRoles) {
+		setConsumerRoles(consumerRoles);
+		return this;
+	}
+	
+
+	public List<String> consumerRoles() {
+		return getConsumerRoles();
+	}
+	
+
 	public void setRoles(List<String> roles) {
 		this.roles = roles;
 	}
@@ -73,6 +106,17 @@ public class Application extends ApiResource {
 
 	public List<String> getRoles() {
 		return this.roles;
+	}
+	
+
+	public Application roles(List<String> roles) {
+		setRoles(roles);
+		return this;
+	}
+	
+
+	public List<String> roles() {
+		return getRoles();
 	}
 	
 
@@ -86,6 +130,17 @@ public class Application extends ApiResource {
 	}
 	
 
+	public Application permissions(List<String> permissions) {
+		setPermissions(permissions);
+		return this;
+	}
+	
+
+	public List<String> permissions() {
+		return getPermissions();
+	}
+	
+
 	public void setAuthCredentials(Object authCredentials) {
 		this.authCredentials = authCredentials;
 	}
@@ -93,6 +148,17 @@ public class Application extends ApiResource {
 
 	public Object getAuthCredentials() {
 		return this.authCredentials;
+	}
+	
+
+	public Application authCredentials(Object authCredentials) {
+		setAuthCredentials(authCredentials);
+		return this;
+	}
+	
+
+	public Object authCredentials() {
+		return getAuthCredentials();
 	}
 	
 

@@ -10,11 +10,9 @@ import java.util.List;
  */
 public class CreditCard extends ApiResource {
 
-	private static final long serialVersionUID = -1482880735278L;
+	private static final long serialVersionUID = -1482914097531L;
 
 
-	@JsonExclude
-	private String name;
 	@JsonExclude
 	private String token;
 	@JsonExclude
@@ -28,12 +26,14 @@ public class CreditCard extends ApiResource {
 	private String lastFourDigits;
 	@JsonExclude
 	private String firstSixDigits;
-	private Integer month;
-	private Integer year;
+	private String month;
+	private String year;
 	@JsonExclude
 	private String verificationValue;
 	@JsonExclude
 	private String email;
+	@JsonExclude
+	private String data;
 	@JsonExclude
 	private String storageState;
 	@JsonExclude
@@ -56,16 +56,6 @@ public class CreditCard extends ApiResource {
 	}
 	
 
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-
-	public String getName() {
-		return this.name;
-	}
-	
-
 	public void setToken(String token) {
 		this.token = token;
 	}
@@ -73,6 +63,17 @@ public class CreditCard extends ApiResource {
 
 	public String getToken() {
 		return this.token;
+	}
+	
+
+	public CreditCard token(String token) {
+		setToken(token);
+		return this;
+	}
+	
+
+	public String token() {
+		return getToken();
 	}
 	
 
@@ -86,6 +87,17 @@ public class CreditCard extends ApiResource {
 	}
 	
 
+	public CreditCard cardResource(String cardResource) {
+		setCardResource(cardResource);
+		return this;
+	}
+	
+
+	public String cardResource() {
+		return getCardResource();
+	}
+	
+
 	public void setFingerprint(String fingerprint) {
 		this.fingerprint = fingerprint;
 	}
@@ -93,6 +105,17 @@ public class CreditCard extends ApiResource {
 
 	public String getFingerprint() {
 		return this.fingerprint;
+	}
+	
+
+	public CreditCard fingerprint(String fingerprint) {
+		setFingerprint(fingerprint);
+		return this;
+	}
+	
+
+	public String fingerprint() {
+		return getFingerprint();
 	}
 	
 
@@ -106,6 +129,17 @@ public class CreditCard extends ApiResource {
 	}
 	
 
+	public CreditCard firstName(String firstName) {
+		setFirstName(firstName);
+		return this;
+	}
+	
+
+	public String firstName() {
+		return getFirstName();
+	}
+	
+
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
@@ -113,6 +147,17 @@ public class CreditCard extends ApiResource {
 
 	public String getLastName() {
 		return this.lastName;
+	}
+	
+
+	public CreditCard lastName(String lastName) {
+		setLastName(lastName);
+		return this;
+	}
+	
+
+	public String lastName() {
+		return getLastName();
 	}
 	
 
@@ -126,6 +171,17 @@ public class CreditCard extends ApiResource {
 	}
 	
 
+	public CreditCard number(String number) {
+		setNumber(number);
+		return this;
+	}
+	
+
+	public String number() {
+		return getNumber();
+	}
+	
+
 	public void setLastFourDigits(String lastFourDigits) {
 		this.lastFourDigits = lastFourDigits;
 	}
@@ -133,6 +189,17 @@ public class CreditCard extends ApiResource {
 
 	public String getLastFourDigits() {
 		return this.lastFourDigits;
+	}
+	
+
+	public CreditCard lastFourDigits(String lastFourDigits) {
+		setLastFourDigits(lastFourDigits);
+		return this;
+	}
+	
+
+	public String lastFourDigits() {
+		return getLastFourDigits();
 	}
 	
 
@@ -146,23 +213,56 @@ public class CreditCard extends ApiResource {
 	}
 	
 
-	public void setMonth(Integer month) {
+	public CreditCard firstSixDigits(String firstSixDigits) {
+		setFirstSixDigits(firstSixDigits);
+		return this;
+	}
+	
+
+	public String firstSixDigits() {
+		return getFirstSixDigits();
+	}
+	
+
+	public void setMonth(String month) {
 		this.month = month;
 	}
 	
 
-	public Integer getMonth() {
+	public String getMonth() {
 		return this.month;
 	}
 	
 
-	public void setYear(Integer year) {
+	public CreditCard month(String month) {
+		setMonth(month);
+		return this;
+	}
+	
+
+	public String month() {
+		return getMonth();
+	}
+	
+
+	public void setYear(String year) {
 		this.year = year;
 	}
 	
 
-	public Integer getYear() {
+	public String getYear() {
 		return this.year;
+	}
+	
+
+	public CreditCard year(String year) {
+		setYear(year);
+		return this;
+	}
+	
+
+	public String year() {
+		return getYear();
 	}
 	
 
@@ -176,6 +276,17 @@ public class CreditCard extends ApiResource {
 	}
 	
 
+	public CreditCard verificationValue(String verificationValue) {
+		setVerificationValue(verificationValue);
+		return this;
+	}
+	
+
+	public String verificationValue() {
+		return getVerificationValue();
+	}
+	
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
@@ -183,6 +294,38 @@ public class CreditCard extends ApiResource {
 
 	public String getEmail() {
 		return this.email;
+	}
+	
+
+	public CreditCard email(String email) {
+		setEmail(email);
+		return this;
+	}
+	
+
+	public String email() {
+		return getEmail();
+	}
+	
+
+	public void setData(String data) {
+		this.data = data;
+	}
+	
+
+	public String getData() {
+		return this.data;
+	}
+	
+
+	public CreditCard data(String data) {
+		setData(data);
+		return this;
+	}
+	
+
+	public String data() {
+		return getData();
 	}
 	
 
@@ -196,6 +339,17 @@ public class CreditCard extends ApiResource {
 	}
 	
 
+	public CreditCard storageState(String storageState) {
+		setStorageState(storageState);
+		return this;
+	}
+	
+
+	public String storageState() {
+		return getStorageState();
+	}
+	
+
 	public void setEligibleForCardUpdater(String eligibleForCardUpdater) {
 		this.eligibleForCardUpdater = eligibleForCardUpdater;
 	}
@@ -203,6 +357,17 @@ public class CreditCard extends ApiResource {
 
 	public String getEligibleForCardUpdater() {
 		return this.eligibleForCardUpdater;
+	}
+	
+
+	public CreditCard eligibleForCardUpdater(String eligibleForCardUpdater) {
+		setEligibleForCardUpdater(eligibleForCardUpdater);
+		return this;
+	}
+	
+
+	public String eligibleForCardUpdater() {
+		return getEligibleForCardUpdater();
 	}
 	
 
@@ -216,6 +381,17 @@ public class CreditCard extends ApiResource {
 	}
 	
 
+	public CreditCard previousChanges(Object previousChanges) {
+		setPreviousChanges(previousChanges);
+		return this;
+	}
+	
+
+	public Object previousChanges() {
+		return getPreviousChanges();
+	}
+	
+
 	public void setTransactions(List<String> transactions) {
 		this.transactions = transactions;
 	}
@@ -223,6 +399,17 @@ public class CreditCard extends ApiResource {
 
 	public List<String> getTransactions() {
 		return this.transactions;
+	}
+	
+
+	public CreditCard transactions(List<String> transactions) {
+		setTransactions(transactions);
+		return this;
+	}
+	
+
+	public List<String> transactions() {
+		return getTransactions();
 	}
 	
 
@@ -236,6 +423,17 @@ public class CreditCard extends ApiResource {
 	}
 	
 
+	public CreditCard paymentMethods(List<String> paymentMethods) {
+		setPaymentMethods(paymentMethods);
+		return this;
+	}
+	
+
+	public List<String> paymentMethods() {
+		return getPaymentMethods();
+	}
+	
+
 	@Override
 	public boolean equals(Object o) {
 	
@@ -245,7 +443,6 @@ public class CreditCard extends ApiResource {
 		CreditCard x = (CreditCard)o;
 	
 		return super.equals(o)
-			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.token, x.token)
 			&& Objects.equals(this.cardResource, x.cardResource)
 			&& Objects.equals(this.fingerprint, x.fingerprint)
@@ -258,6 +455,7 @@ public class CreditCard extends ApiResource {
 			&& Objects.equals(this.year, x.year)
 			&& Objects.equals(this.verificationValue, x.verificationValue)
 			&& Objects.equals(this.email, x.email)
+			&& Objects.equals(this.data, x.data)
 			&& Objects.equals(this.storageState, x.storageState)
 			&& Objects.equals(this.eligibleForCardUpdater, x.eligibleForCardUpdater)
 			&& Objects.equals(this.previousChanges, x.previousChanges)
@@ -272,9 +470,9 @@ public class CreditCard extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, token, cardResource, fingerprint, firstName,
-			lastName, number, lastFourDigits, firstSixDigits, month,
-			year, verificationValue, email, storageState, eligibleForCardUpdater,
+			token, cardResource, fingerprint, firstName, lastName,
+			number, lastFourDigits, firstSixDigits, month, year,
+			verificationValue, email, data, storageState, eligibleForCardUpdater,
 			previousChanges, transactions, paymentMethods 
 		);
 	
@@ -286,7 +484,6 @@ public class CreditCard extends ApiResource {
 	
 		CreditCard no = new CreditCard();
 	
-		no.name = this.name;
 		no.token = this.token;
 		no.cardResource = this.cardResource;
 		no.fingerprint = this.fingerprint;
@@ -299,6 +496,7 @@ public class CreditCard extends ApiResource {
 		no.year = this.year;
 		no.verificationValue = this.verificationValue;
 		no.email = this.email;
+		no.data = this.data;
 		no.storageState = this.storageState;
 		no.eligibleForCardUpdater = this.eligibleForCardUpdater;
 		no.previousChanges = this.previousChanges;

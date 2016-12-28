@@ -10,10 +10,10 @@ import java.util.List;
  */
 public class Merchant extends ApiResource {
 
-	private static final long serialVersionUID = -1482880735302L;
+	private static final long serialVersionUID = -1482914097664L;
 
 
-	private Integer countryId;
+	private String countryId;
 	private String name;
 	@JsonExclude
 	private String description;
@@ -41,13 +41,24 @@ public class Merchant extends ApiResource {
 	}
 	
 
-	public void setCountryId(Integer countryId) {
+	public void setCountryId(String countryId) {
 		this.countryId = countryId;
 	}
 	
 
-	public Integer getCountryId() {
+	public String getCountryId() {
 		return this.countryId;
+	}
+	
+
+	public Merchant countryId(String countryId) {
+		setCountryId(countryId);
+		return this;
+	}
+	
+
+	public String countryId() {
+		return getCountryId();
 	}
 	
 
@@ -61,6 +72,17 @@ public class Merchant extends ApiResource {
 	}
 	
 
+	public Merchant name(String name) {
+		setName(name);
+		return this;
+	}
+	
+
+	public String name() {
+		return getName();
+	}
+	
+
 	public void setDescription(String description) {
 		this.description = description;
 	}
@@ -68,6 +90,17 @@ public class Merchant extends ApiResource {
 
 	public String getDescription() {
 		return this.description;
+	}
+	
+
+	public Merchant description(String description) {
+		setDescription(description);
+		return this;
+	}
+	
+
+	public String description() {
+		return getDescription();
 	}
 	
 
@@ -81,6 +114,17 @@ public class Merchant extends ApiResource {
 	}
 	
 
+	public Merchant previousChanges(Object previousChanges) {
+		setPreviousChanges(previousChanges);
+		return this;
+	}
+	
+
+	public Object previousChanges() {
+		return getPreviousChanges();
+	}
+	
+
 	public void setCountry(Object country) {
 		this.country = country;
 	}
@@ -88,6 +132,17 @@ public class Merchant extends ApiResource {
 
 	public Object getCountry() {
 		return this.country;
+	}
+	
+
+	public Merchant country(Object country) {
+		setCountry(country);
+		return this;
+	}
+	
+
+	public Object country() {
+		return getCountry();
 	}
 	
 
@@ -101,6 +156,17 @@ public class Merchant extends ApiResource {
 	}
 	
 
+	public Merchant markets(List<String> markets) {
+		setMarkets(markets);
+		return this;
+	}
+	
+
+	public List<String> markets() {
+		return getMarkets();
+	}
+	
+
 	public void setGateways(List<String> gateways) {
 		this.gateways = gateways;
 	}
@@ -108,6 +174,17 @@ public class Merchant extends ApiResource {
 
 	public List<String> getGateways() {
 		return this.gateways;
+	}
+	
+
+	public Merchant gateways(List<String> gateways) {
+		setGateways(gateways);
+		return this;
+	}
+	
+
+	public List<String> gateways() {
+		return getGateways();
 	}
 	
 
@@ -121,6 +198,17 @@ public class Merchant extends ApiResource {
 	}
 	
 
+	public Merchant orders(List<String> orders) {
+		setOrders(orders);
+		return this;
+	}
+	
+
+	public List<String> orders() {
+		return getOrders();
+	}
+	
+
 	public void setPaymentTypes(List<String> paymentTypes) {
 		this.paymentTypes = paymentTypes;
 	}
@@ -128,6 +216,17 @@ public class Merchant extends ApiResource {
 
 	public List<String> getPaymentTypes() {
 		return this.paymentTypes;
+	}
+	
+
+	public Merchant paymentTypes(List<String> paymentTypes) {
+		setPaymentTypes(paymentTypes);
+		return this;
+	}
+	
+
+	public List<String> paymentTypes() {
+		return getPaymentTypes();
 	}
 	
 

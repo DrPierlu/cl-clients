@@ -10,18 +10,16 @@ import java.util.List;
  */
 public class PaymentType extends ApiResource {
 
-	private static final long serialVersionUID = -1482880735314L;
+	private static final long serialVersionUID = -1482914097796L;
 
 
 	private String name;
 	@JsonExclude
-	private String slug;
-	@JsonExclude
 	private String description;
-	private Integer merchantId;
-	private Integer gatewayId;
+	private String merchantId;
+	private String gatewayId;
 	@JsonExclude
-	private String paymentSourceKind;
+	private String paymentSourceResource;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
@@ -60,13 +58,14 @@ public class PaymentType extends ApiResource {
 	}
 	
 
-	public void setSlug(String slug) {
-		this.slug = slug;
+	public PaymentType name(String name) {
+		setName(name);
+		return this;
 	}
 	
 
-	public String getSlug() {
-		return this.slug;
+	public String name() {
+		return getName();
 	}
 	
 
@@ -80,33 +79,77 @@ public class PaymentType extends ApiResource {
 	}
 	
 
-	public void setMerchantId(Integer merchantId) {
+	public PaymentType description(String description) {
+		setDescription(description);
+		return this;
+	}
+	
+
+	public String description() {
+		return getDescription();
+	}
+	
+
+	public void setMerchantId(String merchantId) {
 		this.merchantId = merchantId;
 	}
 	
 
-	public Integer getMerchantId() {
+	public String getMerchantId() {
 		return this.merchantId;
 	}
 	
 
-	public void setGatewayId(Integer gatewayId) {
+	public PaymentType merchantId(String merchantId) {
+		setMerchantId(merchantId);
+		return this;
+	}
+	
+
+	public String merchantId() {
+		return getMerchantId();
+	}
+	
+
+	public void setGatewayId(String gatewayId) {
 		this.gatewayId = gatewayId;
 	}
 	
 
-	public Integer getGatewayId() {
+	public String getGatewayId() {
 		return this.gatewayId;
 	}
 	
 
-	public void setPaymentSourceKind(String paymentSourceKind) {
-		this.paymentSourceKind = paymentSourceKind;
+	public PaymentType gatewayId(String gatewayId) {
+		setGatewayId(gatewayId);
+		return this;
 	}
 	
 
-	public String getPaymentSourceKind() {
-		return this.paymentSourceKind;
+	public String gatewayId() {
+		return getGatewayId();
+	}
+	
+
+	public void setPaymentSourceResource(String paymentSourceResource) {
+		this.paymentSourceResource = paymentSourceResource;
+	}
+	
+
+	public String getPaymentSourceResource() {
+		return this.paymentSourceResource;
+	}
+	
+
+	public PaymentType paymentSourceResource(String paymentSourceResource) {
+		setPaymentSourceResource(paymentSourceResource);
+		return this;
+	}
+	
+
+	public String paymentSourceResource() {
+		return getPaymentSourceResource();
 	}
 	
 
@@ -120,6 +163,17 @@ public class PaymentType extends ApiResource {
 	}
 	
 
+	public PaymentType previousChanges(Object previousChanges) {
+		setPreviousChanges(previousChanges);
+		return this;
+	}
+	
+
+	public Object previousChanges() {
+		return getPreviousChanges();
+	}
+	
+
 	public void setMerchant(Object merchant) {
 		this.merchant = merchant;
 	}
@@ -127,6 +181,17 @@ public class PaymentType extends ApiResource {
 
 	public Object getMerchant() {
 		return this.merchant;
+	}
+	
+
+	public PaymentType merchant(Object merchant) {
+		setMerchant(merchant);
+		return this;
+	}
+	
+
+	public Object merchant() {
+		return getMerchant();
 	}
 	
 
@@ -140,6 +205,17 @@ public class PaymentType extends ApiResource {
 	}
 	
 
+	public PaymentType gateway(Object gateway) {
+		setGateway(gateway);
+		return this;
+	}
+	
+
+	public Object gateway() {
+		return getGateway();
+	}
+	
+
 	public void setResourceImages(List<String> resourceImages) {
 		this.resourceImages = resourceImages;
 	}
@@ -147,6 +223,17 @@ public class PaymentType extends ApiResource {
 
 	public List<String> getResourceImages() {
 		return this.resourceImages;
+	}
+	
+
+	public PaymentType resourceImages(List<String> resourceImages) {
+		setResourceImages(resourceImages);
+		return this;
+	}
+	
+
+	public List<String> resourceImages() {
+		return getResourceImages();
 	}
 	
 
@@ -160,6 +247,17 @@ public class PaymentType extends ApiResource {
 	}
 	
 
+	public PaymentType images(List<String> images) {
+		setImages(images);
+		return this;
+	}
+	
+
+	public List<String> images() {
+		return getImages();
+	}
+	
+
 	public void setTranslations(List<String> translations) {
 		this.translations = translations;
 	}
@@ -167,6 +265,17 @@ public class PaymentType extends ApiResource {
 
 	public List<String> getTranslations() {
 		return this.translations;
+	}
+	
+
+	public PaymentType translations(List<String> translations) {
+		setTranslations(translations);
+		return this;
+	}
+	
+
+	public List<String> translations() {
+		return getTranslations();
 	}
 	
 
@@ -180,6 +289,17 @@ public class PaymentType extends ApiResource {
 	}
 	
 
+	public PaymentType marketPaymentTypes(List<String> marketPaymentTypes) {
+		setMarketPaymentTypes(marketPaymentTypes);
+		return this;
+	}
+	
+
+	public List<String> marketPaymentTypes() {
+		return getMarketPaymentTypes();
+	}
+	
+
 	public void setMarkets(List<String> markets) {
 		this.markets = markets;
 	}
@@ -187,6 +307,17 @@ public class PaymentType extends ApiResource {
 
 	public List<String> getMarkets() {
 		return this.markets;
+	}
+	
+
+	public PaymentType markets(List<String> markets) {
+		setMarkets(markets);
+		return this;
+	}
+	
+
+	public List<String> markets() {
+		return getMarkets();
 	}
 	
 
@@ -200,11 +331,10 @@ public class PaymentType extends ApiResource {
 	
 		return super.equals(o)
 			&& Objects.equals(this.name, x.name)
-			&& Objects.equals(this.slug, x.slug)
 			&& Objects.equals(this.description, x.description)
 			&& Objects.equals(this.merchantId, x.merchantId)
 			&& Objects.equals(this.gatewayId, x.gatewayId)
-			&& Objects.equals(this.paymentSourceKind, x.paymentSourceKind)
+			&& Objects.equals(this.paymentSourceResource, x.paymentSourceResource)
 			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.merchant, x.merchant)
 			&& Objects.equals(this.gateway, x.gateway)
@@ -222,9 +352,9 @@ public class PaymentType extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, slug, description, merchantId, gatewayId,
-			paymentSourceKind, previousChanges, merchant, gateway, resourceImages,
-			images, translations, marketPaymentTypes, markets 
+			name, description, merchantId, gatewayId, paymentSourceResource,
+			previousChanges, merchant, gateway, resourceImages, images,
+			translations, marketPaymentTypes, markets 
 		);
 	
 	}
@@ -236,11 +366,10 @@ public class PaymentType extends ApiResource {
 		PaymentType no = new PaymentType();
 	
 		no.name = this.name;
-		no.slug = this.slug;
 		no.description = this.description;
 		no.merchantId = this.merchantId;
 		no.gatewayId = this.gatewayId;
-		no.paymentSourceKind = this.paymentSourceKind;
+		no.paymentSourceResource = this.paymentSourceResource;
 		no.previousChanges = this.previousChanges;
 		no.merchant = this.merchant;
 		no.gateway = this.gateway;

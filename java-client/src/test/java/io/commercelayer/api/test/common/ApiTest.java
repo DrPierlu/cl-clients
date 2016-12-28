@@ -133,7 +133,7 @@ public abstract class ApiTest<T extends ApiResource> {
 			}
 			else
 			if (operation instanceof DeleteOperation) {
-				testDelete((ApiRequest<DeleteOperation>)request, caller, enableAssertions);
+				testDelete((ApiRequest<DeleteOperation>)request, resourceType, caller, enableAssertions);
 			}
 			else
 			if (operation instanceof MoveOperation) {
@@ -242,12 +242,13 @@ public abstract class ApiTest<T extends ApiResource> {
 	}
 	
 	
-	private void testDelete(ApiRequest<DeleteOperation> request, ApiCaller caller, boolean enableAssertions) throws ApiException {
+	private ApiResponse<T> testDelete(ApiRequest<DeleteOperation> request, Class<T> resourceType, ApiCaller caller, boolean enableAssertions) throws ApiException {
 		
-		caller.delete(request);
+		ApiResponse<T> response = caller.delete(request, resourceType);
 		
 		// Assertions
 		
+		return response;
 		
 	}
 	

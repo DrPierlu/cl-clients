@@ -10,17 +10,15 @@ import java.util.List;
  */
 public class Taxon extends ApiResource {
 
-	private static final long serialVersionUID = -1482880735361L;
+	private static final long serialVersionUID = -1482914098063L;
 
 
 	private String name;
+	private String taxonomyId;
 	@JsonExclude
-	private String slug;
-	private Integer taxonomyId;
+	private String position;
 	@JsonExclude
-	private Integer position;
-	@JsonExclude
-	private Integer parentId;
+	private String parentId;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
@@ -69,43 +67,77 @@ public class Taxon extends ApiResource {
 	}
 	
 
-	public void setSlug(String slug) {
-		this.slug = slug;
+	public Taxon name(String name) {
+		setName(name);
+		return this;
 	}
 	
 
-	public String getSlug() {
-		return this.slug;
+	public String name() {
+		return getName();
 	}
 	
 
-	public void setTaxonomyId(Integer taxonomyId) {
+	public void setTaxonomyId(String taxonomyId) {
 		this.taxonomyId = taxonomyId;
 	}
 	
 
-	public Integer getTaxonomyId() {
+	public String getTaxonomyId() {
 		return this.taxonomyId;
 	}
 	
 
-	public void setPosition(Integer position) {
+	public Taxon taxonomyId(String taxonomyId) {
+		setTaxonomyId(taxonomyId);
+		return this;
+	}
+	
+
+	public String taxonomyId() {
+		return getTaxonomyId();
+	}
+	
+
+	public void setPosition(String position) {
 		this.position = position;
 	}
 	
 
-	public Integer getPosition() {
+	public String getPosition() {
 		return this.position;
 	}
 	
 
-	public void setParentId(Integer parentId) {
+	public Taxon position(String position) {
+		setPosition(position);
+		return this;
+	}
+	
+
+	public String position() {
+		return getPosition();
+	}
+	
+
+	public void setParentId(String parentId) {
 		this.parentId = parentId;
 	}
 	
 
-	public Integer getParentId() {
+	public String getParentId() {
 		return this.parentId;
+	}
+	
+
+	public Taxon parentId(String parentId) {
+		setParentId(parentId);
+		return this;
+	}
+	
+
+	public String parentId() {
+		return getParentId();
 	}
 	
 
@@ -119,6 +151,17 @@ public class Taxon extends ApiResource {
 	}
 	
 
+	public Taxon previousChanges(Object previousChanges) {
+		setPreviousChanges(previousChanges);
+		return this;
+	}
+	
+
+	public Object previousChanges() {
+		return getPreviousChanges();
+	}
+	
+
 	public void setTaxonomy(Object taxonomy) {
 		this.taxonomy = taxonomy;
 	}
@@ -126,6 +169,17 @@ public class Taxon extends ApiResource {
 
 	public Object getTaxonomy() {
 		return this.taxonomy;
+	}
+	
+
+	public Taxon taxonomy(Object taxonomy) {
+		setTaxonomy(taxonomy);
+		return this;
+	}
+	
+
+	public Object taxonomy() {
+		return getTaxonomy();
 	}
 	
 
@@ -139,6 +193,17 @@ public class Taxon extends ApiResource {
 	}
 	
 
+	public Taxon parent(Object parent) {
+		setParent(parent);
+		return this;
+	}
+	
+
+	public Object parent() {
+		return getParent();
+	}
+	
+
 	public void setResourceImages(List<String> resourceImages) {
 		this.resourceImages = resourceImages;
 	}
@@ -146,6 +211,17 @@ public class Taxon extends ApiResource {
 
 	public List<String> getResourceImages() {
 		return this.resourceImages;
+	}
+	
+
+	public Taxon resourceImages(List<String> resourceImages) {
+		setResourceImages(resourceImages);
+		return this;
+	}
+	
+
+	public List<String> resourceImages() {
+		return getResourceImages();
 	}
 	
 
@@ -159,6 +235,17 @@ public class Taxon extends ApiResource {
 	}
 	
 
+	public Taxon images(List<String> images) {
+		setImages(images);
+		return this;
+	}
+	
+
+	public List<String> images() {
+		return getImages();
+	}
+	
+
 	public void setTranslations(List<String> translations) {
 		this.translations = translations;
 	}
@@ -166,6 +253,17 @@ public class Taxon extends ApiResource {
 
 	public List<String> getTranslations() {
 		return this.translations;
+	}
+	
+
+	public Taxon translations(List<String> translations) {
+		setTranslations(translations);
+		return this;
+	}
+	
+
+	public List<String> translations() {
+		return getTranslations();
 	}
 	
 
@@ -179,6 +277,17 @@ public class Taxon extends ApiResource {
 	}
 	
 
+	public Taxon merchandisingRules(List<String> merchandisingRules) {
+		setMerchandisingRules(merchandisingRules);
+		return this;
+	}
+	
+
+	public List<String> merchandisingRules() {
+		return getMerchandisingRules();
+	}
+	
+
 	public void setProducts(List<String> products) {
 		this.products = products;
 	}
@@ -186,6 +295,17 @@ public class Taxon extends ApiResource {
 
 	public List<String> getProducts() {
 		return this.products;
+	}
+	
+
+	public Taxon products(List<String> products) {
+		setProducts(products);
+		return this;
+	}
+	
+
+	public List<String> products() {
+		return getProducts();
 	}
 	
 
@@ -199,6 +319,17 @@ public class Taxon extends ApiResource {
 	}
 	
 
+	public Taxon children(List<String> children) {
+		setChildren(children);
+		return this;
+	}
+	
+
+	public List<String> children() {
+		return getChildren();
+	}
+	
+
 	public void setAncestorHierarchies(List<String> ancestorHierarchies) {
 		this.ancestorHierarchies = ancestorHierarchies;
 	}
@@ -206,6 +337,17 @@ public class Taxon extends ApiResource {
 
 	public List<String> getAncestorHierarchies() {
 		return this.ancestorHierarchies;
+	}
+	
+
+	public Taxon ancestorHierarchies(List<String> ancestorHierarchies) {
+		setAncestorHierarchies(ancestorHierarchies);
+		return this;
+	}
+	
+
+	public List<String> ancestorHierarchies() {
+		return getAncestorHierarchies();
 	}
 	
 
@@ -219,6 +361,17 @@ public class Taxon extends ApiResource {
 	}
 	
 
+	public Taxon selfAndAncestors(List<String> selfAndAncestors) {
+		setSelfAndAncestors(selfAndAncestors);
+		return this;
+	}
+	
+
+	public List<String> selfAndAncestors() {
+		return getSelfAndAncestors();
+	}
+	
+
 	public void setDescendantHierarchies(List<String> descendantHierarchies) {
 		this.descendantHierarchies = descendantHierarchies;
 	}
@@ -226,6 +379,17 @@ public class Taxon extends ApiResource {
 
 	public List<String> getDescendantHierarchies() {
 		return this.descendantHierarchies;
+	}
+	
+
+	public Taxon descendantHierarchies(List<String> descendantHierarchies) {
+		setDescendantHierarchies(descendantHierarchies);
+		return this;
+	}
+	
+
+	public List<String> descendantHierarchies() {
+		return getDescendantHierarchies();
 	}
 	
 
@@ -239,6 +403,17 @@ public class Taxon extends ApiResource {
 	}
 	
 
+	public Taxon selfAndDescendants(List<String> selfAndDescendants) {
+		setSelfAndDescendants(selfAndDescendants);
+		return this;
+	}
+	
+
+	public List<String> selfAndDescendants() {
+		return getSelfAndDescendants();
+	}
+	
+
 	@Override
 	public boolean equals(Object o) {
 	
@@ -249,7 +424,6 @@ public class Taxon extends ApiResource {
 	
 		return super.equals(o)
 			&& Objects.equals(this.name, x.name)
-			&& Objects.equals(this.slug, x.slug)
 			&& Objects.equals(this.taxonomyId, x.taxonomyId)
 			&& Objects.equals(this.position, x.position)
 			&& Objects.equals(this.parentId, x.parentId)
@@ -275,10 +449,10 @@ public class Taxon extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, slug, taxonomyId, position, parentId,
-			previousChanges, taxonomy, parent, resourceImages, images,
-			translations, merchandisingRules, products, children, ancestorHierarchies,
-			selfAndAncestors, descendantHierarchies, selfAndDescendants 
+			name, taxonomyId, position, parentId, previousChanges,
+			taxonomy, parent, resourceImages, images, translations,
+			merchandisingRules, products, children, ancestorHierarchies, selfAndAncestors,
+			descendantHierarchies, selfAndDescendants 
 		);
 	
 	}
@@ -290,7 +464,6 @@ public class Taxon extends ApiResource {
 		Taxon no = new Taxon();
 	
 		no.name = this.name;
-		no.slug = this.slug;
 		no.taxonomyId = this.taxonomyId;
 		no.position = this.position;
 		no.parentId = this.parentId;
