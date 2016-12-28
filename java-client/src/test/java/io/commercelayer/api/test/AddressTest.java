@@ -81,7 +81,7 @@ public class AddressTest extends IntegrationTest<Address> {
 		getOp.setId(insRes.getId());
 				
 		ApiRequest<GetAccountAddressesId> getReq = new ApiRequest<>(getOp);
-				
+		
 		ApiResponse<Address> getRes = test(getReq, Address.class, caller);
 		
 		Assert.assertNotEquals(insRes.getGeocodingStreet(), getRes.getResource().getGeocodingStreet());

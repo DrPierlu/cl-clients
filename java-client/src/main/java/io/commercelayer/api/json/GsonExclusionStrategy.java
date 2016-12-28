@@ -12,7 +12,7 @@ public class GsonExclusionStrategy implements ExclusionStrategy {
 	}
 
 	public boolean shouldSkipClass(Class<?> clazz) {
-		return !ApiObject.class.isAssignableFrom(clazz);
+		return false;
 	}
 
 }
