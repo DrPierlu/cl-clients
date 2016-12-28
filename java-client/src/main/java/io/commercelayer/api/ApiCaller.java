@@ -63,10 +63,8 @@ public class ApiCaller {
 	}
 
 	public void setCustomHttpClient(HttpClient httpClient) {
-		if (httpClient != null)
-			this.httpClient = httpClient;
-		else
-			logger.error("Custom HttpClient implementation required");
+		if (httpClient != null) this.httpClient = httpClient;
+		else logger.error("Custom HttpClient implementation required");
 	}
 	
 	

@@ -47,8 +47,8 @@ public final class ApiAuthenticator {
 				throw new AuthException(String.format("Authentication HTTP error [%s]", account));
 			}
 			
-			if (httpResponse.getCode() >= 300) throw new AuthException(String.format("HTTP Error Code [%d]", httpResponse.getCode()));
-			if (!ContentType.JSON.equals(httpResponse.getContentType())) throw new AuthException(String.format("Expected JSON Content Type [%s]", httpResponse.getContentType()));
+			if (httpResponse.getCode() >= 300) throw new AuthException("HTTP Error Code [%d]", httpResponse.getCode());
+			if (!ContentType.JSON.equals(httpResponse.getContentType())) throw new AuthException("Expected JSON Content Type [%s]", httpResponse.getContentType());
 		
 		}
 		catch (AuthException ae) {
@@ -89,8 +89,8 @@ public final class ApiAuthenticator {
 			throw new AuthException("Token refresh error");
 		}
 		
-		if (httpResponse.getCode() >= 300) throw new AuthException(String.format("HTTP Error Code [%d]", httpResponse.getCode()));
-		if (!ContentType.JSON.equals(httpResponse.getContentType())) throw new AuthException(String.format("Expected JSON Content Type [%s]", httpResponse.getContentType()));
+		if (httpResponse.getCode() >= 300) throw new AuthException("HTTP Error Code [%d]", httpResponse.getCode());
+		if (!ContentType.JSON.equals(httpResponse.getContentType())) throw new AuthException("Expected JSON Content Type [%s]", httpResponse.getContentType());
 
 
 		ApiToken newToken = ApiUtils.getJsonCodecInstance().fromJSON(httpResponse.getBody(), ApiToken.class);
