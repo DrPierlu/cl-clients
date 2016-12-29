@@ -8,7 +8,7 @@ import java.util.Map;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.BooleanUtils;
 
-import io.commercelayer.api.codegen.ApiCodeGenerator;
+import io.commercelayer.api.codegen.ApiCodegenException;
 import io.commercelayer.api.codegen.schema.Definition;
 import io.commercelayer.api.codegen.schema.Operation;
 import io.commercelayer.api.codegen.schema.Parameter;
@@ -27,11 +27,12 @@ import io.swagger.parser.SwaggerParser;
 
 public class ApiSwaggerParser extends ApiParser {
 	
-	public Schema parse(String schemaPath) {
+	public Schema parse(String schemaPath) throws ApiCodegenException {
 		
 		SwaggerParser parser = new SwaggerParser();
 
 		Swagger swagger = parser.read(schemaPath);
+		if (swagger == null) throw new ApiCodegenException("Error reading Swagger Schema");
 
 		Schema schema = new Schema();
 		
@@ -188,13 +189,5 @@ public class ApiSwaggerParser extends ApiParser {
 		return parameter;
 		
 	}
-	
-
-	public static void main(String[] args) {
-		ApiParser parser = ApiParserFactory.getSwaggerParserInstance();
-		Schema schema = parser.parse(ApiCodeGenerator.TEST_SCHEMA_PATH);
-		System.out.println(parser.printOutDefinitions(schema));
-		System.out.println(parser.printOutOperations(schema));
-	}
-	
+		
 }

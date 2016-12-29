@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import io.commercelayer.api.codegen.model.gen.ApiModelGen;
+
 public class Model {
 
 	private Map<String, ClassGroup> classGroups = new HashMap<>();
@@ -23,9 +25,10 @@ public class Model {
 		if (class_ == null) return false;
 		
 		String key = class_.getClassPackage();
+		String srcDir = ApiModelGen.PACKAGE_TEST.equals(key)? "src/test/java" : "src/main/java";
 		ClassGroup cg = this.classGroups.get(key);
 		
-		if (cg == null) this.classGroups.put(key, cg = new ClassGroup());
+		if (cg == null) this.classGroups.put(key, cg = new ClassGroup(srcDir));
 			
 		cg.addClass(class_);
 		
@@ -38,7 +41,13 @@ public class Model {
 
 	public static final class ClassGroup {
 		
+		private String sourceDirectory;
 		private List<ModelClass> groupClasses = new ArrayList<>();
+		
+		public ClassGroup(String sourceDirectory) {
+			super();
+			this.sourceDirectory = sourceDirectory;
+		}
 
 		public List<ModelClass> getGroupClasses() {
 			return groupClasses;
@@ -53,6 +62,14 @@ public class Model {
 						break;
 					}
 			}
+		}
+
+		public String getSourceDirectory() {
+			return sourceDirectory;
+		}
+
+		public void setSourceDirectory(String sourceDirectory) {
+			this.sourceDirectory = sourceDirectory;
 		}
 		
 	}

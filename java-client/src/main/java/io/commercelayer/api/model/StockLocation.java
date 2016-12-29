@@ -10,7 +10,7 @@ import java.util.Objects;
  */
 public class StockLocation extends ApiResource {
 
-	private static final long serialVersionUID = -1483006114472L;
+	private static final long serialVersionUID = -1483024666050L;
 
 
 	private String name;

@@ -9,7 +9,7 @@ import java.util.Objects;
  */
 public class ConsumerRole extends ApiResource {
 
-	private static final long serialVersionUID = -1483006114045L;
+	private static final long serialVersionUID = -1483024665461L;
 
 
 	private String consumerId;

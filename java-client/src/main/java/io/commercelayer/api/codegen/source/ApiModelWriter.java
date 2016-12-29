@@ -1,88 +1,84 @@
 package io.commercelayer.api.codegen.source;
 
 import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.DirectoryStream;
+import java.nio.file.Files;
+import java.nio.file.OpenOption;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.Map;
 
-import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import io.commercelayer.api.codegen.ApiCodeGenerator;
+import io.commercelayer.api.codegen.ApiCodegenException;
 import io.commercelayer.api.codegen.model.Model;
 import io.commercelayer.api.codegen.model.Model.ClassGroup;
 import io.commercelayer.api.codegen.model.ModelClass;
-import io.commercelayer.api.codegen.model.gen.ApiModelGen;
-import io.commercelayer.api.codegen.schema.parser.ApiParserFactory;
 import io.commercelayer.api.util.IOUtils;
 import io.commercelayer.api.util.LogUtils;
 
 public class ApiModelWriter {
-	
+
 	private static Logger logger = LoggerFactory.getLogger(ApiModelWriter.class);
 
-	public void writeCode(Model model) {
-		
+	public void writeCode(Model model) throws ApiCodegenException {
+
 		logger.info("Creating Java code ...");
-		
+
 		for (Map.Entry<String, ClassGroup> cgEntry : model.getClassGroups().entrySet()) {
-			
+
 			final String classGroupKey = cgEntry.getKey();
-			
+			ClassGroup cg = model.getClassGroup(classGroupKey);
+
 			try {
 				logger.info("Initializing package ... [{}]", classGroupKey);
-				initClassGroupDirectory(classGroupKey);
-			}
-			catch (IOException ioe) {
+				initClassGroupDirectory(classGroupKey, cg.getSourceDirectory());
+			} catch (IOException ioe) {
 				logger.error(LogUtils.printStackTrace(ioe));
 				continue;
 			}
-			
-			ClassGroup cg = model.getClassGroup(classGroupKey);
-			
+
 			logger.info("Writing classes ... [{}]", classGroupKey);
 			for (ModelClass mc : cg.getGroupClasses()) {
 				try {
-					writeClass(mc);
-				}
-				catch (IOException ioe) {
+					writeClass(mc, cg.getSourceDirectory());
+				} catch (IOException ioe) {
 					logger.error(LogUtils.printStackTrace(ioe));
 				}
 			}
-			
+
+		}
+
+		logger.info("Java classes created");
+
+	}
+
+	private void initClassGroupDirectory(String pkg, String srcDir) throws IOException {
+
+		Path dirPath = Paths.get(IOUtils.packageToPath(pkg, srcDir));
+		if (Files.notExists(dirPath)) Files.createDirectory(dirPath);
+
+		try (DirectoryStream<Path> stream = Files.newDirectoryStream(dirPath)) {
+			for (Path entry : stream) {
+				if (Files.isRegularFile(entry)) Files.delete(entry);
+			}
+		}
+
+	}
+
+	private void writeClass(ModelClass mc, String srcDir) throws IOException {
+		
+		String pkg = IOUtils.packageToPath(mc.getClassPackage(), srcDir);
+		String file = String.format("%s.java", mc.getName());
+		OpenOption[] oo = { StandardOpenOption.WRITE, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING };
+		
+		try (BufferedWriter bw = Files.newBufferedWriter(Paths.get(pkg, file), oo)) {
+			bw.write(mc.generate());
 		}
 		
-		logger.info("Java classes created");
-		
 	}
-	
-	
-	private void initClassGroupDirectory(String pkg) throws IOException {
-		
-		Path dirPath = Paths.get(IOUtils.packageToPath(pkg, "src/main/java"));
-		File dir = dirPath.toFile();
-		FileUtils.deleteDirectory(dir);
-		FileUtils.forceMkdir(dir);
-		
-	}
-	
-	
-	private void writeClass(ModelClass mc) throws IOException {
-		try (
-				FileWriter fw = new FileWriter(Paths.get(IOUtils.packageToPath(mc.getClassPackage(), "src/main/java"), mc.getName().concat(".java")).toFile());
-				BufferedWriter bw = new BufferedWriter(fw);
-			) {
-				bw.write(mc.generate());
-			}
-	}
-	
-	
-	public static void main(String[] args) {
-		new ApiModelWriter().writeCode(new ApiModelGen().createModel(ApiParserFactory.getSwaggerParserInstance().parseSchema(ApiCodeGenerator.TEST_SCHEMA_PATH)));
-	}
-	
+
 }

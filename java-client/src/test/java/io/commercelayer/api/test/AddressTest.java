@@ -10,8 +10,8 @@ import io.commercelayer.api.model.Address;
 import io.commercelayer.api.operation.GetAccountAddressesId;
 import io.commercelayer.api.operation.PostAccountAddresses;
 import io.commercelayer.api.operation.PutAccountAddressesId;
-import io.commercelayer.api.operation.common.ApiOperations;
 import io.commercelayer.api.operation.common.DeleteOperation;
+import io.commercelayer.api.operation.common.util.ApiOperations;
 import io.commercelayer.api.test.common.IntegrationTest;
 
 public class AddressTest extends IntegrationTest<Address> {

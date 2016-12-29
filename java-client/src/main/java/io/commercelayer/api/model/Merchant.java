@@ -10,7 +10,7 @@ import java.util.Objects;
  */
 public class Merchant extends ApiResource {
 
-	private static final long serialVersionUID = -1483006114205L;
+	private static final long serialVersionUID = -1483024665694L;
 
 
 	private String countryId;

@@ -9,7 +9,7 @@ import java.util.Objects;
  */
 public class State extends ApiResource {
 
-	private static final long serialVersionUID = -1483006114458L;
+	private static final long serialVersionUID = -1483024666033L;
 
 
 	private String code;

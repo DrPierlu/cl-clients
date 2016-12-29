@@ -176,6 +176,7 @@ public abstract class ApiTest<T extends ApiResource> {
 		}
 		catch (AssertionError ae) {
 			logger.info("Assertions KO");
+			throw ae;
 		}
 		
 		
@@ -202,6 +203,7 @@ public abstract class ApiTest<T extends ApiResource> {
 		}
 		catch (AssertionError ae) {
 			logger.info("Assertions KO");
+			throw ae;
 		}
 		
 		
@@ -231,6 +233,7 @@ public abstract class ApiTest<T extends ApiResource> {
 		}
 		catch (AssertionError ae) {
 			logger.info("Assertions KO");
+			throw ae;
 		}
 		
 		

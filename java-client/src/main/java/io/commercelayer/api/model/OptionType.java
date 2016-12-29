@@ -10,7 +10,7 @@ import java.util.Objects;
  */
 public class OptionType extends ApiResource {
 
-	private static final long serialVersionUID = -1483006114235L;
+	private static final long serialVersionUID = -1483024665719L;
 
 
 	private String name;

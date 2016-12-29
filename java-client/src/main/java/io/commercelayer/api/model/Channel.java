@@ -10,7 +10,7 @@ import java.util.Objects;
  */
 public class Channel extends ApiResource {
 
-	private static final long serialVersionUID = -1483006114036L;
+	private static final long serialVersionUID = -1483024665452L;
 
 
 	private String name;

@@ -10,7 +10,7 @@ import java.util.Objects;
  */
 public class Address extends ApiResource {
 
-	private static final long serialVersionUID = -1483006113992L;
+	private static final long serialVersionUID = -1483024665399L;
 
 
 	private String geocodingCity;

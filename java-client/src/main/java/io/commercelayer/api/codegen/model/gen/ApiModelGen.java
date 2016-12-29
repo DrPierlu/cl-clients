@@ -15,7 +15,7 @@ import org.slf4j.LoggerFactory;
 
 import io.commercelayer.api.ApiCaller;
 import io.commercelayer.api.ApiResponse;
-import io.commercelayer.api.codegen.ApiCodeGenerator;
+import io.commercelayer.api.codegen.ApiCodegenException;
 import io.commercelayer.api.codegen.model.Constructor;
 import io.commercelayer.api.codegen.model.CustomConstructor;
 import io.commercelayer.api.codegen.model.Field;
@@ -30,12 +30,9 @@ import io.commercelayer.api.codegen.schema.Parameter;
 import io.commercelayer.api.codegen.schema.Property;
 import io.commercelayer.api.codegen.schema.Resource;
 import io.commercelayer.api.codegen.schema.Schema;
-import io.commercelayer.api.codegen.schema.parser.ApiParserFactory;
-import io.commercelayer.api.codegen.source.ApiModelWriter;
 import io.commercelayer.api.json.JsonExclude;
 import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.operation.common.ApiOperation;
-import io.commercelayer.api.operation.common.ApiOperations;
 import io.commercelayer.api.operation.common.DeleteOperation;
 import io.commercelayer.api.operation.common.GetIdOperation;
 import io.commercelayer.api.operation.common.IdOperation;
@@ -54,13 +51,13 @@ public class ApiModelGen {
 	private static final boolean GENERATE_OPERATION_CLASSES = true;
 	private static final boolean GENERATE_TEST_CLASSES 		= true;
 
-	public static final String PACKAGE_ROOT 		= ApiModelWriter.class.getPackage().getName() + ".classes";
-	public static final String PACKAGE_OBJECT 		= PACKAGE_ROOT + ".object";
-	public static final String PACKAGE_OPERATION	= PACKAGE_ROOT + ".operation";
-	public static final String PACKAGE_TEST 		= PACKAGE_ROOT + ".test";
-	public static final String PACKAGE_UTIL			= PACKAGE_ROOT + ".util";
+	public static final String PACKAGE_OBJECT 		= ApiResource.class.getPackage().getName().replaceFirst(".common", "");
+	public static final String PACKAGE_OPERATION	= ApiOperation.class.getPackage().getName().replaceFirst(".common", "");
+	public static final String PACKAGE_TEST 		= "io.commercelayer.api.test.generated";
+	public static final String PACKAGE_UTIL			= ApiOperation.class.getPackage().getName().concat(".util");
 
-	public Model createModel(Schema schema) {
+	
+	public Model createModel(Schema schema) throws ApiCodegenException {
 
 		logger.info("Creating API Model ...");
 
@@ -121,7 +118,7 @@ public class ApiModelGen {
 		
 		logger.info("Creating Operations Catalogue ...");
 		
-		ModelClass mc = new ModelClass(pkg, ApiOperations.class.getSimpleName());
+		ModelClass mc = new ModelClass(pkg, "ApiOperations");
 		mc.setModifier(Modifier.PUBLIC | Modifier.FINAL);
 		mc.setComment(mc.getName());
 		
@@ -564,17 +561,6 @@ public class ApiModelGen {
 		
 		return mc;
 		
-	}
-
-	public static void main(String[] args) {
-
-		Schema schema = ApiParserFactory.getSwaggerParserInstance().parseSchema(ApiCodeGenerator.TEST_SCHEMA_PATH);
-
-		ApiModelGen apiGen = new ApiModelGen();
-
-		@SuppressWarnings("unused")
-		Model model = apiGen.createModel(schema);
-
 	}
 
 }
