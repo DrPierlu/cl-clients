@@ -15,8 +15,8 @@ public final class ApiCodeGenerator {
 	
 	public static void main(String[] args) {
 		try {
-			new ApiModelWriter().writeCode(new ApiModelGen().createModel(ApiParserFactory.getSwaggerParserInstance().parseSchema(TEST_SCHEMA_PATH)));
-//			new ApiModelWriter().writeCode(new ApiModelGen().createModel(ApiParserFactory.getSwaggerParserInstance().parseSchema()));
+//			new ApiModelWriter().writeCode(new ApiModelGen().createModel(ApiParserFactory.getSwaggerParserInstance().parseSchema(TEST_SCHEMA_PATH)));
+			new ApiModelWriter().writeCode(new ApiModelGen().createModel(ApiParserFactory.getSwaggerParserInstance().parseSchema()));
 		}
 		catch (ApiCodegenException ace) {
 			ace.printStackTrace();

@@ -9,15 +9,17 @@ import java.util.Objects;
  */
 public class MarketStockLocation extends ApiResource {
 
-	private static final long serialVersionUID = -1483024665672L;
+	private static final long serialVersionUID = -1483037217844L;
 
 
-	private String marketId;
-	private String stockLocationId;
+	private Integer marketId;
+	private Integer stockLocationId;
 	@JsonExclude
 	private Object market;
 	@JsonExclude
-	private String position;
+	private String name;
+	@JsonExclude
+	private Integer position;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
@@ -34,65 +36,86 @@ public class MarketStockLocation extends ApiResource {
 	}
 	
 
-	public void setMarketId(String marketId) {
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+
+	public String getName() {
+		return this.name;
+	}
+	
+
+	public MarketStockLocation name(String name) {
+		setName(name);
+		return this;
+	}
+	
+
+	public String name() {
+		return getName();
+	}
+	
+
+	public void setMarketId(Integer marketId) {
 		this.marketId = marketId;
 	}
 	
 
-	public String getMarketId() {
+	public Integer getMarketId() {
 		return this.marketId;
 	}
 	
 
-	public MarketStockLocation marketId(String marketId) {
+	public MarketStockLocation marketId(Integer marketId) {
 		setMarketId(marketId);
 		return this;
 	}
 	
 
-	public String marketId() {
+	public Integer marketId() {
 		return getMarketId();
 	}
 	
 
-	public void setStockLocationId(String stockLocationId) {
+	public void setStockLocationId(Integer stockLocationId) {
 		this.stockLocationId = stockLocationId;
 	}
 	
 
-	public String getStockLocationId() {
+	public Integer getStockLocationId() {
 		return this.stockLocationId;
 	}
 	
 
-	public MarketStockLocation stockLocationId(String stockLocationId) {
+	public MarketStockLocation stockLocationId(Integer stockLocationId) {
 		setStockLocationId(stockLocationId);
 		return this;
 	}
 	
 
-	public String stockLocationId() {
+	public Integer stockLocationId() {
 		return getStockLocationId();
 	}
 	
 
-	public void setPosition(String position) {
+	public void setPosition(Integer position) {
 		this.position = position;
 	}
 	
 
-	public String getPosition() {
+	public Integer getPosition() {
 		return this.position;
 	}
 	
 
-	public MarketStockLocation position(String position) {
+	public MarketStockLocation position(Integer position) {
 		setPosition(position);
 		return this;
 	}
 	
 
-	public String position() {
+	public Integer position() {
 		return getPosition();
 	}
 	
@@ -169,6 +192,7 @@ public class MarketStockLocation extends ApiResource {
 		MarketStockLocation x = (MarketStockLocation)o;
 	
 		return super.equals(o)
+			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.marketId, x.marketId)
 			&& Objects.equals(this.stockLocationId, x.stockLocationId)
 			&& Objects.equals(this.position, x.position)
@@ -184,8 +208,8 @@ public class MarketStockLocation extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			marketId, stockLocationId, position, previousChanges, market,
-			stockLocation 
+			name, marketId, stockLocationId, position, previousChanges,
+			market, stockLocation 
 		);
 	
 	}
@@ -196,6 +220,7 @@ public class MarketStockLocation extends ApiResource {
 	
 		MarketStockLocation no = new MarketStockLocation();
 	
+		no.name = this.name;
 		no.marketId = this.marketId;
 		no.stockLocationId = this.stockLocationId;
 		no.position = this.position;

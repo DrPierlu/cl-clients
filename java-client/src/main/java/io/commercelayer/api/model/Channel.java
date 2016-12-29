@@ -10,7 +10,7 @@ import java.util.Objects;
  */
 public class Channel extends ApiResource {
 
-	private static final long serialVersionUID = -1483024665452L;
+	private static final long serialVersionUID = -1483037217775L;
 
 
 	private String name;
@@ -21,6 +21,8 @@ public class Channel extends ApiResource {
 	@JsonExclude
 	private List<String> lineItems;
 	@JsonExclude
+	private List<String> markets;
+	@JsonExclude
 	private List<String> orders;
 	@JsonExclude
 	private List<String> paymentMethods;
@@ -28,6 +30,8 @@ public class Channel extends ApiResource {
 	private Object previousChanges;
 	@JsonExclude
 	private List<String> shippingMethods;
+	@JsonExclude
+	private List<String> transactions;
 
 
 	public Channel() {
@@ -103,6 +107,27 @@ public class Channel extends ApiResource {
 	}
 	
 
+	public void setMarkets(List<String> markets) {
+		this.markets = markets;
+	}
+	
+
+	public List<String> getMarkets() {
+		return this.markets;
+	}
+	
+
+	public Channel markets(List<String> markets) {
+		setMarkets(markets);
+		return this;
+	}
+	
+
+	public List<String> markets() {
+		return getMarkets();
+	}
+	
+
 	public void setLineItems(List<String> lineItems) {
 		this.lineItems = lineItems;
 	}
@@ -166,6 +191,27 @@ public class Channel extends ApiResource {
 	}
 	
 
+	public void setTransactions(List<String> transactions) {
+		this.transactions = transactions;
+	}
+	
+
+	public List<String> getTransactions() {
+		return this.transactions;
+	}
+	
+
+	public Channel transactions(List<String> transactions) {
+		setTransactions(transactions);
+		return this;
+	}
+	
+
+	public List<String> transactions() {
+		return getTransactions();
+	}
+	
+
 	public void setLineItemStocks(List<String> lineItemStocks) {
 		this.lineItemStocks = lineItemStocks;
 	}
@@ -220,9 +266,11 @@ public class Channel extends ApiResource {
 			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.orders, x.orders)
+			&& Objects.equals(this.markets, x.markets)
 			&& Objects.equals(this.lineItems, x.lineItems)
 			&& Objects.equals(this.shippingMethods, x.shippingMethods)
 			&& Objects.equals(this.paymentMethods, x.paymentMethods)
+			&& Objects.equals(this.transactions, x.transactions)
 			&& Objects.equals(this.lineItemStocks, x.lineItemStocks)
 			&& Objects.equals(this.authCredentials, x.authCredentials)
 		;
@@ -234,8 +282,9 @@ public class Channel extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, previousChanges, orders, lineItems, shippingMethods,
-			paymentMethods, lineItemStocks, authCredentials 
+			name, previousChanges, orders, markets, lineItems,
+			shippingMethods, paymentMethods, transactions, lineItemStocks, authCredentials
+			
 		);
 	
 	}
@@ -249,9 +298,11 @@ public class Channel extends ApiResource {
 		no.name = this.name;
 		no.previousChanges = this.previousChanges;
 		no.orders = this.orders;
+		no.markets = this.markets;
 		no.lineItems = this.lineItems;
 		no.shippingMethods = this.shippingMethods;
 		no.paymentMethods = this.paymentMethods;
+		no.transactions = this.transactions;
 		no.lineItemStocks = this.lineItemStocks;
 		no.authCredentials = this.authCredentials;
 	

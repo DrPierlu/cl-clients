@@ -10,10 +10,10 @@ import java.util.Objects;
  */
 public class Merchant extends ApiResource {
 
-	private static final long serialVersionUID = -1483024665694L;
+	private static final long serialVersionUID = -1483037217846L;
 
 
-	private String countryId;
+	private Integer countryId;
 	private String name;
 	@JsonExclude
 	private Object country;
@@ -41,23 +41,23 @@ public class Merchant extends ApiResource {
 	}
 	
 
-	public void setCountryId(String countryId) {
+	public void setCountryId(Integer countryId) {
 		this.countryId = countryId;
 	}
 	
 
-	public String getCountryId() {
+	public Integer getCountryId() {
 		return this.countryId;
 	}
 	
 
-	public Merchant countryId(String countryId) {
+	public Merchant countryId(Integer countryId) {
 		setCountryId(countryId);
 		return this;
 	}
 	
 
-	public String countryId() {
+	public Integer countryId() {
 		return getCountryId();
 	}
 	

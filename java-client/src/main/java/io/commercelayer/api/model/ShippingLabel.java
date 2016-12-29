@@ -9,10 +9,12 @@ import java.util.Objects;
  */
 public class ShippingLabel extends ApiResource {
 
-	private static final long serialVersionUID = -1483024665944L;
+	private static final long serialVersionUID = -1483037217921L;
 
 
-	private String shipmentId;
+	private Integer shipmentId;
+	@JsonExclude
+	private String name;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
@@ -29,23 +31,44 @@ public class ShippingLabel extends ApiResource {
 	}
 	
 
-	public void setShipmentId(String shipmentId) {
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+
+	public String getName() {
+		return this.name;
+	}
+	
+
+	public ShippingLabel name(String name) {
+		setName(name);
+		return this;
+	}
+	
+
+	public String name() {
+		return getName();
+	}
+	
+
+	public void setShipmentId(Integer shipmentId) {
 		this.shipmentId = shipmentId;
 	}
 	
 
-	public String getShipmentId() {
+	public Integer getShipmentId() {
 		return this.shipmentId;
 	}
 	
 
-	public ShippingLabel shipmentId(String shipmentId) {
+	public ShippingLabel shipmentId(Integer shipmentId) {
 		setShipmentId(shipmentId);
 		return this;
 	}
 	
 
-	public String shipmentId() {
+	public Integer shipmentId() {
 		return getShipmentId();
 	}
 	
@@ -101,6 +124,7 @@ public class ShippingLabel extends ApiResource {
 		ShippingLabel x = (ShippingLabel)o;
 	
 		return super.equals(o)
+			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.shipmentId, x.shipmentId)
 			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.shipment, x.shipment)
@@ -113,7 +137,7 @@ public class ShippingLabel extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			shipmentId, previousChanges, shipment 
+			name, shipmentId, previousChanges, shipment 
 		);
 	
 	}
@@ -124,6 +148,7 @@ public class ShippingLabel extends ApiResource {
 	
 		ShippingLabel no = new ShippingLabel();
 	
+		no.name = this.name;
 		no.shipmentId = this.shipmentId;
 		no.previousChanges = this.previousChanges;
 		no.shipment = this.shipment;

@@ -10,11 +10,11 @@ import java.util.Objects;
  */
 public class PaymentType extends ApiResource {
 
-	private static final long serialVersionUID = -1483024665795L;
+	private static final long serialVersionUID = -1483037217861L;
 
 
-	private String gatewayId;
-	private String merchantId;
+	private Integer gatewayId;
+	private Integer merchantId;
 	private String name;
 	@JsonExclude
 	private String description;
@@ -29,11 +29,13 @@ public class PaymentType extends ApiResource {
 	@JsonExclude
 	private Object merchant;
 	@JsonExclude
-	private String paymentSourceResource;
+	private String paymentSourceKind;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
 	private List<String> resourceImages;
+	@JsonExclude
+	private String slug;
 	@JsonExclude
 	private List<String> translations;
 
@@ -69,6 +71,27 @@ public class PaymentType extends ApiResource {
 	}
 	
 
+	public void setSlug(String slug) {
+		this.slug = slug;
+	}
+	
+
+	public String getSlug() {
+		return this.slug;
+	}
+	
+
+	public PaymentType slug(String slug) {
+		setSlug(slug);
+		return this;
+	}
+	
+
+	public String slug() {
+		return getSlug();
+	}
+	
+
 	public void setDescription(String description) {
 		this.description = description;
 	}
@@ -90,66 +113,66 @@ public class PaymentType extends ApiResource {
 	}
 	
 
-	public void setMerchantId(String merchantId) {
+	public void setMerchantId(Integer merchantId) {
 		this.merchantId = merchantId;
 	}
 	
 
-	public String getMerchantId() {
+	public Integer getMerchantId() {
 		return this.merchantId;
 	}
 	
 
-	public PaymentType merchantId(String merchantId) {
+	public PaymentType merchantId(Integer merchantId) {
 		setMerchantId(merchantId);
 		return this;
 	}
 	
 
-	public String merchantId() {
+	public Integer merchantId() {
 		return getMerchantId();
 	}
 	
 
-	public void setGatewayId(String gatewayId) {
+	public void setGatewayId(Integer gatewayId) {
 		this.gatewayId = gatewayId;
 	}
 	
 
-	public String getGatewayId() {
+	public Integer getGatewayId() {
 		return this.gatewayId;
 	}
 	
 
-	public PaymentType gatewayId(String gatewayId) {
+	public PaymentType gatewayId(Integer gatewayId) {
 		setGatewayId(gatewayId);
 		return this;
 	}
 	
 
-	public String gatewayId() {
+	public Integer gatewayId() {
 		return getGatewayId();
 	}
 	
 
-	public void setPaymentSourceResource(String paymentSourceResource) {
-		this.paymentSourceResource = paymentSourceResource;
+	public void setPaymentSourceKind(String paymentSourceKind) {
+		this.paymentSourceKind = paymentSourceKind;
 	}
 	
 
-	public String getPaymentSourceResource() {
-		return this.paymentSourceResource;
+	public String getPaymentSourceKind() {
+		return this.paymentSourceKind;
 	}
 	
 
-	public PaymentType paymentSourceResource(String paymentSourceResource) {
-		setPaymentSourceResource(paymentSourceResource);
+	public PaymentType paymentSourceKind(String paymentSourceKind) {
+		setPaymentSourceKind(paymentSourceKind);
 		return this;
 	}
 	
 
-	public String paymentSourceResource() {
-		return getPaymentSourceResource();
+	public String paymentSourceKind() {
+		return getPaymentSourceKind();
 	}
 	
 
@@ -331,10 +354,11 @@ public class PaymentType extends ApiResource {
 	
 		return super.equals(o)
 			&& Objects.equals(this.name, x.name)
+			&& Objects.equals(this.slug, x.slug)
 			&& Objects.equals(this.description, x.description)
 			&& Objects.equals(this.merchantId, x.merchantId)
 			&& Objects.equals(this.gatewayId, x.gatewayId)
-			&& Objects.equals(this.paymentSourceResource, x.paymentSourceResource)
+			&& Objects.equals(this.paymentSourceKind, x.paymentSourceKind)
 			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.merchant, x.merchant)
 			&& Objects.equals(this.gateway, x.gateway)
@@ -352,9 +376,9 @@ public class PaymentType extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, description, merchantId, gatewayId, paymentSourceResource,
-			previousChanges, merchant, gateway, resourceImages, images,
-			translations, marketPaymentTypes, markets 
+			name, slug, description, merchantId, gatewayId,
+			paymentSourceKind, previousChanges, merchant, gateway, resourceImages,
+			images, translations, marketPaymentTypes, markets 
 		);
 	
 	}
@@ -366,10 +390,11 @@ public class PaymentType extends ApiResource {
 		PaymentType no = new PaymentType();
 	
 		no.name = this.name;
+		no.slug = this.slug;
 		no.description = this.description;
 		no.merchantId = this.merchantId;
 		no.gatewayId = this.gatewayId;
-		no.paymentSourceResource = this.paymentSourceResource;
+		no.paymentSourceKind = this.paymentSourceKind;
 		no.previousChanges = this.previousChanges;
 		no.merchant = this.merchant;
 		no.gateway = this.gateway;

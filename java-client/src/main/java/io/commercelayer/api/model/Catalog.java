@@ -10,12 +10,10 @@ import java.util.Objects;
  */
 public class Catalog extends ApiResource {
 
-	private static final long serialVersionUID = -1483024665444L;
+	private static final long serialVersionUID = -1483037217772L;
 
 
 	private String name;
-	@JsonExclude
-	private String description;
 	@JsonExclude
 	private List<String> merchandisingRules;
 	@JsonExclude
@@ -56,27 +54,6 @@ public class Catalog extends ApiResource {
 
 	public String name() {
 		return getName();
-	}
-	
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-	
-
-	public String getDescription() {
-		return this.description;
-	}
-	
-
-	public Catalog description(String description) {
-		setDescription(description);
-		return this;
-	}
-	
-
-	public String description() {
-		return getDescription();
 	}
 	
 
@@ -195,7 +172,6 @@ public class Catalog extends ApiResource {
 	
 		return super.equals(o)
 			&& Objects.equals(this.name, x.name)
-			&& Objects.equals(this.description, x.description)
 			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.merchandisingRules, x.merchandisingRules)
 			&& Objects.equals(this.products, x.products)
@@ -210,8 +186,8 @@ public class Catalog extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, description, previousChanges, merchandisingRules, products,
-			taxons, taxonomies 
+			name, previousChanges, merchandisingRules, products, taxons,
+			taxonomies 
 		);
 	
 	}
@@ -223,7 +199,6 @@ public class Catalog extends ApiResource {
 		Catalog no = new Catalog();
 	
 		no.name = this.name;
-		no.description = this.description;
 		no.previousChanges = this.previousChanges;
 		no.merchandisingRules = this.merchandisingRules;
 		no.products = this.products;

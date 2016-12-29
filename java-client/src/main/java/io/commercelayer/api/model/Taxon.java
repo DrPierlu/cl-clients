@@ -10,11 +10,11 @@ import java.util.Objects;
  */
 public class Taxon extends ApiResource {
 
-	private static final long serialVersionUID = -1483024666061L;
+	private static final long serialVersionUID = -1483037217943L;
 
 
 	private String name;
-	private String taxonomyId;
+	private Integer taxonomyId;
 	@JsonExclude
 	private List<String> ancestorHierarchies;
 	@JsonExclude
@@ -28,9 +28,9 @@ public class Taxon extends ApiResource {
 	@JsonExclude
 	private Object parent;
 	@JsonExclude
-	private String parentId;
+	private Integer parentId;
 	@JsonExclude
-	private String position;
+	private Integer position;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
@@ -41,6 +41,8 @@ public class Taxon extends ApiResource {
 	private List<String> selfAndAncestors;
 	@JsonExclude
 	private List<String> selfAndDescendants;
+	@JsonExclude
+	private String slug;
 	@JsonExclude
 	private Object taxonomy;
 	@JsonExclude
@@ -78,65 +80,86 @@ public class Taxon extends ApiResource {
 	}
 	
 
-	public void setTaxonomyId(String taxonomyId) {
+	public void setSlug(String slug) {
+		this.slug = slug;
+	}
+	
+
+	public String getSlug() {
+		return this.slug;
+	}
+	
+
+	public Taxon slug(String slug) {
+		setSlug(slug);
+		return this;
+	}
+	
+
+	public String slug() {
+		return getSlug();
+	}
+	
+
+	public void setTaxonomyId(Integer taxonomyId) {
 		this.taxonomyId = taxonomyId;
 	}
 	
 
-	public String getTaxonomyId() {
+	public Integer getTaxonomyId() {
 		return this.taxonomyId;
 	}
 	
 
-	public Taxon taxonomyId(String taxonomyId) {
+	public Taxon taxonomyId(Integer taxonomyId) {
 		setTaxonomyId(taxonomyId);
 		return this;
 	}
 	
 
-	public String taxonomyId() {
+	public Integer taxonomyId() {
 		return getTaxonomyId();
 	}
 	
 
-	public void setPosition(String position) {
+	public void setPosition(Integer position) {
 		this.position = position;
 	}
 	
 
-	public String getPosition() {
+	public Integer getPosition() {
 		return this.position;
 	}
 	
 
-	public Taxon position(String position) {
+	public Taxon position(Integer position) {
 		setPosition(position);
 		return this;
 	}
 	
 
-	public String position() {
+	public Integer position() {
 		return getPosition();
 	}
 	
 
-	public void setParentId(String parentId) {
+	public void setParentId(Integer parentId) {
 		this.parentId = parentId;
 	}
 	
 
-	public String getParentId() {
+	public Integer getParentId() {
 		return this.parentId;
 	}
 	
 
-	public Taxon parentId(String parentId) {
+	public Taxon parentId(Integer parentId) {
 		setParentId(parentId);
 		return this;
 	}
 	
 
-	public String parentId() {
+	public Integer parentId() {
 		return getParentId();
 	}
 	
@@ -424,6 +447,7 @@ public class Taxon extends ApiResource {
 	
 		return super.equals(o)
 			&& Objects.equals(this.name, x.name)
+			&& Objects.equals(this.slug, x.slug)
 			&& Objects.equals(this.taxonomyId, x.taxonomyId)
 			&& Objects.equals(this.position, x.position)
 			&& Objects.equals(this.parentId, x.parentId)
@@ -449,10 +473,10 @@ public class Taxon extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, taxonomyId, position, parentId, previousChanges,
-			taxonomy, parent, resourceImages, images, translations,
-			merchandisingRules, products, children, ancestorHierarchies, selfAndAncestors,
-			descendantHierarchies, selfAndDescendants 
+			name, slug, taxonomyId, position, parentId,
+			previousChanges, taxonomy, parent, resourceImages, images,
+			translations, merchandisingRules, products, children, ancestorHierarchies,
+			selfAndAncestors, descendantHierarchies, selfAndDescendants 
 		);
 	
 	}
@@ -464,6 +488,7 @@ public class Taxon extends ApiResource {
 		Taxon no = new Taxon();
 	
 		no.name = this.name;
+		no.slug = this.slug;
 		no.taxonomyId = this.taxonomyId;
 		no.position = this.position;
 		no.parentId = this.parentId;

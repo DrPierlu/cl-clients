@@ -10,7 +10,7 @@ import java.util.Objects;
  */
 public class ShippingPackage extends ApiResource {
 
-	private static final long serialVersionUID = -1483024665969L;
+	private static final long serialVersionUID = -1483037217928L;
 
 
 	private String name;
@@ -22,6 +22,8 @@ public class ShippingPackage extends ApiResource {
 	private Object previousChanges;
 	@JsonExclude
 	private List<String> resourceImages;
+	@JsonExclude
+	private String slug;
 	@JsonExclude
 	private List<String> translations;
 
@@ -54,6 +56,27 @@ public class ShippingPackage extends ApiResource {
 
 	public String name() {
 		return getName();
+	}
+	
+
+	public void setSlug(String slug) {
+		this.slug = slug;
+	}
+	
+
+	public String getSlug() {
+		return this.slug;
+	}
+	
+
+	public ShippingPackage slug(String slug) {
+		setSlug(slug);
+		return this;
+	}
+	
+
+	public String slug() {
+		return getSlug();
 	}
 	
 
@@ -172,6 +195,7 @@ public class ShippingPackage extends ApiResource {
 	
 		return super.equals(o)
 			&& Objects.equals(this.name, x.name)
+			&& Objects.equals(this.slug, x.slug)
 			&& Objects.equals(this.description, x.description)
 			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.resourceImages, x.resourceImages)
@@ -186,8 +210,8 @@ public class ShippingPackage extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, description, previousChanges, resourceImages, images,
-			translations 
+			name, slug, description, previousChanges, resourceImages,
+			images, translations 
 		);
 	
 	}
@@ -199,6 +223,7 @@ public class ShippingPackage extends ApiResource {
 		ShippingPackage no = new ShippingPackage();
 	
 		no.name = this.name;
+		no.slug = this.slug;
 		no.description = this.description;
 		no.previousChanges = this.previousChanges;
 		no.resourceImages = this.resourceImages;

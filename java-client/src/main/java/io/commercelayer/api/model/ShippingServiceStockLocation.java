@@ -9,17 +9,19 @@ import java.util.Objects;
  */
 public class ShippingServiceStockLocation extends ApiResource {
 
-	private static final long serialVersionUID = -1483024665995L;
+	private static final long serialVersionUID = -1483037217932L;
 
 
-	private String maxLeadTimeHours;
-	private String minLeadTimeHours;
-	private String shippingServiceId;
-	private String stockLocationId;
+	private Integer maxLeadTimeHours;
+	private Integer minLeadTimeHours;
+	private Integer shippingServiceId;
+	private Integer stockLocationId;
 	@JsonExclude
 	private String maxLeadTimeDays;
 	@JsonExclude
 	private String minLeadTimeDays;
+	@JsonExclude
+	private String name;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
@@ -38,86 +40,107 @@ public class ShippingServiceStockLocation extends ApiResource {
 	}
 	
 
-	public void setShippingServiceId(String shippingServiceId) {
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+
+	public String getName() {
+		return this.name;
+	}
+	
+
+	public ShippingServiceStockLocation name(String name) {
+		setName(name);
+		return this;
+	}
+	
+
+	public String name() {
+		return getName();
+	}
+	
+
+	public void setShippingServiceId(Integer shippingServiceId) {
 		this.shippingServiceId = shippingServiceId;
 	}
 	
 
-	public String getShippingServiceId() {
+	public Integer getShippingServiceId() {
 		return this.shippingServiceId;
 	}
 	
 
-	public ShippingServiceStockLocation shippingServiceId(String shippingServiceId) {
+	public ShippingServiceStockLocation shippingServiceId(Integer shippingServiceId) {
 		setShippingServiceId(shippingServiceId);
 		return this;
 	}
 	
 
-	public String shippingServiceId() {
+	public Integer shippingServiceId() {
 		return getShippingServiceId();
 	}
 	
 
-	public void setStockLocationId(String stockLocationId) {
+	public void setStockLocationId(Integer stockLocationId) {
 		this.stockLocationId = stockLocationId;
 	}
 	
 
-	public String getStockLocationId() {
+	public Integer getStockLocationId() {
 		return this.stockLocationId;
 	}
 	
 
-	public ShippingServiceStockLocation stockLocationId(String stockLocationId) {
+	public ShippingServiceStockLocation stockLocationId(Integer stockLocationId) {
 		setStockLocationId(stockLocationId);
 		return this;
 	}
 	
 
-	public String stockLocationId() {
+	public Integer stockLocationId() {
 		return getStockLocationId();
 	}
 	
 
-	public void setMinLeadTimeHours(String minLeadTimeHours) {
+	public void setMinLeadTimeHours(Integer minLeadTimeHours) {
 		this.minLeadTimeHours = minLeadTimeHours;
 	}
 	
 
-	public String getMinLeadTimeHours() {
+	public Integer getMinLeadTimeHours() {
 		return this.minLeadTimeHours;
 	}
 	
 
-	public ShippingServiceStockLocation minLeadTimeHours(String minLeadTimeHours) {
+	public ShippingServiceStockLocation minLeadTimeHours(Integer minLeadTimeHours) {
 		setMinLeadTimeHours(minLeadTimeHours);
 		return this;
 	}
 	
 
-	public String minLeadTimeHours() {
+	public Integer minLeadTimeHours() {
 		return getMinLeadTimeHours();
 	}
 	
 
-	public void setMaxLeadTimeHours(String maxLeadTimeHours) {
+	public void setMaxLeadTimeHours(Integer maxLeadTimeHours) {
 		this.maxLeadTimeHours = maxLeadTimeHours;
 	}
 	
 
-	public String getMaxLeadTimeHours() {
+	public Integer getMaxLeadTimeHours() {
 		return this.maxLeadTimeHours;
 	}
 	
 
-	public ShippingServiceStockLocation maxLeadTimeHours(String maxLeadTimeHours) {
+	public ShippingServiceStockLocation maxLeadTimeHours(Integer maxLeadTimeHours) {
 		setMaxLeadTimeHours(maxLeadTimeHours);
 		return this;
 	}
 	
 
-	public String maxLeadTimeHours() {
+	public Integer maxLeadTimeHours() {
 		return getMaxLeadTimeHours();
 	}
 	
@@ -236,6 +259,7 @@ public class ShippingServiceStockLocation extends ApiResource {
 		ShippingServiceStockLocation x = (ShippingServiceStockLocation)o;
 	
 		return super.equals(o)
+			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.shippingServiceId, x.shippingServiceId)
 			&& Objects.equals(this.stockLocationId, x.stockLocationId)
 			&& Objects.equals(this.minLeadTimeHours, x.minLeadTimeHours)
@@ -254,8 +278,9 @@ public class ShippingServiceStockLocation extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			shippingServiceId, stockLocationId, minLeadTimeHours, maxLeadTimeHours, previousChanges,
-			shippingService, stockLocation, minLeadTimeDays, maxLeadTimeDays 
+			name, shippingServiceId, stockLocationId, minLeadTimeHours, maxLeadTimeHours,
+			previousChanges, shippingService, stockLocation, minLeadTimeDays, maxLeadTimeDays
+			
 		);
 	
 	}
@@ -266,6 +291,7 @@ public class ShippingServiceStockLocation extends ApiResource {
 	
 		ShippingServiceStockLocation no = new ShippingServiceStockLocation();
 	
+		no.name = this.name;
 		no.shippingServiceId = this.shippingServiceId;
 		no.stockLocationId = this.stockLocationId;
 		no.minLeadTimeHours = this.minLeadTimeHours;

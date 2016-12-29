@@ -10,7 +10,7 @@ import java.util.Objects;
  */
 public class Address extends ApiResource {
 
-	private static final long serialVersionUID = -1483024665399L;
+	private static final long serialVersionUID = -1483037217753L;
 
 
 	private String geocodingCity;
@@ -19,7 +19,7 @@ public class Address extends ApiResource {
 	private String geocodingStreet;
 	private String geocodingZip;
 	@JsonExclude
-	private String accuracy;
+	private Integer accuracy;
 	@JsonExclude
 	private String city;
 	@JsonExclude
@@ -29,13 +29,11 @@ public class Address extends ApiResource {
 	@JsonExclude
 	private String district;
 	@JsonExclude
-	private String formattedAddress;
-	@JsonExclude
-	private String fullAddress;
-	@JsonExclude
 	private Float lat;
 	@JsonExclude
 	private Float lng;
+	@JsonExclude
+	private String name;
 	@JsonExclude
 	private String placeId;
 	@JsonExclude
@@ -81,6 +79,27 @@ public class Address extends ApiResource {
 
 	public Address(Long id) {
 		super(id);
+	}
+	
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+
+	public String getName() {
+		return this.name;
+	}
+	
+
+	public Address name(String name) {
+		setName(name);
+		return this;
+	}
+	
+
+	public String name() {
+		return getName();
 	}
 	
 
@@ -252,23 +271,23 @@ public class Address extends ApiResource {
 	}
 	
 
-	public void setAccuracy(String accuracy) {
+	public void setAccuracy(Integer accuracy) {
 		this.accuracy = accuracy;
 	}
 	
 
-	public String getAccuracy() {
+	public Integer getAccuracy() {
 		return this.accuracy;
 	}
 	
 
-	public Address accuracy(String accuracy) {
+	public Address accuracy(Integer accuracy) {
 		setAccuracy(accuracy);
 		return this;
 	}
 	
 
-	public String accuracy() {
+	public Integer accuracy() {
 		return getAccuracy();
 	}
 	
@@ -546,48 +565,6 @@ public class Address extends ApiResource {
 	}
 	
 
-	public void setFullAddress(String fullAddress) {
-		this.fullAddress = fullAddress;
-	}
-	
-
-	public String getFullAddress() {
-		return this.fullAddress;
-	}
-	
-
-	public Address fullAddress(String fullAddress) {
-		setFullAddress(fullAddress);
-		return this;
-	}
-	
-
-	public String fullAddress() {
-		return getFullAddress();
-	}
-	
-
-	public void setFormattedAddress(String formattedAddress) {
-		this.formattedAddress = formattedAddress;
-	}
-	
-
-	public String getFormattedAddress() {
-		return this.formattedAddress;
-	}
-	
-
-	public Address formattedAddress(String formattedAddress) {
-		setFormattedAddress(formattedAddress);
-		return this;
-	}
-	
-
-	public String formattedAddress() {
-		return getFormattedAddress();
-	}
-	
-
 	public void setLat(Float lat) {
 		this.lat = lat;
 	}
@@ -765,6 +742,7 @@ public class Address extends ApiResource {
 		Address x = (Address)o;
 	
 		return super.equals(o)
+			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.geocodingCountry, x.geocodingCountry)
 			&& Objects.equals(this.geocodingZip, x.geocodingZip)
 			&& Objects.equals(this.geocodingCity, x.geocodingCity)
@@ -787,8 +765,6 @@ public class Address extends ApiResource {
 			&& Objects.equals(this.streetNumber, x.streetNumber)
 			&& Objects.equals(this.streetAddress, x.streetAddress)
 			&& Objects.equals(this.subPremise, x.subPremise)
-			&& Objects.equals(this.fullAddress, x.fullAddress)
-			&& Objects.equals(this.formattedAddress, x.formattedAddress)
 			&& Objects.equals(this.lat, x.lat)
 			&& Objects.equals(this.lng, x.lng)
 			&& Objects.equals(this.suggestedBoundsSwLat, x.suggestedBoundsSwLat)
@@ -806,13 +782,13 @@ public class Address extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			geocodingCountry, geocodingZip, geocodingCity, geocodingStreet, geocodingNumber,
-			provider, placeId, precision, accuracy, countryCode,
-			country, stateCode, stateName, state, province,
-			zip, city, district, streetName, streetNumber,
-			streetAddress, subPremise, fullAddress, formattedAddress, lat,
-			lng, suggestedBoundsSwLat, suggestedBoundsSwLng, suggestedBoundsNeLat, suggestedBoundsNeLng,
-			previousChanges, shippingMethods 
+			name, geocodingCountry, geocodingZip, geocodingCity, geocodingStreet,
+			geocodingNumber, provider, placeId, precision, accuracy,
+			countryCode, country, stateCode, stateName, state,
+			province, zip, city, district, streetName,
+			streetNumber, streetAddress, subPremise, lat, lng,
+			suggestedBoundsSwLat, suggestedBoundsSwLng, suggestedBoundsNeLat, suggestedBoundsNeLng, previousChanges,
+			shippingMethods 
 		);
 	
 	}
@@ -823,6 +799,7 @@ public class Address extends ApiResource {
 	
 		Address no = new Address();
 	
+		no.name = this.name;
 		no.geocodingCountry = this.geocodingCountry;
 		no.geocodingZip = this.geocodingZip;
 		no.geocodingCity = this.geocodingCity;
@@ -845,8 +822,6 @@ public class Address extends ApiResource {
 		no.streetNumber = this.streetNumber;
 		no.streetAddress = this.streetAddress;
 		no.subPremise = this.subPremise;
-		no.fullAddress = this.fullAddress;
-		no.formattedAddress = this.formattedAddress;
 		no.lat = this.lat;
 		no.lng = this.lng;
 		no.suggestedBoundsSwLat = this.suggestedBoundsSwLat;

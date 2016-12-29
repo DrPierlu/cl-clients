@@ -10,10 +10,10 @@ import java.util.Objects;
  */
 public class ShippingZone extends ApiResource {
 
-	private static final long serialVersionUID = -1483024666013L;
+	private static final long serialVersionUID = -1483037217935L;
 
 
-	private String countryGroupId;
+	private Integer countryGroupId;
 	private String name;
 	@JsonExclude
 	private String countryCodeRegex;
@@ -47,23 +47,23 @@ public class ShippingZone extends ApiResource {
 	}
 	
 
-	public void setCountryGroupId(String countryGroupId) {
+	public void setCountryGroupId(Integer countryGroupId) {
 		this.countryGroupId = countryGroupId;
 	}
 	
 
-	public String getCountryGroupId() {
+	public Integer getCountryGroupId() {
 		return this.countryGroupId;
 	}
 	
 
-	public ShippingZone countryGroupId(String countryGroupId) {
+	public ShippingZone countryGroupId(Integer countryGroupId) {
 		setCountryGroupId(countryGroupId);
 		return this;
 	}
 	
 
-	public String countryGroupId() {
+	public Integer countryGroupId() {
 		return getCountryGroupId();
 	}
 	

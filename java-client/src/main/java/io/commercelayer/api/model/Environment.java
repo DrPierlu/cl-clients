@@ -10,11 +10,11 @@ import java.util.Objects;
  */
 public class Environment extends ApiResource {
 
-	private static final long serialVersionUID = -1483024665553L;
+	private static final long serialVersionUID = -1483037217823L;
 
 
 	private String name;
-	private String organizationId;
+	private Integer organizationId;
 	@JsonExclude
 	private List<String> addresses;
 	@JsonExclude
@@ -139,23 +139,23 @@ public class Environment extends ApiResource {
 	}
 	
 
-	public void setOrganizationId(String organizationId) {
+	public void setOrganizationId(Integer organizationId) {
 		this.organizationId = organizationId;
 	}
 	
 
-	public String getOrganizationId() {
+	public Integer getOrganizationId() {
 		return this.organizationId;
 	}
 	
 
-	public Environment organizationId(String organizationId) {
+	public Environment organizationId(Integer organizationId) {
 		setOrganizationId(organizationId);
 		return this;
 	}
 	
 
-	public String organizationId() {
+	public Integer organizationId() {
 		return getOrganizationId();
 	}
 	

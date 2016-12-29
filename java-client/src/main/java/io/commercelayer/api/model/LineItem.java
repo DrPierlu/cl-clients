@@ -10,11 +10,11 @@ import java.util.Objects;
  */
 public class LineItem extends ApiResource {
 
-	private static final long serialVersionUID = -1483024665589L;
+	private static final long serialVersionUID = -1483037217832L;
 
 
-	private String orderId;
-	private String sellableId;
+	private Integer orderId;
+	private Integer sellableId;
 	private String sellableResource;
 	@JsonExclude
 	private String amount;
@@ -23,11 +23,11 @@ public class LineItem extends ApiResource {
 	@JsonExclude
 	private Object country;
 	@JsonExclude
-	private String countryId;
+	private Integer countryId;
 	@JsonExclude
 	private Object currency;
 	@JsonExclude
-	private String currencyId;
+	private Integer currencyId;
 	@JsonExclude
 	private String defaultShippingMethodId;
 	@JsonExclude
@@ -43,13 +43,15 @@ public class LineItem extends ApiResource {
 	@JsonExclude
 	private Object market;
 	@JsonExclude
-	private String marketId;
+	private Integer marketId;
+	@JsonExclude
+	private String name;
 	@JsonExclude
 	private Object order;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
-	private String quantity;
+	private Integer quantity;
 	@JsonExclude
 	private Object sellable;
 	@JsonExclude
@@ -57,7 +59,7 @@ public class LineItem extends ApiResource {
 	@JsonExclude
 	private Object shippingCategory;
 	@JsonExclude
-	private String shippingCategoryId;
+	private Integer shippingCategoryId;
 	@JsonExclude
 	private List<String> shippingMethods;
 	@JsonExclude
@@ -67,17 +69,17 @@ public class LineItem extends ApiResource {
 	@JsonExclude
 	private String taxAmount;
 	@JsonExclude
-	private String taxIncluded;
+	private Object taxIncluded;
 	@JsonExclude
 	private Float taxRate;
 	@JsonExclude
 	private String taxableAmount;
 	@JsonExclude
-	private String trackInventory;
+	private Object trackInventory;
 	@JsonExclude
 	private String unitAmount;
 	@JsonExclude
-	private String unitAmountCents;
+	private Integer unitAmountCents;
 	@JsonExclude
 	private List<String> versions;
 
@@ -92,107 +94,128 @@ public class LineItem extends ApiResource {
 	}
 	
 
-	public void setOrderId(String orderId) {
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+
+	public String getName() {
+		return this.name;
+	}
+	
+
+	public LineItem name(String name) {
+		setName(name);
+		return this;
+	}
+	
+
+	public String name() {
+		return getName();
+	}
+	
+
+	public void setOrderId(Integer orderId) {
 		this.orderId = orderId;
 	}
 	
 
-	public String getOrderId() {
+	public Integer getOrderId() {
 		return this.orderId;
 	}
 	
 
-	public LineItem orderId(String orderId) {
+	public LineItem orderId(Integer orderId) {
 		setOrderId(orderId);
 		return this;
 	}
 	
 
-	public String orderId() {
+	public Integer orderId() {
 		return getOrderId();
 	}
 	
 
-	public void setMarketId(String marketId) {
+	public void setMarketId(Integer marketId) {
 		this.marketId = marketId;
 	}
 	
 
-	public String getMarketId() {
+	public Integer getMarketId() {
 		return this.marketId;
 	}
 	
 
-	public LineItem marketId(String marketId) {
+	public LineItem marketId(Integer marketId) {
 		setMarketId(marketId);
 		return this;
 	}
 	
 
-	public String marketId() {
+	public Integer marketId() {
 		return getMarketId();
 	}
 	
 
-	public void setCountryId(String countryId) {
+	public void setCountryId(Integer countryId) {
 		this.countryId = countryId;
 	}
 	
 
-	public String getCountryId() {
+	public Integer getCountryId() {
 		return this.countryId;
 	}
 	
 
-	public LineItem countryId(String countryId) {
+	public LineItem countryId(Integer countryId) {
 		setCountryId(countryId);
 		return this;
 	}
 	
 
-	public String countryId() {
+	public Integer countryId() {
 		return getCountryId();
 	}
 	
 
-	public void setCurrencyId(String currencyId) {
+	public void setCurrencyId(Integer currencyId) {
 		this.currencyId = currencyId;
 	}
 	
 
-	public String getCurrencyId() {
+	public Integer getCurrencyId() {
 		return this.currencyId;
 	}
 	
 
-	public LineItem currencyId(String currencyId) {
+	public LineItem currencyId(Integer currencyId) {
 		setCurrencyId(currencyId);
 		return this;
 	}
 	
 
-	public String currencyId() {
+	public Integer currencyId() {
 		return getCurrencyId();
 	}
 	
 
-	public void setSellableId(String sellableId) {
+	public void setSellableId(Integer sellableId) {
 		this.sellableId = sellableId;
 	}
 	
 
-	public String getSellableId() {
+	public Integer getSellableId() {
 		return this.sellableId;
 	}
 	
 
-	public LineItem sellableId(String sellableId) {
+	public LineItem sellableId(Integer sellableId) {
 		setSellableId(sellableId);
 		return this;
 	}
 	
 
-	public String sellableId() {
+	public Integer sellableId() {
 		return getSellableId();
 	}
 	
@@ -218,86 +241,86 @@ public class LineItem extends ApiResource {
 	}
 	
 
-	public void setShippingCategoryId(String shippingCategoryId) {
+	public void setShippingCategoryId(Integer shippingCategoryId) {
 		this.shippingCategoryId = shippingCategoryId;
 	}
 	
 
-	public String getShippingCategoryId() {
+	public Integer getShippingCategoryId() {
 		return this.shippingCategoryId;
 	}
 	
 
-	public LineItem shippingCategoryId(String shippingCategoryId) {
+	public LineItem shippingCategoryId(Integer shippingCategoryId) {
 		setShippingCategoryId(shippingCategoryId);
 		return this;
 	}
 	
 
-	public String shippingCategoryId() {
+	public Integer shippingCategoryId() {
 		return getShippingCategoryId();
 	}
 	
 
-	public void setTrackInventory(String trackInventory) {
+	public void setTrackInventory(Object trackInventory) {
 		this.trackInventory = trackInventory;
 	}
 	
 
-	public String getTrackInventory() {
+	public Object getTrackInventory() {
 		return this.trackInventory;
 	}
 	
 
-	public LineItem trackInventory(String trackInventory) {
+	public LineItem trackInventory(Object trackInventory) {
 		setTrackInventory(trackInventory);
 		return this;
 	}
 	
 
-	public String trackInventory() {
+	public Object trackInventory() {
 		return getTrackInventory();
 	}
 	
 
-	public void setQuantity(String quantity) {
+	public void setQuantity(Integer quantity) {
 		this.quantity = quantity;
 	}
 	
 
-	public String getQuantity() {
+	public Integer getQuantity() {
 		return this.quantity;
 	}
 	
 
-	public LineItem quantity(String quantity) {
+	public LineItem quantity(Integer quantity) {
 		setQuantity(quantity);
 		return this;
 	}
 	
 
-	public String quantity() {
+	public Integer quantity() {
 		return getQuantity();
 	}
 	
 
-	public void setUnitAmountCents(String unitAmountCents) {
+	public void setUnitAmountCents(Integer unitAmountCents) {
 		this.unitAmountCents = unitAmountCents;
 	}
 	
 
-	public String getUnitAmountCents() {
+	public Integer getUnitAmountCents() {
 		return this.unitAmountCents;
 	}
 	
 
-	public LineItem unitAmountCents(String unitAmountCents) {
+	public LineItem unitAmountCents(Integer unitAmountCents) {
 		setUnitAmountCents(unitAmountCents);
 		return this;
 	}
 	
 
-	public String unitAmountCents() {
+	public Integer unitAmountCents() {
 		return getUnitAmountCents();
 	}
 	
@@ -323,23 +346,23 @@ public class LineItem extends ApiResource {
 	}
 	
 
-	public void setTaxIncluded(String taxIncluded) {
+	public void setTaxIncluded(Object taxIncluded) {
 		this.taxIncluded = taxIncluded;
 	}
 	
 
-	public String getTaxIncluded() {
+	public Object getTaxIncluded() {
 		return this.taxIncluded;
 	}
 	
 
-	public LineItem taxIncluded(String taxIncluded) {
+	public LineItem taxIncluded(Object taxIncluded) {
 		setTaxIncluded(taxIncluded);
 		return this;
 	}
 	
 
-	public String taxIncluded() {
+	public Object taxIncluded() {
 		return getTaxIncluded();
 	}
 	
@@ -836,6 +859,7 @@ public class LineItem extends ApiResource {
 		LineItem x = (LineItem)o;
 	
 		return super.equals(o)
+			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.orderId, x.orderId)
 			&& Objects.equals(this.marketId, x.marketId)
 			&& Objects.equals(this.countryId, x.countryId)
@@ -880,14 +904,14 @@ public class LineItem extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			orderId, marketId, countryId, currencyId, sellableId,
-			sellableResource, shippingCategoryId, trackInventory, quantity, unitAmountCents,
-			taxRate, taxIncluded, previousChanges, shippingCategory, order,
-			sellable, market, country, currency, stockItems,
-			shippingServiceStockLocations, versions, lineItemStocks, shippingMethods, shipments,
-			amount, formattedAmount, taxableAmount, formattedTaxableAmount, taxAmount,
-			formattedTaxAmount, unitAmount, formattedUnitAmount, defaultShippingMethodId, availableShippingServiceIds
-			
+			name, orderId, marketId, countryId, currencyId,
+			sellableId, sellableResource, shippingCategoryId, trackInventory, quantity,
+			unitAmountCents, taxRate, taxIncluded, previousChanges, shippingCategory,
+			order, sellable, market, country, currency,
+			stockItems, shippingServiceStockLocations, versions, lineItemStocks, shippingMethods,
+			shipments, amount, formattedAmount, taxableAmount, formattedTaxableAmount,
+			taxAmount, formattedTaxAmount, unitAmount, formattedUnitAmount, defaultShippingMethodId,
+			availableShippingServiceIds 
 		);
 	
 	}
@@ -898,6 +922,7 @@ public class LineItem extends ApiResource {
 	
 		LineItem no = new LineItem();
 	
+		no.name = this.name;
 		no.orderId = this.orderId;
 		no.marketId = this.marketId;
 		no.countryId = this.countryId;

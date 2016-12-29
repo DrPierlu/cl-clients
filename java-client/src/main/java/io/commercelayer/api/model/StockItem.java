@@ -10,20 +10,22 @@ import java.util.Objects;
  */
 public class StockItem extends ApiResource {
 
-	private static final long serialVersionUID = -1483024666041L;
+	private static final long serialVersionUID = -1483037217939L;
 
 
-	private String stockLocationId;
-	private String stockableId;
+	private Integer stockLocationId;
+	private Integer stockableId;
 	private String stockableResource;
 	@JsonExclude
-	private String backorderable;
+	private Object backorderable;
 	@JsonExclude
 	private List<String> lineItemStocks;
 	@JsonExclude
+	private String name;
+	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
-	private String quantity;
+	private Integer quantity;
 	@JsonExclude
 	private List<String> shippingServiceStockLocations;
 	@JsonExclude
@@ -42,44 +44,65 @@ public class StockItem extends ApiResource {
 	}
 	
 
-	public void setStockLocationId(String stockLocationId) {
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+
+	public String getName() {
+		return this.name;
+	}
+	
+
+	public StockItem name(String name) {
+		setName(name);
+		return this;
+	}
+	
+
+	public String name() {
+		return getName();
+	}
+	
+
+	public void setStockLocationId(Integer stockLocationId) {
 		this.stockLocationId = stockLocationId;
 	}
 	
 
-	public String getStockLocationId() {
+	public Integer getStockLocationId() {
 		return this.stockLocationId;
 	}
 	
 
-	public StockItem stockLocationId(String stockLocationId) {
+	public StockItem stockLocationId(Integer stockLocationId) {
 		setStockLocationId(stockLocationId);
 		return this;
 	}
 	
 
-	public String stockLocationId() {
+	public Integer stockLocationId() {
 		return getStockLocationId();
 	}
 	
 
-	public void setStockableId(String stockableId) {
+	public void setStockableId(Integer stockableId) {
 		this.stockableId = stockableId;
 	}
 	
 
-	public String getStockableId() {
+	public Integer getStockableId() {
 		return this.stockableId;
 	}
 	
 
-	public StockItem stockableId(String stockableId) {
+	public StockItem stockableId(Integer stockableId) {
 		setStockableId(stockableId);
 		return this;
 	}
 	
 
-	public String stockableId() {
+	public Integer stockableId() {
 		return getStockableId();
 	}
 	
@@ -105,44 +128,44 @@ public class StockItem extends ApiResource {
 	}
 	
 
-	public void setBackorderable(String backorderable) {
+	public void setBackorderable(Object backorderable) {
 		this.backorderable = backorderable;
 	}
 	
 
-	public String getBackorderable() {
+	public Object getBackorderable() {
 		return this.backorderable;
 	}
 	
 
-	public StockItem backorderable(String backorderable) {
+	public StockItem backorderable(Object backorderable) {
 		setBackorderable(backorderable);
 		return this;
 	}
 	
 
-	public String backorderable() {
+	public Object backorderable() {
 		return getBackorderable();
 	}
 	
 
-	public void setQuantity(String quantity) {
+	public void setQuantity(Integer quantity) {
 		this.quantity = quantity;
 	}
 	
 
-	public String getQuantity() {
+	public Integer getQuantity() {
 		return this.quantity;
 	}
 	
 
-	public StockItem quantity(String quantity) {
+	public StockItem quantity(Integer quantity) {
 		setQuantity(quantity);
 		return this;
 	}
 	
 
-	public String quantity() {
+	public Integer quantity() {
 		return getQuantity();
 	}
 	
@@ -261,6 +284,7 @@ public class StockItem extends ApiResource {
 		StockItem x = (StockItem)o;
 	
 		return super.equals(o)
+			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.stockLocationId, x.stockLocationId)
 			&& Objects.equals(this.stockableId, x.stockableId)
 			&& Objects.equals(this.stockableResource, x.stockableResource)
@@ -280,9 +304,9 @@ public class StockItem extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			stockLocationId, stockableId, stockableResource, backorderable, quantity,
-			previousChanges, stockLocation, stockable, shippingServiceStockLocations, lineItemStocks
-			
+			name, stockLocationId, stockableId, stockableResource, backorderable,
+			quantity, previousChanges, stockLocation, stockable, shippingServiceStockLocations,
+			lineItemStocks 
 		);
 	
 	}
@@ -293,6 +317,7 @@ public class StockItem extends ApiResource {
 	
 		StockItem no = new StockItem();
 	
+		no.name = this.name;
 		no.stockLocationId = this.stockLocationId;
 		no.stockableId = this.stockableId;
 		no.stockableResource = this.stockableResource;

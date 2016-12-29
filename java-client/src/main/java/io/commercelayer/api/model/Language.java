@@ -10,7 +10,7 @@ import java.util.Objects;
  */
 public class Language extends ApiResource {
 
-	private static final long serialVersionUID = -1483024665571L;
+	private static final long serialVersionUID = -1483037217829L;
 
 
 	private String code;
@@ -18,6 +18,8 @@ public class Language extends ApiResource {
 	private List<String> countries;
 	@JsonExclude
 	private List<String> countryLanguages;
+	@JsonExclude
+	private String name;
 	@JsonExclude
 	private Object previousChanges;
 
@@ -29,6 +31,27 @@ public class Language extends ApiResource {
 
 	public Language(Long id) {
 		super(id);
+	}
+	
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+
+	public String getName() {
+		return this.name;
+	}
+	
+
+	public Language name(String name) {
+		setName(name);
+		return this;
+	}
+	
+
+	public String name() {
+		return getName();
 	}
 	
 
@@ -125,6 +148,7 @@ public class Language extends ApiResource {
 		Language x = (Language)o;
 	
 		return super.equals(o)
+			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.code, x.code)
 			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.countryLanguages, x.countryLanguages)
@@ -138,7 +162,8 @@ public class Language extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			code, previousChanges, countryLanguages, countries 
+			name, code, previousChanges, countryLanguages, countries
+			
 		);
 	
 	}
@@ -149,6 +174,7 @@ public class Language extends ApiResource {
 	
 		Language no = new Language();
 	
+		no.name = this.name;
 		no.code = this.code;
 		no.previousChanges = this.previousChanges;
 		no.countryLanguages = this.countryLanguages;

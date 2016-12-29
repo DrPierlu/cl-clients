@@ -79,9 +79,9 @@ public class HttpClientOkHttpImpl extends HttpClient {
 		
 		
 		// TIMEOUTS
-		builder.connectTimeout(10, TimeUnit.SECONDS);
-		builder.readTimeout(10, TimeUnit.SECONDS);
-		builder.writeTimeout(10, TimeUnit.SECONDS);
+		builder.connectTimeout(30, TimeUnit.SECONDS);
+		builder.readTimeout(30, TimeUnit.SECONDS);
+		builder.writeTimeout(30, TimeUnit.SECONDS);
 
 		
 		return builder.build();
