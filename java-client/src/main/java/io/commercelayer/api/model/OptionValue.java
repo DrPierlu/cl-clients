@@ -1,28 +1,28 @@
 package io.commercelayer.api.model;
 
-import java.util.Objects;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.json.JsonExclude;
+import io.commercelayer.api.model.common.ApiResource;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * OptionValue
  */
 public class OptionValue extends ApiResource {
 
-	private static final long serialVersionUID = -1482914097731L;
+	private static final long serialVersionUID = -1483006114243L;
 
 
 	private String name;
 	private String optionTypeId;
 	@JsonExclude
-	private Object previousChanges;
+	private List<String> images;
 	@JsonExclude
 	private Object optionType;
 	@JsonExclude
-	private List<String> resourceImages;
+	private Object previousChanges;
 	@JsonExclude
-	private List<String> images;
+	private List<String> resourceImages;
 	@JsonExclude
 	private List<String> translations;
 	@JsonExclude

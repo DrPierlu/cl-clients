@@ -1,4 +1,4 @@
-package io.commercelayer.api.json;
+package io.commercelayer.api.json.gson;
 
 import java.lang.reflect.Type;
 import java.time.Instant;
@@ -23,11 +23,16 @@ import com.google.gson.JsonSerializer;
 import com.google.gson.reflect.TypeToken;
 
 import io.commercelayer.api.config.ApiConfig;
+import io.commercelayer.api.json.JsonCodec;
 import io.commercelayer.api.model.common.ApiObject;
 
 public final class JsonCodecGsonImpl implements JsonCodec {
 
 	private static final Boolean formatted = ApiConfig.testModeEnabled();
+	
+	JsonCodecGsonImpl() {
+		super();
+	}
 	
 	private Gson gson;
 	{

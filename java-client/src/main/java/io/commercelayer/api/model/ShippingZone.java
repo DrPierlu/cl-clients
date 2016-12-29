@@ -1,16 +1,16 @@
 package io.commercelayer.api.model;
 
-import java.util.Objects;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.json.JsonExclude;
+import io.commercelayer.api.model.common.ApiResource;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * ShippingZone
  */
 public class ShippingZone extends ApiResource {
 
-	private static final long serialVersionUID = -1482914098028L;
+	private static final long serialVersionUID = -1483006114444L;
 
 
 	private String countryGroupId;
@@ -18,23 +18,23 @@ public class ShippingZone extends ApiResource {
 	@JsonExclude
 	private String countryCodeRegex;
 	@JsonExclude
+	private Object countryGroup;
+	@JsonExclude
 	private String notCountryCodeRegex;
 	@JsonExclude
-	private String stateCodeRegex;
-	@JsonExclude
 	private String notStateCodeRegex;
-	@JsonExclude
-	private String zipCodeRegex;
 	@JsonExclude
 	private String notZipCodeRegex;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
-	private Object countryGroup;
-	@JsonExclude
 	private List<String> shippingServiceZones;
 	@JsonExclude
 	private List<String> shippingServices;
+	@JsonExclude
+	private String stateCodeRegex;
+	@JsonExclude
+	private String zipCodeRegex;
 
 
 	public ShippingZone() {

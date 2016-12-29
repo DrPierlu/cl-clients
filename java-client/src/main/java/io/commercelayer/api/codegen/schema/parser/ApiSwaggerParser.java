@@ -90,19 +90,23 @@ public class ApiSwaggerParser extends ApiParser {
 		}
 		
 		
-		logger.info("Schema parsed");
+		evaluateRequiredFields(schema);
 		
-		setRequiredFieldsByOperations(schema);
+		
+		logger.info("Schema parsed");
 		
 		return schema;
 
 	}
 	
 	
-	private void setRequiredFieldsByOperations(Schema schema) {
+	private void evaluateRequiredFields(Schema schema) {
+		
+		logger.info("Evaluating required fields ...");
 		
 		Map<String, List<String>> requiredObjectFields = new HashMap<>();
 		
+		// Collect required fields reading operations' details
 		for (Resource res : schema.getResources()) {
 			for (Operation op : res.getOperations()) {
 				for (Parameter p : op.getParameters()) {
@@ -124,6 +128,7 @@ public class ApiSwaggerParser extends ApiParser {
 		
 		if (requiredObjectFields.isEmpty()) return;
 		
+		// Set required fields info
 		for (Definition def : schema.getDefinitions()) {
 			List<String> fieldList = requiredObjectFields.get(def.getTitle());
 			if ((fieldList == null) || fieldList.isEmpty()) continue;
@@ -136,7 +141,7 @@ public class ApiSwaggerParser extends ApiParser {
 		}
 		
 	}
-	
+
 	
 	private Property parseProperty(String propertyName, io.swagger.models.properties.Property p) {
 		

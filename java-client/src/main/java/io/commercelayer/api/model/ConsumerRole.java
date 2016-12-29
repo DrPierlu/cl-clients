@@ -1,26 +1,26 @@
 package io.commercelayer.api.model;
 
-import java.util.Objects;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.json.JsonExclude;
+import io.commercelayer.api.model.common.ApiResource;
+import java.util.Objects;
 
 /**
  * ConsumerRole
  */
 public class ConsumerRole extends ApiResource {
 
-	private static final long serialVersionUID = -1482914097496L;
+	private static final long serialVersionUID = -1483006114045L;
 
 
 	private String consumerId;
 	private String consumerResource;
 	private String roleId;
 	@JsonExclude
+	private Object consumer;
+	@JsonExclude
 	private String position;
 	@JsonExclude
 	private Object previousChanges;
-	@JsonExclude
-	private Object consumer;
 	@JsonExclude
 	private Object role;
 

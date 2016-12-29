@@ -1,66 +1,66 @@
 package io.commercelayer.api.model;
 
-import java.util.Objects;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.json.JsonExclude;
+import io.commercelayer.api.model.common.ApiResource;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * ShippingMethod
  */
 public class ShippingMethod extends ApiResource {
 
-	private static final long serialVersionUID = -1482914097980L;
+	private static final long serialVersionUID = -1483006114399L;
 
 
 	private String orderId;
 	private String shippingAddressId;
-	private String shippingServiceId;
 	private String shippingPackageId;
-	@JsonExclude
-	private String priceCents;
-	@JsonExclude
-	private String freeOverAmountCents;
-	@JsonExclude
-	private Object previousChanges;
-	@JsonExclude
-	private Object order;
-	@JsonExclude
-	private Object shippingPackage;
-	@JsonExclude
-	private Object shippingAddress;
-	@JsonExclude
-	private Object shippingService;
-	@JsonExclude
-	private List<String> lineItemStocks;
-	@JsonExclude
-	private List<String> shipments;
-	@JsonExclude
-	private List<String> lineItems;
+	private String shippingServiceId;
 	@JsonExclude
 	private String amount;
 	@JsonExclude
 	private String formattedAmount;
 	@JsonExclude
-	private String totalLineItemAmount;
-	@JsonExclude
-	private String formattedTotalLineItemAmount;
-	@JsonExclude
-	private String taxableAmount;
-	@JsonExclude
-	private String formattedTaxableAmount;
-	@JsonExclude
-	private String taxAmount;
-	@JsonExclude
-	private String formattedTaxAmount;
-	@JsonExclude
-	private String price;
+	private String formattedFreeOverAmount;
 	@JsonExclude
 	private String formattedPrice;
 	@JsonExclude
+	private String formattedTaxAmount;
+	@JsonExclude
+	private String formattedTaxableAmount;
+	@JsonExclude
+	private String formattedTotalLineItemAmount;
+	@JsonExclude
 	private String freeOverAmount;
 	@JsonExclude
-	private String formattedFreeOverAmount;
+	private String freeOverAmountCents;
+	@JsonExclude
+	private List<String> lineItemStocks;
+	@JsonExclude
+	private List<String> lineItems;
+	@JsonExclude
+	private Object order;
+	@JsonExclude
+	private Object previousChanges;
+	@JsonExclude
+	private String price;
+	@JsonExclude
+	private String priceCents;
+	@JsonExclude
+	private List<String> shipments;
+	@JsonExclude
+	private Object shippingAddress;
+	@JsonExclude
+	private Object shippingPackage;
+	@JsonExclude
+	private Object shippingService;
+	@JsonExclude
+	private String taxAmount;
+	@JsonExclude
+	private String taxableAmount;
+	@JsonExclude
+	private String totalLineItemAmount;
 
 
 	public ShippingMethod() {

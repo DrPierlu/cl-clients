@@ -1,15 +1,15 @@
 package io.commercelayer.api.model;
 
-import java.util.Objects;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.json.JsonExclude;
+import io.commercelayer.api.model.common.ApiResource;
+import java.util.Objects;
 
 /**
  * MarketPaymentType
  */
 public class MarketPaymentType extends ApiResource {
 
-	private static final long serialVersionUID = -1482914097615L;
+	private static final long serialVersionUID = -1483006114178L;
 
 
 	private String marketId;
@@ -17,19 +17,19 @@ public class MarketPaymentType extends ApiResource {
 	@JsonExclude
 	private String countryCodeRegex;
 	@JsonExclude
-	private String notCountryCodeRegex;
-	@JsonExclude
-	private String priceCents;
-	@JsonExclude
-	private Object previousChanges;
+	private String formattedPrice;
 	@JsonExclude
 	private Object market;
 	@JsonExclude
+	private String notCountryCodeRegex;
+	@JsonExclude
 	private Object paymentType;
+	@JsonExclude
+	private Object previousChanges;
 	@JsonExclude
 	private String price;
 	@JsonExclude
-	private String formattedPrice;
+	private String priceCents;
 
 
 	public MarketPaymentType() {

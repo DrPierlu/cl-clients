@@ -1,29 +1,29 @@
 package io.commercelayer.api.model;
 
-import java.util.Objects;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.json.JsonExclude;
+import io.commercelayer.api.model.common.ApiResource;
+import java.util.Objects;
 
 /**
  * VariantOption
  */
 public class VariantOption extends ApiResource {
 
-	private static final long serialVersionUID = -1482914098199L;
+	private static final long serialVersionUID = -1483006114517L;
 
 
+	private String optionValueId;
 	private String variantId;
 	@JsonExclude
+	private Object optionType;
+	@JsonExclude
 	private String optionTypeId;
-	private String optionValueId;
+	@JsonExclude
+	private Object optionValue;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
 	private Object variant;
-	@JsonExclude
-	private Object optionType;
-	@JsonExclude
-	private Object optionValue;
 
 
 	public VariantOption() {

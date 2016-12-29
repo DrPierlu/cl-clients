@@ -15,15 +15,19 @@ public class Method extends AbstractModelObject {
 	private List<String> body = new ArrayList<>();
 	private List<Class<? extends Exception>> exceptionList = new ArrayList<>();
 
+	{
+		super.linesBefore = 1;
+		super.linesAfter = 1;
+	}
+
 	public Method() {
 		super();
 	}
-	
+
 	public Method(Integer modifier) {
 		this();
 		this.modifier = modifier;
 	}
-
 
 	public void setModifier(Integer modifier) throws IllegalArgumentException {
 		if ((Modifier.methodModifiers() & modifier.intValue()) == 0)
@@ -38,7 +42,7 @@ public class Method extends AbstractModelObject {
 	public void setReturnType(Type returnType) {
 		this.returnType = returnType;
 	}
-	
+
 	public void setReturnType(Class<?> returnType) {
 		this.returnType = new Type(returnType);
 	}
@@ -70,11 +74,10 @@ public class Method extends AbstractModelObject {
 	public void addBodyLine(String line) {
 		this.body.add(line);
 	}
-	
+
 	public void addBodyLine(String line, Object... params) {
 		addBodyLine(String.format(line, params));
 	}
-	
 
 	public List<Class<? extends Exception>> getExceptionList() {
 		return exceptionList;
@@ -84,32 +87,33 @@ public class Method extends AbstractModelObject {
 		if (exceptionList != null)
 			this.exceptionList = exceptionList;
 	}
-	
+
 	public void addException(Class<? extends Exception> e) {
 		this.exceptionList.add(e);
 	}
-	
-	
+
 	public String generate() {
 
 		StringBuilder sb = new StringBuilder();
 
+		if (getComment() != null) writeComment(sb);
+		
 		if (!getAnnotationList().isEmpty()) {
 			for (Class<? extends Annotation> a : getAnnotationList())
-			sb.append('@').append(a.getSimpleName()).append(newLine());
+				sb.append('@').append(a.getSimpleName()).append(newLine());
 		}
-		
+
 		sb.append(Modifier.toString(getModifier())).append(' ');
-		
+
 		if (getReturnType() == null) sb.append(Void.TYPE.getSimpleName());
 		else sb.append(getReturnType().getNameGen());
+		
 		sb.append(' ').append(getName()).append('(');
 
 		if (!getSignatureParams().isEmpty()) {
 			int params = 0;
 			for (Param p : getSignatureParams()) {
-				if (params > 0)
-					sb.append(", ");
+				if (params > 0) sb.append(", ");
 				sb.append(p.getType().getNameGen()).append(' ').append(p.getName());
 				params++;
 			}
@@ -120,19 +124,21 @@ public class Method extends AbstractModelObject {
 			sb.append(" throws ");
 			int items = 0;
 			for (Class<? extends Exception> e : getExceptionList()) {
-				if (items > 0)
-					sb.append(", ");
+				if (items > 0) sb.append(", ");
 				sb.append(e.getSimpleName());
 				items++;
 			}
 		}
 
-		sb.append(" {").append(newLine());
-
-		for (String l : getBody()) {
-			if (StringUtils.isNotEmpty(l))
-				sb.append('\t').append(l);
+		sb.append(" {");
+		
+		final List<String> bodyLines = getBody();
+		if (!bodyLines.isEmpty()) {
 			sb.append(newLine());
+			for (String l : bodyLines) {
+				if (StringUtils.isNotEmpty(l)) sb.append('\t').append(l);
+				sb.append(newLine());
+			}
 		}
 
 		sb.append('}').append(newLine());
@@ -155,7 +161,7 @@ public class Method extends AbstractModelObject {
 			this.type = type;
 			this.name = name;
 		}
-		
+
 		public Param(Class<?> type, String name) {
 			this.type = new Type(type);
 			this.name = name;
@@ -168,35 +174,6 @@ public class Method extends AbstractModelObject {
 		public String getName() {
 			return name;
 		}
-
-	}
-
-	public int getLinesBefore() {
-		return 1;
-	}
-
-	public int getLinesAfter() {
-		return 1;
-	}
-
-	public static void main(String[] args) {
-
-		Method m = new Method(Modifier.PUBLIC);
-		m.setName("updateAddress");
-		m.setReturnType(String.class);
-		m.setSignatureParams(new Param(Integer.class, "numCiv"), new Param(String.class, "via"));
-
-		List<String> b = new ArrayList<>();
-		b.add("this.numCiv = numCiv;");
-		b.add("this.indirizzo = via;");
-		b.add(m.emptyLine());
-		b.add("return new Integer(1);");
-
-		m.setBody(b);
-
-		String code = m.generate();
-
-		System.out.println(code);
 
 	}
 

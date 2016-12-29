@@ -1,41 +1,41 @@
 package io.commercelayer.api.model;
 
-import java.util.Objects;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.json.JsonExclude;
+import io.commercelayer.api.model.common.ApiResource;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * PaymentType
  */
 public class PaymentType extends ApiResource {
 
-	private static final long serialVersionUID = -1482914097796L;
+	private static final long serialVersionUID = -1483006114284L;
 
 
+	private String gatewayId;
+	private String merchantId;
 	private String name;
 	@JsonExclude
 	private String description;
-	private String merchantId;
-	private String gatewayId;
+	@JsonExclude
+	private Object gateway;
+	@JsonExclude
+	private List<String> images;
+	@JsonExclude
+	private List<String> marketPaymentTypes;
+	@JsonExclude
+	private List<String> markets;
+	@JsonExclude
+	private Object merchant;
 	@JsonExclude
 	private String paymentSourceResource;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
-	private Object merchant;
-	@JsonExclude
-	private Object gateway;
-	@JsonExclude
 	private List<String> resourceImages;
 	@JsonExclude
-	private List<String> images;
-	@JsonExclude
 	private List<String> translations;
-	@JsonExclude
-	private List<String> marketPaymentTypes;
-	@JsonExclude
-	private List<String> markets;
 
 
 	public PaymentType() {

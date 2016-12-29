@@ -1,20 +1,20 @@
 package io.commercelayer.api.model;
 
-import java.util.Objects;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.json.JsonExclude;
+import io.commercelayer.api.model.common.ApiResource;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * ShippingCarrier
  */
 public class ShippingCarrier extends ApiResource {
 
-	private static final long serialVersionUID = -1482914097957L;
+	private static final long serialVersionUID = -1483006114373L;
 
 
-	private String shippingCarrierTypeId;
 	private String name;
+	private String shippingCarrierTypeId;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude

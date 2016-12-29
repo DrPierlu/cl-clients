@@ -1,32 +1,32 @@
 package io.commercelayer.api.model;
 
-import java.util.Objects;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.json.JsonExclude;
+import io.commercelayer.api.model.common.ApiResource;
+import java.util.Objects;
 
 /**
  * MerchandisingRule
  */
 public class MerchandisingRule extends ApiResource {
 
-	private static final long serialVersionUID = -1482914097715L;
+	private static final long serialVersionUID = -1483006114228L;
 
 
 	private String catalogId;
-	private String taxonId;
 	private String productId;
-	@JsonExclude
-	private String position;
-	@JsonExclude
-	private String hero;
-	@JsonExclude
-	private Object previousChanges;
+	private String taxonId;
 	@JsonExclude
 	private Object catalog;
 	@JsonExclude
-	private Object taxon;
+	private String hero;
+	@JsonExclude
+	private String position;
+	@JsonExclude
+	private Object previousChanges;
 	@JsonExclude
 	private Object product;
+	@JsonExclude
+	private Object taxon;
 
 
 	public MerchandisingRule() {

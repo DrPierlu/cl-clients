@@ -1,58 +1,58 @@
 package io.commercelayer.api.model;
 
-import java.util.Objects;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.json.JsonExclude;
+import io.commercelayer.api.model.common.ApiResource;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Product
  */
 public class Product extends ApiResource {
 
-	private static final long serialVersionUID = -1482914097886L;
+	private static final long serialVersionUID = -1483006114322L;
 
 
 	private String name;
-	@JsonExclude
-	private String description;
 	private String productTypeId;
 	@JsonExclude
-	private String trackInventory;
+	private String description;
 	@JsonExclude
-	private String shippingCategoryId;
+	private String hasVariants;
 	@JsonExclude
-	private String taxCode;
-	@JsonExclude
-	private Object previousChanges;
-	@JsonExclude
-	private Object shippingCategory;
-	@JsonExclude
-	private Object productType;
-	@JsonExclude
-	private List<String> prices;
-	@JsonExclude
-	private List<String> lineItems;
+	private List<String> images;
 	@JsonExclude
 	private List<String> lineItemStocks;
 	@JsonExclude
-	private List<String> stockItems;
+	private List<String> lineItems;
 	@JsonExclude
-	private List<String> shippingServiceStockLocations;
+	private List<String> merchandisingRules;
+	@JsonExclude
+	private Object previousChanges;
+	@JsonExclude
+	private List<String> prices;
+	@JsonExclude
+	private List<String> productProperties;
+	@JsonExclude
+	private Object productType;
 	@JsonExclude
 	private List<String> resourceImages;
 	@JsonExclude
-	private List<String> images;
+	private Object shippingCategory;
+	@JsonExclude
+	private String shippingCategoryId;
+	@JsonExclude
+	private List<String> shippingServiceStockLocations;
+	@JsonExclude
+	private List<String> stockItems;
+	@JsonExclude
+	private String taxCode;
+	@JsonExclude
+	private String trackInventory;
 	@JsonExclude
 	private List<String> translations;
 	@JsonExclude
 	private List<String> variants;
-	@JsonExclude
-	private List<String> merchandisingRules;
-	@JsonExclude
-	private List<String> productProperties;
-	@JsonExclude
-	private String hasVariants;
 
 
 	public Product() {

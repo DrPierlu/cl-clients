@@ -1,37 +1,31 @@
 package io.commercelayer.api.model;
 
-import java.util.Objects;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.json.JsonExclude;
+import io.commercelayer.api.model.common.ApiResource;
+import java.util.Objects;
 
 /**
  * Transaction
  */
 public class Transaction extends ApiResource {
 
-	private static final long serialVersionUID = -1482914098084L;
+	private static final long serialVersionUID = -1483006114501L;
 
 
-	@JsonExclude
-	private String orderId;
 	private String gatewayId;
-	@JsonExclude
-	private String currencyId;
+	private String kind;
 	private String paymentSourceId;
 	private String paymentSourceResource;
 	@JsonExclude
-	private String token;
-	private String kind;
-	@JsonExclude
 	private String amountCents;
-	@JsonExclude
-	private String state;
-	@JsonExclude
-	private String message;
 	@JsonExclude
 	private String avsCode;
 	@JsonExclude
 	private String avsMessage;
+	@JsonExclude
+	private Object currency;
+	@JsonExclude
+	private String currencyId;
 	@JsonExclude
 	private String cvvCode;
 	@JsonExclude
@@ -41,15 +35,21 @@ public class Transaction extends ApiResource {
 	@JsonExclude
 	private String errorDetail;
 	@JsonExclude
-	private Object previousChanges;
+	private Object gateway;
+	@JsonExclude
+	private String message;
 	@JsonExclude
 	private Object order;
 	@JsonExclude
-	private Object gateway;
-	@JsonExclude
-	private Object currency;
+	private String orderId;
 	@JsonExclude
 	private Object paymentSource;
+	@JsonExclude
+	private Object previousChanges;
+	@JsonExclude
+	private String state;
+	@JsonExclude
+	private String token;
 
 
 	public Transaction() {

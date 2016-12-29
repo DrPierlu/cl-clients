@@ -1,148 +1,148 @@
 package io.commercelayer.api.model;
 
-import java.util.Objects;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.json.JsonExclude;
+import io.commercelayer.api.model.common.ApiResource;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Order
  */
 public class Order extends ApiResource {
 
-	private static final long serialVersionUID = -1482914097739L;
+	private static final long serialVersionUID = -1483006114251L;
 
 
-	@JsonExclude
-	private String customerId;
-	@JsonExclude
-	private String merchantId;
 	private String channelId;
 	private String countryId;
 	@JsonExclude
-	private String marketId;
+	private String amountWithMissingPaymentMethod;
 	@JsonExclude
-	private String currencyId;
+	private String availablePaymentTypeIds;
 	@JsonExclude
-	private String token;
-	@JsonExclude
-	private String taxIncluded;
-	@JsonExclude
-	private Float taxRate;
-	@JsonExclude
-	private String hasNexus;
-	@JsonExclude
-	private String shippingMethodTaxable;
-	@JsonExclude
-	private String paymentMethodTaxable;
-	@JsonExclude
-	private String taxSource;
-	@JsonExclude
-	private Object previousChanges;
-	@JsonExclude
-	private Object customer;
+	private String availableShippingServiceIds;
 	@JsonExclude
 	private Object channel;
 	@JsonExclude
 	private Object country;
 	@JsonExclude
-	private Object market;
-	@JsonExclude
-	private Object merchant;
-	@JsonExclude
 	private Object currency;
 	@JsonExclude
-	private List<String> lineItems;
+	private String currencyId;
 	@JsonExclude
-	private List<String> lineItemStocks;
+	private Object customer;
 	@JsonExclude
-	private List<String> paymentMethods;
-	@JsonExclude
-	private List<String> shippingMethods;
-	@JsonExclude
-	private List<String> shipments;
-	@JsonExclude
-	private List<String> transactions;
-	@JsonExclude
-	private List<String> marketPaymentTypes;
-	@JsonExclude
-	private List<String> paymentTypes;
-	@JsonExclude
-	private List<String> marketShippingServices;
-	@JsonExclude
-	private List<String> shippingServices;
-	@JsonExclude
-	private Object orderConfirmation;
-	@JsonExclude
-	private String totalAmountWithTax;
-	@JsonExclude
-	private String formattedTotalAmountWithTax;
-	@JsonExclude
-	private String totalAmount;
-	@JsonExclude
-	private String formattedTotalAmount;
-	@JsonExclude
-	private String totalLineItemAmount;
-	@JsonExclude
-	private String formattedTotalLineItemAmount;
-	@JsonExclude
-	private String totalShippingMethodAmount;
-	@JsonExclude
-	private String formattedTotalShippingMethodAmount;
-	@JsonExclude
-	private String totalPaymentMethodPrice;
-	@JsonExclude
-	private String formattedTotalPaymentMethodPrice;
-	@JsonExclude
-	private String totalAmountWithPaymentMethodRequired;
-	@JsonExclude
-	private String formattedTotalAmountWithPaymentMethodRequired;
-	@JsonExclude
-	private String totalPaymentMethodAmount;
-	@JsonExclude
-	private String formattedTotalPaymentMethodAmount;
-	@JsonExclude
-	private String amountWithMissingPaymentMethod;
-	@JsonExclude
-	private String formattedAmountWithMissingPaymentMethod;
-	@JsonExclude
-	private String totalTaxableAmount;
-	@JsonExclude
-	private String formattedTotalTaxableAmount;
-	@JsonExclude
-	private String totalLineItemTaxableAmount;
-	@JsonExclude
-	private String formattedTotalLineItemTaxableAmount;
-	@JsonExclude
-	private String totalShippingMethodTaxableAmount;
-	@JsonExclude
-	private String formattedTotalShippingMethodTaxableAmount;
-	@JsonExclude
-	private String totalPaymentMethodTaxableAmount;
-	@JsonExclude
-	private String formattedTotalPaymentMethodTaxableAmount;
-	@JsonExclude
-	private String totalTaxAmount;
-	@JsonExclude
-	private String formattedTotalTaxAmount;
-	@JsonExclude
-	private String totalLineItemTaxAmount;
-	@JsonExclude
-	private String formattedTotalLineItemTaxAmount;
-	@JsonExclude
-	private String totalShippingMethodTaxAmount;
-	@JsonExclude
-	private String formattedTotalShippingMethodTaxAmount;
-	@JsonExclude
-	private String totalPaymentMethodTaxAmount;
-	@JsonExclude
-	private String formattedTotalPaymentMethodTaxAmount;
+	private String customerId;
 	@JsonExclude
 	private String defaultShippingMethodId;
 	@JsonExclude
-	private String availableShippingServiceIds;
+	private String formattedAmountWithMissingPaymentMethod;
 	@JsonExclude
-	private String availablePaymentTypeIds;
+	private String formattedTotalAmount;
+	@JsonExclude
+	private String formattedTotalAmountWithPaymentMethodRequired;
+	@JsonExclude
+	private String formattedTotalAmountWithTax;
+	@JsonExclude
+	private String formattedTotalLineItemAmount;
+	@JsonExclude
+	private String formattedTotalLineItemTaxAmount;
+	@JsonExclude
+	private String formattedTotalLineItemTaxableAmount;
+	@JsonExclude
+	private String formattedTotalPaymentMethodAmount;
+	@JsonExclude
+	private String formattedTotalPaymentMethodPrice;
+	@JsonExclude
+	private String formattedTotalPaymentMethodTaxAmount;
+	@JsonExclude
+	private String formattedTotalPaymentMethodTaxableAmount;
+	@JsonExclude
+	private String formattedTotalShippingMethodAmount;
+	@JsonExclude
+	private String formattedTotalShippingMethodTaxAmount;
+	@JsonExclude
+	private String formattedTotalShippingMethodTaxableAmount;
+	@JsonExclude
+	private String formattedTotalTaxAmount;
+	@JsonExclude
+	private String formattedTotalTaxableAmount;
+	@JsonExclude
+	private String hasNexus;
+	@JsonExclude
+	private List<String> lineItemStocks;
+	@JsonExclude
+	private List<String> lineItems;
+	@JsonExclude
+	private Object market;
+	@JsonExclude
+	private String marketId;
+	@JsonExclude
+	private List<String> marketPaymentTypes;
+	@JsonExclude
+	private List<String> marketShippingServices;
+	@JsonExclude
+	private Object merchant;
+	@JsonExclude
+	private String merchantId;
+	@JsonExclude
+	private Object orderConfirmation;
+	@JsonExclude
+	private String paymentMethodTaxable;
+	@JsonExclude
+	private List<String> paymentMethods;
+	@JsonExclude
+	private List<String> paymentTypes;
+	@JsonExclude
+	private Object previousChanges;
+	@JsonExclude
+	private List<String> shipments;
+	@JsonExclude
+	private String shippingMethodTaxable;
+	@JsonExclude
+	private List<String> shippingMethods;
+	@JsonExclude
+	private List<String> shippingServices;
+	@JsonExclude
+	private String taxIncluded;
+	@JsonExclude
+	private Float taxRate;
+	@JsonExclude
+	private String taxSource;
+	@JsonExclude
+	private String token;
+	@JsonExclude
+	private String totalAmount;
+	@JsonExclude
+	private String totalAmountWithPaymentMethodRequired;
+	@JsonExclude
+	private String totalAmountWithTax;
+	@JsonExclude
+	private String totalLineItemAmount;
+	@JsonExclude
+	private String totalLineItemTaxAmount;
+	@JsonExclude
+	private String totalLineItemTaxableAmount;
+	@JsonExclude
+	private String totalPaymentMethodAmount;
+	@JsonExclude
+	private String totalPaymentMethodPrice;
+	@JsonExclude
+	private String totalPaymentMethodTaxAmount;
+	@JsonExclude
+	private String totalPaymentMethodTaxableAmount;
+	@JsonExclude
+	private String totalShippingMethodAmount;
+	@JsonExclude
+	private String totalShippingMethodTaxAmount;
+	@JsonExclude
+	private String totalShippingMethodTaxableAmount;
+	@JsonExclude
+	private String totalTaxAmount;
+	@JsonExclude
+	private String totalTaxableAmount;
+	@JsonExclude
+	private List<String> transactions;
 
 
 	public Order() {

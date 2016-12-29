@@ -1,43 +1,43 @@
 package io.commercelayer.api.model;
 
-import java.util.Objects;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.json.JsonExclude;
+import io.commercelayer.api.model.common.ApiResource;
+import java.util.Objects;
 
 /**
  * OrderValidator
  */
 public class OrderValidator extends ApiResource {
 
-	private static final long serialVersionUID = -1482914097780L;
+	private static final long serialVersionUID = -1483006114270L;
 
 
+	@JsonExclude
+	private Object currency;
 	@JsonExclude
 	private String currencyId;
 	@JsonExclude
-	private String orderTotalMinCents;
+	private String formattedOrderTotalMax;
 	@JsonExclude
-	private String orderTotalMaxCents;
+	private String formattedOrderTotalMin;
+	@JsonExclude
+	private String orderItemsMax;
 	@JsonExclude
 	private String orderItemsMin;
 	@JsonExclude
-	private String orderItemsMax;
+	private String orderTotalMax;
+	@JsonExclude
+	private String orderTotalMaxCents;
+	@JsonExclude
+	private String orderTotalMin;
+	@JsonExclude
+	private String orderTotalMinCents;
 	@JsonExclude
 	private String paymentMethodAction;
 	@JsonExclude
 	private String paymentMethodRequiredPercentage;
 	@JsonExclude
 	private Object previousChanges;
-	@JsonExclude
-	private Object currency;
-	@JsonExclude
-	private String orderTotalMin;
-	@JsonExclude
-	private String formattedOrderTotalMin;
-	@JsonExclude
-	private String orderTotalMax;
-	@JsonExclude
-	private String formattedOrderTotalMax;
 
 
 	public OrderValidator() {

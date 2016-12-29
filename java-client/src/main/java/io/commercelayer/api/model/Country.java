@@ -1,34 +1,34 @@
 package io.commercelayer.api.model;
 
-import java.util.Objects;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.json.JsonExclude;
+import io.commercelayer.api.model.common.ApiResource;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Country
  */
 public class Country extends ApiResource {
 
-	private static final long serialVersionUID = -1482914097516L;
+	private static final long serialVersionUID = -1483006114060L;
 
 
-	private String countryGroupId;
 	private String code;
-	@JsonExclude
-	private Object previousChanges;
+	private String countryGroupId;
 	@JsonExclude
 	private Object countryGroup;
 	@JsonExclude
 	private List<String> countryLanguages;
 	@JsonExclude
-	private List<String> states;
-	@JsonExclude
-	private List<String> orders;
+	private List<String> languages;
 	@JsonExclude
 	private List<String> lineItemStocks;
 	@JsonExclude
-	private List<String> languages;
+	private List<String> orders;
+	@JsonExclude
+	private Object previousChanges;
+	@JsonExclude
+	private List<String> states;
 
 
 	public Country() {

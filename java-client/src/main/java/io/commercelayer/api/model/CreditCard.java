@@ -1,49 +1,49 @@
 package io.commercelayer.api.model;
 
-import java.util.Objects;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.json.JsonExclude;
+import io.commercelayer.api.model.common.ApiResource;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * CreditCard
  */
 public class CreditCard extends ApiResource {
 
-	private static final long serialVersionUID = -1482914097531L;
+	private static final long serialVersionUID = -1483006114075L;
 
 
-	@JsonExclude
-	private String token;
+	private String firstName;
+	private String lastName;
+	private String month;
+	private String number;
+	private String year;
 	@JsonExclude
 	private String cardResource;
 	@JsonExclude
-	private String fingerprint;
-	private String firstName;
-	private String lastName;
-	private String number;
-	@JsonExclude
-	private String lastFourDigits;
-	@JsonExclude
-	private String firstSixDigits;
-	private String month;
-	private String year;
-	@JsonExclude
-	private String verificationValue;
-	@JsonExclude
-	private String email;
-	@JsonExclude
 	private String data;
-	@JsonExclude
-	private String storageState;
 	@JsonExclude
 	private String eligibleForCardUpdater;
 	@JsonExclude
+	private String email;
+	@JsonExclude
+	private String fingerprint;
+	@JsonExclude
+	private String firstSixDigits;
+	@JsonExclude
+	private String lastFourDigits;
+	@JsonExclude
+	private List<String> paymentMethods;
+	@JsonExclude
 	private Object previousChanges;
+	@JsonExclude
+	private String storageState;
+	@JsonExclude
+	private String token;
 	@JsonExclude
 	private List<String> transactions;
 	@JsonExclude
-	private List<String> paymentMethods;
+	private String verificationValue;
 
 
 	public CreditCard() {

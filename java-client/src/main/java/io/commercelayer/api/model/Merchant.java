@@ -1,34 +1,34 @@
 package io.commercelayer.api.model;
 
-import java.util.Objects;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.json.JsonExclude;
+import io.commercelayer.api.model.common.ApiResource;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Merchant
  */
 public class Merchant extends ApiResource {
 
-	private static final long serialVersionUID = -1482914097664L;
+	private static final long serialVersionUID = -1483006114205L;
 
 
 	private String countryId;
 	private String name;
 	@JsonExclude
-	private String description;
-	@JsonExclude
-	private Object previousChanges;
-	@JsonExclude
 	private Object country;
 	@JsonExclude
-	private List<String> markets;
+	private String description;
 	@JsonExclude
 	private List<String> gateways;
+	@JsonExclude
+	private List<String> markets;
 	@JsonExclude
 	private List<String> orders;
 	@JsonExclude
 	private List<String> paymentTypes;
+	@JsonExclude
+	private Object previousChanges;
 
 
 	public Merchant() {

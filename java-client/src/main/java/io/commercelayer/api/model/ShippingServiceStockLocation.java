@@ -1,31 +1,31 @@
 package io.commercelayer.api.model;
 
-import java.util.Objects;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.json.JsonExclude;
+import io.commercelayer.api.model.common.ApiResource;
+import java.util.Objects;
 
 /**
  * ShippingServiceStockLocation
  */
 public class ShippingServiceStockLocation extends ApiResource {
 
-	private static final long serialVersionUID = -1482914098014L;
+	private static final long serialVersionUID = -1483006114430L;
 
 
+	private String maxLeadTimeHours;
+	private String minLeadTimeHours;
 	private String shippingServiceId;
 	private String stockLocationId;
-	private String minLeadTimeHours;
-	private String maxLeadTimeHours;
+	@JsonExclude
+	private String maxLeadTimeDays;
+	@JsonExclude
+	private String minLeadTimeDays;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
 	private Object shippingService;
 	@JsonExclude
 	private Object stockLocation;
-	@JsonExclude
-	private String minLeadTimeDays;
-	@JsonExclude
-	private String maxLeadTimeDays;
 
 
 	public ShippingServiceStockLocation() {

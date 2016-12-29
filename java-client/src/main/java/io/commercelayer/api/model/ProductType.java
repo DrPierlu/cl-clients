@@ -1,35 +1,35 @@
 package io.commercelayer.api.model;
 
-import java.util.Objects;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.json.JsonExclude;
+import io.commercelayer.api.model.common.ApiResource;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * ProductType
  */
 public class ProductType extends ApiResource {
 
-	private static final long serialVersionUID = -1482914097895L;
+	private static final long serialVersionUID = -1483006114331L;
 
 
 	private String name;
 	@JsonExclude
-	private Object previousChanges;
-	@JsonExclude
-	private List<String> resourceImages;
-	@JsonExclude
 	private List<String> images;
-	@JsonExclude
-	private List<String> products;
 	@JsonExclude
 	private List<String> optionTypes;
 	@JsonExclude
-	private List<String> propertyTypes;
-	@JsonExclude
 	private List<String> optionValues;
 	@JsonExclude
+	private Object previousChanges;
+	@JsonExclude
+	private List<String> products;
+	@JsonExclude
+	private List<String> propertyTypes;
+	@JsonExclude
 	private List<String> propertyValues;
+	@JsonExclude
+	private List<String> resourceImages;
 
 
 	public ProductType() {

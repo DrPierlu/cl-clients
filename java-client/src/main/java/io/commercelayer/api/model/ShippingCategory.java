@@ -1,31 +1,31 @@
 package io.commercelayer.api.model;
 
-import java.util.Objects;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.json.JsonExclude;
+import io.commercelayer.api.model.common.ApiResource;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * ShippingCategory
  */
 public class ShippingCategory extends ApiResource {
 
-	private static final long serialVersionUID = -1482914097968L;
+	private static final long serialVersionUID = -1483006114385L;
 
 
 	private String name;
+	@JsonExclude
+	private List<String> lineItemStocks;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
 	private List<String> products;
 	@JsonExclude
-	private List<String> variants;
-	@JsonExclude
 	private List<String> shippingServiceCategories;
 	@JsonExclude
-	private List<String> lineItemStocks;
-	@JsonExclude
 	private List<String> shippingServices;
+	@JsonExclude
+	private List<String> variants;
 
 
 	public ShippingCategory() {

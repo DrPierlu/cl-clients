@@ -1,77 +1,77 @@
 package io.commercelayer.api.model;
 
-import java.util.Objects;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.json.JsonExclude;
+import io.commercelayer.api.model.common.ApiResource;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Address
  */
 public class Address extends ApiResource {
 
-	private static final long serialVersionUID = -1482914097406L;
+	private static final long serialVersionUID = -1483006113992L;
 
 
-	private String geocodingCountry;
-	private String geocodingZip;
 	private String geocodingCity;
-	private String geocodingStreet;
+	private String geocodingCountry;
 	private String geocodingNumber;
-	@JsonExclude 
-	private String provider;
-	@JsonExclude
-	private String placeId;
-	@JsonExclude
-	private String precision;
+	private String geocodingStreet;
+	private String geocodingZip;
 	@JsonExclude
 	private String accuracy;
 	@JsonExclude
-	private String countryCode;
+	private String city;
 	@JsonExclude
 	private String country;
 	@JsonExclude
-	private String stateCode;
-	@JsonExclude
-	private String stateName;
-	@JsonExclude
-	private String state;
-	@JsonExclude
-	private String province;
-	@JsonExclude
-	private String zip;
-	@JsonExclude
-	private String city;
+	private String countryCode;
 	@JsonExclude
 	private String district;
 	@JsonExclude
-	private String streetName;
-	@JsonExclude
-	private String streetNumber;
-	@JsonExclude
-	private String streetAddress;
-	@JsonExclude
-	private String subPremise;
+	private String formattedAddress;
 	@JsonExclude
 	private String fullAddress;
-	@JsonExclude
-	private String formattedAddress;
 	@JsonExclude
 	private Float lat;
 	@JsonExclude
 	private Float lng;
 	@JsonExclude
-	private Float suggestedBoundsSwLat;
+	private String placeId;
 	@JsonExclude
-	private Float suggestedBoundsSwLng;
+	private String precision;
+	@JsonExclude
+	private Object previousChanges;
+	@JsonExclude
+	private String provider;
+	@JsonExclude
+	private String province;
+	@JsonExclude
+	private List<String> shippingMethods;
+	@JsonExclude
+	private String state;
+	@JsonExclude
+	private String stateCode;
+	@JsonExclude
+	private String stateName;
+	@JsonExclude
+	private String streetAddress;
+	@JsonExclude
+	private String streetName;
+	@JsonExclude
+	private String streetNumber;
+	@JsonExclude
+	private String subPremise;
 	@JsonExclude
 	private Float suggestedBoundsNeLat;
 	@JsonExclude
 	private Float suggestedBoundsNeLng;
 	@JsonExclude
-	private Object previousChanges;
+	private Float suggestedBoundsSwLat;
 	@JsonExclude
-	private List<String> shippingMethods;
+	private Float suggestedBoundsSwLng;
+	@JsonExclude
+	private String zip;
 
 
 	public Address() {

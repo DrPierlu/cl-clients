@@ -14,8 +14,19 @@ public class PostChannelOrdersOrderTokenPlace extends PostOperation {
 		addRequiredField("orderToken");
 	}
 
+
 	public PostChannelOrdersOrderTokenPlace() {
 		super(OPERATION_PATH);
+	}
+	
+
+	public void setOrderToken(Object orderToken) {
+		addPathParam("order_token", orderToken);
+	}
+	
+
+	public Object getOrderToken() {
+		return getPathParam("order_token");
 	}
 	
 }

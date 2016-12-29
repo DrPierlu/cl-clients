@@ -1,27 +1,27 @@
 package io.commercelayer.api.model;
 
-import java.util.Objects;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.json.JsonExclude;
+import io.commercelayer.api.model.common.ApiResource;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 /**
  * Webhook
  */
 public class Webhook extends ApiResource {
 
-	private static final long serialVersionUID = -1482914098206L;
+	private static final long serialVersionUID = -1483006114525L;
 
 
-	private String eventSubject;
 	private String eventAction;
+	private String eventSubject;
 	private String eventUrl;
-	@JsonExclude
-	private String sharedSecret;
 	@JsonExclude
 	private LocalDateTime lastFiredAt;
 	@JsonExclude
 	private Object previousChanges;
+	@JsonExclude
+	private String sharedSecret;
 
 
 	public Webhook() {

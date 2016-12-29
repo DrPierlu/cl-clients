@@ -1,23 +1,23 @@
 package io.commercelayer.api.model;
 
-import java.util.Objects;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.json.JsonExclude;
+import io.commercelayer.api.model.common.ApiResource;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Organization
  */
 public class Organization extends ApiResource {
 
-	private static final long serialVersionUID = -1482914097790L;
+	private static final long serialVersionUID = -1483006114279L;
 
 
 	private String name;
 	@JsonExclude
-	private Object previousChanges;
-	@JsonExclude
 	private List<String> environments;
+	@JsonExclude
+	private Object previousChanges;
 
 
 	public Organization() {

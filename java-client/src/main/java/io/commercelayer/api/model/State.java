@@ -1,23 +1,23 @@
 package io.commercelayer.api.model;
 
-import java.util.Objects;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.json.JsonExclude;
+import io.commercelayer.api.model.common.ApiResource;
+import java.util.Objects;
 
 /**
  * State
  */
 public class State extends ApiResource {
 
-	private static final long serialVersionUID = -1482914098042L;
+	private static final long serialVersionUID = -1483006114458L;
 
 
-	private String countryId;
 	private String code;
-	@JsonExclude
-	private Object previousChanges;
+	private String countryId;
 	@JsonExclude
 	private Object country;
+	@JsonExclude
+	private Object previousChanges;
 
 
 	public State() {

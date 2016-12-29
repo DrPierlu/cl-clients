@@ -2,7 +2,7 @@ package io.commercelayer.api.codegen.model;
 
 import java.util.Objects;
 
-public class Type {
+public class Type implements Comparable<Type> {
 	
 	private Class<?> typeClass;
 	private Class<?> typeClassGen;
@@ -36,7 +36,10 @@ public class Type {
 	}
 	
 	public String getPackage() {
-		if (this.typeClass != null) return this.typeClass.getPackage().getName();
+		if (this.typeClass != null) {
+			Package pkg = this.typeClass.getPackage();
+			return (pkg == null)? null : pkg.getName();
+		}
 		else
 		if (this.typeStr != null) {
 			int idx = this.typeStr.lastIndexOf('.');
@@ -112,6 +115,12 @@ public class Type {
 		return Objects.hash(
 			typeClass, typeClassGen, typeStr, typeStrGen
 		);
+	}
+
+	@Override
+	public int compareTo(Type o) {
+		if (o == null) return -1;
+		else return this.getImport().compareTo(o.getImport());
 	}
 	
 }

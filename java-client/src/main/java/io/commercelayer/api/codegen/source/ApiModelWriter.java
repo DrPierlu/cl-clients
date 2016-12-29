@@ -27,20 +27,24 @@ public class ApiModelWriter {
 
 	public void writeCode(Model model) {
 		
-		logger.info("Writing Java code ...");
+		logger.info("Creating Java code ...");
 		
 		for (Map.Entry<String, ClassGroup> cgEntry : model.getClassGroups().entrySet()) {
 			
+			final String classGroupKey = cgEntry.getKey();
+			
 			try {
-				initClassGroupDirectory(cgEntry.getKey());
+				logger.info("Initializing package ... [{}]", classGroupKey);
+				initClassGroupDirectory(classGroupKey);
 			}
 			catch (IOException ioe) {
 				logger.error(LogUtils.printStackTrace(ioe));
 				continue;
 			}
 			
-			ClassGroup cg = model.getClassGroup(cgEntry.getKey());
+			ClassGroup cg = model.getClassGroup(classGroupKey);
 			
+			logger.info("Writing classes ... [{}]", classGroupKey);
 			for (ModelClass mc : cg.getGroupClasses()) {
 				try {
 					writeClass(mc);

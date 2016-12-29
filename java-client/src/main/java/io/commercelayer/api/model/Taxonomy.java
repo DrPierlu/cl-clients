@@ -1,31 +1,31 @@
 package io.commercelayer.api.model;
 
-import java.util.Objects;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.json.JsonExclude;
+import io.commercelayer.api.model.common.ApiResource;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Taxonomy
  */
 public class Taxonomy extends ApiResource {
 
-	private static final long serialVersionUID = -1482914098071L;
+	private static final long serialVersionUID = -1483006114487L;
 
 
 	private String name;
 	@JsonExclude
+	private List<String> images;
+	@JsonExclude
 	private Object previousChanges;
+	@JsonExclude
+	private List<String> products;
 	@JsonExclude
 	private List<String> resourceImages;
 	@JsonExclude
-	private List<String> images;
-	@JsonExclude
-	private List<String> translations;
-	@JsonExclude
 	private List<String> taxons;
 	@JsonExclude
-	private List<String> products;
+	private List<String> translations;
 
 
 	public Taxonomy() {

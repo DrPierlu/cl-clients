@@ -1,46 +1,46 @@
 package io.commercelayer.api.model;
 
-import java.util.Objects;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.json.JsonExclude;
+import io.commercelayer.api.model.common.ApiResource;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Variant
  */
 public class Variant extends ApiResource {
 
-	private static final long serialVersionUID = -1482914098091L;
+	private static final long serialVersionUID = -1483006114509L;
 
 
 	private String productId;
-	@JsonExclude
-	private String trackInventory;
-	@JsonExclude
-	private String shippingCategoryId;
 	private String sku;
 	@JsonExclude
-	private String taxCode;
-	@JsonExclude
-	private Object previousChanges;
-	@JsonExclude
-	private Object shippingCategory;
-	@JsonExclude
-	private Object product;
-	@JsonExclude
-	private List<String> prices;
-	@JsonExclude
-	private List<String> lineItems;
+	private List<String> images;
 	@JsonExclude
 	private List<String> lineItemStocks;
 	@JsonExclude
-	private List<String> stockItems;
+	private List<String> lineItems;
 	@JsonExclude
-	private List<String> shippingServiceStockLocations;
+	private Object previousChanges;
+	@JsonExclude
+	private List<String> prices;
+	@JsonExclude
+	private Object product;
 	@JsonExclude
 	private List<String> resourceImages;
 	@JsonExclude
-	private List<String> images;
+	private Object shippingCategory;
+	@JsonExclude
+	private String shippingCategoryId;
+	@JsonExclude
+	private List<String> shippingServiceStockLocations;
+	@JsonExclude
+	private List<String> stockItems;
+	@JsonExclude
+	private String taxCode;
+	@JsonExclude
+	private String trackInventory;
 	@JsonExclude
 	private List<String> variantOptions;
 

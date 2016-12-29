@@ -1,34 +1,34 @@
 package io.commercelayer.api.model;
 
-import java.util.Objects;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.json.JsonExclude;
+import io.commercelayer.api.model.common.ApiResource;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * PropertyType
  */
 public class PropertyType extends ApiResource {
 
-	private static final long serialVersionUID = -1482914097930L;
+	private static final long serialVersionUID = -1483006114346L;
 
 
 	private String name;
 	private String productTypeId;
 	@JsonExclude
+	private List<String> images;
+	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
 	private Object productType;
 	@JsonExclude
-	private List<String> resourceImages;
-	@JsonExclude
-	private List<String> images;
-	@JsonExclude
-	private List<String> translations;
+	private List<String> products;
 	@JsonExclude
 	private List<String> propertyValues;
 	@JsonExclude
-	private List<String> products;
+	private List<String> resourceImages;
+	@JsonExclude
+	private List<String> translations;
 
 
 	public PropertyType() {

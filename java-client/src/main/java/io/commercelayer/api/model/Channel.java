@@ -1,33 +1,33 @@
 package io.commercelayer.api.model;
 
-import java.util.Objects;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.json.JsonExclude;
+import io.commercelayer.api.model.common.ApiResource;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Channel
  */
 public class Channel extends ApiResource {
 
-	private static final long serialVersionUID = -1482914097488L;
+	private static final long serialVersionUID = -1483006114036L;
 
 
 	private String name;
 	@JsonExclude
-	private Object previousChanges;
-	@JsonExclude
-	private List<String> orders;
-	@JsonExclude
-	private List<String> lineItems;
-	@JsonExclude
-	private List<String> shippingMethods;
-	@JsonExclude
-	private List<String> paymentMethods;
+	private Object authCredentials;
 	@JsonExclude
 	private List<String> lineItemStocks;
 	@JsonExclude
-	private Object authCredentials;
+	private List<String> lineItems;
+	@JsonExclude
+	private List<String> orders;
+	@JsonExclude
+	private List<String> paymentMethods;
+	@JsonExclude
+	private Object previousChanges;
+	@JsonExclude
+	private List<String> shippingMethods;
 
 
 	public Channel() {

@@ -1,37 +1,37 @@
 package io.commercelayer.api.model;
 
-import java.util.Objects;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.json.JsonExclude;
+import io.commercelayer.api.model.common.ApiResource;
+import java.util.Objects;
 
 /**
  * MarketShippingService
  */
 public class MarketShippingService extends ApiResource {
 
-	private static final long serialVersionUID = -1482914097621L;
+	private static final long serialVersionUID = -1483006114189L;
 
 
 	private String marketId;
 	private String shippingServiceId;
 	@JsonExclude
-	private String priceCents;
-	@JsonExclude
-	private String freeOverAmountCents;
-	@JsonExclude
-	private Object previousChanges;
-	@JsonExclude
-	private Object market;
-	@JsonExclude
-	private Object shippingService;
-	@JsonExclude
-	private String price;
+	private String formattedFreeOverAmount;
 	@JsonExclude
 	private String formattedPrice;
 	@JsonExclude
 	private String freeOverAmount;
 	@JsonExclude
-	private String formattedFreeOverAmount;
+	private String freeOverAmountCents;
+	@JsonExclude
+	private Object market;
+	@JsonExclude
+	private Object previousChanges;
+	@JsonExclude
+	private String price;
+	@JsonExclude
+	private String priceCents;
+	@JsonExclude
+	private Object shippingService;
 
 
 	public MarketShippingService() {

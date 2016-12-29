@@ -4,6 +4,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import io.commercelayer.api.config.ApiConfig;
 import io.commercelayer.api.config.ApiConfig.Group;
+import io.commercelayer.api.json.gson.JsonCodecGsonFactory;
 import io.commercelayer.api.util.LogUtils;
 
 public final class JsonCodecFactory {
@@ -26,7 +27,7 @@ static {
 
 	public static JsonCodec getJsonCodecInstance() {
 		if (customCodecClass != null) return getCustomCodecInstance();
-		else return new JsonCodecGsonImpl();
+		else return JsonCodecGsonFactory.newJsonCodecInstance();
 	}
 	
 	private static JsonCodec getCustomCodecInstance() {

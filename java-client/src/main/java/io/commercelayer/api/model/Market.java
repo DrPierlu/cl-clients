@@ -1,59 +1,59 @@
 package io.commercelayer.api.model;
 
-import java.util.Objects;
+import io.commercelayer.api.json.JsonExclude;
 import io.commercelayer.api.model.common.ApiResource;
 import java.time.LocalDateTime;
-import io.commercelayer.api.json.JsonExclude;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Market
  */
 public class Market extends ApiResource {
 
-	private static final long serialVersionUID = -1482914097605L;
+	private static final long serialVersionUID = -1483006114167L;
 
 
+	private String catalogId;
 	private String channelId;
 	private String countryGroupId;
 	private String merchantId;
-	private String catalogId;
-	private String priceListId;
 	private String orderValidatorId;
-	@JsonExclude
-	private LocalDateTime lastResetIndexAt;
-	@JsonExclude
-	private Object previousChanges;
-	@JsonExclude
-	private Object merchant;
-	@JsonExclude
-	private Object countryGroup;
+	private String priceListId;
 	@JsonExclude
 	private Object catalog;
 	@JsonExclude
-	private Object priceList;
-	@JsonExclude
 	private Object channel;
 	@JsonExclude
-	private Object orderValidator;
+	private Object countryGroup;
 	@JsonExclude
-	private List<String> marketStockLocations;
-	@JsonExclude
-	private List<String> marketShippingServices;
-	@JsonExclude
-	private List<String> marketPaymentTypes;
+	private LocalDateTime lastResetIndexAt;
 	@JsonExclude
 	private List<String> lineItemStocks;
 	@JsonExclude
-	private List<String> stockLocations;
+	private List<String> marketPaymentTypes;
 	@JsonExclude
-	private List<String> stockItems;
+	private List<String> marketShippingServices;
 	@JsonExclude
-	private List<String> shippingServices;
+	private List<String> marketStockLocations;
+	@JsonExclude
+	private Object merchant;
+	@JsonExclude
+	private Object orderValidator;
 	@JsonExclude
 	private List<String> paymentTypes;
 	@JsonExclude
+	private Object previousChanges;
+	@JsonExclude
+	private Object priceList;
+	@JsonExclude
+	private List<String> shippingServices;
+	@JsonExclude
 	private List<String> shippingZones;
+	@JsonExclude
+	private List<String> stockItems;
+	@JsonExclude
+	private List<String> stockLocations;
 
 
 	public Market() {

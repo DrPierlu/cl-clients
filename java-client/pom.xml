@@ -70,11 +70,11 @@
 			</dependency>
 
 			<!-- https://mvnrepository.com/artifact/com.sun.codemodel/codemodel -->
-			<dependency>
-				<groupId>com.sun.codemodel</groupId>
-				<artifactId>codemodel</artifactId>
-				<version>2.6</version>
-			</dependency>
+<!-- 			<dependency> -->
+<!-- 				<groupId>com.sun.codemodel</groupId> -->
+<!-- 				<artifactId>codemodel</artifactId> -->
+<!-- 				<version>2.6</version> -->
+<!-- 			</dependency> -->
 
 			<!-- https://mvnrepository.com/artifact/io.swagger/swagger-parser -->
 			<dependency>
@@ -132,11 +132,11 @@
 			<scope>compile</scope>
 		</dependency>
 
-		<dependency>
-			<groupId>com.sun.codemodel</groupId>
-			<artifactId>codemodel</artifactId>
-			<scope>compile</scope>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>com.sun.codemodel</groupId> -->
+<!-- 			<artifactId>codemodel</artifactId> -->
+<!-- 			<scope>compile</scope> -->
+<!-- 		</dependency> -->
 
 		<dependency>
 			<groupId>io.swagger</groupId>
@@ -156,6 +156,9 @@
 				<configuration>
 					<source>1.8</source>
 					<target>1.8</target>
+					<excludes>
+						<exclude>io.commercelayer.api.codegen/codegen/**</exclude>
+					</excludes>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -166,6 +169,14 @@
 					<excludes>
 						<exclude>**/codegen/*</exclude>
 					</excludes>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.12.4</version>
+				<configuration>
+					<skipTests>true</skipTests>
 				</configuration>
 			</plugin>
 		</plugins>

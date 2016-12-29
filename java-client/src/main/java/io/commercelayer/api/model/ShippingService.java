@@ -1,44 +1,44 @@
 package io.commercelayer.api.model;
 
-import java.util.Objects;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.json.JsonExclude;
+import io.commercelayer.api.model.common.ApiResource;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * ShippingService
  */
 public class ShippingService extends ApiResource {
 
-	private static final long serialVersionUID = -1482914097999L;
+	private static final long serialVersionUID = -1483006114416L;
 
 
 	private String name;
+	private String shippingCarrierId;
 	@JsonExclude
 	private String description;
-	private String shippingCarrierId;
+	@JsonExclude
+	private List<String> marketShippingServices;
+	@JsonExclude
+	private List<String> markets;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
 	private Object shippingCarrier;
 	@JsonExclude
-	private List<String> translations;
-	@JsonExclude
-	private List<String> marketShippingServices;
+	private List<String> shippingCategories;
 	@JsonExclude
 	private List<String> shippingServiceCategories;
 	@JsonExclude
-	private List<String> shippingServiceZones;
-	@JsonExclude
 	private List<String> shippingServiceStockLocations;
 	@JsonExclude
-	private List<String> markets;
+	private List<String> shippingServiceZones;
 	@JsonExclude
-	private List<String> shippingCategories;
+	private List<String> shippingZones;
 	@JsonExclude
 	private List<String> stockLocations;
 	@JsonExclude
-	private List<String> shippingZones;
+	private List<String> translations;
 
 
 	public ShippingService() {

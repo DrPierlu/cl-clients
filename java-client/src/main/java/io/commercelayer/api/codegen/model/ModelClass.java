@@ -188,10 +188,9 @@ public class ModelClass extends AbstractModelObject {
 		this.initBlock = initBlock;
 	}
 
-	private void createImportList() {
+	private List<Type> createImportList() {
 
-		if (this.importList == null)
-			this.importList = new ArrayList<>();
+		if (this.importList == null) this.importList = new ArrayList<>();
 
 		// Extended class
 		addImportItem(getExtendedClass());
@@ -231,6 +230,9 @@ public class ModelClass extends AbstractModelObject {
 			for (Class<? extends Annotation> a : m.getAnnotationList())
 				addImportItem(a);
 		}
+		
+		
+		return this.importList;
 
 	}
 	
@@ -241,7 +243,7 @@ public class ModelClass extends AbstractModelObject {
 			if ((type.getTypeClass() != null) && (type.getTypeClass().isPrimitive())) return;
 			String pkg = type.getPackage();
 			if ((pkg == null) || (pkg.startsWith("java.lang"))) return;
-			if (!this.importList.contains(type)) this.importList.add(type);
+			if (!this.importList.contains(type) && !this.importList.contains(new Type(type.getPackage().concat(".*")))) this.importList.add(type);
 		}
 		
 	}
@@ -258,21 +260,23 @@ public class ModelClass extends AbstractModelObject {
 
 		// Package
 		sb.append("package ").append(getClassPackage()).append(';').append(newLine());
-		sb.append(newLine());
-
+		
+		
 		// Imports
-		for (Type t : getImportList()) {
-			String imp = t.getImport().replaceAll("\\$", ".");
-			sb.append("import ").append(imp).append(';').append(newLine());
+		final List<Type> importList = getImportList();
+		if (!importList.isEmpty()) {
+			Collections.sort(importList);
+			sb.append(newLine());
+			for (Type t : importList) {
+				String imp = t.getImport().replaceAll("\\$", ".");
+				sb.append("import ").append(imp).append(';').append(newLine());
+			}
+			sb.append(newLine());
 		}
-		sb.append(newLine());
 
 		// Class
-		if (getComment() != null) {
-			sb.append("/**").append(newLine());
-			sb.append(" * ").append(getComment()).append(newLine());
-			sb.append(" */").append(newLine());
-		}
+		if (getComment() != null) writeComment(sb);
+		
 		sb.append(Modifier.toString(getModifier())).append(" class ").append(getName());
 		if (getExtendedClass() != null)
 			sb.append(" extends ").append(getExtendedClass().getNameGen());
@@ -301,37 +305,49 @@ public class ModelClass extends AbstractModelObject {
 		sb.append(serialVersionUID());
 
 		// Fields
-		if (!getFieldList().isEmpty()) {
-			Collections.sort(getFieldList());
-			sb.append(newLine());
+		final List<Field> fieldList = getFieldList();
+		if (!fieldList.isEmpty()) {
+			Collections.sort(fieldList);
+			if (fieldList.get(0).getLinesBefore() < 1) sb.append(newLine());
 			for (Field f : getFieldList()) {
 				sb.append(newLines(f.getLinesBefore()));
 				sb.append('\t').append(f.generate().replaceAll("\n", "\n\t")).append(newLine());
 				sb.append(newLines(f.getLinesAfter()));
 			}
-			sb.append(newLine());
+			if (fieldList.get(fieldList.size()-1).getLinesAfter() < 1) sb.append(newLine());
 		}
 		
 		// Init Block
-		if (this.initBlock != null) {
+		if (getInitBlock() != null) {
 			sb.append(newLine());
 			sb.append('\t').append('{').append(newLine());
 			sb.append('\t').append('\t').append(getInitBlock().replaceAll("\n", "\n\t\t")).append(newLine());
-			sb.append('\t').append('}').append(newLines(2));
+			sb.append('\t').append('}').append(newLine());
+			sb.append(newLine());
 		}
 
 		// Constructors
-		for (Constructor c : getConstructorList()) {
-			sb.append(newLines(c.getLinesBefore()));
-			sb.append('\t').append(c.generate().replaceAll("\n", "\n\t"));
-			sb.append(newLines(c.getLinesAfter()));
+		final List<Constructor> constructorList = getConstructorList();
+		if (!constructorList.isEmpty()) {
+			if (constructorList.get(0).getLinesBefore() < 1) sb.append(newLine());
+			for (Constructor c : constructorList) {
+				sb.append(newLines(c.getLinesBefore()));
+				sb.append('\t').append(c.generate().replaceAll("\n", "\n\t"));
+				sb.append(newLines(c.getLinesAfter()));
+			}
+			if (constructorList.get(constructorList.size()-1).getLinesAfter() < 1) sb.append(newLine());
 		}
 
 		// Methods
-		for (Method m : getMethodList()) {
-			sb.append(newLines(m.getLinesBefore()));
-			sb.append('\t').append(m.generate().replaceAll("\n", "\n\t"));
-			sb.append(newLines(m.getLinesAfter()));
+		final List<Method> methodList = getMethodList();
+		if (!methodList.isEmpty()) {
+			if (methodList.get(0).getLinesBefore() < 1) sb.append(newLine());
+			for (Method m : methodList) {
+				sb.append(newLines(m.getLinesBefore()));
+				sb.append('\t').append(m.generate().replaceAll("\n", "\n\t"));
+				sb.append(newLines(m.getLinesAfter()));
+			}
+			if (methodList.get(methodList.size()-1).getLinesAfter() < 1) sb.append(newLine());
 		}
 
 		sb.append('}').append(newLine());
@@ -341,6 +357,10 @@ public class ModelClass extends AbstractModelObject {
 	}
 
 	private String serialVersionUID() {
+		return serialVersionUID(null);
+	}
+	
+	private String serialVersionUID(Long uid) {
 
 		String sv = "";
 
@@ -357,7 +377,7 @@ public class ModelClass extends AbstractModelObject {
 			}
 
 		if (serializable)
-			sv = String.format("\n\tprivate static final long serialVersionUID = -%dL;\n\n", System.currentTimeMillis());
+			sv = String.format("\n\tprivate static final long serialVersionUID = -%dL;\n\n", (uid != null)? uid : System.currentTimeMillis());
 
 		return sv;
 

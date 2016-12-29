@@ -1,47 +1,47 @@
 package io.commercelayer.api.model;
 
-import java.util.Objects;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.json.JsonExclude;
+import io.commercelayer.api.model.common.ApiResource;
+import java.util.Objects;
 
 /**
  * Price
  */
 public class Price extends ApiResource {
 
-	private static final long serialVersionUID = -1482914097871L;
+	private static final long serialVersionUID = -1483006114307L;
 
 
+	private String amount;
 	private String priceListId;
 	private String sellableId;
 	private String sellableResource;
 	@JsonExclude
 	private String amountCents;
 	@JsonExclude
-	private String compareAtAmountCents;
-	@JsonExclude
-	private Object previousChanges;
-	@JsonExclude
-	private Object priceList;
-	@JsonExclude
-	private Object sellable;
-	@JsonExclude
-	private String discountAmount;
-	@JsonExclude
-	private String formattedDiscountAmount;
-	private String amount;
-	@JsonExclude
-	private String formattedAmount;
-	@JsonExclude
 	private String compareAtAmount;
 	@JsonExclude
-	private String formattedCompareAtAmount;
+	private String compareAtAmountCents;
+	@JsonExclude
+	private String discountAmount;
 	@JsonExclude
 	private String discountPercentage;
 	@JsonExclude
 	private String discountPercentageRounded;
 	@JsonExclude
 	private String exchanges;
+	@JsonExclude
+	private String formattedAmount;
+	@JsonExclude
+	private String formattedCompareAtAmount;
+	@JsonExclude
+	private String formattedDiscountAmount;
+	@JsonExclude
+	private Object previousChanges;
+	@JsonExclude
+	private Object priceList;
+	@JsonExclude
+	private Object sellable;
 
 
 	public Price() {

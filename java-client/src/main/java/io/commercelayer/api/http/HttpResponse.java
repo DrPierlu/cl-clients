@@ -1,13 +1,11 @@
 package io.commercelayer.api.http;
 
-import java.util.HashMap;
+public class HttpResponse extends HttpMessage {
 
-public class HttpResponse {
-
+	private static final long serialVersionUID = 8738676375849275288L;
+	
+	
 	private int code;
-	private HashMap<String, String> headers = new HashMap<String, String>();
-	private String body;
-	private String contentType;
 
 	public int getCode() {
 		return code;
@@ -16,43 +14,7 @@ public class HttpResponse {
 	public void setCode(int code) {
 		this.code = code;
 	}
-
-	public HashMap<String, String> getHeaders() {
-		return headers;
-	}
-
-	public void setHeaders(HashMap<String, String> header) {
-		this.headers = header;
-	}
-
-	public String getBody() {
-		return body;
-	}
-
-	public void setBody(String body) {
-		this.body = body;
-	}
-
-	public void addHeader(String header, String value) {
-		this.headers.put(header, value);
-	}
-
-	public String getHeader(String header) {
-		return this.headers.get(header);
-	}
 	
-	public Integer getHeaderInt(String header) {
-		String h = this.headers.get(header);
-		return (h == null)? null : Integer.valueOf(h);
-	}
-
-	public String getContentType() {
-		return contentType;
-	}
-
-	public void setContentType(String contentType) {
-		this.contentType = contentType;
-	}
 	
 	public boolean hasErrorCode() {
 		return (code >= 300);

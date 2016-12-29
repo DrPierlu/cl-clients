@@ -1,30 +1,30 @@
 package io.commercelayer.api.model;
 
-import java.util.Objects;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.json.JsonExclude;
+import io.commercelayer.api.model.common.ApiResource;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * PriceList
  */
 public class PriceList extends ApiResource {
 
-	private static final long serialVersionUID = -1482914097880L;
+	private static final long serialVersionUID = -1483006114315L;
 
 
 	private String currencyId;
 	private String name;
 	@JsonExclude
-	private String taxIncluded;
+	private Object currency;
+	@JsonExclude
+	private List<String> markets;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
-	private Object currency;
-	@JsonExclude
 	private List<String> prices;
 	@JsonExclude
-	private List<String> markets;
+	private String taxIncluded;
 
 
 	public PriceList() {

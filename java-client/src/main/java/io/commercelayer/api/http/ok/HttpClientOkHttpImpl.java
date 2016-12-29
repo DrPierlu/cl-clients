@@ -1,4 +1,4 @@
-package io.commercelayer.api.http;
+package io.commercelayer.api.http.ok;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -19,6 +19,10 @@ import javax.net.ssl.X509TrustManager;
 import io.commercelayer.api.config.ApiConfig;
 import io.commercelayer.api.config.ApiConfig.Group;
 import io.commercelayer.api.exception.ConnectionException;
+import io.commercelayer.api.http.HttpClient;
+import io.commercelayer.api.http.HttpProxy;
+import io.commercelayer.api.http.HttpRequest;
+import io.commercelayer.api.http.HttpResponse;
 import io.commercelayer.api.http.HttpRequest.Header;
 import okhttp3.Authenticator;
 import okhttp3.Credentials;

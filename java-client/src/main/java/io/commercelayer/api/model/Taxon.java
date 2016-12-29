@@ -1,50 +1,50 @@
 package io.commercelayer.api.model;
 
-import java.util.Objects;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.json.JsonExclude;
+import io.commercelayer.api.model.common.ApiResource;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Taxon
  */
 public class Taxon extends ApiResource {
 
-	private static final long serialVersionUID = -1482914098063L;
+	private static final long serialVersionUID = -1483006114479L;
 
 
 	private String name;
 	private String taxonomyId;
 	@JsonExclude
-	private String position;
-	@JsonExclude
-	private String parentId;
-	@JsonExclude
-	private Object previousChanges;
-	@JsonExclude
-	private Object taxonomy;
-	@JsonExclude
-	private Object parent;
-	@JsonExclude
-	private List<String> resourceImages;
-	@JsonExclude
-	private List<String> images;
-	@JsonExclude
-	private List<String> translations;
-	@JsonExclude
-	private List<String> merchandisingRules;
-	@JsonExclude
-	private List<String> products;
+	private List<String> ancestorHierarchies;
 	@JsonExclude
 	private List<String> children;
 	@JsonExclude
-	private List<String> ancestorHierarchies;
+	private List<String> descendantHierarchies;
+	@JsonExclude
+	private List<String> images;
+	@JsonExclude
+	private List<String> merchandisingRules;
+	@JsonExclude
+	private Object parent;
+	@JsonExclude
+	private String parentId;
+	@JsonExclude
+	private String position;
+	@JsonExclude
+	private Object previousChanges;
+	@JsonExclude
+	private List<String> products;
+	@JsonExclude
+	private List<String> resourceImages;
 	@JsonExclude
 	private List<String> selfAndAncestors;
 	@JsonExclude
-	private List<String> descendantHierarchies;
-	@JsonExclude
 	private List<String> selfAndDescendants;
+	@JsonExclude
+	private Object taxonomy;
+	@JsonExclude
+	private List<String> translations;
 
 
 	public Taxon() {

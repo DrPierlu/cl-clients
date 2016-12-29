@@ -1,57 +1,57 @@
 package io.commercelayer.api.model;
 
-import java.util.Objects;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.json.JsonExclude;
+import io.commercelayer.api.model.common.ApiResource;
+import java.util.Objects;
 
 /**
  * PaymentMethod
  */
 public class PaymentMethod extends ApiResource {
 
-	private static final long serialVersionUID = -1482914097803L;
+	private static final long serialVersionUID = -1483006114291L;
 
 
+	private String billingAddressId;
 	private String orderId;
-	@JsonExclude
-	private String paymentTypeId;
 	private String paymentSourceId;
 	private String paymentSourceResource;
 	@JsonExclude
-	private String gatewayId;
-	private String billingAddressId;
-	@JsonExclude
-	private String priceCents;
+	private String amount;
 	@JsonExclude
 	private String amountCents;
 	@JsonExclude
-	private Object previousChanges;
-	@JsonExclude
-	private Object order;
-	@JsonExclude
-	private Object paymentType;
-	@JsonExclude
-	private Object paymentSource;
-	@JsonExclude
-	private Object gateway;
-	@JsonExclude
 	private Object billingAddress;
 	@JsonExclude
-	private String taxableAmount;
-	@JsonExclude
-	private String formattedTaxableAmount;
-	@JsonExclude
-	private String taxAmount;
-	@JsonExclude
-	private String formattedTaxAmount;
-	@JsonExclude
-	private String price;
+	private String formattedAmount;
 	@JsonExclude
 	private String formattedPrice;
 	@JsonExclude
-	private String amount;
+	private String formattedTaxAmount;
 	@JsonExclude
-	private String formattedAmount;
+	private String formattedTaxableAmount;
+	@JsonExclude
+	private Object gateway;
+	@JsonExclude
+	private String gatewayId;
+	@JsonExclude
+	private Object order;
+	@JsonExclude
+	private Object paymentSource;
+	@JsonExclude
+	private Object paymentType;
+	@JsonExclude
+	private String paymentTypeId;
+	@JsonExclude
+	private Object previousChanges;
+	@JsonExclude
+	private String price;
+	@JsonExclude
+	private String priceCents;
+	@JsonExclude
+	private String taxAmount;
+	@JsonExclude
+	private String taxableAmount;
 
 
 	public PaymentMethod() {

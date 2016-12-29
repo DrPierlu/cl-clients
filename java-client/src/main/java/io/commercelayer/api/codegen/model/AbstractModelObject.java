@@ -31,7 +31,7 @@ public abstract class AbstractModelObject {
 		this.modifier = modifier;
 	}
 
-	public int getLinesBefore() {
+	public final int getLinesBefore() {
 		return linesBefore;
 	}
 
@@ -39,7 +39,7 @@ public abstract class AbstractModelObject {
 		this.linesBefore = linesBefore;
 	}
 
-	public int getLinesAfter() {
+	public final int getLinesAfter() {
 		return linesAfter;
 	}
 
@@ -54,18 +54,20 @@ public abstract class AbstractModelObject {
 	public void setComment(String comment) {
 		this.comment = comment;
 	}
+	
+	public void setComment(String comment, Object... params) {
+		this.comment = String.format(comment, params);
+	}
 
 	protected String newLine() {
 		return "\n";
 	}
 
 	protected String newLines(int numLines) {
-		if (numLines <= 0)
-			return "";
+		if (numLines <= 0) return "";
 		else {
 			StringBuilder sb = new StringBuilder();
-			for (int i = 0; i < numLines; i++)
-				sb.append('\n');
+			for (int i = 0; i < numLines; i++) sb.append('\n');
 			return sb.toString();
 		}
 	}
@@ -77,18 +79,10 @@ public abstract class AbstractModelObject {
 	protected List<String> emptyLines(int numLines) {
 		List<String> lines = new ArrayList<>();
 		if (numLines > 0)
-			for (int i = 0; i < numLines; i++)
-				lines.add("");
+			for (int i = 0; i < numLines; i++) lines.add("");
 		return lines;
 	}
 
-//	protected String strType(Class<?> type, Class<?> typeGen) {
-//		StringBuffer sb = new StringBuffer();
-//		sb.append(type.getSimpleName());
-//		if (type.equals(List.class) || (typeGen != null))
-//			sb.append('<').append(typeGen.getSimpleName()).append('>');
-//		return sb.toString();
-//	}
 	
 	public List<Class<? extends Annotation>> getAnnotationList() {
 		return annotationList;
@@ -98,6 +92,16 @@ public abstract class AbstractModelObject {
 		if (!annotation.isAnnotation()) return false;
 		this.annotationList.add(annotation);
 		return true;
+	}
+	
+	public StringBuilder writeComment(StringBuilder sb) {
+		if (sb == null) return null;
+		if (getComment() != null) {
+			sb.append("/**").append(newLine());
+			sb.append(" * ").append(getComment()).append(newLine());
+			sb.append(" */").append(newLine());
+		}
+		return sb;
 	}
 
 }

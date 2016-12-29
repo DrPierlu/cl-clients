@@ -4,6 +4,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import io.commercelayer.api.config.ApiConfig;
 import io.commercelayer.api.config.ApiConfig.Group;
+import io.commercelayer.api.http.ok.HttpClientOkFactory;
 import io.commercelayer.api.util.LogUtils;
 
 public final class HttpClientFactory {
@@ -41,13 +42,13 @@ public final class HttpClientFactory {
 			
 		}
 		
-		return (httpProxy == null)? new HttpClientOkHttpImpl() : new HttpClientOkHttpImpl(httpProxy);
+		return (httpProxy == null)? HttpClientOkFactory.newHttpClientInstance() : HttpClientOkFactory.newHttpClientInstance(httpProxy);
 		
 	}
 	
 	
 	public static HttpClient getHttpClientInstance(HttpProxy httpProxy) {
-		return new HttpClientOkHttpImpl(httpProxy);
+		return HttpClientOkFactory.newHttpClientInstance(httpProxy);
 	}
 	
 	

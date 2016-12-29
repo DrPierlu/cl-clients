@@ -1,65 +1,65 @@
 package io.commercelayer.api.model;
 
-import java.util.Objects;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.json.JsonExclude;
+import io.commercelayer.api.model.common.ApiResource;
+import java.util.Objects;
 
 /**
  * LineItemStock
  */
 public class LineItemStock extends ApiResource {
 
-	private static final long serialVersionUID = -1482914097589L;
+	private static final long serialVersionUID = -1483006114148L;
 
 
+	private String lineItemId;
+	private String stockItemId;
 	@JsonExclude
-	private String orderId;
+	private String availableShippingServiceIds;
 	@JsonExclude
-	private String marketId;
+	private Object country;
 	@JsonExclude
 	private String countryId;
 	@JsonExclude
-	private String shippingCategoryId;
-	private String lineItemId;
-	private String stockItemId;
+	private Object lineItem;
+	@JsonExclude
+	private Object market;
+	@JsonExclude
+	private String marketId;
+	@JsonExclude
+	private String matchingShippingZoneIds;
+	@JsonExclude
+	private Object order;
+	@JsonExclude
+	private String orderId;
+	@JsonExclude
+	private Object previousChanges;
+	@JsonExclude
+	private String quantity;
+	@JsonExclude
+	private Object sellable;
 	@JsonExclude
 	private String sellableId;
 	@JsonExclude
 	private String sellableResource;
 	@JsonExclude
-	private String stockLocationId;
-	@JsonExclude
-	private String shippingMethodId;
+	private Object shipment;
 	@JsonExclude
 	private String shipmentId;
 	@JsonExclude
-	private String quantity;
-	@JsonExclude
-	private String matchingShippingZoneIds;
-	@JsonExclude
-	private String availableShippingServiceIds;
-	@JsonExclude
-	private Object previousChanges;
-	@JsonExclude
 	private Object shippingCategory;
 	@JsonExclude
-	private Object order;
-	@JsonExclude
-	private Object market;
-	@JsonExclude
-	private Object country;
-	@JsonExclude
-	private Object lineItem;
-	@JsonExclude
-	private Object stockItem;
-	@JsonExclude
-	private Object sellable;
-	@JsonExclude
-	private Object stockLocation;
+	private String shippingCategoryId;
 	@JsonExclude
 	private Object shippingMethod;
 	@JsonExclude
-	private Object shipment;
+	private String shippingMethodId;
+	@JsonExclude
+	private Object stockItem;
+	@JsonExclude
+	private Object stockLocation;
+	@JsonExclude
+	private String stockLocationId;
 
 
 	public LineItemStock() {

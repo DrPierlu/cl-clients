@@ -1,25 +1,25 @@
 package io.commercelayer.api.model;
 
-import java.util.Objects;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.json.JsonExclude;
+import io.commercelayer.api.model.common.ApiResource;
+import java.util.Objects;
 
 /**
  * ShippingServiceCategory
  */
 public class ShippingServiceCategory extends ApiResource {
 
-	private static final long serialVersionUID = -1482914098007L;
+	private static final long serialVersionUID = -1483006114424L;
 
 
-	private String shippingServiceId;
 	private String shippingCategoryId;
+	private String shippingServiceId;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
-	private Object shippingService;
-	@JsonExclude
 	private Object shippingCategory;
+	@JsonExclude
+	private Object shippingService;
 
 
 	public ShippingServiceCategory() {

@@ -1,37 +1,37 @@
 package io.commercelayer.api.model;
 
-import java.util.Objects;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.json.JsonExclude;
+import io.commercelayer.api.model.common.ApiResource;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * User
  */
 public class User extends ApiResource {
 
-	private static final long serialVersionUID = -1482914098077L;
+	private static final long serialVersionUID = -1483006114493L;
 
 
+	private String email;
 	private String firstName;
 	private String lastName;
-	private String email;
+	@JsonExclude
+	private List<String> consumerRoles;
+	@JsonExclude
+	private List<String> images;
 	@JsonExclude
 	private String passwordHash;
 	@JsonExclude
 	private String passwordSalt;
 	@JsonExclude
-	private Object previousChanges;
-	@JsonExclude
-	private List<String> consumerRoles;
-	@JsonExclude
-	private List<String> roles;
-	@JsonExclude
 	private List<String> permissions;
+	@JsonExclude
+	private Object previousChanges;
 	@JsonExclude
 	private List<String> resourceImages;
 	@JsonExclude
-	private List<String> images;
+	private List<String> roles;
 
 
 	public User() {

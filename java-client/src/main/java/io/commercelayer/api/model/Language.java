@@ -1,25 +1,25 @@
 package io.commercelayer.api.model;
 
-import java.util.Objects;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.json.JsonExclude;
+import io.commercelayer.api.model.common.ApiResource;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Language
  */
 public class Language extends ApiResource {
 
-	private static final long serialVersionUID = -1482914097567L;
+	private static final long serialVersionUID = -1483006114126L;
 
 
 	private String code;
 	@JsonExclude
-	private Object previousChanges;
+	private List<String> countries;
 	@JsonExclude
 	private List<String> countryLanguages;
 	@JsonExclude
-	private List<String> countries;
+	private Object previousChanges;
 
 
 	public Language() {

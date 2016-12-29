@@ -1,28 +1,28 @@
 package io.commercelayer.api.model;
 
-import java.util.Objects;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.json.JsonExclude;
+import io.commercelayer.api.model.common.ApiResource;
+import java.util.Objects;
 
 /**
  * ResourceImage
  */
 public class ResourceImage extends ApiResource {
 
-	private static final long serialVersionUID = -1482914097944L;
+	private static final long serialVersionUID = -1483006114360L;
 
 
+	private String imageId;
 	private String imageableId;
 	private String imageableResource;
-	private String imageId;
+	@JsonExclude
+	private Object image;
+	@JsonExclude
+	private Object imageable;
 	@JsonExclude
 	private String position;
 	@JsonExclude
 	private Object previousChanges;
-	@JsonExclude
-	private Object imageable;
-	@JsonExclude
-	private Object image;
 
 
 	public ResourceImage() {

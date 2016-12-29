@@ -35,6 +35,7 @@ import io.commercelayer.api.codegen.source.ApiModelWriter;
 import io.commercelayer.api.json.JsonExclude;
 import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.operation.common.ApiOperation;
+import io.commercelayer.api.operation.common.ApiOperations;
 import io.commercelayer.api.operation.common.DeleteOperation;
 import io.commercelayer.api.operation.common.GetIdOperation;
 import io.commercelayer.api.operation.common.IdOperation;
@@ -43,20 +44,21 @@ import io.commercelayer.api.operation.common.PayloadOperation;
 import io.commercelayer.api.operation.common.PostOperation;
 import io.commercelayer.api.operation.common.PutOperation;
 import io.commercelayer.api.operation.common.SearchOperation;
-import io.commercelayer.api.test.common.IntegrationTest;
 import io.commercelayer.api.util.ModelUtils;
 
 public class ApiModelGen {
 
 	private static final Logger logger = LoggerFactory.getLogger(ApiModelGen.class);
 
-	private static final boolean GENERATE_OBJECT_CLASSES = true;
+	private static final boolean GENERATE_OBJECT_CLASSES 	= true;
 	private static final boolean GENERATE_OPERATION_CLASSES = true;
-	private static final boolean GENERATE_TEST_CLASSES = true;
+	private static final boolean GENERATE_TEST_CLASSES 		= true;
 
-	public static final String PACKAGE_OBJECT = ApiModelWriter.class.getPackage().getName() + ".classes.object";
-	public static final String PACKAGE_OPERATION = ApiModelWriter.class.getPackage().getName() + ".classes.operation";
-	public static final String PACKAGE_TEST = ApiModelWriter.class.getPackage().getName() + ".classes.test";
+	public static final String PACKAGE_ROOT 		= ApiModelWriter.class.getPackage().getName() + ".classes";
+	public static final String PACKAGE_OBJECT 		= PACKAGE_ROOT + ".object";
+	public static final String PACKAGE_OPERATION	= PACKAGE_ROOT + ".operation";
+	public static final String PACKAGE_TEST 		= PACKAGE_ROOT + ".test";
+	public static final String PACKAGE_UTIL			= PACKAGE_ROOT + ".util";
 
 	public Model createModel(Schema schema) {
 
@@ -71,7 +73,7 @@ public class ApiModelGen {
 			List<Definition> definitions = schema.getDefinitions();
 			for (Definition def : definitions) {
 				ModelClass objClass = createObjectClass(PACKAGE_OBJECT, def);
-				if (model.addClass(objClass)) logger.info("Definition: {}", objClass.getName());
+				if (model.addClass(objClass)) /* logger.info("Definition: {}", objClass.getName()) */;
 				else logger.warn("Definition skipped: {}", def.getTitle());
 			}
 		}
@@ -85,7 +87,7 @@ public class ApiModelGen {
 			for (Resource res : resources) {
 				for (Operation op : res.getOperations()) {
 					ModelClass opClass = createOperationClass(PACKAGE_OPERATION, res.getPath(), op);
-					if (model.addClass(opClass)) logger.info("Operation: {} {}", op.getMethod(), res.getPath());
+					if (model.addClass(opClass)) /* logger.info("Operation: {} {}", op.getMethod(), res.getPath()) */;
 					else logger.warn("Operation skipped: {} {}", op.getMethod(), res.getPath());
 				}
 			}
@@ -99,16 +101,56 @@ public class ApiModelGen {
 			List<Definition> definitions = schema.getDefinitions();
 			for (Definition def : definitions) {
 				ModelClass testClass = createTestClass(PACKAGE_TEST, def);
-				if (model.addClass(testClass)) logger.info("Test: {}", testClass.getName());
+				if (model.addClass(testClass)) /* logger.info("Test: {}", testClass.getName()) */;
 				else logger.warn("Definition skipped: {}", def.getTitle());
 			}
 		}
 
+		
+		model.addClass(createOperationsCatalogue(schema, PACKAGE_UTIL));
+		
+		
 		logger.info("Model generated");
 
 		return model;
 
 	}
+	
+	
+	private ModelClass createOperationsCatalogue(Schema schema, String pkg) {
+		
+		logger.info("Creating Operations Catalogue ...");
+		
+		ModelClass mc = new ModelClass(pkg, ApiOperations.class.getSimpleName());
+		mc.setModifier(Modifier.PUBLIC | Modifier.FINAL);
+		mc.setComment(mc.getName());
+		
+		mc.addImportItem(new Type(PACKAGE_OPERATION.concat(".*")));
+				
+		for (Resource res : schema.getResources()) {
+			for (Operation op : res.getOperations()) {
+				
+				Method m = new Method(Modifier.PUBLIC | Modifier.STATIC);
+				m.setLinesBefore(0);
+				m.setLinesAfter(1);
+				
+				m.setComment("%s %s", op.getMethod(), res.getPath());
+				
+				String name = StringUtils.capitalize(op.getId());
+				m.setName(name);
+				m.setReturnType(new Type(PACKAGE_OPERATION.concat(".").concat(name)));
+				
+				m.addBodyLine("return new %s();", name);
+				
+				mc.addMethod(m);
+				
+			}
+		}
+		
+		return mc;
+		
+	}
+	
 
 
 	private Type decodePropertyType(Property p) {
@@ -437,6 +479,14 @@ public class ApiModelGen {
 
 	private ModelClass createTestClass(String testPackage, Definition def) {
 
+		final class CRUD {
+			public static final String CREATE 	= "testCreate";
+			public static final String READ 	= "testRead";
+			public static final String UPDATE 	= "testUpdate";
+			public static final String DELETE 	= "testDelete";
+		}
+		
+		
 		ModelClass mc = new ModelClass(testPackage, def.getTitle().concat("Test"), Modifier.PUBLIC);
 		mc.setComment(mc.getName());
 
@@ -445,16 +495,28 @@ public class ApiModelGen {
 		final String res = ApiResource.class.getPackage().getName().replace(".common", ".").concat(def.getTitle());
 
 		
-		// Test Insert Method
-		Method tim = new Method(Modifier.PUBLIC);
+		// Test Create Method
+		Method tcm = new Method(Modifier.PUBLIC);
 		
-		tim.addAnnotation(Override.class);
-		tim.setReturnType(new Type(ApiResponse.class, res));
-		tim.setName("testInsert");
-		tim.addSignatureParam(new Param(ApiCaller.class, "caller"));
-		tim.addBodyLine("return null;");
+		tcm.addAnnotation(Override.class);
+		tcm.setReturnType(new Type(ApiResponse.class, res));
+		tcm.setName(CRUD.CREATE);
+		tcm.addSignatureParam(new Param(ApiCaller.class, "caller"));
+		tcm.addBodyLine("return null;");
 		
-		mc.addMethod(tim);
+		mc.addMethod(tcm);
+		
+		
+		// Test Read Method
+		Method trm = new Method(Modifier.PUBLIC);
+		
+		trm.addAnnotation(Override.class);
+		trm.setReturnType(new Type(ApiResponse.class, res));
+		trm.setName(CRUD.READ);
+		trm.setSignatureParams(new Param(new Type(res), "res"), new Param(ApiCaller.class, "caller"));
+		trm.addBodyLine("return null;");
+		
+		mc.addMethod(trm);
 		
 		
 		// Test Update Method
@@ -462,7 +524,7 @@ public class ApiModelGen {
 		
 		tum.addAnnotation(Override.class);
 		tum.setReturnType(new Type(ApiResponse.class, res));
-		tum.setName("testUpdate");
+		tum.setName(CRUD.UPDATE);
 		tum.setSignatureParams(new Param(new Type(res), "oldRes"), new Param(ApiCaller.class, "caller"));
 		tum.addBodyLine("return null;");
 		
@@ -474,11 +536,30 @@ public class ApiModelGen {
 		
 		tdm.addAnnotation(Override.class);
 		tdm.setReturnType(new Type(ApiResponse.class, res));
-		tdm.setName("testDelete");
+		tdm.setName(CRUD.DELETE);
 		tdm.setSignatureParams(new Param(new Type(res), "res"), new Param(ApiCaller.class, "caller"));
 		tdm.addBodyLine("return null;");
 		
 		mc.addMethod(tdm);
+		
+		
+		// Main method
+		Method mm = new Method(Modifier.PUBLIC | Modifier.STATIC);
+		mm.setName("main");
+		mm.addSignatureParam(new Param(String[].class, "args"));
+		
+		mm.addBodyLine(mm.emptyLine());
+		mm.addBodyLine("%1$s test = new %1$s();", mc.getName());
+		mm.addBodyLine(mm.emptyLine());
+		mm.addBodyLine("test.runTest();");
+		mm.addBodyLine(mm.emptyLine());
+		mm.addBodyLine("// %s();", tcm.getName());
+		mm.addBodyLine("// %s();", trm.getName());
+		mm.addBodyLine("// %s();", tum.getName());
+		mm.addBodyLine("// %s();", tdm.getName());
+		mm.addBodyLine(mm.emptyLine());
+		
+		mc.addMethod(mm);
 		
 		
 		return mc;

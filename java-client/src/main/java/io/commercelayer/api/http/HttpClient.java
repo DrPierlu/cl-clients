@@ -15,7 +15,7 @@ public abstract class HttpClient {
 	public abstract HttpResponse send(HttpRequest httpRequest) throws ConnectionException;
 
 
-	public String getQueryString(HttpRequest httpRequest, boolean withQuestionMark) {
+	protected String getQueryString(HttpRequest httpRequest, boolean withQuestionMark) {
 
 		StringBuilder sb = new StringBuilder();
 
@@ -34,5 +34,5 @@ public abstract class HttpClient {
 		return sb.toString();
 
 	}
-
+	
 }

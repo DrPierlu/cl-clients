@@ -1,85 +1,85 @@
 package io.commercelayer.api.model;
 
-import java.util.Objects;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.json.JsonExclude;
+import io.commercelayer.api.model.common.ApiResource;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * LineItem
  */
 public class LineItem extends ApiResource {
 
-	private static final long serialVersionUID = -1482914097578L;
+	private static final long serialVersionUID = -1483006114139L;
 
 
 	private String orderId;
-	@JsonExclude
-	private String marketId;
-	@JsonExclude
-	private String countryId;
-	@JsonExclude
-	private String currencyId;
 	private String sellableId;
 	private String sellableResource;
 	@JsonExclude
-	private String shippingCategoryId;
+	private String amount;
 	@JsonExclude
-	private String trackInventory;
-	@JsonExclude
-	private String quantity;
-	@JsonExclude
-	private String unitAmountCents;
-	@JsonExclude
-	private Float taxRate;
-	@JsonExclude
-	private String taxIncluded;
-	@JsonExclude
-	private Object previousChanges;
-	@JsonExclude
-	private Object shippingCategory;
-	@JsonExclude
-	private Object order;
-	@JsonExclude
-	private Object sellable;
-	@JsonExclude
-	private Object market;
+	private String availableShippingServiceIds;
 	@JsonExclude
 	private Object country;
 	@JsonExclude
+	private String countryId;
+	@JsonExclude
 	private Object currency;
 	@JsonExclude
-	private List<String> stockItems;
-	@JsonExclude
-	private List<String> shippingServiceStockLocations;
-	@JsonExclude
-	private List<String> versions;
-	@JsonExclude
-	private List<String> lineItemStocks;
-	@JsonExclude
-	private List<String> shippingMethods;
-	@JsonExclude
-	private List<String> shipments;
-	@JsonExclude
-	private String amount;
-	@JsonExclude
-	private String formattedAmount;
-	@JsonExclude
-	private String taxableAmount;
-	@JsonExclude
-	private String formattedTaxableAmount;
-	@JsonExclude
-	private String taxAmount;
-	@JsonExclude
-	private String formattedTaxAmount;
-	@JsonExclude
-	private String unitAmount;
-	@JsonExclude
-	private String formattedUnitAmount;
+	private String currencyId;
 	@JsonExclude
 	private String defaultShippingMethodId;
 	@JsonExclude
-	private String availableShippingServiceIds;
+	private String formattedAmount;
+	@JsonExclude
+	private String formattedTaxAmount;
+	@JsonExclude
+	private String formattedTaxableAmount;
+	@JsonExclude
+	private String formattedUnitAmount;
+	@JsonExclude
+	private List<String> lineItemStocks;
+	@JsonExclude
+	private Object market;
+	@JsonExclude
+	private String marketId;
+	@JsonExclude
+	private Object order;
+	@JsonExclude
+	private Object previousChanges;
+	@JsonExclude
+	private String quantity;
+	@JsonExclude
+	private Object sellable;
+	@JsonExclude
+	private List<String> shipments;
+	@JsonExclude
+	private Object shippingCategory;
+	@JsonExclude
+	private String shippingCategoryId;
+	@JsonExclude
+	private List<String> shippingMethods;
+	@JsonExclude
+	private List<String> shippingServiceStockLocations;
+	@JsonExclude
+	private List<String> stockItems;
+	@JsonExclude
+	private String taxAmount;
+	@JsonExclude
+	private String taxIncluded;
+	@JsonExclude
+	private Float taxRate;
+	@JsonExclude
+	private String taxableAmount;
+	@JsonExclude
+	private String trackInventory;
+	@JsonExclude
+	private String unitAmount;
+	@JsonExclude
+	private String unitAmountCents;
+	@JsonExclude
+	private List<String> versions;
 
 
 	public LineItem() {

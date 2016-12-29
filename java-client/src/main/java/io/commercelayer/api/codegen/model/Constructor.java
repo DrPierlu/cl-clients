@@ -9,6 +9,11 @@ public class Constructor extends AbstractModelObject {
 
 	private List<Constructor.Param> signatureParams = new ArrayList<>();
 
+	{
+		super.linesBefore = 1;
+		super.linesAfter = 1;
+	}
+	
 	public Constructor() {
 		super();
 	}
@@ -97,14 +102,7 @@ public class Constructor extends AbstractModelObject {
 		
 	}
 
-	public int getLinesBefore() {
-		return 1;
-	}
-
-	public int getLinesAfter() {
-		return 1;
-	}
-
+	
 	public static class Param extends Method.Param {
 
 		private boolean parentParam;

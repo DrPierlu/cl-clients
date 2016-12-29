@@ -1,24 +1,20 @@
 package io.commercelayer.api.model;
 
-import java.util.Objects;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.json.JsonExclude;
+import io.commercelayer.api.model.common.ApiResource;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Environment
  */
 public class Environment extends ApiResource {
 
-	private static final long serialVersionUID = -1482914097555L;
+	private static final long serialVersionUID = -1483006114113L;
 
 
-	private String organizationId;
 	private String name;
-	@JsonExclude
-	private Object previousChanges;
-	@JsonExclude
-	private Object organization;
+	private String organizationId;
 	@JsonExclude
 	private List<String> addresses;
 	@JsonExclude
@@ -26,29 +22,29 @@ public class Environment extends ApiResource {
 	@JsonExclude
 	private List<String> channels;
 	@JsonExclude
+	private List<String> consumerRoles;
+	@JsonExclude
 	private List<String> countries;
 	@JsonExclude
 	private List<String> countryGroups;
 	@JsonExclude
 	private List<String> countryLanguages;
 	@JsonExclude
+	private List<String> creditCards;
+	@JsonExclude
 	private List<String> currencies;
 	@JsonExclude
 	private List<String> customers;
 	@JsonExclude
-	private List<String> creditCards;
+	private List<String> gateways;
 	@JsonExclude
 	private List<String> images;
 	@JsonExclude
 	private List<String> languages;
 	@JsonExclude
-	private List<String> lineItems;
-	@JsonExclude
 	private List<String> lineItemStocks;
 	@JsonExclude
-	private List<String> markets;
-	@JsonExclude
-	private List<String> shippingCarriers;
+	private List<String> lineItems;
 	@JsonExclude
 	private List<String> marketPaymentTypes;
 	@JsonExclude
@@ -56,33 +52,37 @@ public class Environment extends ApiResource {
 	@JsonExclude
 	private List<String> marketStockLocations;
 	@JsonExclude
-	private List<String> merchants;
+	private List<String> markets;
 	@JsonExclude
 	private List<String> merchandisingRules;
+	@JsonExclude
+	private List<String> merchants;
 	@JsonExclude
 	private List<String> optionTypes;
 	@JsonExclude
 	private List<String> optionValues;
 	@JsonExclude
-	private List<String> orders;
-	@JsonExclude
 	private List<String> orderValidators;
 	@JsonExclude
-	private List<String> gateways;
+	private List<String> orders;
+	@JsonExclude
+	private Object organization;
+	@JsonExclude
+	private List<String> paymentMethods;
 	@JsonExclude
 	private List<String> paymentTypes;
 	@JsonExclude
-	private List<String> paymentMethods;
+	private Object previousChanges;
 	@JsonExclude
 	private List<String> priceLists;
 	@JsonExclude
 	private List<String> prices;
 	@JsonExclude
-	private List<String> products;
+	private List<String> productProperties;
 	@JsonExclude
 	private List<String> productTypes;
 	@JsonExclude
-	private List<String> productProperties;
+	private List<String> products;
 	@JsonExclude
 	private List<String> propertyTypes;
 	@JsonExclude
@@ -92,6 +92,8 @@ public class Environment extends ApiResource {
 	@JsonExclude
 	private List<String> shippingCarrierTypes;
 	@JsonExclude
+	private List<String> shippingCarriers;
+	@JsonExclude
 	private List<String> shippingCategories;
 	@JsonExclude
 	private List<String> shippingLabels;
@@ -100,25 +102,23 @@ public class Environment extends ApiResource {
 	@JsonExclude
 	private List<String> shippingPackages;
 	@JsonExclude
-	private List<String> shippingServices;
-	@JsonExclude
 	private List<String> shippingServiceCategories;
 	@JsonExclude
 	private List<String> shippingServiceStockLocations;
 	@JsonExclude
 	private List<String> shippingServiceZones;
 	@JsonExclude
+	private List<String> shippingServices;
+	@JsonExclude
 	private List<String> states;
 	@JsonExclude
-	private List<String> stockLocations;
-	@JsonExclude
 	private List<String> stockItems;
+	@JsonExclude
+	private List<String> stockLocations;
 	@JsonExclude
 	private List<String> taxonomies;
 	@JsonExclude
 	private List<String> taxons;
-	@JsonExclude
-	private List<String> consumerRoles;
 	@JsonExclude
 	private List<String> variantOptions;
 	@JsonExclude

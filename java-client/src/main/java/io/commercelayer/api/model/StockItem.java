@@ -1,16 +1,16 @@
 package io.commercelayer.api.model;
 
-import java.util.Objects;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.json.JsonExclude;
+import io.commercelayer.api.model.common.ApiResource;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * StockItem
  */
 public class StockItem extends ApiResource {
 
-	private static final long serialVersionUID = -1482914098048L;
+	private static final long serialVersionUID = -1483006114463L;
 
 
 	private String stockLocationId;
@@ -19,17 +19,17 @@ public class StockItem extends ApiResource {
 	@JsonExclude
 	private String backorderable;
 	@JsonExclude
-	private String quantity;
+	private List<String> lineItemStocks;
 	@JsonExclude
 	private Object previousChanges;
+	@JsonExclude
+	private String quantity;
+	@JsonExclude
+	private List<String> shippingServiceStockLocations;
 	@JsonExclude
 	private Object stockLocation;
 	@JsonExclude
 	private Object stockable;
-	@JsonExclude
-	private List<String> shippingServiceStockLocations;
-	@JsonExclude
-	private List<String> lineItemStocks;
 
 
 	public StockItem() {

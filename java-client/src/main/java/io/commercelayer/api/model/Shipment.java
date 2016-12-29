@@ -1,30 +1,30 @@
 package io.commercelayer.api.model;
 
-import java.util.Objects;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.json.JsonExclude;
+import io.commercelayer.api.model.common.ApiResource;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Shipment
  */
 public class Shipment extends ApiResource {
 
-	private static final long serialVersionUID = -1482914098035L;
+	private static final long serialVersionUID = -1483006114451L;
 
 
+	private List<String> lineItemStocks;
 	private String orderId;
-	private String stockLocationId;
 	private String shippingMethodId;
-	@JsonExclude
-	private Object previousChanges;
+	private String stockLocationId;
 	@JsonExclude
 	private Object order;
 	@JsonExclude
-	private Object stockLocation;
+	private Object previousChanges;
 	@JsonExclude
 	private Object shippingMethod;
-	private List<String> lineItemStocks;
+	@JsonExclude
+	private Object stockLocation;
 
 
 	public Shipment() {
