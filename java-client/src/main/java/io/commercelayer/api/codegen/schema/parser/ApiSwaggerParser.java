@@ -31,7 +31,10 @@ public class ApiSwaggerParser extends ApiParser {
 		
 		SwaggerParser parser = new SwaggerParser();
 
-		Swagger swagger = parser.read(schemaPath);
+		Swagger swagger = null;
+		
+		try { swagger = parser.read(schemaPath); }
+		catch (Exception e) { swagger = null; }
 		if (swagger == null) throw new ApiCodegenException("Error reading Swagger Schema");
 
 		Schema schema = new Schema();
