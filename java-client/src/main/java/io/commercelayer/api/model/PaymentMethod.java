@@ -9,17 +9,17 @@ import java.util.Objects;
  */
 public class PaymentMethod extends ApiResource {
 
-	private static final long serialVersionUID = -1483037217863L;
+	private static final long serialVersionUID = -1483100361635L;
 
 
-	private Integer billingAddressId;
-	private Integer orderId;
-	private Integer paymentSourceId;
+	private String billingAddressId;
+	private String orderId;
+	private String paymentSourceId;
 	private String paymentSourceResource;
 	@JsonExclude
 	private String amount;
 	@JsonExclude
-	private Integer amountCents;
+	private String amountCents;
 	@JsonExclude
 	private Object billingAddress;
 	@JsonExclude
@@ -33,9 +33,7 @@ public class PaymentMethod extends ApiResource {
 	@JsonExclude
 	private Object gateway;
 	@JsonExclude
-	private Integer gatewayId;
-	@JsonExclude
-	private String name;
+	private String gatewayId;
 	@JsonExclude
 	private Object order;
 	@JsonExclude
@@ -43,15 +41,13 @@ public class PaymentMethod extends ApiResource {
 	@JsonExclude
 	private Object paymentType;
 	@JsonExclude
-	private Integer paymentTypeId;
+	private String paymentTypeId;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
 	private String price;
 	@JsonExclude
-	private Integer priceCents;
-	@JsonExclude
-	private String redirectUrl;
+	private String priceCents;
 	@JsonExclude
 	private String taxAmount;
 	@JsonExclude
@@ -68,86 +64,65 @@ public class PaymentMethod extends ApiResource {
 	}
 	
 
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-
-	public String getName() {
-		return this.name;
-	}
-	
-
-	public PaymentMethod name(String name) {
-		setName(name);
-		return this;
-	}
-	
-
-	public String name() {
-		return getName();
-	}
-	
-
-	public void setOrderId(Integer orderId) {
+	public void setOrderId(String orderId) {
 		this.orderId = orderId;
 	}
 	
 
-	public Integer getOrderId() {
+	public String getOrderId() {
 		return this.orderId;
 	}
 	
 
-	public PaymentMethod orderId(Integer orderId) {
+	public PaymentMethod orderId(String orderId) {
 		setOrderId(orderId);
 		return this;
 	}
 	
 
-	public Integer orderId() {
+	public String orderId() {
 		return getOrderId();
 	}
 	
 
-	public void setPaymentTypeId(Integer paymentTypeId) {
+	public void setPaymentTypeId(String paymentTypeId) {
 		this.paymentTypeId = paymentTypeId;
 	}
 	
 
-	public Integer getPaymentTypeId() {
+	public String getPaymentTypeId() {
 		return this.paymentTypeId;
 	}
 	
 
-	public PaymentMethod paymentTypeId(Integer paymentTypeId) {
+	public PaymentMethod paymentTypeId(String paymentTypeId) {
 		setPaymentTypeId(paymentTypeId);
 		return this;
 	}
 	
 
-	public Integer paymentTypeId() {
+	public String paymentTypeId() {
 		return getPaymentTypeId();
 	}
 	
 
-	public void setPaymentSourceId(Integer paymentSourceId) {
+	public void setPaymentSourceId(String paymentSourceId) {
 		this.paymentSourceId = paymentSourceId;
 	}
 	
 
-	public Integer getPaymentSourceId() {
+	public String getPaymentSourceId() {
 		return this.paymentSourceId;
 	}
 	
 
-	public PaymentMethod paymentSourceId(Integer paymentSourceId) {
+	public PaymentMethod paymentSourceId(String paymentSourceId) {
 		setPaymentSourceId(paymentSourceId);
 		return this;
 	}
 	
 
-	public Integer paymentSourceId() {
+	public String paymentSourceId() {
 		return getPaymentSourceId();
 	}
 	
@@ -173,108 +148,87 @@ public class PaymentMethod extends ApiResource {
 	}
 	
 
-	public void setGatewayId(Integer gatewayId) {
+	public void setGatewayId(String gatewayId) {
 		this.gatewayId = gatewayId;
 	}
 	
 
-	public Integer getGatewayId() {
+	public String getGatewayId() {
 		return this.gatewayId;
 	}
 	
 
-	public PaymentMethod gatewayId(Integer gatewayId) {
+	public PaymentMethod gatewayId(String gatewayId) {
 		setGatewayId(gatewayId);
 		return this;
 	}
 	
 
-	public Integer gatewayId() {
+	public String gatewayId() {
 		return getGatewayId();
 	}
 	
 
-	public void setBillingAddressId(Integer billingAddressId) {
+	public void setBillingAddressId(String billingAddressId) {
 		this.billingAddressId = billingAddressId;
 	}
 	
 
-	public Integer getBillingAddressId() {
+	public String getBillingAddressId() {
 		return this.billingAddressId;
 	}
 	
 
-	public PaymentMethod billingAddressId(Integer billingAddressId) {
+	public PaymentMethod billingAddressId(String billingAddressId) {
 		setBillingAddressId(billingAddressId);
 		return this;
 	}
 	
 
-	public Integer billingAddressId() {
+	public String billingAddressId() {
 		return getBillingAddressId();
 	}
 	
 
-	public void setPriceCents(Integer priceCents) {
+	public void setPriceCents(String priceCents) {
 		this.priceCents = priceCents;
 	}
 	
 
-	public Integer getPriceCents() {
+	public String getPriceCents() {
 		return this.priceCents;
 	}
 	
 
-	public PaymentMethod priceCents(Integer priceCents) {
+	public PaymentMethod priceCents(String priceCents) {
 		setPriceCents(priceCents);
 		return this;
 	}
 	
 
-	public Integer priceCents() {
+	public String priceCents() {
 		return getPriceCents();
 	}
 	
 
-	public void setAmountCents(Integer amountCents) {
+	public void setAmountCents(String amountCents) {
 		this.amountCents = amountCents;
 	}
 	
 
-	public Integer getAmountCents() {
+	public String getAmountCents() {
 		return this.amountCents;
 	}
 	
 
-	public PaymentMethod amountCents(Integer amountCents) {
+	public PaymentMethod amountCents(String amountCents) {
 		setAmountCents(amountCents);
 		return this;
 	}
 	
 
-	public Integer amountCents() {
+	public String amountCents() {
 		return getAmountCents();
-	}
-	
-
-	public void setRedirectUrl(String redirectUrl) {
-		this.redirectUrl = redirectUrl;
-	}
-	
-
-	public String getRedirectUrl() {
-		return this.redirectUrl;
-	}
-	
-
-	public PaymentMethod redirectUrl(String redirectUrl) {
-		setRedirectUrl(redirectUrl);
-		return this;
-	}
-	
-
-	public String redirectUrl() {
-		return getRedirectUrl();
 	}
 	
 
@@ -581,7 +535,6 @@ public class PaymentMethod extends ApiResource {
 		PaymentMethod x = (PaymentMethod)o;
 	
 		return super.equals(o)
-			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.orderId, x.orderId)
 			&& Objects.equals(this.paymentTypeId, x.paymentTypeId)
 			&& Objects.equals(this.paymentSourceId, x.paymentSourceId)
@@ -590,7 +543,6 @@ public class PaymentMethod extends ApiResource {
 			&& Objects.equals(this.billingAddressId, x.billingAddressId)
 			&& Objects.equals(this.priceCents, x.priceCents)
 			&& Objects.equals(this.amountCents, x.amountCents)
-			&& Objects.equals(this.redirectUrl, x.redirectUrl)
 			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.order, x.order)
 			&& Objects.equals(this.paymentType, x.paymentType)
@@ -614,11 +566,11 @@ public class PaymentMethod extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, orderId, paymentTypeId, paymentSourceId, paymentSourceResource,
-			gatewayId, billingAddressId, priceCents, amountCents, redirectUrl,
-			previousChanges, order, paymentType, paymentSource, gateway,
-			billingAddress, taxableAmount, formattedTaxableAmount, taxAmount, formattedTaxAmount,
-			price, formattedPrice, amount, formattedAmount 
+			orderId, paymentTypeId, paymentSourceId, paymentSourceResource, gatewayId,
+			billingAddressId, priceCents, amountCents, previousChanges, order,
+			paymentType, paymentSource, gateway, billingAddress, taxableAmount,
+			formattedTaxableAmount, taxAmount, formattedTaxAmount, price, formattedPrice,
+			amount, formattedAmount 
 		);
 	
 	}
@@ -629,7 +581,8 @@ public class PaymentMethod extends ApiResource {
 	
 		PaymentMethod no = new PaymentMethod();
 	
-		no.name = this.name;
+		no = super.clone(no);
+	
 		no.orderId = this.orderId;
 		no.paymentTypeId = this.paymentTypeId;
 		no.paymentSourceId = this.paymentSourceId;
@@ -638,7 +591,6 @@ public class PaymentMethod extends ApiResource {
 		no.billingAddressId = this.billingAddressId;
 		no.priceCents = this.priceCents;
 		no.amountCents = this.amountCents;
-		no.redirectUrl = this.redirectUrl;
 		no.previousChanges = this.previousChanges;
 		no.order = this.order;
 		no.paymentType = this.paymentType;

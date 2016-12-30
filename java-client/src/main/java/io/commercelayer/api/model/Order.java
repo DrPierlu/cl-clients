@@ -2,7 +2,6 @@ package io.commercelayer.api.model;
 
 import io.commercelayer.api.json.JsonExclude;
 import io.commercelayer.api.model.common.ApiResource;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 
@@ -11,11 +10,11 @@ import java.util.Objects;
  */
 public class Order extends ApiResource {
 
-	private static final long serialVersionUID = -1483037217852L;
+	private static final long serialVersionUID = -1483100361594L;
 
 
-	private Integer channelId;
-	private Integer countryId;
+	private String channelId;
+	private String countryId;
 	@JsonExclude
 	private String amountWithMissingPaymentMethod;
 	@JsonExclude
@@ -29,11 +28,11 @@ public class Order extends ApiResource {
 	@JsonExclude
 	private Object currency;
 	@JsonExclude
-	private Integer currencyId;
+	private String currencyId;
 	@JsonExclude
 	private Object customer;
 	@JsonExclude
-	private Integer customerId;
+	private String customerId;
 	@JsonExclude
 	private String defaultShippingMethodId;
 	@JsonExclude
@@ -69,7 +68,7 @@ public class Order extends ApiResource {
 	@JsonExclude
 	private String formattedTotalTaxableAmount;
 	@JsonExclude
-	private Object hasNexus;
+	private String hasNexus;
 	@JsonExclude
 	private List<String> lineItemStocks;
 	@JsonExclude
@@ -77,7 +76,7 @@ public class Order extends ApiResource {
 	@JsonExclude
 	private Object market;
 	@JsonExclude
-	private Integer marketId;
+	private String marketId;
 	@JsonExclude
 	private List<String> marketPaymentTypes;
 	@JsonExclude
@@ -85,33 +84,27 @@ public class Order extends ApiResource {
 	@JsonExclude
 	private Object merchant;
 	@JsonExclude
-	private Integer merchantId;
+	private String merchantId;
 	@JsonExclude
-	private String name;
+	private Object orderConfirmation;
 	@JsonExclude
-	private Object paymentMethodTaxable;
+	private String paymentMethodTaxable;
 	@JsonExclude
 	private List<String> paymentMethods;
 	@JsonExclude
 	private List<String> paymentTypes;
 	@JsonExclude
-	private String pendingTransactions;
-	@JsonExclude
-	private String placed;
-	@JsonExclude
-	private LocalDateTime placedAt;
-	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
 	private List<String> shipments;
 	@JsonExclude
-	private Object shippingMethodTaxable;
+	private String shippingMethodTaxable;
 	@JsonExclude
 	private List<String> shippingMethods;
 	@JsonExclude
 	private List<String> shippingServices;
 	@JsonExclude
-	private Object taxIncluded;
+	private String taxIncluded;
 	@JsonExclude
 	private Float taxRate;
 	@JsonExclude
@@ -162,149 +155,128 @@ public class Order extends ApiResource {
 	}
 	
 
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-
-	public String getName() {
-		return this.name;
-	}
-	
-
-	public Order name(String name) {
-		setName(name);
-		return this;
-	}
-	
-
-	public String name() {
-		return getName();
-	}
-	
-
-	public void setCustomerId(Integer customerId) {
+	public void setCustomerId(String customerId) {
 		this.customerId = customerId;
 	}
 	
 
-	public Integer getCustomerId() {
+	public String getCustomerId() {
 		return this.customerId;
 	}
 	
 
-	public Order customerId(Integer customerId) {
+	public Order customerId(String customerId) {
 		setCustomerId(customerId);
 		return this;
 	}
 	
 
-	public Integer customerId() {
+	public String customerId() {
 		return getCustomerId();
 	}
 	
 
-	public void setMerchantId(Integer merchantId) {
+	public void setMerchantId(String merchantId) {
 		this.merchantId = merchantId;
 	}
 	
 
-	public Integer getMerchantId() {
+	public String getMerchantId() {
 		return this.merchantId;
 	}
 	
 
-	public Order merchantId(Integer merchantId) {
+	public Order merchantId(String merchantId) {
 		setMerchantId(merchantId);
 		return this;
 	}
 	
 
-	public Integer merchantId() {
+	public String merchantId() {
 		return getMerchantId();
 	}
 	
 
-	public void setChannelId(Integer channelId) {
+	public void setChannelId(String channelId) {
 		this.channelId = channelId;
 	}
 	
 
-	public Integer getChannelId() {
+	public String getChannelId() {
 		return this.channelId;
 	}
 	
 
-	public Order channelId(Integer channelId) {
+	public Order channelId(String channelId) {
 		setChannelId(channelId);
 		return this;
 	}
 	
 
-	public Integer channelId() {
+	public String channelId() {
 		return getChannelId();
 	}
 	
 
-	public void setCountryId(Integer countryId) {
+	public void setCountryId(String countryId) {
 		this.countryId = countryId;
 	}
 	
 
-	public Integer getCountryId() {
+	public String getCountryId() {
 		return this.countryId;
 	}
 	
 
-	public Order countryId(Integer countryId) {
+	public Order countryId(String countryId) {
 		setCountryId(countryId);
 		return this;
 	}
 	
 
-	public Integer countryId() {
+	public String countryId() {
 		return getCountryId();
 	}
 	
 
-	public void setMarketId(Integer marketId) {
+	public void setMarketId(String marketId) {
 		this.marketId = marketId;
 	}
 	
 
-	public Integer getMarketId() {
+	public String getMarketId() {
 		return this.marketId;
 	}
 	
 
-	public Order marketId(Integer marketId) {
+	public Order marketId(String marketId) {
 		setMarketId(marketId);
 		return this;
 	}
 	
 
-	public Integer marketId() {
+	public String marketId() {
 		return getMarketId();
 	}
 	
 
-	public void setCurrencyId(Integer currencyId) {
+	public void setCurrencyId(String currencyId) {
 		this.currencyId = currencyId;
 	}
 	
 
-	public Integer getCurrencyId() {
+	public String getCurrencyId() {
 		return this.currencyId;
 	}
 	
 
-	public Order currencyId(Integer currencyId) {
+	public Order currencyId(String currencyId) {
 		setCurrencyId(currencyId);
 		return this;
 	}
 	
 
-	public Integer currencyId() {
+	public String currencyId() {
 		return getCurrencyId();
 	}
 	
@@ -330,23 +302,23 @@ public class Order extends ApiResource {
 	}
 	
 
-	public void setTaxIncluded(Object taxIncluded) {
+	public void setTaxIncluded(String taxIncluded) {
 		this.taxIncluded = taxIncluded;
 	}
 	
 
-	public Object getTaxIncluded() {
+	public String getTaxIncluded() {
 		return this.taxIncluded;
 	}
 	
 
-	public Order taxIncluded(Object taxIncluded) {
+	public Order taxIncluded(String taxIncluded) {
 		setTaxIncluded(taxIncluded);
 		return this;
 	}
 	
 
-	public Object taxIncluded() {
+	public String taxIncluded() {
 		return getTaxIncluded();
 	}
 	
@@ -372,65 +344,65 @@ public class Order extends ApiResource {
 	}
 	
 
-	public void setHasNexus(Object hasNexus) {
+	public void setHasNexus(String hasNexus) {
 		this.hasNexus = hasNexus;
 	}
 	
 
-	public Object getHasNexus() {
+	public String getHasNexus() {
 		return this.hasNexus;
 	}
 	
 
-	public Order hasNexus(Object hasNexus) {
+	public Order hasNexus(String hasNexus) {
 		setHasNexus(hasNexus);
 		return this;
 	}
 	
 
-	public Object hasNexus() {
+	public String hasNexus() {
 		return getHasNexus();
 	}
 	
 
-	public void setShippingMethodTaxable(Object shippingMethodTaxable) {
+	public void setShippingMethodTaxable(String shippingMethodTaxable) {
 		this.shippingMethodTaxable = shippingMethodTaxable;
 	}
 	
 
-	public Object getShippingMethodTaxable() {
+	public String getShippingMethodTaxable() {
 		return this.shippingMethodTaxable;
 	}
 	
 
-	public Order shippingMethodTaxable(Object shippingMethodTaxable) {
+	public Order shippingMethodTaxable(String shippingMethodTaxable) {
 		setShippingMethodTaxable(shippingMethodTaxable);
 		return this;
 	}
 	
 
-	public Object shippingMethodTaxable() {
+	public String shippingMethodTaxable() {
 		return getShippingMethodTaxable();
 	}
 	
 
-	public void setPaymentMethodTaxable(Object paymentMethodTaxable) {
+	public void setPaymentMethodTaxable(String paymentMethodTaxable) {
 		this.paymentMethodTaxable = paymentMethodTaxable;
 	}
 	
 
-	public Object getPaymentMethodTaxable() {
+	public String getPaymentMethodTaxable() {
 		return this.paymentMethodTaxable;
 	}
 	
 
-	public Order paymentMethodTaxable(Object paymentMethodTaxable) {
+	public Order paymentMethodTaxable(String paymentMethodTaxable) {
 		setPaymentMethodTaxable(paymentMethodTaxable);
 		return this;
 	}
 	
 
-	public Object paymentMethodTaxable() {
+	public String paymentMethodTaxable() {
 		return getPaymentMethodTaxable();
 	}
 	
@@ -453,27 +425,6 @@ public class Order extends ApiResource {
 
 	public String taxSource() {
 		return getTaxSource();
-	}
-	
-
-	public void setPlacedAt(LocalDateTime placedAt) {
-		this.placedAt = placedAt;
-	}
-	
-
-	public LocalDateTime getPlacedAt() {
-		return this.placedAt;
-	}
-	
-
-	public Order placedAt(LocalDateTime placedAt) {
-		setPlacedAt(placedAt);
-		return this;
-	}
-	
-
-	public LocalDateTime placedAt() {
-		return getPlacedAt();
 	}
 	
 
@@ -831,6 +782,27 @@ public class Order extends ApiResource {
 
 	public List<String> shippingServices() {
 		return getShippingServices();
+	}
+	
+
+	public void setOrderConfirmation(Object orderConfirmation) {
+		this.orderConfirmation = orderConfirmation;
+	}
+	
+
+	public Object getOrderConfirmation() {
+		return this.orderConfirmation;
+	}
+	
+
+	public Order orderConfirmation(Object orderConfirmation) {
+		setOrderConfirmation(orderConfirmation);
+		return this;
+	}
+	
+
+	public Object orderConfirmation() {
+		return getOrderConfirmation();
 	}
 	
 
@@ -1569,48 +1541,6 @@ public class Order extends ApiResource {
 	}
 	
 
-	public void setPendingTransactions(String pendingTransactions) {
-		this.pendingTransactions = pendingTransactions;
-	}
-	
-
-	public String getPendingTransactions() {
-		return this.pendingTransactions;
-	}
-	
-
-	public Order pendingTransactions(String pendingTransactions) {
-		setPendingTransactions(pendingTransactions);
-		return this;
-	}
-	
-
-	public String pendingTransactions() {
-		return getPendingTransactions();
-	}
-	
-
-	public void setPlaced(String placed) {
-		this.placed = placed;
-	}
-	
-
-	public String getPlaced() {
-		return this.placed;
-	}
-	
-
-	public Order placed(String placed) {
-		setPlaced(placed);
-		return this;
-	}
-	
-
-	public String placed() {
-		return getPlaced();
-	}
-	
-
 	@Override
 	public boolean equals(Object o) {
 	
@@ -1620,7 +1550,6 @@ public class Order extends ApiResource {
 		Order x = (Order)o;
 	
 		return super.equals(o)
-			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.customerId, x.customerId)
 			&& Objects.equals(this.merchantId, x.merchantId)
 			&& Objects.equals(this.channelId, x.channelId)
@@ -1634,7 +1563,6 @@ public class Order extends ApiResource {
 			&& Objects.equals(this.shippingMethodTaxable, x.shippingMethodTaxable)
 			&& Objects.equals(this.paymentMethodTaxable, x.paymentMethodTaxable)
 			&& Objects.equals(this.taxSource, x.taxSource)
-			&& Objects.equals(this.placedAt, x.placedAt)
 			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.customer, x.customer)
 			&& Objects.equals(this.channel, x.channel)
@@ -1652,6 +1580,7 @@ public class Order extends ApiResource {
 			&& Objects.equals(this.paymentTypes, x.paymentTypes)
 			&& Objects.equals(this.marketShippingServices, x.marketShippingServices)
 			&& Objects.equals(this.shippingServices, x.shippingServices)
+			&& Objects.equals(this.orderConfirmation, x.orderConfirmation)
 			&& Objects.equals(this.totalAmountWithTax, x.totalAmountWithTax)
 			&& Objects.equals(this.formattedTotalAmountWithTax, x.formattedTotalAmountWithTax)
 			&& Objects.equals(this.totalAmount, x.totalAmount)
@@ -1687,8 +1616,6 @@ public class Order extends ApiResource {
 			&& Objects.equals(this.defaultShippingMethodId, x.defaultShippingMethodId)
 			&& Objects.equals(this.availableShippingServiceIds, x.availableShippingServiceIds)
 			&& Objects.equals(this.availablePaymentTypeIds, x.availablePaymentTypeIds)
-			&& Objects.equals(this.pendingTransactions, x.pendingTransactions)
-			&& Objects.equals(this.placed, x.placed)
 		;
 	
 	}
@@ -1698,20 +1625,20 @@ public class Order extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, customerId, merchantId, channelId, countryId,
-			marketId, currencyId, token, taxIncluded, taxRate,
-			hasNexus, shippingMethodTaxable, paymentMethodTaxable, taxSource, placedAt,
-			previousChanges, customer, channel, country, market,
-			merchant, currency, lineItems, lineItemStocks, paymentMethods,
-			shippingMethods, shipments, transactions, marketPaymentTypes, paymentTypes,
-			marketShippingServices, shippingServices, totalAmountWithTax, formattedTotalAmountWithTax, totalAmount,
-			formattedTotalAmount, totalLineItemAmount, formattedTotalLineItemAmount, totalShippingMethodAmount, formattedTotalShippingMethodAmount,
-			totalPaymentMethodPrice, formattedTotalPaymentMethodPrice, totalAmountWithPaymentMethodRequired, formattedTotalAmountWithPaymentMethodRequired, totalPaymentMethodAmount,
-			formattedTotalPaymentMethodAmount, amountWithMissingPaymentMethod, formattedAmountWithMissingPaymentMethod, totalTaxableAmount, formattedTotalTaxableAmount,
-			totalLineItemTaxableAmount, formattedTotalLineItemTaxableAmount, totalShippingMethodTaxableAmount, formattedTotalShippingMethodTaxableAmount, totalPaymentMethodTaxableAmount,
-			formattedTotalPaymentMethodTaxableAmount, totalTaxAmount, formattedTotalTaxAmount, totalLineItemTaxAmount, formattedTotalLineItemTaxAmount,
-			totalShippingMethodTaxAmount, formattedTotalShippingMethodTaxAmount, totalPaymentMethodTaxAmount, formattedTotalPaymentMethodTaxAmount, defaultShippingMethodId,
-			availableShippingServiceIds, availablePaymentTypeIds, pendingTransactions, placed 
+			customerId, merchantId, channelId, countryId, marketId,
+			currencyId, token, taxIncluded, taxRate, hasNexus,
+			shippingMethodTaxable, paymentMethodTaxable, taxSource, previousChanges, customer,
+			channel, country, market, merchant, currency,
+			lineItems, lineItemStocks, paymentMethods, shippingMethods, shipments,
+			transactions, marketPaymentTypes, paymentTypes, marketShippingServices, shippingServices,
+			orderConfirmation, totalAmountWithTax, formattedTotalAmountWithTax, totalAmount, formattedTotalAmount,
+			totalLineItemAmount, formattedTotalLineItemAmount, totalShippingMethodAmount, formattedTotalShippingMethodAmount, totalPaymentMethodPrice,
+			formattedTotalPaymentMethodPrice, totalAmountWithPaymentMethodRequired, formattedTotalAmountWithPaymentMethodRequired, totalPaymentMethodAmount, formattedTotalPaymentMethodAmount,
+			amountWithMissingPaymentMethod, formattedAmountWithMissingPaymentMethod, totalTaxableAmount, formattedTotalTaxableAmount, totalLineItemTaxableAmount,
+			formattedTotalLineItemTaxableAmount, totalShippingMethodTaxableAmount, formattedTotalShippingMethodTaxableAmount, totalPaymentMethodTaxableAmount, formattedTotalPaymentMethodTaxableAmount,
+			totalTaxAmount, formattedTotalTaxAmount, totalLineItemTaxAmount, formattedTotalLineItemTaxAmount, totalShippingMethodTaxAmount,
+			formattedTotalShippingMethodTaxAmount, totalPaymentMethodTaxAmount, formattedTotalPaymentMethodTaxAmount, defaultShippingMethodId, availableShippingServiceIds,
+			availablePaymentTypeIds 
 		);
 	
 	}
@@ -1722,7 +1649,8 @@ public class Order extends ApiResource {
 	
 		Order no = new Order();
 	
-		no.name = this.name;
+		no = super.clone(no);
+	
 		no.customerId = this.customerId;
 		no.merchantId = this.merchantId;
 		no.channelId = this.channelId;
@@ -1736,7 +1664,6 @@ public class Order extends ApiResource {
 		no.shippingMethodTaxable = this.shippingMethodTaxable;
 		no.paymentMethodTaxable = this.paymentMethodTaxable;
 		no.taxSource = this.taxSource;
-		no.placedAt = this.placedAt;
 		no.previousChanges = this.previousChanges;
 		no.customer = this.customer;
 		no.channel = this.channel;
@@ -1754,6 +1681,7 @@ public class Order extends ApiResource {
 		no.paymentTypes = this.paymentTypes;
 		no.marketShippingServices = this.marketShippingServices;
 		no.shippingServices = this.shippingServices;
+		no.orderConfirmation = this.orderConfirmation;
 		no.totalAmountWithTax = this.totalAmountWithTax;
 		no.formattedTotalAmountWithTax = this.formattedTotalAmountWithTax;
 		no.totalAmount = this.totalAmount;
@@ -1789,8 +1717,6 @@ public class Order extends ApiResource {
 		no.defaultShippingMethodId = this.defaultShippingMethodId;
 		no.availableShippingServiceIds = this.availableShippingServiceIds;
 		no.availablePaymentTypeIds = this.availablePaymentTypeIds;
-		no.pendingTransactions = this.pendingTransactions;
-		no.placed = this.placed;
 	
 		return no;
 	

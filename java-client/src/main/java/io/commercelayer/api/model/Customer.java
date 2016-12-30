@@ -10,14 +10,12 @@ import java.util.Objects;
  */
 public class Customer extends ApiResource {
 
-	private static final long serialVersionUID = -1483037217803L;
+	private static final long serialVersionUID = -1483100361477L;
 
 
 	private String email;
 	@JsonExclude
 	private List<String> images;
-	@JsonExclude
-	private String name;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
@@ -31,27 +29,6 @@ public class Customer extends ApiResource {
 
 	public Customer(Long id) {
 		super(id);
-	}
-	
-
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-
-	public String getName() {
-		return this.name;
-	}
-	
-
-	public Customer name(String name) {
-		setName(name);
-		return this;
-	}
-	
-
-	public String name() {
-		return getName();
 	}
 	
 
@@ -148,7 +125,6 @@ public class Customer extends ApiResource {
 		Customer x = (Customer)o;
 	
 		return super.equals(o)
-			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.email, x.email)
 			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.resourceImages, x.resourceImages)
@@ -162,8 +138,7 @@ public class Customer extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, email, previousChanges, resourceImages, images
-			
+			email, previousChanges, resourceImages, images 
 		);
 	
 	}
@@ -174,7 +149,8 @@ public class Customer extends ApiResource {
 	
 		Customer no = new Customer();
 	
-		no.name = this.name;
+		no = super.clone(no);
+	
 		no.email = this.email;
 		no.previousChanges = this.previousChanges;
 		no.resourceImages = this.resourceImages;

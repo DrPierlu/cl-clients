@@ -29,10 +29,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * DELETE /account/addresses/{id}
+	 * GET /account/addresses/{id}
 	 */
-	public static DeleteAccountAddressesId DeleteAccountAddressesId() {
-		return new DeleteAccountAddressesId();
+	public static GetAccountAddressesId GetAccountAddressesId() {
+		return new GetAccountAddressesId();
 	}
 	
 	/**
@@ -43,10 +43,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * GET /account/addresses/{id}
+	 * DELETE /account/addresses/{id}
 	 */
-	public static GetAccountAddressesId GetAccountAddressesId() {
-		return new GetAccountAddressesId();
+	public static DeleteAccountAddressesId DeleteAccountAddressesId() {
+		return new DeleteAccountAddressesId();
 	}
 	
 	/**
@@ -64,10 +64,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * DELETE /account/applications/{id}
+	 * GET /account/applications/{id}
 	 */
-	public static DeleteAccountApplicationsId DeleteAccountApplicationsId() {
-		return new DeleteAccountApplicationsId();
+	public static GetAccountApplicationsId GetAccountApplicationsId() {
+		return new GetAccountApplicationsId();
 	}
 	
 	/**
@@ -78,10 +78,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * GET /account/applications/{id}
+	 * DELETE /account/applications/{id}
 	 */
-	public static GetAccountApplicationsId GetAccountApplicationsId() {
-		return new GetAccountApplicationsId();
+	public static DeleteAccountApplicationsId DeleteAccountApplicationsId() {
+		return new DeleteAccountApplicationsId();
 	}
 	
 	/**
@@ -99,10 +99,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * DELETE /account/catalogs/{id}
+	 * GET /account/catalogs/{id}
 	 */
-	public static DeleteAccountCatalogsId DeleteAccountCatalogsId() {
-		return new DeleteAccountCatalogsId();
+	public static GetAccountCatalogsId GetAccountCatalogsId() {
+		return new GetAccountCatalogsId();
 	}
 	
 	/**
@@ -113,10 +113,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * GET /account/catalogs/{id}
+	 * DELETE /account/catalogs/{id}
 	 */
-	public static GetAccountCatalogsId GetAccountCatalogsId() {
-		return new GetAccountCatalogsId();
+	public static DeleteAccountCatalogsId DeleteAccountCatalogsId() {
+		return new DeleteAccountCatalogsId();
 	}
 	
 	/**
@@ -134,10 +134,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * DELETE /account/channels/{id}
+	 * GET /account/channels/{id}
 	 */
-	public static DeleteAccountChannelsId DeleteAccountChannelsId() {
-		return new DeleteAccountChannelsId();
+	public static GetAccountChannelsId GetAccountChannelsId() {
+		return new GetAccountChannelsId();
 	}
 	
 	/**
@@ -148,10 +148,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * GET /account/channels/{id}
+	 * DELETE /account/channels/{id}
 	 */
-	public static GetAccountChannelsId GetAccountChannelsId() {
-		return new GetAccountChannelsId();
+	public static DeleteAccountChannelsId DeleteAccountChannelsId() {
+		return new DeleteAccountChannelsId();
 	}
 	
 	/**
@@ -169,10 +169,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * DELETE /account/consumer_roles/{id}
+	 * GET /account/consumer_roles/{id}
 	 */
-	public static DeleteAccountConsumerRolesId DeleteAccountConsumerRolesId() {
-		return new DeleteAccountConsumerRolesId();
+	public static GetAccountConsumerRolesId GetAccountConsumerRolesId() {
+		return new GetAccountConsumerRolesId();
 	}
 	
 	/**
@@ -183,10 +183,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * GET /account/consumer_roles/{id}
+	 * DELETE /account/consumer_roles/{id}
 	 */
-	public static GetAccountConsumerRolesId GetAccountConsumerRolesId() {
-		return new GetAccountConsumerRolesId();
+	public static DeleteAccountConsumerRolesId DeleteAccountConsumerRolesId() {
+		return new DeleteAccountConsumerRolesId();
 	}
 	
 	/**
@@ -239,10 +239,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * DELETE /account/countries/{id}
+	 * GET /account/countries/{id}
 	 */
-	public static DeleteAccountCountriesId DeleteAccountCountriesId() {
-		return new DeleteAccountCountriesId();
+	public static GetAccountCountriesId GetAccountCountriesId() {
+		return new GetAccountCountriesId();
 	}
 	
 	/**
@@ -253,10 +253,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * GET /account/countries/{id}
+	 * DELETE /account/countries/{id}
 	 */
-	public static GetAccountCountriesId GetAccountCountriesId() {
-		return new GetAccountCountriesId();
+	public static DeleteAccountCountriesId DeleteAccountCountriesId() {
+		return new DeleteAccountCountriesId();
 	}
 	
 	/**
@@ -274,10 +274,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * DELETE /account/country_groups/{id}
+	 * GET /account/country_groups/{id}
 	 */
-	public static DeleteAccountCountryGroupsId DeleteAccountCountryGroupsId() {
-		return new DeleteAccountCountryGroupsId();
+	public static GetAccountCountryGroupsId GetAccountCountryGroupsId() {
+		return new GetAccountCountryGroupsId();
 	}
 	
 	/**
@@ -288,10 +288,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * GET /account/country_groups/{id}
+	 * DELETE /account/country_groups/{id}
 	 */
-	public static GetAccountCountryGroupsId GetAccountCountryGroupsId() {
-		return new GetAccountCountryGroupsId();
+	public static DeleteAccountCountryGroupsId DeleteAccountCountryGroupsId() {
+		return new DeleteAccountCountryGroupsId();
 	}
 	
 	/**
@@ -309,10 +309,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * DELETE /account/country_languages/{id}
+	 * GET /account/country_languages/{id}
 	 */
-	public static DeleteAccountCountryLanguagesId DeleteAccountCountryLanguagesId() {
-		return new DeleteAccountCountryLanguagesId();
+	public static GetAccountCountryLanguagesId GetAccountCountryLanguagesId() {
+		return new GetAccountCountryLanguagesId();
 	}
 	
 	/**
@@ -323,10 +323,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * GET /account/country_languages/{id}
+	 * DELETE /account/country_languages/{id}
 	 */
-	public static GetAccountCountryLanguagesId GetAccountCountryLanguagesId() {
-		return new GetAccountCountryLanguagesId();
+	public static DeleteAccountCountryLanguagesId DeleteAccountCountryLanguagesId() {
+		return new DeleteAccountCountryLanguagesId();
 	}
 	
 	/**
@@ -379,10 +379,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * DELETE /account/credit_cards/{id}
+	 * GET /account/credit_cards/{id}
 	 */
-	public static DeleteAccountCreditCardsId DeleteAccountCreditCardsId() {
-		return new DeleteAccountCreditCardsId();
+	public static GetAccountCreditCardsId GetAccountCreditCardsId() {
+		return new GetAccountCreditCardsId();
 	}
 	
 	/**
@@ -393,10 +393,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * GET /account/credit_cards/{id}
+	 * DELETE /account/credit_cards/{id}
 	 */
-	public static GetAccountCreditCardsId GetAccountCreditCardsId() {
-		return new GetAccountCreditCardsId();
+	public static DeleteAccountCreditCardsId DeleteAccountCreditCardsId() {
+		return new DeleteAccountCreditCardsId();
 	}
 	
 	/**
@@ -414,10 +414,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * DELETE /account/currencies/{id}
+	 * GET /account/currencies/{id}
 	 */
-	public static DeleteAccountCurrenciesId DeleteAccountCurrenciesId() {
-		return new DeleteAccountCurrenciesId();
+	public static GetAccountCurrenciesId GetAccountCurrenciesId() {
+		return new GetAccountCurrenciesId();
 	}
 	
 	/**
@@ -428,10 +428,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * GET /account/currencies/{id}
+	 * DELETE /account/currencies/{id}
 	 */
-	public static GetAccountCurrenciesId GetAccountCurrenciesId() {
-		return new GetAccountCurrenciesId();
+	public static DeleteAccountCurrenciesId DeleteAccountCurrenciesId() {
+		return new DeleteAccountCurrenciesId();
 	}
 	
 	/**
@@ -449,10 +449,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * DELETE /account/customers/{id}
+	 * GET /account/customers/{id}
 	 */
-	public static DeleteAccountCustomersId DeleteAccountCustomersId() {
-		return new DeleteAccountCustomersId();
+	public static GetAccountCustomersId GetAccountCustomersId() {
+		return new GetAccountCustomersId();
 	}
 	
 	/**
@@ -463,10 +463,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * GET /account/customers/{id}
+	 * DELETE /account/customers/{id}
 	 */
-	public static GetAccountCustomersId GetAccountCustomersId() {
-		return new GetAccountCustomersId();
+	public static DeleteAccountCustomersId DeleteAccountCustomersId() {
+		return new DeleteAccountCustomersId();
 	}
 	
 	/**
@@ -484,10 +484,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * DELETE /account/environments/{id}
+	 * GET /account/environments/{id}
 	 */
-	public static DeleteAccountEnvironmentsId DeleteAccountEnvironmentsId() {
-		return new DeleteAccountEnvironmentsId();
+	public static GetAccountEnvironmentsId GetAccountEnvironmentsId() {
+		return new GetAccountEnvironmentsId();
 	}
 	
 	/**
@@ -498,10 +498,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * GET /account/environments/{id}
+	 * DELETE /account/environments/{id}
 	 */
-	public static GetAccountEnvironmentsId GetAccountEnvironmentsId() {
-		return new GetAccountEnvironmentsId();
+	public static DeleteAccountEnvironmentsId DeleteAccountEnvironmentsId() {
+		return new DeleteAccountEnvironmentsId();
 	}
 	
 	/**
@@ -519,10 +519,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * DELETE /account/images/{id}
+	 * GET /account/images/{id}
 	 */
-	public static DeleteAccountImagesId DeleteAccountImagesId() {
-		return new DeleteAccountImagesId();
+	public static GetAccountImagesId GetAccountImagesId() {
+		return new GetAccountImagesId();
 	}
 	
 	/**
@@ -533,10 +533,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * GET /account/images/{id}
+	 * DELETE /account/images/{id}
 	 */
-	public static GetAccountImagesId GetAccountImagesId() {
-		return new GetAccountImagesId();
+	public static DeleteAccountImagesId DeleteAccountImagesId() {
+		return new DeleteAccountImagesId();
 	}
 	
 	/**
@@ -554,10 +554,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * DELETE /account/languages/{id}
+	 * GET /account/languages/{id}
 	 */
-	public static DeleteAccountLanguagesId DeleteAccountLanguagesId() {
-		return new DeleteAccountLanguagesId();
+	public static GetAccountLanguagesId GetAccountLanguagesId() {
+		return new GetAccountLanguagesId();
 	}
 	
 	/**
@@ -568,10 +568,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * GET /account/languages/{id}
+	 * DELETE /account/languages/{id}
 	 */
-	public static GetAccountLanguagesId GetAccountLanguagesId() {
-		return new GetAccountLanguagesId();
+	public static DeleteAccountLanguagesId DeleteAccountLanguagesId() {
+		return new DeleteAccountLanguagesId();
 	}
 	
 	/**
@@ -589,10 +589,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * DELETE /account/line_item_stocks/{id}
+	 * GET /account/line_item_stocks/{id}
 	 */
-	public static DeleteAccountLineItemStocksId DeleteAccountLineItemStocksId() {
-		return new DeleteAccountLineItemStocksId();
+	public static GetAccountLineItemStocksId GetAccountLineItemStocksId() {
+		return new GetAccountLineItemStocksId();
 	}
 	
 	/**
@@ -603,10 +603,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * GET /account/line_item_stocks/{id}
+	 * DELETE /account/line_item_stocks/{id}
 	 */
-	public static GetAccountLineItemStocksId GetAccountLineItemStocksId() {
-		return new GetAccountLineItemStocksId();
+	public static DeleteAccountLineItemStocksId DeleteAccountLineItemStocksId() {
+		return new DeleteAccountLineItemStocksId();
 	}
 	
 	/**
@@ -624,10 +624,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * DELETE /account/line_items/{id}
+	 * GET /account/line_items/{id}
 	 */
-	public static DeleteAccountLineItemsId DeleteAccountLineItemsId() {
-		return new DeleteAccountLineItemsId();
+	public static GetAccountLineItemsId GetAccountLineItemsId() {
+		return new GetAccountLineItemsId();
 	}
 	
 	/**
@@ -638,10 +638,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * GET /account/line_items/{id}
+	 * DELETE /account/line_items/{id}
 	 */
-	public static GetAccountLineItemsId GetAccountLineItemsId() {
-		return new GetAccountLineItemsId();
+	public static DeleteAccountLineItemsId DeleteAccountLineItemsId() {
+		return new DeleteAccountLineItemsId();
 	}
 	
 	/**
@@ -659,10 +659,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * DELETE /account/market_payment_types/{id}
+	 * GET /account/market_payment_types/{id}
 	 */
-	public static DeleteAccountMarketPaymentTypesId DeleteAccountMarketPaymentTypesId() {
-		return new DeleteAccountMarketPaymentTypesId();
+	public static GetAccountMarketPaymentTypesId GetAccountMarketPaymentTypesId() {
+		return new GetAccountMarketPaymentTypesId();
 	}
 	
 	/**
@@ -673,10 +673,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * GET /account/market_payment_types/{id}
+	 * DELETE /account/market_payment_types/{id}
 	 */
-	public static GetAccountMarketPaymentTypesId GetAccountMarketPaymentTypesId() {
-		return new GetAccountMarketPaymentTypesId();
+	public static DeleteAccountMarketPaymentTypesId DeleteAccountMarketPaymentTypesId() {
+		return new DeleteAccountMarketPaymentTypesId();
 	}
 	
 	/**
@@ -694,10 +694,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * DELETE /account/market_shipping_services/{id}
+	 * GET /account/market_shipping_services/{id}
 	 */
-	public static DeleteAccountMarketShippingServicesId DeleteAccountMarketShippingServicesId() {
-		return new DeleteAccountMarketShippingServicesId();
+	public static GetAccountMarketShippingServicesId GetAccountMarketShippingServicesId() {
+		return new GetAccountMarketShippingServicesId();
 	}
 	
 	/**
@@ -708,10 +708,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * GET /account/market_shipping_services/{id}
+	 * DELETE /account/market_shipping_services/{id}
 	 */
-	public static GetAccountMarketShippingServicesId GetAccountMarketShippingServicesId() {
-		return new GetAccountMarketShippingServicesId();
+	public static DeleteAccountMarketShippingServicesId DeleteAccountMarketShippingServicesId() {
+		return new DeleteAccountMarketShippingServicesId();
 	}
 	
 	/**
@@ -729,10 +729,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * DELETE /account/market_stock_locations/{id}
+	 * GET /account/market_stock_locations/{id}
 	 */
-	public static DeleteAccountMarketStockLocationsId DeleteAccountMarketStockLocationsId() {
-		return new DeleteAccountMarketStockLocationsId();
+	public static GetAccountMarketStockLocationsId GetAccountMarketStockLocationsId() {
+		return new GetAccountMarketStockLocationsId();
 	}
 	
 	/**
@@ -743,10 +743,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * GET /account/market_stock_locations/{id}
+	 * DELETE /account/market_stock_locations/{id}
 	 */
-	public static GetAccountMarketStockLocationsId GetAccountMarketStockLocationsId() {
-		return new GetAccountMarketStockLocationsId();
+	public static DeleteAccountMarketStockLocationsId DeleteAccountMarketStockLocationsId() {
+		return new DeleteAccountMarketStockLocationsId();
 	}
 	
 	/**
@@ -764,10 +764,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * DELETE /account/markets/{id}
+	 * GET /account/markets/{id}
 	 */
-	public static DeleteAccountMarketsId DeleteAccountMarketsId() {
-		return new DeleteAccountMarketsId();
+	public static GetAccountMarketsId GetAccountMarketsId() {
+		return new GetAccountMarketsId();
 	}
 	
 	/**
@@ -778,10 +778,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * GET /account/markets/{id}
+	 * DELETE /account/markets/{id}
 	 */
-	public static GetAccountMarketsId GetAccountMarketsId() {
-		return new GetAccountMarketsId();
+	public static DeleteAccountMarketsId DeleteAccountMarketsId() {
+		return new DeleteAccountMarketsId();
 	}
 	
 	/**
@@ -806,10 +806,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * DELETE /account/merchandising_rules/{id}
+	 * GET /account/merchandising_rules/{id}
 	 */
-	public static DeleteAccountMerchandisingRulesId DeleteAccountMerchandisingRulesId() {
-		return new DeleteAccountMerchandisingRulesId();
+	public static GetAccountMerchandisingRulesId GetAccountMerchandisingRulesId() {
+		return new GetAccountMerchandisingRulesId();
 	}
 	
 	/**
@@ -820,10 +820,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * GET /account/merchandising_rules/{id}
+	 * DELETE /account/merchandising_rules/{id}
 	 */
-	public static GetAccountMerchandisingRulesId GetAccountMerchandisingRulesId() {
-		return new GetAccountMerchandisingRulesId();
+	public static DeleteAccountMerchandisingRulesId DeleteAccountMerchandisingRulesId() {
+		return new DeleteAccountMerchandisingRulesId();
 	}
 	
 	/**
@@ -876,10 +876,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * DELETE /account/merchants/{id}
+	 * GET /account/merchants/{id}
 	 */
-	public static DeleteAccountMerchantsId DeleteAccountMerchantsId() {
-		return new DeleteAccountMerchantsId();
+	public static GetAccountMerchantsId GetAccountMerchantsId() {
+		return new GetAccountMerchantsId();
 	}
 	
 	/**
@@ -890,10 +890,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * GET /account/merchants/{id}
+	 * DELETE /account/merchants/{id}
 	 */
-	public static GetAccountMerchantsId GetAccountMerchantsId() {
-		return new GetAccountMerchantsId();
+	public static DeleteAccountMerchantsId DeleteAccountMerchantsId() {
+		return new DeleteAccountMerchantsId();
 	}
 	
 	/**
@@ -911,10 +911,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * DELETE /account/option_types/{id}
+	 * GET /account/option_types/{id}
 	 */
-	public static DeleteAccountOptionTypesId DeleteAccountOptionTypesId() {
-		return new DeleteAccountOptionTypesId();
+	public static GetAccountOptionTypesId GetAccountOptionTypesId() {
+		return new GetAccountOptionTypesId();
 	}
 	
 	/**
@@ -925,10 +925,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * GET /account/option_types/{id}
+	 * DELETE /account/option_types/{id}
 	 */
-	public static GetAccountOptionTypesId GetAccountOptionTypesId() {
-		return new GetAccountOptionTypesId();
+	public static DeleteAccountOptionTypesId DeleteAccountOptionTypesId() {
+		return new DeleteAccountOptionTypesId();
 	}
 	
 	/**
@@ -946,10 +946,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * DELETE /account/option_values/{id}
+	 * GET /account/option_values/{id}
 	 */
-	public static DeleteAccountOptionValuesId DeleteAccountOptionValuesId() {
-		return new DeleteAccountOptionValuesId();
+	public static GetAccountOptionValuesId GetAccountOptionValuesId() {
+		return new GetAccountOptionValuesId();
 	}
 	
 	/**
@@ -960,45 +960,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * GET /account/option_values/{id}
+	 * DELETE /account/option_values/{id}
 	 */
-	public static GetAccountOptionValuesId GetAccountOptionValuesId() {
-		return new GetAccountOptionValuesId();
-	}
-	
-	/**
-	 * PUT /account/option_values/{id}/move_at/{position}
-	 */
-	public static PutAccountOptionValuesIdMoveAtPosition PutAccountOptionValuesIdMoveAtPosition() {
-		return new PutAccountOptionValuesIdMoveAtPosition();
-	}
-	
-	/**
-	 * PUT /account/option_values/{id}/move_bottom
-	 */
-	public static PutAccountOptionValuesIdMoveBottom PutAccountOptionValuesIdMoveBottom() {
-		return new PutAccountOptionValuesIdMoveBottom();
-	}
-	
-	/**
-	 * PUT /account/option_values/{id}/move_down
-	 */
-	public static PutAccountOptionValuesIdMoveDown PutAccountOptionValuesIdMoveDown() {
-		return new PutAccountOptionValuesIdMoveDown();
-	}
-	
-	/**
-	 * PUT /account/option_values/{id}/move_top
-	 */
-	public static PutAccountOptionValuesIdMoveTop PutAccountOptionValuesIdMoveTop() {
-		return new PutAccountOptionValuesIdMoveTop();
-	}
-	
-	/**
-	 * PUT /account/option_values/{id}/move_up
-	 */
-	public static PutAccountOptionValuesIdMoveUp PutAccountOptionValuesIdMoveUp() {
-		return new PutAccountOptionValuesIdMoveUp();
+	public static DeleteAccountOptionValuesId DeleteAccountOptionValuesId() {
+		return new DeleteAccountOptionValuesId();
 	}
 	
 	/**
@@ -1016,10 +981,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * DELETE /account/order_validators/{id}
+	 * GET /account/order_validators/{id}
 	 */
-	public static DeleteAccountOrderValidatorsId DeleteAccountOrderValidatorsId() {
-		return new DeleteAccountOrderValidatorsId();
+	public static GetAccountOrderValidatorsId GetAccountOrderValidatorsId() {
+		return new GetAccountOrderValidatorsId();
 	}
 	
 	/**
@@ -1030,10 +995,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * GET /account/order_validators/{id}
+	 * DELETE /account/order_validators/{id}
 	 */
-	public static GetAccountOrderValidatorsId GetAccountOrderValidatorsId() {
-		return new GetAccountOrderValidatorsId();
+	public static DeleteAccountOrderValidatorsId DeleteAccountOrderValidatorsId() {
+		return new DeleteAccountOrderValidatorsId();
 	}
 	
 	/**
@@ -1051,10 +1016,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * DELETE /account/orders/{id}
+	 * GET /account/orders/{id}
 	 */
-	public static DeleteAccountOrdersId DeleteAccountOrdersId() {
-		return new DeleteAccountOrdersId();
+	public static GetAccountOrdersId GetAccountOrdersId() {
+		return new GetAccountOrdersId();
 	}
 	
 	/**
@@ -1065,17 +1030,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * GET /account/orders/{id}
+	 * DELETE /account/orders/{id}
 	 */
-	public static GetAccountOrdersId GetAccountOrdersId() {
-		return new GetAccountOrdersId();
-	}
-	
-	/**
-	 * PUT /account/orders/{id}/tax_rates
-	 */
-	public static PutAccountOrdersIdTaxRates PutAccountOrdersIdTaxRates() {
-		return new PutAccountOrdersIdTaxRates();
+	public static DeleteAccountOrdersId DeleteAccountOrdersId() {
+		return new DeleteAccountOrdersId();
 	}
 	
 	/**
@@ -1093,10 +1051,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * DELETE /account/organizations/{id}
+	 * GET /account/organizations/{id}
 	 */
-	public static DeleteAccountOrganizationsId DeleteAccountOrganizationsId() {
-		return new DeleteAccountOrganizationsId();
+	public static GetAccountOrganizationsId GetAccountOrganizationsId() {
+		return new GetAccountOrganizationsId();
 	}
 	
 	/**
@@ -1107,10 +1065,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * GET /account/organizations/{id}
+	 * DELETE /account/organizations/{id}
 	 */
-	public static GetAccountOrganizationsId GetAccountOrganizationsId() {
-		return new GetAccountOrganizationsId();
+	public static DeleteAccountOrganizationsId DeleteAccountOrganizationsId() {
+		return new DeleteAccountOrganizationsId();
 	}
 	
 	/**
@@ -1128,10 +1086,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * DELETE /account/payment_methods/{id}
+	 * GET /account/payment_methods/{id}
 	 */
-	public static DeleteAccountPaymentMethodsId DeleteAccountPaymentMethodsId() {
-		return new DeleteAccountPaymentMethodsId();
+	public static GetAccountPaymentMethodsId GetAccountPaymentMethodsId() {
+		return new GetAccountPaymentMethodsId();
 	}
 	
 	/**
@@ -1142,10 +1100,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * GET /account/payment_methods/{id}
+	 * DELETE /account/payment_methods/{id}
 	 */
-	public static GetAccountPaymentMethodsId GetAccountPaymentMethodsId() {
-		return new GetAccountPaymentMethodsId();
+	public static DeleteAccountPaymentMethodsId DeleteAccountPaymentMethodsId() {
+		return new DeleteAccountPaymentMethodsId();
 	}
 	
 	/**
@@ -1163,10 +1121,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * DELETE /account/payment_types/{id}
+	 * GET /account/payment_types/{id}
 	 */
-	public static DeleteAccountPaymentTypesId DeleteAccountPaymentTypesId() {
-		return new DeleteAccountPaymentTypesId();
+	public static GetAccountPaymentTypesId GetAccountPaymentTypesId() {
+		return new GetAccountPaymentTypesId();
 	}
 	
 	/**
@@ -1177,45 +1135,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * GET /account/payment_types/{id}
+	 * DELETE /account/payment_types/{id}
 	 */
-	public static GetAccountPaymentTypesId GetAccountPaymentTypesId() {
-		return new GetAccountPaymentTypesId();
-	}
-	
-	/**
-	 * GET /account/paypal_accounts
-	 */
-	public static GetAccountPaypalAccounts GetAccountPaypalAccounts() {
-		return new GetAccountPaypalAccounts();
-	}
-	
-	/**
-	 * POST /account/paypal_accounts
-	 */
-	public static PostAccountPaypalAccounts PostAccountPaypalAccounts() {
-		return new PostAccountPaypalAccounts();
-	}
-	
-	/**
-	 * DELETE /account/paypal_accounts/{id}
-	 */
-	public static DeleteAccountPaypalAccountsId DeleteAccountPaypalAccountsId() {
-		return new DeleteAccountPaypalAccountsId();
-	}
-	
-	/**
-	 * PUT /account/paypal_accounts/{id}
-	 */
-	public static PutAccountPaypalAccountsId PutAccountPaypalAccountsId() {
-		return new PutAccountPaypalAccountsId();
-	}
-	
-	/**
-	 * GET /account/paypal_accounts/{id}
-	 */
-	public static GetAccountPaypalAccountsId GetAccountPaypalAccountsId() {
-		return new GetAccountPaypalAccountsId();
+	public static DeleteAccountPaymentTypesId DeleteAccountPaymentTypesId() {
+		return new DeleteAccountPaymentTypesId();
 	}
 	
 	/**
@@ -1233,10 +1156,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * DELETE /account/permissions/{id}
+	 * GET /account/permissions/{id}
 	 */
-	public static DeleteAccountPermissionsId DeleteAccountPermissionsId() {
-		return new DeleteAccountPermissionsId();
+	public static GetAccountPermissionsId GetAccountPermissionsId() {
+		return new GetAccountPermissionsId();
 	}
 	
 	/**
@@ -1247,10 +1170,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * GET /account/permissions/{id}
+	 * DELETE /account/permissions/{id}
 	 */
-	public static GetAccountPermissionsId GetAccountPermissionsId() {
-		return new GetAccountPermissionsId();
+	public static DeleteAccountPermissionsId DeleteAccountPermissionsId() {
+		return new DeleteAccountPermissionsId();
 	}
 	
 	/**
@@ -1303,10 +1226,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * DELETE /account/price_lists/{id}
+	 * GET /account/price_lists/{id}
 	 */
-	public static DeleteAccountPriceListsId DeleteAccountPriceListsId() {
-		return new DeleteAccountPriceListsId();
+	public static GetAccountPriceListsId GetAccountPriceListsId() {
+		return new GetAccountPriceListsId();
 	}
 	
 	/**
@@ -1317,10 +1240,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * GET /account/price_lists/{id}
+	 * DELETE /account/price_lists/{id}
 	 */
-	public static GetAccountPriceListsId GetAccountPriceListsId() {
-		return new GetAccountPriceListsId();
+	public static DeleteAccountPriceListsId DeleteAccountPriceListsId() {
+		return new DeleteAccountPriceListsId();
 	}
 	
 	/**
@@ -1338,10 +1261,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * DELETE /account/prices/{id}
+	 * GET /account/prices/{id}
 	 */
-	public static DeleteAccountPricesId DeleteAccountPricesId() {
-		return new DeleteAccountPricesId();
+	public static GetAccountPricesId GetAccountPricesId() {
+		return new GetAccountPricesId();
 	}
 	
 	/**
@@ -1352,10 +1275,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * GET /account/prices/{id}
+	 * DELETE /account/prices/{id}
 	 */
-	public static GetAccountPricesId GetAccountPricesId() {
-		return new GetAccountPricesId();
+	public static DeleteAccountPricesId DeleteAccountPricesId() {
+		return new DeleteAccountPricesId();
 	}
 	
 	/**
@@ -1380,10 +1303,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * DELETE /account/product_properties/{id}
+	 * GET /account/product_properties/{id}
 	 */
-	public static DeleteAccountProductPropertiesId DeleteAccountProductPropertiesId() {
-		return new DeleteAccountProductPropertiesId();
+	public static GetAccountProductPropertiesId GetAccountProductPropertiesId() {
+		return new GetAccountProductPropertiesId();
 	}
 	
 	/**
@@ -1394,10 +1317,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * GET /account/product_properties/{id}
+	 * DELETE /account/product_properties/{id}
 	 */
-	public static GetAccountProductPropertiesId GetAccountProductPropertiesId() {
-		return new GetAccountProductPropertiesId();
+	public static DeleteAccountProductPropertiesId DeleteAccountProductPropertiesId() {
+		return new DeleteAccountProductPropertiesId();
 	}
 	
 	/**
@@ -1415,10 +1338,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * DELETE /account/product_types/{id}
+	 * GET /account/product_types/{id}
 	 */
-	public static DeleteAccountProductTypesId DeleteAccountProductTypesId() {
-		return new DeleteAccountProductTypesId();
+	public static GetAccountProductTypesId GetAccountProductTypesId() {
+		return new GetAccountProductTypesId();
 	}
 	
 	/**
@@ -1429,10 +1352,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * GET /account/product_types/{id}
+	 * DELETE /account/product_types/{id}
 	 */
-	public static GetAccountProductTypesId GetAccountProductTypesId() {
-		return new GetAccountProductTypesId();
+	public static DeleteAccountProductTypesId DeleteAccountProductTypesId() {
+		return new DeleteAccountProductTypesId();
 	}
 	
 	/**
@@ -1450,10 +1373,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * DELETE /account/products/{id}
+	 * GET /account/products/{id}
 	 */
-	public static DeleteAccountProductsId DeleteAccountProductsId() {
-		return new DeleteAccountProductsId();
+	public static GetAccountProductsId GetAccountProductsId() {
+		return new GetAccountProductsId();
 	}
 	
 	/**
@@ -1464,10 +1387,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * GET /account/products/{id}
+	 * DELETE /account/products/{id}
 	 */
-	public static GetAccountProductsId GetAccountProductsId() {
-		return new GetAccountProductsId();
+	public static DeleteAccountProductsId DeleteAccountProductsId() {
+		return new DeleteAccountProductsId();
 	}
 	
 	/**
@@ -1485,10 +1408,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * DELETE /account/property_types/{id}
+	 * GET /account/property_types/{id}
 	 */
-	public static DeleteAccountPropertyTypesId DeleteAccountPropertyTypesId() {
-		return new DeleteAccountPropertyTypesId();
+	public static GetAccountPropertyTypesId GetAccountPropertyTypesId() {
+		return new GetAccountPropertyTypesId();
 	}
 	
 	/**
@@ -1499,10 +1422,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * GET /account/property_types/{id}
+	 * DELETE /account/property_types/{id}
 	 */
-	public static GetAccountPropertyTypesId GetAccountPropertyTypesId() {
-		return new GetAccountPropertyTypesId();
+	public static DeleteAccountPropertyTypesId DeleteAccountPropertyTypesId() {
+		return new DeleteAccountPropertyTypesId();
 	}
 	
 	/**
@@ -1520,10 +1443,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * DELETE /account/property_values/{id}
+	 * GET /account/property_values/{id}
 	 */
-	public static DeleteAccountPropertyValuesId DeleteAccountPropertyValuesId() {
-		return new DeleteAccountPropertyValuesId();
+	public static GetAccountPropertyValuesId GetAccountPropertyValuesId() {
+		return new GetAccountPropertyValuesId();
 	}
 	
 	/**
@@ -1534,45 +1457,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * GET /account/property_values/{id}
+	 * DELETE /account/property_values/{id}
 	 */
-	public static GetAccountPropertyValuesId GetAccountPropertyValuesId() {
-		return new GetAccountPropertyValuesId();
-	}
-	
-	/**
-	 * PUT /account/property_values/{id}/move_at/{position}
-	 */
-	public static PutAccountPropertyValuesIdMoveAtPosition PutAccountPropertyValuesIdMoveAtPosition() {
-		return new PutAccountPropertyValuesIdMoveAtPosition();
-	}
-	
-	/**
-	 * PUT /account/property_values/{id}/move_bottom
-	 */
-	public static PutAccountPropertyValuesIdMoveBottom PutAccountPropertyValuesIdMoveBottom() {
-		return new PutAccountPropertyValuesIdMoveBottom();
-	}
-	
-	/**
-	 * PUT /account/property_values/{id}/move_down
-	 */
-	public static PutAccountPropertyValuesIdMoveDown PutAccountPropertyValuesIdMoveDown() {
-		return new PutAccountPropertyValuesIdMoveDown();
-	}
-	
-	/**
-	 * PUT /account/property_values/{id}/move_top
-	 */
-	public static PutAccountPropertyValuesIdMoveTop PutAccountPropertyValuesIdMoveTop() {
-		return new PutAccountPropertyValuesIdMoveTop();
-	}
-	
-	/**
-	 * PUT /account/property_values/{id}/move_up
-	 */
-	public static PutAccountPropertyValuesIdMoveUp PutAccountPropertyValuesIdMoveUp() {
-		return new PutAccountPropertyValuesIdMoveUp();
+	public static DeleteAccountPropertyValuesId DeleteAccountPropertyValuesId() {
+		return new DeleteAccountPropertyValuesId();
 	}
 	
 	/**
@@ -1590,10 +1478,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * DELETE /account/resource_images/{id}
+	 * GET /account/resource_images/{id}
 	 */
-	public static DeleteAccountResourceImagesId DeleteAccountResourceImagesId() {
-		return new DeleteAccountResourceImagesId();
+	public static GetAccountResourceImagesId GetAccountResourceImagesId() {
+		return new GetAccountResourceImagesId();
 	}
 	
 	/**
@@ -1604,10 +1492,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * GET /account/resource_images/{id}
+	 * DELETE /account/resource_images/{id}
 	 */
-	public static GetAccountResourceImagesId GetAccountResourceImagesId() {
-		return new GetAccountResourceImagesId();
+	public static DeleteAccountResourceImagesId DeleteAccountResourceImagesId() {
+		return new DeleteAccountResourceImagesId();
 	}
 	
 	/**
@@ -1660,10 +1548,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * DELETE /account/roles/{id}
+	 * GET /account/roles/{id}
 	 */
-	public static DeleteAccountRolesId DeleteAccountRolesId() {
-		return new DeleteAccountRolesId();
+	public static GetAccountRolesId GetAccountRolesId() {
+		return new GetAccountRolesId();
 	}
 	
 	/**
@@ -1674,10 +1562,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * GET /account/roles/{id}
+	 * DELETE /account/roles/{id}
 	 */
-	public static GetAccountRolesId GetAccountRolesId() {
-		return new GetAccountRolesId();
+	public static DeleteAccountRolesId DeleteAccountRolesId() {
+		return new DeleteAccountRolesId();
 	}
 	
 	/**
@@ -1695,10 +1583,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * DELETE /account/shipments/{id}
+	 * GET /account/shipments/{id}
 	 */
-	public static DeleteAccountShipmentsId DeleteAccountShipmentsId() {
-		return new DeleteAccountShipmentsId();
+	public static GetAccountShipmentsId GetAccountShipmentsId() {
+		return new GetAccountShipmentsId();
 	}
 	
 	/**
@@ -1709,10 +1597,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * GET /account/shipments/{id}
+	 * DELETE /account/shipments/{id}
 	 */
-	public static GetAccountShipmentsId GetAccountShipmentsId() {
-		return new GetAccountShipmentsId();
+	public static DeleteAccountShipmentsId DeleteAccountShipmentsId() {
+		return new DeleteAccountShipmentsId();
 	}
 	
 	/**
@@ -1730,10 +1618,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * DELETE /account/shipping_carrier_types/{id}
+	 * GET /account/shipping_carrier_types/{id}
 	 */
-	public static DeleteAccountShippingCarrierTypesId DeleteAccountShippingCarrierTypesId() {
-		return new DeleteAccountShippingCarrierTypesId();
+	public static GetAccountShippingCarrierTypesId GetAccountShippingCarrierTypesId() {
+		return new GetAccountShippingCarrierTypesId();
 	}
 	
 	/**
@@ -1744,10 +1632,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * GET /account/shipping_carrier_types/{id}
+	 * DELETE /account/shipping_carrier_types/{id}
 	 */
-	public static GetAccountShippingCarrierTypesId GetAccountShippingCarrierTypesId() {
-		return new GetAccountShippingCarrierTypesId();
+	public static DeleteAccountShippingCarrierTypesId DeleteAccountShippingCarrierTypesId() {
+		return new DeleteAccountShippingCarrierTypesId();
 	}
 	
 	/**
@@ -1765,10 +1653,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * DELETE /account/shipping_carriers/{id}
+	 * GET /account/shipping_carriers/{id}
 	 */
-	public static DeleteAccountShippingCarriersId DeleteAccountShippingCarriersId() {
-		return new DeleteAccountShippingCarriersId();
+	public static GetAccountShippingCarriersId GetAccountShippingCarriersId() {
+		return new GetAccountShippingCarriersId();
 	}
 	
 	/**
@@ -1779,10 +1667,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * GET /account/shipping_carriers/{id}
+	 * DELETE /account/shipping_carriers/{id}
 	 */
-	public static GetAccountShippingCarriersId GetAccountShippingCarriersId() {
-		return new GetAccountShippingCarriersId();
+	public static DeleteAccountShippingCarriersId DeleteAccountShippingCarriersId() {
+		return new DeleteAccountShippingCarriersId();
 	}
 	
 	/**
@@ -1800,10 +1688,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * DELETE /account/shipping_categories/{id}
+	 * GET /account/shipping_categories/{id}
 	 */
-	public static DeleteAccountShippingCategoriesId DeleteAccountShippingCategoriesId() {
-		return new DeleteAccountShippingCategoriesId();
+	public static GetAccountShippingCategoriesId GetAccountShippingCategoriesId() {
+		return new GetAccountShippingCategoriesId();
 	}
 	
 	/**
@@ -1814,10 +1702,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * GET /account/shipping_categories/{id}
+	 * DELETE /account/shipping_categories/{id}
 	 */
-	public static GetAccountShippingCategoriesId GetAccountShippingCategoriesId() {
-		return new GetAccountShippingCategoriesId();
+	public static DeleteAccountShippingCategoriesId DeleteAccountShippingCategoriesId() {
+		return new DeleteAccountShippingCategoriesId();
 	}
 	
 	/**
@@ -1835,10 +1723,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * DELETE /account/shipping_labels/{id}
+	 * GET /account/shipping_labels/{id}
 	 */
-	public static DeleteAccountShippingLabelsId DeleteAccountShippingLabelsId() {
-		return new DeleteAccountShippingLabelsId();
+	public static GetAccountShippingLabelsId GetAccountShippingLabelsId() {
+		return new GetAccountShippingLabelsId();
 	}
 	
 	/**
@@ -1849,10 +1737,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * GET /account/shipping_labels/{id}
+	 * DELETE /account/shipping_labels/{id}
 	 */
-	public static GetAccountShippingLabelsId GetAccountShippingLabelsId() {
-		return new GetAccountShippingLabelsId();
+	public static DeleteAccountShippingLabelsId DeleteAccountShippingLabelsId() {
+		return new DeleteAccountShippingLabelsId();
 	}
 	
 	/**
@@ -1870,10 +1758,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * DELETE /account/shipping_methods/{id}
+	 * GET /account/shipping_methods/{id}
 	 */
-	public static DeleteAccountShippingMethodsId DeleteAccountShippingMethodsId() {
-		return new DeleteAccountShippingMethodsId();
+	public static GetAccountShippingMethodsId GetAccountShippingMethodsId() {
+		return new GetAccountShippingMethodsId();
 	}
 	
 	/**
@@ -1884,10 +1772,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * GET /account/shipping_methods/{id}
+	 * DELETE /account/shipping_methods/{id}
 	 */
-	public static GetAccountShippingMethodsId GetAccountShippingMethodsId() {
-		return new GetAccountShippingMethodsId();
+	public static DeleteAccountShippingMethodsId DeleteAccountShippingMethodsId() {
+		return new DeleteAccountShippingMethodsId();
 	}
 	
 	/**
@@ -1905,10 +1793,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * DELETE /account/shipping_packages/{id}
+	 * GET /account/shipping_packages/{id}
 	 */
-	public static DeleteAccountShippingPackagesId DeleteAccountShippingPackagesId() {
-		return new DeleteAccountShippingPackagesId();
+	public static GetAccountShippingPackagesId GetAccountShippingPackagesId() {
+		return new GetAccountShippingPackagesId();
 	}
 	
 	/**
@@ -1919,10 +1807,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * GET /account/shipping_packages/{id}
+	 * DELETE /account/shipping_packages/{id}
 	 */
-	public static GetAccountShippingPackagesId GetAccountShippingPackagesId() {
-		return new GetAccountShippingPackagesId();
+	public static DeleteAccountShippingPackagesId DeleteAccountShippingPackagesId() {
+		return new DeleteAccountShippingPackagesId();
 	}
 	
 	/**
@@ -1940,10 +1828,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * DELETE /account/shipping_service_categories/{id}
+	 * GET /account/shipping_service_categories/{id}
 	 */
-	public static DeleteAccountShippingServiceCategoriesId DeleteAccountShippingServiceCategoriesId() {
-		return new DeleteAccountShippingServiceCategoriesId();
+	public static GetAccountShippingServiceCategoriesId GetAccountShippingServiceCategoriesId() {
+		return new GetAccountShippingServiceCategoriesId();
 	}
 	
 	/**
@@ -1954,10 +1842,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * GET /account/shipping_service_categories/{id}
+	 * DELETE /account/shipping_service_categories/{id}
 	 */
-	public static GetAccountShippingServiceCategoriesId GetAccountShippingServiceCategoriesId() {
-		return new GetAccountShippingServiceCategoriesId();
+	public static DeleteAccountShippingServiceCategoriesId DeleteAccountShippingServiceCategoriesId() {
+		return new DeleteAccountShippingServiceCategoriesId();
 	}
 	
 	/**
@@ -1975,10 +1863,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * DELETE /account/shipping_service_stock_locations/{id}
+	 * GET /account/shipping_service_stock_locations/{id}
 	 */
-	public static DeleteAccountShippingServiceStockLocationsId DeleteAccountShippingServiceStockLocationsId() {
-		return new DeleteAccountShippingServiceStockLocationsId();
+	public static GetAccountShippingServiceStockLocationsId GetAccountShippingServiceStockLocationsId() {
+		return new GetAccountShippingServiceStockLocationsId();
 	}
 	
 	/**
@@ -1989,10 +1877,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * GET /account/shipping_service_stock_locations/{id}
+	 * DELETE /account/shipping_service_stock_locations/{id}
 	 */
-	public static GetAccountShippingServiceStockLocationsId GetAccountShippingServiceStockLocationsId() {
-		return new GetAccountShippingServiceStockLocationsId();
+	public static DeleteAccountShippingServiceStockLocationsId DeleteAccountShippingServiceStockLocationsId() {
+		return new DeleteAccountShippingServiceStockLocationsId();
 	}
 	
 	/**
@@ -2010,10 +1898,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * DELETE /account/shipping_service_zones/{id}
+	 * GET /account/shipping_service_zones/{id}
 	 */
-	public static DeleteAccountShippingServiceZonesId DeleteAccountShippingServiceZonesId() {
-		return new DeleteAccountShippingServiceZonesId();
+	public static GetAccountShippingServiceZonesId GetAccountShippingServiceZonesId() {
+		return new GetAccountShippingServiceZonesId();
 	}
 	
 	/**
@@ -2024,10 +1912,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * GET /account/shipping_service_zones/{id}
+	 * DELETE /account/shipping_service_zones/{id}
 	 */
-	public static GetAccountShippingServiceZonesId GetAccountShippingServiceZonesId() {
-		return new GetAccountShippingServiceZonesId();
+	public static DeleteAccountShippingServiceZonesId DeleteAccountShippingServiceZonesId() {
+		return new DeleteAccountShippingServiceZonesId();
 	}
 	
 	/**
@@ -2045,10 +1933,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * DELETE /account/shipping_services/{id}
+	 * GET /account/shipping_services/{id}
 	 */
-	public static DeleteAccountShippingServicesId DeleteAccountShippingServicesId() {
-		return new DeleteAccountShippingServicesId();
+	public static GetAccountShippingServicesId GetAccountShippingServicesId() {
+		return new GetAccountShippingServicesId();
 	}
 	
 	/**
@@ -2059,10 +1947,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * GET /account/shipping_services/{id}
+	 * DELETE /account/shipping_services/{id}
 	 */
-	public static GetAccountShippingServicesId GetAccountShippingServicesId() {
-		return new GetAccountShippingServicesId();
+	public static DeleteAccountShippingServicesId DeleteAccountShippingServicesId() {
+		return new DeleteAccountShippingServicesId();
 	}
 	
 	/**
@@ -2080,10 +1968,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * DELETE /account/shipping_zones/{id}
+	 * GET /account/shipping_zones/{id}
 	 */
-	public static DeleteAccountShippingZonesId DeleteAccountShippingZonesId() {
-		return new DeleteAccountShippingZonesId();
+	public static GetAccountShippingZonesId GetAccountShippingZonesId() {
+		return new GetAccountShippingZonesId();
 	}
 	
 	/**
@@ -2094,10 +1982,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * GET /account/shipping_zones/{id}
+	 * DELETE /account/shipping_zones/{id}
 	 */
-	public static GetAccountShippingZonesId GetAccountShippingZonesId() {
-		return new GetAccountShippingZonesId();
+	public static DeleteAccountShippingZonesId DeleteAccountShippingZonesId() {
+		return new DeleteAccountShippingZonesId();
 	}
 	
 	/**
@@ -2115,10 +2003,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * DELETE /account/states/{id}
+	 * GET /account/states/{id}
 	 */
-	public static DeleteAccountStatesId DeleteAccountStatesId() {
-		return new DeleteAccountStatesId();
+	public static GetAccountStatesId GetAccountStatesId() {
+		return new GetAccountStatesId();
 	}
 	
 	/**
@@ -2129,10 +2017,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * GET /account/states/{id}
+	 * DELETE /account/states/{id}
 	 */
-	public static GetAccountStatesId GetAccountStatesId() {
-		return new GetAccountStatesId();
+	public static DeleteAccountStatesId DeleteAccountStatesId() {
+		return new DeleteAccountStatesId();
 	}
 	
 	/**
@@ -2150,10 +2038,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * DELETE /account/stock_items/{id}
+	 * GET /account/stock_items/{id}
 	 */
-	public static DeleteAccountStockItemsId DeleteAccountStockItemsId() {
-		return new DeleteAccountStockItemsId();
+	public static GetAccountStockItemsId GetAccountStockItemsId() {
+		return new GetAccountStockItemsId();
 	}
 	
 	/**
@@ -2164,10 +2052,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * GET /account/stock_items/{id}
+	 * DELETE /account/stock_items/{id}
 	 */
-	public static GetAccountStockItemsId GetAccountStockItemsId() {
-		return new GetAccountStockItemsId();
+	public static DeleteAccountStockItemsId DeleteAccountStockItemsId() {
+		return new DeleteAccountStockItemsId();
 	}
 	
 	/**
@@ -2185,10 +2073,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * DELETE /account/stock_locations/{id}
+	 * GET /account/stock_locations/{id}
 	 */
-	public static DeleteAccountStockLocationsId DeleteAccountStockLocationsId() {
-		return new DeleteAccountStockLocationsId();
+	public static GetAccountStockLocationsId GetAccountStockLocationsId() {
+		return new GetAccountStockLocationsId();
 	}
 	
 	/**
@@ -2199,10 +2087,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * GET /account/stock_locations/{id}
+	 * DELETE /account/stock_locations/{id}
 	 */
-	public static GetAccountStockLocationsId GetAccountStockLocationsId() {
-		return new GetAccountStockLocationsId();
+	public static DeleteAccountStockLocationsId DeleteAccountStockLocationsId() {
+		return new DeleteAccountStockLocationsId();
 	}
 	
 	/**
@@ -2255,10 +2143,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * DELETE /account/taxonomies/{id}
+	 * GET /account/taxonomies/{id}
 	 */
-	public static DeleteAccountTaxonomiesId DeleteAccountTaxonomiesId() {
-		return new DeleteAccountTaxonomiesId();
+	public static GetAccountTaxonomiesId GetAccountTaxonomiesId() {
+		return new GetAccountTaxonomiesId();
 	}
 	
 	/**
@@ -2269,10 +2157,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * GET /account/taxonomies/{id}
+	 * DELETE /account/taxonomies/{id}
 	 */
-	public static GetAccountTaxonomiesId GetAccountTaxonomiesId() {
-		return new GetAccountTaxonomiesId();
+	public static DeleteAccountTaxonomiesId DeleteAccountTaxonomiesId() {
+		return new DeleteAccountTaxonomiesId();
 	}
 	
 	/**
@@ -2290,10 +2178,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * DELETE /account/taxons/{id}
+	 * GET /account/taxons/{id}
 	 */
-	public static DeleteAccountTaxonsId DeleteAccountTaxonsId() {
-		return new DeleteAccountTaxonsId();
+	public static GetAccountTaxonsId GetAccountTaxonsId() {
+		return new GetAccountTaxonsId();
 	}
 	
 	/**
@@ -2304,10 +2192,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * GET /account/taxons/{id}
+	 * DELETE /account/taxons/{id}
 	 */
-	public static GetAccountTaxonsId GetAccountTaxonsId() {
-		return new GetAccountTaxonsId();
+	public static DeleteAccountTaxonsId DeleteAccountTaxonsId() {
+		return new DeleteAccountTaxonsId();
 	}
 	
 	/**
@@ -2360,10 +2248,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * DELETE /account/transactions/{id}
+	 * GET /account/transactions/{id}
 	 */
-	public static DeleteAccountTransactionsId DeleteAccountTransactionsId() {
-		return new DeleteAccountTransactionsId();
+	public static GetAccountTransactionsId GetAccountTransactionsId() {
+		return new GetAccountTransactionsId();
 	}
 	
 	/**
@@ -2374,10 +2262,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * GET /account/transactions/{id}
+	 * DELETE /account/transactions/{id}
 	 */
-	public static GetAccountTransactionsId GetAccountTransactionsId() {
-		return new GetAccountTransactionsId();
+	public static DeleteAccountTransactionsId DeleteAccountTransactionsId() {
+		return new DeleteAccountTransactionsId();
 	}
 	
 	/**
@@ -2395,10 +2283,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * DELETE /account/users/{id}
+	 * GET /account/users/{id}
 	 */
-	public static DeleteAccountUsersId DeleteAccountUsersId() {
-		return new DeleteAccountUsersId();
+	public static GetAccountUsersId GetAccountUsersId() {
+		return new GetAccountUsersId();
 	}
 	
 	/**
@@ -2409,10 +2297,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * GET /account/users/{id}
+	 * DELETE /account/users/{id}
 	 */
-	public static GetAccountUsersId GetAccountUsersId() {
-		return new GetAccountUsersId();
+	public static DeleteAccountUsersId DeleteAccountUsersId() {
+		return new DeleteAccountUsersId();
 	}
 	
 	/**
@@ -2430,10 +2318,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * DELETE /account/variant_options/{id}
+	 * GET /account/variant_options/{id}
 	 */
-	public static DeleteAccountVariantOptionsId DeleteAccountVariantOptionsId() {
-		return new DeleteAccountVariantOptionsId();
+	public static GetAccountVariantOptionsId GetAccountVariantOptionsId() {
+		return new GetAccountVariantOptionsId();
 	}
 	
 	/**
@@ -2444,10 +2332,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * GET /account/variant_options/{id}
+	 * DELETE /account/variant_options/{id}
 	 */
-	public static GetAccountVariantOptionsId GetAccountVariantOptionsId() {
-		return new GetAccountVariantOptionsId();
+	public static DeleteAccountVariantOptionsId DeleteAccountVariantOptionsId() {
+		return new DeleteAccountVariantOptionsId();
 	}
 	
 	/**
@@ -2465,10 +2353,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * DELETE /account/variants/{id}
+	 * GET /account/variants/{id}
 	 */
-	public static DeleteAccountVariantsId DeleteAccountVariantsId() {
-		return new DeleteAccountVariantsId();
+	public static GetAccountVariantsId GetAccountVariantsId() {
+		return new GetAccountVariantsId();
 	}
 	
 	/**
@@ -2479,10 +2367,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * GET /account/variants/{id}
+	 * DELETE /account/variants/{id}
 	 */
-	public static GetAccountVariantsId GetAccountVariantsId() {
-		return new GetAccountVariantsId();
+	public static DeleteAccountVariantsId DeleteAccountVariantsId() {
+		return new DeleteAccountVariantsId();
 	}
 	
 	/**
@@ -2500,10 +2388,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * DELETE /account/webhooks/{id}
+	 * GET /account/webhooks/{id}
 	 */
-	public static DeleteAccountWebhooksId DeleteAccountWebhooksId() {
-		return new DeleteAccountWebhooksId();
+	public static GetAccountWebhooksId GetAccountWebhooksId() {
+		return new GetAccountWebhooksId();
 	}
 	
 	/**
@@ -2514,10 +2402,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * GET /account/webhooks/{id}
+	 * DELETE /account/webhooks/{id}
 	 */
-	public static GetAccountWebhooksId GetAccountWebhooksId() {
-		return new GetAccountWebhooksId();
+	public static DeleteAccountWebhooksId DeleteAccountWebhooksId() {
+		return new DeleteAccountWebhooksId();
 	}
 	
 	/**
@@ -2570,17 +2458,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * POST /callbacks/paypal_accounts/{paypal_account_token}
+	 * GET /channel/line_item_stocks/{id}
 	 */
-	public static PostCallbacksPaypalAccountsPaypalAccountToken PostCallbacksPaypalAccountsPaypalAccountToken() {
-		return new PostCallbacksPaypalAccountsPaypalAccountToken();
-	}
-	
-	/**
-	 * GET /channel/country_languages
-	 */
-	public static GetChannelCountryLanguages GetChannelCountryLanguages() {
-		return new GetChannelCountryLanguages();
+	public static GetChannelLineItemStocksId GetChannelLineItemStocksId() {
+		return new GetChannelLineItemStocksId();
 	}
 	
 	/**
@@ -2591,17 +2472,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * GET /channel/line_item_stocks/{id}
+	 * GET /channel/line_items/{id}
 	 */
-	public static GetChannelLineItemStocksId GetChannelLineItemStocksId() {
-		return new GetChannelLineItemStocksId();
-	}
-	
-	/**
-	 * DELETE /channel/line_items/{id}
-	 */
-	public static DeleteChannelLineItemsId DeleteChannelLineItemsId() {
-		return new DeleteChannelLineItemsId();
+	public static GetChannelLineItemsId GetChannelLineItemsId() {
+		return new GetChannelLineItemsId();
 	}
 	
 	/**
@@ -2612,10 +2486,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * GET /channel/line_items/{id}
+	 * DELETE /channel/line_items/{id}
 	 */
-	public static GetChannelLineItemsId GetChannelLineItemsId() {
-		return new GetChannelLineItemsId();
+	public static DeleteChannelLineItemsId DeleteChannelLineItemsId() {
+		return new DeleteChannelLineItemsId();
 	}
 	
 	/**
@@ -2689,10 +2563,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * PUT /channel/orders/{order_token}/place
+	 * POST /channel/orders/{order_token}/place
 	 */
-	public static PutChannelOrdersOrderTokenPlace PutChannelOrdersOrderTokenPlace() {
-		return new PutChannelOrdersOrderTokenPlace();
+	public static PostChannelOrdersOrderTokenPlace PostChannelOrdersOrderTokenPlace() {
+		return new PostChannelOrdersOrderTokenPlace();
 	}
 	
 	/**
@@ -2710,17 +2584,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * PUT /channel/orders/{order_token}/tax_rates
+	 * GET /channel/payment_methods/{id}
 	 */
-	public static PutChannelOrdersOrderTokenTaxRates PutChannelOrdersOrderTokenTaxRates() {
-		return new PutChannelOrdersOrderTokenTaxRates();
-	}
-	
-	/**
-	 * DELETE /channel/payment_methods/{id}
-	 */
-	public static DeleteChannelPaymentMethodsId DeleteChannelPaymentMethodsId() {
-		return new DeleteChannelPaymentMethodsId();
+	public static GetChannelPaymentMethodsId GetChannelPaymentMethodsId() {
+		return new GetChannelPaymentMethodsId();
 	}
 	
 	/**
@@ -2731,10 +2598,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * GET /channel/payment_methods/{id}
+	 * DELETE /channel/payment_methods/{id}
 	 */
-	public static GetChannelPaymentMethodsId GetChannelPaymentMethodsId() {
-		return new GetChannelPaymentMethodsId();
+	public static DeleteChannelPaymentMethodsId DeleteChannelPaymentMethodsId() {
+		return new DeleteChannelPaymentMethodsId();
 	}
 	
 	/**
@@ -2745,17 +2612,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * POST /channel/products
+	 * GET /channel/shipping_methods/{id}
 	 */
-	public static PostChannelProducts PostChannelProducts() {
-		return new PostChannelProducts();
-	}
-	
-	/**
-	 * DELETE /channel/shipping_methods/{id}
-	 */
-	public static DeleteChannelShippingMethodsId DeleteChannelShippingMethodsId() {
-		return new DeleteChannelShippingMethodsId();
+	public static GetChannelShippingMethodsId GetChannelShippingMethodsId() {
+		return new GetChannelShippingMethodsId();
 	}
 	
 	/**
@@ -2766,17 +2626,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * GET /channel/shipping_methods/{id}
+	 * DELETE /channel/shipping_methods/{id}
 	 */
-	public static GetChannelShippingMethodsId GetChannelShippingMethodsId() {
-		return new GetChannelShippingMethodsId();
-	}
-	
-	/**
-	 * GET /channel/transactions/{transaction_token}
-	 */
-	public static GetChannelTransactionsTransactionToken GetChannelTransactionsTransactionToken() {
-		return new GetChannelTransactionsTransactionToken();
+	public static DeleteChannelShippingMethodsId DeleteChannelShippingMethodsId() {
+		return new DeleteChannelShippingMethodsId();
 	}
 	
 	/**

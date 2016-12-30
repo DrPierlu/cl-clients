@@ -9,17 +9,15 @@ import java.util.Objects;
  */
 public class VariantOption extends ApiResource {
 
-	private static final long serialVersionUID = -1483037217951L;
+	private static final long serialVersionUID = -1483100361869L;
 
 
-	private Integer optionValueId;
-	private Integer variantId;
-	@JsonExclude
-	private String name;
+	private String optionValueId;
+	private String variantId;
 	@JsonExclude
 	private Object optionType;
 	@JsonExclude
-	private Integer optionTypeId;
+	private String optionTypeId;
 	@JsonExclude
 	private Object optionValue;
 	@JsonExclude
@@ -38,86 +36,65 @@ public class VariantOption extends ApiResource {
 	}
 	
 
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-
-	public String getName() {
-		return this.name;
-	}
-	
-
-	public VariantOption name(String name) {
-		setName(name);
-		return this;
-	}
-	
-
-	public String name() {
-		return getName();
-	}
-	
-
-	public void setVariantId(Integer variantId) {
+	public void setVariantId(String variantId) {
 		this.variantId = variantId;
 	}
 	
 
-	public Integer getVariantId() {
+	public String getVariantId() {
 		return this.variantId;
 	}
 	
 
-	public VariantOption variantId(Integer variantId) {
+	public VariantOption variantId(String variantId) {
 		setVariantId(variantId);
 		return this;
 	}
 	
 
-	public Integer variantId() {
+	public String variantId() {
 		return getVariantId();
 	}
 	
 
-	public void setOptionTypeId(Integer optionTypeId) {
+	public void setOptionTypeId(String optionTypeId) {
 		this.optionTypeId = optionTypeId;
 	}
 	
 
-	public Integer getOptionTypeId() {
+	public String getOptionTypeId() {
 		return this.optionTypeId;
 	}
 	
 
-	public VariantOption optionTypeId(Integer optionTypeId) {
+	public VariantOption optionTypeId(String optionTypeId) {
 		setOptionTypeId(optionTypeId);
 		return this;
 	}
 	
 
-	public Integer optionTypeId() {
+	public String optionTypeId() {
 		return getOptionTypeId();
 	}
 	
 
-	public void setOptionValueId(Integer optionValueId) {
+	public void setOptionValueId(String optionValueId) {
 		this.optionValueId = optionValueId;
 	}
 	
 
-	public Integer getOptionValueId() {
+	public String getOptionValueId() {
 		return this.optionValueId;
 	}
 	
 
-	public VariantOption optionValueId(Integer optionValueId) {
+	public VariantOption optionValueId(String optionValueId) {
 		setOptionValueId(optionValueId);
 		return this;
 	}
 	
 
-	public Integer optionValueId() {
+	public String optionValueId() {
 		return getOptionValueId();
 	}
 	
@@ -215,7 +192,6 @@ public class VariantOption extends ApiResource {
 		VariantOption x = (VariantOption)o;
 	
 		return super.equals(o)
-			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.variantId, x.variantId)
 			&& Objects.equals(this.optionTypeId, x.optionTypeId)
 			&& Objects.equals(this.optionValueId, x.optionValueId)
@@ -232,8 +208,8 @@ public class VariantOption extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, variantId, optionTypeId, optionValueId, previousChanges,
-			variant, optionType, optionValue 
+			variantId, optionTypeId, optionValueId, previousChanges, variant,
+			optionType, optionValue 
 		);
 	
 	}
@@ -244,7 +220,8 @@ public class VariantOption extends ApiResource {
 	
 		VariantOption no = new VariantOption();
 	
-		no.name = this.name;
+		no = super.clone(no);
+	
 		no.variantId = this.variantId;
 		no.optionTypeId = this.optionTypeId;
 		no.optionValueId = this.optionValueId;

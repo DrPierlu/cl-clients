@@ -10,6 +10,10 @@ public final class ApiUtils {
 	
 	private static final JsonCodec jsonCodec = JsonCodecFactory.getJsonCodecInstance();
 	
+	private ApiUtils() {
+		super();
+	}
+	
 	public static JsonCodec getJsonCodecInstance() {
 		return jsonCodec;
 	}

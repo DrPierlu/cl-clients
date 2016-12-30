@@ -26,7 +26,7 @@ public final class ApiAuthenticator {
 		
 		logger.info("Authenticating User... [{}]", account.getUsername());
 
-		AuthRequest authRequest = new AuthRequest(account);
+		AuthPasswordRequest authRequest = new AuthPasswordRequest(account);
 
 		HttpRequest httpRequest = new HttpRequest(Method.POST);
 		httpRequest.setUrl(ApiUtils.getResourceUrl("/auth/token"));

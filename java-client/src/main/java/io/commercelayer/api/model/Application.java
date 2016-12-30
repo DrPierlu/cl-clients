@@ -10,7 +10,7 @@ import java.util.Objects;
  */
 public class Application extends ApiResource {
 
-	private static final long serialVersionUID = -1483037217768L;
+	private static final long serialVersionUID = -1483100361397L;
 
 
 	private String name;
@@ -197,6 +197,8 @@ public class Application extends ApiResource {
 	public Application clone() {
 	
 		Application no = new Application();
+	
+		no = super.clone(no);
 	
 		no.name = this.name;
 		no.previousChanges = this.previousChanges;

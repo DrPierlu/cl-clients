@@ -9,7 +9,7 @@ import java.util.Objects;
  */
 public class ShippingCarrierType extends ApiResource {
 
-	private static final long serialVersionUID = -1483037217918L;
+	private static final long serialVersionUID = -1483100361725L;
 
 
 	private String name;
@@ -99,6 +99,8 @@ public class ShippingCarrierType extends ApiResource {
 	public ShippingCarrierType clone() {
 	
 		ShippingCarrierType no = new ShippingCarrierType();
+	
+		no = super.clone(no);
 	
 		no.name = this.name;
 		no.previousChanges = this.previousChanges;

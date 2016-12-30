@@ -154,5 +154,19 @@ public abstract class ApiResource extends ApiObject implements Serializable {
 			resourceName, id, creatorResource, createdAt, updatedAt
 		);
 	}
+	
+	protected <T extends ApiResource> T clone(T res) {
+		
+		if (res == null) return res;
+		
+		res.setId(this.id);
+		res.setCreatedAt(this.createdAt);
+		res.setCreatorResource(this.creatorResource);
+		res.setResourceName(this.resourceName);
+		res.setUpdatedAt(this.updatedAt);
+		
+		return res;
+		
+	}
 
 }

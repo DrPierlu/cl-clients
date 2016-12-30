@@ -10,18 +10,14 @@ import java.util.Objects;
  */
 public class Webhook extends ApiResource {
 
-	private static final long serialVersionUID = -1483037217952L;
+	private static final long serialVersionUID = -1483100361877L;
 
 
 	private String eventAction;
 	private String eventSubject;
 	private String eventUrl;
 	@JsonExclude
-	private String expand;
-	@JsonExclude
 	private LocalDateTime lastFiredAt;
-	@JsonExclude
-	private String name;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
@@ -35,27 +31,6 @@ public class Webhook extends ApiResource {
 
 	public Webhook(Long id) {
 		super(id);
-	}
-	
-
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-
-	public String getName() {
-		return this.name;
-	}
-	
-
-	public Webhook name(String name) {
-		setName(name);
-		return this;
-	}
-	
-
-	public String name() {
-		return getName();
 	}
 	
 
@@ -143,27 +118,6 @@ public class Webhook extends ApiResource {
 	}
 	
 
-	public void setExpand(String expand) {
-		this.expand = expand;
-	}
-	
-
-	public String getExpand() {
-		return this.expand;
-	}
-	
-
-	public Webhook expand(String expand) {
-		setExpand(expand);
-		return this;
-	}
-	
-
-	public String expand() {
-		return getExpand();
-	}
-	
-
 	public void setLastFiredAt(LocalDateTime lastFiredAt) {
 		this.lastFiredAt = lastFiredAt;
 	}
@@ -215,12 +169,10 @@ public class Webhook extends ApiResource {
 		Webhook x = (Webhook)o;
 	
 		return super.equals(o)
-			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.eventSubject, x.eventSubject)
 			&& Objects.equals(this.eventAction, x.eventAction)
 			&& Objects.equals(this.eventUrl, x.eventUrl)
 			&& Objects.equals(this.sharedSecret, x.sharedSecret)
-			&& Objects.equals(this.expand, x.expand)
 			&& Objects.equals(this.lastFiredAt, x.lastFiredAt)
 			&& Objects.equals(this.previousChanges, x.previousChanges)
 		;
@@ -232,8 +184,8 @@ public class Webhook extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, eventSubject, eventAction, eventUrl, sharedSecret,
-			expand, lastFiredAt, previousChanges 
+			eventSubject, eventAction, eventUrl, sharedSecret, lastFiredAt,
+			previousChanges 
 		);
 	
 	}
@@ -244,12 +196,12 @@ public class Webhook extends ApiResource {
 	
 		Webhook no = new Webhook();
 	
-		no.name = this.name;
+		no = super.clone(no);
+	
 		no.eventSubject = this.eventSubject;
 		no.eventAction = this.eventAction;
 		no.eventUrl = this.eventUrl;
 		no.sharedSecret = this.sharedSecret;
-		no.expand = this.expand;
 		no.lastFiredAt = this.lastFiredAt;
 		no.previousChanges = this.previousChanges;
 	

@@ -4,7 +4,11 @@ import java.io.Closeable;
 import java.io.Flushable;
 import java.io.IOException;
 
-public class IOUtils {
+public final class IOUtils {
+	
+	private IOUtils() {
+		super();
+	}
 
 	public static void closeResources(Closeable... resources) {
 		if (resources == null) return;

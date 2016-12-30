@@ -10,11 +10,11 @@ import java.util.Objects;
  */
 public class Country extends ApiResource {
 
-	private static final long serialVersionUID = -1483037217794L;
+	private static final long serialVersionUID = -1483100361441L;
 
 
 	private String code;
-	private Integer countryGroupId;
+	private String countryGroupId;
 	@JsonExclude
 	private Object countryGroup;
 	@JsonExclude
@@ -23,8 +23,6 @@ public class Country extends ApiResource {
 	private List<String> languages;
 	@JsonExclude
 	private List<String> lineItemStocks;
-	@JsonExclude
-	private String name;
 	@JsonExclude
 	private List<String> orders;
 	@JsonExclude
@@ -43,44 +41,23 @@ public class Country extends ApiResource {
 	}
 	
 
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-
-	public String getName() {
-		return this.name;
-	}
-	
-
-	public Country name(String name) {
-		setName(name);
-		return this;
-	}
-	
-
-	public String name() {
-		return getName();
-	}
-	
-
-	public void setCountryGroupId(Integer countryGroupId) {
+	public void setCountryGroupId(String countryGroupId) {
 		this.countryGroupId = countryGroupId;
 	}
 	
 
-	public Integer getCountryGroupId() {
+	public String getCountryGroupId() {
 		return this.countryGroupId;
 	}
 	
 
-	public Country countryGroupId(Integer countryGroupId) {
+	public Country countryGroupId(String countryGroupId) {
 		setCountryGroupId(countryGroupId);
 		return this;
 	}
 	
 
-	public Integer countryGroupId() {
+	public String countryGroupId() {
 		return getCountryGroupId();
 	}
 	
@@ -262,7 +239,6 @@ public class Country extends ApiResource {
 		Country x = (Country)o;
 	
 		return super.equals(o)
-			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.countryGroupId, x.countryGroupId)
 			&& Objects.equals(this.code, x.code)
 			&& Objects.equals(this.previousChanges, x.previousChanges)
@@ -281,9 +257,8 @@ public class Country extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, countryGroupId, code, previousChanges, countryGroup,
-			countryLanguages, states, orders, lineItemStocks, languages
-			
+			countryGroupId, code, previousChanges, countryGroup, countryLanguages,
+			states, orders, lineItemStocks, languages 
 		);
 	
 	}
@@ -294,7 +269,8 @@ public class Country extends ApiResource {
 	
 		Country no = new Country();
 	
-		no.name = this.name;
+		no = super.clone(no);
+	
 		no.countryGroupId = this.countryGroupId;
 		no.code = this.code;
 		no.previousChanges = this.previousChanges;

@@ -14,7 +14,7 @@ import io.commercelayer.api.config.ApiConfig;
  * @author p.viti
  *
  */
-public class LogUtils {
+public final class LogUtils {
 
 	public static final ToStringStyle TO_STRING_STYLE = ApiConfig.testModeEnabled()? ToStringStyle.MULTI_LINE_STYLE : ToStringStyle.SHORT_PREFIX_STYLE;
 	
@@ -22,6 +22,10 @@ public class LogUtils {
 
 	static {
 		instance = new LogUtils();
+	}
+	
+	private LogUtils() {
+		super();
 	}
 
 	public static LogUtils getInstance() {

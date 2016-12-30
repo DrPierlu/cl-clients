@@ -9,11 +9,9 @@ import java.util.Objects;
  */
 public class Image extends ApiResource {
 
-	private static final long serialVersionUID = -1483037217830L;
+	private static final long serialVersionUID = -1483100361504L;
 
 
-	@JsonExclude
-	private String name;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
@@ -27,27 +25,6 @@ public class Image extends ApiResource {
 
 	public Image(Long id) {
 		super(id);
-	}
-	
-
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-
-	public String getName() {
-		return this.name;
-	}
-	
-
-	public Image name(String name) {
-		setName(name);
-		return this;
-	}
-	
-
-	public String name() {
-		return getName();
 	}
 	
 
@@ -102,7 +79,6 @@ public class Image extends ApiResource {
 		Image x = (Image)o;
 	
 		return super.equals(o)
-			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.url, x.url)
 		;
@@ -114,7 +90,7 @@ public class Image extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, previousChanges, url 
+			previousChanges, url 
 		);
 	
 	}
@@ -125,7 +101,8 @@ public class Image extends ApiResource {
 	
 		Image no = new Image();
 	
-		no.name = this.name;
+		no = super.clone(no);
+	
 		no.previousChanges = this.previousChanges;
 		no.url = this.url;
 	

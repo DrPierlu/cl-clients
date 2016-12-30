@@ -10,10 +10,10 @@ import java.util.Objects;
  */
 public class PriceList extends ApiResource {
 
-	private static final long serialVersionUID = -1483037217871L;
+	private static final long serialVersionUID = -1483100361660L;
 
 
-	private Integer currencyId;
+	private String currencyId;
 	private String name;
 	@JsonExclude
 	private Object currency;
@@ -24,7 +24,7 @@ public class PriceList extends ApiResource {
 	@JsonExclude
 	private List<String> prices;
 	@JsonExclude
-	private Object taxIncluded;
+	private String taxIncluded;
 
 
 	public PriceList() {
@@ -37,23 +37,23 @@ public class PriceList extends ApiResource {
 	}
 	
 
-	public void setCurrencyId(Integer currencyId) {
+	public void setCurrencyId(String currencyId) {
 		this.currencyId = currencyId;
 	}
 	
 
-	public Integer getCurrencyId() {
+	public String getCurrencyId() {
 		return this.currencyId;
 	}
 	
 
-	public PriceList currencyId(Integer currencyId) {
+	public PriceList currencyId(String currencyId) {
 		setCurrencyId(currencyId);
 		return this;
 	}
 	
 
-	public Integer currencyId() {
+	public String currencyId() {
 		return getCurrencyId();
 	}
 	
@@ -79,23 +79,23 @@ public class PriceList extends ApiResource {
 	}
 	
 
-	public void setTaxIncluded(Object taxIncluded) {
+	public void setTaxIncluded(String taxIncluded) {
 		this.taxIncluded = taxIncluded;
 	}
 	
 
-	public Object getTaxIncluded() {
+	public String getTaxIncluded() {
 		return this.taxIncluded;
 	}
 	
 
-	public PriceList taxIncluded(Object taxIncluded) {
+	public PriceList taxIncluded(String taxIncluded) {
 		setTaxIncluded(taxIncluded);
 		return this;
 	}
 	
 
-	public Object taxIncluded() {
+	public String taxIncluded() {
 		return getTaxIncluded();
 	}
 	
@@ -220,6 +220,8 @@ public class PriceList extends ApiResource {
 	public PriceList clone() {
 	
 		PriceList no = new PriceList();
+	
+		no = super.clone(no);
 	
 		no.currencyId = this.currencyId;
 		no.name = this.name;

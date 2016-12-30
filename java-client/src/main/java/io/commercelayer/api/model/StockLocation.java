@@ -10,14 +10,14 @@ import java.util.Objects;
  */
 public class StockLocation extends ApiResource {
 
-	private static final long serialVersionUID = -1483037217941L;
+	private static final long serialVersionUID = -1483100361820L;
 
 
 	private String name;
 	@JsonExclude
 	private List<String> lineItemStocks;
 	@JsonExclude
-	private Integer position;
+	private String position;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
@@ -59,23 +59,23 @@ public class StockLocation extends ApiResource {
 	}
 	
 
-	public void setPosition(Integer position) {
+	public void setPosition(String position) {
 		this.position = position;
 	}
 	
 
-	public Integer getPosition() {
+	public String getPosition() {
 		return this.position;
 	}
 	
 
-	public StockLocation position(Integer position) {
+	public StockLocation position(String position) {
 		setPosition(position);
 		return this;
 	}
 	
 
-	public Integer position() {
+	public String position() {
 		return getPosition();
 	}
 	
@@ -221,6 +221,8 @@ public class StockLocation extends ApiResource {
 	public StockLocation clone() {
 	
 		StockLocation no = new StockLocation();
+	
+		no = super.clone(no);
 	
 		no.name = this.name;
 		no.position = this.position;

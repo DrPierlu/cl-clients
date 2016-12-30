@@ -10,10 +10,10 @@ import java.util.Objects;
  */
 public class Variant extends ApiResource {
 
-	private static final long serialVersionUID = -1483037217949L;
+	private static final long serialVersionUID = -1483100361860L;
 
 
-	private Integer productId;
+	private String productId;
 	private String sku;
 	@JsonExclude
 	private List<String> images;
@@ -21,8 +21,6 @@ public class Variant extends ApiResource {
 	private List<String> lineItemStocks;
 	@JsonExclude
 	private List<String> lineItems;
-	@JsonExclude
-	private String name;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
@@ -34,7 +32,7 @@ public class Variant extends ApiResource {
 	@JsonExclude
 	private Object shippingCategory;
 	@JsonExclude
-	private Integer shippingCategoryId;
+	private String shippingCategoryId;
 	@JsonExclude
 	private List<String> shippingServiceStockLocations;
 	@JsonExclude
@@ -42,7 +40,7 @@ public class Variant extends ApiResource {
 	@JsonExclude
 	private String taxCode;
 	@JsonExclude
-	private Object trackInventory;
+	private String trackInventory;
 	@JsonExclude
 	private List<String> variantOptions;
 
@@ -57,86 +55,65 @@ public class Variant extends ApiResource {
 	}
 	
 
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-
-	public String getName() {
-		return this.name;
-	}
-	
-
-	public Variant name(String name) {
-		setName(name);
-		return this;
-	}
-	
-
-	public String name() {
-		return getName();
-	}
-	
-
-	public void setProductId(Integer productId) {
+	public void setProductId(String productId) {
 		this.productId = productId;
 	}
 	
 
-	public Integer getProductId() {
+	public String getProductId() {
 		return this.productId;
 	}
 	
 
-	public Variant productId(Integer productId) {
+	public Variant productId(String productId) {
 		setProductId(productId);
 		return this;
 	}
 	
 
-	public Integer productId() {
+	public String productId() {
 		return getProductId();
 	}
 	
 
-	public void setTrackInventory(Object trackInventory) {
+	public void setTrackInventory(String trackInventory) {
 		this.trackInventory = trackInventory;
 	}
 	
 
-	public Object getTrackInventory() {
+	public String getTrackInventory() {
 		return this.trackInventory;
 	}
 	
 
-	public Variant trackInventory(Object trackInventory) {
+	public Variant trackInventory(String trackInventory) {
 		setTrackInventory(trackInventory);
 		return this;
 	}
 	
 
-	public Object trackInventory() {
+	public String trackInventory() {
 		return getTrackInventory();
 	}
 	
 
-	public void setShippingCategoryId(Integer shippingCategoryId) {
+	public void setShippingCategoryId(String shippingCategoryId) {
 		this.shippingCategoryId = shippingCategoryId;
 	}
 	
 
-	public Integer getShippingCategoryId() {
+	public String getShippingCategoryId() {
 		return this.shippingCategoryId;
 	}
 	
 
-	public Variant shippingCategoryId(Integer shippingCategoryId) {
+	public Variant shippingCategoryId(String shippingCategoryId) {
 		setShippingCategoryId(shippingCategoryId);
 		return this;
 	}
 	
 
-	public Integer shippingCategoryId() {
+	public String shippingCategoryId() {
 		return getShippingCategoryId();
 	}
 	
@@ -423,7 +400,6 @@ public class Variant extends ApiResource {
 		Variant x = (Variant)o;
 	
 		return super.equals(o)
-			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.productId, x.productId)
 			&& Objects.equals(this.trackInventory, x.trackInventory)
 			&& Objects.equals(this.shippingCategoryId, x.shippingCategoryId)
@@ -449,10 +425,10 @@ public class Variant extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, productId, trackInventory, shippingCategoryId, sku,
-			taxCode, previousChanges, shippingCategory, product, prices,
-			lineItems, lineItemStocks, stockItems, shippingServiceStockLocations, resourceImages,
-			images, variantOptions 
+			productId, trackInventory, shippingCategoryId, sku, taxCode,
+			previousChanges, shippingCategory, product, prices, lineItems,
+			lineItemStocks, stockItems, shippingServiceStockLocations, resourceImages, images,
+			variantOptions 
 		);
 	
 	}
@@ -463,7 +439,8 @@ public class Variant extends ApiResource {
 	
 		Variant no = new Variant();
 	
-		no.name = this.name;
+		no = super.clone(no);
+	
 		no.productId = this.productId;
 		no.trackInventory = this.trackInventory;
 		no.shippingCategoryId = this.shippingCategoryId;

@@ -11,10 +11,14 @@ import java.util.TreeMap;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.text.WordUtils;
 
-public class ModelUtils {
+public final class ModelUtils {
 
 	public static enum DigestType {
 		MD5, SHA, SHA256, SHA384, SHA512
+	}
+	
+	private ModelUtils() {
+		super();
 	}
 
 	public static boolean isEmpty(byte[] b) {

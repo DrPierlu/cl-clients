@@ -10,7 +10,7 @@ import java.util.Objects;
  */
 public class ShippingCategory extends ApiResource {
 
-	private static final long serialVersionUID = -1483037217919L;
+	private static final long serialVersionUID = -1483100361730L;
 
 
 	private String name;
@@ -221,6 +221,8 @@ public class ShippingCategory extends ApiResource {
 	public ShippingCategory clone() {
 	
 		ShippingCategory no = new ShippingCategory();
+	
+		no = super.clone(no);
 	
 		no.name = this.name;
 		no.previousChanges = this.previousChanges;

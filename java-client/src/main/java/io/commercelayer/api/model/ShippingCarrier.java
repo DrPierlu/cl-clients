@@ -10,11 +10,11 @@ import java.util.Objects;
  */
 public class ShippingCarrier extends ApiResource {
 
-	private static final long serialVersionUID = -1483037217916L;
+	private static final long serialVersionUID = -1483100361718L;
 
 
 	private String name;
-	private Integer shippingCarrierTypeId;
+	private String shippingCarrierTypeId;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
@@ -33,23 +33,23 @@ public class ShippingCarrier extends ApiResource {
 	}
 	
 
-	public void setShippingCarrierTypeId(Integer shippingCarrierTypeId) {
+	public void setShippingCarrierTypeId(String shippingCarrierTypeId) {
 		this.shippingCarrierTypeId = shippingCarrierTypeId;
 	}
 	
 
-	public Integer getShippingCarrierTypeId() {
+	public String getShippingCarrierTypeId() {
 		return this.shippingCarrierTypeId;
 	}
 	
 
-	public ShippingCarrier shippingCarrierTypeId(Integer shippingCarrierTypeId) {
+	public ShippingCarrier shippingCarrierTypeId(String shippingCarrierTypeId) {
 		setShippingCarrierTypeId(shippingCarrierTypeId);
 		return this;
 	}
 	
 
-	public Integer shippingCarrierTypeId() {
+	public String shippingCarrierTypeId() {
 		return getShippingCarrierTypeId();
 	}
 	
@@ -172,6 +172,8 @@ public class ShippingCarrier extends ApiResource {
 	public ShippingCarrier clone() {
 	
 		ShippingCarrier no = new ShippingCarrier();
+	
+		no = super.clone(no);
 	
 		no.shippingCarrierTypeId = this.shippingCarrierTypeId;
 		no.name = this.name;

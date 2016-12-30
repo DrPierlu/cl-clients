@@ -1,26 +1,16 @@
 package io.commercelayer.api.security;
 
-import io.commercelayer.api.domain.Authentication;
+public final class AuthPasswordRequest extends ApiAccount implements AuthRequest {
 
-public final class AuthRequest extends ApiAccount implements Authentication {
-
-	private String grantType = GrantType.PASSWORD;
 	private String password = "supersecret";
 
-	public AuthRequest(ApiAccount account) {
+	public AuthPasswordRequest(ApiAccount account) {
 		super.setUsername(account.getUsername());
 		super.setEnvironmentId(account.getEnvironmentId());
 		super.setAuthKey(account.getAuthKey());
 		super.setAuthSecret(account.getAuthSecret());
 	}
 	
-	public String getGrantType() {
-		return grantType;
-	}
-
-	public void setGrantType(String grantType) {
-		this.grantType = grantType;
-	}
 
 	public String getPassword() {
 		return password;
@@ -28,6 +18,12 @@ public final class AuthRequest extends ApiAccount implements Authentication {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+
+	@Override
+	public String getGrantType() {
+		return GrantType.PASSWORD;
 	}
 	
 }

@@ -9,19 +9,17 @@ import java.util.Objects;
  */
 public class MarketPaymentType extends ApiResource {
 
-	private static final long serialVersionUID = -1483037217839L;
+	private static final long serialVersionUID = -1483100361539L;
 
 
-	private Integer marketId;
-	private Integer paymentTypeId;
+	private String marketId;
+	private String paymentTypeId;
 	@JsonExclude
 	private String countryCodeRegex;
 	@JsonExclude
 	private String formattedPrice;
 	@JsonExclude
 	private Object market;
-	@JsonExclude
-	private String name;
 	@JsonExclude
 	private String notCountryCodeRegex;
 	@JsonExclude
@@ -31,7 +29,7 @@ public class MarketPaymentType extends ApiResource {
 	@JsonExclude
 	private String price;
 	@JsonExclude
-	private Integer priceCents;
+	private String priceCents;
 
 
 	public MarketPaymentType() {
@@ -44,65 +42,44 @@ public class MarketPaymentType extends ApiResource {
 	}
 	
 
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-
-	public String getName() {
-		return this.name;
-	}
-	
-
-	public MarketPaymentType name(String name) {
-		setName(name);
-		return this;
-	}
-	
-
-	public String name() {
-		return getName();
-	}
-	
-
-	public void setMarketId(Integer marketId) {
+	public void setMarketId(String marketId) {
 		this.marketId = marketId;
 	}
 	
 
-	public Integer getMarketId() {
+	public String getMarketId() {
 		return this.marketId;
 	}
 	
 
-	public MarketPaymentType marketId(Integer marketId) {
+	public MarketPaymentType marketId(String marketId) {
 		setMarketId(marketId);
 		return this;
 	}
 	
 
-	public Integer marketId() {
+	public String marketId() {
 		return getMarketId();
 	}
 	
 
-	public void setPaymentTypeId(Integer paymentTypeId) {
+	public void setPaymentTypeId(String paymentTypeId) {
 		this.paymentTypeId = paymentTypeId;
 	}
 	
 
-	public Integer getPaymentTypeId() {
+	public String getPaymentTypeId() {
 		return this.paymentTypeId;
 	}
 	
 
-	public MarketPaymentType paymentTypeId(Integer paymentTypeId) {
+	public MarketPaymentType paymentTypeId(String paymentTypeId) {
 		setPaymentTypeId(paymentTypeId);
 		return this;
 	}
 	
 
-	public Integer paymentTypeId() {
+	public String paymentTypeId() {
 		return getPaymentTypeId();
 	}
 	
@@ -149,23 +126,23 @@ public class MarketPaymentType extends ApiResource {
 	}
 	
 
-	public void setPriceCents(Integer priceCents) {
+	public void setPriceCents(String priceCents) {
 		this.priceCents = priceCents;
 	}
 	
 
-	public Integer getPriceCents() {
+	public String getPriceCents() {
 		return this.priceCents;
 	}
 	
 
-	public MarketPaymentType priceCents(Integer priceCents) {
+	public MarketPaymentType priceCents(String priceCents) {
 		setPriceCents(priceCents);
 		return this;
 	}
 	
 
-	public Integer priceCents() {
+	public String priceCents() {
 		return getPriceCents();
 	}
 	
@@ -284,7 +261,6 @@ public class MarketPaymentType extends ApiResource {
 		MarketPaymentType x = (MarketPaymentType)o;
 	
 		return super.equals(o)
-			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.marketId, x.marketId)
 			&& Objects.equals(this.paymentTypeId, x.paymentTypeId)
 			&& Objects.equals(this.countryCodeRegex, x.countryCodeRegex)
@@ -304,9 +280,9 @@ public class MarketPaymentType extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, marketId, paymentTypeId, countryCodeRegex, notCountryCodeRegex,
-			priceCents, previousChanges, market, paymentType, price,
-			formattedPrice 
+			marketId, paymentTypeId, countryCodeRegex, notCountryCodeRegex, priceCents,
+			previousChanges, market, paymentType, price, formattedPrice
+			
 		);
 	
 	}
@@ -317,7 +293,8 @@ public class MarketPaymentType extends ApiResource {
 	
 		MarketPaymentType no = new MarketPaymentType();
 	
-		no.name = this.name;
+		no = super.clone(no);
+	
 		no.marketId = this.marketId;
 		no.paymentTypeId = this.paymentTypeId;
 		no.countryCodeRegex = this.countryCodeRegex;

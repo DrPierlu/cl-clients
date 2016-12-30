@@ -10,7 +10,7 @@ import java.util.Objects;
  */
 public class CountryGroup extends ApiResource {
 
-	private static final long serialVersionUID = -1483037217796L;
+	private static final long serialVersionUID = -1483100361449L;
 
 
 	private String name;
@@ -173,6 +173,8 @@ public class CountryGroup extends ApiResource {
 	public CountryGroup clone() {
 	
 		CountryGroup no = new CountryGroup();
+	
+		no = super.clone(no);
 	
 		no.name = this.name;
 		no.previousChanges = this.previousChanges;

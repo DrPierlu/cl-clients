@@ -330,6 +330,9 @@ public class ApiModelGen {
 		m.addBodyLine(m.emptyLine());
 		m.addBodyLine("%1$s no = new %1$s();", mc.getName());
 		m.addBodyLine(m.emptyLine());
+		
+		m.addBodyLine("no = super.clone(no);");
+		m.addBodyLine(m.emptyLine());
 
 		List<String> fieldList = new ArrayList<>();
 		if ((mc.getExtendedClass() != null) && (mc.getExtendedClass().getTypeClass() != null))

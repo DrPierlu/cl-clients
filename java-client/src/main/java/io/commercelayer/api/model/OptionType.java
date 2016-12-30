@@ -10,11 +10,11 @@ import java.util.Objects;
  */
 public class OptionType extends ApiResource {
 
-	private static final long serialVersionUID = -1483037217849L;
+	private static final long serialVersionUID = -1483100361577L;
 
 
 	private String name;
-	private Integer productTypeId;
+	private String productTypeId;
 	@JsonExclude
 	private List<String> images;
 	@JsonExclude
@@ -25,8 +25,6 @@ public class OptionType extends ApiResource {
 	private Object productType;
 	@JsonExclude
 	private List<String> resourceImages;
-	@JsonExclude
-	private String slug;
 	@JsonExclude
 	private List<String> translations;
 	@JsonExclude
@@ -64,44 +62,23 @@ public class OptionType extends ApiResource {
 	}
 	
 
-	public void setSlug(String slug) {
-		this.slug = slug;
-	}
-	
-
-	public String getSlug() {
-		return this.slug;
-	}
-	
-
-	public OptionType slug(String slug) {
-		setSlug(slug);
-		return this;
-	}
-	
-
-	public String slug() {
-		return getSlug();
-	}
-	
-
-	public void setProductTypeId(Integer productTypeId) {
+	public void setProductTypeId(String productTypeId) {
 		this.productTypeId = productTypeId;
 	}
 	
 
-	public Integer getProductTypeId() {
+	public String getProductTypeId() {
 		return this.productTypeId;
 	}
 	
 
-	public OptionType productTypeId(Integer productTypeId) {
+	public OptionType productTypeId(String productTypeId) {
 		setProductTypeId(productTypeId);
 		return this;
 	}
 	
 
-	public Integer productTypeId() {
+	public String productTypeId() {
 		return getProductTypeId();
 	}
 	
@@ -263,7 +240,6 @@ public class OptionType extends ApiResource {
 	
 		return super.equals(o)
 			&& Objects.equals(this.name, x.name)
-			&& Objects.equals(this.slug, x.slug)
 			&& Objects.equals(this.productTypeId, x.productTypeId)
 			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.productType, x.productType)
@@ -281,9 +257,8 @@ public class OptionType extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, slug, productTypeId, previousChanges, productType,
-			resourceImages, images, translations, optionValues, variants
-			
+			name, productTypeId, previousChanges, productType, resourceImages,
+			images, translations, optionValues, variants 
 		);
 	
 	}
@@ -294,8 +269,9 @@ public class OptionType extends ApiResource {
 	
 		OptionType no = new OptionType();
 	
+		no = super.clone(no);
+	
 		no.name = this.name;
-		no.slug = this.slug;
 		no.productTypeId = this.productTypeId;
 		no.previousChanges = this.previousChanges;
 		no.productType = this.productType;

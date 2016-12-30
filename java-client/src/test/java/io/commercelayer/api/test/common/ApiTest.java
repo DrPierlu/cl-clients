@@ -3,7 +3,6 @@ package io.commercelayer.api.test.common;
 import java.util.Random;
 
 import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.junit.Assert;
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -41,24 +40,32 @@ public abstract class ApiTest<T extends ApiResource> {
 	public abstract void runTest() throws ApiException;
 	
 		
-	public int randomValue() {
-		return random.nextInt(1000);
+	protected int randomValue() {
+		return randomValue(1000000);
 	}
 	
-	public String randomString() {
+	protected int randomValue(int bound) {
+		return random.nextInt(bound);
+	}
+	
+	protected boolean randomBoolean() {
+		return random.nextBoolean();
+	}
+	
+	protected String randomSuffix() {
 		return StringUtils.leftPad(String.valueOf(randomValue()), 6, '0');
 	}
-
-	public String randomField(String field) {
+	
+	protected String randomField(String field) {
 		if (field == null) return field;
 		else {
 			if (!StringUtils.isEmpty(field)) field = field.concat("_");
-			return field.concat(randomString());
+			return field.concat(randomSuffix());
 		}
 	}
 	
 	
-	protected ApiSearchResponse<T> testSearch(ApiSearchRequest request, Class<T> resourceType, ApiCaller caller) {
+	protected ApiSearchResponse<T> testSearch(ApiSearchRequest request, Class<T> resourceType, ApiCaller caller, boolean enableAssertions) {
 		
 		logger.info("Executing test ... [{}, {}]", request.getOperation(), resourceType.getSimpleName());
 		
@@ -68,14 +75,22 @@ public abstract class ApiTest<T extends ApiResource> {
 		
 		try {
 			
+			logger.info("********** Test Start");
+			
 			response = caller.search(request, resourceType);
 			
-			if (response.hasError()) System.out.println(response.getApiError().getError());
-			else System.out.println(ToStringBuilder.reflectionToString(response.getItemList(), LogUtils.TO_STRING_STYLE));
+			if (response != null)
+				if (response.hasError()) logger.error("Error: {}", response.getApiError().getError());
+				// else logger.info("Output: {}", ToStringBuilder.reflectionToString(response.getItemList(), LogUtils.TO_STRING_STYLE));
+				else logger.info("Response items count: {}", (response.getItemList() == null)? null : response.getItemList().size());
 			
 			
-		} catch (ApiException e) {
+		}
+		catch (ApiException e) {
 			logger.error(LogUtils.printStackTrace(e));
+		}
+		finally {
+			logger.info("********** Test End");
 		}
 		
 		return response;
@@ -130,11 +145,11 @@ public abstract class ApiTest<T extends ApiResource> {
 			}
 			else
 			if (operation instanceof DeleteOperation) {
-				testDelete((ApiRequest<DeleteOperation>)request, resourceType, caller, enableAssertions);
+				response = testDelete((ApiRequest<DeleteOperation>)request, resourceType, caller, enableAssertions);
 			}
 			else
 			if (operation instanceof MoveOperation) {
-				response = caller.move((ApiRequest<MoveOperation>)request, resourceType);
+				response = testMove((ApiRequest<MoveOperation>)request, resourceType, caller, enableAssertions);
 			}
 			
 
@@ -253,7 +268,7 @@ public abstract class ApiTest<T extends ApiResource> {
 	}
 	
 	
-	private ApiResponse<T> testMove(ApiRequest<MoveOperation> request, Class<T> resourceType, ApiCaller caller) throws ApiException {
+	private ApiResponse<T> testMove(ApiRequest<MoveOperation> request, Class<T> resourceType, ApiCaller caller, boolean enablAssertions) throws ApiException {
 		
 		ApiResponse<T> response = caller.move(request, resourceType);
 		

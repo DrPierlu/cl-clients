@@ -9,15 +9,13 @@ import java.util.Objects;
  */
 public class State extends ApiResource {
 
-	private static final long serialVersionUID = -1483037217938L;
+	private static final long serialVersionUID = -1483100361805L;
 
 
 	private String code;
-	private Integer countryId;
+	private String countryId;
 	@JsonExclude
 	private Object country;
-	@JsonExclude
-	private String name;
 	@JsonExclude
 	private Object previousChanges;
 
@@ -32,44 +30,23 @@ public class State extends ApiResource {
 	}
 	
 
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-
-	public String getName() {
-		return this.name;
-	}
-	
-
-	public State name(String name) {
-		setName(name);
-		return this;
-	}
-	
-
-	public String name() {
-		return getName();
-	}
-	
-
-	public void setCountryId(Integer countryId) {
+	public void setCountryId(String countryId) {
 		this.countryId = countryId;
 	}
 	
 
-	public Integer getCountryId() {
+	public String getCountryId() {
 		return this.countryId;
 	}
 	
 
-	public State countryId(Integer countryId) {
+	public State countryId(String countryId) {
 		setCountryId(countryId);
 		return this;
 	}
 	
 
-	public Integer countryId() {
+	public String countryId() {
 		return getCountryId();
 	}
 	
@@ -146,7 +123,6 @@ public class State extends ApiResource {
 		State x = (State)o;
 	
 		return super.equals(o)
-			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.countryId, x.countryId)
 			&& Objects.equals(this.code, x.code)
 			&& Objects.equals(this.previousChanges, x.previousChanges)
@@ -160,8 +136,7 @@ public class State extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, countryId, code, previousChanges, country
-			
+			countryId, code, previousChanges, country 
 		);
 	
 	}
@@ -172,7 +147,8 @@ public class State extends ApiResource {
 	
 		State no = new State();
 	
-		no.name = this.name;
+		no = super.clone(no);
+	
 		no.countryId = this.countryId;
 		no.code = this.code;
 		no.previousChanges = this.previousChanges;

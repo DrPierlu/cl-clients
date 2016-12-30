@@ -10,7 +10,7 @@ import java.util.Objects;
  */
 public class Organization extends ApiResource {
 
-	private static final long serialVersionUID = -1483037217860L;
+	private static final long serialVersionUID = -1483100361620L;
 
 
 	private String name;
@@ -124,6 +124,8 @@ public class Organization extends ApiResource {
 	public Organization clone() {
 	
 		Organization no = new Organization();
+	
+		no = super.clone(no);
 	
 		no.name = this.name;
 		no.previousChanges = this.previousChanges;

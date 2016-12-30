@@ -10,7 +10,7 @@ import java.util.Objects;
  */
 public class ProductType extends ApiResource {
 
-	private static final long serialVersionUID = -1483037217884L;
+	private static final long serialVersionUID = -1483100361675L;
 
 
 	private String name;
@@ -269,6 +269,8 @@ public class ProductType extends ApiResource {
 	public ProductType clone() {
 	
 		ProductType no = new ProductType();
+	
+		no = super.clone(no);
 	
 		no.name = this.name;
 		no.previousChanges = this.previousChanges;

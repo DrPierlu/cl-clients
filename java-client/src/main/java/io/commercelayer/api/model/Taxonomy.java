@@ -10,7 +10,7 @@ import java.util.Objects;
  */
 public class Taxonomy extends ApiResource {
 
-	private static final long serialVersionUID = -1483037217945L;
+	private static final long serialVersionUID = -1483100361836L;
 
 
 	private String name;
@@ -22,8 +22,6 @@ public class Taxonomy extends ApiResource {
 	private List<String> products;
 	@JsonExclude
 	private List<String> resourceImages;
-	@JsonExclude
-	private String slug;
 	@JsonExclude
 	private List<String> taxons;
 	@JsonExclude
@@ -58,27 +56,6 @@ public class Taxonomy extends ApiResource {
 
 	public String name() {
 		return getName();
-	}
-	
-
-	public void setSlug(String slug) {
-		this.slug = slug;
-	}
-	
-
-	public String getSlug() {
-		return this.slug;
-	}
-	
-
-	public Taxonomy slug(String slug) {
-		setSlug(slug);
-		return this;
-	}
-	
-
-	public String slug() {
-		return getSlug();
 	}
 	
 
@@ -218,7 +195,6 @@ public class Taxonomy extends ApiResource {
 	
 		return super.equals(o)
 			&& Objects.equals(this.name, x.name)
-			&& Objects.equals(this.slug, x.slug)
 			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.resourceImages, x.resourceImages)
 			&& Objects.equals(this.images, x.images)
@@ -234,8 +210,8 @@ public class Taxonomy extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, slug, previousChanges, resourceImages, images,
-			translations, taxons, products 
+			name, previousChanges, resourceImages, images, translations,
+			taxons, products 
 		);
 	
 	}
@@ -246,8 +222,9 @@ public class Taxonomy extends ApiResource {
 	
 		Taxonomy no = new Taxonomy();
 	
+		no = super.clone(no);
+	
 		no.name = this.name;
-		no.slug = this.slug;
 		no.previousChanges = this.previousChanges;
 		no.resourceImages = this.resourceImages;
 		no.images = this.images;

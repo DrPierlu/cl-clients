@@ -10,12 +10,10 @@ import java.util.Objects;
  */
 public class Currency extends ApiResource {
 
-	private static final long serialVersionUID = -1483037217801L;
+	private static final long serialVersionUID = -1483100361469L;
 
 
 	private String code;
-	@JsonExclude
-	private String name;
 	@JsonExclude
 	private List<String> orderValidators;
 	@JsonExclude
@@ -35,27 +33,6 @@ public class Currency extends ApiResource {
 
 	public Currency(Long id) {
 		super(id);
-	}
-	
-
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-
-	public String getName() {
-		return this.name;
-	}
-	
-
-	public Currency name(String name) {
-		setName(name);
-		return this;
-	}
-	
-
-	public String name() {
-		return getName();
 	}
 	
 
@@ -194,7 +171,6 @@ public class Currency extends ApiResource {
 		Currency x = (Currency)o;
 	
 		return super.equals(o)
-			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.code, x.code)
 			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.priceLists, x.priceLists)
@@ -210,8 +186,8 @@ public class Currency extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, code, previousChanges, priceLists, prices,
-			orders, orderValidators 
+			code, previousChanges, priceLists, prices, orders,
+			orderValidators 
 		);
 	
 	}
@@ -222,7 +198,8 @@ public class Currency extends ApiResource {
 	
 		Currency no = new Currency();
 	
-		no.name = this.name;
+		no = super.clone(no);
+	
 		no.code = this.code;
 		no.previousChanges = this.previousChanges;
 		no.priceLists = this.priceLists;

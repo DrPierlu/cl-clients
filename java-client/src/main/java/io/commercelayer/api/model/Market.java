@@ -11,21 +11,19 @@ import java.util.Objects;
  */
 public class Market extends ApiResource {
 
-	private static final long serialVersionUID = -1483037217837L;
+	private static final long serialVersionUID = -1483100361529L;
 
 
-	private Integer catalogId;
-	private Integer channelId;
-	private Integer countryGroupId;
-	private Integer merchantId;
-	private Integer orderValidatorId;
-	private Integer priceListId;
+	private String catalogId;
+	private String channelId;
+	private String countryGroupId;
+	private String merchantId;
+	private String orderValidatorId;
+	private String priceListId;
 	@JsonExclude
 	private Object catalog;
 	@JsonExclude
 	private Object channel;
-	@JsonExclude
-	private List<String> countries;
 	@JsonExclude
 	private Object countryGroup;
 	@JsonExclude
@@ -40,8 +38,6 @@ public class Market extends ApiResource {
 	private List<String> marketStockLocations;
 	@JsonExclude
 	private Object merchant;
-	@JsonExclude
-	private String name;
 	@JsonExclude
 	private Object orderValidator;
 	@JsonExclude
@@ -70,149 +66,128 @@ public class Market extends ApiResource {
 	}
 	
 
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-
-	public String getName() {
-		return this.name;
-	}
-	
-
-	public Market name(String name) {
-		setName(name);
-		return this;
-	}
-	
-
-	public String name() {
-		return getName();
-	}
-	
-
-	public void setChannelId(Integer channelId) {
+	public void setChannelId(String channelId) {
 		this.channelId = channelId;
 	}
 	
 
-	public Integer getChannelId() {
+	public String getChannelId() {
 		return this.channelId;
 	}
 	
 
-	public Market channelId(Integer channelId) {
+	public Market channelId(String channelId) {
 		setChannelId(channelId);
 		return this;
 	}
 	
 
-	public Integer channelId() {
+	public String channelId() {
 		return getChannelId();
 	}
 	
 
-	public void setCountryGroupId(Integer countryGroupId) {
+	public void setCountryGroupId(String countryGroupId) {
 		this.countryGroupId = countryGroupId;
 	}
 	
 
-	public Integer getCountryGroupId() {
+	public String getCountryGroupId() {
 		return this.countryGroupId;
 	}
 	
 
-	public Market countryGroupId(Integer countryGroupId) {
+	public Market countryGroupId(String countryGroupId) {
 		setCountryGroupId(countryGroupId);
 		return this;
 	}
 	
 
-	public Integer countryGroupId() {
+	public String countryGroupId() {
 		return getCountryGroupId();
 	}
 	
 
-	public void setMerchantId(Integer merchantId) {
+	public void setMerchantId(String merchantId) {
 		this.merchantId = merchantId;
 	}
 	
 
-	public Integer getMerchantId() {
+	public String getMerchantId() {
 		return this.merchantId;
 	}
 	
 
-	public Market merchantId(Integer merchantId) {
+	public Market merchantId(String merchantId) {
 		setMerchantId(merchantId);
 		return this;
 	}
 	
 
-	public Integer merchantId() {
+	public String merchantId() {
 		return getMerchantId();
 	}
 	
 
-	public void setCatalogId(Integer catalogId) {
+	public void setCatalogId(String catalogId) {
 		this.catalogId = catalogId;
 	}
 	
 
-	public Integer getCatalogId() {
+	public String getCatalogId() {
 		return this.catalogId;
 	}
 	
 
-	public Market catalogId(Integer catalogId) {
+	public Market catalogId(String catalogId) {
 		setCatalogId(catalogId);
 		return this;
 	}
 	
 
-	public Integer catalogId() {
+	public String catalogId() {
 		return getCatalogId();
 	}
 	
 
-	public void setPriceListId(Integer priceListId) {
+	public void setPriceListId(String priceListId) {
 		this.priceListId = priceListId;
 	}
 	
 
-	public Integer getPriceListId() {
+	public String getPriceListId() {
 		return this.priceListId;
 	}
 	
 
-	public Market priceListId(Integer priceListId) {
+	public Market priceListId(String priceListId) {
 		setPriceListId(priceListId);
 		return this;
 	}
 	
 
-	public Integer priceListId() {
+	public String priceListId() {
 		return getPriceListId();
 	}
 	
 
-	public void setOrderValidatorId(Integer orderValidatorId) {
+	public void setOrderValidatorId(String orderValidatorId) {
 		this.orderValidatorId = orderValidatorId;
 	}
 	
 
-	public Integer getOrderValidatorId() {
+	public String getOrderValidatorId() {
 		return this.orderValidatorId;
 	}
 	
 
-	public Market orderValidatorId(Integer orderValidatorId) {
+	public Market orderValidatorId(String orderValidatorId) {
 		setOrderValidatorId(orderValidatorId);
 		return this;
 	}
 	
 
-	public Integer orderValidatorId() {
+	public String orderValidatorId() {
 		return getOrderValidatorId();
 	}
 	
@@ -574,27 +549,6 @@ public class Market extends ApiResource {
 	}
 	
 
-	public void setCountries(List<String> countries) {
-		this.countries = countries;
-	}
-	
-
-	public List<String> getCountries() {
-		return this.countries;
-	}
-	
-
-	public Market countries(List<String> countries) {
-		setCountries(countries);
-		return this;
-	}
-	
-
-	public List<String> countries() {
-		return getCountries();
-	}
-	
-
 	@Override
 	public boolean equals(Object o) {
 	
@@ -604,7 +558,6 @@ public class Market extends ApiResource {
 		Market x = (Market)o;
 	
 		return super.equals(o)
-			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.channelId, x.channelId)
 			&& Objects.equals(this.countryGroupId, x.countryGroupId)
 			&& Objects.equals(this.merchantId, x.merchantId)
@@ -628,7 +581,6 @@ public class Market extends ApiResource {
 			&& Objects.equals(this.shippingServices, x.shippingServices)
 			&& Objects.equals(this.paymentTypes, x.paymentTypes)
 			&& Objects.equals(this.shippingZones, x.shippingZones)
-			&& Objects.equals(this.countries, x.countries)
 		;
 	
 	}
@@ -638,12 +590,11 @@ public class Market extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, channelId, countryGroupId, merchantId, catalogId,
-			priceListId, orderValidatorId, lastResetIndexAt, previousChanges, merchant,
-			countryGroup, catalog, priceList, channel, orderValidator,
-			marketStockLocations, marketShippingServices, marketPaymentTypes, lineItemStocks, stockLocations,
-			stockItems, shippingServices, paymentTypes, shippingZones, countries
-			
+			channelId, countryGroupId, merchantId, catalogId, priceListId,
+			orderValidatorId, lastResetIndexAt, previousChanges, merchant, countryGroup,
+			catalog, priceList, channel, orderValidator, marketStockLocations,
+			marketShippingServices, marketPaymentTypes, lineItemStocks, stockLocations, stockItems,
+			shippingServices, paymentTypes, shippingZones 
 		);
 	
 	}
@@ -654,7 +605,8 @@ public class Market extends ApiResource {
 	
 		Market no = new Market();
 	
-		no.name = this.name;
+		no = super.clone(no);
+	
 		no.channelId = this.channelId;
 		no.countryGroupId = this.countryGroupId;
 		no.merchantId = this.merchantId;
@@ -678,7 +630,6 @@ public class Market extends ApiResource {
 		no.shippingServices = this.shippingServices;
 		no.paymentTypes = this.paymentTypes;
 		no.shippingZones = this.shippingZones;
-		no.countries = this.countries;
 	
 		return no;
 	
