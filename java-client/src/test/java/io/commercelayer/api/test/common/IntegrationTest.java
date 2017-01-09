@@ -21,7 +21,8 @@ public abstract class IntegrationTest<T extends ApiResource> extends ApiTest<T> 
 		
 		ApiResponse<T> updRes = testUpdate(getRes.getResource(), caller);
 		
-		/* ApiResponse<T> delRes = */testDelete(updRes.getResource(), caller);
+		@SuppressWarnings("unused")
+		ApiResponse<T> delRes = testDelete(updRes.getResource(), caller);
 		
 	}
 	
