@@ -58,10 +58,12 @@ public abstract class ApiTest<T extends ApiResource> {
 	
 	protected String randomField(String field) {
 		if (field == null) return field;
-		else {
-			if (!StringUtils.isEmpty(field)) field = field.concat("_");
-			return field.concat(randomSuffix());
-		}
+		else return suffix(field, randomSuffix());
+	}
+	
+	protected String suffix(String str, String suffix) {
+		if (!StringUtils.isEmpty(str)) str = str.concat("_");
+		return str.concat(suffix);
 	}
 	
 	

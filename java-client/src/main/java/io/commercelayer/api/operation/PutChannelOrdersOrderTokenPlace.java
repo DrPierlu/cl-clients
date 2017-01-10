@@ -1,11 +1,11 @@
 package io.commercelayer.api.operation;
 
-import io.commercelayer.api.operation.common.PostOperation;
+import io.commercelayer.api.operation.common.PutOperation;
 
 /**
- * PostChannelOrdersOrderTokenPlace
+ * PutChannelOrdersOrderTokenPlace
  */
-public class PostChannelOrdersOrderTokenPlace extends PostOperation {
+public class PutChannelOrdersOrderTokenPlace extends PutOperation {
 
 	public static final String OPERATION_PATH = "/channel/orders/{order_token}/place";
 
@@ -15,8 +15,13 @@ public class PostChannelOrdersOrderTokenPlace extends PostOperation {
 	}
 
 
-	public PostChannelOrdersOrderTokenPlace() {
+	public PutChannelOrdersOrderTokenPlace() {
 		super(OPERATION_PATH);
+	}
+	
+
+	public PutChannelOrdersOrderTokenPlace(Long id) {
+		super(OPERATION_PATH, id);
 	}
 	
 

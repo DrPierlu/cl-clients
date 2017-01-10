@@ -10,7 +10,7 @@ import java.util.Objects;
  */
 public class Role extends ApiResource {
 
-	private static final long serialVersionUID = -1483100361712L;
+	private static final long serialVersionUID = -1484058603103L;
 
 
 	private String name;
@@ -18,8 +18,6 @@ public class Role extends ApiResource {
 	private List<String> consumerRoles;
 	@JsonExclude
 	private List<String> consumers;
-	@JsonExclude
-	private String description;
 	@JsonExclude
 	private List<String> permissions;
 	@JsonExclude
@@ -54,27 +52,6 @@ public class Role extends ApiResource {
 
 	public String name() {
 		return getName();
-	}
-	
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-	
-
-	public String getDescription() {
-		return this.description;
-	}
-	
-
-	public Role description(String description) {
-		setDescription(description);
-		return this;
-	}
-	
-
-	public String description() {
-		return getDescription();
 	}
 	
 
@@ -172,7 +149,6 @@ public class Role extends ApiResource {
 	
 		return super.equals(o)
 			&& Objects.equals(this.name, x.name)
-			&& Objects.equals(this.description, x.description)
 			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.consumerRoles, x.consumerRoles)
 			&& Objects.equals(this.consumers, x.consumers)
@@ -186,8 +162,8 @@ public class Role extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, description, previousChanges, consumerRoles, consumers,
-			permissions 
+			name, previousChanges, consumerRoles, consumers, permissions
+			
 		);
 	
 	}
@@ -201,7 +177,6 @@ public class Role extends ApiResource {
 		no = super.clone(no);
 	
 		no.name = this.name;
-		no.description = this.description;
 		no.previousChanges = this.previousChanges;
 		no.consumerRoles = this.consumerRoles;
 		no.consumers = this.consumers;

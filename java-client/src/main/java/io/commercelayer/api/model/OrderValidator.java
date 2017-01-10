@@ -9,33 +9,35 @@ import java.util.Objects;
  */
 public class OrderValidator extends ApiResource {
 
-	private static final long serialVersionUID = -1483100361612L;
+	private static final long serialVersionUID = -1484058602961L;
 
 
 	@JsonExclude
 	private Object currency;
 	@JsonExclude
-	private String currencyId;
+	private Integer currencyId;
 	@JsonExclude
 	private String formattedOrderTotalMax;
 	@JsonExclude
 	private String formattedOrderTotalMin;
 	@JsonExclude
-	private String orderItemsMax;
+	private String name;
 	@JsonExclude
-	private String orderItemsMin;
+	private Integer orderItemsMax;
+	@JsonExclude
+	private Integer orderItemsMin;
 	@JsonExclude
 	private String orderTotalMax;
 	@JsonExclude
-	private String orderTotalMaxCents;
+	private Integer orderTotalMaxCents;
 	@JsonExclude
 	private String orderTotalMin;
 	@JsonExclude
-	private String orderTotalMinCents;
+	private Integer orderTotalMinCents;
 	@JsonExclude
 	private String paymentMethodAction;
 	@JsonExclude
-	private String paymentMethodRequiredPercentage;
+	private Integer paymentMethodRequiredPercentage;
 	@JsonExclude
 	private Object previousChanges;
 
@@ -50,107 +52,128 @@ public class OrderValidator extends ApiResource {
 	}
 	
 
-	public void setCurrencyId(String currencyId) {
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+
+	public String getName() {
+		return this.name;
+	}
+	
+
+	public OrderValidator name(String name) {
+		setName(name);
+		return this;
+	}
+	
+
+	public String name() {
+		return getName();
+	}
+	
+
+	public void setCurrencyId(Integer currencyId) {
 		this.currencyId = currencyId;
 	}
 	
 
-	public String getCurrencyId() {
+	public Integer getCurrencyId() {
 		return this.currencyId;
 	}
 	
 
-	public OrderValidator currencyId(String currencyId) {
+	public OrderValidator currencyId(Integer currencyId) {
 		setCurrencyId(currencyId);
 		return this;
 	}
 	
 
-	public String currencyId() {
+	public Integer currencyId() {
 		return getCurrencyId();
 	}
 	
 
-	public void setOrderTotalMinCents(String orderTotalMinCents) {
+	public void setOrderTotalMinCents(Integer orderTotalMinCents) {
 		this.orderTotalMinCents = orderTotalMinCents;
 	}
 	
 
-	public String getOrderTotalMinCents() {
+	public Integer getOrderTotalMinCents() {
 		return this.orderTotalMinCents;
 	}
 	
 
-	public OrderValidator orderTotalMinCents(String orderTotalMinCents) {
+	public OrderValidator orderTotalMinCents(Integer orderTotalMinCents) {
 		setOrderTotalMinCents(orderTotalMinCents);
 		return this;
 	}
 	
 
-	public String orderTotalMinCents() {
+	public Integer orderTotalMinCents() {
 		return getOrderTotalMinCents();
 	}
 	
 
-	public void setOrderTotalMaxCents(String orderTotalMaxCents) {
+	public void setOrderTotalMaxCents(Integer orderTotalMaxCents) {
 		this.orderTotalMaxCents = orderTotalMaxCents;
 	}
 	
 
-	public String getOrderTotalMaxCents() {
+	public Integer getOrderTotalMaxCents() {
 		return this.orderTotalMaxCents;
 	}
 	
 
-	public OrderValidator orderTotalMaxCents(String orderTotalMaxCents) {
+	public OrderValidator orderTotalMaxCents(Integer orderTotalMaxCents) {
 		setOrderTotalMaxCents(orderTotalMaxCents);
 		return this;
 	}
 	
 
-	public String orderTotalMaxCents() {
+	public Integer orderTotalMaxCents() {
 		return getOrderTotalMaxCents();
 	}
 	
 
-	public void setOrderItemsMin(String orderItemsMin) {
+	public void setOrderItemsMin(Integer orderItemsMin) {
 		this.orderItemsMin = orderItemsMin;
 	}
 	
 
-	public String getOrderItemsMin() {
+	public Integer getOrderItemsMin() {
 		return this.orderItemsMin;
 	}
 	
 
-	public OrderValidator orderItemsMin(String orderItemsMin) {
+	public OrderValidator orderItemsMin(Integer orderItemsMin) {
 		setOrderItemsMin(orderItemsMin);
 		return this;
 	}
 	
 
-	public String orderItemsMin() {
+	public Integer orderItemsMin() {
 		return getOrderItemsMin();
 	}
 	
 
-	public void setOrderItemsMax(String orderItemsMax) {
+	public void setOrderItemsMax(Integer orderItemsMax) {
 		this.orderItemsMax = orderItemsMax;
 	}
 	
 
-	public String getOrderItemsMax() {
+	public Integer getOrderItemsMax() {
 		return this.orderItemsMax;
 	}
 	
 
-	public OrderValidator orderItemsMax(String orderItemsMax) {
+	public OrderValidator orderItemsMax(Integer orderItemsMax) {
 		setOrderItemsMax(orderItemsMax);
 		return this;
 	}
 	
 
-	public String orderItemsMax() {
+	public Integer orderItemsMax() {
 		return getOrderItemsMax();
 	}
 	
@@ -176,23 +199,23 @@ public class OrderValidator extends ApiResource {
 	}
 	
 
-	public void setPaymentMethodRequiredPercentage(String paymentMethodRequiredPercentage) {
+	public void setPaymentMethodRequiredPercentage(Integer paymentMethodRequiredPercentage) {
 		this.paymentMethodRequiredPercentage = paymentMethodRequiredPercentage;
 	}
 	
 
-	public String getPaymentMethodRequiredPercentage() {
+	public Integer getPaymentMethodRequiredPercentage() {
 		return this.paymentMethodRequiredPercentage;
 	}
 	
 
-	public OrderValidator paymentMethodRequiredPercentage(String paymentMethodRequiredPercentage) {
+	public OrderValidator paymentMethodRequiredPercentage(Integer paymentMethodRequiredPercentage) {
 		setPaymentMethodRequiredPercentage(paymentMethodRequiredPercentage);
 		return this;
 	}
 	
 
-	public String paymentMethodRequiredPercentage() {
+	public Integer paymentMethodRequiredPercentage() {
 		return getPaymentMethodRequiredPercentage();
 	}
 	
@@ -332,6 +355,7 @@ public class OrderValidator extends ApiResource {
 		OrderValidator x = (OrderValidator)o;
 	
 		return super.equals(o)
+			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.currencyId, x.currencyId)
 			&& Objects.equals(this.orderTotalMinCents, x.orderTotalMinCents)
 			&& Objects.equals(this.orderTotalMaxCents, x.orderTotalMaxCents)
@@ -354,9 +378,9 @@ public class OrderValidator extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			currencyId, orderTotalMinCents, orderTotalMaxCents, orderItemsMin, orderItemsMax,
-			paymentMethodAction, paymentMethodRequiredPercentage, previousChanges, currency, orderTotalMin,
-			formattedOrderTotalMin, orderTotalMax, formattedOrderTotalMax 
+			name, currencyId, orderTotalMinCents, orderTotalMaxCents, orderItemsMin,
+			orderItemsMax, paymentMethodAction, paymentMethodRequiredPercentage, previousChanges, currency,
+			orderTotalMin, formattedOrderTotalMin, orderTotalMax, formattedOrderTotalMax 
 		);
 	
 	}
@@ -369,6 +393,7 @@ public class OrderValidator extends ApiResource {
 	
 		no = super.clone(no);
 	
+		no.name = this.name;
 		no.currencyId = this.currencyId;
 		no.orderTotalMinCents = this.orderTotalMinCents;
 		no.orderTotalMaxCents = this.orderTotalMaxCents;

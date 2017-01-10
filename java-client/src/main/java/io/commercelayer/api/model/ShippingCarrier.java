@@ -10,11 +10,11 @@ import java.util.Objects;
  */
 public class ShippingCarrier extends ApiResource {
 
-	private static final long serialVersionUID = -1483100361718L;
+	private static final long serialVersionUID = -1484058603109L;
 
 
 	private String name;
-	private String shippingCarrierTypeId;
+	private Integer shippingCarrierTypeId;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
@@ -33,23 +33,23 @@ public class ShippingCarrier extends ApiResource {
 	}
 	
 
-	public void setShippingCarrierTypeId(String shippingCarrierTypeId) {
+	public void setShippingCarrierTypeId(Integer shippingCarrierTypeId) {
 		this.shippingCarrierTypeId = shippingCarrierTypeId;
 	}
 	
 
-	public String getShippingCarrierTypeId() {
+	public Integer getShippingCarrierTypeId() {
 		return this.shippingCarrierTypeId;
 	}
 	
 
-	public ShippingCarrier shippingCarrierTypeId(String shippingCarrierTypeId) {
+	public ShippingCarrier shippingCarrierTypeId(Integer shippingCarrierTypeId) {
 		setShippingCarrierTypeId(shippingCarrierTypeId);
 		return this;
 	}
 	
 
-	public String shippingCarrierTypeId() {
+	public Integer shippingCarrierTypeId() {
 		return getShippingCarrierTypeId();
 	}
 	

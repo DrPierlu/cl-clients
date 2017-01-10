@@ -9,11 +9,11 @@ import java.util.Objects;
  */
 public class MarketShippingService extends ApiResource {
 
-	private static final long serialVersionUID = -1483100361546L;
+	private static final long serialVersionUID = -1484058602896L;
 
 
-	private String marketId;
-	private String shippingServiceId;
+	private Integer marketId;
+	private Integer shippingServiceId;
 	@JsonExclude
 	private String formattedFreeOverAmount;
 	@JsonExclude
@@ -21,15 +21,17 @@ public class MarketShippingService extends ApiResource {
 	@JsonExclude
 	private String freeOverAmount;
 	@JsonExclude
-	private String freeOverAmountCents;
+	private Integer freeOverAmountCents;
 	@JsonExclude
 	private Object market;
+	@JsonExclude
+	private String name;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
 	private String price;
 	@JsonExclude
-	private String priceCents;
+	private Integer priceCents;
 	@JsonExclude
 	private Object shippingService;
 
@@ -44,86 +46,107 @@ public class MarketShippingService extends ApiResource {
 	}
 	
 
-	public void setMarketId(String marketId) {
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+
+	public String getName() {
+		return this.name;
+	}
+	
+
+	public MarketShippingService name(String name) {
+		setName(name);
+		return this;
+	}
+	
+
+	public String name() {
+		return getName();
+	}
+	
+
+	public void setMarketId(Integer marketId) {
 		this.marketId = marketId;
 	}
 	
 
-	public String getMarketId() {
+	public Integer getMarketId() {
 		return this.marketId;
 	}
 	
 
-	public MarketShippingService marketId(String marketId) {
+	public MarketShippingService marketId(Integer marketId) {
 		setMarketId(marketId);
 		return this;
 	}
 	
 
-	public String marketId() {
+	public Integer marketId() {
 		return getMarketId();
 	}
 	
 
-	public void setShippingServiceId(String shippingServiceId) {
+	public void setShippingServiceId(Integer shippingServiceId) {
 		this.shippingServiceId = shippingServiceId;
 	}
 	
 
-	public String getShippingServiceId() {
+	public Integer getShippingServiceId() {
 		return this.shippingServiceId;
 	}
 	
 
-	public MarketShippingService shippingServiceId(String shippingServiceId) {
+	public MarketShippingService shippingServiceId(Integer shippingServiceId) {
 		setShippingServiceId(shippingServiceId);
 		return this;
 	}
 	
 
-	public String shippingServiceId() {
+	public Integer shippingServiceId() {
 		return getShippingServiceId();
 	}
 	
 
-	public void setPriceCents(String priceCents) {
+	public void setPriceCents(Integer priceCents) {
 		this.priceCents = priceCents;
 	}
 	
 
-	public String getPriceCents() {
+	public Integer getPriceCents() {
 		return this.priceCents;
 	}
 	
 
-	public MarketShippingService priceCents(String priceCents) {
+	public MarketShippingService priceCents(Integer priceCents) {
 		setPriceCents(priceCents);
 		return this;
 	}
 	
 
-	public String priceCents() {
+	public Integer priceCents() {
 		return getPriceCents();
 	}
 	
 
-	public void setFreeOverAmountCents(String freeOverAmountCents) {
+	public void setFreeOverAmountCents(Integer freeOverAmountCents) {
 		this.freeOverAmountCents = freeOverAmountCents;
 	}
 	
 
-	public String getFreeOverAmountCents() {
+	public Integer getFreeOverAmountCents() {
 		return this.freeOverAmountCents;
 	}
 	
 
-	public MarketShippingService freeOverAmountCents(String freeOverAmountCents) {
+	public MarketShippingService freeOverAmountCents(Integer freeOverAmountCents) {
 		setFreeOverAmountCents(freeOverAmountCents);
 		return this;
 	}
 	
 
-	public String freeOverAmountCents() {
+	public Integer freeOverAmountCents() {
 		return getFreeOverAmountCents();
 	}
 	
@@ -284,6 +307,7 @@ public class MarketShippingService extends ApiResource {
 		MarketShippingService x = (MarketShippingService)o;
 	
 		return super.equals(o)
+			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.marketId, x.marketId)
 			&& Objects.equals(this.shippingServiceId, x.shippingServiceId)
 			&& Objects.equals(this.priceCents, x.priceCents)
@@ -304,9 +328,9 @@ public class MarketShippingService extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			marketId, shippingServiceId, priceCents, freeOverAmountCents, previousChanges,
-			market, shippingService, price, formattedPrice, freeOverAmount,
-			formattedFreeOverAmount 
+			name, marketId, shippingServiceId, priceCents, freeOverAmountCents,
+			previousChanges, market, shippingService, price, formattedPrice,
+			freeOverAmount, formattedFreeOverAmount 
 		);
 	
 	}
@@ -319,6 +343,7 @@ public class MarketShippingService extends ApiResource {
 	
 		no = super.clone(no);
 	
+		no.name = this.name;
 		no.marketId = this.marketId;
 		no.shippingServiceId = this.shippingServiceId;
 		no.priceCents = this.priceCents;

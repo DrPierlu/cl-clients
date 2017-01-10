@@ -10,7 +10,7 @@ import java.util.Objects;
  */
 public class User extends ApiResource {
 
-	private static final long serialVersionUID = -1483100361843L;
+	private static final long serialVersionUID = -1484058603283L;
 
 
 	private String email;
@@ -20,6 +20,8 @@ public class User extends ApiResource {
 	private List<String> consumerRoles;
 	@JsonExclude
 	private List<String> images;
+	@JsonExclude
+	private String name;
 	@JsonExclude
 	private String passwordHash;
 	@JsonExclude
@@ -41,6 +43,27 @@ public class User extends ApiResource {
 
 	public User(Long id) {
 		super(id);
+	}
+	
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+
+	public String getName() {
+		return this.name;
+	}
+	
+
+	public User name(String name) {
+		setName(name);
+		return this;
+	}
+	
+
+	public String name() {
+		return getName();
 	}
 	
 
@@ -284,6 +307,7 @@ public class User extends ApiResource {
 		User x = (User)o;
 	
 		return super.equals(o)
+			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.firstName, x.firstName)
 			&& Objects.equals(this.lastName, x.lastName)
 			&& Objects.equals(this.email, x.email)
@@ -304,9 +328,9 @@ public class User extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			firstName, lastName, email, passwordHash, passwordSalt,
-			previousChanges, consumerRoles, roles, permissions, resourceImages,
-			images 
+			name, firstName, lastName, email, passwordHash,
+			passwordSalt, previousChanges, consumerRoles, roles, permissions,
+			resourceImages, images 
 		);
 	
 	}
@@ -319,6 +343,7 @@ public class User extends ApiResource {
 	
 		no = super.clone(no);
 	
+		no.name = this.name;
 		no.firstName = this.firstName;
 		no.lastName = this.lastName;
 		no.email = this.email;

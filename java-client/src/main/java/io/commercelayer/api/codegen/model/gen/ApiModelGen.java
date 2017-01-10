@@ -427,6 +427,7 @@ public class ApiModelGen {
 			for (Parameter p : op.getParameters()) {
 				if (sb.length() > 0) sb.append('\n');
 				String name = ModelUtils.getObjectField(p.getName(), true);
+				// if (IdOperation.class.isAssignableFrom(mc.getExtendedClass().getTypeClass()) && (IdOperation.PARAM_ID.equals(name))) continue;
 				sb.append("addRequiredField(\"").append(name).append("\");");
 			}
 			

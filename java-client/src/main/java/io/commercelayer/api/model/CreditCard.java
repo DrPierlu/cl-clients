@@ -10,18 +10,16 @@ import java.util.Objects;
  */
 public class CreditCard extends ApiResource {
 
-	private static final long serialVersionUID = -1483100361456L;
+	private static final long serialVersionUID = -1484058602802L;
 
 
 	private String firstName;
 	private String lastName;
-	private String month;
+	private Integer month;
 	private String number;
-	private String year;
+	private Integer year;
 	@JsonExclude
 	private String cardResource;
-	@JsonExclude
-	private String data;
 	@JsonExclude
 	private String eligibleForCardUpdater;
 	@JsonExclude
@@ -32,6 +30,8 @@ public class CreditCard extends ApiResource {
 	private String firstSixDigits;
 	@JsonExclude
 	private String lastFourDigits;
+	@JsonExclude
+	private String name;
 	@JsonExclude
 	private List<String> paymentMethods;
 	@JsonExclude
@@ -53,6 +53,27 @@ public class CreditCard extends ApiResource {
 
 	public CreditCard(Long id) {
 		super(id);
+	}
+	
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+
+	public String getName() {
+		return this.name;
+	}
+	
+
+	public CreditCard name(String name) {
+		setName(name);
+		return this;
+	}
+	
+
+	public String name() {
+		return getName();
 	}
 	
 
@@ -224,44 +245,44 @@ public class CreditCard extends ApiResource {
 	}
 	
 
-	public void setMonth(String month) {
+	public void setMonth(Integer month) {
 		this.month = month;
 	}
 	
 
-	public String getMonth() {
+	public Integer getMonth() {
 		return this.month;
 	}
 	
 
-	public CreditCard month(String month) {
+	public CreditCard month(Integer month) {
 		setMonth(month);
 		return this;
 	}
 	
 
-	public String month() {
+	public Integer month() {
 		return getMonth();
 	}
 	
 
-	public void setYear(String year) {
+	public void setYear(Integer year) {
 		this.year = year;
 	}
 	
 
-	public String getYear() {
+	public Integer getYear() {
 		return this.year;
 	}
 	
 
-	public CreditCard year(String year) {
+	public CreditCard year(Integer year) {
 		setYear(year);
 		return this;
 	}
 	
 
-	public String year() {
+	public Integer year() {
 		return getYear();
 	}
 	
@@ -305,27 +326,6 @@ public class CreditCard extends ApiResource {
 
 	public String email() {
 		return getEmail();
-	}
-	
-
-	public void setData(String data) {
-		this.data = data;
-	}
-	
-
-	public String getData() {
-		return this.data;
-	}
-	
-
-	public CreditCard data(String data) {
-		setData(data);
-		return this;
-	}
-	
-
-	public String data() {
-		return getData();
 	}
 	
 
@@ -443,6 +443,7 @@ public class CreditCard extends ApiResource {
 		CreditCard x = (CreditCard)o;
 	
 		return super.equals(o)
+			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.token, x.token)
 			&& Objects.equals(this.cardResource, x.cardResource)
 			&& Objects.equals(this.fingerprint, x.fingerprint)
@@ -455,7 +456,6 @@ public class CreditCard extends ApiResource {
 			&& Objects.equals(this.year, x.year)
 			&& Objects.equals(this.verificationValue, x.verificationValue)
 			&& Objects.equals(this.email, x.email)
-			&& Objects.equals(this.data, x.data)
 			&& Objects.equals(this.storageState, x.storageState)
 			&& Objects.equals(this.eligibleForCardUpdater, x.eligibleForCardUpdater)
 			&& Objects.equals(this.previousChanges, x.previousChanges)
@@ -470,9 +470,9 @@ public class CreditCard extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			token, cardResource, fingerprint, firstName, lastName,
-			number, lastFourDigits, firstSixDigits, month, year,
-			verificationValue, email, data, storageState, eligibleForCardUpdater,
+			name, token, cardResource, fingerprint, firstName,
+			lastName, number, lastFourDigits, firstSixDigits, month,
+			year, verificationValue, email, storageState, eligibleForCardUpdater,
 			previousChanges, transactions, paymentMethods 
 		);
 	
@@ -486,6 +486,7 @@ public class CreditCard extends ApiResource {
 	
 		no = super.clone(no);
 	
+		no.name = this.name;
 		no.token = this.token;
 		no.cardResource = this.cardResource;
 		no.fingerprint = this.fingerprint;
@@ -498,7 +499,6 @@ public class CreditCard extends ApiResource {
 		no.year = this.year;
 		no.verificationValue = this.verificationValue;
 		no.email = this.email;
-		no.data = this.data;
 		no.storageState = this.storageState;
 		no.eligibleForCardUpdater = this.eligibleForCardUpdater;
 		no.previousChanges = this.previousChanges;

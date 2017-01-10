@@ -9,18 +9,20 @@ import java.util.Objects;
  */
 public class MerchandisingRule extends ApiResource {
 
-	private static final long serialVersionUID = -1483100361570L;
+	private static final long serialVersionUID = -1484058602921L;
 
 
-	private String catalogId;
-	private String productId;
-	private String taxonId;
+	private Integer catalogId;
+	private Integer productId;
+	private Integer taxonId;
 	@JsonExclude
 	private Object catalog;
 	@JsonExclude
-	private String hero;
+	private Object hero;
 	@JsonExclude
-	private String position;
+	private String name;
+	@JsonExclude
+	private Integer position;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
@@ -39,107 +41,128 @@ public class MerchandisingRule extends ApiResource {
 	}
 	
 
-	public void setCatalogId(String catalogId) {
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+
+	public String getName() {
+		return this.name;
+	}
+	
+
+	public MerchandisingRule name(String name) {
+		setName(name);
+		return this;
+	}
+	
+
+	public String name() {
+		return getName();
+	}
+	
+
+	public void setCatalogId(Integer catalogId) {
 		this.catalogId = catalogId;
 	}
 	
 
-	public String getCatalogId() {
+	public Integer getCatalogId() {
 		return this.catalogId;
 	}
 	
 
-	public MerchandisingRule catalogId(String catalogId) {
+	public MerchandisingRule catalogId(Integer catalogId) {
 		setCatalogId(catalogId);
 		return this;
 	}
 	
 
-	public String catalogId() {
+	public Integer catalogId() {
 		return getCatalogId();
 	}
 	
 
-	public void setTaxonId(String taxonId) {
+	public void setTaxonId(Integer taxonId) {
 		this.taxonId = taxonId;
 	}
 	
 
-	public String getTaxonId() {
+	public Integer getTaxonId() {
 		return this.taxonId;
 	}
 	
 
-	public MerchandisingRule taxonId(String taxonId) {
+	public MerchandisingRule taxonId(Integer taxonId) {
 		setTaxonId(taxonId);
 		return this;
 	}
 	
 
-	public String taxonId() {
+	public Integer taxonId() {
 		return getTaxonId();
 	}
 	
 
-	public void setProductId(String productId) {
+	public void setProductId(Integer productId) {
 		this.productId = productId;
 	}
 	
 
-	public String getProductId() {
+	public Integer getProductId() {
 		return this.productId;
 	}
 	
 
-	public MerchandisingRule productId(String productId) {
+	public MerchandisingRule productId(Integer productId) {
 		setProductId(productId);
 		return this;
 	}
 	
 
-	public String productId() {
+	public Integer productId() {
 		return getProductId();
 	}
 	
 
-	public void setPosition(String position) {
+	public void setPosition(Integer position) {
 		this.position = position;
 	}
 	
 
-	public String getPosition() {
+	public Integer getPosition() {
 		return this.position;
 	}
 	
 
-	public MerchandisingRule position(String position) {
+	public MerchandisingRule position(Integer position) {
 		setPosition(position);
 		return this;
 	}
 	
 
-	public String position() {
+	public Integer position() {
 		return getPosition();
 	}
 	
 
-	public void setHero(String hero) {
+	public void setHero(Object hero) {
 		this.hero = hero;
 	}
 	
 
-	public String getHero() {
+	public Object getHero() {
 		return this.hero;
 	}
 	
 
-	public MerchandisingRule hero(String hero) {
+	public MerchandisingRule hero(Object hero) {
 		setHero(hero);
 		return this;
 	}
 	
 
-	public String hero() {
+	public Object hero() {
 		return getHero();
 	}
 	
@@ -237,6 +260,7 @@ public class MerchandisingRule extends ApiResource {
 		MerchandisingRule x = (MerchandisingRule)o;
 	
 		return super.equals(o)
+			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.catalogId, x.catalogId)
 			&& Objects.equals(this.taxonId, x.taxonId)
 			&& Objects.equals(this.productId, x.productId)
@@ -255,8 +279,9 @@ public class MerchandisingRule extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			catalogId, taxonId, productId, position, hero,
-			previousChanges, catalog, taxon, product 
+			name, catalogId, taxonId, productId, position,
+			hero, previousChanges, catalog, taxon, product
+			
 		);
 	
 	}
@@ -269,6 +294,7 @@ public class MerchandisingRule extends ApiResource {
 	
 		no = super.clone(no);
 	
+		no.name = this.name;
 		no.catalogId = this.catalogId;
 		no.taxonId = this.taxonId;
 		no.productId = this.productId;

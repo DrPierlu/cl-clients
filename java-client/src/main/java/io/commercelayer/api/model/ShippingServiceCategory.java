@@ -9,11 +9,13 @@ import java.util.Objects;
  */
 public class ShippingServiceCategory extends ApiResource {
 
-	private static final long serialVersionUID = -1483100361769L;
+	private static final long serialVersionUID = -1484058603200L;
 
 
-	private String shippingCategoryId;
-	private String shippingServiceId;
+	private Integer shippingCategoryId;
+	private Integer shippingServiceId;
+	@JsonExclude
+	private String name;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
@@ -32,44 +34,65 @@ public class ShippingServiceCategory extends ApiResource {
 	}
 	
 
-	public void setShippingServiceId(String shippingServiceId) {
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+
+	public String getName() {
+		return this.name;
+	}
+	
+
+	public ShippingServiceCategory name(String name) {
+		setName(name);
+		return this;
+	}
+	
+
+	public String name() {
+		return getName();
+	}
+	
+
+	public void setShippingServiceId(Integer shippingServiceId) {
 		this.shippingServiceId = shippingServiceId;
 	}
 	
 
-	public String getShippingServiceId() {
+	public Integer getShippingServiceId() {
 		return this.shippingServiceId;
 	}
 	
 
-	public ShippingServiceCategory shippingServiceId(String shippingServiceId) {
+	public ShippingServiceCategory shippingServiceId(Integer shippingServiceId) {
 		setShippingServiceId(shippingServiceId);
 		return this;
 	}
 	
 
-	public String shippingServiceId() {
+	public Integer shippingServiceId() {
 		return getShippingServiceId();
 	}
 	
 
-	public void setShippingCategoryId(String shippingCategoryId) {
+	public void setShippingCategoryId(Integer shippingCategoryId) {
 		this.shippingCategoryId = shippingCategoryId;
 	}
 	
 
-	public String getShippingCategoryId() {
+	public Integer getShippingCategoryId() {
 		return this.shippingCategoryId;
 	}
 	
 
-	public ShippingServiceCategory shippingCategoryId(String shippingCategoryId) {
+	public ShippingServiceCategory shippingCategoryId(Integer shippingCategoryId) {
 		setShippingCategoryId(shippingCategoryId);
 		return this;
 	}
 	
 
-	public String shippingCategoryId() {
+	public Integer shippingCategoryId() {
 		return getShippingCategoryId();
 	}
 	
@@ -146,6 +169,7 @@ public class ShippingServiceCategory extends ApiResource {
 		ShippingServiceCategory x = (ShippingServiceCategory)o;
 	
 		return super.equals(o)
+			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.shippingServiceId, x.shippingServiceId)
 			&& Objects.equals(this.shippingCategoryId, x.shippingCategoryId)
 			&& Objects.equals(this.previousChanges, x.previousChanges)
@@ -160,8 +184,8 @@ public class ShippingServiceCategory extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			shippingServiceId, shippingCategoryId, previousChanges, shippingService, shippingCategory
-			
+			name, shippingServiceId, shippingCategoryId, previousChanges, shippingService,
+			shippingCategory 
 		);
 	
 	}
@@ -174,6 +198,7 @@ public class ShippingServiceCategory extends ApiResource {
 	
 		no = super.clone(no);
 	
+		no.name = this.name;
 		no.shippingServiceId = this.shippingServiceId;
 		no.shippingCategoryId = this.shippingCategoryId;
 		no.previousChanges = this.previousChanges;

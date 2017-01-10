@@ -10,13 +10,13 @@ import java.util.Objects;
  */
 public class ShippingMethod extends ApiResource {
 
-	private static final long serialVersionUID = -1483100361745L;
+	private static final long serialVersionUID = -1484058603172L;
 
 
-	private String orderId;
-	private String shippingAddressId;
-	private String shippingPackageId;
-	private String shippingServiceId;
+	private Integer orderId;
+	private Integer shippingAddressId;
+	private Integer shippingPackageId;
+	private Integer shippingServiceId;
 	@JsonExclude
 	private String amount;
 	@JsonExclude
@@ -34,11 +34,13 @@ public class ShippingMethod extends ApiResource {
 	@JsonExclude
 	private String freeOverAmount;
 	@JsonExclude
-	private String freeOverAmountCents;
+	private Integer freeOverAmountCents;
 	@JsonExclude
 	private List<String> lineItemStocks;
 	@JsonExclude
 	private List<String> lineItems;
+	@JsonExclude
+	private String name;
 	@JsonExclude
 	private Object order;
 	@JsonExclude
@@ -46,7 +48,7 @@ public class ShippingMethod extends ApiResource {
 	@JsonExclude
 	private String price;
 	@JsonExclude
-	private String priceCents;
+	private Integer priceCents;
 	@JsonExclude
 	private List<String> shipments;
 	@JsonExclude
@@ -73,128 +75,149 @@ public class ShippingMethod extends ApiResource {
 	}
 	
 
-	public void setOrderId(String orderId) {
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+
+	public String getName() {
+		return this.name;
+	}
+	
+
+	public ShippingMethod name(String name) {
+		setName(name);
+		return this;
+	}
+	
+
+	public String name() {
+		return getName();
+	}
+	
+
+	public void setOrderId(Integer orderId) {
 		this.orderId = orderId;
 	}
 	
 
-	public String getOrderId() {
+	public Integer getOrderId() {
 		return this.orderId;
 	}
 	
 
-	public ShippingMethod orderId(String orderId) {
+	public ShippingMethod orderId(Integer orderId) {
 		setOrderId(orderId);
 		return this;
 	}
 	
 
-	public String orderId() {
+	public Integer orderId() {
 		return getOrderId();
 	}
 	
 
-	public void setShippingAddressId(String shippingAddressId) {
+	public void setShippingAddressId(Integer shippingAddressId) {
 		this.shippingAddressId = shippingAddressId;
 	}
 	
 
-	public String getShippingAddressId() {
+	public Integer getShippingAddressId() {
 		return this.shippingAddressId;
 	}
 	
 
-	public ShippingMethod shippingAddressId(String shippingAddressId) {
+	public ShippingMethod shippingAddressId(Integer shippingAddressId) {
 		setShippingAddressId(shippingAddressId);
 		return this;
 	}
 	
 
-	public String shippingAddressId() {
+	public Integer shippingAddressId() {
 		return getShippingAddressId();
 	}
 	
 
-	public void setShippingServiceId(String shippingServiceId) {
+	public void setShippingServiceId(Integer shippingServiceId) {
 		this.shippingServiceId = shippingServiceId;
 	}
 	
 
-	public String getShippingServiceId() {
+	public Integer getShippingServiceId() {
 		return this.shippingServiceId;
 	}
 	
 
-	public ShippingMethod shippingServiceId(String shippingServiceId) {
+	public ShippingMethod shippingServiceId(Integer shippingServiceId) {
 		setShippingServiceId(shippingServiceId);
 		return this;
 	}
 	
 
-	public String shippingServiceId() {
+	public Integer shippingServiceId() {
 		return getShippingServiceId();
 	}
 	
 
-	public void setShippingPackageId(String shippingPackageId) {
+	public void setShippingPackageId(Integer shippingPackageId) {
 		this.shippingPackageId = shippingPackageId;
 	}
 	
 
-	public String getShippingPackageId() {
+	public Integer getShippingPackageId() {
 		return this.shippingPackageId;
 	}
 	
 
-	public ShippingMethod shippingPackageId(String shippingPackageId) {
+	public ShippingMethod shippingPackageId(Integer shippingPackageId) {
 		setShippingPackageId(shippingPackageId);
 		return this;
 	}
 	
 
-	public String shippingPackageId() {
+	public Integer shippingPackageId() {
 		return getShippingPackageId();
 	}
 	
 
-	public void setPriceCents(String priceCents) {
+	public void setPriceCents(Integer priceCents) {
 		this.priceCents = priceCents;
 	}
 	
 
-	public String getPriceCents() {
+	public Integer getPriceCents() {
 		return this.priceCents;
 	}
 	
 
-	public ShippingMethod priceCents(String priceCents) {
+	public ShippingMethod priceCents(Integer priceCents) {
 		setPriceCents(priceCents);
 		return this;
 	}
 	
 
-	public String priceCents() {
+	public Integer priceCents() {
 		return getPriceCents();
 	}
 	
 
-	public void setFreeOverAmountCents(String freeOverAmountCents) {
+	public void setFreeOverAmountCents(Integer freeOverAmountCents) {
 		this.freeOverAmountCents = freeOverAmountCents;
 	}
 	
 
-	public String getFreeOverAmountCents() {
+	public Integer getFreeOverAmountCents() {
 		return this.freeOverAmountCents;
 	}
 	
 
-	public ShippingMethod freeOverAmountCents(String freeOverAmountCents) {
+	public ShippingMethod freeOverAmountCents(Integer freeOverAmountCents) {
 		setFreeOverAmountCents(freeOverAmountCents);
 		return this;
 	}
 	
 
-	public String freeOverAmountCents() {
+	public Integer freeOverAmountCents() {
 		return getFreeOverAmountCents();
 	}
 	
@@ -628,6 +651,7 @@ public class ShippingMethod extends ApiResource {
 		ShippingMethod x = (ShippingMethod)o;
 	
 		return super.equals(o)
+			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.orderId, x.orderId)
 			&& Objects.equals(this.shippingAddressId, x.shippingAddressId)
 			&& Objects.equals(this.shippingServiceId, x.shippingServiceId)
@@ -663,12 +687,12 @@ public class ShippingMethod extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			orderId, shippingAddressId, shippingServiceId, shippingPackageId, priceCents,
-			freeOverAmountCents, previousChanges, order, shippingPackage, shippingAddress,
-			shippingService, lineItemStocks, shipments, lineItems, amount,
-			formattedAmount, totalLineItemAmount, formattedTotalLineItemAmount, taxableAmount, formattedTaxableAmount,
-			taxAmount, formattedTaxAmount, price, formattedPrice, freeOverAmount,
-			formattedFreeOverAmount 
+			name, orderId, shippingAddressId, shippingServiceId, shippingPackageId,
+			priceCents, freeOverAmountCents, previousChanges, order, shippingPackage,
+			shippingAddress, shippingService, lineItemStocks, shipments, lineItems,
+			amount, formattedAmount, totalLineItemAmount, formattedTotalLineItemAmount, taxableAmount,
+			formattedTaxableAmount, taxAmount, formattedTaxAmount, price, formattedPrice,
+			freeOverAmount, formattedFreeOverAmount 
 		);
 	
 	}
@@ -681,6 +705,7 @@ public class ShippingMethod extends ApiResource {
 	
 		no = super.clone(no);
 	
+		no.name = this.name;
 		no.orderId = this.orderId;
 		no.shippingAddressId = this.shippingAddressId;
 		no.shippingServiceId = this.shippingServiceId;

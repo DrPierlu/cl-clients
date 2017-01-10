@@ -9,17 +9,19 @@ import java.util.Objects;
  */
 public class CountryLanguage extends ApiResource {
 
-	private static final long serialVersionUID = -1483100361431L;
+	private static final long serialVersionUID = -1484058602775L;
 
 
-	private String countryId;
-	private String languageId;
+	private Integer countryId;
+	private Integer languageId;
 	@JsonExclude
 	private Object country;
 	@JsonExclude
 	private Object language;
 	@JsonExclude
-	private String position;
+	private String name;
+	@JsonExclude
+	private Integer position;
 	@JsonExclude
 	private Object previousChanges;
 
@@ -34,65 +36,86 @@ public class CountryLanguage extends ApiResource {
 	}
 	
 
-	public void setCountryId(String countryId) {
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+
+	public String getName() {
+		return this.name;
+	}
+	
+
+	public CountryLanguage name(String name) {
+		setName(name);
+		return this;
+	}
+	
+
+	public String name() {
+		return getName();
+	}
+	
+
+	public void setCountryId(Integer countryId) {
 		this.countryId = countryId;
 	}
 	
 
-	public String getCountryId() {
+	public Integer getCountryId() {
 		return this.countryId;
 	}
 	
 
-	public CountryLanguage countryId(String countryId) {
+	public CountryLanguage countryId(Integer countryId) {
 		setCountryId(countryId);
 		return this;
 	}
 	
 
-	public String countryId() {
+	public Integer countryId() {
 		return getCountryId();
 	}
 	
 
-	public void setLanguageId(String languageId) {
+	public void setLanguageId(Integer languageId) {
 		this.languageId = languageId;
 	}
 	
 
-	public String getLanguageId() {
+	public Integer getLanguageId() {
 		return this.languageId;
 	}
 	
 
-	public CountryLanguage languageId(String languageId) {
+	public CountryLanguage languageId(Integer languageId) {
 		setLanguageId(languageId);
 		return this;
 	}
 	
 
-	public String languageId() {
+	public Integer languageId() {
 		return getLanguageId();
 	}
 	
 
-	public void setPosition(String position) {
+	public void setPosition(Integer position) {
 		this.position = position;
 	}
 	
 
-	public String getPosition() {
+	public Integer getPosition() {
 		return this.position;
 	}
 	
 
-	public CountryLanguage position(String position) {
+	public CountryLanguage position(Integer position) {
 		setPosition(position);
 		return this;
 	}
 	
 
-	public String position() {
+	public Integer position() {
 		return getPosition();
 	}
 	
@@ -169,6 +192,7 @@ public class CountryLanguage extends ApiResource {
 		CountryLanguage x = (CountryLanguage)o;
 	
 		return super.equals(o)
+			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.countryId, x.countryId)
 			&& Objects.equals(this.languageId, x.languageId)
 			&& Objects.equals(this.position, x.position)
@@ -184,8 +208,8 @@ public class CountryLanguage extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			countryId, languageId, position, previousChanges, country,
-			language 
+			name, countryId, languageId, position, previousChanges,
+			country, language 
 		);
 	
 	}
@@ -198,6 +222,7 @@ public class CountryLanguage extends ApiResource {
 	
 		no = super.clone(no);
 	
+		no.name = this.name;
 		no.countryId = this.countryId;
 		no.languageId = this.languageId;
 		no.position = this.position;

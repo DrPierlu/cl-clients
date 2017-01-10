@@ -13,6 +13,7 @@ public class PutAccountOrdersId extends PutOperation {
 	{
 		addRequiredField("channelId");
 		addRequiredField("countryId");
+		addRequiredField("customerId");
 		addRequiredField("id");
 	}
 

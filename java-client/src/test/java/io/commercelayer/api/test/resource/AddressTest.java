@@ -1,4 +1,4 @@
-package io.commercelayer.api.test;
+package io.commercelayer.api.test.resource;
 
 import org.junit.Assert;
 
@@ -6,10 +6,10 @@ import io.commercelayer.api.ApiCaller;
 import io.commercelayer.api.ApiRequest;
 import io.commercelayer.api.ApiResponse;
 import io.commercelayer.api.model.Address;
+import io.commercelayer.api.operation.DeleteAccountAddressesId;
 import io.commercelayer.api.operation.GetAccountAddressesId;
 import io.commercelayer.api.operation.PostAccountAddresses;
 import io.commercelayer.api.operation.PutAccountAddressesId;
-import io.commercelayer.api.operation.common.DeleteOperation;
 import io.commercelayer.api.operation.common.util.ApiOperations;
 import io.commercelayer.api.test.common.IntegrationTest;
 
@@ -97,10 +97,10 @@ public class AddressTest extends IntegrationTest<Address> {
 
 		// DELETE
 
-		DeleteOperation delOp = ApiOperations.DeleteAccountAddressesId();
+		DeleteAccountAddressesId delOp = ApiOperations.DeleteAccountAddressesId();
 		delOp.setId(res.getId());
 
-		ApiRequest<DeleteOperation> delReq = new ApiRequest<>(delOp);
+		ApiRequest<DeleteAccountAddressesId> delReq = new ApiRequest<>(delOp);
 
 		ApiResponse<Address> delRes = test(delReq, caller);
 

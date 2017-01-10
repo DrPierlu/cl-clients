@@ -9,16 +9,18 @@ import java.util.Objects;
  */
 public class ConsumerRole extends ApiResource {
 
-	private static final long serialVersionUID = -1483100361424L;
+	private static final long serialVersionUID = -1484058602761L;
 
 
-	private String consumerId;
+	private Integer consumerId;
 	private String consumerResource;
-	private String roleId;
+	private Integer roleId;
 	@JsonExclude
 	private Object consumer;
 	@JsonExclude
-	private String position;
+	private String name;
+	@JsonExclude
+	private Integer position;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
@@ -35,23 +37,44 @@ public class ConsumerRole extends ApiResource {
 	}
 	
 
-	public void setConsumerId(String consumerId) {
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+
+	public String getName() {
+		return this.name;
+	}
+	
+
+	public ConsumerRole name(String name) {
+		setName(name);
+		return this;
+	}
+	
+
+	public String name() {
+		return getName();
+	}
+	
+
+	public void setConsumerId(Integer consumerId) {
 		this.consumerId = consumerId;
 	}
 	
 
-	public String getConsumerId() {
+	public Integer getConsumerId() {
 		return this.consumerId;
 	}
 	
 
-	public ConsumerRole consumerId(String consumerId) {
+	public ConsumerRole consumerId(Integer consumerId) {
 		setConsumerId(consumerId);
 		return this;
 	}
 	
 
-	public String consumerId() {
+	public Integer consumerId() {
 		return getConsumerId();
 	}
 	
@@ -77,44 +100,44 @@ public class ConsumerRole extends ApiResource {
 	}
 	
 
-	public void setRoleId(String roleId) {
+	public void setRoleId(Integer roleId) {
 		this.roleId = roleId;
 	}
 	
 
-	public String getRoleId() {
+	public Integer getRoleId() {
 		return this.roleId;
 	}
 	
 
-	public ConsumerRole roleId(String roleId) {
+	public ConsumerRole roleId(Integer roleId) {
 		setRoleId(roleId);
 		return this;
 	}
 	
 
-	public String roleId() {
+	public Integer roleId() {
 		return getRoleId();
 	}
 	
 
-	public void setPosition(String position) {
+	public void setPosition(Integer position) {
 		this.position = position;
 	}
 	
 
-	public String getPosition() {
+	public Integer getPosition() {
 		return this.position;
 	}
 	
 
-	public ConsumerRole position(String position) {
+	public ConsumerRole position(Integer position) {
 		setPosition(position);
 		return this;
 	}
 	
 
-	public String position() {
+	public Integer position() {
 		return getPosition();
 	}
 	
@@ -191,6 +214,7 @@ public class ConsumerRole extends ApiResource {
 		ConsumerRole x = (ConsumerRole)o;
 	
 		return super.equals(o)
+			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.consumerId, x.consumerId)
 			&& Objects.equals(this.consumerResource, x.consumerResource)
 			&& Objects.equals(this.roleId, x.roleId)
@@ -207,8 +231,8 @@ public class ConsumerRole extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			consumerId, consumerResource, roleId, position, previousChanges,
-			consumer, role 
+			name, consumerId, consumerResource, roleId, position,
+			previousChanges, consumer, role 
 		);
 	
 	}
@@ -221,6 +245,7 @@ public class ConsumerRole extends ApiResource {
 	
 		no = super.clone(no);
 	
+		no.name = this.name;
 		no.consumerId = this.consumerId;
 		no.consumerResource = this.consumerResource;
 		no.roleId = this.roleId;

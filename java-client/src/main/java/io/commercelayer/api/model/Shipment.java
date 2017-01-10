@@ -10,13 +10,14 @@ import java.util.Objects;
  */
 public class Shipment extends ApiResource {
 
-	private static final long serialVersionUID = -1483100361797L;
+	private static final long serialVersionUID = -1484058603232L;
 
 
 	private List<String> lineItemStocks;
-	private String orderId;
-	private String shippingMethodId;
-	private String stockLocationId;
+	private String name;
+	private Integer orderId;
+	private Integer shippingMethodId;
+	private Integer stockLocationId;
 	@JsonExclude
 	private Object order;
 	@JsonExclude
@@ -37,65 +38,86 @@ public class Shipment extends ApiResource {
 	}
 	
 
-	public void setOrderId(String orderId) {
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+
+	public String getName() {
+		return this.name;
+	}
+	
+
+	public Shipment name(String name) {
+		setName(name);
+		return this;
+	}
+	
+
+	public String name() {
+		return getName();
+	}
+	
+
+	public void setOrderId(Integer orderId) {
 		this.orderId = orderId;
 	}
 	
 
-	public String getOrderId() {
+	public Integer getOrderId() {
 		return this.orderId;
 	}
 	
 
-	public Shipment orderId(String orderId) {
+	public Shipment orderId(Integer orderId) {
 		setOrderId(orderId);
 		return this;
 	}
 	
 
-	public String orderId() {
+	public Integer orderId() {
 		return getOrderId();
 	}
 	
 
-	public void setStockLocationId(String stockLocationId) {
+	public void setStockLocationId(Integer stockLocationId) {
 		this.stockLocationId = stockLocationId;
 	}
 	
 
-	public String getStockLocationId() {
+	public Integer getStockLocationId() {
 		return this.stockLocationId;
 	}
 	
 
-	public Shipment stockLocationId(String stockLocationId) {
+	public Shipment stockLocationId(Integer stockLocationId) {
 		setStockLocationId(stockLocationId);
 		return this;
 	}
 	
 
-	public String stockLocationId() {
+	public Integer stockLocationId() {
 		return getStockLocationId();
 	}
 	
 
-	public void setShippingMethodId(String shippingMethodId) {
+	public void setShippingMethodId(Integer shippingMethodId) {
 		this.shippingMethodId = shippingMethodId;
 	}
 	
 
-	public String getShippingMethodId() {
+	public Integer getShippingMethodId() {
 		return this.shippingMethodId;
 	}
 	
 
-	public Shipment shippingMethodId(String shippingMethodId) {
+	public Shipment shippingMethodId(Integer shippingMethodId) {
 		setShippingMethodId(shippingMethodId);
 		return this;
 	}
 	
 
-	public String shippingMethodId() {
+	public Integer shippingMethodId() {
 		return getShippingMethodId();
 	}
 	
@@ -214,6 +236,7 @@ public class Shipment extends ApiResource {
 		Shipment x = (Shipment)o;
 	
 		return super.equals(o)
+			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.orderId, x.orderId)
 			&& Objects.equals(this.stockLocationId, x.stockLocationId)
 			&& Objects.equals(this.shippingMethodId, x.shippingMethodId)
@@ -231,8 +254,8 @@ public class Shipment extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			orderId, stockLocationId, shippingMethodId, previousChanges, order,
-			stockLocation, shippingMethod, lineItemStocks 
+			name, orderId, stockLocationId, shippingMethodId, previousChanges,
+			order, stockLocation, shippingMethod, lineItemStocks 
 		);
 	
 	}
@@ -245,6 +268,7 @@ public class Shipment extends ApiResource {
 	
 		no = super.clone(no);
 	
+		no.name = this.name;
 		no.orderId = this.orderId;
 		no.stockLocationId = this.stockLocationId;
 		no.shippingMethodId = this.shippingMethodId;

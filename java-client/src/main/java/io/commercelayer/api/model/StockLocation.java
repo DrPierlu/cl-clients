@@ -10,14 +10,18 @@ import java.util.Objects;
  */
 public class StockLocation extends ApiResource {
 
-	private static final long serialVersionUID = -1483100361820L;
+	private static final long serialVersionUID = -1484058603257L;
 
 
 	private String name;
 	@JsonExclude
 	private List<String> lineItemStocks;
 	@JsonExclude
-	private String position;
+	private List<String> marketStockLocations;
+	@JsonExclude
+	private List<String> markets;
+	@JsonExclude
+	private Integer position;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
@@ -59,23 +63,23 @@ public class StockLocation extends ApiResource {
 	}
 	
 
-	public void setPosition(String position) {
+	public void setPosition(Integer position) {
 		this.position = position;
 	}
 	
 
-	public String getPosition() {
+	public Integer getPosition() {
 		return this.position;
 	}
 	
 
-	public StockLocation position(String position) {
+	public StockLocation position(Integer position) {
 		setPosition(position);
 		return this;
 	}
 	
 
-	public String position() {
+	public Integer position() {
 		return getPosition();
 	}
 	
@@ -164,6 +168,27 @@ public class StockLocation extends ApiResource {
 	}
 	
 
+	public void setMarketStockLocations(List<String> marketStockLocations) {
+		this.marketStockLocations = marketStockLocations;
+	}
+	
+
+	public List<String> getMarketStockLocations() {
+		return this.marketStockLocations;
+	}
+	
+
+	public StockLocation marketStockLocations(List<String> marketStockLocations) {
+		setMarketStockLocations(marketStockLocations);
+		return this;
+	}
+	
+
+	public List<String> marketStockLocations() {
+		return getMarketStockLocations();
+	}
+	
+
 	public void setShippingServices(List<String> shippingServices) {
 		this.shippingServices = shippingServices;
 	}
@@ -185,6 +210,27 @@ public class StockLocation extends ApiResource {
 	}
 	
 
+	public void setMarkets(List<String> markets) {
+		this.markets = markets;
+	}
+	
+
+	public List<String> getMarkets() {
+		return this.markets;
+	}
+	
+
+	public StockLocation markets(List<String> markets) {
+		setMarkets(markets);
+		return this;
+	}
+	
+
+	public List<String> markets() {
+		return getMarkets();
+	}
+	
+
 	@Override
 	public boolean equals(Object o) {
 	
@@ -200,7 +246,9 @@ public class StockLocation extends ApiResource {
 			&& Objects.equals(this.stockItems, x.stockItems)
 			&& Objects.equals(this.lineItemStocks, x.lineItemStocks)
 			&& Objects.equals(this.shippingServiceStockLocations, x.shippingServiceStockLocations)
+			&& Objects.equals(this.marketStockLocations, x.marketStockLocations)
 			&& Objects.equals(this.shippingServices, x.shippingServices)
+			&& Objects.equals(this.markets, x.markets)
 		;
 	
 	}
@@ -211,7 +259,7 @@ public class StockLocation extends ApiResource {
 	
 		return Objects.hash(
 			name, position, previousChanges, stockItems, lineItemStocks,
-			shippingServiceStockLocations, shippingServices 
+			shippingServiceStockLocations, marketStockLocations, shippingServices, markets 
 		);
 	
 	}
@@ -230,7 +278,9 @@ public class StockLocation extends ApiResource {
 		no.stockItems = this.stockItems;
 		no.lineItemStocks = this.lineItemStocks;
 		no.shippingServiceStockLocations = this.shippingServiceStockLocations;
+		no.marketStockLocations = this.marketStockLocations;
 		no.shippingServices = this.shippingServices;
+		no.markets = this.markets;
 	
 		return no;
 	

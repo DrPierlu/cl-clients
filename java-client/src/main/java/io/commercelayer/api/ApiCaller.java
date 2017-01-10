@@ -234,8 +234,7 @@ public class ApiCaller {
 	
 	private HttpResponse call(HttpRequest request) throws ConnectionException, ApiException, AuthException, SystemException {
 
-		if ((apiToken == null) || apiToken.getAccessToken() == null)
-			throw new AuthException("No access_token defined");
+		if ((apiToken == null) || apiToken.getAccessToken() == null) throw new AuthException("No access_token defined");
 
 		HttpResponse response = null;
 
@@ -270,7 +269,7 @@ public class ApiCaller {
 			}
 		}
 
-		//  logger.trace("Response Body: {}", ApiConfig.testModeEnabled()? ApiUtils.formatJson(response.getBody()) : response.getBody());
+		// logger.trace("Response Body: {}", ApiConfig.testModeEnabled()? ApiUtils.formatJson(response.getBody()) : response.getBody());
 		// logger.trace("Response Body: {}", response.getBody());
 
 		return response;

@@ -10,11 +10,11 @@ import java.util.Objects;
  */
 public class Environment extends ApiResource {
 
-	private static final long serialVersionUID = -1483100361483L;
+	private static final long serialVersionUID = -1484058602829L;
 
 
 	private String name;
-	private String organizationId;
+	private Integer organizationId;
 	@JsonExclude
 	private List<String> addresses;
 	@JsonExclude
@@ -72,6 +72,8 @@ public class Environment extends ApiResource {
 	@JsonExclude
 	private List<String> paymentTypes;
 	@JsonExclude
+	private List<String> paypalAccounts;
+	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
 	private List<String> priceLists;
@@ -89,6 +91,8 @@ public class Environment extends ApiResource {
 	private List<String> propertyValues;
 	@JsonExclude
 	private List<String> resourceImages;
+	@JsonExclude
+	private List<String> shipments;
 	@JsonExclude
 	private List<String> shippingCarrierTypes;
 	@JsonExclude
@@ -109,6 +113,8 @@ public class Environment extends ApiResource {
 	private List<String> shippingServiceZones;
 	@JsonExclude
 	private List<String> shippingServices;
+	@JsonExclude
+	private List<String> shippingZones;
 	@JsonExclude
 	private List<String> states;
 	@JsonExclude
@@ -139,23 +145,23 @@ public class Environment extends ApiResource {
 	}
 	
 
-	public void setOrganizationId(String organizationId) {
+	public void setOrganizationId(Integer organizationId) {
 		this.organizationId = organizationId;
 	}
 	
 
-	public String getOrganizationId() {
+	public Integer getOrganizationId() {
 		return this.organizationId;
 	}
 	
 
-	public Environment organizationId(String organizationId) {
+	public Environment organizationId(Integer organizationId) {
 		setOrganizationId(organizationId);
 		return this;
 	}
 	
 
-	public String organizationId() {
+	public Integer organizationId() {
 		return getOrganizationId();
 	}
 	
@@ -790,6 +796,27 @@ public class Environment extends ApiResource {
 	}
 	
 
+	public void setPaypalAccounts(List<String> paypalAccounts) {
+		this.paypalAccounts = paypalAccounts;
+	}
+	
+
+	public List<String> getPaypalAccounts() {
+		return this.paypalAccounts;
+	}
+	
+
+	public Environment paypalAccounts(List<String> paypalAccounts) {
+		setPaypalAccounts(paypalAccounts);
+		return this;
+	}
+	
+
+	public List<String> paypalAccounts() {
+		return getPaypalAccounts();
+	}
+	
+
 	public void setPriceLists(List<String> priceLists) {
 		this.priceLists = priceLists;
 	}
@@ -955,6 +982,27 @@ public class Environment extends ApiResource {
 
 	public List<String> resourceImages() {
 		return getResourceImages();
+	}
+	
+
+	public void setShipments(List<String> shipments) {
+		this.shipments = shipments;
+	}
+	
+
+	public List<String> getShipments() {
+		return this.shipments;
+	}
+	
+
+	public Environment shipments(List<String> shipments) {
+		setShipments(shipments);
+		return this;
+	}
+	
+
+	public List<String> shipments() {
+		return getShipments();
 	}
 	
 
@@ -1144,6 +1192,27 @@ public class Environment extends ApiResource {
 
 	public List<String> shippingServiceZones() {
 		return getShippingServiceZones();
+	}
+	
+
+	public void setShippingZones(List<String> shippingZones) {
+		this.shippingZones = shippingZones;
+	}
+	
+
+	public List<String> getShippingZones() {
+		return this.shippingZones;
+	}
+	
+
+	public Environment shippingZones(List<String> shippingZones) {
+		setShippingZones(shippingZones);
+		return this;
+	}
+	
+
+	public List<String> shippingZones() {
+		return getShippingZones();
 	}
 	
 
@@ -1397,6 +1466,7 @@ public class Environment extends ApiResource {
 			&& Objects.equals(this.gateways, x.gateways)
 			&& Objects.equals(this.paymentTypes, x.paymentTypes)
 			&& Objects.equals(this.paymentMethods, x.paymentMethods)
+			&& Objects.equals(this.paypalAccounts, x.paypalAccounts)
 			&& Objects.equals(this.priceLists, x.priceLists)
 			&& Objects.equals(this.prices, x.prices)
 			&& Objects.equals(this.products, x.products)
@@ -1405,6 +1475,7 @@ public class Environment extends ApiResource {
 			&& Objects.equals(this.propertyTypes, x.propertyTypes)
 			&& Objects.equals(this.propertyValues, x.propertyValues)
 			&& Objects.equals(this.resourceImages, x.resourceImages)
+			&& Objects.equals(this.shipments, x.shipments)
 			&& Objects.equals(this.shippingCarrierTypes, x.shippingCarrierTypes)
 			&& Objects.equals(this.shippingCategories, x.shippingCategories)
 			&& Objects.equals(this.shippingLabels, x.shippingLabels)
@@ -1414,6 +1485,7 @@ public class Environment extends ApiResource {
 			&& Objects.equals(this.shippingServiceCategories, x.shippingServiceCategories)
 			&& Objects.equals(this.shippingServiceStockLocations, x.shippingServiceStockLocations)
 			&& Objects.equals(this.shippingServiceZones, x.shippingServiceZones)
+			&& Objects.equals(this.shippingZones, x.shippingZones)
 			&& Objects.equals(this.states, x.states)
 			&& Objects.equals(this.stockLocations, x.stockLocations)
 			&& Objects.equals(this.stockItems, x.stockItems)
@@ -1439,12 +1511,13 @@ public class Environment extends ApiResource {
 			lineItems, lineItemStocks, markets, shippingCarriers, marketPaymentTypes,
 			marketShippingServices, marketStockLocations, merchants, merchandisingRules, optionTypes,
 			optionValues, orders, orderValidators, gateways, paymentTypes,
-			paymentMethods, priceLists, prices, products, productTypes,
-			productProperties, propertyTypes, propertyValues, resourceImages, shippingCarrierTypes,
-			shippingCategories, shippingLabels, shippingMethods, shippingPackages, shippingServices,
-			shippingServiceCategories, shippingServiceStockLocations, shippingServiceZones, states, stockLocations,
-			stockItems, taxonomies, taxons, consumerRoles, variantOptions,
-			variants, webhooks, wireTransfers 
+			paymentMethods, paypalAccounts, priceLists, prices, products,
+			productTypes, productProperties, propertyTypes, propertyValues, resourceImages,
+			shipments, shippingCarrierTypes, shippingCategories, shippingLabels, shippingMethods,
+			shippingPackages, shippingServices, shippingServiceCategories, shippingServiceStockLocations, shippingServiceZones,
+			shippingZones, states, stockLocations, stockItems, taxonomies,
+			taxons, consumerRoles, variantOptions, variants, webhooks,
+			wireTransfers 
 		);
 	
 	}
@@ -1488,6 +1561,7 @@ public class Environment extends ApiResource {
 		no.gateways = this.gateways;
 		no.paymentTypes = this.paymentTypes;
 		no.paymentMethods = this.paymentMethods;
+		no.paypalAccounts = this.paypalAccounts;
 		no.priceLists = this.priceLists;
 		no.prices = this.prices;
 		no.products = this.products;
@@ -1496,6 +1570,7 @@ public class Environment extends ApiResource {
 		no.propertyTypes = this.propertyTypes;
 		no.propertyValues = this.propertyValues;
 		no.resourceImages = this.resourceImages;
+		no.shipments = this.shipments;
 		no.shippingCarrierTypes = this.shippingCarrierTypes;
 		no.shippingCategories = this.shippingCategories;
 		no.shippingLabels = this.shippingLabels;
@@ -1505,6 +1580,7 @@ public class Environment extends ApiResource {
 		no.shippingServiceCategories = this.shippingServiceCategories;
 		no.shippingServiceStockLocations = this.shippingServiceStockLocations;
 		no.shippingServiceZones = this.shippingServiceZones;
+		no.shippingZones = this.shippingZones;
 		no.states = this.states;
 		no.stockLocations = this.stockLocations;
 		no.stockItems = this.stockItems;

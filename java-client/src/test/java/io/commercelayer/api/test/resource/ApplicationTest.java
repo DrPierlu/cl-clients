@@ -1,4 +1,4 @@
-package io.commercelayer.api.test;
+package io.commercelayer.api.test.resource;
 
 import org.junit.Assert;
 
@@ -6,10 +6,10 @@ import io.commercelayer.api.ApiCaller;
 import io.commercelayer.api.ApiRequest;
 import io.commercelayer.api.ApiResponse;
 import io.commercelayer.api.model.Application;
+import io.commercelayer.api.operation.DeleteAccountApplicationsId;
 import io.commercelayer.api.operation.GetAccountApplicationsId;
 import io.commercelayer.api.operation.PostAccountApplications;
 import io.commercelayer.api.operation.PutAccountApplicationsId;
-import io.commercelayer.api.operation.common.DeleteOperation;
 import io.commercelayer.api.operation.common.util.ApiOperations;
 import io.commercelayer.api.test.common.IntegrationTest;
 
@@ -27,7 +27,7 @@ public class ApplicationTest extends IntegrationTest<Application> {
 
 		Application a = new Application();
 
-		a.setName("Application_1");
+		a.setName(randomField("Application"));
 
 		postOp.setPayload(a);
 
@@ -70,7 +70,7 @@ public class ApplicationTest extends IntegrationTest<Application> {
 
 		Application a = new Application();
 
-		a.setName("Application_1.2");
+		a.setName(randomField(oldRes.getName()));
 
 		putOp.setPayload(a);
 
@@ -89,10 +89,10 @@ public class ApplicationTest extends IntegrationTest<Application> {
 
 		// DELETE
 
-		DeleteOperation delOp = ApiOperations.DeleteAccountAddressesId();
+		DeleteAccountApplicationsId delOp = ApiOperations.DeleteAccountApplicationsId();
 		delOp.setId(res.getId());
 
-		ApiRequest<DeleteOperation> delReq = new ApiRequest<>(delOp);
+		ApiRequest<DeleteAccountApplicationsId> delReq = new ApiRequest<>(delOp);
 
 		ApiResponse<Application> delRes = test(delReq, caller);
 

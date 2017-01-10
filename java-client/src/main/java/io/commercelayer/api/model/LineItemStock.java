@@ -9,57 +9,55 @@ import java.util.Objects;
  */
 public class LineItemStock extends ApiResource {
 
-	private static final long serialVersionUID = -1483100361520L;
+	private static final long serialVersionUID = -1484058602868L;
 
 
-	private String lineItemId;
-	private String stockItemId;
-	@JsonExclude
-	private String availableShippingServiceIds;
+	private Integer lineItemId;
+	private Integer stockItemId;
 	@JsonExclude
 	private Object country;
 	@JsonExclude
-	private String countryId;
+	private Integer countryId;
 	@JsonExclude
 	private Object lineItem;
 	@JsonExclude
 	private Object market;
 	@JsonExclude
-	private String marketId;
+	private Integer marketId;
 	@JsonExclude
-	private String matchingShippingZoneIds;
+	private String name;
 	@JsonExclude
 	private Object order;
 	@JsonExclude
-	private String orderId;
+	private Integer orderId;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
-	private String quantity;
+	private Integer quantity;
 	@JsonExclude
 	private Object sellable;
 	@JsonExclude
-	private String sellableId;
+	private Integer sellableId;
 	@JsonExclude
 	private String sellableResource;
 	@JsonExclude
 	private Object shipment;
 	@JsonExclude
-	private String shipmentId;
+	private Integer shipmentId;
 	@JsonExclude
 	private Object shippingCategory;
 	@JsonExclude
-	private String shippingCategoryId;
+	private Integer shippingCategoryId;
 	@JsonExclude
 	private Object shippingMethod;
 	@JsonExclude
-	private String shippingMethodId;
+	private Integer shippingMethodId;
 	@JsonExclude
 	private Object stockItem;
 	@JsonExclude
 	private Object stockLocation;
 	@JsonExclude
-	private String stockLocationId;
+	private Integer stockLocationId;
 
 
 	public LineItemStock() {
@@ -72,149 +70,170 @@ public class LineItemStock extends ApiResource {
 	}
 	
 
-	public void setOrderId(String orderId) {
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+
+	public String getName() {
+		return this.name;
+	}
+	
+
+	public LineItemStock name(String name) {
+		setName(name);
+		return this;
+	}
+	
+
+	public String name() {
+		return getName();
+	}
+	
+
+	public void setOrderId(Integer orderId) {
 		this.orderId = orderId;
 	}
 	
 
-	public String getOrderId() {
+	public Integer getOrderId() {
 		return this.orderId;
 	}
 	
 
-	public LineItemStock orderId(String orderId) {
+	public LineItemStock orderId(Integer orderId) {
 		setOrderId(orderId);
 		return this;
 	}
 	
 
-	public String orderId() {
+	public Integer orderId() {
 		return getOrderId();
 	}
 	
 
-	public void setMarketId(String marketId) {
+	public void setMarketId(Integer marketId) {
 		this.marketId = marketId;
 	}
 	
 
-	public String getMarketId() {
+	public Integer getMarketId() {
 		return this.marketId;
 	}
 	
 
-	public LineItemStock marketId(String marketId) {
+	public LineItemStock marketId(Integer marketId) {
 		setMarketId(marketId);
 		return this;
 	}
 	
 
-	public String marketId() {
+	public Integer marketId() {
 		return getMarketId();
 	}
 	
 
-	public void setCountryId(String countryId) {
+	public void setCountryId(Integer countryId) {
 		this.countryId = countryId;
 	}
 	
 
-	public String getCountryId() {
+	public Integer getCountryId() {
 		return this.countryId;
 	}
 	
 
-	public LineItemStock countryId(String countryId) {
+	public LineItemStock countryId(Integer countryId) {
 		setCountryId(countryId);
 		return this;
 	}
 	
 
-	public String countryId() {
+	public Integer countryId() {
 		return getCountryId();
 	}
 	
 
-	public void setShippingCategoryId(String shippingCategoryId) {
+	public void setShippingCategoryId(Integer shippingCategoryId) {
 		this.shippingCategoryId = shippingCategoryId;
 	}
 	
 
-	public String getShippingCategoryId() {
+	public Integer getShippingCategoryId() {
 		return this.shippingCategoryId;
 	}
 	
 
-	public LineItemStock shippingCategoryId(String shippingCategoryId) {
+	public LineItemStock shippingCategoryId(Integer shippingCategoryId) {
 		setShippingCategoryId(shippingCategoryId);
 		return this;
 	}
 	
 
-	public String shippingCategoryId() {
+	public Integer shippingCategoryId() {
 		return getShippingCategoryId();
 	}
 	
 
-	public void setLineItemId(String lineItemId) {
+	public void setLineItemId(Integer lineItemId) {
 		this.lineItemId = lineItemId;
 	}
 	
 
-	public String getLineItemId() {
+	public Integer getLineItemId() {
 		return this.lineItemId;
 	}
 	
 
-	public LineItemStock lineItemId(String lineItemId) {
+	public LineItemStock lineItemId(Integer lineItemId) {
 		setLineItemId(lineItemId);
 		return this;
 	}
 	
 
-	public String lineItemId() {
+	public Integer lineItemId() {
 		return getLineItemId();
 	}
 	
 
-	public void setStockItemId(String stockItemId) {
+	public void setStockItemId(Integer stockItemId) {
 		this.stockItemId = stockItemId;
 	}
 	
 
-	public String getStockItemId() {
+	public Integer getStockItemId() {
 		return this.stockItemId;
 	}
 	
 
-	public LineItemStock stockItemId(String stockItemId) {
+	public LineItemStock stockItemId(Integer stockItemId) {
 		setStockItemId(stockItemId);
 		return this;
 	}
 	
 
-	public String stockItemId() {
+	public Integer stockItemId() {
 		return getStockItemId();
 	}
 	
 
-	public void setSellableId(String sellableId) {
+	public void setSellableId(Integer sellableId) {
 		this.sellableId = sellableId;
 	}
 	
 
-	public String getSellableId() {
+	public Integer getSellableId() {
 		return this.sellableId;
 	}
 	
 
-	public LineItemStock sellableId(String sellableId) {
+	public LineItemStock sellableId(Integer sellableId) {
 		setSellableId(sellableId);
 		return this;
 	}
 	
 
-	public String sellableId() {
+	public Integer sellableId() {
 		return getSellableId();
 	}
 	
@@ -240,129 +259,87 @@ public class LineItemStock extends ApiResource {
 	}
 	
 
-	public void setStockLocationId(String stockLocationId) {
+	public void setStockLocationId(Integer stockLocationId) {
 		this.stockLocationId = stockLocationId;
 	}
 	
 
-	public String getStockLocationId() {
+	public Integer getStockLocationId() {
 		return this.stockLocationId;
 	}
 	
 
-	public LineItemStock stockLocationId(String stockLocationId) {
+	public LineItemStock stockLocationId(Integer stockLocationId) {
 		setStockLocationId(stockLocationId);
 		return this;
 	}
 	
 
-	public String stockLocationId() {
+	public Integer stockLocationId() {
 		return getStockLocationId();
 	}
 	
 
-	public void setShippingMethodId(String shippingMethodId) {
+	public void setShippingMethodId(Integer shippingMethodId) {
 		this.shippingMethodId = shippingMethodId;
 	}
 	
 
-	public String getShippingMethodId() {
+	public Integer getShippingMethodId() {
 		return this.shippingMethodId;
 	}
 	
 
-	public LineItemStock shippingMethodId(String shippingMethodId) {
+	public LineItemStock shippingMethodId(Integer shippingMethodId) {
 		setShippingMethodId(shippingMethodId);
 		return this;
 	}
 	
 
-	public String shippingMethodId() {
+	public Integer shippingMethodId() {
 		return getShippingMethodId();
 	}
 	
 
-	public void setShipmentId(String shipmentId) {
+	public void setShipmentId(Integer shipmentId) {
 		this.shipmentId = shipmentId;
 	}
 	
 
-	public String getShipmentId() {
+	public Integer getShipmentId() {
 		return this.shipmentId;
 	}
 	
 
-	public LineItemStock shipmentId(String shipmentId) {
+	public LineItemStock shipmentId(Integer shipmentId) {
 		setShipmentId(shipmentId);
 		return this;
 	}
 	
 
-	public String shipmentId() {
+	public Integer shipmentId() {
 		return getShipmentId();
 	}
 	
 
-	public void setQuantity(String quantity) {
+	public void setQuantity(Integer quantity) {
 		this.quantity = quantity;
 	}
 	
 
-	public String getQuantity() {
+	public Integer getQuantity() {
 		return this.quantity;
 	}
 	
 
-	public LineItemStock quantity(String quantity) {
+	public LineItemStock quantity(Integer quantity) {
 		setQuantity(quantity);
 		return this;
 	}
 	
 
-	public String quantity() {
+	public Integer quantity() {
 		return getQuantity();
-	}
-	
-
-	public void setMatchingShippingZoneIds(String matchingShippingZoneIds) {
-		this.matchingShippingZoneIds = matchingShippingZoneIds;
-	}
-	
-
-	public String getMatchingShippingZoneIds() {
-		return this.matchingShippingZoneIds;
-	}
-	
-
-	public LineItemStock matchingShippingZoneIds(String matchingShippingZoneIds) {
-		setMatchingShippingZoneIds(matchingShippingZoneIds);
-		return this;
-	}
-	
-
-	public String matchingShippingZoneIds() {
-		return getMatchingShippingZoneIds();
-	}
-	
-
-	public void setAvailableShippingServiceIds(String availableShippingServiceIds) {
-		this.availableShippingServiceIds = availableShippingServiceIds;
-	}
-	
-
-	public String getAvailableShippingServiceIds() {
-		return this.availableShippingServiceIds;
-	}
-	
-
-	public LineItemStock availableShippingServiceIds(String availableShippingServiceIds) {
-		setAvailableShippingServiceIds(availableShippingServiceIds);
-		return this;
-	}
-	
-
-	public String availableShippingServiceIds() {
-		return getAvailableShippingServiceIds();
 	}
 	
 
@@ -606,6 +583,7 @@ public class LineItemStock extends ApiResource {
 		LineItemStock x = (LineItemStock)o;
 	
 		return super.equals(o)
+			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.orderId, x.orderId)
 			&& Objects.equals(this.marketId, x.marketId)
 			&& Objects.equals(this.countryId, x.countryId)
@@ -618,8 +596,6 @@ public class LineItemStock extends ApiResource {
 			&& Objects.equals(this.shippingMethodId, x.shippingMethodId)
 			&& Objects.equals(this.shipmentId, x.shipmentId)
 			&& Objects.equals(this.quantity, x.quantity)
-			&& Objects.equals(this.matchingShippingZoneIds, x.matchingShippingZoneIds)
-			&& Objects.equals(this.availableShippingServiceIds, x.availableShippingServiceIds)
 			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.shippingCategory, x.shippingCategory)
 			&& Objects.equals(this.order, x.order)
@@ -640,12 +616,11 @@ public class LineItemStock extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			orderId, marketId, countryId, shippingCategoryId, lineItemId,
-			stockItemId, sellableId, sellableResource, stockLocationId, shippingMethodId,
-			shipmentId, quantity, matchingShippingZoneIds, availableShippingServiceIds, previousChanges,
-			shippingCategory, order, market, country, lineItem,
-			stockItem, sellable, stockLocation, shippingMethod, shipment
-			
+			name, orderId, marketId, countryId, shippingCategoryId,
+			lineItemId, stockItemId, sellableId, sellableResource, stockLocationId,
+			shippingMethodId, shipmentId, quantity, previousChanges, shippingCategory,
+			order, market, country, lineItem, stockItem,
+			sellable, stockLocation, shippingMethod, shipment 
 		);
 	
 	}
@@ -658,6 +633,7 @@ public class LineItemStock extends ApiResource {
 	
 		no = super.clone(no);
 	
+		no.name = this.name;
 		no.orderId = this.orderId;
 		no.marketId = this.marketId;
 		no.countryId = this.countryId;
@@ -670,8 +646,6 @@ public class LineItemStock extends ApiResource {
 		no.shippingMethodId = this.shippingMethodId;
 		no.shipmentId = this.shipmentId;
 		no.quantity = this.quantity;
-		no.matchingShippingZoneIds = this.matchingShippingZoneIds;
-		no.availableShippingServiceIds = this.availableShippingServiceIds;
 		no.previousChanges = this.previousChanges;
 		no.shippingCategory = this.shippingCategory;
 		no.order = this.order;

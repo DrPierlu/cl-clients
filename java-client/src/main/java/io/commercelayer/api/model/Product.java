@@ -10,11 +10,11 @@ import java.util.Objects;
  */
 public class Product extends ApiResource {
 
-	private static final long serialVersionUID = -1483100361667L;
+	private static final long serialVersionUID = -1484058603052L;
 
 
 	private String name;
-	private String productTypeId;
+	private Integer productTypeId;
 	@JsonExclude
 	private String description;
 	@JsonExclude
@@ -40,15 +40,19 @@ public class Product extends ApiResource {
 	@JsonExclude
 	private Object shippingCategory;
 	@JsonExclude
-	private String shippingCategoryId;
+	private Integer shippingCategoryId;
 	@JsonExclude
 	private List<String> shippingServiceStockLocations;
+	@JsonExclude
+	private String sku;
+	@JsonExclude
+	private String slug;
 	@JsonExclude
 	private List<String> stockItems;
 	@JsonExclude
 	private String taxCode;
 	@JsonExclude
-	private String trackInventory;
+	private Object trackInventory;
 	@JsonExclude
 	private List<String> translations;
 	@JsonExclude
@@ -86,6 +90,27 @@ public class Product extends ApiResource {
 	}
 	
 
+	public void setSlug(String slug) {
+		this.slug = slug;
+	}
+	
+
+	public String getSlug() {
+		return this.slug;
+	}
+	
+
+	public Product slug(String slug) {
+		setSlug(slug);
+		return this;
+	}
+	
+
+	public String slug() {
+		return getSlug();
+	}
+	
+
 	public void setDescription(String description) {
 		this.description = description;
 	}
@@ -107,66 +132,87 @@ public class Product extends ApiResource {
 	}
 	
 
-	public void setProductTypeId(String productTypeId) {
+	public void setProductTypeId(Integer productTypeId) {
 		this.productTypeId = productTypeId;
 	}
 	
 
-	public String getProductTypeId() {
+	public Integer getProductTypeId() {
 		return this.productTypeId;
 	}
 	
 
-	public Product productTypeId(String productTypeId) {
+	public Product productTypeId(Integer productTypeId) {
 		setProductTypeId(productTypeId);
 		return this;
 	}
 	
 
-	public String productTypeId() {
+	public Integer productTypeId() {
 		return getProductTypeId();
 	}
 	
 
-	public void setTrackInventory(String trackInventory) {
+	public void setTrackInventory(Object trackInventory) {
 		this.trackInventory = trackInventory;
 	}
 	
 
-	public String getTrackInventory() {
+	public Object getTrackInventory() {
 		return this.trackInventory;
 	}
 	
 
-	public Product trackInventory(String trackInventory) {
+	public Product trackInventory(Object trackInventory) {
 		setTrackInventory(trackInventory);
 		return this;
 	}
 	
 
-	public String trackInventory() {
+	public Object trackInventory() {
 		return getTrackInventory();
 	}
 	
 
-	public void setShippingCategoryId(String shippingCategoryId) {
+	public void setShippingCategoryId(Integer shippingCategoryId) {
 		this.shippingCategoryId = shippingCategoryId;
 	}
 	
 
-	public String getShippingCategoryId() {
+	public Integer getShippingCategoryId() {
 		return this.shippingCategoryId;
 	}
 	
 
-	public Product shippingCategoryId(String shippingCategoryId) {
+	public Product shippingCategoryId(Integer shippingCategoryId) {
 		setShippingCategoryId(shippingCategoryId);
 		return this;
 	}
 	
 
-	public String shippingCategoryId() {
+	public Integer shippingCategoryId() {
 		return getShippingCategoryId();
+	}
+	
+
+	public void setSku(String sku) {
+		this.sku = sku;
+	}
+	
+
+	public String getSku() {
+		return this.sku;
+	}
+	
+
+	public Product sku(String sku) {
+		setSku(sku);
+		return this;
+	}
+	
+
+	public String sku() {
+		return getSku();
 	}
 	
 
@@ -516,10 +562,12 @@ public class Product extends ApiResource {
 	
 		return super.equals(o)
 			&& Objects.equals(this.name, x.name)
+			&& Objects.equals(this.slug, x.slug)
 			&& Objects.equals(this.description, x.description)
 			&& Objects.equals(this.productTypeId, x.productTypeId)
 			&& Objects.equals(this.trackInventory, x.trackInventory)
 			&& Objects.equals(this.shippingCategoryId, x.shippingCategoryId)
+			&& Objects.equals(this.sku, x.sku)
 			&& Objects.equals(this.taxCode, x.taxCode)
 			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.shippingCategory, x.shippingCategory)
@@ -545,11 +593,11 @@ public class Product extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, description, productTypeId, trackInventory, shippingCategoryId,
-			taxCode, previousChanges, shippingCategory, productType, prices,
-			lineItems, lineItemStocks, stockItems, shippingServiceStockLocations, resourceImages,
-			images, translations, variants, merchandisingRules, productProperties,
-			hasVariants 
+			name, slug, description, productTypeId, trackInventory,
+			shippingCategoryId, sku, taxCode, previousChanges, shippingCategory,
+			productType, prices, lineItems, lineItemStocks, stockItems,
+			shippingServiceStockLocations, resourceImages, images, translations, variants,
+			merchandisingRules, productProperties, hasVariants 
 		);
 	
 	}
@@ -563,10 +611,12 @@ public class Product extends ApiResource {
 		no = super.clone(no);
 	
 		no.name = this.name;
+		no.slug = this.slug;
 		no.description = this.description;
 		no.productTypeId = this.productTypeId;
 		no.trackInventory = this.trackInventory;
 		no.shippingCategoryId = this.shippingCategoryId;
+		no.sku = this.sku;
 		no.taxCode = this.taxCode;
 		no.previousChanges = this.previousChanges;
 		no.shippingCategory = this.shippingCategory;

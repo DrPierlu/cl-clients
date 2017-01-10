@@ -9,19 +9,19 @@ import java.util.Objects;
  */
 public class Permission extends ApiResource {
 
-	private static final long serialVersionUID = -1483100361645L;
+	private static final long serialVersionUID = -1484058603005L;
 
 
 	private String ability;
 	private String action;
 	private String resource;
-	private String roleId;
+	private Integer roleId;
 	@JsonExclude
-	private String position;
+	private String name;
+	@JsonExclude
+	private Integer position;
 	@JsonExclude
 	private Object previousChanges;
-	@JsonExclude
-	private String restrictions;
 	@JsonExclude
 	private Object role;
 
@@ -36,23 +36,44 @@ public class Permission extends ApiResource {
 	}
 	
 
-	public void setRoleId(String roleId) {
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+
+	public String getName() {
+		return this.name;
+	}
+	
+
+	public Permission name(String name) {
+		setName(name);
+		return this;
+	}
+	
+
+	public String name() {
+		return getName();
+	}
+	
+
+	public void setRoleId(Integer roleId) {
 		this.roleId = roleId;
 	}
 	
 
-	public String getRoleId() {
+	public Integer getRoleId() {
 		return this.roleId;
 	}
 	
 
-	public Permission roleId(String roleId) {
+	public Permission roleId(Integer roleId) {
 		setRoleId(roleId);
 		return this;
 	}
 	
 
-	public String roleId() {
+	public Integer roleId() {
 		return getRoleId();
 	}
 	
@@ -120,44 +141,23 @@ public class Permission extends ApiResource {
 	}
 	
 
-	public void setRestrictions(String restrictions) {
-		this.restrictions = restrictions;
-	}
-	
-
-	public String getRestrictions() {
-		return this.restrictions;
-	}
-	
-
-	public Permission restrictions(String restrictions) {
-		setRestrictions(restrictions);
-		return this;
-	}
-	
-
-	public String restrictions() {
-		return getRestrictions();
-	}
-	
-
-	public void setPosition(String position) {
+	public void setPosition(Integer position) {
 		this.position = position;
 	}
 	
 
-	public String getPosition() {
+	public Integer getPosition() {
 		return this.position;
 	}
 	
 
-	public Permission position(String position) {
+	public Permission position(Integer position) {
 		setPosition(position);
 		return this;
 	}
 	
 
-	public String position() {
+	public Integer position() {
 		return getPosition();
 	}
 	
@@ -213,11 +213,11 @@ public class Permission extends ApiResource {
 		Permission x = (Permission)o;
 	
 		return super.equals(o)
+			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.roleId, x.roleId)
 			&& Objects.equals(this.ability, x.ability)
 			&& Objects.equals(this.action, x.action)
 			&& Objects.equals(this.resource, x.resource)
-			&& Objects.equals(this.restrictions, x.restrictions)
 			&& Objects.equals(this.position, x.position)
 			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.role, x.role)
@@ -230,7 +230,7 @@ public class Permission extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			roleId, ability, action, resource, restrictions,
+			name, roleId, ability, action, resource,
 			position, previousChanges, role 
 		);
 	
@@ -244,11 +244,11 @@ public class Permission extends ApiResource {
 	
 		no = super.clone(no);
 	
+		no.name = this.name;
 		no.roleId = this.roleId;
 		no.ability = this.ability;
 		no.action = this.action;
 		no.resource = this.resource;
-		no.restrictions = this.restrictions;
 		no.position = this.position;
 		no.previousChanges = this.previousChanges;
 		no.role = this.role;

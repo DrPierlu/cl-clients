@@ -9,11 +9,13 @@ import java.util.Objects;
  */
 public class ProductProperty extends ApiResource {
 
-	private static final long serialVersionUID = -1483100361683L;
+	private static final long serialVersionUID = -1484058603070L;
 
 
-	private String productId;
-	private String propertyValueId;
+	private Integer productId;
+	private Integer propertyValueId;
+	@JsonExclude
+	private String name;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
@@ -21,7 +23,7 @@ public class ProductProperty extends ApiResource {
 	@JsonExclude
 	private Object propertyType;
 	@JsonExclude
-	private String propertyTypeId;
+	private Integer propertyTypeId;
 	@JsonExclude
 	private Object propertyValue;
 
@@ -36,65 +38,86 @@ public class ProductProperty extends ApiResource {
 	}
 	
 
-	public void setProductId(String productId) {
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+
+	public String getName() {
+		return this.name;
+	}
+	
+
+	public ProductProperty name(String name) {
+		setName(name);
+		return this;
+	}
+	
+
+	public String name() {
+		return getName();
+	}
+	
+
+	public void setProductId(Integer productId) {
 		this.productId = productId;
 	}
 	
 
-	public String getProductId() {
+	public Integer getProductId() {
 		return this.productId;
 	}
 	
 
-	public ProductProperty productId(String productId) {
+	public ProductProperty productId(Integer productId) {
 		setProductId(productId);
 		return this;
 	}
 	
 
-	public String productId() {
+	public Integer productId() {
 		return getProductId();
 	}
 	
 
-	public void setPropertyTypeId(String propertyTypeId) {
+	public void setPropertyTypeId(Integer propertyTypeId) {
 		this.propertyTypeId = propertyTypeId;
 	}
 	
 
-	public String getPropertyTypeId() {
+	public Integer getPropertyTypeId() {
 		return this.propertyTypeId;
 	}
 	
 
-	public ProductProperty propertyTypeId(String propertyTypeId) {
+	public ProductProperty propertyTypeId(Integer propertyTypeId) {
 		setPropertyTypeId(propertyTypeId);
 		return this;
 	}
 	
 
-	public String propertyTypeId() {
+	public Integer propertyTypeId() {
 		return getPropertyTypeId();
 	}
 	
 
-	public void setPropertyValueId(String propertyValueId) {
+	public void setPropertyValueId(Integer propertyValueId) {
 		this.propertyValueId = propertyValueId;
 	}
 	
 
-	public String getPropertyValueId() {
+	public Integer getPropertyValueId() {
 		return this.propertyValueId;
 	}
 	
 
-	public ProductProperty propertyValueId(String propertyValueId) {
+	public ProductProperty propertyValueId(Integer propertyValueId) {
 		setPropertyValueId(propertyValueId);
 		return this;
 	}
 	
 
-	public String propertyValueId() {
+	public Integer propertyValueId() {
 		return getPropertyValueId();
 	}
 	
@@ -192,6 +215,7 @@ public class ProductProperty extends ApiResource {
 		ProductProperty x = (ProductProperty)o;
 	
 		return super.equals(o)
+			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.productId, x.productId)
 			&& Objects.equals(this.propertyTypeId, x.propertyTypeId)
 			&& Objects.equals(this.propertyValueId, x.propertyValueId)
@@ -208,8 +232,8 @@ public class ProductProperty extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			productId, propertyTypeId, propertyValueId, previousChanges, product,
-			propertyType, propertyValue 
+			name, productId, propertyTypeId, propertyValueId, previousChanges,
+			product, propertyType, propertyValue 
 		);
 	
 	}
@@ -222,6 +246,7 @@ public class ProductProperty extends ApiResource {
 	
 		no = super.clone(no);
 	
+		no.name = this.name;
 		no.productId = this.productId;
 		no.propertyTypeId = this.propertyTypeId;
 		no.propertyValueId = this.propertyValueId;

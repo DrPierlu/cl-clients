@@ -13,6 +13,7 @@ public class PostAccountOrders extends PostOperation {
 	{
 		addRequiredField("channelId");
 		addRequiredField("countryId");
+		addRequiredField("customerId");
 	}
 
 

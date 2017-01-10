@@ -36,5 +36,10 @@ public abstract class ApiOperation {
 	public String toString() {
 		return getClass().getSimpleName();
 	}
+	
+	public boolean isPathParam(String paramName) {
+		if (path == null) return false;
+		else return (getPath().indexOf(String.format("{%s}", paramName)) != -1);
+	}
 
 }
