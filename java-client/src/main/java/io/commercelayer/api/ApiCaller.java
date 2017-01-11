@@ -230,9 +230,9 @@ public class ApiCaller {
 		return apiResponse;
 
 	}
-
 	
-	private HttpResponse call(HttpRequest request) throws ConnectionException, ApiException, AuthException, SystemException {
+	
+	private HttpResponse call(HttpRequest request) throws ConnectionException, SystemException, AuthException, ApiException {
 
 		if ((apiToken == null) || apiToken.getAccessToken() == null) throw new AuthException("No access_token defined");
 
@@ -247,30 +247,37 @@ public class ApiCaller {
 			logger.warn("HTTP Response Code: {}", response.getCode());
 			try {
 				if (response.getCode() >= 500) { // System Error
-					throw new SystemException(String.format("Api System Exception [%d] - %s", response.getCode(), response.getBody()));
+					throw new SystemException(String.format("Api System Exception [%d] - %s", response.getCode(), response.getBody()), response.getCode());
 				}
 				else
 				if (response.getCode() == 401) { // Authentication Error
 					ApiError apiError = jsonCodec.fromJSON(response.getBody(), ApiError.class);
+					apiError.setHttpErrorCode(response.getCode());
 					throw new AuthException(apiError);
 				}
 				else
 				if (response.getCode() >= 400) { // Data Error
 					ApiError apiError = jsonCodec.fromJSON(response.getBody(), ApiError.class);
+					apiError.setHttpErrorCode(response.getCode());
 					throw new ApiException(apiError);
 				}
 				else
-				if (response.getCode() <= 308) { // Redirection
+				if (response.getCode() >= 300) { // Redirection
 					// Nothing to do
 				}
 			}
-			catch (AuthException | ConnectionException | SystemException re) {
-				logger.error("RuntimeException: {}", re.getMessage());
+			catch (SystemException se) {
+				logger.error("SystemException: {}", se.getMessage());
+				throw se;
+			}
+			catch (AuthException | ApiException e) {
+				logger.error("ApiCaller Exception: {}", e.getMessage());
 			}
 		}
-
-		// logger.trace("Response Body: {}", ApiConfig.testModeEnabled()? ApiUtils.formatJson(response.getBody()) : response.getBody());
-		// logger.trace("Response Body: {}", response.getBody());
+		else {
+			// 200 <= Error Code < 300
+		}
+		
 
 		return response;
 
