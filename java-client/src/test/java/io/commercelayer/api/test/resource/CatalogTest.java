@@ -106,7 +106,6 @@ public class CatalogTest extends IntegrationTest<Catalog> {
 		ApiResponse<Catalog> getRes = test(getReq, Catalog.class, caller, false);
 
 		Assert.assertNull(getRes.getResource());
-		Assert.assertNotNull(getRes.getApiError());
 
 		return delRes;
 		

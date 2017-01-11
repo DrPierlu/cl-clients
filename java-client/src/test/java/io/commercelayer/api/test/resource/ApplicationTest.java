@@ -106,7 +106,6 @@ public class ApplicationTest extends IntegrationTest<Application> {
 		ApiResponse<Application> getRes = test(getReq, Application.class, caller, false);
 
 		Assert.assertNull(getRes.getResource());
-		Assert.assertNotNull(getRes.getApiError());
 
 		return delRes;
 

@@ -68,20 +68,20 @@ public class ApiCaller {
 	}
 	
 	
-	public <T extends ApiResource> ApiResponse<T> move(ApiRequest<MoveOperation> apiRequest) throws ApiException {
+	public <T extends ApiResource> ApiResponse<T> move(ApiRequest<MoveOperation> apiRequest) throws ApiException, AuthException {
 		return get(apiRequest);
 	}
 	
-	public <T extends ApiResource> ApiResponse<T> move(ApiRequest<MoveOperation> apiRequest, Class<T> resourceType) throws ApiException {
+	public <T extends ApiResource> ApiResponse<T> move(ApiRequest<MoveOperation> apiRequest, Class<T> resourceType) throws ApiException, AuthException {
 		return get(apiRequest, resourceType);
 	}
 	
 	
-	public <T extends ApiResource> ApiResponse<T> get(ApiRequest<? extends GetIdOperation> apiRequest) throws ApiException {
+	public <T extends ApiResource> ApiResponse<T> get(ApiRequest<? extends GetIdOperation> apiRequest) throws ApiException, AuthException {
 		return get(apiRequest, null);
 	}
 	
-	public <T extends ApiResource> ApiResponse<T> get(ApiRequest<? extends GetIdOperation> apiRequest, Class<T> resourceType) throws ApiException {
+	public <T extends ApiResource> ApiResponse<T> get(ApiRequest<? extends GetIdOperation> apiRequest, Class<T> resourceType) throws ApiException, AuthException {
 
 		final GetIdOperation operation = apiRequest.getOperation();
 		
@@ -91,24 +91,18 @@ public class ApiCaller {
 
 		ApiResponse<T> apiResponse = null;
 		
-		try {
-			HttpResponse response = call(request);
-			T resourceObject = null;
-			if (resourceType != null) resourceObject = jsonCodec.fromJSON(response.getBody(), resourceType);
-			apiResponse = new ApiResponse<>(resourceObject);
-		}
-		catch (ApiException ae) {
-			logger.warn("Data Error -> {}", ae.getApiErrorDescription());
-			apiResponse = new ApiResponse<>(ae.getApiError());
-		}
-
+		HttpResponse response = call(request);
+		T resourceObject = null;
+		if (resourceType != null) resourceObject = jsonCodec.fromJSON(response.getBody(), resourceType);
+		apiResponse = new ApiResponse<>(resourceObject);
+		
 		
 		return apiResponse;
 
 	}
 	
 	
-	public <T extends ApiResource> ApiSearchResponse<T> search(ApiSearchRequest searchRequest, Class<T> resourceType) throws ApiException {
+	public <T extends ApiResource> ApiSearchResponse<T> search(ApiSearchRequest searchRequest, Class<T> resourceType) throws ApiException, AuthException {
 
 		final SearchOperation operation = searchRequest.getOperation();
 		
@@ -120,16 +114,10 @@ public class ApiCaller {
 
 		ApiSearchResponse<T> searchResponse = null;
 		
-		try {
-			HttpResponse response = call(request);
-			List<T> itemList = jsonCodec.fromJSONList(response.getBody(), resourceType);
-			searchResponse = new ApiSearchResponse<>(itemList);
-			setResponsePagination(searchResponse, response);
-		}
-		catch (ApiException ae) {
-			logger.warn("Data Error -> {}", ae.getApiErrorDescription());
-			searchResponse = new ApiSearchResponse<>(ae.getApiError());
-		}
+		HttpResponse response = call(request);
+		List<T> itemList = jsonCodec.fromJSONList(response.getBody(), resourceType);
+		searchResponse = new ApiSearchResponse<>(itemList);
+		setResponsePagination(searchResponse, response);
 		
 		
 		return searchResponse;
@@ -137,11 +125,11 @@ public class ApiCaller {
 	}
 
 	
-	public <T extends ApiResource> ApiResponse<T> put(ApiRequest<PutOperation> apiRequest) throws ApiException {
+	public <T extends ApiResource> ApiResponse<T> put(ApiRequest<PutOperation> apiRequest) throws ApiException, AuthException {
 		return put(apiRequest, null);
 	}
 	
-	public <T extends ApiResource> ApiResponse<T> put(ApiRequest<PutOperation> apiRequest, Class<T> resourceType) throws ApiException {
+	public <T extends ApiResource> ApiResponse<T> put(ApiRequest<PutOperation> apiRequest, Class<T> resourceType) throws ApiException, AuthException {
 		
 		final PutOperation operation = apiRequest.getOperation();
 
@@ -153,28 +141,22 @@ public class ApiCaller {
 
 		ApiResponse<T> apiResponse = null;
 		
-		try {
-			HttpResponse response = call(request);
-			T resourceObject = null;
-			if (resourceType != null) resourceObject = jsonCodec.fromJSON(response.getBody(), resourceType);
-			apiResponse = new ApiResponse<>(resourceObject);
-		}
-		catch (ApiException ae) {
-			logger.warn("Data Error -> {}", ae.getApiErrorDescription());
-			apiResponse = new ApiResponse<>(ae.getApiError());
-		}
-
+		HttpResponse response = call(request);
+		T resourceObject = null;
+		if (resourceType != null) resourceObject = jsonCodec.fromJSON(response.getBody(), resourceType);
+		apiResponse = new ApiResponse<>(resourceObject);
+		
 		
 		return apiResponse;
 
 	}
 
 
-	public <T extends ApiResource> ApiResponse<T> post(ApiRequest<PostOperation> apiRequest) throws ApiException {
+	public <T extends ApiResource> ApiResponse<T> post(ApiRequest<PostOperation> apiRequest) throws ApiException, AuthException {
 		return post(apiRequest, null);
 	}
 	
-	public <T extends ApiResource> ApiResponse<T> post(ApiRequest<PostOperation> apiRequest, Class<T> resourceType) throws ApiException {
+	public <T extends ApiResource> ApiResponse<T> post(ApiRequest<PostOperation> apiRequest, Class<T> resourceType) throws ApiException, AuthException {
 
 		final PostOperation operation = apiRequest.getOperation();
 		
@@ -186,27 +168,21 @@ public class ApiCaller {
 
 		ApiResponse<T> apiResponse = null;
 		
-		try {
-			HttpResponse response = call(request);
-			T resourceObject = null;
-			if (resourceType != null) resourceObject = jsonCodec.fromJSON(response.getBody(), resourceType);
-			apiResponse = new ApiResponse<>(resourceObject);
-		}
-		catch (ApiException ae) {
-			logger.warn("Data Error -> {}", ae.getApiErrorDescription());
-			apiResponse = new ApiResponse<>(ae.getApiError());
-		}
-
+		HttpResponse response = call(request);
+		T resourceObject = null;
+		if (resourceType != null) resourceObject = jsonCodec.fromJSON(response.getBody(), resourceType);
+		apiResponse = new ApiResponse<>(resourceObject);
+		
 		
 		return apiResponse;
 
 	}
 
-	public <T extends ApiResource> ApiResponse<T> delete(ApiRequest<DeleteOperation> apiRequest) throws ApiException {
+	public <T extends ApiResource> ApiResponse<T> delete(ApiRequest<DeleteOperation> apiRequest) throws ApiException, AuthException {
 		return delete(apiRequest, null);
 	}
 	
-	public <T extends ApiResource> ApiResponse<T> delete(ApiRequest<DeleteOperation> apiRequest, Class<T> resourceType) throws ApiException {
+	public <T extends ApiResource> ApiResponse<T> delete(ApiRequest<DeleteOperation> apiRequest, Class<T> resourceType) throws ApiException, AuthException {
 		
 		final DeleteOperation operation = apiRequest.getOperation();
 
@@ -216,16 +192,11 @@ public class ApiCaller {
 		
 		ApiResponse<T> apiResponse = null;
 
-		try {
-			HttpResponse response = call(request);
-			apiResponse = new ApiResponse<>((T)null);
-			if (response.getCode() != 204) logger.warn("{}: Unexpected HTTP Code [{}]", operation.getMethod(), response.getCode());
-			if (response.getBody() != null) logger.warn("{}: Unexpected Response Body", operation.getMethod());
-		}
-		catch (ApiException ae) {
-			logger.warn("Data Error -> {}", ae.getApiErrorDescription());
-			apiResponse = new ApiResponse<>(ae.getApiError());
-		}
+		HttpResponse response = call(request);
+		apiResponse = new ApiResponse<>((T)null);
+		if (response.getCode() != 204) logger.warn("{}: Unexpected HTTP Code [{}]", operation.getMethod(), response.getCode());
+		if (response.getBody() != null) logger.warn("{}: Unexpected Response Body", operation.getMethod());
+		
 		
 		return apiResponse;
 
@@ -266,12 +237,9 @@ public class ApiCaller {
 					// Nothing to do
 				}
 			}
-			catch (SystemException se) {
-				logger.error("SystemException: {}", se.getMessage());
-				throw se;
-			}
-			catch (AuthException | ApiException e) {
+			catch (SystemException | AuthException | ApiException e) {
 				logger.error("ApiCaller Exception: {}", e.getMessage());
+				throw e;
 			}
 		}
 		else {

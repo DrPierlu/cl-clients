@@ -114,7 +114,6 @@ public class AddressTest extends IntegrationTest<Address> {
 		ApiResponse<Address> getRes = test(getReq, Address.class, caller, false);
 
 		Assert.assertNull(getRes.getResource());
-		Assert.assertNotNull(getRes.getApiError());
 
 		return delRes;
 

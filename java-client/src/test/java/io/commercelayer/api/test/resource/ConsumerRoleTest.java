@@ -112,7 +112,6 @@ public class ConsumerRoleTest extends IntegrationTest<ConsumerRole> {
 		ApiResponse<ConsumerRole> getRes = test(getReq, ConsumerRole.class, caller, false);
 
 		Assert.assertNull(getRes.getResource());
-		Assert.assertNotNull(getRes.getApiError());
 
 		return delRes;
 

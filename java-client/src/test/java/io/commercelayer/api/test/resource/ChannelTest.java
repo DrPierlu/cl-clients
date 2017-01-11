@@ -106,8 +106,7 @@ public class ChannelTest extends IntegrationTest<Channel> {
 		ApiResponse<Channel> getRes = test(getReq, Channel.class, caller, false);
 
 		Assert.assertNull(getRes.getResource());
-		Assert.assertNotNull(getRes.getApiError());
-
+		
 		return delRes;
 
 	}

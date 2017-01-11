@@ -8,6 +8,7 @@ import org.junit.runners.MethodSorters;
 
 import io.commercelayer.api.config.ApiConfig;
 import io.commercelayer.api.config.ApiConfig.Group;
+import io.commercelayer.api.exception.AuthException;
 import io.commercelayer.api.security.ApiAccount;
 import io.commercelayer.api.security.ApiAuthenticator;
 import io.commercelayer.api.security.ApiToken;
@@ -33,7 +34,7 @@ public class ApiAuthenticationTest {
 	}
 
 	@Test
-	public void authenticationTest() {
+	public void authenticationTest() throws AuthException {
 		
 		ApiToken at = auth.authenticate(account);
 		
@@ -43,7 +44,7 @@ public class ApiAuthenticationTest {
 	}
 	
 	@Test
-	public void refreshTokenTest() {
+	public void refreshTokenTest() throws AuthException {
 		
 		ApiToken t = auth.authenticate(account);
 		String accessToken = t.getAccessToken();
@@ -55,7 +56,7 @@ public class ApiAuthenticationTest {
 	}
 	
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws AuthException {
 		initTests();
 		auth.authenticate(account);
 	}
