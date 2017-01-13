@@ -16,7 +16,7 @@ import io.commercelayer.api.http.HttpResponse;
 import io.commercelayer.api.http.auth.HttpAuthBasic;
 import io.commercelayer.api.util.ApiUtils;
 
-public final class ApiAuthenticator {
+public class ApiAuthenticator {
 	
 	private static final Logger logger = LoggerFactory.getLogger(ApiAuthenticator.class);
 

@@ -27,6 +27,7 @@ import io.commercelayer.api.search.ApiSearchResponse;
 import io.commercelayer.api.security.ApiAccount;
 import io.commercelayer.api.security.ApiAuthenticator;
 import io.commercelayer.api.security.ApiToken;
+import io.commercelayer.api.test.common.mock.ApiCallerMock;
 
 public abstract class ApiTest<T extends ApiResource> {
 	
@@ -297,7 +298,7 @@ public abstract class ApiTest<T extends ApiResource> {
 	
 	
 	private ApiCaller initCaller(ApiToken apiToken) {
-		return new ApiCaller(apiToken);
+		return ApiConfig.isPropertyEnabled(ApiConfig.Group.test, "mock")? new ApiCallerMock(apiToken) : new ApiCaller(apiToken);
 	}
 	
 	
