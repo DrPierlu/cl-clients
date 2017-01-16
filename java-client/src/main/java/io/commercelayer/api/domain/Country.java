@@ -3,8 +3,7 @@ package io.commercelayer.api.domain;
 
 /**
  * Country
- * 
- * [automatically generated on 16/01/2017 14:53:27]
+ * [automatically generated on 16/01/2017 16:26:01]
  */
 public final class Country {
 

@@ -10,6 +10,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import io.commercelayer.api.codegen.ApiCodeGenerator;
 import io.commercelayer.api.codegen.ApiCodegenException;
 import io.commercelayer.api.codegen.model.Constructor;
 import io.commercelayer.api.codegen.model.Field;
@@ -65,10 +66,10 @@ public abstract class DomainGenerator {
 
 		final Class<?> domainClass = getDomainClass();
 		
-		ModelClass mc = new ModelClass(domainClass.getPackage().getName(),domainClass.getSimpleName());
+		ModelClass mc = new ModelClass(domainClass.getPackage().getName(), domainClass.getSimpleName());
 		mc.setModifier(Modifier.PUBLIC | Modifier.FINAL);
 		mc.addCommentLine(mc.getName());
-		mc.addCommentLine(String.format("[automatically generated on %s]", new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date())));
+		mc.addCommentLine(String.format("[automatically generated on %s]", new SimpleDateFormat(ApiCodeGenerator.DATE_FORMAT).format(new Date())));
 		
 		mc.setLinesBefore(2);
 

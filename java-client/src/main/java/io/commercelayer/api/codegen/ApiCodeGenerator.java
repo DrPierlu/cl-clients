@@ -16,6 +16,8 @@ public final class ApiCodeGenerator {
 	private static final Logger logger = LoggerFactory.getLogger(ApiCodeGenerator.class);
 
 	public static final String TEST_SCHEMA_PATH = "E:/cl-schema_swagger.json";
+	
+	public static final String DATE_FORMAT = "dd/MM/yyyy HH:mm:ss";
 
 	private ApiCodeGenerator() {
 		super();

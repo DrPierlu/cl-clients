@@ -3,8 +3,7 @@ package io.commercelayer.api.domain;
 
 /**
  * Language
- * 
- * [automatically generated on 16/01/2017 14:53:23]
+ * [automatically generated on 16/01/2017 16:26:07]
  */
 public final class Language {
 
