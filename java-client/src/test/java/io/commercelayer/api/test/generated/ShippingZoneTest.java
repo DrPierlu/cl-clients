@@ -5,6 +5,7 @@ import io.commercelayer.api.ApiResponse;
 import io.commercelayer.api.model.ShippingZone;
 import io.commercelayer.api.test.common.IntegrationTest;
 
+
 /**
  * ShippingZoneTest
  */

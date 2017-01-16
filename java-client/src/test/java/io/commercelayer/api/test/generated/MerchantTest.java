@@ -5,6 +5,7 @@ import io.commercelayer.api.ApiResponse;
 import io.commercelayer.api.model.Merchant;
 import io.commercelayer.api.test.common.IntegrationTest;
 
+
 /**
  * MerchantTest
  */

@@ -4,12 +4,13 @@ import io.commercelayer.api.json.JsonExclude;
 import io.commercelayer.api.model.common.ApiResource;
 import java.util.Objects;
 
+
 /**
  * PaymentMethod
  */
 public class PaymentMethod extends ApiResource {
 
-	private static final long serialVersionUID = -1484058602986L;
+	private static final long serialVersionUID = -1484566577793L;
 
 
 	private Integer billingAddressId;

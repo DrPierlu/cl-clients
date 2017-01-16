@@ -6,12 +6,13 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 
+
 /**
  * Order
  */
 public class Order extends ApiResource {
 
-	private static final long serialVersionUID = -1484058602947L;
+	private static final long serialVersionUID = -1484566577761L;
 
 
 	private Integer channelId;

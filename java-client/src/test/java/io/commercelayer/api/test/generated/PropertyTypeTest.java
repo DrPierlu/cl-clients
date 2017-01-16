@@ -5,6 +5,7 @@ import io.commercelayer.api.ApiResponse;
 import io.commercelayer.api.model.PropertyType;
 import io.commercelayer.api.test.common.IntegrationTest;
 
+
 /**
  * PropertyTypeTest
  */

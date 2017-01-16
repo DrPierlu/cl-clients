@@ -23,6 +23,11 @@ public class ModelClass extends AbstractModelObject {
 	private List<Class<? extends Exception>> exceptionList = new ArrayList<>();
 	private List<Constructor> constructorList = new ArrayList<>();
 	private String initBlock;
+	
+	{
+		super.linesBefore = 1;
+		super.linesAfter = 1;
+	}
 
 	public ModelClass() {
 		super();
@@ -275,7 +280,8 @@ public class ModelClass extends AbstractModelObject {
 		}
 
 		// Class
-		if (getComment() != null) writeComment(sb);
+		sb.append(newLines(getLinesBefore()));
+		if (hasComment()) writeComment(sb);
 		
 		sb.append(Modifier.toString(getModifier())).append(" class ").append(getName());
 		if (getExtendedClass() != null)
@@ -332,6 +338,7 @@ public class ModelClass extends AbstractModelObject {
 			if (constructorList.get(0).getLinesBefore() < 1) sb.append(newLine());
 			for (Constructor c : constructorList) {
 				sb.append(newLines(c.getLinesBefore()));
+				if (c.getName() == null) c.setName(getName());
 				sb.append('\t').append(c.generate().replaceAll("\n", "\n\t"));
 				sb.append(newLines(c.getLinesAfter()));
 			}
@@ -350,7 +357,9 @@ public class ModelClass extends AbstractModelObject {
 			if (methodList.get(methodList.size()-1).getLinesAfter() < 1) sb.append(newLine());
 		}
 
-		sb.append('}').append(newLine());
+		sb.append('}');
+		
+		sb.append(newLines(getLinesAfter()));
 
 		return sb.toString();
 

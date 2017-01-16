@@ -4,12 +4,13 @@ import io.commercelayer.api.json.JsonExclude;
 import io.commercelayer.api.model.common.ApiResource;
 import java.util.Objects;
 
+
 /**
  * ShippingServiceCategory
  */
 public class ShippingServiceCategory extends ApiResource {
 
-	private static final long serialVersionUID = -1484058603200L;
+	private static final long serialVersionUID = -1484566577964L;
 
 
 	private Integer shippingCategoryId;

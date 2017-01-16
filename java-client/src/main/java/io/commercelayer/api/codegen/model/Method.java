@@ -96,7 +96,7 @@ public class Method extends AbstractModelObject {
 
 		StringBuilder sb = new StringBuilder();
 
-		if (getComment() != null) writeComment(sb);
+		if (hasComment()) writeComment(sb);
 		
 		if (!getAnnotationList().isEmpty()) {
 			for (Class<? extends Annotation> a : getAnnotationList())

@@ -5,12 +5,13 @@ import io.commercelayer.api.model.common.ApiResource;
 import java.util.List;
 import java.util.Objects;
 
+
 /**
  * CreditCard
  */
 public class CreditCard extends ApiResource {
 
-	private static final long serialVersionUID = -1484058602802L;
+	private static final long serialVersionUID = -1484566577605L;
 
 
 	private String firstName;

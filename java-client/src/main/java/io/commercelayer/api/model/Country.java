@@ -5,12 +5,13 @@ import io.commercelayer.api.model.common.ApiResource;
 import java.util.List;
 import java.util.Objects;
 
+
 /**
  * Country
  */
 public class Country extends ApiResource {
 
-	private static final long serialVersionUID = -1484058602785L;
+	private static final long serialVersionUID = -1484566577590L;
 
 
 	private String code;

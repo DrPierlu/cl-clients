@@ -6,47 +6,65 @@ public class Field extends AbstractModelObject implements Comparable<Field> {
 
 	private Type type;
 	private String initialization;
+	private Integer aligmentTabs = 0;
+
 
 	public Field() {
 		super();
 	}
+
 
 	public Field(Integer modifier) {
 		this();
 		setModifier(modifier);
 	}
 
+
 	public Field(Integer modifier, Type type, String name) {
 		this(modifier);
 		this.type = type;
 		this.name = name;
 	}
-	
+
+
 	public Field(Integer modifier, Class<?> type, String name) {
 		this(modifier, new Type(type), name);
 	}
 
+
 	public void setModifier(Integer modifier) throws IllegalArgumentException {
-		if ((Modifier.fieldModifiers() & modifier.intValue()) == 0)
-			throw new IllegalArgumentException("Invalid field modifier: " + modifier);
+		if ((Modifier.fieldModifiers() & modifier.intValue()) == 0) throw new IllegalArgumentException("Invalid field modifier: " + modifier);
 		this.modifier = modifier;
 	}
+
 
 	public Type getType() {
 		return type;
 	}
 
+
 	public void setType(Type type) {
 		this.type = type;
 	}
 
-	
+
 	public String getInitialization() {
 		return initialization;
 	}
 
+
 	public void setInitialization(String initialization) {
 		this.initialization = initialization;
+	}
+
+
+	public Integer getAligmentTabs() {
+		return aligmentTabs;
+	}
+
+
+	public void setAligmentTabs(Integer aligmentTabs) {
+		this.aligmentTabs = aligmentTabs;
 	}
 
 
@@ -64,15 +82,21 @@ public class Field extends AbstractModelObject implements Comparable<Field> {
 		sb.append(Modifier.toString(modifier)).append(' ');
 		sb.append(getType().getNameGen()).append(' ').append(getName());
 
-		if (this.initialization != null)
+		if (this.initialization != null) {
+			if (this.aligmentTabs != null) {
+				int tabs = (this.aligmentTabs - (this.name.length()/4));
+				if ((this.name.length() % 4) == 0) tabs++;
+				for (int i = 0; i < tabs; i++) sb.append('\t');
+			}
 			sb.append(" = ").append(this.initialization);
+		}
 
 		sb.append(';');
-		
 
 		return sb.toString();
 
 	}
+
 
 	public static void main(String[] args) {
 
@@ -84,13 +108,14 @@ public class Field extends AbstractModelObject implements Comparable<Field> {
 
 	}
 
+
 	@Override
 	public int compareTo(Field o) {
 		if (getAnnotationList().isEmpty() && !o.getAnnotationList().isEmpty()) return -1;
 		else
-		if (!getAnnotationList().isEmpty() && o.getAnnotationList().isEmpty()) return 1;
-		else
-		return getName().compareTo(o.getName());
+			if (!getAnnotationList().isEmpty() && o.getAnnotationList().isEmpty()) return 1;
+			else
+				return getName().compareTo(o.getName());
 	}
 
 }

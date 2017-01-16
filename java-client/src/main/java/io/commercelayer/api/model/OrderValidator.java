@@ -4,12 +4,13 @@ import io.commercelayer.api.json.JsonExclude;
 import io.commercelayer.api.model.common.ApiResource;
 import java.util.Objects;
 
+
 /**
  * OrderValidator
  */
 public class OrderValidator extends ApiResource {
 
-	private static final long serialVersionUID = -1484058602961L;
+	private static final long serialVersionUID = -1484566577777L;
 
 
 	@JsonExclude

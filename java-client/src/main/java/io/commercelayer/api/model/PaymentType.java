@@ -5,12 +5,13 @@ import io.commercelayer.api.model.common.ApiResource;
 import java.util.List;
 import java.util.Objects;
 
+
 /**
  * PaymentType
  */
 public class PaymentType extends ApiResource {
 
-	private static final long serialVersionUID = -1484058602977L;
+	private static final long serialVersionUID = -1484566577793L;
 
 
 	private Integer gatewayId;

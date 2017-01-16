@@ -4,12 +4,13 @@ import io.commercelayer.api.json.JsonExclude;
 import io.commercelayer.api.model.common.ApiResource;
 import java.util.Objects;
 
+
 /**
  * MarketStockLocation
  */
 public class MarketStockLocation extends ApiResource {
 
-	private static final long serialVersionUID = -1484058602906L;
+	private static final long serialVersionUID = -1484566577715L;
 
 
 	private Integer marketId;

@@ -4,12 +4,13 @@ import io.commercelayer.api.json.JsonExclude;
 import io.commercelayer.api.model.common.ApiResource;
 import java.util.Objects;
 
+
 /**
  * ProductProperty
  */
 public class ProductProperty extends ApiResource {
 
-	private static final long serialVersionUID = -1484058603070L;
+	private static final long serialVersionUID = -1484566577855L;
 
 
 	private Integer productId;

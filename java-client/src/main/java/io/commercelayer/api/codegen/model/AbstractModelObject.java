@@ -8,7 +8,7 @@ public abstract class AbstractModelObject {
 
 	protected String name;
 	protected Integer modifier;
-	protected String comment;
+	protected List<String> commentLines = new ArrayList<>();
 	protected int linesBefore = 0;
 	protected int linesAfter = 0;
 	protected List<Class<? extends Annotation>> annotationList = new ArrayList<>();
@@ -47,18 +47,31 @@ public abstract class AbstractModelObject {
 		this.linesAfter = linesAfter;
 	}
 
-	public String getComment() {
-		return comment;
+	public List<String> getCommentLines() {
+		return this.commentLines;
 	}
 
 	public void setComment(String comment) {
-		this.comment = comment;
+		this.commentLines.clear();
+		addCommentLine(comment);
 	}
 	
 	public void setComment(String comment, Object... params) {
-		this.comment = String.format(comment, params);
+		setComment(String.format(comment, params));
 	}
 
+	public void addCommentLine(String line, Object... params) {
+		addCommentLine(String.format(line, params));
+	}
+	
+	public void addCommentLine(String line) {
+		this.commentLines.add(line);
+	}
+	
+	public boolean hasComment() {
+		return (this.commentLines != null) && !this.commentLines.isEmpty();
+	}
+	
 	protected String newLine() {
 		return "\n";
 	}
@@ -96,9 +109,9 @@ public abstract class AbstractModelObject {
 	
 	public StringBuilder writeComment(StringBuilder sb) {
 		if (sb == null) return null;
-		if (getComment() != null) {
+		if (hasComment()) {
 			sb.append("/**").append(newLine());
-			sb.append(" * ").append(getComment()).append(newLine());
+			for (String line : getCommentLines()) sb.append(" * ").append(line).append(newLine());
 			sb.append(" */").append(newLine());
 		}
 		return sb;

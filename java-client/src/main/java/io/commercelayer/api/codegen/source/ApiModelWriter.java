@@ -25,6 +25,10 @@ public class ApiModelWriter {
 	private static Logger logger = LoggerFactory.getLogger(ApiModelWriter.class);
 
 	public void writeCode(Model model) throws ApiCodegenException {
+		writeCode(model, true);
+	}
+	
+	public void writeCode(Model model, boolean initPackage) throws ApiCodegenException {
 
 		logger.info("Creating Java code ...");
 
@@ -33,6 +37,7 @@ public class ApiModelWriter {
 			final String classGroupKey = cgEntry.getKey();
 			ClassGroup cg = model.getClassGroup(classGroupKey);
 
+			if (initPackage)
 			try {
 				logger.info("Initializing package ... [{}]", classGroupKey);
 				initClassGroupDirectory(classGroupKey, cg.getSourceDirectory());

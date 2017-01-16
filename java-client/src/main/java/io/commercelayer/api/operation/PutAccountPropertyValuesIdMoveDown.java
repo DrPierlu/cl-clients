@@ -2,6 +2,7 @@ package io.commercelayer.api.operation;
 
 import io.commercelayer.api.operation.common.MoveOperation;
 
+
 /**
  * PutAccountPropertyValuesIdMoveDown
  */

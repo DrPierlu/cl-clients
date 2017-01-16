@@ -5,12 +5,13 @@ import io.commercelayer.api.model.common.ApiResource;
 import java.util.List;
 import java.util.Objects;
 
+
 /**
  * OptionType
  */
 public class OptionType extends ApiResource {
 
-	private static final long serialVersionUID = -1484058602930L;
+	private static final long serialVersionUID = -1484566577746L;
 
 
 	private String name;

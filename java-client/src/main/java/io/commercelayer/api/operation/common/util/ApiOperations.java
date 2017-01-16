@@ -2,6 +2,7 @@ package io.commercelayer.api.operation.common.util;
 
 import io.commercelayer.api.operation.*;
 
+
 /**
  * ApiOperations
  */

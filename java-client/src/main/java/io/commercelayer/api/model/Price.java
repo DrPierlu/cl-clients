@@ -4,12 +4,13 @@ import io.commercelayer.api.json.JsonExclude;
 import io.commercelayer.api.model.common.ApiResource;
 import java.util.Objects;
 
+
 /**
  * Price
  */
 public class Price extends ApiResource {
 
-	private static final long serialVersionUID = -1484058603035L;
+	private static final long serialVersionUID = -1484566577824L;
 
 
 	private String amount;

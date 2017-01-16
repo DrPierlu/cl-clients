@@ -4,12 +4,13 @@ import io.commercelayer.api.json.JsonExclude;
 import io.commercelayer.api.model.common.ApiResource;
 import java.util.Objects;
 
+
 /**
  * Image
  */
 public class Image extends ApiResource {
 
-	private static final long serialVersionUID = -1484058602850L;
+	private static final long serialVersionUID = -1484566577652L;
 
 
 	@JsonExclude

@@ -5,12 +5,13 @@ import io.commercelayer.api.model.common.ApiResource;
 import java.util.List;
 import java.util.Objects;
 
+
 /**
  * Address
  */
 public class Address extends ApiResource {
 
-	private static final long serialVersionUID = -1484058602699L;
+	private static final long serialVersionUID = -1484566577496L;
 
 
 	private String geocodingCity;

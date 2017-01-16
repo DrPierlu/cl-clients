@@ -4,12 +4,13 @@ import io.commercelayer.api.json.JsonExclude;
 import io.commercelayer.api.model.common.ApiResource;
 import java.util.Objects;
 
+
 /**
  * ConsumerRole
  */
 public class ConsumerRole extends ApiResource {
 
-	private static final long serialVersionUID = -1484058602761L;
+	private static final long serialVersionUID = -1484566577559L;
 
 
 	private Integer consumerId;

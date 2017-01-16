@@ -5,12 +5,13 @@ import io.commercelayer.api.model.common.ApiResource;
 import java.util.List;
 import java.util.Objects;
 
+
 /**
  * ShippingCategory
  */
 public class ShippingCategory extends ApiResource {
 
-	private static final long serialVersionUID = -1484058603122L;
+	private static final long serialVersionUID = -1484566577902L;
 
 
 	private String name;

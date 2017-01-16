@@ -6,12 +6,13 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 
+
 /**
  * Market
  */
 public class Market extends ApiResource {
 
-	private static final long serialVersionUID = -1484058602878L;
+	private static final long serialVersionUID = -1484566577683L;
 
 
 	private Integer catalogId;

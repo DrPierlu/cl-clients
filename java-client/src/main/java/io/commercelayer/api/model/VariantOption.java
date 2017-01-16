@@ -4,12 +4,13 @@ import io.commercelayer.api.json.JsonExclude;
 import io.commercelayer.api.model.common.ApiResource;
 import java.util.Objects;
 
+
 /**
  * VariantOption
  */
 public class VariantOption extends ApiResource {
 
-	private static final long serialVersionUID = -1484058603310L;
+	private static final long serialVersionUID = -1484566578073L;
 
 
 	private Integer optionValueId;

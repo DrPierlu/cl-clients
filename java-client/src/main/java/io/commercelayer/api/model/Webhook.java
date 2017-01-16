@@ -5,12 +5,13 @@ import io.commercelayer.api.model.common.ApiResource;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+
 /**
  * Webhook
  */
 public class Webhook extends ApiResource {
 
-	private static final long serialVersionUID = -1484058603318L;
+	private static final long serialVersionUID = -1484566578073L;
 
 
 	private String eventAction;

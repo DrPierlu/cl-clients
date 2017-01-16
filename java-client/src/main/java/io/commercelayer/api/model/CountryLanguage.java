@@ -4,12 +4,13 @@ import io.commercelayer.api.json.JsonExclude;
 import io.commercelayer.api.model.common.ApiResource;
 import java.util.Objects;
 
+
 /**
  * CountryLanguage
  */
 public class CountryLanguage extends ApiResource {
 
-	private static final long serialVersionUID = -1484058602775L;
+	private static final long serialVersionUID = -1484566577590L;
 
 
 	private Integer countryId;

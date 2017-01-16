@@ -5,12 +5,13 @@ import io.commercelayer.api.model.common.ApiResource;
 import java.util.List;
 import java.util.Objects;
 
+
 /**
  * ShippingZone
  */
 public class ShippingZone extends ApiResource {
 
-	private static final long serialVersionUID = -1484058603224L;
+	private static final long serialVersionUID = -1484566577995L;
 
 
 	private Integer countryGroupId;

@@ -5,6 +5,7 @@ import io.commercelayer.api.ApiResponse;
 import io.commercelayer.api.model.Shipment;
 import io.commercelayer.api.test.common.IntegrationTest;
 
+
 /**
  * ShipmentTest
  */

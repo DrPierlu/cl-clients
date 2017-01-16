@@ -17,6 +17,11 @@ public class Constructor extends AbstractModelObject {
 	public Constructor() {
 		super();
 	}
+	
+	public Constructor(Integer modifier) {
+		this();
+		this.modifier = modifier;
+	}
 
 	public Constructor(String name, Integer modifier) {
 		this();

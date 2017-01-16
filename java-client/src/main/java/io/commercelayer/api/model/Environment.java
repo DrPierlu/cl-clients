@@ -5,12 +5,13 @@ import io.commercelayer.api.model.common.ApiResource;
 import java.util.List;
 import java.util.Objects;
 
+
 /**
  * Environment
  */
 public class Environment extends ApiResource {
 
-	private static final long serialVersionUID = -1484058602829L;
+	private static final long serialVersionUID = -1484566577637L;
 
 
 	private String name;

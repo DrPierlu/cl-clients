@@ -5,12 +5,13 @@ import io.commercelayer.api.model.common.ApiResource;
 import java.util.List;
 import java.util.Objects;
 
+
 /**
  * Channel
  */
 public class Channel extends ApiResource {
 
-	private static final long serialVersionUID = -1484058602746L;
+	private static final long serialVersionUID = -1484566577543L;
 
 
 	private String name;

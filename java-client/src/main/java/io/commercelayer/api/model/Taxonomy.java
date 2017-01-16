@@ -5,12 +5,13 @@ import io.commercelayer.api.model.common.ApiResource;
 import java.util.List;
 import java.util.Objects;
 
+
 /**
  * Taxonomy
  */
 public class Taxonomy extends ApiResource {
 
-	private static final long serialVersionUID = -1484058603274L;
+	private static final long serialVersionUID = -1484566578042L;
 
 
 	private String name;
