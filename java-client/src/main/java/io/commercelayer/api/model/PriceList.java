@@ -11,7 +11,7 @@ import java.util.Objects;
  */
 public class PriceList extends ApiResource {
 
-	private static final long serialVersionUID = -1484566577824L;
+	private static final long serialVersionUID = -1484581108959L;
 
 
 	private Integer currencyId;

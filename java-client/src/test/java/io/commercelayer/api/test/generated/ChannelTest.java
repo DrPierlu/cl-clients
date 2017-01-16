@@ -4,6 +4,7 @@ import io.commercelayer.api.ApiCaller;
 import io.commercelayer.api.ApiResponse;
 import io.commercelayer.api.model.Channel;
 import io.commercelayer.api.test.common.IntegrationTest;
+import io.commercelayer.api.test.common.TestException;
 
 
 /**
@@ -13,25 +14,25 @@ public class ChannelTest extends IntegrationTest<Channel> {
 
 	@Override
 	public ApiResponse<Channel> testCreate(ApiCaller caller) {
-		return null;
+		throw new TestException("ChannelTest.testCreate not implemented");
 	}
 	
 
 	@Override
 	public ApiResponse<Channel> testRead(Channel res, ApiCaller caller) {
-		return null;
+		throw new TestException("ChannelTest.testRead not implemented");
 	}
 	
 
 	@Override
 	public ApiResponse<Channel> testUpdate(Channel oldRes, ApiCaller caller) {
-		return null;
+		throw new TestException("ChannelTest.testUpdate not implemented");
 	}
 	
 
 	@Override
 	public ApiResponse<Channel> testDelete(Channel res, ApiCaller caller) {
-		return null;
+		throw new TestException("ChannelTest.testDelete not implemented");
 	}
 	
 

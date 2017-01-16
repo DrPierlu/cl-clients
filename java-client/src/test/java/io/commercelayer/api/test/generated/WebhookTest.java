@@ -4,6 +4,7 @@ import io.commercelayer.api.ApiCaller;
 import io.commercelayer.api.ApiResponse;
 import io.commercelayer.api.model.Webhook;
 import io.commercelayer.api.test.common.IntegrationTest;
+import io.commercelayer.api.test.common.TestException;
 
 
 /**
@@ -13,25 +14,25 @@ public class WebhookTest extends IntegrationTest<Webhook> {
 
 	@Override
 	public ApiResponse<Webhook> testCreate(ApiCaller caller) {
-		return null;
+		throw new TestException("WebhookTest.testCreate not implemented");
 	}
 	
 
 	@Override
 	public ApiResponse<Webhook> testRead(Webhook res, ApiCaller caller) {
-		return null;
+		throw new TestException("WebhookTest.testRead not implemented");
 	}
 	
 
 	@Override
 	public ApiResponse<Webhook> testUpdate(Webhook oldRes, ApiCaller caller) {
-		return null;
+		throw new TestException("WebhookTest.testUpdate not implemented");
 	}
 	
 
 	@Override
 	public ApiResponse<Webhook> testDelete(Webhook res, ApiCaller caller) {
-		return null;
+		throw new TestException("WebhookTest.testDelete not implemented");
 	}
 	
 

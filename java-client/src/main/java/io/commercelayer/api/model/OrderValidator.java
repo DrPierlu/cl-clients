@@ -10,7 +10,7 @@ import java.util.Objects;
  */
 public class OrderValidator extends ApiResource {
 
-	private static final long serialVersionUID = -1484566577777L;
+	private static final long serialVersionUID = -1484581108905L;
 
 
 	@JsonExclude

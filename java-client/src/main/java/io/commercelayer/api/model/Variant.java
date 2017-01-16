@@ -11,7 +11,7 @@ import java.util.Objects;
  */
 public class Variant extends ApiResource {
 
-	private static final long serialVersionUID = -1484566578058L;
+	private static final long serialVersionUID = -1484581109178L;
 
 
 	private Integer productId;

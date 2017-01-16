@@ -4,6 +4,7 @@ import io.commercelayer.api.ApiCaller;
 import io.commercelayer.api.ApiResponse;
 import io.commercelayer.api.model.Environment;
 import io.commercelayer.api.test.common.IntegrationTest;
+import io.commercelayer.api.test.common.TestException;
 
 
 /**
@@ -13,25 +14,25 @@ public class EnvironmentTest extends IntegrationTest<Environment> {
 
 	@Override
 	public ApiResponse<Environment> testCreate(ApiCaller caller) {
-		return null;
+		throw new TestException("EnvironmentTest.testCreate not implemented");
 	}
 	
 
 	@Override
 	public ApiResponse<Environment> testRead(Environment res, ApiCaller caller) {
-		return null;
+		throw new TestException("EnvironmentTest.testRead not implemented");
 	}
 	
 
 	@Override
 	public ApiResponse<Environment> testUpdate(Environment oldRes, ApiCaller caller) {
-		return null;
+		throw new TestException("EnvironmentTest.testUpdate not implemented");
 	}
 	
 
 	@Override
 	public ApiResponse<Environment> testDelete(Environment res, ApiCaller caller) {
-		return null;
+		throw new TestException("EnvironmentTest.testDelete not implemented");
 	}
 	
 

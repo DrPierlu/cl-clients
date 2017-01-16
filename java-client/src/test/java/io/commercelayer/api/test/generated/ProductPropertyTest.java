@@ -4,6 +4,7 @@ import io.commercelayer.api.ApiCaller;
 import io.commercelayer.api.ApiResponse;
 import io.commercelayer.api.model.ProductProperty;
 import io.commercelayer.api.test.common.IntegrationTest;
+import io.commercelayer.api.test.common.TestException;
 
 
 /**
@@ -13,25 +14,25 @@ public class ProductPropertyTest extends IntegrationTest<ProductProperty> {
 
 	@Override
 	public ApiResponse<ProductProperty> testCreate(ApiCaller caller) {
-		return null;
+		throw new TestException("ProductPropertyTest.testCreate not implemented");
 	}
 	
 
 	@Override
 	public ApiResponse<ProductProperty> testRead(ProductProperty res, ApiCaller caller) {
-		return null;
+		throw new TestException("ProductPropertyTest.testRead not implemented");
 	}
 	
 
 	@Override
 	public ApiResponse<ProductProperty> testUpdate(ProductProperty oldRes, ApiCaller caller) {
-		return null;
+		throw new TestException("ProductPropertyTest.testUpdate not implemented");
 	}
 	
 
 	@Override
 	public ApiResponse<ProductProperty> testDelete(ProductProperty res, ApiCaller caller) {
-		return null;
+		throw new TestException("ProductPropertyTest.testDelete not implemented");
 	}
 	
 

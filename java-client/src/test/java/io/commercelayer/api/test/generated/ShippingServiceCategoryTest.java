@@ -4,6 +4,7 @@ import io.commercelayer.api.ApiCaller;
 import io.commercelayer.api.ApiResponse;
 import io.commercelayer.api.model.ShippingServiceCategory;
 import io.commercelayer.api.test.common.IntegrationTest;
+import io.commercelayer.api.test.common.TestException;
 
 
 /**
@@ -13,25 +14,25 @@ public class ShippingServiceCategoryTest extends IntegrationTest<ShippingService
 
 	@Override
 	public ApiResponse<ShippingServiceCategory> testCreate(ApiCaller caller) {
-		return null;
+		throw new TestException("ShippingServiceCategoryTest.testCreate not implemented");
 	}
 	
 
 	@Override
 	public ApiResponse<ShippingServiceCategory> testRead(ShippingServiceCategory res, ApiCaller caller) {
-		return null;
+		throw new TestException("ShippingServiceCategoryTest.testRead not implemented");
 	}
 	
 
 	@Override
 	public ApiResponse<ShippingServiceCategory> testUpdate(ShippingServiceCategory oldRes, ApiCaller caller) {
-		return null;
+		throw new TestException("ShippingServiceCategoryTest.testUpdate not implemented");
 	}
 	
 
 	@Override
 	public ApiResponse<ShippingServiceCategory> testDelete(ShippingServiceCategory res, ApiCaller caller) {
-		return null;
+		throw new TestException("ShippingServiceCategoryTest.testDelete not implemented");
 	}
 	
 

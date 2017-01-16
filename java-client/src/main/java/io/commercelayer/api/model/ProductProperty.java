@@ -10,7 +10,7 @@ import java.util.Objects;
  */
 public class ProductProperty extends ApiResource {
 
-	private static final long serialVersionUID = -1484566577855L;
+	private static final long serialVersionUID = -1484581108985L;
 
 
 	private Integer productId;

@@ -10,7 +10,7 @@ import java.util.Objects;
  */
 public class PaymentMethod extends ApiResource {
 
-	private static final long serialVersionUID = -1484566577793L;
+	private static final long serialVersionUID = -1484581108928L;
 
 
 	private Integer billingAddressId;

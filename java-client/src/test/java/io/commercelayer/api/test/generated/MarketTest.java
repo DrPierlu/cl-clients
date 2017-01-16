@@ -4,6 +4,7 @@ import io.commercelayer.api.ApiCaller;
 import io.commercelayer.api.ApiResponse;
 import io.commercelayer.api.model.Market;
 import io.commercelayer.api.test.common.IntegrationTest;
+import io.commercelayer.api.test.common.TestException;
 
 
 /**
@@ -13,25 +14,25 @@ public class MarketTest extends IntegrationTest<Market> {
 
 	@Override
 	public ApiResponse<Market> testCreate(ApiCaller caller) {
-		return null;
+		throw new TestException("MarketTest.testCreate not implemented");
 	}
 	
 
 	@Override
 	public ApiResponse<Market> testRead(Market res, ApiCaller caller) {
-		return null;
+		throw new TestException("MarketTest.testRead not implemented");
 	}
 	
 
 	@Override
 	public ApiResponse<Market> testUpdate(Market oldRes, ApiCaller caller) {
-		return null;
+		throw new TestException("MarketTest.testUpdate not implemented");
 	}
 	
 
 	@Override
 	public ApiResponse<Market> testDelete(Market res, ApiCaller caller) {
-		return null;
+		throw new TestException("MarketTest.testDelete not implemented");
 	}
 	
 

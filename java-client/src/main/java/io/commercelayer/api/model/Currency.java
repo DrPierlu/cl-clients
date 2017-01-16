@@ -11,7 +11,7 @@ import java.util.Objects;
  */
 public class Currency extends ApiResource {
 
-	private static final long serialVersionUID = -1484566577621L;
+	private static final long serialVersionUID = -1484581108732L;
 
 
 	private String code;

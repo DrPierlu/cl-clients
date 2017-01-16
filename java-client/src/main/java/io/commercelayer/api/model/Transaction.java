@@ -10,7 +10,7 @@ import java.util.Objects;
  */
 public class Transaction extends ApiResource {
 
-	private static final long serialVersionUID = -1484566578058L;
+	private static final long serialVersionUID = -1484581109168L;
 
 
 	private Integer gatewayId;

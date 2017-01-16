@@ -4,6 +4,7 @@ import io.commercelayer.api.ApiCaller;
 import io.commercelayer.api.ApiResponse;
 import io.commercelayer.api.model.CountryGroup;
 import io.commercelayer.api.test.common.IntegrationTest;
+import io.commercelayer.api.test.common.TestException;
 
 
 /**
@@ -13,25 +14,25 @@ public class CountryGroupTest extends IntegrationTest<CountryGroup> {
 
 	@Override
 	public ApiResponse<CountryGroup> testCreate(ApiCaller caller) {
-		return null;
+		throw new TestException("CountryGroupTest.testCreate not implemented");
 	}
 	
 
 	@Override
 	public ApiResponse<CountryGroup> testRead(CountryGroup res, ApiCaller caller) {
-		return null;
+		throw new TestException("CountryGroupTest.testRead not implemented");
 	}
 	
 
 	@Override
 	public ApiResponse<CountryGroup> testUpdate(CountryGroup oldRes, ApiCaller caller) {
-		return null;
+		throw new TestException("CountryGroupTest.testUpdate not implemented");
 	}
 	
 
 	@Override
 	public ApiResponse<CountryGroup> testDelete(CountryGroup res, ApiCaller caller) {
-		return null;
+		throw new TestException("CountryGroupTest.testDelete not implemented");
 	}
 	
 

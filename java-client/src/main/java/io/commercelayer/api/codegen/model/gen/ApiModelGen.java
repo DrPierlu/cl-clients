@@ -493,6 +493,8 @@ public class ApiModelGen {
 
 		mc.setExtendedClass(new Type("io.commercelayer.api.test.common.IntegrationTest", def.getTitle()));
 		
+		mc.addImportItem(new Type("io.commercelayer.api.test.common.TestException"));
+		
 		final String res = ApiResource.class.getPackage().getName().replace(".common", ".").concat(def.getTitle());
 
 		
@@ -503,7 +505,9 @@ public class ApiModelGen {
 		tcm.setReturnType(new Type(ApiResponse.class, res));
 		tcm.setName(CRUD.CREATE);
 		tcm.addSignatureParam(new Param(ApiCaller.class, "caller"));
-		tcm.addBodyLine("return null;");
+		
+		tcm.addBodyLine("throw new TestException(\"%s.%s not implemented\");", mc.getName(), tcm.getName());
+		// tcm.addBodyLine("return null;");
 		
 		mc.addMethod(tcm);
 		
@@ -515,7 +519,9 @@ public class ApiModelGen {
 		trm.setReturnType(new Type(ApiResponse.class, res));
 		trm.setName(CRUD.READ);
 		trm.setSignatureParams(new Param(new Type(res), "res"), new Param(ApiCaller.class, "caller"));
-		trm.addBodyLine("return null;");
+		
+		trm.addBodyLine("throw new TestException(\"%s.%s not implemented\");", mc.getName(), trm.getName());
+		// trm.addBodyLine("return null;");
 		
 		mc.addMethod(trm);
 		
@@ -527,7 +533,9 @@ public class ApiModelGen {
 		tum.setReturnType(new Type(ApiResponse.class, res));
 		tum.setName(CRUD.UPDATE);
 		tum.setSignatureParams(new Param(new Type(res), "oldRes"), new Param(ApiCaller.class, "caller"));
-		tum.addBodyLine("return null;");
+		
+		tum.addBodyLine("throw new TestException(\"%s.%s not implemented\");", mc.getName(), tum.getName());
+		// tum.addBodyLine("return null;");
 		
 		mc.addMethod(tum);
 		
@@ -539,7 +547,9 @@ public class ApiModelGen {
 		tdm.setReturnType(new Type(ApiResponse.class, res));
 		tdm.setName(CRUD.DELETE);
 		tdm.setSignatureParams(new Param(new Type(res), "res"), new Param(ApiCaller.class, "caller"));
-		tdm.addBodyLine("return null;");
+		
+		tdm.addBodyLine("throw new TestException(\"%s.%s not implemented\");", mc.getName(), tdm.getName());
+		// tdm.addBodyLine("return null;");
 		
 		mc.addMethod(tdm);
 		
