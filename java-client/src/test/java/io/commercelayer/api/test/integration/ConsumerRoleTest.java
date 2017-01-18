@@ -1,4 +1,4 @@
-package io.commercelayer.api.test.resource;
+package io.commercelayer.api.test.integration;
 
 import org.junit.Assert;
 

@@ -480,12 +480,17 @@ public class ApiModelGen {
 
 	private ModelClass createTestClass(String testPackage, Definition def) {
 
-		final class CRUD {
-			public static final String CREATE 	= "testCreate";
-			public static final String READ 	= "testRead";
-			public static final String UPDATE 	= "testUpdate";
-			public static final String DELETE 	= "testDelete";
+		final class OPERATION {
+			final class CRUD {
+				public static final String CREATE 	= "testCreate";
+				public static final String READ 	= "testRead";
+				public static final String UPDATE 	= "testUpdate";
+				public static final String DELETE 	= "testDelete";
+			}
+			public static final String MOVE 	= "testMove";
+			public static final String SEARCH 	= "testSearch";
 		}
+		
 		
 		
 		ModelClass mc = new ModelClass(testPackage, def.getTitle().concat("Test"), Modifier.PUBLIC);
@@ -503,11 +508,11 @@ public class ApiModelGen {
 		
 		tcm.addAnnotation(Override.class);
 		tcm.setReturnType(new Type(ApiResponse.class, res));
-		tcm.setName(CRUD.CREATE);
+		tcm.setName(OPERATION.CRUD.CREATE);
 		tcm.addSignatureParam(new Param(ApiCaller.class, "caller"));
 		
-		tcm.addBodyLine("throw new TestException(\"%s.%s not implemented\");", mc.getName(), tcm.getName());
-		// tcm.addBodyLine("return null;");
+		// tcm.addBodyLine("throw new TestException(\"%s.%s not implemented\");", mc.getName(), tcm.getName());
+		tcm.addBodyLine("return null;");
 		
 		mc.addMethod(tcm);
 		
@@ -517,11 +522,11 @@ public class ApiModelGen {
 		
 		trm.addAnnotation(Override.class);
 		trm.setReturnType(new Type(ApiResponse.class, res));
-		trm.setName(CRUD.READ);
+		trm.setName(OPERATION.CRUD.READ);
 		trm.setSignatureParams(new Param(new Type(res), "res"), new Param(ApiCaller.class, "caller"));
 		
-		trm.addBodyLine("throw new TestException(\"%s.%s not implemented\");", mc.getName(), trm.getName());
-		// trm.addBodyLine("return null;");
+		// trm.addBodyLine("throw new TestException(\"%s.%s not implemented\");", mc.getName(), trm.getName());
+		trm.addBodyLine("return null;");
 		
 		mc.addMethod(trm);
 		
@@ -531,11 +536,11 @@ public class ApiModelGen {
 		
 		tum.addAnnotation(Override.class);
 		tum.setReturnType(new Type(ApiResponse.class, res));
-		tum.setName(CRUD.UPDATE);
+		tum.setName(OPERATION.CRUD.UPDATE);
 		tum.setSignatureParams(new Param(new Type(res), "oldRes"), new Param(ApiCaller.class, "caller"));
 		
-		tum.addBodyLine("throw new TestException(\"%s.%s not implemented\");", mc.getName(), tum.getName());
-		// tum.addBodyLine("return null;");
+		// tum.addBodyLine("throw new TestException(\"%s.%s not implemented\");", mc.getName(), tum.getName());
+		tum.addBodyLine("return null;");
 		
 		mc.addMethod(tum);
 		
@@ -545,13 +550,41 @@ public class ApiModelGen {
 		
 		tdm.addAnnotation(Override.class);
 		tdm.setReturnType(new Type(ApiResponse.class, res));
-		tdm.setName(CRUD.DELETE);
+		tdm.setName(OPERATION.CRUD.DELETE);
 		tdm.setSignatureParams(new Param(new Type(res), "res"), new Param(ApiCaller.class, "caller"));
 		
-		tdm.addBodyLine("throw new TestException(\"%s.%s not implemented\");", mc.getName(), tdm.getName());
-		// tdm.addBodyLine("return null;");
+		// tdm.addBodyLine("throw new TestException(\"%s.%s not implemented\");", mc.getName(), tdm.getName());
+		tdm.addBodyLine("return null;");
 		
 		mc.addMethod(tdm);
+		
+		
+		// Test Move Method
+		Method tmm = new Method(Modifier.PUBLIC);
+		
+		tmm.addAnnotation(Override.class);
+		tmm.setReturnType(new Type(ApiResponse.class, res));
+		tmm.setName(OPERATION.MOVE);
+		tmm.addSignatureParam(new Param(ApiCaller.class, "caller"));
+		
+		// tcm.addBodyLine("throw new TestException(\"%s.%s not implemented\");", mc.getName(), tcm.getName());
+		tmm.addBodyLine("return null;");
+		
+		mc.addMethod(tmm);
+		
+		
+		// Test Search Method
+		Method tsm = new Method(Modifier.PUBLIC);
+		
+		tsm.addAnnotation(Override.class);
+		tsm.setReturnType(new Type(ApiResponse.class, res));
+		tsm.setName(OPERATION.SEARCH);
+		tsm.addSignatureParam(new Param(ApiCaller.class, "caller"));
+		
+		// tcm.addBodyLine("throw new TestException(\"%s.%s not implemented\");", mc.getName(), tcm.getName());
+		tsm.addBodyLine("return null;");
+		
+		mc.addMethod(tsm);
 		
 		
 		// Main method

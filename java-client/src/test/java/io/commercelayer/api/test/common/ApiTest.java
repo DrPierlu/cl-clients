@@ -82,10 +82,7 @@ public abstract class ApiTest<T extends ApiResource> {
 			
 			response = caller.search(request, resourceType);
 			
-			if (response != null)
-				if (response.hasError()) logger.error("Error: {}", response.getApiError().getError());
-				// else logger.info("Output: {}", ToStringBuilder.reflectionToString(response.getItemList(), LogUtils.TO_STRING_STYLE));
-				else logger.info("Response items count: {}", (response.getItemList() == null)? null : response.getItemList().size());
+			if (response != null) logger.info("Response items count: {}", (response.getItemList() == null)? null : response.getItemList().size());
 			
 			
 		}
@@ -159,7 +156,7 @@ public abstract class ApiTest<T extends ApiResource> {
 			}
 			
 
-			logger.info("Output: {}", response.getResource());
+			if (response != null) logger.info("Output: {}", response.getResource());
 			
 			
 		}
