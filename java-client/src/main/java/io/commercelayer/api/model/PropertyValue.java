@@ -11,7 +11,7 @@ import java.util.Objects;
  */
 public class PropertyValue extends ApiResource {
 
-	private static final long serialVersionUID = -1484581109000L;
+	private static final long serialVersionUID = -1484836418623L;
 
 
 	private String name;

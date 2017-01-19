@@ -4,7 +4,6 @@ import io.commercelayer.api.ApiCaller;
 import io.commercelayer.api.ApiResponse;
 import io.commercelayer.api.model.Taxon;
 import io.commercelayer.api.test.common.IntegrationTest;
-import io.commercelayer.api.test.common.TestException;
 
 
 /**
@@ -14,25 +13,25 @@ public class TaxonTest extends IntegrationTest<Taxon> {
 
 	@Override
 	public ApiResponse<Taxon> testCreate(ApiCaller caller) {
-		throw new TestException("TaxonTest.testCreate not implemented");
+		return null;
 	}
 	
 
 	@Override
 	public ApiResponse<Taxon> testRead(Taxon res, ApiCaller caller) {
-		throw new TestException("TaxonTest.testRead not implemented");
+		return null;
 	}
 	
 
 	@Override
 	public ApiResponse<Taxon> testUpdate(Taxon oldRes, ApiCaller caller) {
-		throw new TestException("TaxonTest.testUpdate not implemented");
+		return null;
 	}
 	
 
 	@Override
 	public ApiResponse<Taxon> testDelete(Taxon res, ApiCaller caller) {
-		throw new TestException("TaxonTest.testDelete not implemented");
+		return null;
 	}
 	
 

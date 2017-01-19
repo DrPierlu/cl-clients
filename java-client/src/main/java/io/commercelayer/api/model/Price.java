@@ -10,7 +10,7 @@ import java.util.Objects;
  */
 public class Price extends ApiResource {
 
-	private static final long serialVersionUID = -1484581108951L;
+	private static final long serialVersionUID = -1484836418567L;
 
 
 	private String amount;

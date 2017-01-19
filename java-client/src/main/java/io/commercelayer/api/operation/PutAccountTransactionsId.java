@@ -12,12 +12,6 @@ public class PutAccountTransactionsId extends PutOperation {
 
 
 	{
-		addRequiredField("gatewayId");
-		addRequiredField("paymentSourceResource");
-		addRequiredField("paymentSourceId");
-		addRequiredField("kind");
-		addRequiredField("orderId");
-		addRequiredField("amount");
 		addRequiredField("id");
 	}
 

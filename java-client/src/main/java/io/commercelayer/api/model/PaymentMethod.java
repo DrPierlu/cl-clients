@@ -10,7 +10,7 @@ import java.util.Objects;
  */
 public class PaymentMethod extends ApiResource {
 
-	private static final long serialVersionUID = -1484581108928L;
+	private static final long serialVersionUID = -1484836418530L;
 
 
 	private Integer billingAddressId;
@@ -55,6 +55,10 @@ public class PaymentMethod extends ApiResource {
 	private String redirectUrl;
 	@JsonExclude
 	private String taxAmount;
+	@JsonExclude
+	private Float taxRate;
+	@JsonExclude
+	private Object taxable;
 	@JsonExclude
 	private String taxableAmount;
 
@@ -276,6 +280,48 @@ public class PaymentMethod extends ApiResource {
 
 	public String redirectUrl() {
 		return getRedirectUrl();
+	}
+	
+
+	public void setTaxable(Object taxable) {
+		this.taxable = taxable;
+	}
+	
+
+	public Object getTaxable() {
+		return this.taxable;
+	}
+	
+
+	public PaymentMethod taxable(Object taxable) {
+		setTaxable(taxable);
+		return this;
+	}
+	
+
+	public Object taxable() {
+		return getTaxable();
+	}
+	
+
+	public void setTaxRate(Float taxRate) {
+		this.taxRate = taxRate;
+	}
+	
+
+	public Float getTaxRate() {
+		return this.taxRate;
+	}
+	
+
+	public PaymentMethod taxRate(Float taxRate) {
+		setTaxRate(taxRate);
+		return this;
+	}
+	
+
+	public Float taxRate() {
+		return getTaxRate();
 	}
 	
 
@@ -592,6 +638,8 @@ public class PaymentMethod extends ApiResource {
 			&& Objects.equals(this.priceCents, x.priceCents)
 			&& Objects.equals(this.amountCents, x.amountCents)
 			&& Objects.equals(this.redirectUrl, x.redirectUrl)
+			&& Objects.equals(this.taxable, x.taxable)
+			&& Objects.equals(this.taxRate, x.taxRate)
 			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.order, x.order)
 			&& Objects.equals(this.paymentType, x.paymentType)
@@ -617,9 +665,10 @@ public class PaymentMethod extends ApiResource {
 		return Objects.hash(
 			name, orderId, paymentTypeId, paymentSourceId, paymentSourceResource,
 			gatewayId, billingAddressId, priceCents, amountCents, redirectUrl,
-			previousChanges, order, paymentType, paymentSource, gateway,
-			billingAddress, taxableAmount, formattedTaxableAmount, taxAmount, formattedTaxAmount,
-			price, formattedPrice, amount, formattedAmount 
+			taxable, taxRate, previousChanges, order, paymentType,
+			paymentSource, gateway, billingAddress, taxableAmount, formattedTaxableAmount,
+			taxAmount, formattedTaxAmount, price, formattedPrice, amount,
+			formattedAmount 
 		);
 	
 	}
@@ -642,6 +691,8 @@ public class PaymentMethod extends ApiResource {
 		no.priceCents = this.priceCents;
 		no.amountCents = this.amountCents;
 		no.redirectUrl = this.redirectUrl;
+		no.taxable = this.taxable;
+		no.taxRate = this.taxRate;
 		no.previousChanges = this.previousChanges;
 		no.order = this.order;
 		no.paymentType = this.paymentType;

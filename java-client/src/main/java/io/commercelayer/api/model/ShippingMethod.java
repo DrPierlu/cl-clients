@@ -11,7 +11,7 @@ import java.util.Objects;
  */
 public class ShippingMethod extends ApiResource {
 
-	private static final long serialVersionUID = -1484581109047L;
+	private static final long serialVersionUID = -1484836418681L;
 
 
 	private Integer orderId;
@@ -60,6 +60,10 @@ public class ShippingMethod extends ApiResource {
 	private Object shippingService;
 	@JsonExclude
 	private String taxAmount;
+	@JsonExclude
+	private Float taxRate;
+	@JsonExclude
+	private Object taxable;
 	@JsonExclude
 	private String taxableAmount;
 	@JsonExclude
@@ -220,6 +224,48 @@ public class ShippingMethod extends ApiResource {
 
 	public Integer freeOverAmountCents() {
 		return getFreeOverAmountCents();
+	}
+	
+
+	public void setTaxable(Object taxable) {
+		this.taxable = taxable;
+	}
+	
+
+	public Object getTaxable() {
+		return this.taxable;
+	}
+	
+
+	public ShippingMethod taxable(Object taxable) {
+		setTaxable(taxable);
+		return this;
+	}
+	
+
+	public Object taxable() {
+		return getTaxable();
+	}
+	
+
+	public void setTaxRate(Float taxRate) {
+		this.taxRate = taxRate;
+	}
+	
+
+	public Float getTaxRate() {
+		return this.taxRate;
+	}
+	
+
+	public ShippingMethod taxRate(Float taxRate) {
+		setTaxRate(taxRate);
+		return this;
+	}
+	
+
+	public Float taxRate() {
+		return getTaxRate();
 	}
 	
 
@@ -659,6 +705,8 @@ public class ShippingMethod extends ApiResource {
 			&& Objects.equals(this.shippingPackageId, x.shippingPackageId)
 			&& Objects.equals(this.priceCents, x.priceCents)
 			&& Objects.equals(this.freeOverAmountCents, x.freeOverAmountCents)
+			&& Objects.equals(this.taxable, x.taxable)
+			&& Objects.equals(this.taxRate, x.taxRate)
 			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.order, x.order)
 			&& Objects.equals(this.shippingPackage, x.shippingPackage)
@@ -689,11 +737,11 @@ public class ShippingMethod extends ApiResource {
 	
 		return Objects.hash(
 			name, orderId, shippingAddressId, shippingServiceId, shippingPackageId,
-			priceCents, freeOverAmountCents, previousChanges, order, shippingPackage,
-			shippingAddress, shippingService, lineItemStocks, shipments, lineItems,
-			amount, formattedAmount, totalLineItemAmount, formattedTotalLineItemAmount, taxableAmount,
-			formattedTaxableAmount, taxAmount, formattedTaxAmount, price, formattedPrice,
-			freeOverAmount, formattedFreeOverAmount 
+			priceCents, freeOverAmountCents, taxable, taxRate, previousChanges,
+			order, shippingPackage, shippingAddress, shippingService, lineItemStocks,
+			shipments, lineItems, amount, formattedAmount, totalLineItemAmount,
+			formattedTotalLineItemAmount, taxableAmount, formattedTaxableAmount, taxAmount, formattedTaxAmount,
+			price, formattedPrice, freeOverAmount, formattedFreeOverAmount 
 		);
 	
 	}
@@ -713,6 +761,8 @@ public class ShippingMethod extends ApiResource {
 		no.shippingPackageId = this.shippingPackageId;
 		no.priceCents = this.priceCents;
 		no.freeOverAmountCents = this.freeOverAmountCents;
+		no.taxable = this.taxable;
+		no.taxRate = this.taxRate;
 		no.previousChanges = this.previousChanges;
 		no.order = this.order;
 		no.shippingPackage = this.shippingPackage;

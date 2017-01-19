@@ -11,7 +11,7 @@ import java.util.Objects;
  */
 public class Language extends ApiResource {
 
-	private static final long serialVersionUID = -1484581108775L;
+	private static final long serialVersionUID = -1484836418375L;
 
 
 	private String code;

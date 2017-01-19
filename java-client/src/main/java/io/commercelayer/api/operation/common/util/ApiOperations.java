@@ -506,6 +506,41 @@ public final class ApiOperations {
 	}
 	
 	/**
+	 * POST /account/gateways
+	 */
+	public static PostAccountGateways PostAccountGateways() {
+		return new PostAccountGateways();
+	}
+	
+	/**
+	 * GET /account/gateways
+	 */
+	public static GetAccountGateways GetAccountGateways() {
+		return new GetAccountGateways();
+	}
+	
+	/**
+	 * PUT /account/gateways/{id}
+	 */
+	public static PutAccountGatewaysId PutAccountGatewaysId() {
+		return new PutAccountGatewaysId();
+	}
+	
+	/**
+	 * GET /account/gateways/{id}
+	 */
+	public static GetAccountGatewaysId GetAccountGatewaysId() {
+		return new GetAccountGatewaysId();
+	}
+	
+	/**
+	 * DELETE /account/gateways/{id}
+	 */
+	public static DeleteAccountGatewaysId DeleteAccountGatewaysId() {
+		return new DeleteAccountGatewaysId();
+	}
+	
+	/**
 	 * POST /account/images
 	 */
 	public static PostAccountImages PostAccountImages() {
@@ -1073,10 +1108,24 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * PUT /account/orders/{id}/tax_rates
+	 * PUT /account/orders/{id}/approve
 	 */
-	public static PutAccountOrdersIdTaxRates PutAccountOrdersIdTaxRates() {
-		return new PutAccountOrdersIdTaxRates();
+	public static PutAccountOrdersIdApprove PutAccountOrdersIdApprove() {
+		return new PutAccountOrdersIdApprove();
+	}
+	
+	/**
+	 * PUT /account/orders/{id}/cancel
+	 */
+	public static PutAccountOrdersIdCancel PutAccountOrdersIdCancel() {
+		return new PutAccountOrdersIdCancel();
+	}
+	
+	/**
+	 * PUT /account/orders/{id}/taxes
+	 */
+	public static PutAccountOrdersIdTaxes PutAccountOrdersIdTaxes() {
+		return new PutAccountOrdersIdTaxes();
 	}
 	
 	/**
@@ -1469,6 +1518,20 @@ public final class ApiOperations {
 	 */
 	public static DeleteAccountProductsId DeleteAccountProductsId() {
 		return new DeleteAccountProductsId();
+	}
+	
+	/**
+	 * PUT /account/products/{id}/approve
+	 */
+	public static PutAccountProductsIdApprove PutAccountProductsIdApprove() {
+		return new PutAccountProductsIdApprove();
+	}
+	
+	/**
+	 * PUT /account/products/{id}/discontinue
+	 */
+	public static PutAccountProductsIdDiscontinue PutAccountProductsIdDiscontinue() {
+		return new PutAccountProductsIdDiscontinue();
 	}
 	
 	/**
@@ -2382,6 +2445,20 @@ public final class ApiOperations {
 	}
 	
 	/**
+	 * PUT /account/transactions/{transaction_token}/capture
+	 */
+	public static PutAccountTransactionsTransactionTokenCapture PutAccountTransactionsTransactionTokenCapture() {
+		return new PutAccountTransactionsTransactionTokenCapture();
+	}
+	
+	/**
+	 * PUT /account/transactions/{transaction_token}/void
+	 */
+	public static PutAccountTransactionsTransactionTokenVoid PutAccountTransactionsTransactionTokenVoid() {
+		return new PutAccountTransactionsTransactionTokenVoid();
+	}
+	
+	/**
 	 * POST /account/users
 	 */
 	public static PostAccountUsers PostAccountUsers() {
@@ -2519,6 +2596,41 @@ public final class ApiOperations {
 	 */
 	public static DeleteAccountWebhooksId DeleteAccountWebhooksId() {
 		return new DeleteAccountWebhooksId();
+	}
+	
+	/**
+	 * POST /account/wire_transfers
+	 */
+	public static PostAccountWireTransfers PostAccountWireTransfers() {
+		return new PostAccountWireTransfers();
+	}
+	
+	/**
+	 * GET /account/wire_transfers
+	 */
+	public static GetAccountWireTransfers GetAccountWireTransfers() {
+		return new GetAccountWireTransfers();
+	}
+	
+	/**
+	 * PUT /account/wire_transfers/{id}
+	 */
+	public static PutAccountWireTransfersId PutAccountWireTransfersId() {
+		return new PutAccountWireTransfersId();
+	}
+	
+	/**
+	 * GET /account/wire_transfers/{id}
+	 */
+	public static GetAccountWireTransfersId GetAccountWireTransfersId() {
+		return new GetAccountWireTransfersId();
+	}
+	
+	/**
+	 * DELETE /account/wire_transfers/{id}
+	 */
+	public static DeleteAccountWireTransfersId DeleteAccountWireTransfersId() {
+		return new DeleteAccountWireTransfersId();
 	}
 	
 	/**
@@ -2725,10 +2837,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * PUT /channel/orders/{order_token}/tax_rates
+	 * PUT /channel/orders/{order_token}/taxes
 	 */
-	public static PutChannelOrdersOrderTokenTaxRates PutChannelOrdersOrderTokenTaxRates() {
-		return new PutChannelOrdersOrderTokenTaxRates();
+	public static PutChannelOrdersOrderTokenTaxes PutChannelOrdersOrderTokenTaxes() {
+		return new PutChannelOrdersOrderTokenTaxes();
 	}
 	
 	/**
@@ -2774,6 +2886,13 @@ public final class ApiOperations {
 	}
 	
 	/**
+	 * GET /channel/products/{id}
+	 */
+	public static GetChannelProductsId GetChannelProductsId() {
+		return new GetChannelProductsId();
+	}
+	
+	/**
 	 * PUT /channel/shipping_methods/{id}
 	 */
 	public static PutChannelShippingMethodsId PutChannelShippingMethodsId() {
@@ -2792,6 +2911,13 @@ public final class ApiOperations {
 	 */
 	public static DeleteChannelShippingMethodsId DeleteChannelShippingMethodsId() {
 		return new DeleteChannelShippingMethodsId();
+	}
+	
+	/**
+	 * GET /channel/taxonomies
+	 */
+	public static GetChannelTaxonomies GetChannelTaxonomies() {
+		return new GetChannelTaxonomies();
 	}
 	
 	/**

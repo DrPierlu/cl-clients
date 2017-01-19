@@ -11,7 +11,7 @@ import java.util.Objects;
  */
 public class LineItem extends ApiResource {
 
-	private static final long serialVersionUID = -1484581108787L;
+	private static final long serialVersionUID = -1484836418389L;
 
 
 	private Integer orderId;
@@ -71,8 +71,6 @@ public class LineItem extends ApiResource {
 	private String taxAmount;
 	@JsonExclude
 	private Object taxIncluded;
-	@JsonExclude
-	private Float taxRate;
 	@JsonExclude
 	private String taxableAmount;
 	@JsonExclude
@@ -323,27 +321,6 @@ public class LineItem extends ApiResource {
 
 	public Integer unitAmountCents() {
 		return getUnitAmountCents();
-	}
-	
-
-	public void setTaxRate(Float taxRate) {
-		this.taxRate = taxRate;
-	}
-	
-
-	public Float getTaxRate() {
-		return this.taxRate;
-	}
-	
-
-	public LineItem taxRate(Float taxRate) {
-		setTaxRate(taxRate);
-		return this;
-	}
-	
-
-	public Float taxRate() {
-		return getTaxRate();
 	}
 	
 
@@ -871,7 +848,6 @@ public class LineItem extends ApiResource {
 			&& Objects.equals(this.trackInventory, x.trackInventory)
 			&& Objects.equals(this.quantity, x.quantity)
 			&& Objects.equals(this.unitAmountCents, x.unitAmountCents)
-			&& Objects.equals(this.taxRate, x.taxRate)
 			&& Objects.equals(this.taxIncluded, x.taxIncluded)
 			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.shippingCategory, x.shippingCategory)
@@ -907,12 +883,12 @@ public class LineItem extends ApiResource {
 		return Objects.hash(
 			name, orderId, marketId, countryId, currencyId,
 			sellableId, sellableResource, shippingCategoryId, trackInventory, quantity,
-			unitAmountCents, taxRate, taxIncluded, previousChanges, shippingCategory,
-			order, sellable, market, country, currency,
-			stockItems, shippingServiceStockLocations, versions, lineItemStocks, shippingMethods,
-			shipments, amount, formattedAmount, taxableAmount, formattedTaxableAmount,
-			taxAmount, formattedTaxAmount, unitAmount, formattedUnitAmount, defaultShippingMethodId,
-			availableShippingServiceIds 
+			unitAmountCents, taxIncluded, previousChanges, shippingCategory, order,
+			sellable, market, country, currency, stockItems,
+			shippingServiceStockLocations, versions, lineItemStocks, shippingMethods, shipments,
+			amount, formattedAmount, taxableAmount, formattedTaxableAmount, taxAmount,
+			formattedTaxAmount, unitAmount, formattedUnitAmount, defaultShippingMethodId, availableShippingServiceIds
+			
 		);
 	
 	}
@@ -936,7 +912,6 @@ public class LineItem extends ApiResource {
 		no.trackInventory = this.trackInventory;
 		no.quantity = this.quantity;
 		no.unitAmountCents = this.unitAmountCents;
-		no.taxRate = this.taxRate;
 		no.taxIncluded = this.taxIncluded;
 		no.previousChanges = this.previousChanges;
 		no.shippingCategory = this.shippingCategory;

@@ -4,11 +4,11 @@ import io.commercelayer.api.operation.common.PutOperation;
 
 
 /**
- * PutChannelOrdersOrderTokenTaxRates
+ * PutChannelOrdersOrderTokenTaxes
  */
-public class PutChannelOrdersOrderTokenTaxRates extends PutOperation {
+public class PutChannelOrdersOrderTokenTaxes extends PutOperation {
 
-	public static final String OPERATION_PATH = "/channel/orders/{order_token}/tax_rates";
+	public static final String OPERATION_PATH = "/channel/orders/{order_token}/taxes";
 
 
 	{
@@ -16,12 +16,12 @@ public class PutChannelOrdersOrderTokenTaxRates extends PutOperation {
 	}
 
 
-	public PutChannelOrdersOrderTokenTaxRates() {
+	public PutChannelOrdersOrderTokenTaxes() {
 		super(OPERATION_PATH);
 	}
 	
 
-	public PutChannelOrdersOrderTokenTaxRates(Long id) {
+	public PutChannelOrdersOrderTokenTaxes(Long id) {
 		super(OPERATION_PATH, id);
 	}
 	

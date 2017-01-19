@@ -32,6 +32,7 @@ public class CatalogTest extends IntegrationTest<Catalog> {
 		postOp.setPayload(a);
 
 		ApiRequest<PostAccountCatalogs> postReq = new ApiRequest<>(postOp);
+		
 		ApiResponse<Catalog> postRes = test(postReq, Catalog.class, caller);
 
 		Assert.assertNotNull(postRes.getResource().getId());
@@ -50,7 +51,7 @@ public class CatalogTest extends IntegrationTest<Catalog> {
 		getOp.setId(res.getId());
 
 		ApiRequest<GetAccountCatalogsId> getReq = new ApiRequest<>(getOp);
-
+		
 		ApiResponse<Catalog> getRes = test(getReq, Catalog.class, caller);
 
 		Assert.assertNotNull(getRes.getResource().getName());
@@ -75,6 +76,7 @@ public class CatalogTest extends IntegrationTest<Catalog> {
 		putOp.setPayload(a);
 
 		ApiRequest<PutAccountCatalogsId> putReq = new ApiRequest<>(putOp);
+		
 		ApiResponse<Catalog> putRes = test(putReq, Catalog.class, caller);
 
 		Assert.assertNotEquals(oldRes.getName(), putRes.getResource().getName());
@@ -93,7 +95,7 @@ public class CatalogTest extends IntegrationTest<Catalog> {
 		delOp.setId(res.getId());
 
 		ApiRequest<DeleteAccountCatalogsId> delReq = new ApiRequest<>(delOp);
-
+		
 		ApiResponse<Catalog> delRes = test(delReq, caller);
 
 		// GET
@@ -102,7 +104,7 @@ public class CatalogTest extends IntegrationTest<Catalog> {
 		getOp.setId(res.getId());
 
 		ApiRequest<GetAccountCatalogsId> getReq = new ApiRequest<>(getOp);
-
+		
 		ApiResponse<Catalog> getRes = test(getReq, Catalog.class, caller, false);
 
 		Assert.assertNull(getRes.getResource());

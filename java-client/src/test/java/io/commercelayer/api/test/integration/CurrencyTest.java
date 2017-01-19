@@ -33,6 +33,7 @@ public class CurrencyTest extends IntegrationTest<Currency> {
 		postOp.setPayload(a);
 
 		ApiRequest<PostAccountCurrencies> postReq = new ApiRequest<>(postOp);
+		
 		ApiResponse<Currency> postRes = test(postReq, Currency.class, caller);
 
 		Assert.assertNotNull(postRes.getResource().getId());
@@ -78,6 +79,7 @@ public class CurrencyTest extends IntegrationTest<Currency> {
 		putOp.setPayload(a);
 
 		ApiRequest<PutAccountCurrenciesId> putReq = new ApiRequest<>(putOp);
+		
 		ApiResponse<Currency> putRes = test(putReq, Currency.class, caller);
 
 		Assert.assertNotEquals(oldRes.getName(), putRes.getResource().getName());

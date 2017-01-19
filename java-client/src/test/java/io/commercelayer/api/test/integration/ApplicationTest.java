@@ -32,6 +32,7 @@ public class ApplicationTest extends IntegrationTest<Application> {
 		postOp.setPayload(a);
 
 		ApiRequest<PostAccountApplications> postReq = new ApiRequest<>(postOp);
+		
 		ApiResponse<Application> postRes = test(postReq, Application.class, caller);
 
 		Assert.assertNotNull(postRes.getResource().getId());
@@ -50,7 +51,7 @@ public class ApplicationTest extends IntegrationTest<Application> {
 		getOp.setId(res.getId());
 
 		ApiRequest<GetAccountApplicationsId> getReq = new ApiRequest<>(getOp);
-
+		
 		ApiResponse<Application> getRes = test(getReq, Application.class, caller);
 
 		Assert.assertNotNull(getRes.getResource().getName());
@@ -75,6 +76,7 @@ public class ApplicationTest extends IntegrationTest<Application> {
 		putOp.setPayload(a);
 
 		ApiRequest<PutAccountApplicationsId> putReq = new ApiRequest<>(putOp);
+		
 		ApiResponse<Application> putRes = test(putReq, Application.class, caller);
 
 		Assert.assertNotEquals(oldRes.getName(), putRes.getResource().getName());
@@ -93,7 +95,7 @@ public class ApplicationTest extends IntegrationTest<Application> {
 		delOp.setId(res.getId());
 
 		ApiRequest<DeleteAccountApplicationsId> delReq = new ApiRequest<>(delOp);
-
+		
 		ApiResponse<Application> delRes = test(delReq, caller);
 
 		// GET
@@ -102,7 +104,7 @@ public class ApplicationTest extends IntegrationTest<Application> {
 		getOp.setId(res.getId());
 
 		ApiRequest<GetAccountApplicationsId> getReq = new ApiRequest<>(getOp);
-
+		
 		ApiResponse<Application> getRes = test(getReq, Application.class, caller, false);
 
 		Assert.assertNull(getRes.getResource());

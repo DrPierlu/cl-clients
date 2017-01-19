@@ -10,15 +10,27 @@ import java.util.Objects;
  */
 public class LineItemStock extends ApiResource {
 
-	private static final long serialVersionUID = -1484581108798L;
+	private static final long serialVersionUID = -1484836418400L;
 
 
 	private Integer lineItemId;
 	private Integer stockItemId;
 	@JsonExclude
+	private String amount;
+	@JsonExclude
 	private Object country;
 	@JsonExclude
 	private Integer countryId;
+	@JsonExclude
+	private String formattedAmount;
+	@JsonExclude
+	private String formattedShippingAmount;
+	@JsonExclude
+	private String formattedTaxAmount;
+	@JsonExclude
+	private String formattedTaxableAmount;
+	@JsonExclude
+	private String formattedUnitAmount;
 	@JsonExclude
 	private Object lineItem;
 	@JsonExclude
@@ -46,6 +58,8 @@ public class LineItemStock extends ApiResource {
 	@JsonExclude
 	private Integer shipmentId;
 	@JsonExclude
+	private String shippingAmount;
+	@JsonExclude
 	private Object shippingCategory;
 	@JsonExclude
 	private Integer shippingCategoryId;
@@ -59,6 +73,16 @@ public class LineItemStock extends ApiResource {
 	private Object stockLocation;
 	@JsonExclude
 	private Integer stockLocationId;
+	@JsonExclude
+	private String taxAmount;
+	@JsonExclude
+	private Float taxRate;
+	@JsonExclude
+	private String taxSource;
+	@JsonExclude
+	private String taxableAmount;
+	@JsonExclude
+	private String unitAmount;
 
 
 	public LineItemStock() {
@@ -344,6 +368,48 @@ public class LineItemStock extends ApiResource {
 	}
 	
 
+	public void setTaxRate(Float taxRate) {
+		this.taxRate = taxRate;
+	}
+	
+
+	public Float getTaxRate() {
+		return this.taxRate;
+	}
+	
+
+	public LineItemStock taxRate(Float taxRate) {
+		setTaxRate(taxRate);
+		return this;
+	}
+	
+
+	public Float taxRate() {
+		return getTaxRate();
+	}
+	
+
+	public void setTaxSource(String taxSource) {
+		this.taxSource = taxSource;
+	}
+	
+
+	public String getTaxSource() {
+		return this.taxSource;
+	}
+	
+
+	public LineItemStock taxSource(String taxSource) {
+		setTaxSource(taxSource);
+		return this;
+	}
+	
+
+	public String taxSource() {
+		return getTaxSource();
+	}
+	
+
 	public void setPreviousChanges(Object previousChanges) {
 		this.previousChanges = previousChanges;
 	}
@@ -575,6 +641,216 @@ public class LineItemStock extends ApiResource {
 	}
 	
 
+	public void setUnitAmount(String unitAmount) {
+		this.unitAmount = unitAmount;
+	}
+	
+
+	public String getUnitAmount() {
+		return this.unitAmount;
+	}
+	
+
+	public LineItemStock unitAmount(String unitAmount) {
+		setUnitAmount(unitAmount);
+		return this;
+	}
+	
+
+	public String unitAmount() {
+		return getUnitAmount();
+	}
+	
+
+	public void setFormattedUnitAmount(String formattedUnitAmount) {
+		this.formattedUnitAmount = formattedUnitAmount;
+	}
+	
+
+	public String getFormattedUnitAmount() {
+		return this.formattedUnitAmount;
+	}
+	
+
+	public LineItemStock formattedUnitAmount(String formattedUnitAmount) {
+		setFormattedUnitAmount(formattedUnitAmount);
+		return this;
+	}
+	
+
+	public String formattedUnitAmount() {
+		return getFormattedUnitAmount();
+	}
+	
+
+	public void setShippingAmount(String shippingAmount) {
+		this.shippingAmount = shippingAmount;
+	}
+	
+
+	public String getShippingAmount() {
+		return this.shippingAmount;
+	}
+	
+
+	public LineItemStock shippingAmount(String shippingAmount) {
+		setShippingAmount(shippingAmount);
+		return this;
+	}
+	
+
+	public String shippingAmount() {
+		return getShippingAmount();
+	}
+	
+
+	public void setFormattedShippingAmount(String formattedShippingAmount) {
+		this.formattedShippingAmount = formattedShippingAmount;
+	}
+	
+
+	public String getFormattedShippingAmount() {
+		return this.formattedShippingAmount;
+	}
+	
+
+	public LineItemStock formattedShippingAmount(String formattedShippingAmount) {
+		setFormattedShippingAmount(formattedShippingAmount);
+		return this;
+	}
+	
+
+	public String formattedShippingAmount() {
+		return getFormattedShippingAmount();
+	}
+	
+
+	public void setAmount(String amount) {
+		this.amount = amount;
+	}
+	
+
+	public String getAmount() {
+		return this.amount;
+	}
+	
+
+	public LineItemStock amount(String amount) {
+		setAmount(amount);
+		return this;
+	}
+	
+
+	public String amount() {
+		return getAmount();
+	}
+	
+
+	public void setFormattedAmount(String formattedAmount) {
+		this.formattedAmount = formattedAmount;
+	}
+	
+
+	public String getFormattedAmount() {
+		return this.formattedAmount;
+	}
+	
+
+	public LineItemStock formattedAmount(String formattedAmount) {
+		setFormattedAmount(formattedAmount);
+		return this;
+	}
+	
+
+	public String formattedAmount() {
+		return getFormattedAmount();
+	}
+	
+
+	public void setTaxableAmount(String taxableAmount) {
+		this.taxableAmount = taxableAmount;
+	}
+	
+
+	public String getTaxableAmount() {
+		return this.taxableAmount;
+	}
+	
+
+	public LineItemStock taxableAmount(String taxableAmount) {
+		setTaxableAmount(taxableAmount);
+		return this;
+	}
+	
+
+	public String taxableAmount() {
+		return getTaxableAmount();
+	}
+	
+
+	public void setFormattedTaxableAmount(String formattedTaxableAmount) {
+		this.formattedTaxableAmount = formattedTaxableAmount;
+	}
+	
+
+	public String getFormattedTaxableAmount() {
+		return this.formattedTaxableAmount;
+	}
+	
+
+	public LineItemStock formattedTaxableAmount(String formattedTaxableAmount) {
+		setFormattedTaxableAmount(formattedTaxableAmount);
+		return this;
+	}
+	
+
+	public String formattedTaxableAmount() {
+		return getFormattedTaxableAmount();
+	}
+	
+
+	public void setTaxAmount(String taxAmount) {
+		this.taxAmount = taxAmount;
+	}
+	
+
+	public String getTaxAmount() {
+		return this.taxAmount;
+	}
+	
+
+	public LineItemStock taxAmount(String taxAmount) {
+		setTaxAmount(taxAmount);
+		return this;
+	}
+	
+
+	public String taxAmount() {
+		return getTaxAmount();
+	}
+	
+
+	public void setFormattedTaxAmount(String formattedTaxAmount) {
+		this.formattedTaxAmount = formattedTaxAmount;
+	}
+	
+
+	public String getFormattedTaxAmount() {
+		return this.formattedTaxAmount;
+	}
+	
+
+	public LineItemStock formattedTaxAmount(String formattedTaxAmount) {
+		setFormattedTaxAmount(formattedTaxAmount);
+		return this;
+	}
+	
+
+	public String formattedTaxAmount() {
+		return getFormattedTaxAmount();
+	}
+	
+
 	@Override
 	public boolean equals(Object o) {
 	
@@ -597,6 +873,8 @@ public class LineItemStock extends ApiResource {
 			&& Objects.equals(this.shippingMethodId, x.shippingMethodId)
 			&& Objects.equals(this.shipmentId, x.shipmentId)
 			&& Objects.equals(this.quantity, x.quantity)
+			&& Objects.equals(this.taxRate, x.taxRate)
+			&& Objects.equals(this.taxSource, x.taxSource)
 			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.shippingCategory, x.shippingCategory)
 			&& Objects.equals(this.order, x.order)
@@ -608,6 +886,16 @@ public class LineItemStock extends ApiResource {
 			&& Objects.equals(this.stockLocation, x.stockLocation)
 			&& Objects.equals(this.shippingMethod, x.shippingMethod)
 			&& Objects.equals(this.shipment, x.shipment)
+			&& Objects.equals(this.unitAmount, x.unitAmount)
+			&& Objects.equals(this.formattedUnitAmount, x.formattedUnitAmount)
+			&& Objects.equals(this.shippingAmount, x.shippingAmount)
+			&& Objects.equals(this.formattedShippingAmount, x.formattedShippingAmount)
+			&& Objects.equals(this.amount, x.amount)
+			&& Objects.equals(this.formattedAmount, x.formattedAmount)
+			&& Objects.equals(this.taxableAmount, x.taxableAmount)
+			&& Objects.equals(this.formattedTaxableAmount, x.formattedTaxableAmount)
+			&& Objects.equals(this.taxAmount, x.taxAmount)
+			&& Objects.equals(this.formattedTaxAmount, x.formattedTaxAmount)
 		;
 	
 	}
@@ -619,9 +907,12 @@ public class LineItemStock extends ApiResource {
 		return Objects.hash(
 			name, orderId, marketId, countryId, shippingCategoryId,
 			lineItemId, stockItemId, sellableId, sellableResource, stockLocationId,
-			shippingMethodId, shipmentId, quantity, previousChanges, shippingCategory,
-			order, market, country, lineItem, stockItem,
-			sellable, stockLocation, shippingMethod, shipment 
+			shippingMethodId, shipmentId, quantity, taxRate, taxSource,
+			previousChanges, shippingCategory, order, market, country,
+			lineItem, stockItem, sellable, stockLocation, shippingMethod,
+			shipment, unitAmount, formattedUnitAmount, shippingAmount, formattedShippingAmount,
+			amount, formattedAmount, taxableAmount, formattedTaxableAmount, taxAmount,
+			formattedTaxAmount 
 		);
 	
 	}
@@ -647,6 +938,8 @@ public class LineItemStock extends ApiResource {
 		no.shippingMethodId = this.shippingMethodId;
 		no.shipmentId = this.shipmentId;
 		no.quantity = this.quantity;
+		no.taxRate = this.taxRate;
+		no.taxSource = this.taxSource;
 		no.previousChanges = this.previousChanges;
 		no.shippingCategory = this.shippingCategory;
 		no.order = this.order;
@@ -658,6 +951,16 @@ public class LineItemStock extends ApiResource {
 		no.stockLocation = this.stockLocation;
 		no.shippingMethod = this.shippingMethod;
 		no.shipment = this.shipment;
+		no.unitAmount = this.unitAmount;
+		no.formattedUnitAmount = this.formattedUnitAmount;
+		no.shippingAmount = this.shippingAmount;
+		no.formattedShippingAmount = this.formattedShippingAmount;
+		no.amount = this.amount;
+		no.formattedAmount = this.formattedAmount;
+		no.taxableAmount = this.taxableAmount;
+		no.formattedTaxableAmount = this.formattedTaxableAmount;
+		no.taxAmount = this.taxAmount;
+		no.formattedTaxAmount = this.formattedTaxAmount;
 	
 		return no;
 	

@@ -11,13 +11,13 @@ import java.util.Objects;
  */
 public class Merchant extends ApiResource {
 
-	private static final long serialVersionUID = -1484581108860L;
+	private static final long serialVersionUID = -1484836418454L;
 
 
-	private Integer countryId;
+	private Integer addressId;
 	private String name;
 	@JsonExclude
-	private Object country;
+	private Object address;
 	@JsonExclude
 	private String description;
 	@JsonExclude
@@ -42,24 +42,24 @@ public class Merchant extends ApiResource {
 	}
 	
 
-	public void setCountryId(Integer countryId) {
-		this.countryId = countryId;
+	public void setAddressId(Integer addressId) {
+		this.addressId = addressId;
 	}
 	
 
-	public Integer getCountryId() {
-		return this.countryId;
+	public Integer getAddressId() {
+		return this.addressId;
 	}
 	
 
-	public Merchant countryId(Integer countryId) {
-		setCountryId(countryId);
+	public Merchant addressId(Integer addressId) {
+		setAddressId(addressId);
 		return this;
 	}
 	
 
-	public Integer countryId() {
-		return getCountryId();
+	public Integer addressId() {
+		return getAddressId();
 	}
 	
 
@@ -126,24 +126,24 @@ public class Merchant extends ApiResource {
 	}
 	
 
-	public void setCountry(Object country) {
-		this.country = country;
+	public void setAddress(Object address) {
+		this.address = address;
 	}
 	
 
-	public Object getCountry() {
-		return this.country;
+	public Object getAddress() {
+		return this.address;
 	}
 	
 
-	public Merchant country(Object country) {
-		setCountry(country);
+	public Merchant address(Object address) {
+		setAddress(address);
 		return this;
 	}
 	
 
-	public Object country() {
-		return getCountry();
+	public Object address() {
+		return getAddress();
 	}
 	
 
@@ -240,11 +240,11 @@ public class Merchant extends ApiResource {
 		Merchant x = (Merchant)o;
 	
 		return super.equals(o)
-			&& Objects.equals(this.countryId, x.countryId)
+			&& Objects.equals(this.addressId, x.addressId)
 			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.description, x.description)
 			&& Objects.equals(this.previousChanges, x.previousChanges)
-			&& Objects.equals(this.country, x.country)
+			&& Objects.equals(this.address, x.address)
 			&& Objects.equals(this.markets, x.markets)
 			&& Objects.equals(this.gateways, x.gateways)
 			&& Objects.equals(this.orders, x.orders)
@@ -258,7 +258,7 @@ public class Merchant extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			countryId, name, description, previousChanges, country,
+			addressId, name, description, previousChanges, address,
 			markets, gateways, orders, paymentTypes 
 		);
 	
@@ -272,11 +272,11 @@ public class Merchant extends ApiResource {
 	
 		no = super.clone(no);
 	
-		no.countryId = this.countryId;
+		no.addressId = this.addressId;
 		no.name = this.name;
 		no.description = this.description;
 		no.previousChanges = this.previousChanges;
-		no.country = this.country;
+		no.address = this.address;
 		no.markets = this.markets;
 		no.gateways = this.gateways;
 		no.orders = this.orders;

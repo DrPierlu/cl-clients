@@ -36,6 +36,7 @@ public class AddressTest extends IntegrationTest<Address> {
 		postOp.setPayload(a);
 
 		ApiRequest<PostAccountAddresses> postReq = new ApiRequest<>(postOp);
+		
 		ApiResponse<Address> postRes = test(postReq, Address.class, caller);
 
 		Assert.assertNotNull(postRes.getResource().getId());
@@ -55,7 +56,7 @@ public class AddressTest extends IntegrationTest<Address> {
 		getOp.setId(res.getId());
 
 		ApiRequest<GetAccountAddressesId> getReq = new ApiRequest<>(getOp);
-
+		
 		ApiResponse<Address> getRes = test(getReq, Address.class, caller);
 
 		Assert.assertNotNull(getRes.getResource().getLat());
@@ -81,6 +82,7 @@ public class AddressTest extends IntegrationTest<Address> {
 		putOp.setPayload(a);
 
 		ApiRequest<PutAccountAddressesId> putReq = new ApiRequest<>(putOp);
+		
 		ApiResponse<Address> putRes = test(putReq, Address.class, caller);
 
 		Assert.assertNotEquals(oldRes.getGeocodingStreet(), putRes.getResource().getGeocodingStreet());
@@ -101,7 +103,7 @@ public class AddressTest extends IntegrationTest<Address> {
 		delOp.setId(res.getId());
 
 		ApiRequest<DeleteAccountAddressesId> delReq = new ApiRequest<>(delOp);
-
+		
 		ApiResponse<Address> delRes = test(delReq, caller);
 
 		// GET
@@ -110,7 +112,7 @@ public class AddressTest extends IntegrationTest<Address> {
 		getOp.setId(res.getId());
 
 		ApiRequest<GetAccountAddressesId> getReq = new ApiRequest<>(getOp);
-
+		
 		ApiResponse<Address> getRes = test(getReq, Address.class, caller, false);
 
 		Assert.assertNull(getRes.getResource());

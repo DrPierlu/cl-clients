@@ -10,7 +10,7 @@ import java.util.Objects;
  */
 public class ShippingServiceCategory extends ApiResource {
 
-	private static final long serialVersionUID = -1484581109075L;
+	private static final long serialVersionUID = -1484836418710L;
 
 
 	private Integer shippingCategoryId;

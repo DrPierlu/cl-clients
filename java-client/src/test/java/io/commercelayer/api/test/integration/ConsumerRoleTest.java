@@ -34,6 +34,7 @@ public class ConsumerRoleTest extends IntegrationTest<ConsumerRole> {
 		postOp.setPayload(a);
 
 		ApiRequest<PostAccountConsumerRoles> postReq = new ApiRequest<>(postOp);
+		
 		ApiResponse<ConsumerRole> postRes = test(postReq, ConsumerRole.class, caller);
 
 		Assert.assertNotNull(postRes.getResource().getId());
@@ -54,7 +55,7 @@ public class ConsumerRoleTest extends IntegrationTest<ConsumerRole> {
 		getOp.setId(res.getId());
 
 		ApiRequest<GetAccountConsumerRolesId> getReq = new ApiRequest<>(getOp);
-
+		
 		ApiResponse<ConsumerRole> getRes = test(getReq, ConsumerRole.class, caller);
 
 		Assert.assertNotNull(getRes.getResource().getRoleId());
@@ -81,6 +82,7 @@ public class ConsumerRoleTest extends IntegrationTest<ConsumerRole> {
 		putOp.setPayload(a);
 
 		ApiRequest<PutAccountConsumerRolesId> putReq = new ApiRequest<>(putOp);
+		
 		ApiResponse<ConsumerRole> putRes = test(putReq, ConsumerRole.class, caller);
 
 		Assert.assertNotEquals(oldRes.getName(), putRes.getResource().getName());
@@ -99,7 +101,7 @@ public class ConsumerRoleTest extends IntegrationTest<ConsumerRole> {
 		delOp.setId(res.getId());
 
 		ApiRequest<DeleteAccountConsumerRolesId> delReq = new ApiRequest<>(delOp);
-
+		
 		ApiResponse<ConsumerRole> delRes = test(delReq, caller);
 
 		// GET
@@ -108,7 +110,7 @@ public class ConsumerRoleTest extends IntegrationTest<ConsumerRole> {
 		getOp.setId(res.getId());
 
 		ApiRequest<GetAccountConsumerRolesId> getReq = new ApiRequest<>(getOp);
-
+		
 		ApiResponse<ConsumerRole> getRes = test(getReq, ConsumerRole.class, caller, false);
 
 		Assert.assertNull(getRes.getResource());

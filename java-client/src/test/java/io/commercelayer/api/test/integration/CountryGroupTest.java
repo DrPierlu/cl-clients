@@ -33,6 +33,7 @@ public class CountryGroupTest extends IntegrationTest<CountryGroup> {
 		postOp.setPayload(a);
 
 		ApiRequest<PostAccountCountryGroups> postReq = new ApiRequest<>(postOp);
+		
 		ApiResponse<CountryGroup> postRes = test(postReq, CountryGroup.class, caller);
 
 		Assert.assertNotNull(postRes.getResource().getId());
@@ -52,7 +53,7 @@ public class CountryGroupTest extends IntegrationTest<CountryGroup> {
 		getOp.setId(res.getId());
 
 		ApiRequest<GetAccountCountryGroupsId> getReq = new ApiRequest<>(getOp);
-
+		
 		ApiResponse<CountryGroup> getRes = test(getReq, CountryGroup.class, caller);
 
 		Assert.assertNotNull(getRes.getResource().getName());
@@ -71,12 +72,13 @@ public class CountryGroupTest extends IntegrationTest<CountryGroup> {
 		putOp.setId(oldRes.getId());
 
 		CountryGroup a = new CountryGroup();
-
+		
 		a.setName(randomField(a.getName()));
 
 		putOp.setPayload(a);
 
 		ApiRequest<PutAccountCountryGroupsId> putReq = new ApiRequest<>(putOp);
+		
 		ApiResponse<CountryGroup> putRes = test(putReq, CountryGroup.class, caller);
 
 		Assert.assertNotEquals(oldRes.getName(), putRes.getResource().getName());
@@ -95,7 +97,7 @@ public class CountryGroupTest extends IntegrationTest<CountryGroup> {
 		delOp.setId(res.getId());
 
 		ApiRequest<DeleteAccountCountryGroupsId> delReq = new ApiRequest<>(delOp);
-
+		
 		ApiResponse<CountryGroup> delRes = test(delReq, caller);
 
 		// GET
@@ -104,7 +106,7 @@ public class CountryGroupTest extends IntegrationTest<CountryGroup> {
 		getOp.setId(res.getId());
 
 		ApiRequest<GetAccountCountryGroupsId> getReq = new ApiRequest<>(getOp);
-
+		
 		ApiResponse<CountryGroup> getRes = test(getReq, CountryGroup.class, caller, false);
 
 		Assert.assertNull(getRes.getResource());

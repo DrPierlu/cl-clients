@@ -4,7 +4,6 @@ import io.commercelayer.api.ApiCaller;
 import io.commercelayer.api.ApiResponse;
 import io.commercelayer.api.model.Organization;
 import io.commercelayer.api.test.common.IntegrationTest;
-import io.commercelayer.api.test.common.TestException;
 
 
 /**
@@ -14,25 +13,25 @@ public class OrganizationTest extends IntegrationTest<Organization> {
 
 	@Override
 	public ApiResponse<Organization> testCreate(ApiCaller caller) {
-		throw new TestException("OrganizationTest.testCreate not implemented");
+		return null;
 	}
 	
 
 	@Override
 	public ApiResponse<Organization> testRead(Organization res, ApiCaller caller) {
-		throw new TestException("OrganizationTest.testRead not implemented");
+		return null;
 	}
 	
 
 	@Override
 	public ApiResponse<Organization> testUpdate(Organization oldRes, ApiCaller caller) {
-		throw new TestException("OrganizationTest.testUpdate not implemented");
+		return null;
 	}
 	
 
 	@Override
 	public ApiResponse<Organization> testDelete(Organization res, ApiCaller caller) {
-		throw new TestException("OrganizationTest.testDelete not implemented");
+		return null;
 	}
 	
 

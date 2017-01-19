@@ -4,7 +4,6 @@ import io.commercelayer.api.ApiCaller;
 import io.commercelayer.api.ApiResponse;
 import io.commercelayer.api.model.Variant;
 import io.commercelayer.api.test.common.IntegrationTest;
-import io.commercelayer.api.test.common.TestException;
 
 
 /**
@@ -14,25 +13,25 @@ public class VariantTest extends IntegrationTest<Variant> {
 
 	@Override
 	public ApiResponse<Variant> testCreate(ApiCaller caller) {
-		throw new TestException("VariantTest.testCreate not implemented");
+		return null;
 	}
 	
 
 	@Override
 	public ApiResponse<Variant> testRead(Variant res, ApiCaller caller) {
-		throw new TestException("VariantTest.testRead not implemented");
+		return null;
 	}
 	
 
 	@Override
 	public ApiResponse<Variant> testUpdate(Variant oldRes, ApiCaller caller) {
-		throw new TestException("VariantTest.testUpdate not implemented");
+		return null;
 	}
 	
 
 	@Override
 	public ApiResponse<Variant> testDelete(Variant res, ApiCaller caller) {
-		throw new TestException("VariantTest.testDelete not implemented");
+		return null;
 	}
 	
 

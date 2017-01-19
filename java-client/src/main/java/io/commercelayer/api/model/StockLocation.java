@@ -11,10 +11,13 @@ import java.util.Objects;
  */
 public class StockLocation extends ApiResource {
 
-	private static final long serialVersionUID = -1484581109134L;
+	private static final long serialVersionUID = -1484836418767L;
 
 
+	private Integer addressId;
 	private String name;
+	@JsonExclude
+	private Object address;
 	@JsonExclude
 	private List<String> lineItemStocks;
 	@JsonExclude
@@ -40,6 +43,27 @@ public class StockLocation extends ApiResource {
 
 	public StockLocation(Long id) {
 		super(id);
+	}
+	
+
+	public void setAddressId(Integer addressId) {
+		this.addressId = addressId;
+	}
+	
+
+	public Integer getAddressId() {
+		return this.addressId;
+	}
+	
+
+	public StockLocation addressId(Integer addressId) {
+		setAddressId(addressId);
+		return this;
+	}
+	
+
+	public Integer addressId() {
+		return getAddressId();
 	}
 	
 
@@ -103,6 +127,27 @@ public class StockLocation extends ApiResource {
 
 	public Object previousChanges() {
 		return getPreviousChanges();
+	}
+	
+
+	public void setAddress(Object address) {
+		this.address = address;
+	}
+	
+
+	public Object getAddress() {
+		return this.address;
+	}
+	
+
+	public StockLocation address(Object address) {
+		setAddress(address);
+		return this;
+	}
+	
+
+	public Object address() {
+		return getAddress();
 	}
 	
 
@@ -241,9 +286,11 @@ public class StockLocation extends ApiResource {
 		StockLocation x = (StockLocation)o;
 	
 		return super.equals(o)
+			&& Objects.equals(this.addressId, x.addressId)
 			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.position, x.position)
 			&& Objects.equals(this.previousChanges, x.previousChanges)
+			&& Objects.equals(this.address, x.address)
 			&& Objects.equals(this.stockItems, x.stockItems)
 			&& Objects.equals(this.lineItemStocks, x.lineItemStocks)
 			&& Objects.equals(this.shippingServiceStockLocations, x.shippingServiceStockLocations)
@@ -259,8 +306,9 @@ public class StockLocation extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, position, previousChanges, stockItems, lineItemStocks,
-			shippingServiceStockLocations, marketStockLocations, shippingServices, markets 
+			addressId, name, position, previousChanges, address,
+			stockItems, lineItemStocks, shippingServiceStockLocations, marketStockLocations, shippingServices,
+			markets 
 		);
 	
 	}
@@ -273,9 +321,11 @@ public class StockLocation extends ApiResource {
 	
 		no = super.clone(no);
 	
+		no.addressId = this.addressId;
 		no.name = this.name;
 		no.position = this.position;
 		no.previousChanges = this.previousChanges;
+		no.address = this.address;
 		no.stockItems = this.stockItems;
 		no.lineItemStocks = this.lineItemStocks;
 		no.shippingServiceStockLocations = this.shippingServiceStockLocations;

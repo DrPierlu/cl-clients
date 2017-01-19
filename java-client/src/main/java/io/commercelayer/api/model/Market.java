@@ -12,7 +12,7 @@ import java.util.Objects;
  */
 public class Market extends ApiResource {
 
-	private static final long serialVersionUID = -1484581108807L;
+	private static final long serialVersionUID = -1484836418416L;
 
 
 	private Integer catalogId;

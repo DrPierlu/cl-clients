@@ -34,6 +34,7 @@ public class CountryTest extends IntegrationTest<Country> {
 		postOp.setPayload(a);
 
 		ApiRequest<PostAccountCountries> postReq = new ApiRequest<>(postOp);
+		
 		ApiResponse<Country> postRes = test(postReq, Country.class, caller);
 
 		Assert.assertNotNull(postRes.getResource().getId());
@@ -52,7 +53,7 @@ public class CountryTest extends IntegrationTest<Country> {
 		getOp.setId(res.getId());
 
 		ApiRequest<GetAccountCountriesId> getReq = new ApiRequest<>(getOp);
-
+		
 		ApiResponse<Country> getRes = test(getReq, Country.class, caller);
 
 		Assert.assertNotNull(getRes.getResource().getName());
@@ -81,6 +82,7 @@ public class CountryTest extends IntegrationTest<Country> {
 		putOp.setPayload(a);
 
 		ApiRequest<PutAccountCountriesId> putReq = new ApiRequest<>(putOp);
+		
 		ApiResponse<Country> putRes = test(putReq, Country.class, caller);
 
 		Assert.assertNotEquals(oldRes.getName(), putRes.getResource().getName());
@@ -101,7 +103,7 @@ public class CountryTest extends IntegrationTest<Country> {
 		delOp.setId(res.getId());
 
 		ApiRequest<DeleteAccountCountriesId> delReq = new ApiRequest<>(delOp);
-
+		
 		ApiResponse<Country> delRes = test(delReq, caller);
 
 		// GET
@@ -110,7 +112,7 @@ public class CountryTest extends IntegrationTest<Country> {
 		getOp.setId(res.getId());
 
 		ApiRequest<GetAccountCountriesId> getReq = new ApiRequest<>(getOp);
-
+		
 		ApiResponse<Country> getRes = test(getReq, Country.class, caller, false);
 
 		Assert.assertNull(getRes.getResource());

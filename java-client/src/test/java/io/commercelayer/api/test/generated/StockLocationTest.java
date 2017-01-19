@@ -4,7 +4,6 @@ import io.commercelayer.api.ApiCaller;
 import io.commercelayer.api.ApiResponse;
 import io.commercelayer.api.model.StockLocation;
 import io.commercelayer.api.test.common.IntegrationTest;
-import io.commercelayer.api.test.common.TestException;
 
 
 /**
@@ -14,25 +13,25 @@ public class StockLocationTest extends IntegrationTest<StockLocation> {
 
 	@Override
 	public ApiResponse<StockLocation> testCreate(ApiCaller caller) {
-		throw new TestException("StockLocationTest.testCreate not implemented");
+		return null;
 	}
 	
 
 	@Override
 	public ApiResponse<StockLocation> testRead(StockLocation res, ApiCaller caller) {
-		throw new TestException("StockLocationTest.testRead not implemented");
+		return null;
 	}
 	
 
 	@Override
 	public ApiResponse<StockLocation> testUpdate(StockLocation oldRes, ApiCaller caller) {
-		throw new TestException("StockLocationTest.testUpdate not implemented");
+		return null;
 	}
 	
 
 	@Override
 	public ApiResponse<StockLocation> testDelete(StockLocation res, ApiCaller caller) {
-		throw new TestException("StockLocationTest.testDelete not implemented");
+		return null;
 	}
 	
 

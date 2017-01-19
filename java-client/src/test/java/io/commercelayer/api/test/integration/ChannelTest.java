@@ -32,6 +32,7 @@ public class ChannelTest extends IntegrationTest<Channel> {
 		postOp.setPayload(a);
 
 		ApiRequest<PostAccountChannels> postReq = new ApiRequest<>(postOp);
+		
 		ApiResponse<Channel> postRes = test(postReq, Channel.class, caller);
 
 		Assert.assertNotNull(postRes.getResource().getId());
@@ -50,7 +51,7 @@ public class ChannelTest extends IntegrationTest<Channel> {
 		getOp.setId(res.getId());
 
 		ApiRequest<GetAccountChannelsId> getReq = new ApiRequest<>(getOp);
-
+		
 		ApiResponse<Channel> getRes = test(getReq, Channel.class, caller);
 
 		Assert.assertNotNull(getRes.getResource().getName());
@@ -75,6 +76,7 @@ public class ChannelTest extends IntegrationTest<Channel> {
 		putOp.setPayload(a);
 
 		ApiRequest<PutAccountChannelsId> putReq = new ApiRequest<>(putOp);
+		
 		ApiResponse<Channel> putRes = test(putReq, Channel.class, caller);
 
 		Assert.assertNotEquals(oldRes.getName(), putRes.getResource().getName());
@@ -93,7 +95,7 @@ public class ChannelTest extends IntegrationTest<Channel> {
 		delOp.setId(res.getId());
 
 		ApiRequest<DeleteAccountChannelsId> delReq = new ApiRequest<>(delOp);
-
+		
 		ApiResponse<Channel> delRes = test(delReq, caller);
 
 		// GET
@@ -104,7 +106,7 @@ public class ChannelTest extends IntegrationTest<Channel> {
 		ApiRequest<GetAccountChannelsId> getReq = new ApiRequest<>(getOp);
 
 		ApiResponse<Channel> getRes = test(getReq, Channel.class, caller, false);
-
+		
 		Assert.assertNull(getRes.getResource());
 		
 		return delRes;

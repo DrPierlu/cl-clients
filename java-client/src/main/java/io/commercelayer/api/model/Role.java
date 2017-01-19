@@ -11,7 +11,7 @@ import java.util.Objects;
  */
 public class Role extends ApiResource {
 
-	private static final long serialVersionUID = -1484581109015L;
+	private static final long serialVersionUID = -1484836418641L;
 
 
 	private String name;

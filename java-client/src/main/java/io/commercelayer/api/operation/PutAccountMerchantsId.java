@@ -13,7 +13,7 @@ public class PutAccountMerchantsId extends PutOperation {
 
 	{
 		addRequiredField("name");
-		addRequiredField("countryId");
+		addRequiredField("addressId");
 		addRequiredField("description");
 		addRequiredField("id");
 	}

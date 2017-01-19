@@ -487,8 +487,8 @@ public class ApiModelGen {
 				public static final String UPDATE 	= "testUpdate";
 				public static final String DELETE 	= "testDelete";
 			}
-			public static final String MOVE 	= "testMove";
-			public static final String SEARCH 	= "testSearch";
+//			public static final String MOVE 	= "testMove";
+//			public static final String SEARCH 	= "testSearch";
 		}
 		
 		
@@ -498,7 +498,7 @@ public class ApiModelGen {
 
 		mc.setExtendedClass(new Type("io.commercelayer.api.test.common.IntegrationTest", def.getTitle()));
 		
-		mc.addImportItem(new Type("io.commercelayer.api.test.common.TestException"));
+		// mc.addImportItem(new Type("io.commercelayer.api.test.common.TestException"));
 		
 		final String res = ApiResource.class.getPackage().getName().replace(".common", ".").concat(def.getTitle());
 
@@ -557,34 +557,6 @@ public class ApiModelGen {
 		tdm.addBodyLine("return null;");
 		
 		mc.addMethod(tdm);
-		
-		
-		// Test Move Method
-		Method tmm = new Method(Modifier.PUBLIC);
-		
-		tmm.addAnnotation(Override.class);
-		tmm.setReturnType(new Type(ApiResponse.class, res));
-		tmm.setName(OPERATION.MOVE);
-		tmm.addSignatureParam(new Param(ApiCaller.class, "caller"));
-		
-		// tcm.addBodyLine("throw new TestException(\"%s.%s not implemented\");", mc.getName(), tcm.getName());
-		tmm.addBodyLine("return null;");
-		
-		mc.addMethod(tmm);
-		
-		
-		// Test Search Method
-		Method tsm = new Method(Modifier.PUBLIC);
-		
-		tsm.addAnnotation(Override.class);
-		tsm.setReturnType(new Type(ApiResponse.class, res));
-		tsm.setName(OPERATION.SEARCH);
-		tsm.addSignatureParam(new Param(ApiCaller.class, "caller"));
-		
-		// tcm.addBodyLine("throw new TestException(\"%s.%s not implemented\");", mc.getName(), tcm.getName());
-		tsm.addBodyLine("return null;");
-		
-		mc.addMethod(tsm);
 		
 		
 		// Main method

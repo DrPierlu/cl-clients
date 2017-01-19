@@ -11,7 +11,7 @@ import java.util.Objects;
  */
 public class Environment extends ApiResource {
 
-	private static final long serialVersionUID = -1484581108748L;
+	private static final long serialVersionUID = -1484836418350L;
 
 
 	private String name;
@@ -126,6 +126,8 @@ public class Environment extends ApiResource {
 	private List<String> taxonomies;
 	@JsonExclude
 	private List<String> taxons;
+	@JsonExclude
+	private List<String> transactions;
 	@JsonExclude
 	private List<String> variantOptions;
 	@JsonExclude
@@ -1322,6 +1324,27 @@ public class Environment extends ApiResource {
 	}
 	
 
+	public void setTransactions(List<String> transactions) {
+		this.transactions = transactions;
+	}
+	
+
+	public List<String> getTransactions() {
+		return this.transactions;
+	}
+	
+
+	public Environment transactions(List<String> transactions) {
+		setTransactions(transactions);
+		return this;
+	}
+	
+
+	public List<String> transactions() {
+		return getTransactions();
+	}
+	
+
 	public void setConsumerRoles(List<String> consumerRoles) {
 		this.consumerRoles = consumerRoles;
 	}
@@ -1492,6 +1515,7 @@ public class Environment extends ApiResource {
 			&& Objects.equals(this.stockItems, x.stockItems)
 			&& Objects.equals(this.taxonomies, x.taxonomies)
 			&& Objects.equals(this.taxons, x.taxons)
+			&& Objects.equals(this.transactions, x.transactions)
 			&& Objects.equals(this.consumerRoles, x.consumerRoles)
 			&& Objects.equals(this.variantOptions, x.variantOptions)
 			&& Objects.equals(this.variants, x.variants)
@@ -1517,8 +1541,8 @@ public class Environment extends ApiResource {
 			shipments, shippingCarrierTypes, shippingCategories, shippingLabels, shippingMethods,
 			shippingPackages, shippingServices, shippingServiceCategories, shippingServiceStockLocations, shippingServiceZones,
 			shippingZones, states, stockLocations, stockItems, taxonomies,
-			taxons, consumerRoles, variantOptions, variants, webhooks,
-			wireTransfers 
+			taxons, transactions, consumerRoles, variantOptions, variants,
+			webhooks, wireTransfers 
 		);
 	
 	}
@@ -1587,6 +1611,7 @@ public class Environment extends ApiResource {
 		no.stockItems = this.stockItems;
 		no.taxonomies = this.taxonomies;
 		no.taxons = this.taxons;
+		no.transactions = this.transactions;
 		no.consumerRoles = this.consumerRoles;
 		no.variantOptions = this.variantOptions;
 		no.variants = this.variants;

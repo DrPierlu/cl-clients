@@ -13,7 +13,7 @@ public class PostAccountStockLocations extends PostOperation {
 
 	{
 		addRequiredField("name");
-		addRequiredField("parentId");
+		addRequiredField("addressId");
 	}
 
 

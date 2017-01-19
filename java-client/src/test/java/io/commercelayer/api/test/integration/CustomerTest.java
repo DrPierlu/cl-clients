@@ -32,6 +32,7 @@ public class CustomerTest extends IntegrationTest<Customer> {
 		postOp.setPayload(a);
 
 		ApiRequest<PostAccountCustomers> postReq = new ApiRequest<>(postOp);
+		
 		ApiResponse<Customer> postRes = test(postReq, Customer.class, caller);
 
 		Assert.assertNotNull(postRes.getResource().getId());
@@ -76,6 +77,7 @@ public class CustomerTest extends IntegrationTest<Customer> {
 		putOp.setPayload(a);
 
 		ApiRequest<PutAccountCustomersId> putReq = new ApiRequest<>(putOp);
+		
 		ApiResponse<Customer> putRes = test(putReq, Customer.class, caller);
 
 		Assert.assertNotEquals(oldRes.getEmail(), putRes.getResource().getEmail());

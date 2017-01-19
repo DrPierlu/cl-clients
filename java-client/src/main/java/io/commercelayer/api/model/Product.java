@@ -2,6 +2,7 @@ package io.commercelayer.api.model;
 
 import io.commercelayer.api.json.JsonExclude;
 import io.commercelayer.api.model.common.ApiResource;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 
@@ -11,13 +12,17 @@ import java.util.Objects;
  */
 public class Product extends ApiResource {
 
-	private static final long serialVersionUID = -1484581108967L;
+	private static final long serialVersionUID = -1484836418587L;
 
 
 	private String name;
 	private Integer productTypeId;
 	@JsonExclude
+	private LocalDateTime approvedAt;
+	@JsonExclude
 	private String description;
+	@JsonExclude
+	private LocalDateTime discontinuedAt;
 	@JsonExclude
 	private String hasVariants;
 	@JsonExclude
@@ -48,6 +53,8 @@ public class Product extends ApiResource {
 	private String sku;
 	@JsonExclude
 	private String slug;
+	@JsonExclude
+	private String state;
 	@JsonExclude
 	private List<String> stockItems;
 	@JsonExclude
@@ -235,6 +242,69 @@ public class Product extends ApiResource {
 
 	public String taxCode() {
 		return getTaxCode();
+	}
+	
+
+	public void setState(String state) {
+		this.state = state;
+	}
+	
+
+	public String getState() {
+		return this.state;
+	}
+	
+
+	public Product state(String state) {
+		setState(state);
+		return this;
+	}
+	
+
+	public String state() {
+		return getState();
+	}
+	
+
+	public void setApprovedAt(LocalDateTime approvedAt) {
+		this.approvedAt = approvedAt;
+	}
+	
+
+	public LocalDateTime getApprovedAt() {
+		return this.approvedAt;
+	}
+	
+
+	public Product approvedAt(LocalDateTime approvedAt) {
+		setApprovedAt(approvedAt);
+		return this;
+	}
+	
+
+	public LocalDateTime approvedAt() {
+		return getApprovedAt();
+	}
+	
+
+	public void setDiscontinuedAt(LocalDateTime discontinuedAt) {
+		this.discontinuedAt = discontinuedAt;
+	}
+	
+
+	public LocalDateTime getDiscontinuedAt() {
+		return this.discontinuedAt;
+	}
+	
+
+	public Product discontinuedAt(LocalDateTime discontinuedAt) {
+		setDiscontinuedAt(discontinuedAt);
+		return this;
+	}
+	
+
+	public LocalDateTime discontinuedAt() {
+		return getDiscontinuedAt();
 	}
 	
 
@@ -570,6 +640,9 @@ public class Product extends ApiResource {
 			&& Objects.equals(this.shippingCategoryId, x.shippingCategoryId)
 			&& Objects.equals(this.sku, x.sku)
 			&& Objects.equals(this.taxCode, x.taxCode)
+			&& Objects.equals(this.state, x.state)
+			&& Objects.equals(this.approvedAt, x.approvedAt)
+			&& Objects.equals(this.discontinuedAt, x.discontinuedAt)
 			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.shippingCategory, x.shippingCategory)
 			&& Objects.equals(this.productType, x.productType)
@@ -595,10 +668,11 @@ public class Product extends ApiResource {
 	
 		return Objects.hash(
 			name, slug, description, productTypeId, trackInventory,
-			shippingCategoryId, sku, taxCode, previousChanges, shippingCategory,
-			productType, prices, lineItems, lineItemStocks, stockItems,
-			shippingServiceStockLocations, resourceImages, images, translations, variants,
-			merchandisingRules, productProperties, hasVariants 
+			shippingCategoryId, sku, taxCode, state, approvedAt,
+			discontinuedAt, previousChanges, shippingCategory, productType, prices,
+			lineItems, lineItemStocks, stockItems, shippingServiceStockLocations, resourceImages,
+			images, translations, variants, merchandisingRules, productProperties,
+			hasVariants 
 		);
 	
 	}
@@ -619,6 +693,9 @@ public class Product extends ApiResource {
 		no.shippingCategoryId = this.shippingCategoryId;
 		no.sku = this.sku;
 		no.taxCode = this.taxCode;
+		no.state = this.state;
+		no.approvedAt = this.approvedAt;
+		no.discontinuedAt = this.discontinuedAt;
 		no.previousChanges = this.previousChanges;
 		no.shippingCategory = this.shippingCategory;
 		no.productType = this.productType;

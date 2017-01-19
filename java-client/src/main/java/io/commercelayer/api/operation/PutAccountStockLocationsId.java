@@ -13,7 +13,7 @@ public class PutAccountStockLocationsId extends PutOperation {
 
 	{
 		addRequiredField("name");
-		addRequiredField("parentId");
+		addRequiredField("addressId");
 		addRequiredField("id");
 	}
 

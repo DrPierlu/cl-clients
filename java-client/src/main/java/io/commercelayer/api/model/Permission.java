@@ -10,7 +10,7 @@ import java.util.Objects;
  */
 public class Permission extends ApiResource {
 
-	private static final long serialVersionUID = -1484581108944L;
+	private static final long serialVersionUID = -1484836418559L;
 
 
 	private String ability;

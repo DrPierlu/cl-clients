@@ -13,7 +13,7 @@ public class PostAccountMerchants extends PostOperation {
 
 	{
 		addRequiredField("name");
-		addRequiredField("countryId");
+		addRequiredField("addressId");
 		addRequiredField("description");
 	}
 

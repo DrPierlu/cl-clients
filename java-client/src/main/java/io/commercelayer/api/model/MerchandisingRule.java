@@ -10,7 +10,7 @@ import java.util.Objects;
  */
 public class MerchandisingRule extends ApiResource {
 
-	private static final long serialVersionUID = -1484581108868L;
+	private static final long serialVersionUID = -1484836418463L;
 
 
 	private Integer catalogId;

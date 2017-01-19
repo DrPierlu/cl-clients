@@ -10,51 +10,37 @@ import java.util.Objects;
  */
 public class Transaction extends ApiResource {
 
-	private static final long serialVersionUID = -1484581109168L;
+	private static final long serialVersionUID = -1484836418874L;
 
 
+	private Integer amountCents;
+	private String avsCode;
+	private String avsMessage;
+	private String checkoutUrl;
+	private Integer currencyId;
+	private String cvvCode;
+	private String cvvMessage;
+	private String errorCode;
+	private String errorDetail;
 	private Integer gatewayId;
 	private String kind;
+	private String message;
+	private String name;
+	private Integer orderId;
 	private Integer paymentSourceId;
 	private String paymentSourceResource;
-	@JsonExclude
-	private Integer amountCents;
-	@JsonExclude
-	private String avsCode;
-	@JsonExclude
-	private String avsMessage;
-	@JsonExclude
-	private String checkoutUrl;
+	private String state;
+	private String token;
 	@JsonExclude
 	private Object currency;
 	@JsonExclude
-	private Integer currencyId;
-	@JsonExclude
-	private String cvvCode;
-	@JsonExclude
-	private String cvvMessage;
-	@JsonExclude
-	private String errorCode;
-	@JsonExclude
-	private String errorDetail;
-	@JsonExclude
 	private Object gateway;
 	@JsonExclude
-	private String message;
-	@JsonExclude
-	private String name;
-	@JsonExclude
 	private Object order;
-	@JsonExclude
-	private Integer orderId;
 	@JsonExclude
 	private Object paymentSource;
 	@JsonExclude
 	private Object previousChanges;
-	@JsonExclude
-	private String state;
-	@JsonExclude
-	private String token;
 
 
 	public Transaction() {

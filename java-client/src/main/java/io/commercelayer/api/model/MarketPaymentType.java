@@ -10,7 +10,7 @@ import java.util.Objects;
  */
 public class MarketPaymentType extends ApiResource {
 
-	private static final long serialVersionUID = -1484581108820L;
+	private static final long serialVersionUID = -1484836418426L;
 
 
 	private Integer marketId;

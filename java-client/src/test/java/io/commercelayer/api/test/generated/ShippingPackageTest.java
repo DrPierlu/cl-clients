@@ -4,7 +4,6 @@ import io.commercelayer.api.ApiCaller;
 import io.commercelayer.api.ApiResponse;
 import io.commercelayer.api.model.ShippingPackage;
 import io.commercelayer.api.test.common.IntegrationTest;
-import io.commercelayer.api.test.common.TestException;
 
 
 /**
@@ -14,25 +13,25 @@ public class ShippingPackageTest extends IntegrationTest<ShippingPackage> {
 
 	@Override
 	public ApiResponse<ShippingPackage> testCreate(ApiCaller caller) {
-		throw new TestException("ShippingPackageTest.testCreate not implemented");
+		return null;
 	}
 	
 
 	@Override
 	public ApiResponse<ShippingPackage> testRead(ShippingPackage res, ApiCaller caller) {
-		throw new TestException("ShippingPackageTest.testRead not implemented");
+		return null;
 	}
 	
 
 	@Override
 	public ApiResponse<ShippingPackage> testUpdate(ShippingPackage oldRes, ApiCaller caller) {
-		throw new TestException("ShippingPackageTest.testUpdate not implemented");
+		return null;
 	}
 	
 
 	@Override
 	public ApiResponse<ShippingPackage> testDelete(ShippingPackage res, ApiCaller caller) {
-		throw new TestException("ShippingPackageTest.testDelete not implemented");
+		return null;
 	}
 	
 

@@ -34,6 +34,7 @@ public class CountryLanguageTest extends IntegrationTest<CountryLanguage> {
 		postOp.setPayload(a);
 
 		ApiRequest<PostAccountCountryLanguages> postReq = new ApiRequest<>(postOp);
+		
 		ApiResponse<CountryLanguage> postRes = test(postReq, CountryLanguage.class, caller);
 
 		Assert.assertNotNull(postRes.getResource().getId());
@@ -55,7 +56,7 @@ public class CountryLanguageTest extends IntegrationTest<CountryLanguage> {
 		getOp.setId(res.getId());
 
 		ApiRequest<GetAccountCountryLanguagesId> getReq = new ApiRequest<>(getOp);
-
+		
 		ApiResponse<CountryLanguage> getRes = test(getReq, CountryLanguage.class, caller);
 
 		Assert.assertNotNull(getRes.getResource().getName());
@@ -82,6 +83,7 @@ public class CountryLanguageTest extends IntegrationTest<CountryLanguage> {
 		putOp.setPayload(a);
 
 		ApiRequest<PutAccountCountryLanguagesId> putReq = new ApiRequest<>(putOp);
+		
 		ApiResponse<CountryLanguage> putRes = test(putReq, CountryLanguage.class, caller);
 
 		Assert.assertNotEquals(oldRes.getName(), putRes.getResource().getName());
@@ -102,7 +104,7 @@ public class CountryLanguageTest extends IntegrationTest<CountryLanguage> {
 		delOp.setId(res.getId());
 
 		ApiRequest<DeleteAccountCountryLanguagesId> delReq = new ApiRequest<>(delOp);
-
+		
 		ApiResponse<CountryLanguage> delRes = test(delReq, caller);
 
 		// GET
@@ -111,7 +113,7 @@ public class CountryLanguageTest extends IntegrationTest<CountryLanguage> {
 		getOp.setId(res.getId());
 
 		ApiRequest<GetAccountCountryLanguagesId> getReq = new ApiRequest<>(getOp);
-
+		
 		ApiResponse<CountryLanguage> getRes = test(getReq, CountryLanguage.class, caller, false);
 
 		Assert.assertNull(getRes.getResource());

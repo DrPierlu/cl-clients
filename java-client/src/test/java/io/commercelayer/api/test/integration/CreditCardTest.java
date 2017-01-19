@@ -34,6 +34,7 @@ public class CreditCardTest extends IntegrationTest<CreditCard> {
 		postOp.setPayload(a);
 
 		ApiRequest<PostAccountCreditCards> postReq = new ApiRequest<>(postOp);
+		
 		ApiResponse<CreditCard> postRes = test(postReq, CreditCard.class, caller);
 
 		Assert.assertNotNull(postRes.getResource().getId());
@@ -52,7 +53,7 @@ public class CreditCardTest extends IntegrationTest<CreditCard> {
 		getOp.setId(res.getId());
 
 		ApiRequest<GetAccountCreditCardsId> getReq = new ApiRequest<>(getOp);
-
+		
 		ApiResponse<CreditCard> getRes = test(getReq, CreditCard.class, caller);
 
 		Assert.assertNotNull(getRes.getResource().getName());
@@ -79,6 +80,7 @@ public class CreditCardTest extends IntegrationTest<CreditCard> {
 		putOp.setPayload(a);
 
 		ApiRequest<PutAccountCreditCardsId> putReq = new ApiRequest<>(putOp);
+		
 		ApiResponse<CreditCard> putRes = test(putReq, CreditCard.class, caller);
 
 		Assert.assertNotEquals(oldRes.getName(), putRes.getResource().getName());

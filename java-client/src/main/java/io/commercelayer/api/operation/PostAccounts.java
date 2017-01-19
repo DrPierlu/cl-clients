@@ -18,7 +18,11 @@ public class PostAccounts extends PostOperation {
 		addRequiredField("ownerEmail");
 		addRequiredField("ownerPassword");
 		addRequiredField("ownerPasswordConfirmation");
-		addRequiredField("merchantCountryCode");
+		addRequiredField("merchantGeocodingCountry");
+		addRequiredField("merchantGeocodingZip");
+		addRequiredField("merchantGeocodingCity");
+		addRequiredField("merchantGeocodingStreet");
+		addRequiredField("merchantGeocodingNumber");
 	}
 
 

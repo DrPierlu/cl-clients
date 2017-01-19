@@ -31,7 +31,7 @@ import io.commercelayer.api.test.common.mock.ApiCallerMock;
 
 public abstract class ApiTest<T extends ApiResource> {
 	
-	private final Logger logger = LoggerFactory.getLogger(getClass());
+	protected final Logger logger = LoggerFactory.getLogger(getClass());
 	
 	protected static final Random random = new Random(System.currentTimeMillis());
 	
