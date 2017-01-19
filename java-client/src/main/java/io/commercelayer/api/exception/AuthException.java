@@ -11,11 +11,11 @@ public class AuthException extends Exception {
 	}
 	
 	public AuthException(String message, Object... params) {
-		super("Authentication Error: ".concat(String.format(message, params)));
+		this(String.format(message, params));
 	}
 	
 	public AuthException(ApiError apiError) {
-		this("[" + apiError.getError() + " - " + apiError.getErrorDescription() + "]");
+		this("[%s - %s]", apiError.getError(), apiError.getErrorDescription());
 	}
 	
 }

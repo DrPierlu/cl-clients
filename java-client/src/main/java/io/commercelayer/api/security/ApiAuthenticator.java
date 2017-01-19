@@ -14,6 +14,7 @@ import io.commercelayer.api.http.HttpRequest;
 import io.commercelayer.api.http.HttpRequest.Method;
 import io.commercelayer.api.http.HttpResponse;
 import io.commercelayer.api.http.auth.HttpAuthBasic;
+import io.commercelayer.api.operation.PostAuthToken;
 import io.commercelayer.api.util.ApiUtils;
 
 public class ApiAuthenticator {
@@ -29,7 +30,7 @@ public class ApiAuthenticator {
 		AuthPasswordRequest authRequest = new AuthPasswordRequest(account);
 
 		HttpRequest httpRequest = new HttpRequest(Method.POST);
-		httpRequest.setUrl(ApiUtils.getResourceUrl("/auth/token"));
+		httpRequest.setUrl(ApiUtils.getResourceUrl(PostAuthToken.OPERATION_PATH));
 		httpRequest.setHttpAuth(new HttpAuthBasic(account.getAuthKey(), account.getAuthSecret()));
 		httpRequest.setBody(ApiUtils.getJsonCodecInstance().toJSON(authRequest, false));
 		httpRequest.setContentType(ContentType.JSON);
@@ -73,7 +74,7 @@ public class ApiAuthenticator {
 		AuthRefreshRequest authRequest = new AuthRefreshRequest(token.getRefreshToken());
 
 		HttpRequest httpRequest = new HttpRequest(Method.POST);
-		httpRequest.setUrl(ApiUtils.getResourceUrl("/auth/token"));
+		httpRequest.setUrl(ApiUtils.getResourceUrl(PostAuthToken.OPERATION_PATH));
 		httpRequest.setHttpAuth(new HttpAuthBasic(account.getAuthKey(), account.getAuthSecret()));
 		httpRequest.setBody(ApiUtils.getJsonCodecInstance().toJSON(authRequest, false));
 		httpRequest.setContentType(ContentType.JSON);

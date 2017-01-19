@@ -67,12 +67,13 @@ public class ApiCaller {
 		else logger.error("Custom HttpClient implementation required");
 	}
 	
+
 	
-	public <T extends ApiResource> ApiResponse<T> move(ApiRequest<MoveOperation> apiRequest) throws ApiException, AuthException {
+	public <T extends ApiResource> ApiResponse<T> move(ApiRequest<? extends MoveOperation> apiRequest) throws ApiException, AuthException {
 		return get(apiRequest);
 	}
 	
-	public <T extends ApiResource> ApiResponse<T> move(ApiRequest<MoveOperation> apiRequest, Class<T> resourceType) throws ApiException, AuthException {
+	public <T extends ApiResource> ApiResponse<T> move(ApiRequest<? extends MoveOperation> apiRequest, Class<T> resourceType) throws ApiException, AuthException {
 		return get(apiRequest, resourceType);
 	}
 	

@@ -2,7 +2,7 @@ package io.commercelayer.api.exception;
 
 import io.commercelayer.api.model.common.ApiError;
 
-public final class ApiException extends Exception {
+public class ApiException extends Exception {
 
 	private static final long serialVersionUID = -7947726126234188811L;
 	
