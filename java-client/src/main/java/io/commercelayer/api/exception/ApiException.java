@@ -9,7 +9,7 @@ public class ApiException extends Exception {
 	private ApiError apiError;
 	
 	public ApiException(ApiError apiError) {
-		super(apiError.toString());
+		super(errorMessage(apiError));
 		this.apiError = apiError;
 	}
 
@@ -18,6 +18,10 @@ public class ApiException extends Exception {
 	}
 	
 	public String getApiErrorDescription() {
+		return errorMessage(getApiError());
+	}
+	
+	private static String errorMessage(ApiError apiError) {
 		return (apiError == null)? "" : apiError.toString();
 	}
 
