@@ -5,6 +5,7 @@ import io.commercelayer.api.model.common.ApiObject;
 public class AuthRefreshRequest extends ApiObject implements AuthRequest {
 
 	private String refreshToken;
+	private String grantType = GrantType.REFRESH_TOKEN;
 
 	public AuthRefreshRequest(String refreshToken) {
 		this.refreshToken = refreshToken;
@@ -20,7 +21,7 @@ public class AuthRefreshRequest extends ApiObject implements AuthRequest {
 
 	@Override
 	public String getGrantType() {
-		return GrantType.REFRESH_TOKEN;
+		return this.grantType;
 	}
 
 }

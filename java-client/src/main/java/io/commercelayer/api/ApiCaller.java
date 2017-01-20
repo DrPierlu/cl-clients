@@ -6,6 +6,7 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import io.commercelayer.api.config.ApiConfig;
 import io.commercelayer.api.domain.ContentType;
 import io.commercelayer.api.exception.ApiException;
 import io.commercelayer.api.exception.AuthException;
@@ -31,8 +32,9 @@ import io.commercelayer.api.operation.common.PutOperation;
 import io.commercelayer.api.operation.common.SearchOperation;
 import io.commercelayer.api.search.ApiSearchRequest;
 import io.commercelayer.api.search.ApiSearchResponse;
-import io.commercelayer.api.search.ApiSearchResponse.PaginationInfo;
 import io.commercelayer.api.search.PageFilter;
+import io.commercelayer.api.search.PaginatedResponse;
+import io.commercelayer.api.search.PaginatedResponse.PaginationInfo;
 import io.commercelayer.api.search.SearchFilter;
 import io.commercelayer.api.search.SearchParam;
 import io.commercelayer.api.search.SortFilter;
@@ -187,14 +189,12 @@ public class ApiCaller {
 	
 	private HttpResponse call(HttpRequest request) throws ConnectionException, SystemException, AuthException, ApiException {
 
-		if ((apiToken == null) || apiToken.getAccessToken() == null) throw new AuthException("No access_token defined");
-
-		HttpResponse response = null;
-
 		logger.debug("Request Body: {}", request.getBody());
 
-		response = httpClient.send(request); // Connection Exception
-				
+		HttpResponse response = httpClient.send(request); // Connection Exception
+		
+		if (ApiConfig.testModeEnabled())
+			logger.debug("Response Body: {}", response.getBody());
 
 		if (response.hasErrorCode()) {
 			logger.warn("HTTP Response Code: {}", response.getCode());
@@ -219,7 +219,7 @@ public class ApiCaller {
 					// Nothing to do
 				}
 			}
-			catch (SystemException | AuthException | ApiException e) {
+			catch (SystemException | ApiException e) {
 				logger.error("ApiCaller Exception: {}", e.getMessage());
 				throw e;
 			}

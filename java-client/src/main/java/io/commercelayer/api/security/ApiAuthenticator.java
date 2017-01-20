@@ -7,13 +7,16 @@ import org.slf4j.LoggerFactory;
 
 import io.commercelayer.api.domain.ContentType;
 import io.commercelayer.api.exception.AuthException;
-import io.commercelayer.api.exception.ConnectionException;
+import io.commercelayer.api.exception.CallException;
 import io.commercelayer.api.http.HttpClient;
 import io.commercelayer.api.http.HttpClientFactory;
 import io.commercelayer.api.http.HttpRequest;
 import io.commercelayer.api.http.HttpRequest.Method;
 import io.commercelayer.api.http.HttpResponse;
 import io.commercelayer.api.http.auth.HttpAuthBasic;
+import io.commercelayer.api.json.JsonCodec;
+import io.commercelayer.api.json.JsonCodecFactory;
+import io.commercelayer.api.model.common.ApiError;
 import io.commercelayer.api.operation.PostAuthToken;
 import io.commercelayer.api.util.ApiUtils;
 
@@ -22,6 +25,8 @@ public class ApiAuthenticator {
 	private static final Logger logger = LoggerFactory.getLogger(ApiAuthenticator.class);
 
 	private final HttpClient httpClient = HttpClientFactory.getHttpClientInstance();
+	private final JsonCodec jsonCodec = JsonCodecFactory.getJsonCodecInstance();
+	
 
 	public ApiToken authenticate(ApiAccount account) throws AuthException {
 		
@@ -37,25 +42,19 @@ public class ApiAuthenticator {
 		
 		logger.debug("Auth Body: {}", httpRequest.getBody());
 
-		HttpResponse httpResponse = null;
-
-		try {
+		HttpResponse httpResponse = httpClient.send(httpRequest);
 		
-			try {
-				httpResponse = httpClient.send(httpRequest);
-			} catch (ConnectionException he) {
-				logger.error("Request HTTP Error: {}", he.getMessage());
-				throw new AuthException(String.format("Authentication HTTP error [%s]", account));
-			}
-			
-			if (httpResponse.getCode() >= 300) throw new AuthException("HTTP Error Code [%d]", httpResponse.getCode());
-			if (!ContentType.JSON.equals(httpResponse.getContentType())) throw new AuthException("Expected JSON Content Type [%s]", httpResponse.getContentType());
+		if (httpResponse.hasErrorCode()) {
+//			if (httpResponse.getCode() == 401) { // Authentication Error
+				ApiError apiError = jsonCodec.fromJSON(httpResponse.getBody(), ApiError.class);
+				apiError.setHttpErrorCode(httpResponse.getCode());
+				throw new AuthException(apiError);
+//			}
+//			else throw new CallException("HTTP Error Code [%d]", httpResponse.getCode());
+		}
+		else
+		if (!ContentType.JSON.equals(httpResponse.getContentType())) throw new CallException("Expected JSON Content Type [%s]", httpResponse.getContentType());
 		
-		}
-		catch (AuthException ae) {
-			logger.info("Authentication Failure [{}]", account);
-			throw ae;
-		}
 		
 		logger.info("Authentication Success [{}]", account);
 
@@ -81,17 +80,18 @@ public class ApiAuthenticator {
 		
 		logger.debug("Auth Body: {}", httpRequest.getBody());
 
-		HttpResponse httpResponse = null;
-
-		try {
-			httpResponse = httpClient.send(httpRequest);
-		} catch (ConnectionException he) {
-			logger.error("Request HTTP Error: {}", he.getMessage());
-			throw new AuthException("Token refresh error");
-		}
+		HttpResponse httpResponse = httpClient.send(httpRequest);
 		
-		if (httpResponse.getCode() >= 300) throw new AuthException("HTTP Error Code [%d]", httpResponse.getCode());
-		if (!ContentType.JSON.equals(httpResponse.getContentType())) throw new AuthException("Expected JSON Content Type [%s]", httpResponse.getContentType());
+		if (httpResponse.hasErrorCode()) {
+//			if (httpResponse.getCode() == 401) { // Authentication Error
+				ApiError apiError = jsonCodec.fromJSON(httpResponse.getBody(), ApiError.class);
+				apiError.setHttpErrorCode(httpResponse.getCode());
+				throw new AuthException(apiError);
+//			}
+//			else throw new CallException("HTTP Error Code [%d]", httpResponse.getCode());
+		}
+		else
+		if (!ContentType.JSON.equals(httpResponse.getContentType())) throw new CallException("Expected JSON Content Type [%s]", httpResponse.getContentType());
 
 
 		ApiToken newToken = ApiUtils.getJsonCodecInstance().fromJSON(httpResponse.getBody(), ApiToken.class);

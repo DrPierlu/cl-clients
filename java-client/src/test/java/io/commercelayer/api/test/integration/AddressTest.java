@@ -12,6 +12,7 @@ import io.commercelayer.api.operation.PostAccountAddresses;
 import io.commercelayer.api.operation.PutAccountAddressesId;
 import io.commercelayer.api.operation.common.util.ApiOperations;
 import io.commercelayer.api.test.common.IntegrationTest;
+import io.commercelayer.api.test.common.TestException;
 
 /**
  * AddressTest
@@ -113,10 +114,20 @@ public class AddressTest extends IntegrationTest<Address> {
 
 		ApiRequest<GetAccountAddressesId> getReq = new ApiRequest<>(getOp);
 		
-		ApiResponse<Address> getRes = test(getReq, caller, false);
+		ApiResponse<Address> getRes = null;
+		
+		try {
+			getRes = test(getReq, caller, false);
+		}
+		catch (TestException te) {
+			if (te.causedByApiError()) {
+				Assert.assertTrue(te.getError().getHttpErrorCode() == 404);
+				Assert.assertNull(getRes);
+			}
+			else throw te;
+		}
 
-		Assert.assertNull(getRes.getResource());
-
+		
 		return delRes;
 
 	}

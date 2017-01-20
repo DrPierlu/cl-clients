@@ -1,9 +1,12 @@
 package io.commercelayer.api.model.common;
 
+import io.commercelayer.api.json.JsonExclude;
+
 public class ApiError extends ApiObject {
 
 	private String error;
 	private String errorDescription;
+	@JsonExclude
 	private int httpErrorCode;
 
 
@@ -28,7 +31,7 @@ public class ApiError extends ApiObject {
 
 
 	public String toString() {
-		return "[error=" + error + ", description=" + errorDescription + "]";
+		return String.format("[error=%s, description=%s]", error, errorDescription);
 	}
 
 

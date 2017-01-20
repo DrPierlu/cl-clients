@@ -3,6 +3,7 @@ package io.commercelayer.api.security;
 public final class AuthPasswordRequest extends ApiAccount implements AuthRequest {
 
 	private String password = "supersecret";
+	private String grantType = GrantType.PASSWORD;
 
 	public AuthPasswordRequest(ApiAccount account) {
 		super.setUsername(account.getUsername());
@@ -23,7 +24,7 @@ public final class AuthPasswordRequest extends ApiAccount implements AuthRequest
 
 	@Override
 	public String getGrantType() {
-		return GrantType.PASSWORD;
+		return this.grantType;
 	}
 	
 }

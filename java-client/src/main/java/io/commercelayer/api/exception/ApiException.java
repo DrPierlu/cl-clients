@@ -17,7 +17,7 @@ public class ApiException extends Exception {
 		return apiError;
 	}
 	
-	public String getApiErrorDescription() {
+	public String getApiErrorInfo() {
 		return errorMessage(getApiError());
 	}
 	
