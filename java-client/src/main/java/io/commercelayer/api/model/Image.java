@@ -10,7 +10,7 @@ import java.util.Objects;
  */
 public class Image extends ApiResource {
 
-	private static final long serialVersionUID = -1484836418382L;
+	private static final long serialVersionUID = -1484903988765L;
 
 
 	@JsonExclude

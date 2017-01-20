@@ -10,7 +10,7 @@ import java.util.Objects;
  */
 public class LineItemStock extends ApiResource {
 
-	private static final long serialVersionUID = -1484836418400L;
+	private static final long serialVersionUID = -1484903988790L;
 
 
 	private Integer lineItemId;

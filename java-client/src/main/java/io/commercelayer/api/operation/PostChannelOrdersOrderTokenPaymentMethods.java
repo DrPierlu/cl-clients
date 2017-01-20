@@ -1,5 +1,7 @@
 package io.commercelayer.api.operation;
 
+import io.commercelayer.api.model.PaymentMethod;
+import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.operation.common.PostOperation;
 
 
@@ -34,6 +36,11 @@ public class PostChannelOrdersOrderTokenPaymentMethods extends PostOperation {
 
 	public Object getOrderToken() {
 		return getPathParam("order_token");
+	}
+	
+
+	public Class<? extends ApiResource> getResourceType() {
+		return PaymentMethod.class;
 	}
 	
 }

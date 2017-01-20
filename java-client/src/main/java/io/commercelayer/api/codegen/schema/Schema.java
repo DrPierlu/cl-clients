@@ -2,22 +2,26 @@ package io.commercelayer.api.codegen.schema;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class Schema {
 
-	private List<Definition> definitions = new ArrayList<>();
+	private Map<String, Definition> definitions = new TreeMap<>();
 	private List<Resource> resources = new ArrayList<>();
 
-	public List<Definition> getDefinitions() {
+	
+
+	public Map<String, Definition> getDefinitions() {
 		return definitions;
 	}
 
-	public void setDefinitions(List<Definition> definitions) {
+	public void setDefinitions(Map<String, Definition> definitions) {
 		this.definitions = definitions;
 	}
 
 	public void addDefinition(Definition definition) {
-		this.definitions.add(definition);
+		this.definitions.put(definition.getTitle(), definition);
 	}
 
 	public List<Resource> getResources() {

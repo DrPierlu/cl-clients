@@ -1,5 +1,7 @@
 package io.commercelayer.api.operation;
 
+import io.commercelayer.api.model.Environment;
+import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.operation.common.PostOperation;
 
 
@@ -19,6 +21,11 @@ public class PostAccountEnvironments extends PostOperation {
 
 	public PostAccountEnvironments() {
 		super(OPERATION_PATH);
+	}
+	
+
+	public Class<? extends ApiResource> getResourceType() {
+		return Environment.class;
 	}
 	
 }

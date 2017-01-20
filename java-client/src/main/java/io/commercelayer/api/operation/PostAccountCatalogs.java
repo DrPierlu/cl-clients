@@ -1,5 +1,7 @@
 package io.commercelayer.api.operation;
 
+import io.commercelayer.api.model.Catalog;
+import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.operation.common.PostOperation;
 
 
@@ -19,6 +21,11 @@ public class PostAccountCatalogs extends PostOperation {
 
 	public PostAccountCatalogs() {
 		super(OPERATION_PATH);
+	}
+	
+
+	public Class<? extends ApiResource> getResourceType() {
+		return Catalog.class;
 	}
 	
 }

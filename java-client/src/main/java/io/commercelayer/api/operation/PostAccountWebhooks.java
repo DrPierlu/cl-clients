@@ -1,5 +1,7 @@
 package io.commercelayer.api.operation;
 
+import io.commercelayer.api.model.Webhook;
+import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.operation.common.PostOperation;
 
 
@@ -20,6 +22,11 @@ public class PostAccountWebhooks extends PostOperation {
 
 	public PostAccountWebhooks() {
 		super(OPERATION_PATH);
+	}
+	
+
+	public Class<? extends ApiResource> getResourceType() {
+		return Webhook.class;
 	}
 	
 }

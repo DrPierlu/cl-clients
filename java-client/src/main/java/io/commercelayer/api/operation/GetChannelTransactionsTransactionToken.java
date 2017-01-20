@@ -1,5 +1,7 @@
 package io.commercelayer.api.operation;
 
+import io.commercelayer.api.model.Transaction;
+import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.operation.common.SearchOperation;
 
 
@@ -23,6 +25,11 @@ public class GetChannelTransactionsTransactionToken extends SearchOperation {
 
 	public Object getTransactionToken() {
 		return getPathParam("transaction_token");
+	}
+	
+
+	public Class<? extends ApiResource> getResourceType() {
+		return Transaction.class;
 	}
 	
 }

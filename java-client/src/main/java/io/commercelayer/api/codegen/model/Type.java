@@ -70,6 +70,11 @@ public class Type implements Comparable<Type> {
 		if (this.typeClassGen != null) gen = this.typeClassGen.getSimpleName();
 		else
 		if (this.typeStrGen != null) {
+			if (this.typeStrGen.startsWith("?")) {
+				if (this.typeStrGen.contains(" extends ")) gen = this.typeStrGen.replaceAll(" extends ", "");
+				else
+				if (this.typeStrGen.contains(" super ")) gen = this.typeStrGen.replaceAll(" super ", "");
+			}
 			int idx = this.typeStrGen.lastIndexOf('.');
 			if (idx == -1) gen = this.typeStrGen;
 			else gen = this.typeStrGen.substring(idx+1);

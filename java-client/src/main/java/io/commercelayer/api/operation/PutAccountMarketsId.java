@@ -1,5 +1,7 @@
 package io.commercelayer.api.operation;
 
+import io.commercelayer.api.model.Market;
+import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.operation.common.PutOperation;
 
 
@@ -29,6 +31,11 @@ public class PutAccountMarketsId extends PutOperation {
 
 	public PutAccountMarketsId(Long id) {
 		super(OPERATION_PATH, id);
+	}
+	
+
+	public Class<? extends ApiResource> getResourceType() {
+		return Market.class;
 	}
 	
 }

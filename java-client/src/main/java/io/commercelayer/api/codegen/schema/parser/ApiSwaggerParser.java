@@ -19,10 +19,12 @@ import io.commercelayer.api.util.ModelUtils;
 import io.swagger.models.HttpMethod;
 import io.swagger.models.Model;
 import io.swagger.models.Path;
+import io.swagger.models.Response;
 import io.swagger.models.Swagger;
 import io.swagger.models.parameters.AbstractParameter;
 import io.swagger.models.parameters.AbstractSerializableParameter;
 import io.swagger.models.properties.ArrayProperty;
+import io.swagger.models.properties.RefProperty;
 import io.swagger.parser.SwaggerParser;
 
 public class ApiSwaggerParser extends ApiParser {
@@ -71,14 +73,30 @@ public class ApiSwaggerParser extends ApiParser {
 			resource.setPath(path.getKey());
 			
 			Map<HttpMethod, io.swagger.models.Operation> operations = path.getValue().getOperationMap();
-			for (Map.Entry<HttpMethod, io.swagger.models.Operation> op : operations.entrySet()) {
+			for (Map.Entry<HttpMethod, io.swagger.models.Operation> opEntry : operations.entrySet()) {
 				
 				Operation operation = new Operation();
 				
-				operation.setId(op.getValue().getOperationId());
-				operation.setMethod(op.getKey().name());
+				final io.swagger.models.Operation op = opEntry.getValue();
 				
-				List<io.swagger.models.parameters.Parameter> params = op.getValue().getParameters();
+				operation.setId(op.getOperationId());
+				operation.setMethod(opEntry.getKey().name());
+				
+				// Reference
+				for (Map.Entry<String, Response> res : op.getResponses().entrySet()) {
+					RefProperty reference = (RefProperty)res.getValue().getSchema();
+					if (reference == null) logger.warn("Found operation without Schema Reference: {}", op.getOperationId());
+					else
+					if (reference.getSimpleRef() != null) {
+						Definition def = schema.getDefinitions().get(reference.getSimpleRef());
+						operation.setReference(def);
+						def.addOperation(operation);
+						break;
+					}
+				}
+				
+				// Parameters
+				List<io.swagger.models.parameters.Parameter> params = op.getParameters();
 				
 				for (io.swagger.models.parameters.Parameter param : params) {
 					operation.addParameter(parseParameter(param));
@@ -133,7 +151,7 @@ public class ApiSwaggerParser extends ApiParser {
 		if (requiredObjectFields.isEmpty()) return;
 		
 		// Set required fields info
-		for (Definition def : schema.getDefinitions()) {
+		for (Definition def : schema.getDefinitions().values()) {
 			List<String> fieldList = requiredObjectFields.get(def.getTitle());
 			if ((fieldList == null) || fieldList.isEmpty()) continue;
 			for (Property p : def.getProperties()) {
@@ -175,6 +193,7 @@ public class ApiSwaggerParser extends ApiParser {
 		parameter.setInputType(param.getIn());
 		parameter.setDescription(param.getDescription());
 		parameter.setRequired(param.getRequired());
+		parameter.setAllowEmptyValue((param.getAllowEmptyValue() == null)? false : param.getAllowEmptyValue()); 
 		
 		if (param instanceof AbstractParameter) {
 			AbstractParameter ap = (AbstractParameter)param;

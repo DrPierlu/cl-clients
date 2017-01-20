@@ -1,5 +1,7 @@
 package io.commercelayer.api.operation;
 
+import io.commercelayer.api.model.ShippingServiceZone;
+import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.operation.common.SearchOperation;
 
 
@@ -13,6 +15,11 @@ public class GetAccountShippingServiceZones extends SearchOperation {
 
 	public GetAccountShippingServiceZones() {
 		super(OPERATION_PATH);
+	}
+	
+
+	public Class<? extends ApiResource> getResourceType() {
+		return ShippingServiceZone.class;
 	}
 	
 }

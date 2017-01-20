@@ -1,5 +1,7 @@
 package io.commercelayer.api.operation;
 
+import io.commercelayer.api.model.ShippingMethod;
+import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.operation.common.PostOperation;
 
 
@@ -32,6 +34,11 @@ public class PostChannelLineItemsLineItemIdShippingMethods extends PostOperation
 
 	public Object getLineItemId() {
 		return getPathParam("line_item_id");
+	}
+	
+
+	public Class<? extends ApiResource> getResourceType() {
+		return ShippingMethod.class;
 	}
 	
 }

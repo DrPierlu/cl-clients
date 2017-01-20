@@ -1,5 +1,7 @@
 package io.commercelayer.api.operation;
 
+import io.commercelayer.api.model.OptionType;
+import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.operation.common.PostOperation;
 
 
@@ -19,6 +21,11 @@ public class PostAccountOptionTypes extends PostOperation {
 
 	public PostAccountOptionTypes() {
 		super(OPERATION_PATH);
+	}
+	
+
+	public Class<? extends ApiResource> getResourceType() {
+		return OptionType.class;
 	}
 	
 }

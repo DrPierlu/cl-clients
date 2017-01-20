@@ -1,5 +1,7 @@
 package io.commercelayer.api.operation;
 
+import io.commercelayer.api.model.ResourceImage;
+import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.operation.common.PostOperation;
 
 
@@ -20,6 +22,11 @@ public class PostAccountResourceImages extends PostOperation {
 
 	public PostAccountResourceImages() {
 		super(OPERATION_PATH);
+	}
+	
+
+	public Class<? extends ApiResource> getResourceType() {
+		return ResourceImage.class;
 	}
 	
 }

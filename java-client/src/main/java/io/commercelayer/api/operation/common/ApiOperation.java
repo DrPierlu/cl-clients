@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import io.commercelayer.api.http.HttpRequest.Method;
+import io.commercelayer.api.model.common.ApiResource;
 
 public abstract class ApiOperation {
 
@@ -11,6 +12,10 @@ public abstract class ApiOperation {
 	protected String path;
 
 	public abstract Method getMethod();
+	
+	public Class<? extends ApiResource> getResourceType() {
+		return null;
+	}
 
 	public ApiOperation(String path) {
 		super();

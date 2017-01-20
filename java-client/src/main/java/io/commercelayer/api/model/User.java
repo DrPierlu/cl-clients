@@ -11,7 +11,7 @@ import java.util.Objects;
  */
 public class User extends ApiResource {
 
-	private static final long serialVersionUID = -1484836418866L;
+	private static final long serialVersionUID = -1484903989240L;
 
 
 	private String email;

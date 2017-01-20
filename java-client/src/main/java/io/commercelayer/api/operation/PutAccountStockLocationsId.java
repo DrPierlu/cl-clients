@@ -1,5 +1,7 @@
 package io.commercelayer.api.operation;
 
+import io.commercelayer.api.model.StockLocation;
+import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.operation.common.PutOperation;
 
 
@@ -25,6 +27,11 @@ public class PutAccountStockLocationsId extends PutOperation {
 
 	public PutAccountStockLocationsId(Long id) {
 		super(OPERATION_PATH, id);
+	}
+	
+
+	public Class<? extends ApiResource> getResourceType() {
+		return StockLocation.class;
 	}
 	
 }

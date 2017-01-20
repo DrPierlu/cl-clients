@@ -1,5 +1,7 @@
 package io.commercelayer.api.operation;
 
+import io.commercelayer.api.model.ShippingCarrierType;
+import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.operation.common.DeleteOperation;
 
 
@@ -18,6 +20,11 @@ public class DeleteAccountShippingCarrierTypesId extends DeleteOperation {
 
 	public DeleteAccountShippingCarrierTypesId(Long id) {
 		super(OPERATION_PATH, id);
+	}
+	
+
+	public Class<? extends ApiResource> getResourceType() {
+		return ShippingCarrierType.class;
 	}
 	
 }

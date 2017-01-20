@@ -39,7 +39,7 @@ public abstract class ApiParser {
 		
 		StringBuilder sb = new StringBuilder();
 		
-		for (Definition def : schema.getDefinitions()) {
+		for (Definition def : schema.getDefinitions().values()) {
 			sb.append(def.getTitle()).append('\n');
 			for (Property p : def.getProperties()) {
 				sb.append("\t[")

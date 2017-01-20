@@ -47,16 +47,16 @@ public class ApiModelGen {
 
 	private static final Logger logger = LoggerFactory.getLogger(ApiModelGen.class);
 
-	private static final boolean GENERATE_OBJECT_CLASSES 	= true;
+	private static final boolean GENERATE_OBJECT_CLASSES = true;
 	private static final boolean GENERATE_OPERATION_CLASSES = true;
-	private static final boolean GENERATE_TEST_CLASSES 		= true;
+	private static final boolean GENERATE_TEST_CLASSES = true;
 
-	public static final String PACKAGE_OBJECT 		= ApiResource.class.getPackage().getName().replaceFirst(".common", "");
-	public static final String PACKAGE_OPERATION	= ApiOperation.class.getPackage().getName().replaceFirst(".common", "");
-	public static final String PACKAGE_TEST 		= "io.commercelayer.api.test.generated";
-	public static final String PACKAGE_UTIL			= ApiOperation.class.getPackage().getName().concat(".util");
+	public static final String PACKAGE_OBJECT = ApiResource.class.getPackage().getName().replaceFirst(".common", "");
+	public static final String PACKAGE_OPERATION = ApiOperation.class.getPackage().getName().replaceFirst(".common", "");
+	public static final String PACKAGE_TEST = "io.commercelayer.api.test.generated";
+	public static final String PACKAGE_UTIL = ApiOperation.class.getPackage().getName().concat(".util");
 
-	
+
 	public Model createModel(Schema schema) throws ApiCodegenException {
 
 		logger.info("Creating API Model ...");
@@ -67,15 +67,14 @@ public class ApiModelGen {
 		logger.info("Generating model objects ...");
 
 		if (GENERATE_OBJECT_CLASSES) {
-			List<Definition> definitions = schema.getDefinitions();
-			for (Definition def : definitions) {
+			for (Definition def : schema.getDefinitions().values()) {
 				ModelClass objClass = createObjectClass(PACKAGE_OBJECT, def);
 				if (model.addClass(objClass)) /* logger.info("Definition: {}", objClass.getName()) */;
-				else logger.warn("Definition skipped: {}", def.getTitle());
+				else
+					logger.warn("Definition skipped: {}", def.getTitle());
 			}
 		}
 
-		
 		// Operation classes
 		logger.info("Generating operations ...");
 
@@ -85,69 +84,66 @@ public class ApiModelGen {
 				for (Operation op : res.getOperations()) {
 					ModelClass opClass = createOperationClass(PACKAGE_OPERATION, res.getPath(), op);
 					if (model.addClass(opClass)) /* logger.info("Operation: {} {}", op.getMethod(), res.getPath()) */;
-					else logger.warn("Operation skipped: {} {}", op.getMethod(), res.getPath());
+					else
+						logger.warn("Operation skipped: {} {}", op.getMethod(), res.getPath());
 				}
 			}
 		}
-		
-		
+
 		// Test classes
 		logger.info("Generating tests ...");
-		
+
 		if (GENERATE_TEST_CLASSES) {
-			List<Definition> definitions = schema.getDefinitions();
-			for (Definition def : definitions) {
+			for (Definition def : schema.getDefinitions().values()) {
 				ModelClass testClass = createTestClass(PACKAGE_TEST, def);
 				if (model.addClass(testClass)) /* logger.info("Test: {}", testClass.getName()) */;
-				else logger.warn("Definition skipped: {}", def.getTitle());
+				else
+					logger.warn("Definition skipped: {}", def.getTitle());
 			}
 		}
 
-		
 		model.addClass(createOperationsCatalogue(schema, PACKAGE_UTIL));
-		
-		
+
 		logger.info("Model generated");
 
 		return model;
 
 	}
-	
-	
+
+
 	private ModelClass createOperationsCatalogue(Schema schema, String pkg) {
-		
+
 		logger.info("Creating Operations Catalogue ...");
-		
+
 		ModelClass mc = new ModelClass(pkg, "ApiOperations");
 		mc.setModifier(Modifier.PUBLIC | Modifier.FINAL);
 		mc.setComment(mc.getName());
-		
+
 		mc.addImportItem(new Type(PACKAGE_OPERATION.concat(".*")));
-				
+
 		for (Resource res : schema.getResources()) {
 			for (Operation op : res.getOperations()) {
-				
+
 				Method m = new Method(Modifier.PUBLIC | Modifier.STATIC);
 				m.setLinesBefore(0);
 				m.setLinesAfter(1);
-				
+
 				m.setComment("%s %s", op.getMethod(), res.getPath());
-				
+
 				String name = StringUtils.capitalize(op.getId());
 				m.setName(name);
 				m.setReturnType(new Type(PACKAGE_OPERATION.concat(".").concat(name)));
-				
+
 				m.addBodyLine("return new %s();", name);
-				
+
 				mc.addMethod(m);
-				
+
 			}
 		}
-		
+
 		return mc;
-		
+
 	}
-	
 
 
 	private Type decodePropertyType(Property p) {
@@ -160,8 +156,12 @@ public class ApiModelGen {
 				type = String.class;
 				if (p.getFormat() != null) {
 					switch (p.getFormat()) {
-						case Property.Formats.DATE_TIME: { type = LocalDateTime.class; break; }
-						default: type = String.class;
+						case Property.Formats.DATE_TIME: {
+							type = LocalDateTime.class;
+							break;
+						}
+						default:
+							type = String.class;
 					}
 				}
 				break;
@@ -170,8 +170,12 @@ public class ApiModelGen {
 				type = Integer.class;
 				if (p.getFormat() != null) {
 					switch (p.getFormat()) {
-						case Property.Formats.INT32: { type = Integer.class; break; }
-						default: type = Integer.class;
+						case Property.Formats.INT32: {
+							type = Integer.class;
+							break;
+						}
+						default:
+							type = Integer.class;
 					}
 				}
 				break;
@@ -180,33 +184,46 @@ public class ApiModelGen {
 				type = Integer.class;
 				if (p.getFormat() != null) {
 					switch (p.getFormat()) {
-						case Property.Formats.FLOAT: { type = Float.class; break; }
-						default: type = Integer.class;
+						case Property.Formats.FLOAT: {
+							type = Float.class;
+							break;
+						}
+						default:
+							type = Integer.class;
 					}
 				}
 				break;
 			}
 			case Property.Types.ARRAY: {
 				type = List.class;
-				if (p.getItemType() != null)
-					switch (p.getItemType()) {
-						case Property.Types.STRING: { typeGen = String.class; break; }
-						case Property.Types.INTEGER: { typeGen = Integer.class; break; }
-						case Property.Types.NUMBER: { typeGen = Integer.class; break; }
-						case Property.Types.OBJECT:
-						default: typeGen = Object.class;
+				if (p.getItemType() != null) switch (p.getItemType()) {
+					case Property.Types.STRING: {
+						typeGen = String.class;
+						break;
 					}
+					case Property.Types.INTEGER: {
+						typeGen = Integer.class;
+						break;
+					}
+					case Property.Types.NUMBER: {
+						typeGen = Integer.class;
+						break;
+					}
+					case Property.Types.OBJECT:
+					default:
+						typeGen = Object.class;
+				}
 				break;
 			}
 			case Property.Types.OBJECT:
-			default: type = Object.class;
+			default:
+				type = Object.class;
 		}
-		
 
 		return new Type(type, typeGen);
 
 	}
-	
+
 
 	private ModelClass createObjectClass(String modelPackage, Definition def) {
 
@@ -222,8 +239,7 @@ public class ApiModelGen {
 
 			Field field = new Field(Modifier.PRIVATE, decodePropertyType(p), ModelUtils.toCamelCase(p.getName()));
 
-			if (p.isReadonly() || Object.class.equals(field.getType().getTypeClass()))
-				field.addAnnotation(JsonExclude.class);
+			if (p.isReadonly() || Object.class.equals(field.getType().getTypeClass())) field.addAnnotation(JsonExclude.class);
 
 			if (!mc.addField(field, true, true, true)) {
 				// logger.warn("Field skipped: {}.{}", def.getTitle(), field.getName());
@@ -238,6 +254,7 @@ public class ApiModelGen {
 		return mc;
 
 	}
+
 
 	private void createMethodEquals(final ModelClass mc) {
 
@@ -261,8 +278,7 @@ public class ApiModelGen {
 		m.addBodyLine("return super.equals(o)");
 
 		for (Field f : mc.getFieldList()) {
-			if (Modifier.isPrivate(f.getModifier()) && !Modifier.isStatic(f.getModifier()))
-				m.addBodyLine("\t&& Objects.equals(this.%1$s, x.%1$s)", f.getName());
+			if (Modifier.isPrivate(f.getModifier()) && !Modifier.isStatic(f.getModifier())) m.addBodyLine("\t&& Objects.equals(this.%1$s, x.%1$s)", f.getName());
 		}
 
 		m.addBodyLine(";");
@@ -271,6 +287,7 @@ public class ApiModelGen {
 		mc.addMethod(m);
 
 	}
+
 
 	private void createMethodHashCode(ModelClass mc) {
 
@@ -288,13 +305,10 @@ public class ApiModelGen {
 		m.addBodyLine("return Objects.hash(");
 
 		List<String> fieldList = new ArrayList<>();
-		if ((mc.getExtendedClass() != null) && (mc.getExtendedClass().getTypeClass() != null))
-		for (java.lang.reflect.Field f : mc.getExtendedClass().getTypeClass().getDeclaredFields())
-			if (Modifier.isPrivate(f.getModifiers()) && !Modifier.isStatic(f.getModifiers()))
-				fieldList.add(f.getName());
+		if ((mc.getExtendedClass() != null) && (mc.getExtendedClass().getTypeClass() != null)) for (java.lang.reflect.Field f : mc.getExtendedClass().getTypeClass().getDeclaredFields())
+			if (Modifier.isPrivate(f.getModifiers()) && !Modifier.isStatic(f.getModifiers())) fieldList.add(f.getName());
 		for (Field f : mc.getFieldList())
-			if (Modifier.isPrivate(f.getModifier()) && !Modifier.isStatic(f.getModifier()))
-				fieldList.add(f.getName());
+			if (Modifier.isPrivate(f.getModifier()) && !Modifier.isStatic(f.getModifier())) fieldList.add(f.getName());
 
 		int i = 0;
 		StringBuilder sb = new StringBuilder("\t");
@@ -304,7 +318,8 @@ public class ApiModelGen {
 			if ((i % 5) == 0) {
 				m.addBodyLine(sb.toString());
 				sb = new StringBuilder("\t");
-			} else
+			}
+			else
 				sb.append(' ');
 		}
 		m.addBodyLine(sb.toString());
@@ -316,6 +331,7 @@ public class ApiModelGen {
 		mc.addMethod(m);
 
 	}
+
 
 	private void createMethodClone(ModelClass mc) {
 
@@ -330,18 +346,15 @@ public class ApiModelGen {
 		m.addBodyLine(m.emptyLine());
 		m.addBodyLine("%1$s no = new %1$s();", mc.getName());
 		m.addBodyLine(m.emptyLine());
-		
+
 		m.addBodyLine("no = super.clone(no);");
 		m.addBodyLine(m.emptyLine());
 
 		List<String> fieldList = new ArrayList<>();
-		if ((mc.getExtendedClass() != null) && (mc.getExtendedClass().getTypeClass() != null))
-			for (java.lang.reflect.Field f : mc.getExtendedClass().getTypeClass().getDeclaredFields())
-				if (Modifier.isPrivate(f.getModifiers()) && !Modifier.isStatic(f.getModifiers()))
-					fieldList.add(f.getName());
+		if ((mc.getExtendedClass() != null) && (mc.getExtendedClass().getTypeClass() != null)) for (java.lang.reflect.Field f : mc.getExtendedClass().getTypeClass().getDeclaredFields())
+			if (Modifier.isPrivate(f.getModifiers()) && !Modifier.isStatic(f.getModifiers())) fieldList.add(f.getName());
 		for (Field f : mc.getFieldList())
-			if (Modifier.isPrivate(f.getModifier()) && !Modifier.isStatic(f.getModifier()))
-				fieldList.add(f.getName());
+			if (Modifier.isPrivate(f.getModifier()) && !Modifier.isStatic(f.getModifier())) fieldList.add(f.getName());
 
 		for (String f : fieldList) {
 			m.addBodyLine("no.%1$s = this.%1$s;", f);
@@ -355,6 +368,7 @@ public class ApiModelGen {
 
 	}
 
+
 	private ModelClass createOperationClass(String modelPackage, String path, Operation op) {
 
 		ModelClass mc = new ModelClass(modelPackage, StringUtils.capitalize(op.getId()), Modifier.PUBLIC);
@@ -364,15 +378,15 @@ public class ApiModelGen {
 
 		switch (op.getMethod()) {
 			case GET: {
-				extClass = path.endsWith("{id}")? GetIdOperation.class : SearchOperation.class;
-				break;	
+				extClass = path.endsWith("{id}") ? GetIdOperation.class : SearchOperation.class;
+				break;
 			}
 			case POST: {
 				extClass = PostOperation.class;
 				break;
 			}
 			case PUT: {
-				extClass = path.contains("/move_")? MoveOperation.class : PutOperation.class;
+				extClass = path.contains("/move_") ? MoveOperation.class : PutOperation.class;
 				break;
 			}
 			case DELETE: {
@@ -382,188 +396,185 @@ public class ApiModelGen {
 		}
 
 		mc.setExtendedClass(extClass);
-		
-		
+
 		final String operationPathField = "OPERATION_PATH";
-		
-		Field pf = new Field(Modifier.PUBLIC|Modifier.STATIC|Modifier.FINAL, String.class, operationPathField);
+
+		Field pf = new Field(Modifier.PUBLIC | Modifier.STATIC | Modifier.FINAL, String.class, operationPathField);
 		pf.setInitialization(String.format("\"%s\"", path));
 		mc.addField(pf);
 
-
 		// Constructor
 		CustomConstructor cc = new CustomConstructor();
-		
+
 		cc.setModifier(Modifier.PUBLIC);
 		cc.setName(mc.getName());
 		cc.addBodyLine("super(%s);", operationPathField);
-		
+
 		mc.addConstructor(cc);
-		
-		
+
 		// IdOperation
-		if ((mc.getExtendedClass() != null) && (mc.getExtendedClass().getTypeClass() != null))
-		if (IdOperation.class.isAssignableFrom(mc.getExtendedClass().getTypeClass())) {
-			
+		if ((mc.getExtendedClass() != null) && (mc.getExtendedClass().getTypeClass() != null)) if (IdOperation.class.isAssignableFrom(mc.getExtendedClass().getTypeClass())) {
+
 			CustomConstructor ccid = new CustomConstructor();
-			
+
 			ccid.setModifier(Modifier.PUBLIC);
 			ccid.setName(mc.getName());
 			ccid.addSignatureParam(new Constructor.Param(Long.class, IdOperation.PARAM_ID));
 			ccid.addBodyLine("super(%s, %s);", operationPathField, IdOperation.PARAM_ID);
-			
+
 			mc.addConstructor(ccid);
-			
+
 		}
-		
-		
+
 		// PayloadOperation
 		if ((mc.getExtendedClass() != null) && (mc.getExtendedClass().getTypeClass() != null))
-		if (PayloadOperation.class.isAssignableFrom(mc.getExtendedClass().getTypeClass()))
-		if (!op.getParameters().isEmpty()) {
-		
+			if (PayloadOperation.class.isAssignableFrom(mc.getExtendedClass().getTypeClass())) if (!op.getParameters().isEmpty()) {
+
 			StringBuilder sb = new StringBuilder();
-			
+
 			for (Parameter p : op.getParameters()) {
-				if (sb.length() > 0) sb.append('\n');
-				String name = ModelUtils.getObjectField(p.getName(), true);
-				// if (IdOperation.class.isAssignableFrom(mc.getExtendedClass().getTypeClass()) && (IdOperation.PARAM_ID.equals(name))) continue;
-				sb.append("addRequiredField(\"").append(name).append("\");");
+			if (sb.length() > 0) sb.append('\n');
+			String name = ModelUtils.getObjectField(p.getName(), true);
+			// if (IdOperation.class.isAssignableFrom(mc.getExtendedClass().getTypeClass()) && (IdOperation.PARAM_ID.equals(name))) continue;
+			sb.append("addRequiredField(\"").append(name).append("\");");
 			}
-			
+
 			mc.setInitBlock(sb.toString());
-			
-		}
-		
-		
+
+			}
+
 		if (path.indexOf("{") != -1) {
-			
+
 			Pattern pattern = Pattern.compile("\\{[\\w_]+\\}");
 			Matcher matcher = pattern.matcher(path);
-			
-            while (matcher.find()) {
-            	
-            	String param_ = matcher.group().replaceAll("[\\{\\}]", "");
-            	String param = ModelUtils.toCamelCase(param_);
-            	
-            	if (ArrayUtils.contains(new String[]{IdOperation.PARAM_ID, MoveOperation.PARAM_POSITION}, param)) continue;
-            	
-            	
-            	// Set Param
-            	Method ms = new Method(Modifier.PUBLIC);
-            	ms.setName("set".concat(StringUtils.capitalize(param)));
-            	
-            	ms.addSignatureParam(new Param(Object.class, param));
-            	
-            	ms.addBodyLine("addPathParam(\"%s\", %s);", param_, param);
-            	
-            	mc.addMethod(ms);
-            	
-            	
-            	// Get Param
-            	Method mg = new Method(Modifier.PUBLIC);
-            	mg.setName("get".concat(StringUtils.capitalize(param)));
-            	mg.setReturnType(Object.class);
-            	
-            	mg.addBodyLine("return getPathParam(\"%s\");", param_);
-            	
-            	mc.addMethod(mg);
-            	
-            }
-			
+
+			while (matcher.find()) {
+
+				String param_ = matcher.group().replaceAll("[\\{\\}]", "");
+				String param = ModelUtils.toCamelCase(param_);
+
+				if (ArrayUtils.contains(new String[] { IdOperation.PARAM_ID, MoveOperation.PARAM_POSITION }, param)) continue;
+
+				// Set Param
+				Method ms = new Method(Modifier.PUBLIC);
+				ms.setName("set".concat(StringUtils.capitalize(param)));
+
+				ms.addSignatureParam(new Param(Object.class, param));
+
+				ms.addBodyLine("addPathParam(\"%s\", %s);", param_, param);
+
+				mc.addMethod(ms);
+
+				// Get Param
+				Method mg = new Method(Modifier.PUBLIC);
+				mg.setName("get".concat(StringUtils.capitalize(param)));
+				mg.setReturnType(Object.class);
+
+				mg.addBodyLine("return getPathParam(\"%s\");", param_);
+
+				mc.addMethod(mg);
+
+			}
+
 		}
-		
+
+		if (op.getReference() != null) {
+
+			Method m = new Method(Modifier.PUBLIC);
+			m.setName("getResourceType");
+			m.setReturnType(new Type(Class.class, "? extends ApiResource"));
+			m.addBodyLine("return %s.class;", op.getReference().getTitle());
+
+			mc.addMethod(m);
+			mc.addImportItem(ApiResource.class);
+			mc.addImportItem(new Type("io.commercelayer.api.model.".concat(op.getReference().getTitle())));
+
+		}
 
 		return mc;
 
 	}
 
+
 	private ModelClass createTestClass(String testPackage, Definition def) {
 
 		final class OPERATION {
 			final class CRUD {
-				public static final String CREATE 	= "testCreate";
-				public static final String READ 	= "testRead";
-				public static final String UPDATE 	= "testUpdate";
-				public static final String DELETE 	= "testDelete";
+				public static final String CREATE = "testCreate";
+				public static final String READ = "testRead";
+				public static final String UPDATE = "testUpdate";
+				public static final String DELETE = "testDelete";
 			}
-//			public static final String MOVE 	= "testMove";
-//			public static final String SEARCH 	= "testSearch";
+			// public static final String MOVE = "testMove";
+			// public static final String SEARCH = "testSearch";
 		}
-		
-		
-		
+
 		ModelClass mc = new ModelClass(testPackage, def.getTitle().concat("Test"), Modifier.PUBLIC);
 		mc.setComment(mc.getName());
 
 		mc.setExtendedClass(new Type("io.commercelayer.api.test.common.IntegrationTest", def.getTitle()));
-		
+
 		// mc.addImportItem(new Type("io.commercelayer.api.test.common.TestException"));
-		
+
 		final String res = ApiResource.class.getPackage().getName().replace(".common", ".").concat(def.getTitle());
 
-		
 		// Test Create Method
 		Method tcm = new Method(Modifier.PUBLIC);
-		
+
 		tcm.addAnnotation(Override.class);
 		tcm.setReturnType(new Type(ApiResponse.class, res));
 		tcm.setName(OPERATION.CRUD.CREATE);
 		tcm.addSignatureParam(new Param(ApiCaller.class, "caller"));
-		
+
 		// tcm.addBodyLine("throw new TestException(\"%s.%s not implemented\");", mc.getName(), tcm.getName());
 		tcm.addBodyLine("return null;");
-		
+
 		mc.addMethod(tcm);
-		
-		
+
 		// Test Read Method
 		Method trm = new Method(Modifier.PUBLIC);
-		
+
 		trm.addAnnotation(Override.class);
 		trm.setReturnType(new Type(ApiResponse.class, res));
 		trm.setName(OPERATION.CRUD.READ);
 		trm.setSignatureParams(new Param(new Type(res), "res"), new Param(ApiCaller.class, "caller"));
-		
+
 		// trm.addBodyLine("throw new TestException(\"%s.%s not implemented\");", mc.getName(), trm.getName());
 		trm.addBodyLine("return null;");
-		
+
 		mc.addMethod(trm);
-		
-		
+
 		// Test Update Method
 		Method tum = new Method(Modifier.PUBLIC);
-		
+
 		tum.addAnnotation(Override.class);
 		tum.setReturnType(new Type(ApiResponse.class, res));
 		tum.setName(OPERATION.CRUD.UPDATE);
 		tum.setSignatureParams(new Param(new Type(res), "oldRes"), new Param(ApiCaller.class, "caller"));
-		
+
 		// tum.addBodyLine("throw new TestException(\"%s.%s not implemented\");", mc.getName(), tum.getName());
 		tum.addBodyLine("return null;");
-		
+
 		mc.addMethod(tum);
-		
-		
+
 		// Test Delete Method
 		Method tdm = new Method(Modifier.PUBLIC);
-		
+
 		tdm.addAnnotation(Override.class);
 		tdm.setReturnType(new Type(ApiResponse.class, res));
 		tdm.setName(OPERATION.CRUD.DELETE);
 		tdm.setSignatureParams(new Param(new Type(res), "res"), new Param(ApiCaller.class, "caller"));
-		
+
 		// tdm.addBodyLine("throw new TestException(\"%s.%s not implemented\");", mc.getName(), tdm.getName());
 		tdm.addBodyLine("return null;");
-		
+
 		mc.addMethod(tdm);
-		
-		
+
 		// Main method
 		Method mm = new Method(Modifier.PUBLIC | Modifier.STATIC);
 		mm.setName("main");
 		mm.addSignatureParam(new Param(String[].class, "args"));
-		
+
 		mm.addBodyLine(mm.emptyLine());
 		mm.addBodyLine("%1$s test = new %1$s();", mc.getName());
 		mm.addBodyLine(mm.emptyLine());
@@ -574,12 +585,11 @@ public class ApiModelGen {
 		mm.addBodyLine("// %s();", tum.getName());
 		mm.addBodyLine("// %s();", tdm.getName());
 		mm.addBodyLine(mm.emptyLine());
-		
+
 		mc.addMethod(mm);
-		
-		
+
 		return mc;
-		
+
 	}
 
 }

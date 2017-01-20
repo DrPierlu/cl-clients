@@ -1,5 +1,7 @@
 package io.commercelayer.api.operation;
 
+import io.commercelayer.api.model.PaymentMethod;
+import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.operation.common.PostOperation;
 
 
@@ -22,6 +24,11 @@ public class PostAccountPaymentMethods extends PostOperation {
 
 	public PostAccountPaymentMethods() {
 		super(OPERATION_PATH);
+	}
+	
+
+	public Class<? extends ApiResource> getResourceType() {
+		return PaymentMethod.class;
 	}
 	
 }

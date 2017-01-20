@@ -1,5 +1,7 @@
 package io.commercelayer.api.operation;
 
+import io.commercelayer.api.model.Channel;
+import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.operation.common.GetIdOperation;
 
 
@@ -18,6 +20,11 @@ public class GetAccountChannelsId extends GetIdOperation {
 
 	public GetAccountChannelsId(Long id) {
 		super(OPERATION_PATH, id);
+	}
+	
+
+	public Class<? extends ApiResource> getResourceType() {
+		return Channel.class;
 	}
 	
 }

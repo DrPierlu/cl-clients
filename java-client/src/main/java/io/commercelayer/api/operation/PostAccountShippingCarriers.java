@@ -1,5 +1,7 @@
 package io.commercelayer.api.operation;
 
+import io.commercelayer.api.model.ShippingCarrier;
+import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.operation.common.PostOperation;
 
 
@@ -19,6 +21,11 @@ public class PostAccountShippingCarriers extends PostOperation {
 
 	public PostAccountShippingCarriers() {
 		super(OPERATION_PATH);
+	}
+	
+
+	public Class<? extends ApiResource> getResourceType() {
+		return ShippingCarrier.class;
 	}
 	
 }

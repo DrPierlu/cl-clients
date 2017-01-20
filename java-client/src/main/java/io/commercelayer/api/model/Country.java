@@ -11,7 +11,7 @@ import java.util.Objects;
  */
 public class Country extends ApiResource {
 
-	private static final long serialVersionUID = -1484836418304L;
+	private static final long serialVersionUID = -1484903988681L;
 
 
 	private String code;

@@ -1,5 +1,7 @@
 package io.commercelayer.api.operation;
 
+import io.commercelayer.api.model.ResourceImage;
+import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.operation.common.SearchOperation;
 
 
@@ -13,6 +15,11 @@ public class GetAccountResourceImages extends SearchOperation {
 
 	public GetAccountResourceImages() {
 		super(OPERATION_PATH);
+	}
+	
+
+	public Class<? extends ApiResource> getResourceType() {
+		return ResourceImage.class;
 	}
 	
 }

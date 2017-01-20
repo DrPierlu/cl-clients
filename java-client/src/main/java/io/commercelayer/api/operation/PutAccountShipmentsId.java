@@ -1,5 +1,7 @@
 package io.commercelayer.api.operation;
 
+import io.commercelayer.api.model.Shipment;
+import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.operation.common.PutOperation;
 
 
@@ -23,6 +25,11 @@ public class PutAccountShipmentsId extends PutOperation {
 
 	public PutAccountShipmentsId(Long id) {
 		super(OPERATION_PATH, id);
+	}
+	
+
+	public Class<? extends ApiResource> getResourceType() {
+		return Shipment.class;
 	}
 	
 }

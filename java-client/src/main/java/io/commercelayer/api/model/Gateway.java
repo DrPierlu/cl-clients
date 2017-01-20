@@ -11,7 +11,7 @@ import java.util.Objects;
  */
 public class Gateway extends ApiResource {
 
-	private static final long serialVersionUID = -1484836418366L;
+	private static final long serialVersionUID = -1484903988757L;
 
 
 	private String kind;
