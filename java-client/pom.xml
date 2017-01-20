@@ -14,18 +14,18 @@
 
 		<dependencies>
 
-			<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
-			<dependency>
-				<groupId>com.google.code.gson</groupId>
-				<artifactId>gson</artifactId>
-				<version>2.7</version>
-			</dependency>
-
 			<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
 			<dependency>
 				<groupId>org.apache.commons</groupId>
 				<artifactId>commons-lang3</artifactId>
 				<version>3.0</version>
+			</dependency>
+
+			<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+			<dependency>
+				<groupId>com.google.code.gson</groupId>
+				<artifactId>gson</artifactId>
+				<version>2.7</version>
 			</dependency>
 
 			<!-- https://mvnrepository.com/artifact/com.squareup.okhttp3/okhttp -->
@@ -35,12 +35,25 @@
 				<version>3.4.1</version>
 			</dependency>
 
+
+			<!-- TEST -->
+
 			<!-- https://mvnrepository.com/artifact/junit/junit -->
 			<dependency>
 				<groupId>junit</groupId>
 				<artifactId>junit</artifactId>
 				<version>4.12</version>
 			</dependency>
+
+			<!-- https://mvnrepository.com/artifact/org.testng/testng -->
+			<dependency>
+				<groupId>org.testng</groupId>
+				<artifactId>testng</artifactId>
+				<version>6.10</version>
+			</dependency>
+
+
+			<!-- LOG -->
 
 			<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
 			<dependency>
@@ -68,6 +81,9 @@
 				<artifactId>log4j</artifactId>
 				<version>1.2.17</version>
 			</dependency>
+
+
+			<!-- CODEGEN -->
 
 			<!-- https://mvnrepository.com/artifact/com.sun.codemodel/codemodel -->
 			<!-- <dependency> -->
@@ -109,6 +125,12 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
 			<scope>test</scope>
 		</dependency>
 
