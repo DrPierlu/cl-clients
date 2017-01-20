@@ -1,14 +1,13 @@
 package io.commercelayer.api.operation;
 
 import io.commercelayer.api.model.MerchandisingRule;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.operation.common.PutOperation;
 
 
 /**
  * PutAccountMerchandisingRulesId
  */
-public class PutAccountMerchandisingRulesId extends PutOperation {
+public class PutAccountMerchandisingRulesId extends PutOperation<MerchandisingRule> {
 
 	public static final String OPERATION_PATH = "/account/merchandising_rules/{id}";
 
@@ -33,7 +32,7 @@ public class PutAccountMerchandisingRulesId extends PutOperation {
 	}
 	
 
-	public Class<? extends ApiResource> getResourceType() {
+	public Class<MerchandisingRule> getResourceType() {
 		return MerchandisingRule.class;
 	}
 	

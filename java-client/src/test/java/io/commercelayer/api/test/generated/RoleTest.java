@@ -12,25 +12,25 @@ import io.commercelayer.api.test.common.IntegrationTest;
 public class RoleTest extends IntegrationTest<Role> {
 
 	@Override
-	public ApiResponse<Role> testCreate(ApiCaller caller) {
+	public ApiResponse<Role> crudCreateTest(ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<Role> testRead(Role res, ApiCaller caller) {
+	public ApiResponse<Role> crudReadTest(Role res, ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<Role> testUpdate(Role oldRes, ApiCaller caller) {
+	public ApiResponse<Role> crudUpdateTest(Role oldRes, ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<Role> testDelete(Role res, ApiCaller caller) {
+	public ApiResponse<Role> crudDeleteTest(Role res, ApiCaller caller) {
 		return null;
 	}
 	

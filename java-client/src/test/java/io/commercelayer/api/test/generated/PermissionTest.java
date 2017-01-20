@@ -12,25 +12,25 @@ import io.commercelayer.api.test.common.IntegrationTest;
 public class PermissionTest extends IntegrationTest<Permission> {
 
 	@Override
-	public ApiResponse<Permission> testCreate(ApiCaller caller) {
+	public ApiResponse<Permission> crudCreateTest(ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<Permission> testRead(Permission res, ApiCaller caller) {
+	public ApiResponse<Permission> crudReadTest(Permission res, ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<Permission> testUpdate(Permission oldRes, ApiCaller caller) {
+	public ApiResponse<Permission> crudUpdateTest(Permission oldRes, ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<Permission> testDelete(Permission res, ApiCaller caller) {
+	public ApiResponse<Permission> crudDeleteTest(Permission res, ApiCaller caller) {
 		return null;
 	}
 	

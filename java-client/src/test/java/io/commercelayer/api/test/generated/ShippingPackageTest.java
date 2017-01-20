@@ -12,25 +12,25 @@ import io.commercelayer.api.test.common.IntegrationTest;
 public class ShippingPackageTest extends IntegrationTest<ShippingPackage> {
 
 	@Override
-	public ApiResponse<ShippingPackage> testCreate(ApiCaller caller) {
+	public ApiResponse<ShippingPackage> crudCreateTest(ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<ShippingPackage> testRead(ShippingPackage res, ApiCaller caller) {
+	public ApiResponse<ShippingPackage> crudReadTest(ShippingPackage res, ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<ShippingPackage> testUpdate(ShippingPackage oldRes, ApiCaller caller) {
+	public ApiResponse<ShippingPackage> crudUpdateTest(ShippingPackage oldRes, ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<ShippingPackage> testDelete(ShippingPackage res, ApiCaller caller) {
+	public ApiResponse<ShippingPackage> crudDeleteTest(ShippingPackage res, ApiCaller caller) {
 		return null;
 	}
 	

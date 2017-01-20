@@ -12,25 +12,25 @@ import io.commercelayer.api.test.common.IntegrationTest;
 public class ResourceImageTest extends IntegrationTest<ResourceImage> {
 
 	@Override
-	public ApiResponse<ResourceImage> testCreate(ApiCaller caller) {
+	public ApiResponse<ResourceImage> crudCreateTest(ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<ResourceImage> testRead(ResourceImage res, ApiCaller caller) {
+	public ApiResponse<ResourceImage> crudReadTest(ResourceImage res, ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<ResourceImage> testUpdate(ResourceImage oldRes, ApiCaller caller) {
+	public ApiResponse<ResourceImage> crudUpdateTest(ResourceImage oldRes, ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<ResourceImage> testDelete(ResourceImage res, ApiCaller caller) {
+	public ApiResponse<ResourceImage> crudDeleteTest(ResourceImage res, ApiCaller caller) {
 		return null;
 	}
 	

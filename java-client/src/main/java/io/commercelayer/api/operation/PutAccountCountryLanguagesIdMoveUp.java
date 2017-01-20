@@ -1,14 +1,13 @@
 package io.commercelayer.api.operation;
 
 import io.commercelayer.api.model.CountryLanguage;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.operation.common.MoveOperation;
 
 
 /**
  * PutAccountCountryLanguagesIdMoveUp
  */
-public class PutAccountCountryLanguagesIdMoveUp extends MoveOperation {
+public class PutAccountCountryLanguagesIdMoveUp extends MoveOperation<CountryLanguage> {
 
 	public static final String OPERATION_PATH = "/account/country_languages/{id}/move_up";
 
@@ -23,7 +22,7 @@ public class PutAccountCountryLanguagesIdMoveUp extends MoveOperation {
 	}
 	
 
-	public Class<? extends ApiResource> getResourceType() {
+	public Class<CountryLanguage> getResourceType() {
 		return CountryLanguage.class;
 	}
 	

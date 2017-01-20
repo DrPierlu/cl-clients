@@ -1,14 +1,13 @@
 package io.commercelayer.api.operation;
 
 import io.commercelayer.api.model.Market;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.operation.common.PostOperation;
 
 
 /**
  * PostAccountMarkets
  */
-public class PostAccountMarkets extends PostOperation {
+public class PostAccountMarkets extends PostOperation<Market> {
 
 	public static final String OPERATION_PATH = "/account/markets";
 
@@ -28,7 +27,7 @@ public class PostAccountMarkets extends PostOperation {
 	}
 	
 
-	public Class<? extends ApiResource> getResourceType() {
+	public Class<Market> getResourceType() {
 		return Market.class;
 	}
 	

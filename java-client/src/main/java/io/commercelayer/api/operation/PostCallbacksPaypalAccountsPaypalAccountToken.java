@@ -1,14 +1,13 @@
 package io.commercelayer.api.operation;
 
 import io.commercelayer.api.model.PaypalAccount;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.operation.common.PostOperation;
 
 
 /**
  * PostCallbacksPaypalAccountsPaypalAccountToken
  */
-public class PostCallbacksPaypalAccountsPaypalAccountToken extends PostOperation {
+public class PostCallbacksPaypalAccountsPaypalAccountToken extends PostOperation<PaypalAccount> {
 
 	public static final String OPERATION_PATH = "/callbacks/paypal_accounts/{paypal_account_token}";
 
@@ -33,7 +32,7 @@ public class PostCallbacksPaypalAccountsPaypalAccountToken extends PostOperation
 	}
 	
 
-	public Class<? extends ApiResource> getResourceType() {
+	public Class<PaypalAccount> getResourceType() {
 		return PaypalAccount.class;
 	}
 	

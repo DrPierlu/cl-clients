@@ -5,7 +5,7 @@ import java.util.List;
 
 import io.commercelayer.api.model.common.ApiResource;
 
-public abstract class PayloadOperation extends ApiOperation {
+public abstract class PayloadOperation<T extends ApiResource> extends ApiOperation<T> {
 
 	private List<String> requiredFields = new ArrayList<>();
 
@@ -13,13 +13,13 @@ public abstract class PayloadOperation extends ApiOperation {
 		super(path);
 	}
 
-	private ApiResource payload;
+	private T payload;
 
-	public ApiResource getPayload() {
+	public T getPayload() {
 		return payload;
 	}
 
-	public void setPayload(ApiResource payload) {
+	public void setPayload(T payload) {
 		this.payload = payload;
 	}
 

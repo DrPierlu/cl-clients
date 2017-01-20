@@ -19,7 +19,7 @@ import io.commercelayer.api.test.common.IntegrationTest;
 public class CountryLanguageTest extends IntegrationTest<CountryLanguage> {
 
 	@Override
-	public ApiResponse<CountryLanguage> testCreate(ApiCaller caller) {
+	public ApiResponse<CountryLanguage> crudCreateTest(ApiCaller caller) {
 
 		// POST
 
@@ -35,7 +35,7 @@ public class CountryLanguageTest extends IntegrationTest<CountryLanguage> {
 
 		ApiRequest<PostAccountCountryLanguages> postReq = new ApiRequest<>(postOp);
 		
-		ApiResponse<CountryLanguage> postRes = test(postReq, CountryLanguage.class, caller);
+		ApiResponse<CountryLanguage> postRes = test(postReq, caller);
 
 		Assert.assertNotNull(postRes.getResource().getId());
 		Assert.assertNotNull(postRes.getResource().getName());
@@ -48,7 +48,7 @@ public class CountryLanguageTest extends IntegrationTest<CountryLanguage> {
 
 
 	@Override
-	public ApiResponse<CountryLanguage> testRead(CountryLanguage res, ApiCaller caller) {
+	public ApiResponse<CountryLanguage> crudReadTest(CountryLanguage res, ApiCaller caller) {
 
 		// GET
 
@@ -57,7 +57,7 @@ public class CountryLanguageTest extends IntegrationTest<CountryLanguage> {
 
 		ApiRequest<GetAccountCountryLanguagesId> getReq = new ApiRequest<>(getOp);
 		
-		ApiResponse<CountryLanguage> getRes = test(getReq, CountryLanguage.class, caller);
+		ApiResponse<CountryLanguage> getRes = test(getReq, caller);
 
 		Assert.assertNotNull(getRes.getResource().getName());
 		Assert.assertNotNull(getRes.getResource().getCountryId());
@@ -69,7 +69,7 @@ public class CountryLanguageTest extends IntegrationTest<CountryLanguage> {
 
 
 	@Override
-	public ApiResponse<CountryLanguage> testUpdate(CountryLanguage oldRes, ApiCaller caller) {
+	public ApiResponse<CountryLanguage> crudUpdateTest(CountryLanguage oldRes, ApiCaller caller) {
 
 		// PUT
 
@@ -84,7 +84,7 @@ public class CountryLanguageTest extends IntegrationTest<CountryLanguage> {
 
 		ApiRequest<PutAccountCountryLanguagesId> putReq = new ApiRequest<>(putOp);
 		
-		ApiResponse<CountryLanguage> putRes = test(putReq, CountryLanguage.class, caller);
+		ApiResponse<CountryLanguage> putRes = test(putReq, caller);
 
 		Assert.assertNotEquals(oldRes.getName(), putRes.getResource().getName());
 		Assert.assertNotEquals(oldRes.getCountryId(), putRes.getResource().getCountryId());
@@ -96,7 +96,7 @@ public class CountryLanguageTest extends IntegrationTest<CountryLanguage> {
 
 
 	@Override
-	public ApiResponse<CountryLanguage> testDelete(CountryLanguage res, ApiCaller caller) {
+	public ApiResponse<CountryLanguage> crudDeleteTest(CountryLanguage res, ApiCaller caller) {
 
 		// DELETE
 
@@ -114,7 +114,7 @@ public class CountryLanguageTest extends IntegrationTest<CountryLanguage> {
 
 		ApiRequest<GetAccountCountryLanguagesId> getReq = new ApiRequest<>(getOp);
 		
-		ApiResponse<CountryLanguage> getRes = test(getReq, CountryLanguage.class, caller, false);
+		ApiResponse<CountryLanguage> getRes = test(getReq, caller, false);
 
 		Assert.assertNull(getRes.getResource());
 

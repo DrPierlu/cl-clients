@@ -12,25 +12,25 @@ import io.commercelayer.api.test.common.IntegrationTest;
 public class CatalogTest extends IntegrationTest<Catalog> {
 
 	@Override
-	public ApiResponse<Catalog> testCreate(ApiCaller caller) {
+	public ApiResponse<Catalog> crudCreateTest(ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<Catalog> testRead(Catalog res, ApiCaller caller) {
+	public ApiResponse<Catalog> crudReadTest(Catalog res, ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<Catalog> testUpdate(Catalog oldRes, ApiCaller caller) {
+	public ApiResponse<Catalog> crudUpdateTest(Catalog oldRes, ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<Catalog> testDelete(Catalog res, ApiCaller caller) {
+	public ApiResponse<Catalog> crudDeleteTest(Catalog res, ApiCaller caller) {
 		return null;
 	}
 	

@@ -1,14 +1,13 @@
 package io.commercelayer.api.operation;
 
 import io.commercelayer.api.model.Taxon;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.operation.common.PostOperation;
 
 
 /**
  * PostAccountTaxons
  */
-public class PostAccountTaxons extends PostOperation {
+public class PostAccountTaxons extends PostOperation<Taxon> {
 
 	public static final String OPERATION_PATH = "/account/taxons";
 
@@ -25,7 +24,7 @@ public class PostAccountTaxons extends PostOperation {
 	}
 	
 
-	public Class<? extends ApiResource> getResourceType() {
+	public Class<Taxon> getResourceType() {
 		return Taxon.class;
 	}
 	

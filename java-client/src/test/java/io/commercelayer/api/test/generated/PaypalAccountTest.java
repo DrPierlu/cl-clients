@@ -12,25 +12,25 @@ import io.commercelayer.api.test.common.IntegrationTest;
 public class PaypalAccountTest extends IntegrationTest<PaypalAccount> {
 
 	@Override
-	public ApiResponse<PaypalAccount> testCreate(ApiCaller caller) {
+	public ApiResponse<PaypalAccount> crudCreateTest(ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<PaypalAccount> testRead(PaypalAccount res, ApiCaller caller) {
+	public ApiResponse<PaypalAccount> crudReadTest(PaypalAccount res, ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<PaypalAccount> testUpdate(PaypalAccount oldRes, ApiCaller caller) {
+	public ApiResponse<PaypalAccount> crudUpdateTest(PaypalAccount oldRes, ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<PaypalAccount> testDelete(PaypalAccount res, ApiCaller caller) {
+	public ApiResponse<PaypalAccount> crudDeleteTest(PaypalAccount res, ApiCaller caller) {
 		return null;
 	}
 	

@@ -1,14 +1,13 @@
 package io.commercelayer.api.operation;
 
 import io.commercelayer.api.model.PropertyType;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.operation.common.PostOperation;
 
 
 /**
  * PostAccountPropertyTypes
  */
-public class PostAccountPropertyTypes extends PostOperation {
+public class PostAccountPropertyTypes extends PostOperation<PropertyType> {
 
 	public static final String OPERATION_PATH = "/account/property_types";
 
@@ -24,7 +23,7 @@ public class PostAccountPropertyTypes extends PostOperation {
 	}
 	
 
-	public Class<? extends ApiResource> getResourceType() {
+	public Class<PropertyType> getResourceType() {
 		return PropertyType.class;
 	}
 	

@@ -12,25 +12,25 @@ import io.commercelayer.api.test.common.IntegrationTest;
 public class EnvironmentTest extends IntegrationTest<Environment> {
 
 	@Override
-	public ApiResponse<Environment> testCreate(ApiCaller caller) {
+	public ApiResponse<Environment> crudCreateTest(ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<Environment> testRead(Environment res, ApiCaller caller) {
+	public ApiResponse<Environment> crudReadTest(Environment res, ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<Environment> testUpdate(Environment oldRes, ApiCaller caller) {
+	public ApiResponse<Environment> crudUpdateTest(Environment oldRes, ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<Environment> testDelete(Environment res, ApiCaller caller) {
+	public ApiResponse<Environment> crudDeleteTest(Environment res, ApiCaller caller) {
 		return null;
 	}
 	

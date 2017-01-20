@@ -1,14 +1,13 @@
 package io.commercelayer.api.operation;
 
 import io.commercelayer.api.model.Country;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.operation.common.PutOperation;
 
 
 /**
  * PutAccountCountriesId
  */
-public class PutAccountCountriesId extends PutOperation {
+public class PutAccountCountriesId extends PutOperation<Country> {
 
 	public static final String OPERATION_PATH = "/account/countries/{id}";
 
@@ -30,7 +29,7 @@ public class PutAccountCountriesId extends PutOperation {
 	}
 	
 
-	public Class<? extends ApiResource> getResourceType() {
+	public Class<Country> getResourceType() {
 		return Country.class;
 	}
 	

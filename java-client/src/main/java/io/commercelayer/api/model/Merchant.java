@@ -11,7 +11,7 @@ import java.util.Objects;
  */
 public class Merchant extends ApiResource {
 
-	private static final long serialVersionUID = -1484903988844L;
+	private static final long serialVersionUID = -1484907257196L;
 
 
 	private Integer addressId;

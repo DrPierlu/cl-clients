@@ -19,7 +19,7 @@ import io.commercelayer.api.test.common.IntegrationTest;
 public class ChannelTest extends IntegrationTest<Channel> {
 
 	@Override
-	public ApiResponse<Channel> testCreate(ApiCaller caller) {
+	public ApiResponse<Channel> crudCreateTest(ApiCaller caller) {
 
 		// POST
 
@@ -33,7 +33,7 @@ public class ChannelTest extends IntegrationTest<Channel> {
 
 		ApiRequest<PostAccountChannels> postReq = new ApiRequest<>(postOp);
 		
-		ApiResponse<Channel> postRes = test(postReq, Channel.class, caller);
+		ApiResponse<Channel> postRes = test(postReq, caller);
 
 		Assert.assertNotNull(postRes.getResource().getId());
 
@@ -43,7 +43,7 @@ public class ChannelTest extends IntegrationTest<Channel> {
 
 
 	@Override
-	public ApiResponse<Channel> testRead(Channel res, ApiCaller caller) {
+	public ApiResponse<Channel> crudReadTest(Channel res, ApiCaller caller) {
 
 		// GET
 
@@ -52,7 +52,7 @@ public class ChannelTest extends IntegrationTest<Channel> {
 
 		ApiRequest<GetAccountChannelsId> getReq = new ApiRequest<>(getOp);
 		
-		ApiResponse<Channel> getRes = test(getReq, Channel.class, caller);
+		ApiResponse<Channel> getRes = test(getReq, caller);
 
 		Assert.assertNotNull(getRes.getResource().getName());
 
@@ -62,7 +62,7 @@ public class ChannelTest extends IntegrationTest<Channel> {
 
 
 	@Override
-	public ApiResponse<Channel> testUpdate(Channel oldRes, ApiCaller caller) {
+	public ApiResponse<Channel> crudUpdateTest(Channel oldRes, ApiCaller caller) {
 
 		// PUT
 
@@ -77,7 +77,7 @@ public class ChannelTest extends IntegrationTest<Channel> {
 
 		ApiRequest<PutAccountChannelsId> putReq = new ApiRequest<>(putOp);
 		
-		ApiResponse<Channel> putRes = test(putReq, Channel.class, caller);
+		ApiResponse<Channel> putRes = test(putReq, caller);
 
 		Assert.assertNotEquals(oldRes.getName(), putRes.getResource().getName());
 
@@ -87,7 +87,7 @@ public class ChannelTest extends IntegrationTest<Channel> {
 
 
 	@Override
-	public ApiResponse<Channel> testDelete(Channel res, ApiCaller caller) {
+	public ApiResponse<Channel> crudDeleteTest(Channel res, ApiCaller caller) {
 
 		// DELETE
 
@@ -105,7 +105,7 @@ public class ChannelTest extends IntegrationTest<Channel> {
 
 		ApiRequest<GetAccountChannelsId> getReq = new ApiRequest<>(getOp);
 
-		ApiResponse<Channel> getRes = test(getReq, Channel.class, caller, false);
+		ApiResponse<Channel> getRes = test(getReq, caller, false);
 		
 		Assert.assertNull(getRes.getResource());
 		

@@ -1,14 +1,13 @@
 package io.commercelayer.api.operation;
 
 import io.commercelayer.api.model.OrderValidator;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.operation.common.DeleteOperation;
 
 
 /**
  * DeleteAccountOrderValidatorsId
  */
-public class DeleteAccountOrderValidatorsId extends DeleteOperation {
+public class DeleteAccountOrderValidatorsId extends DeleteOperation<OrderValidator> {
 
 	public static final String OPERATION_PATH = "/account/order_validators/{id}";
 
@@ -23,7 +22,7 @@ public class DeleteAccountOrderValidatorsId extends DeleteOperation {
 	}
 	
 
-	public Class<? extends ApiResource> getResourceType() {
+	public Class<OrderValidator> getResourceType() {
 		return OrderValidator.class;
 	}
 	

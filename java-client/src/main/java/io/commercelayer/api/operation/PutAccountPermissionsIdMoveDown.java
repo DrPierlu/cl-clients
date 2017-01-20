@@ -1,14 +1,13 @@
 package io.commercelayer.api.operation;
 
 import io.commercelayer.api.model.Permission;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.operation.common.MoveOperation;
 
 
 /**
  * PutAccountPermissionsIdMoveDown
  */
-public class PutAccountPermissionsIdMoveDown extends MoveOperation {
+public class PutAccountPermissionsIdMoveDown extends MoveOperation<Permission> {
 
 	public static final String OPERATION_PATH = "/account/permissions/{id}/move_down";
 
@@ -23,7 +22,7 @@ public class PutAccountPermissionsIdMoveDown extends MoveOperation {
 	}
 	
 
-	public Class<? extends ApiResource> getResourceType() {
+	public Class<Permission> getResourceType() {
 		return Permission.class;
 	}
 	

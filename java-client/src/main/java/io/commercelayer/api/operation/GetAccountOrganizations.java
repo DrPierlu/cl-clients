@@ -1,14 +1,13 @@
 package io.commercelayer.api.operation;
 
 import io.commercelayer.api.model.Organization;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.operation.common.SearchOperation;
 
 
 /**
  * GetAccountOrganizations
  */
-public class GetAccountOrganizations extends SearchOperation {
+public class GetAccountOrganizations extends SearchOperation<Organization> {
 
 	public static final String OPERATION_PATH = "/account/organizations";
 
@@ -18,7 +17,7 @@ public class GetAccountOrganizations extends SearchOperation {
 	}
 	
 
-	public Class<? extends ApiResource> getResourceType() {
+	public Class<Organization> getResourceType() {
 		return Organization.class;
 	}
 	

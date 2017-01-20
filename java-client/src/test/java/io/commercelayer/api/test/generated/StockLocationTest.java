@@ -12,25 +12,25 @@ import io.commercelayer.api.test.common.IntegrationTest;
 public class StockLocationTest extends IntegrationTest<StockLocation> {
 
 	@Override
-	public ApiResponse<StockLocation> testCreate(ApiCaller caller) {
+	public ApiResponse<StockLocation> crudCreateTest(ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<StockLocation> testRead(StockLocation res, ApiCaller caller) {
+	public ApiResponse<StockLocation> crudReadTest(StockLocation res, ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<StockLocation> testUpdate(StockLocation oldRes, ApiCaller caller) {
+	public ApiResponse<StockLocation> crudUpdateTest(StockLocation oldRes, ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<StockLocation> testDelete(StockLocation res, ApiCaller caller) {
+	public ApiResponse<StockLocation> crudDeleteTest(StockLocation res, ApiCaller caller) {
 		return null;
 	}
 	

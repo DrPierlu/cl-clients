@@ -11,7 +11,7 @@ import java.util.Objects;
  */
 public class WireTransfer extends ApiResource {
 
-	private static final long serialVersionUID = -1484903989274L;
+	private static final long serialVersionUID = -1484907257611L;
 
 
 	private String name;

@@ -12,25 +12,25 @@ import io.commercelayer.api.test.common.IntegrationTest;
 public class OrganizationTest extends IntegrationTest<Organization> {
 
 	@Override
-	public ApiResponse<Organization> testCreate(ApiCaller caller) {
+	public ApiResponse<Organization> crudCreateTest(ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<Organization> testRead(Organization res, ApiCaller caller) {
+	public ApiResponse<Organization> crudReadTest(Organization res, ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<Organization> testUpdate(Organization oldRes, ApiCaller caller) {
+	public ApiResponse<Organization> crudUpdateTest(Organization oldRes, ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<Organization> testDelete(Organization res, ApiCaller caller) {
+	public ApiResponse<Organization> crudDeleteTest(Organization res, ApiCaller caller) {
 		return null;
 	}
 	

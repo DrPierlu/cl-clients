@@ -19,7 +19,7 @@ import io.commercelayer.api.test.common.IntegrationTest;
 public class CreditCardTest extends IntegrationTest<CreditCard> {
 
 	@Override
-	public ApiResponse<CreditCard> testCreate(ApiCaller caller) {
+	public ApiResponse<CreditCard> crudCreateTest(ApiCaller caller) {
 
 		// POST
 
@@ -35,7 +35,7 @@ public class CreditCardTest extends IntegrationTest<CreditCard> {
 
 		ApiRequest<PostAccountCreditCards> postReq = new ApiRequest<>(postOp);
 		
-		ApiResponse<CreditCard> postRes = test(postReq, CreditCard.class, caller);
+		ApiResponse<CreditCard> postRes = test(postReq, caller);
 
 		Assert.assertNotNull(postRes.getResource().getId());
 
@@ -45,7 +45,7 @@ public class CreditCardTest extends IntegrationTest<CreditCard> {
 
 
 	@Override
-	public ApiResponse<CreditCard> testRead(CreditCard res, ApiCaller caller) {
+	public ApiResponse<CreditCard> crudReadTest(CreditCard res, ApiCaller caller) {
 
 		// GET
 
@@ -54,7 +54,7 @@ public class CreditCardTest extends IntegrationTest<CreditCard> {
 
 		ApiRequest<GetAccountCreditCardsId> getReq = new ApiRequest<>(getOp);
 		
-		ApiResponse<CreditCard> getRes = test(getReq, CreditCard.class, caller);
+		ApiResponse<CreditCard> getRes = test(getReq, caller);
 
 		Assert.assertNotNull(getRes.getResource().getName());
 
@@ -64,7 +64,7 @@ public class CreditCardTest extends IntegrationTest<CreditCard> {
 
 
 	@Override
-	public ApiResponse<CreditCard> testUpdate(CreditCard oldRes, ApiCaller caller) {
+	public ApiResponse<CreditCard> crudUpdateTest(CreditCard oldRes, ApiCaller caller) {
 
 		// PUT
 
@@ -81,7 +81,7 @@ public class CreditCardTest extends IntegrationTest<CreditCard> {
 
 		ApiRequest<PutAccountCreditCardsId> putReq = new ApiRequest<>(putOp);
 		
-		ApiResponse<CreditCard> putRes = test(putReq, CreditCard.class, caller);
+		ApiResponse<CreditCard> putRes = test(putReq, caller);
 
 		Assert.assertNotEquals(oldRes.getName(), putRes.getResource().getName());
 		Assert.assertNotEquals(oldRes.getFirstName(), putRes.getResource().getFirstName());
@@ -93,7 +93,7 @@ public class CreditCardTest extends IntegrationTest<CreditCard> {
 
 
 	@Override
-	public ApiResponse<CreditCard> testDelete(CreditCard res, ApiCaller caller) {
+	public ApiResponse<CreditCard> crudDeleteTest(CreditCard res, ApiCaller caller) {
 
 		// DELETE
 
@@ -111,7 +111,7 @@ public class CreditCardTest extends IntegrationTest<CreditCard> {
 
 		ApiRequest<GetAccountCreditCardsId> getReq = new ApiRequest<>(getOp);
 
-		ApiResponse<CreditCard> getRes = test(getReq, CreditCard.class, caller, false);
+		ApiResponse<CreditCard> getRes = test(getReq, caller, false);
 
 		Assert.assertNull(getRes.getResource());
 

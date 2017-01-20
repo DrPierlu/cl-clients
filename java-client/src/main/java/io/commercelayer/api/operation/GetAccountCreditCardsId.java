@@ -1,14 +1,13 @@
 package io.commercelayer.api.operation;
 
 import io.commercelayer.api.model.CreditCard;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.operation.common.GetIdOperation;
 
 
 /**
  * GetAccountCreditCardsId
  */
-public class GetAccountCreditCardsId extends GetIdOperation {
+public class GetAccountCreditCardsId extends GetIdOperation<CreditCard> {
 
 	public static final String OPERATION_PATH = "/account/credit_cards/{id}";
 
@@ -23,7 +22,7 @@ public class GetAccountCreditCardsId extends GetIdOperation {
 	}
 	
 
-	public Class<? extends ApiResource> getResourceType() {
+	public Class<CreditCard> getResourceType() {
 		return CreditCard.class;
 	}
 	

@@ -19,7 +19,7 @@ import io.commercelayer.api.test.common.IntegrationTest;
 public class EnvironmentTest extends IntegrationTest<Environment> {
 
 	@Override
-	public ApiResponse<Environment> testCreate(ApiCaller caller) {
+	public ApiResponse<Environment> crudCreateTest(ApiCaller caller) {
 
 		// POST
 
@@ -34,7 +34,7 @@ public class EnvironmentTest extends IntegrationTest<Environment> {
 
 		ApiRequest<PostAccountEnvironments> postReq = new ApiRequest<>(postOp);
 		
-		ApiResponse<Environment> postRes = test(postReq, Environment.class, caller);
+		ApiResponse<Environment> postRes = test(postReq, caller);
 
 		Assert.assertNotNull(postRes.getResource().getId());
 		Assert.assertNotNull(postRes.getResource().getName());
@@ -46,7 +46,7 @@ public class EnvironmentTest extends IntegrationTest<Environment> {
 
 
 	@Override
-	public ApiResponse<Environment> testRead(Environment res, ApiCaller caller) {
+	public ApiResponse<Environment> crudReadTest(Environment res, ApiCaller caller) {
 
 		// GET
 
@@ -55,7 +55,7 @@ public class EnvironmentTest extends IntegrationTest<Environment> {
 
 		ApiRequest<GetAccountEnvironmentsId> getReq = new ApiRequest<>(getOp);
 
-		ApiResponse<Environment> getRes = test(getReq, Environment.class, caller);
+		ApiResponse<Environment> getRes = test(getReq, caller);
 
 		Assert.assertNotNull(getRes.getResource().getName());
 		Assert.assertNotNull(getRes.getResource().getOrganizationId());
@@ -66,7 +66,7 @@ public class EnvironmentTest extends IntegrationTest<Environment> {
 
 
 	@Override
-	public ApiResponse<Environment> testUpdate(Environment oldRes, ApiCaller caller) {
+	public ApiResponse<Environment> crudUpdateTest(Environment oldRes, ApiCaller caller) {
 
 		// PUT
 
@@ -82,7 +82,7 @@ public class EnvironmentTest extends IntegrationTest<Environment> {
 
 		ApiRequest<PutAccountEnvironmentsId> putReq = new ApiRequest<>(putOp);
 		
-		ApiResponse<Environment> putRes = test(putReq, Environment.class, caller);
+		ApiResponse<Environment> putRes = test(putReq, caller);
 
 		Assert.assertNotEquals(oldRes.getName(), putRes.getResource().getName());
 		Assert.assertNotEquals(oldRes.getOrganizationId(), putRes.getResource().getOrganizationId());
@@ -93,7 +93,7 @@ public class EnvironmentTest extends IntegrationTest<Environment> {
 
 
 	@Override
-	public ApiResponse<Environment> testDelete(Environment res, ApiCaller caller) {
+	public ApiResponse<Environment> crudDeleteTest(Environment res, ApiCaller caller) {
 
 		// DELETE
 
@@ -111,7 +111,7 @@ public class EnvironmentTest extends IntegrationTest<Environment> {
 
 		ApiRequest<GetAccountEnvironmentsId> getReq = new ApiRequest<>(getOp);
 
-		ApiResponse<Environment> getRes = test(getReq, Environment.class, caller, false);
+		ApiResponse<Environment> getRes = test(getReq, caller, false);
 
 		Assert.assertNull(getRes.getResource());
 

@@ -1,14 +1,13 @@
 package io.commercelayer.api.operation;
 
 import io.commercelayer.api.model.PaypalAccount;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.operation.common.PutOperation;
 
 
 /**
  * PutAccountPaypalAccountsId
  */
-public class PutAccountPaypalAccountsId extends PutOperation {
+public class PutAccountPaypalAccountsId extends PutOperation<PaypalAccount> {
 
 	public static final String OPERATION_PATH = "/account/paypal_accounts/{id}";
 
@@ -28,7 +27,7 @@ public class PutAccountPaypalAccountsId extends PutOperation {
 	}
 	
 
-	public Class<? extends ApiResource> getResourceType() {
+	public Class<PaypalAccount> getResourceType() {
 		return PaypalAccount.class;
 	}
 	

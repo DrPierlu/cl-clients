@@ -1,9 +1,6 @@
 package io.commercelayer.api;
 
-import io.commercelayer.api.exception.ApiException;
 import io.commercelayer.api.exception.AuthException;
-import io.commercelayer.api.model.common.ApiResource;
-import io.commercelayer.api.operation.common.GetIdOperation;
 import io.commercelayer.api.security.ApiAccount;
 import io.commercelayer.api.security.ApiAuthenticator;
 import io.commercelayer.api.security.ApiToken;

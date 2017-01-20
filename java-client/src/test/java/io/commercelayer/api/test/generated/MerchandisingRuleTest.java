@@ -12,25 +12,25 @@ import io.commercelayer.api.test.common.IntegrationTest;
 public class MerchandisingRuleTest extends IntegrationTest<MerchandisingRule> {
 
 	@Override
-	public ApiResponse<MerchandisingRule> testCreate(ApiCaller caller) {
+	public ApiResponse<MerchandisingRule> crudCreateTest(ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<MerchandisingRule> testRead(MerchandisingRule res, ApiCaller caller) {
+	public ApiResponse<MerchandisingRule> crudReadTest(MerchandisingRule res, ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<MerchandisingRule> testUpdate(MerchandisingRule oldRes, ApiCaller caller) {
+	public ApiResponse<MerchandisingRule> crudUpdateTest(MerchandisingRule oldRes, ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<MerchandisingRule> testDelete(MerchandisingRule res, ApiCaller caller) {
+	public ApiResponse<MerchandisingRule> crudDeleteTest(MerchandisingRule res, ApiCaller caller) {
 		return null;
 	}
 	

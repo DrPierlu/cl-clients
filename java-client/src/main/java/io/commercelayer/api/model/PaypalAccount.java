@@ -11,7 +11,7 @@ import java.util.Objects;
  */
 public class PaypalAccount extends ApiResource {
 
-	private static final long serialVersionUID = -1484903988924L;
+	private static final long serialVersionUID = -1484907257277L;
 
 
 	private String email;

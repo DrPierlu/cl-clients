@@ -1,11 +1,12 @@
 package io.commercelayer.api.operation.common;
 
+import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.search.PageFilter;
 import io.commercelayer.api.search.RequestFilter;
 import io.commercelayer.api.search.SearchFilter;
 import io.commercelayer.api.search.SortFilter;
 
-public class SearchOperation extends GetOperation {
+public class SearchOperation<T extends ApiResource> extends GetOperation<T> {
 
 	private PageFilter pageFilter;
 	private SearchFilter searchFilter;

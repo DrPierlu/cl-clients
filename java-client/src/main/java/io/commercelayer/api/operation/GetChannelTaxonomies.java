@@ -1,14 +1,13 @@
 package io.commercelayer.api.operation;
 
 import io.commercelayer.api.model.Taxonomy;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.operation.common.SearchOperation;
 
 
 /**
  * GetChannelTaxonomies
  */
-public class GetChannelTaxonomies extends SearchOperation {
+public class GetChannelTaxonomies extends SearchOperation<Taxonomy> {
 
 	public static final String OPERATION_PATH = "/channel/taxonomies";
 
@@ -18,7 +17,7 @@ public class GetChannelTaxonomies extends SearchOperation {
 	}
 	
 
-	public Class<? extends ApiResource> getResourceType() {
+	public Class<Taxonomy> getResourceType() {
 		return Taxonomy.class;
 	}
 	

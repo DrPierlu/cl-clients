@@ -1,14 +1,13 @@
 package io.commercelayer.api.operation;
 
 import io.commercelayer.api.model.ShippingLabel;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.operation.common.PostOperation;
 
 
 /**
  * PostAccountShippingLabels
  */
-public class PostAccountShippingLabels extends PostOperation {
+public class PostAccountShippingLabels extends PostOperation<ShippingLabel> {
 
 	public static final String OPERATION_PATH = "/account/shipping_labels";
 
@@ -23,7 +22,7 @@ public class PostAccountShippingLabels extends PostOperation {
 	}
 	
 
-	public Class<? extends ApiResource> getResourceType() {
+	public Class<ShippingLabel> getResourceType() {
 		return ShippingLabel.class;
 	}
 	

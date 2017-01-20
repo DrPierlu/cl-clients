@@ -1,14 +1,13 @@
 package io.commercelayer.api.operation;
 
 import io.commercelayer.api.model.Webhook;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.operation.common.SearchOperation;
 
 
 /**
  * GetAccountWebhooks
  */
-public class GetAccountWebhooks extends SearchOperation {
+public class GetAccountWebhooks extends SearchOperation<Webhook> {
 
 	public static final String OPERATION_PATH = "/account/webhooks";
 
@@ -18,7 +17,7 @@ public class GetAccountWebhooks extends SearchOperation {
 	}
 	
 
-	public Class<? extends ApiResource> getResourceType() {
+	public Class<Webhook> getResourceType() {
 		return Webhook.class;
 	}
 	

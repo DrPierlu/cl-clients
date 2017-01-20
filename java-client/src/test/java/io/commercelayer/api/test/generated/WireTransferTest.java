@@ -12,25 +12,25 @@ import io.commercelayer.api.test.common.IntegrationTest;
 public class WireTransferTest extends IntegrationTest<WireTransfer> {
 
 	@Override
-	public ApiResponse<WireTransfer> testCreate(ApiCaller caller) {
+	public ApiResponse<WireTransfer> crudCreateTest(ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<WireTransfer> testRead(WireTransfer res, ApiCaller caller) {
+	public ApiResponse<WireTransfer> crudReadTest(WireTransfer res, ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<WireTransfer> testUpdate(WireTransfer oldRes, ApiCaller caller) {
+	public ApiResponse<WireTransfer> crudUpdateTest(WireTransfer oldRes, ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<WireTransfer> testDelete(WireTransfer res, ApiCaller caller) {
+	public ApiResponse<WireTransfer> crudDeleteTest(WireTransfer res, ApiCaller caller) {
 		return null;
 	}
 	

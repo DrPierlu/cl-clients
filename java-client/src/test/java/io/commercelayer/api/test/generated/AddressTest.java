@@ -12,25 +12,25 @@ import io.commercelayer.api.test.common.IntegrationTest;
 public class AddressTest extends IntegrationTest<Address> {
 
 	@Override
-	public ApiResponse<Address> testCreate(ApiCaller caller) {
+	public ApiResponse<Address> crudCreateTest(ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<Address> testRead(Address res, ApiCaller caller) {
+	public ApiResponse<Address> crudReadTest(Address res, ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<Address> testUpdate(Address oldRes, ApiCaller caller) {
+	public ApiResponse<Address> crudUpdateTest(Address oldRes, ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<Address> testDelete(Address res, ApiCaller caller) {
+	public ApiResponse<Address> crudDeleteTest(Address res, ApiCaller caller) {
 		return null;
 	}
 	

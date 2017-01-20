@@ -12,25 +12,25 @@ import io.commercelayer.api.test.common.IntegrationTest;
 public class MerchantTest extends IntegrationTest<Merchant> {
 
 	@Override
-	public ApiResponse<Merchant> testCreate(ApiCaller caller) {
+	public ApiResponse<Merchant> crudCreateTest(ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<Merchant> testRead(Merchant res, ApiCaller caller) {
+	public ApiResponse<Merchant> crudReadTest(Merchant res, ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<Merchant> testUpdate(Merchant oldRes, ApiCaller caller) {
+	public ApiResponse<Merchant> crudUpdateTest(Merchant oldRes, ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<Merchant> testDelete(Merchant res, ApiCaller caller) {
+	public ApiResponse<Merchant> crudDeleteTest(Merchant res, ApiCaller caller) {
 		return null;
 	}
 	

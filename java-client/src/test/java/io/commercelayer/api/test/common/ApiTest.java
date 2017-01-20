@@ -68,9 +68,9 @@ public abstract class ApiTest<T extends ApiResource> {
 	}
 	
 	
-	protected ApiSearchResponse<T> testSearch(ApiSearchRequest request, Class<T> resourceType, ApiCaller caller, boolean enableAssertions) throws TestException {
+	protected ApiSearchResponse<T> testSearch(ApiSearchRequest<T> request, ApiCaller caller, boolean enableAssertions) throws TestException {
 		
-		logger.info("Executing test ... [{}, {}]", request.getOperation(), resourceType.getSimpleName());
+		logger.info("Executing test ... [{}]", request.getOperation());
 		
 		if (caller == null) caller = getApiCaller();
 		
@@ -80,7 +80,7 @@ public abstract class ApiTest<T extends ApiResource> {
 			
 			logger.info("********** Test Start");
 			
-			response = caller.search(request, resourceType);
+			response = caller.search(request);
 			
 			if (response != null) logger.info("Response items count: {}", (response.getItemList() == null)? null : response.getItemList().size());
 			
@@ -101,58 +101,48 @@ public abstract class ApiTest<T extends ApiResource> {
 	}
 	
 	
-	protected <O extends ApiOperation> ApiResponse<T> test(ApiRequest<O> request, Class<T> resourceType, boolean enableAssertions) throws TestException {
-		return test(request, resourceType, null, enableAssertions);
+	protected <O extends ApiOperation<T>> ApiResponse<T> test(ApiRequest<O> request, boolean enableAssertions) throws TestException {
+		return test(request, null, enableAssertions);
 	}
 	
-	protected <O extends ApiOperation> ApiResponse<T> test(ApiRequest<O> request, Class<T> resourceType) throws TestException {
-		return test(request, resourceType, null, true);
+
+	protected <O extends ApiOperation<T>> ApiResponse<T> test(ApiRequest<O> request, ApiCaller caller) throws TestException {
+		return test(request, caller, true);
 	}
 	
-	protected <O extends ApiOperation> ApiResponse<T> test(ApiRequest<O> request, ApiCaller caller, boolean enableAssertions) throws TestException {
-		return test(request, null, caller, enableAssertions);
-	}
-	
-	protected <O extends ApiOperation> ApiResponse<T> test(ApiRequest<O> request, ApiCaller caller) throws TestException {
-		return test(request, null, caller, true);
-	}
-	
-	protected <O extends ApiOperation> ApiResponse<T> test(ApiRequest<O> request, Class<T> resourceType, ApiCaller caller) throws TestException {
-		return test(request, resourceType, caller, true);
-	}
 	
 	@SuppressWarnings("unchecked")
-	protected <O extends ApiOperation> ApiResponse<T> test(ApiRequest<O> request, Class<T> resourceType, ApiCaller caller, boolean enableAssertions) throws TestException {
+	protected <O extends ApiOperation<T>> ApiResponse<T> test(ApiRequest<O> request, ApiCaller caller, boolean enableAssertions) throws TestException {
 		
-		logger.info("Executing test ... [{}, {}]", request.getOperation(), (resourceType == null)? "" : resourceType.getSimpleName());
+		logger.info("Executing test ... [{}]", request.getOperation());
 		
 		if (caller == null) caller = getApiCaller();
 		
 		ApiResponse<T> response = null;
-		final ApiOperation operation = request.getOperation();
+		final ApiOperation<T> operation = request.getOperation();
 		
 		try {
 			
 			logger.info("********** Test Start");
 			
 			if (operation instanceof GetIdOperation) {
-				response = testGet((ApiRequest<GetIdOperation>)request, resourceType, caller, enableAssertions);
+				response = testGet((ApiRequest<GetIdOperation<T>>)request, caller, enableAssertions);
 			}
 			else
 			if (operation instanceof PutOperation) {
-				response = testPut((ApiRequest<PutOperation>)request, resourceType, caller, enableAssertions);
+				response = testPut((ApiRequest<PutOperation<T>>)request, caller, enableAssertions);
 			}
 			else
 			if (operation instanceof PostOperation) {
-				response = testPost((ApiRequest<PostOperation>)request, resourceType, caller, enableAssertions);
+				response = testPost((ApiRequest<PostOperation<T>>)request, caller, enableAssertions);
 			}
 			else
 			if (operation instanceof DeleteOperation) {
-				response = testDelete((ApiRequest<DeleteOperation>)request, resourceType, caller, enableAssertions);
+				response = testDelete((ApiRequest<DeleteOperation<T>>)request, caller, enableAssertions);
 			}
 			else
 			if (operation instanceof MoveOperation) {
-				response = testMove((ApiRequest<MoveOperation>)request, resourceType, caller, enableAssertions);
+				response = testMove((ApiRequest<MoveOperation<T>>)request, caller, enableAssertions);
 			}
 			
 
@@ -175,11 +165,15 @@ public abstract class ApiTest<T extends ApiResource> {
 	}
 	
 	
-	private ApiResponse<T> testGet(ApiRequest<GetIdOperation> request, Class<T> resourceType, ApiCaller caller, boolean enableAssertions) throws ApiException, AuthException {
+	protected ApiResponse<T> testGet(ApiRequest<GetIdOperation<T>> request, ApiCaller caller) throws ApiException, AuthException {
+		return testGet(request, caller, true);
+	}
+	
+	protected ApiResponse<T> testGet(ApiRequest<GetIdOperation<T>> request, ApiCaller caller, boolean enableAssertions) throws ApiException, AuthException {
 		
-		logger.info("Executing testGet ... [{}, {}]", request.getOperation(), resourceType.getSimpleName());
+		logger.info("Executing testGet ... [{}]", request.getOperation());
 		
-		ApiResponse<T> response = caller.get(request, resourceType);
+		ApiResponse<T> response = caller.get(request);
 		
 		// Assertions
 		if (enableAssertions)
@@ -205,9 +199,13 @@ public abstract class ApiTest<T extends ApiResource> {
 	}
 	
 	
-	private ApiResponse<T> testPost(ApiRequest<PostOperation> request, Class<T> resourceType, ApiCaller caller, boolean enableAssertions) throws ApiException, AuthException {
+	protected ApiResponse<T> testPost(ApiRequest<? extends PostOperation<T>> request, ApiCaller caller) throws ApiException, AuthException {
+		return testPost(request, caller, true);
+	}
+	
+	protected ApiResponse<T> testPost(ApiRequest<? extends PostOperation<T>> request, ApiCaller caller, boolean enableAssertions) throws ApiException, AuthException {
 		
-		ApiResponse<T> response = caller.post(request, resourceType);
+		ApiResponse<T> response = caller.post(request);
 		
 		// Assertions
 		if (enableAssertions)
@@ -231,10 +229,13 @@ public abstract class ApiTest<T extends ApiResource> {
 		
 	}
 	
+	protected ApiResponse<T> testPut(ApiRequest<PutOperation<T>> request, ApiCaller caller) throws ApiException, AuthException {
+		return testPut(request, caller, true);
+	}
 	
-	private ApiResponse<T> testPut(ApiRequest<PutOperation> request, Class<T> resourceType, ApiCaller caller, boolean enableAssertions) throws ApiException, AuthException {
+	protected ApiResponse<T> testPut(ApiRequest<PutOperation<T>> request, ApiCaller caller, boolean enableAssertions) throws ApiException, AuthException {
 		
-		ApiResponse<T> response = caller.put(request, resourceType);
+		ApiResponse<T> response = caller.put(request);
 		
 		// Assertions
 		// Assertions
@@ -261,9 +262,13 @@ public abstract class ApiTest<T extends ApiResource> {
 	}
 	
 	
-	private ApiResponse<T> testDelete(ApiRequest<DeleteOperation> request, Class<T> resourceType, ApiCaller caller, boolean enableAssertions) throws ApiException, AuthException {
+	protected ApiResponse<T> testDelete(ApiRequest<DeleteOperation<T>> request, ApiCaller caller) throws ApiException, AuthException {
+		return testDelete(request, caller, true);
+	}
+	
+	protected ApiResponse<T> testDelete(ApiRequest<? extends DeleteOperation<T>> request, ApiCaller caller, boolean enableAssertions) throws ApiException, AuthException {
 		
-		ApiResponse<T> response = caller.delete(request, resourceType);
+		ApiResponse<T> response = caller.delete(request);
 		
 		// Assertions
 		
@@ -272,12 +277,16 @@ public abstract class ApiTest<T extends ApiResource> {
 	}
 	
 	
-	private ApiResponse<T> testMove(ApiRequest<MoveOperation> request, Class<T> resourceType, ApiCaller caller, boolean enablAssertions) throws TestException {
+	protected ApiResponse<T> testMove(ApiRequest<MoveOperation<T>> request, ApiCaller caller) throws TestException {
+		return testMove(request, caller, true);
+	}
+	
+	protected ApiResponse<T> testMove(ApiRequest<MoveOperation<T>> request, ApiCaller caller, boolean enablAssertions) throws TestException {
 		
 		ApiResponse<T> response = null;
 		
 		try {
-			response = caller.move(request, resourceType);
+			response = caller.move(request);
 		}
 		catch (ApiException ae) {
 			throw new TestException(ae.getApiErrorDescription());

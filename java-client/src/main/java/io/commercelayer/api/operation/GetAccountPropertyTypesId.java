@@ -1,14 +1,13 @@
 package io.commercelayer.api.operation;
 
 import io.commercelayer.api.model.PropertyType;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.operation.common.GetIdOperation;
 
 
 /**
  * GetAccountPropertyTypesId
  */
-public class GetAccountPropertyTypesId extends GetIdOperation {
+public class GetAccountPropertyTypesId extends GetIdOperation<PropertyType> {
 
 	public static final String OPERATION_PATH = "/account/property_types/{id}";
 
@@ -23,7 +22,7 @@ public class GetAccountPropertyTypesId extends GetIdOperation {
 	}
 	
 
-	public Class<? extends ApiResource> getResourceType() {
+	public Class<PropertyType> getResourceType() {
 		return PropertyType.class;
 	}
 	

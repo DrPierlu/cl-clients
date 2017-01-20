@@ -12,25 +12,25 @@ import io.commercelayer.api.test.common.IntegrationTest;
 public class TaxonTest extends IntegrationTest<Taxon> {
 
 	@Override
-	public ApiResponse<Taxon> testCreate(ApiCaller caller) {
+	public ApiResponse<Taxon> crudCreateTest(ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<Taxon> testRead(Taxon res, ApiCaller caller) {
+	public ApiResponse<Taxon> crudReadTest(Taxon res, ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<Taxon> testUpdate(Taxon oldRes, ApiCaller caller) {
+	public ApiResponse<Taxon> crudUpdateTest(Taxon oldRes, ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<Taxon> testDelete(Taxon res, ApiCaller caller) {
+	public ApiResponse<Taxon> crudDeleteTest(Taxon res, ApiCaller caller) {
 		return null;
 	}
 	

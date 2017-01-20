@@ -1,14 +1,13 @@
 package io.commercelayer.api.operation;
 
 import io.commercelayer.api.model.Order;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.operation.common.GetIdOperation;
 
 
 /**
  * GetAccountOrdersId
  */
-public class GetAccountOrdersId extends GetIdOperation {
+public class GetAccountOrdersId extends GetIdOperation<Order> {
 
 	public static final String OPERATION_PATH = "/account/orders/{id}";
 
@@ -23,7 +22,7 @@ public class GetAccountOrdersId extends GetIdOperation {
 	}
 	
 
-	public Class<? extends ApiResource> getResourceType() {
+	public Class<Order> getResourceType() {
 		return Order.class;
 	}
 	

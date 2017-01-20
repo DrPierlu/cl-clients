@@ -1,14 +1,13 @@
 package io.commercelayer.api.operation;
 
 import io.commercelayer.api.model.WireTransfer;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.operation.common.PutOperation;
 
 
 /**
  * PutAccountWireTransfersId
  */
-public class PutAccountWireTransfersId extends PutOperation {
+public class PutAccountWireTransfersId extends PutOperation<WireTransfer> {
 
 	public static final String OPERATION_PATH = "/account/wire_transfers/{id}";
 
@@ -28,7 +27,7 @@ public class PutAccountWireTransfersId extends PutOperation {
 	}
 	
 
-	public Class<? extends ApiResource> getResourceType() {
+	public Class<WireTransfer> getResourceType() {
 		return WireTransfer.class;
 	}
 	

@@ -1,14 +1,13 @@
 package io.commercelayer.api.operation;
 
 import io.commercelayer.api.model.ShippingZone;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.operation.common.PutOperation;
 
 
 /**
  * PutAccountShippingZonesId
  */
-public class PutAccountShippingZonesId extends PutOperation {
+public class PutAccountShippingZonesId extends PutOperation<ShippingZone> {
 
 	public static final String OPERATION_PATH = "/account/shipping_zones/{id}";
 
@@ -36,7 +35,7 @@ public class PutAccountShippingZonesId extends PutOperation {
 	}
 	
 
-	public Class<? extends ApiResource> getResourceType() {
+	public Class<ShippingZone> getResourceType() {
 		return ShippingZone.class;
 	}
 	

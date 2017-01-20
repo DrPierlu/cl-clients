@@ -1,14 +1,13 @@
 package io.commercelayer.api.operation;
 
 import io.commercelayer.api.model.ConsumerRole;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.operation.common.MoveOperation;
 
 
 /**
  * PutAccountConsumerRolesIdMoveBottom
  */
-public class PutAccountConsumerRolesIdMoveBottom extends MoveOperation {
+public class PutAccountConsumerRolesIdMoveBottom extends MoveOperation<ConsumerRole> {
 
 	public static final String OPERATION_PATH = "/account/consumer_roles/{id}/move_bottom";
 
@@ -23,7 +22,7 @@ public class PutAccountConsumerRolesIdMoveBottom extends MoveOperation {
 	}
 	
 
-	public Class<? extends ApiResource> getResourceType() {
+	public Class<ConsumerRole> getResourceType() {
 		return ConsumerRole.class;
 	}
 	

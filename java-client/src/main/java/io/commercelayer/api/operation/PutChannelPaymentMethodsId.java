@@ -1,14 +1,13 @@
 package io.commercelayer.api.operation;
 
 import io.commercelayer.api.model.PaymentMethod;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.operation.common.PutOperation;
 
 
 /**
  * PutChannelPaymentMethodsId
  */
-public class PutChannelPaymentMethodsId extends PutOperation {
+public class PutChannelPaymentMethodsId extends PutOperation<PaymentMethod> {
 
 	public static final String OPERATION_PATH = "/channel/payment_methods/{id}";
 
@@ -34,7 +33,7 @@ public class PutChannelPaymentMethodsId extends PutOperation {
 	}
 	
 
-	public Class<? extends ApiResource> getResourceType() {
+	public Class<PaymentMethod> getResourceType() {
 		return PaymentMethod.class;
 	}
 	

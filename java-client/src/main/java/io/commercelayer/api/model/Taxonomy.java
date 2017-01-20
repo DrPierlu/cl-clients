@@ -11,7 +11,7 @@ import java.util.Objects;
  */
 public class Taxonomy extends ApiResource {
 
-	private static final long serialVersionUID = -1484903989222L;
+	private static final long serialVersionUID = -1484907257529L;
 
 
 	private String name;

@@ -1,14 +1,13 @@
 package io.commercelayer.api.operation;
 
 import io.commercelayer.api.model.Variant;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.operation.common.SearchOperation;
 
 
 /**
  * GetAccountVariants
  */
-public class GetAccountVariants extends SearchOperation {
+public class GetAccountVariants extends SearchOperation<Variant> {
 
 	public static final String OPERATION_PATH = "/account/variants";
 
@@ -18,7 +17,7 @@ public class GetAccountVariants extends SearchOperation {
 	}
 	
 
-	public Class<? extends ApiResource> getResourceType() {
+	public Class<Variant> getResourceType() {
 		return Variant.class;
 	}
 	

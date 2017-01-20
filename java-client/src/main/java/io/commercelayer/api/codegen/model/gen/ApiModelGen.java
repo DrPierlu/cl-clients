@@ -374,7 +374,7 @@ public class ApiModelGen {
 		ModelClass mc = new ModelClass(modelPackage, StringUtils.capitalize(op.getId()), Modifier.PUBLIC);
 		mc.setComment(mc.getName());
 
-		Class<? extends ApiOperation> extClass = null;
+		Class<?> extClass = null;
 
 		switch (op.getMethod()) {
 			case GET: {
@@ -395,7 +395,7 @@ public class ApiModelGen {
 			}
 		}
 
-		mc.setExtendedClass(extClass);
+		mc.setExtendedClass(new Type(extClass, (op.getReference() != null)? op.getReference().getTitle() : null));
 
 		final String operationPathField = "OPERATION_PATH";
 
@@ -480,14 +480,15 @@ public class ApiModelGen {
 
 		if (op.getReference() != null) {
 
+			String ref = op.getReference().getTitle();
+			
 			Method m = new Method(Modifier.PUBLIC);
 			m.setName("getResourceType");
-			m.setReturnType(new Type(Class.class, "? extends ApiResource"));
-			m.addBodyLine("return %s.class;", op.getReference().getTitle());
+			m.setReturnType(new Type(Class.class, ref));
+			m.addBodyLine("return %s.class;", ref);
 
 			mc.addMethod(m);
-			mc.addImportItem(ApiResource.class);
-			mc.addImportItem(new Type("io.commercelayer.api.model.".concat(op.getReference().getTitle())));
+			mc.addImportItem(new Type("io.commercelayer.api.model.".concat(ref)));
 
 		}
 
@@ -500,13 +501,15 @@ public class ApiModelGen {
 
 		final class OPERATION {
 			final class CRUD {
-				public static final String CREATE = "testCreate";
-				public static final String READ = "testRead";
-				public static final String UPDATE = "testUpdate";
-				public static final String DELETE = "testDelete";
+				public static final String CREATE 	= "crudCreateTest";
+				public static final String READ 	= "crudReadTest";
+				public static final String UPDATE 	= "crudUpdateTest";
+				public static final String DELETE 	= "crudDeleteTest";
 			}
-			// public static final String MOVE = "testMove";
-			// public static final String SEARCH = "testSearch";
+			final class LIST {
+				public static final String MOVE 	= "listMoveTest";
+				public static final String SEARCH 	= "listSearchTest";
+			}
 		}
 
 		ModelClass mc = new ModelClass(testPackage, def.getTitle().concat("Test"), Modifier.PUBLIC);

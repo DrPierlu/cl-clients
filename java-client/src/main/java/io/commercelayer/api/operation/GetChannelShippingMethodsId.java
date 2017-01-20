@@ -1,14 +1,13 @@
 package io.commercelayer.api.operation;
 
 import io.commercelayer.api.model.ShippingMethod;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.operation.common.GetIdOperation;
 
 
 /**
  * GetChannelShippingMethodsId
  */
-public class GetChannelShippingMethodsId extends GetIdOperation {
+public class GetChannelShippingMethodsId extends GetIdOperation<ShippingMethod> {
 
 	public static final String OPERATION_PATH = "/channel/shipping_methods/{id}";
 
@@ -23,7 +22,7 @@ public class GetChannelShippingMethodsId extends GetIdOperation {
 	}
 	
 
-	public Class<? extends ApiResource> getResourceType() {
+	public Class<ShippingMethod> getResourceType() {
 		return ShippingMethod.class;
 	}
 	

@@ -1,14 +1,13 @@
 package io.commercelayer.api.operation;
 
 import io.commercelayer.api.model.Order;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.operation.common.PutOperation;
 
 
 /**
  * PutChannelOrdersOrderToken
  */
-public class PutChannelOrdersOrderToken extends PutOperation {
+public class PutChannelOrdersOrderToken extends PutOperation<Order> {
 
 	public static final String OPERATION_PATH = "/channel/orders/{order_token}";
 
@@ -40,7 +39,7 @@ public class PutChannelOrdersOrderToken extends PutOperation {
 	}
 	
 
-	public Class<? extends ApiResource> getResourceType() {
+	public Class<Order> getResourceType() {
 		return Order.class;
 	}
 	

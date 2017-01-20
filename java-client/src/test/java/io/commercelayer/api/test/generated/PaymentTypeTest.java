@@ -12,25 +12,25 @@ import io.commercelayer.api.test.common.IntegrationTest;
 public class PaymentTypeTest extends IntegrationTest<PaymentType> {
 
 	@Override
-	public ApiResponse<PaymentType> testCreate(ApiCaller caller) {
+	public ApiResponse<PaymentType> crudCreateTest(ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<PaymentType> testRead(PaymentType res, ApiCaller caller) {
+	public ApiResponse<PaymentType> crudReadTest(PaymentType res, ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<PaymentType> testUpdate(PaymentType oldRes, ApiCaller caller) {
+	public ApiResponse<PaymentType> crudUpdateTest(PaymentType oldRes, ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<PaymentType> testDelete(PaymentType res, ApiCaller caller) {
+	public ApiResponse<PaymentType> crudDeleteTest(PaymentType res, ApiCaller caller) {
 		return null;
 	}
 	

@@ -1,14 +1,13 @@
 package io.commercelayer.api.operation;
 
 import io.commercelayer.api.model.ShippingMethod;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.operation.common.SearchOperation;
 
 
 /**
  * GetChannelOrdersOrderTokenShippingMethods
  */
-public class GetChannelOrdersOrderTokenShippingMethods extends SearchOperation {
+public class GetChannelOrdersOrderTokenShippingMethods extends SearchOperation<ShippingMethod> {
 
 	public static final String OPERATION_PATH = "/channel/orders/{order_token}/shipping_methods";
 
@@ -28,7 +27,7 @@ public class GetChannelOrdersOrderTokenShippingMethods extends SearchOperation {
 	}
 	
 
-	public Class<? extends ApiResource> getResourceType() {
+	public Class<ShippingMethod> getResourceType() {
 		return ShippingMethod.class;
 	}
 	

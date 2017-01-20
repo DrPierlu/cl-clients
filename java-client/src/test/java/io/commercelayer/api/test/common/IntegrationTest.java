@@ -15,23 +15,23 @@ public abstract class IntegrationTest<T extends ApiResource> extends ApiTest<T> 
 		
 		ApiCaller caller = getApiCaller();
 		
-		ApiResponse<T> insRes = testCreate(caller);
+		ApiResponse<T> insRes = crudCreateTest(caller);
 		
-		ApiResponse<T> getRes = testRead(insRes.getResource(), caller);
+		ApiResponse<T> getRes = crudReadTest(insRes.getResource(), caller);
 		
-		ApiResponse<T> updRes = testUpdate(getRes.getResource(), caller);
+		ApiResponse<T> updRes = crudUpdateTest(getRes.getResource(), caller);
 		
 		@SuppressWarnings("unused")
-		ApiResponse<T> delRes = testDelete(updRes.getResource(), caller);
+		ApiResponse<T> delRes = crudDeleteTest(updRes.getResource(), caller);
 		
 	}
 	
-	protected abstract ApiResponse<T> testCreate(ApiCaller caller);
+	protected abstract ApiResponse<T> crudCreateTest(ApiCaller caller);
 	
-	protected abstract ApiResponse<T> testRead(T res, ApiCaller caller);
+	protected abstract ApiResponse<T> crudReadTest(T res, ApiCaller caller);
 	
-	protected abstract ApiResponse<T> testUpdate(T oldRes, ApiCaller caller);
+	protected abstract ApiResponse<T> crudUpdateTest(T oldRes, ApiCaller caller);
 	
-	protected abstract ApiResponse<T> testDelete(T res, ApiCaller caller);
+	protected abstract ApiResponse<T> crudDeleteTest(T res, ApiCaller caller);
 	
 }

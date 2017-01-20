@@ -1,14 +1,13 @@
 package io.commercelayer.api.operation;
 
 import io.commercelayer.api.model.Language;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.operation.common.GetIdOperation;
 
 
 /**
  * GetAccountLanguagesId
  */
-public class GetAccountLanguagesId extends GetIdOperation {
+public class GetAccountLanguagesId extends GetIdOperation<Language> {
 
 	public static final String OPERATION_PATH = "/account/languages/{id}";
 
@@ -23,7 +22,7 @@ public class GetAccountLanguagesId extends GetIdOperation {
 	}
 	
 
-	public Class<? extends ApiResource> getResourceType() {
+	public Class<Language> getResourceType() {
 		return Language.class;
 	}
 	

@@ -1,14 +1,13 @@
 package io.commercelayer.api.operation;
 
 import io.commercelayer.api.model.Language;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.operation.common.SearchOperation;
 
 
 /**
  * GetAccountLanguages
  */
-public class GetAccountLanguages extends SearchOperation {
+public class GetAccountLanguages extends SearchOperation<Language> {
 
 	public static final String OPERATION_PATH = "/account/languages";
 
@@ -18,7 +17,7 @@ public class GetAccountLanguages extends SearchOperation {
 	}
 	
 
-	public Class<? extends ApiResource> getResourceType() {
+	public Class<Language> getResourceType() {
 		return Language.class;
 	}
 	

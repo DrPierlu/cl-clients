@@ -11,7 +11,7 @@ import java.util.Objects;
  */
 public class Webhook extends ApiResource {
 
-	private static final long serialVersionUID = -1484903989266L;
+	private static final long serialVersionUID = -1484907257601L;
 
 
 	private String eventAction;

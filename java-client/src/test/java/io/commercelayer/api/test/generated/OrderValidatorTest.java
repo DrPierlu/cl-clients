@@ -12,25 +12,25 @@ import io.commercelayer.api.test.common.IntegrationTest;
 public class OrderValidatorTest extends IntegrationTest<OrderValidator> {
 
 	@Override
-	public ApiResponse<OrderValidator> testCreate(ApiCaller caller) {
+	public ApiResponse<OrderValidator> crudCreateTest(ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<OrderValidator> testRead(OrderValidator res, ApiCaller caller) {
+	public ApiResponse<OrderValidator> crudReadTest(OrderValidator res, ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<OrderValidator> testUpdate(OrderValidator oldRes, ApiCaller caller) {
+	public ApiResponse<OrderValidator> crudUpdateTest(OrderValidator oldRes, ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<OrderValidator> testDelete(OrderValidator res, ApiCaller caller) {
+	public ApiResponse<OrderValidator> crudDeleteTest(OrderValidator res, ApiCaller caller) {
 		return null;
 	}
 	

@@ -12,25 +12,25 @@ import io.commercelayer.api.test.common.IntegrationTest;
 public class VariantTest extends IntegrationTest<Variant> {
 
 	@Override
-	public ApiResponse<Variant> testCreate(ApiCaller caller) {
+	public ApiResponse<Variant> crudCreateTest(ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<Variant> testRead(Variant res, ApiCaller caller) {
+	public ApiResponse<Variant> crudReadTest(Variant res, ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<Variant> testUpdate(Variant oldRes, ApiCaller caller) {
+	public ApiResponse<Variant> crudUpdateTest(Variant oldRes, ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<Variant> testDelete(Variant res, ApiCaller caller) {
+	public ApiResponse<Variant> crudDeleteTest(Variant res, ApiCaller caller) {
 		return null;
 	}
 	

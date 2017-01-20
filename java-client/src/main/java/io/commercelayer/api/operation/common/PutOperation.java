@@ -3,7 +3,7 @@ package io.commercelayer.api.operation.common;
 import io.commercelayer.api.http.HttpRequest.Method;
 import io.commercelayer.api.model.common.ApiResource;
 
-public class PutOperation extends PayloadOperation implements IdOperation {
+public class PutOperation<T extends ApiResource> extends PayloadOperation<T> implements IdOperation {
 
 	protected PutOperation(String path) {
 		super(path);
@@ -19,7 +19,7 @@ public class PutOperation extends PayloadOperation implements IdOperation {
 		return Method.PUT;
 	}
 
-	public void setPayload(ApiResource payload) {
+	public void setPayload(T payload) {
 		super.setPayload(payload);
 		if ((getId() == null) && (payload.getId() != null)) setId(payload.getId());
 	}

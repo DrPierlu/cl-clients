@@ -1,14 +1,13 @@
 package io.commercelayer.api.operation;
 
 import io.commercelayer.api.model.Taxonomy;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.operation.common.GetIdOperation;
 
 
 /**
  * GetAccountTaxonomiesId
  */
-public class GetAccountTaxonomiesId extends GetIdOperation {
+public class GetAccountTaxonomiesId extends GetIdOperation<Taxonomy> {
 
 	public static final String OPERATION_PATH = "/account/taxonomies/{id}";
 
@@ -23,7 +22,7 @@ public class GetAccountTaxonomiesId extends GetIdOperation {
 	}
 	
 
-	public Class<? extends ApiResource> getResourceType() {
+	public Class<Taxonomy> getResourceType() {
 		return Taxonomy.class;
 	}
 	

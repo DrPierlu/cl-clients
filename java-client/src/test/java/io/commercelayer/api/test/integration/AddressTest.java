@@ -19,7 +19,7 @@ import io.commercelayer.api.test.common.IntegrationTest;
 public class AddressTest extends IntegrationTest<Address> {
 
 	@Override
-	public ApiResponse<Address> testCreate(ApiCaller caller) {
+	public ApiResponse<Address> crudCreateTest(ApiCaller caller) {
 
 		// POST
 
@@ -37,7 +37,7 @@ public class AddressTest extends IntegrationTest<Address> {
 
 		ApiRequest<PostAccountAddresses> postReq = new ApiRequest<>(postOp);
 		
-		ApiResponse<Address> postRes = test(postReq, Address.class, caller);
+		ApiResponse<Address> postRes = test(postReq, caller);
 
 		Assert.assertNotNull(postRes.getResource().getId());
 		Assert.assertNotNull(postRes.getResource().getLat());
@@ -48,7 +48,7 @@ public class AddressTest extends IntegrationTest<Address> {
 	}
 
 	@Override
-	public ApiResponse<Address> testRead(Address res, ApiCaller caller) {
+	public ApiResponse<Address> crudReadTest(Address res, ApiCaller caller) {
 
 		// GET
 
@@ -57,7 +57,7 @@ public class AddressTest extends IntegrationTest<Address> {
 
 		ApiRequest<GetAccountAddressesId> getReq = new ApiRequest<>(getOp);
 		
-		ApiResponse<Address> getRes = test(getReq, Address.class, caller);
+		ApiResponse<Address> getRes = test(getReq, caller);
 
 		Assert.assertNotNull(getRes.getResource().getLat());
 		Assert.assertNotNull(getRes.getResource().getLng());
@@ -67,7 +67,7 @@ public class AddressTest extends IntegrationTest<Address> {
 	}
 
 	@Override
-	public ApiResponse<Address> testUpdate(Address oldRes, ApiCaller caller) {
+	public ApiResponse<Address> crudUpdateTest(Address oldRes, ApiCaller caller) {
 
 		// PUT
 
@@ -83,7 +83,7 @@ public class AddressTest extends IntegrationTest<Address> {
 
 		ApiRequest<PutAccountAddressesId> putReq = new ApiRequest<>(putOp);
 		
-		ApiResponse<Address> putRes = test(putReq, Address.class, caller);
+		ApiResponse<Address> putRes = test(putReq, caller);
 
 		Assert.assertNotEquals(oldRes.getGeocodingStreet(), putRes.getResource().getGeocodingStreet());
 		Assert.assertNotEquals(oldRes.getGeocodingNumber(), putRes.getResource().getGeocodingNumber());
@@ -95,7 +95,7 @@ public class AddressTest extends IntegrationTest<Address> {
 	}
 
 	@Override
-	public ApiResponse<Address> testDelete(Address res, ApiCaller caller) {
+	public ApiResponse<Address> crudDeleteTest(Address res, ApiCaller caller) {
 
 		// DELETE
 
@@ -113,7 +113,7 @@ public class AddressTest extends IntegrationTest<Address> {
 
 		ApiRequest<GetAccountAddressesId> getReq = new ApiRequest<>(getOp);
 		
-		ApiResponse<Address> getRes = test(getReq, Address.class, caller, false);
+		ApiResponse<Address> getRes = test(getReq, caller, false);
 
 		Assert.assertNull(getRes.getResource());
 

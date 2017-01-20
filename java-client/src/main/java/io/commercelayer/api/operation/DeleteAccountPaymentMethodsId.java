@@ -1,14 +1,13 @@
 package io.commercelayer.api.operation;
 
 import io.commercelayer.api.model.PaymentMethod;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.operation.common.DeleteOperation;
 
 
 /**
  * DeleteAccountPaymentMethodsId
  */
-public class DeleteAccountPaymentMethodsId extends DeleteOperation {
+public class DeleteAccountPaymentMethodsId extends DeleteOperation<PaymentMethod> {
 
 	public static final String OPERATION_PATH = "/account/payment_methods/{id}";
 
@@ -23,7 +22,7 @@ public class DeleteAccountPaymentMethodsId extends DeleteOperation {
 	}
 	
 
-	public Class<? extends ApiResource> getResourceType() {
+	public Class<PaymentMethod> getResourceType() {
 		return PaymentMethod.class;
 	}
 	

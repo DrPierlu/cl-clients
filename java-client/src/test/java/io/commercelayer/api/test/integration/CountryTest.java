@@ -19,7 +19,7 @@ import io.commercelayer.api.test.common.IntegrationTest;
 public class CountryTest extends IntegrationTest<Country> {
 
 	@Override
-	public ApiResponse<Country> testCreate(ApiCaller caller) {
+	public ApiResponse<Country> crudCreateTest(ApiCaller caller) {
 
 		// POST
 
@@ -35,7 +35,7 @@ public class CountryTest extends IntegrationTest<Country> {
 
 		ApiRequest<PostAccountCountries> postReq = new ApiRequest<>(postOp);
 		
-		ApiResponse<Country> postRes = test(postReq, Country.class, caller);
+		ApiResponse<Country> postRes = test(postReq, caller);
 
 		Assert.assertNotNull(postRes.getResource().getId());
 
@@ -45,7 +45,7 @@ public class CountryTest extends IntegrationTest<Country> {
 
 
 	@Override
-	public ApiResponse<Country> testRead(Country res, ApiCaller caller) {
+	public ApiResponse<Country> crudReadTest(Country res, ApiCaller caller) {
 
 		// GET
 
@@ -54,7 +54,7 @@ public class CountryTest extends IntegrationTest<Country> {
 
 		ApiRequest<GetAccountCountriesId> getReq = new ApiRequest<>(getOp);
 		
-		ApiResponse<Country> getRes = test(getReq, Country.class, caller);
+		ApiResponse<Country> getRes = test(getReq, caller);
 
 		Assert.assertNotNull(getRes.getResource().getName());
 		Assert.assertNotNull(getRes.getResource().getCountryGroupId());
@@ -66,7 +66,7 @@ public class CountryTest extends IntegrationTest<Country> {
 
 
 	@Override
-	public ApiResponse<Country> testUpdate(Country oldRes, ApiCaller caller) {
+	public ApiResponse<Country> crudUpdateTest(Country oldRes, ApiCaller caller) {
 
 		// PUT
 
@@ -83,7 +83,7 @@ public class CountryTest extends IntegrationTest<Country> {
 
 		ApiRequest<PutAccountCountriesId> putReq = new ApiRequest<>(putOp);
 		
-		ApiResponse<Country> putRes = test(putReq, Country.class, caller);
+		ApiResponse<Country> putRes = test(putReq, caller);
 
 		Assert.assertNotEquals(oldRes.getName(), putRes.getResource().getName());
 		Assert.assertNotEquals(oldRes.getCountryGroupId(), putRes.getResource().getCountryGroupId());
@@ -95,7 +95,7 @@ public class CountryTest extends IntegrationTest<Country> {
 
 
 	@Override
-	public ApiResponse<Country> testDelete(Country res, ApiCaller caller) {
+	public ApiResponse<Country> crudDeleteTest(Country res, ApiCaller caller) {
 
 		// DELETE
 
@@ -113,7 +113,7 @@ public class CountryTest extends IntegrationTest<Country> {
 
 		ApiRequest<GetAccountCountriesId> getReq = new ApiRequest<>(getOp);
 		
-		ApiResponse<Country> getRes = test(getReq, Country.class, caller, false);
+		ApiResponse<Country> getRes = test(getReq, caller, false);
 
 		Assert.assertNull(getRes.getResource());
 

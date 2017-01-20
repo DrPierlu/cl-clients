@@ -12,25 +12,25 @@ import io.commercelayer.api.test.common.IntegrationTest;
 public class CountryGroupTest extends IntegrationTest<CountryGroup> {
 
 	@Override
-	public ApiResponse<CountryGroup> testCreate(ApiCaller caller) {
+	public ApiResponse<CountryGroup> crudCreateTest(ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<CountryGroup> testRead(CountryGroup res, ApiCaller caller) {
+	public ApiResponse<CountryGroup> crudReadTest(CountryGroup res, ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<CountryGroup> testUpdate(CountryGroup oldRes, ApiCaller caller) {
+	public ApiResponse<CountryGroup> crudUpdateTest(CountryGroup oldRes, ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<CountryGroup> testDelete(CountryGroup res, ApiCaller caller) {
+	public ApiResponse<CountryGroup> crudDeleteTest(CountryGroup res, ApiCaller caller) {
 		return null;
 	}
 	

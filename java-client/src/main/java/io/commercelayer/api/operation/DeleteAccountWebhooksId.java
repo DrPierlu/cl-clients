@@ -1,14 +1,13 @@
 package io.commercelayer.api.operation;
 
 import io.commercelayer.api.model.Webhook;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.operation.common.DeleteOperation;
 
 
 /**
  * DeleteAccountWebhooksId
  */
-public class DeleteAccountWebhooksId extends DeleteOperation {
+public class DeleteAccountWebhooksId extends DeleteOperation<Webhook> {
 
 	public static final String OPERATION_PATH = "/account/webhooks/{id}";
 
@@ -23,7 +22,7 @@ public class DeleteAccountWebhooksId extends DeleteOperation {
 	}
 	
 
-	public Class<? extends ApiResource> getResourceType() {
+	public Class<Webhook> getResourceType() {
 		return Webhook.class;
 	}
 	

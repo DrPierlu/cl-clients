@@ -11,7 +11,7 @@ import java.util.Objects;
  */
 public class ShippingZone extends ApiResource {
 
-	private static final long serialVersionUID = -1484903989108L;
+	private static final long serialVersionUID = -1484907257481L;
 
 
 	private Integer countryGroupId;

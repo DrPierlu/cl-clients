@@ -19,7 +19,7 @@ import io.commercelayer.api.test.common.IntegrationTest;
 public class GatewayTest extends IntegrationTest<Gateway> {
 
 	@Override
-	public ApiResponse<Gateway> testCreate(ApiCaller caller) {
+	public ApiResponse<Gateway> crudCreateTest(ApiCaller caller) {
 
 		// POST
 
@@ -33,7 +33,7 @@ public class GatewayTest extends IntegrationTest<Gateway> {
 
 		ApiRequest<PostAccountGateways> postReq = new ApiRequest<>(postOp);
 		
-		ApiResponse<Gateway> postRes = test(postReq, Gateway.class, caller);
+		ApiResponse<Gateway> postRes = test(postReq, caller);
 
 		Assert.assertNotNull(postRes.getResource().getId());
 		Assert.assertNotNull(postRes.getResource().getKind());
@@ -44,7 +44,7 @@ public class GatewayTest extends IntegrationTest<Gateway> {
 
 
 	@Override
-	public ApiResponse<Gateway> testRead(Gateway res, ApiCaller caller) {
+	public ApiResponse<Gateway> crudReadTest(Gateway res, ApiCaller caller) {
 
 		// GET
 
@@ -53,7 +53,7 @@ public class GatewayTest extends IntegrationTest<Gateway> {
 
 		ApiRequest<GetAccountGatewaysId> getReq = new ApiRequest<>(getOp);
 
-		ApiResponse<Gateway> getRes = test(getReq, Gateway.class, caller);
+		ApiResponse<Gateway> getRes = test(getReq, caller);
 
 		Assert.assertNotNull(getRes.getResource().getName());
 		Assert.assertNotNull(getRes.getResource().getKind());
@@ -64,7 +64,7 @@ public class GatewayTest extends IntegrationTest<Gateway> {
 
 
 	@Override
-	public ApiResponse<Gateway> testUpdate(Gateway oldRes, ApiCaller caller) {
+	public ApiResponse<Gateway> crudUpdateTest(Gateway oldRes, ApiCaller caller) {
 
 		// PUT
 
@@ -79,7 +79,7 @@ public class GatewayTest extends IntegrationTest<Gateway> {
 
 		ApiRequest<PutAccountGatewaysId> putReq = new ApiRequest<>(putOp);
 		
-		ApiResponse<Gateway> putRes = test(putReq, Gateway.class, caller);
+		ApiResponse<Gateway> putRes = test(putReq, caller);
 
 		Assert.assertNotEquals(oldRes.getName(), putRes.getResource().getName());
 		Assert.assertNotEquals(oldRes.getKind(), putRes.getResource().getKind());
@@ -90,7 +90,7 @@ public class GatewayTest extends IntegrationTest<Gateway> {
 
 
 	@Override
-	public ApiResponse<Gateway> testDelete(Gateway res, ApiCaller caller) {
+	public ApiResponse<Gateway> crudDeleteTest(Gateway res, ApiCaller caller) {
 
 		// DELETE
 
@@ -108,7 +108,7 @@ public class GatewayTest extends IntegrationTest<Gateway> {
 
 		ApiRequest<GetAccountGatewaysId> getReq = new ApiRequest<>(getOp);
 
-		ApiResponse<Gateway> getRes = test(getReq, Gateway.class, caller, false);
+		ApiResponse<Gateway> getRes = test(getReq, caller, false);
 
 		Assert.assertNull(getRes.getResource());
 

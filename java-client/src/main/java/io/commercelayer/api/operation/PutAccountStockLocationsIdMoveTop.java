@@ -1,14 +1,13 @@
 package io.commercelayer.api.operation;
 
 import io.commercelayer.api.model.StockLocation;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.operation.common.MoveOperation;
 
 
 /**
  * PutAccountStockLocationsIdMoveTop
  */
-public class PutAccountStockLocationsIdMoveTop extends MoveOperation {
+public class PutAccountStockLocationsIdMoveTop extends MoveOperation<StockLocation> {
 
 	public static final String OPERATION_PATH = "/account/stock_locations/{id}/move_top";
 
@@ -23,7 +22,7 @@ public class PutAccountStockLocationsIdMoveTop extends MoveOperation {
 	}
 	
 
-	public Class<? extends ApiResource> getResourceType() {
+	public Class<StockLocation> getResourceType() {
 		return StockLocation.class;
 	}
 	

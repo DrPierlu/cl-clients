@@ -1,14 +1,13 @@
 package io.commercelayer.api.operation;
 
 import io.commercelayer.api.model.Address;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.operation.common.SearchOperation;
 
 
 /**
  * GetAccountAddresses
  */
-public class GetAccountAddresses extends SearchOperation {
+public class GetAccountAddresses extends SearchOperation<Address> {
 
 	public static final String OPERATION_PATH = "/account/addresses";
 
@@ -18,7 +17,7 @@ public class GetAccountAddresses extends SearchOperation {
 	}
 	
 
-	public Class<? extends ApiResource> getResourceType() {
+	public Class<Address> getResourceType() {
 		return Address.class;
 	}
 	

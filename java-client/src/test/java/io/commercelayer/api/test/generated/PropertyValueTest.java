@@ -12,25 +12,25 @@ import io.commercelayer.api.test.common.IntegrationTest;
 public class PropertyValueTest extends IntegrationTest<PropertyValue> {
 
 	@Override
-	public ApiResponse<PropertyValue> testCreate(ApiCaller caller) {
+	public ApiResponse<PropertyValue> crudCreateTest(ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<PropertyValue> testRead(PropertyValue res, ApiCaller caller) {
+	public ApiResponse<PropertyValue> crudReadTest(PropertyValue res, ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<PropertyValue> testUpdate(PropertyValue oldRes, ApiCaller caller) {
+	public ApiResponse<PropertyValue> crudUpdateTest(PropertyValue oldRes, ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<PropertyValue> testDelete(PropertyValue res, ApiCaller caller) {
+	public ApiResponse<PropertyValue> crudDeleteTest(PropertyValue res, ApiCaller caller) {
 		return null;
 	}
 	

@@ -19,7 +19,7 @@ import io.commercelayer.api.test.common.IntegrationTest;
 public class CatalogTest extends IntegrationTest<Catalog> {
 
 	@Override
-	public ApiResponse<Catalog> testCreate(ApiCaller caller) {
+	public ApiResponse<Catalog> crudCreateTest(ApiCaller caller) {
 		
 		// POST
 
@@ -33,7 +33,7 @@ public class CatalogTest extends IntegrationTest<Catalog> {
 
 		ApiRequest<PostAccountCatalogs> postReq = new ApiRequest<>(postOp);
 		
-		ApiResponse<Catalog> postRes = test(postReq, Catalog.class, caller);
+		ApiResponse<Catalog> postRes = test(postReq, caller);
 
 		Assert.assertNotNull(postRes.getResource().getId());
 
@@ -43,7 +43,7 @@ public class CatalogTest extends IntegrationTest<Catalog> {
 	
 
 	@Override
-	public ApiResponse<Catalog> testRead(Catalog res, ApiCaller caller) {
+	public ApiResponse<Catalog> crudReadTest(Catalog res, ApiCaller caller) {
 		
 		// GET
 
@@ -52,7 +52,7 @@ public class CatalogTest extends IntegrationTest<Catalog> {
 
 		ApiRequest<GetAccountCatalogsId> getReq = new ApiRequest<>(getOp);
 		
-		ApiResponse<Catalog> getRes = test(getReq, Catalog.class, caller);
+		ApiResponse<Catalog> getRes = test(getReq, caller);
 
 		Assert.assertNotNull(getRes.getResource().getName());
 
@@ -62,7 +62,7 @@ public class CatalogTest extends IntegrationTest<Catalog> {
 	
 
 	@Override
-	public ApiResponse<Catalog> testUpdate(Catalog oldRes, ApiCaller caller) {
+	public ApiResponse<Catalog> crudUpdateTest(Catalog oldRes, ApiCaller caller) {
 		
 		// PUT
 
@@ -77,7 +77,7 @@ public class CatalogTest extends IntegrationTest<Catalog> {
 
 		ApiRequest<PutAccountCatalogsId> putReq = new ApiRequest<>(putOp);
 		
-		ApiResponse<Catalog> putRes = test(putReq, Catalog.class, caller);
+		ApiResponse<Catalog> putRes = test(putReq, caller);
 
 		Assert.assertNotEquals(oldRes.getName(), putRes.getResource().getName());
 
@@ -87,7 +87,7 @@ public class CatalogTest extends IntegrationTest<Catalog> {
 	
 
 	@Override
-	public ApiResponse<Catalog> testDelete(Catalog res, ApiCaller caller) {
+	public ApiResponse<Catalog> crudDeleteTest(Catalog res, ApiCaller caller) {
 		
 		// DELETE
 
@@ -105,7 +105,7 @@ public class CatalogTest extends IntegrationTest<Catalog> {
 
 		ApiRequest<GetAccountCatalogsId> getReq = new ApiRequest<>(getOp);
 		
-		ApiResponse<Catalog> getRes = test(getReq, Catalog.class, caller, false);
+		ApiResponse<Catalog> getRes = test(getReq, caller, false);
 
 		Assert.assertNull(getRes.getResource());
 

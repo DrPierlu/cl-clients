@@ -12,25 +12,25 @@ import io.commercelayer.api.test.common.IntegrationTest;
 public class PriceListTest extends IntegrationTest<PriceList> {
 
 	@Override
-	public ApiResponse<PriceList> testCreate(ApiCaller caller) {
+	public ApiResponse<PriceList> crudCreateTest(ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<PriceList> testRead(PriceList res, ApiCaller caller) {
+	public ApiResponse<PriceList> crudReadTest(PriceList res, ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<PriceList> testUpdate(PriceList oldRes, ApiCaller caller) {
+	public ApiResponse<PriceList> crudUpdateTest(PriceList oldRes, ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<PriceList> testDelete(PriceList res, ApiCaller caller) {
+	public ApiResponse<PriceList> crudDeleteTest(PriceList res, ApiCaller caller) {
 		return null;
 	}
 	

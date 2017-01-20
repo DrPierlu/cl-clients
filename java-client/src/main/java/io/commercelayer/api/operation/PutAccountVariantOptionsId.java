@@ -1,14 +1,13 @@
 package io.commercelayer.api.operation;
 
 import io.commercelayer.api.model.VariantOption;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.operation.common.PutOperation;
 
 
 /**
  * PutAccountVariantOptionsId
  */
-public class PutAccountVariantOptionsId extends PutOperation {
+public class PutAccountVariantOptionsId extends PutOperation<VariantOption> {
 
 	public static final String OPERATION_PATH = "/account/variant_options/{id}";
 
@@ -30,7 +29,7 @@ public class PutAccountVariantOptionsId extends PutOperation {
 	}
 	
 
-	public Class<? extends ApiResource> getResourceType() {
+	public Class<VariantOption> getResourceType() {
 		return VariantOption.class;
 	}
 	

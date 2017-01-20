@@ -1,14 +1,13 @@
 package io.commercelayer.api.operation;
 
 import io.commercelayer.api.model.OrderValidator;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.operation.common.GetIdOperation;
 
 
 /**
  * GetAccountOrderValidatorsId
  */
-public class GetAccountOrderValidatorsId extends GetIdOperation {
+public class GetAccountOrderValidatorsId extends GetIdOperation<OrderValidator> {
 
 	public static final String OPERATION_PATH = "/account/order_validators/{id}";
 
@@ -23,7 +22,7 @@ public class GetAccountOrderValidatorsId extends GetIdOperation {
 	}
 	
 
-	public Class<? extends ApiResource> getResourceType() {
+	public Class<OrderValidator> getResourceType() {
 		return OrderValidator.class;
 	}
 	

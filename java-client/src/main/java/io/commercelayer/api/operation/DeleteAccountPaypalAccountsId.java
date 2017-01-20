@@ -1,14 +1,13 @@
 package io.commercelayer.api.operation;
 
 import io.commercelayer.api.model.PaypalAccount;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.operation.common.DeleteOperation;
 
 
 /**
  * DeleteAccountPaypalAccountsId
  */
-public class DeleteAccountPaypalAccountsId extends DeleteOperation {
+public class DeleteAccountPaypalAccountsId extends DeleteOperation<PaypalAccount> {
 
 	public static final String OPERATION_PATH = "/account/paypal_accounts/{id}";
 
@@ -23,7 +22,7 @@ public class DeleteAccountPaypalAccountsId extends DeleteOperation {
 	}
 	
 
-	public Class<? extends ApiResource> getResourceType() {
+	public Class<PaypalAccount> getResourceType() {
 		return PaypalAccount.class;
 	}
 	

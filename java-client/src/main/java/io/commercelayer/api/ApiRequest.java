@@ -1,8 +1,9 @@
 package io.commercelayer.api;
 
+import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.operation.common.ApiOperation;
 
-public class ApiRequest<T extends ApiOperation> {
+public class ApiRequest<T extends ApiOperation<? extends ApiResource>> {
 
 	private T operation;
 	

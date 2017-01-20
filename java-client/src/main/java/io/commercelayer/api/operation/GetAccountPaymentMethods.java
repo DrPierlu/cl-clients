@@ -1,14 +1,13 @@
 package io.commercelayer.api.operation;
 
 import io.commercelayer.api.model.PaymentMethod;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.operation.common.SearchOperation;
 
 
 /**
  * GetAccountPaymentMethods
  */
-public class GetAccountPaymentMethods extends SearchOperation {
+public class GetAccountPaymentMethods extends SearchOperation<PaymentMethod> {
 
 	public static final String OPERATION_PATH = "/account/payment_methods";
 
@@ -18,7 +17,7 @@ public class GetAccountPaymentMethods extends SearchOperation {
 	}
 	
 
-	public Class<? extends ApiResource> getResourceType() {
+	public Class<PaymentMethod> getResourceType() {
 		return PaymentMethod.class;
 	}
 	

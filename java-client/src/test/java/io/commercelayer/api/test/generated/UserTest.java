@@ -12,25 +12,25 @@ import io.commercelayer.api.test.common.IntegrationTest;
 public class UserTest extends IntegrationTest<User> {
 
 	@Override
-	public ApiResponse<User> testCreate(ApiCaller caller) {
+	public ApiResponse<User> crudCreateTest(ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<User> testRead(User res, ApiCaller caller) {
+	public ApiResponse<User> crudReadTest(User res, ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<User> testUpdate(User oldRes, ApiCaller caller) {
+	public ApiResponse<User> crudUpdateTest(User oldRes, ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<User> testDelete(User res, ApiCaller caller) {
+	public ApiResponse<User> crudDeleteTest(User res, ApiCaller caller) {
 		return null;
 	}
 	

@@ -12,25 +12,25 @@ import io.commercelayer.api.test.common.IntegrationTest;
 public class LanguageTest extends IntegrationTest<Language> {
 
 	@Override
-	public ApiResponse<Language> testCreate(ApiCaller caller) {
+	public ApiResponse<Language> crudCreateTest(ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<Language> testRead(Language res, ApiCaller caller) {
+	public ApiResponse<Language> crudReadTest(Language res, ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<Language> testUpdate(Language oldRes, ApiCaller caller) {
+	public ApiResponse<Language> crudUpdateTest(Language oldRes, ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<Language> testDelete(Language res, ApiCaller caller) {
+	public ApiResponse<Language> crudDeleteTest(Language res, ApiCaller caller) {
 		return null;
 	}
 	

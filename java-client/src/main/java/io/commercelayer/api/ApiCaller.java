@@ -69,22 +69,14 @@ public class ApiCaller {
 	
 
 	
-	public <T extends ApiResource> ApiResponse<T> move(ApiRequest<? extends MoveOperation> apiRequest) throws ApiException, AuthException {
+	public <T extends ApiResource, O extends MoveOperation<T>> ApiResponse<T> move(ApiRequest<O> apiRequest) throws ApiException, AuthException {
 		return get(apiRequest);
 	}
 	
-	public <T extends ApiResource> ApiResponse<T> move(ApiRequest<? extends MoveOperation> apiRequest, Class<T> resourceType) throws ApiException, AuthException {
-		return get(apiRequest, resourceType);
-	}
 	
-	
-	public <T extends ApiResource> ApiResponse<T> get(ApiRequest<? extends GetIdOperation> apiRequest) throws ApiException, AuthException {
-		return get(apiRequest, null);
-	}
-	
-	public <T extends ApiResource> ApiResponse<T> get(ApiRequest<? extends GetIdOperation> apiRequest, Class<T> resourceType) throws ApiException, AuthException {
+	public <T extends ApiResource, O extends GetIdOperation<T>> ApiResponse<T> get(ApiRequest<O> apiRequest) throws ApiException, AuthException {
 
-		final GetIdOperation operation = apiRequest.getOperation();
+		final GetIdOperation<T> operation = apiRequest.getOperation();
 		
 		logger.info("{} execution [{}, {}]", operation.getMethod(), operation.getPath(), operation.getId());
 
@@ -94,45 +86,18 @@ public class ApiCaller {
 		
 		HttpResponse response = call(request);
 		T resourceObject = null;
-		if (resourceType != null) resourceObject = jsonCodec.fromJSON(response.getBody(), resourceType);
+		if (operation.getResourceType() != null) resourceObject = jsonCodec.fromJSON(response.getBody(), operation.getResourceType());
 		apiResponse = new ApiResponse<>(resourceObject);
 		
 		
 		return apiResponse;
 
 	}
-	
-	
-	public <T extends ApiResource> ApiSearchResponse<T> search(ApiSearchRequest searchRequest, Class<T> resourceType) throws ApiException, AuthException {
-
-		final SearchOperation operation = searchRequest.getOperation();
-		
-		logger.info("GET[search] execution [{}, {}]", operation.getPath(), resourceType.getSimpleName());
-		
-		HttpRequest request = createHttpRequest(operation);
-
-		setRequestFilters(request, operation);
-
-		ApiSearchResponse<T> searchResponse = null;
-		
-		HttpResponse response = call(request);
-		List<T> itemList = jsonCodec.fromJSONList(response.getBody(), resourceType);
-		searchResponse = new ApiSearchResponse<>(itemList);
-		setResponsePagination(searchResponse, response);
-		
-		
-		return searchResponse;
-
-	}
 
 	
-	public <T extends ApiResource> ApiResponse<T> put(ApiRequest<PutOperation> apiRequest) throws ApiException, AuthException {
-		return put(apiRequest, null);
-	}
-	
-	public <T extends ApiResource> ApiResponse<T> put(ApiRequest<PutOperation> apiRequest, Class<T> resourceType) throws ApiException, AuthException {
+	public <T extends ApiResource, O extends PutOperation<T>> ApiResponse<T> put(ApiRequest<O> apiRequest) throws ApiException, AuthException {
 		
-		final PutOperation operation = apiRequest.getOperation();
+		final PutOperation<T> operation = apiRequest.getOperation();
 
 		logger.info("{} execution: {} {}", operation.getMethod(), operation.getPath(), operation.getPayload());
 
@@ -144,7 +109,7 @@ public class ApiCaller {
 		
 		HttpResponse response = call(request);
 		T resourceObject = null;
-		if (resourceType != null) resourceObject = jsonCodec.fromJSON(response.getBody(), resourceType);
+		if (operation.getResourceType() != null) resourceObject = jsonCodec.fromJSON(response.getBody(), operation.getResourceType());
 		apiResponse = new ApiResponse<>(resourceObject);
 		
 		
@@ -153,13 +118,9 @@ public class ApiCaller {
 	}
 
 
-	public <T extends ApiResource> ApiResponse<T> post(ApiRequest<PostOperation> apiRequest) throws ApiException, AuthException {
-		return post(apiRequest, null);
-	}
-	
-	public <T extends ApiResource> ApiResponse<T> post(ApiRequest<PostOperation> apiRequest, Class<T> resourceType) throws ApiException, AuthException {
+	public <T extends ApiResource, O extends PostOperation<T>> ApiResponse<T> post(ApiRequest<O> apiRequest) throws ApiException, AuthException {
 
-		final PostOperation operation = apiRequest.getOperation();
+		final PostOperation<T> operation = apiRequest.getOperation();
 		
 		logger.info("{} execution: {} {}", operation.getMethod(), operation.getPath(), operation.getPayload());
 
@@ -171,7 +132,7 @@ public class ApiCaller {
 		
 		HttpResponse response = call(request);
 		T resourceObject = null;
-		if (resourceType != null) resourceObject = jsonCodec.fromJSON(response.getBody(), resourceType);
+		if (operation.getResourceType() != null) resourceObject = jsonCodec.fromJSON(response.getBody(), operation.getResourceType());
 		apiResponse = new ApiResponse<>(resourceObject);
 		
 		
@@ -179,13 +140,10 @@ public class ApiCaller {
 
 	}
 
-	public <T extends ApiResource> ApiResponse<T> delete(ApiRequest<DeleteOperation> apiRequest) throws ApiException, AuthException {
-		return delete(apiRequest, null);
-	}
 	
-	public <T extends ApiResource> ApiResponse<T> delete(ApiRequest<DeleteOperation> apiRequest, Class<T> resourceType) throws ApiException, AuthException {
+	public <T extends ApiResource, O extends DeleteOperation<T>> ApiResponse<T> delete(ApiRequest<O> apiRequest) throws ApiException, AuthException {
 		
-		final DeleteOperation operation = apiRequest.getOperation();
+		final DeleteOperation<T> operation = apiRequest.getOperation();
 
 		logger.info("{} execution: {} [{}]", operation.getMethod(), operation.getPath(), operation.getId());
 
@@ -200,6 +158,29 @@ public class ApiCaller {
 		
 		
 		return apiResponse;
+
+	}
+	
+	
+	public <T extends ApiResource> ApiSearchResponse<T> search(ApiSearchRequest<T> searchRequest) throws ApiException, AuthException {
+
+		final SearchOperation<T> operation = searchRequest.getOperation();
+		
+		logger.info("GET[search] execution [{}]", operation.getPath(), searchRequest.getOperation().getResourceType());
+		
+		HttpRequest request = createHttpRequest(operation);
+
+		setRequestFilters(request, operation);
+
+		ApiSearchResponse<T> searchResponse = null;
+		
+		HttpResponse response = call(request);
+		List<T> itemList = jsonCodec.fromJSONList(response.getBody(), searchRequest.getOperation().getResourceType());
+		searchResponse = new ApiSearchResponse<>(itemList);
+		setResponsePagination(searchResponse, response);
+		
+		
+		return searchResponse;
 
 	}
 	
@@ -254,7 +235,7 @@ public class ApiCaller {
 	
 	
 	
-	private HttpRequest createHttpRequest(ApiOperation op) {
+	private HttpRequest createHttpRequest(ApiOperation<? extends ApiResource> op) {
 
 		HttpRequest request = new HttpRequest(op.getMethod());
 
@@ -275,7 +256,7 @@ public class ApiCaller {
 
 
 
-	private void setRequestFilters(HttpRequest request, SearchOperation sop) {
+	private void setRequestFilters(HttpRequest request, SearchOperation<? extends ApiResource> sop) {
 
 		// Pagination Filter
 		final PageFilter pageFilter = sop.getPageFilter();

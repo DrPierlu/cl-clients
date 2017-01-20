@@ -19,7 +19,7 @@ import io.commercelayer.api.test.common.IntegrationTest;
 public class CustomerTest extends IntegrationTest<Customer> {
 
 	@Override
-	public ApiResponse<Customer> testCreate(ApiCaller caller) {
+	public ApiResponse<Customer> crudCreateTest(ApiCaller caller) {
 
 		// POST
 
@@ -33,7 +33,7 @@ public class CustomerTest extends IntegrationTest<Customer> {
 
 		ApiRequest<PostAccountCustomers> postReq = new ApiRequest<>(postOp);
 		
-		ApiResponse<Customer> postRes = test(postReq, Customer.class, caller);
+		ApiResponse<Customer> postRes = test(postReq, caller);
 
 		Assert.assertNotNull(postRes.getResource().getId());
 		Assert.assertNotNull(postRes.getResource().getEmail());
@@ -44,7 +44,7 @@ public class CustomerTest extends IntegrationTest<Customer> {
 
 
 	@Override
-	public ApiResponse<Customer> testRead(Customer res, ApiCaller caller) {
+	public ApiResponse<Customer> crudReadTest(Customer res, ApiCaller caller) {
 
 		// GET
 
@@ -53,7 +53,7 @@ public class CustomerTest extends IntegrationTest<Customer> {
 
 		ApiRequest<GetAccountCustomersId> getReq = new ApiRequest<>(getOp);
 
-		ApiResponse<Customer> getRes = test(getReq, Customer.class, caller);
+		ApiResponse<Customer> getRes = test(getReq, caller);
 
 		Assert.assertNotNull(getRes.getResource().getEmail());
 
@@ -63,7 +63,7 @@ public class CustomerTest extends IntegrationTest<Customer> {
 
 
 	@Override
-	public ApiResponse<Customer> testUpdate(Customer oldRes, ApiCaller caller) {
+	public ApiResponse<Customer> crudUpdateTest(Customer oldRes, ApiCaller caller) {
 
 		// PUT
 
@@ -78,7 +78,7 @@ public class CustomerTest extends IntegrationTest<Customer> {
 
 		ApiRequest<PutAccountCustomersId> putReq = new ApiRequest<>(putOp);
 		
-		ApiResponse<Customer> putRes = test(putReq, Customer.class, caller);
+		ApiResponse<Customer> putRes = test(putReq, caller);
 
 		Assert.assertNotEquals(oldRes.getEmail(), putRes.getResource().getEmail());
 
@@ -88,7 +88,7 @@ public class CustomerTest extends IntegrationTest<Customer> {
 
 
 	@Override
-	public ApiResponse<Customer> testDelete(Customer res, ApiCaller caller) {
+	public ApiResponse<Customer> crudDeleteTest(Customer res, ApiCaller caller) {
 
 		// DELETE
 
@@ -106,7 +106,7 @@ public class CustomerTest extends IntegrationTest<Customer> {
 
 		ApiRequest<GetAccountCustomersId> getReq = new ApiRequest<>(getOp);
 
-		ApiResponse<Customer> getRes = test(getReq, Customer.class, caller, false);
+		ApiResponse<Customer> getRes = test(getReq, caller, false);
 
 		Assert.assertNull(getRes.getResource());
 

@@ -12,25 +12,25 @@ import io.commercelayer.api.test.common.IntegrationTest;
 public class MarketShippingServiceTest extends IntegrationTest<MarketShippingService> {
 
 	@Override
-	public ApiResponse<MarketShippingService> testCreate(ApiCaller caller) {
+	public ApiResponse<MarketShippingService> crudCreateTest(ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<MarketShippingService> testRead(MarketShippingService res, ApiCaller caller) {
+	public ApiResponse<MarketShippingService> crudReadTest(MarketShippingService res, ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<MarketShippingService> testUpdate(MarketShippingService oldRes, ApiCaller caller) {
+	public ApiResponse<MarketShippingService> crudUpdateTest(MarketShippingService oldRes, ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<MarketShippingService> testDelete(MarketShippingService res, ApiCaller caller) {
+	public ApiResponse<MarketShippingService> crudDeleteTest(MarketShippingService res, ApiCaller caller) {
 		return null;
 	}
 	

@@ -19,7 +19,7 @@ import io.commercelayer.api.test.common.IntegrationTest;
 public class ConsumerRoleTest extends IntegrationTest<ConsumerRole> {
 
 	@Override
-	public ApiResponse<ConsumerRole> testCreate(ApiCaller caller) {
+	public ApiResponse<ConsumerRole> crudCreateTest(ApiCaller caller) {
 
 		// POST
 
@@ -35,7 +35,7 @@ public class ConsumerRoleTest extends IntegrationTest<ConsumerRole> {
 
 		ApiRequest<PostAccountConsumerRoles> postReq = new ApiRequest<>(postOp);
 		
-		ApiResponse<ConsumerRole> postRes = test(postReq, ConsumerRole.class, caller);
+		ApiResponse<ConsumerRole> postRes = test(postReq, caller);
 
 		Assert.assertNotNull(postRes.getResource().getId());
 		Assert.assertNotNull(postRes.getResource().getConsumerId());
@@ -47,7 +47,7 @@ public class ConsumerRoleTest extends IntegrationTest<ConsumerRole> {
 
 
 	@Override
-	public ApiResponse<ConsumerRole> testRead(ConsumerRole res, ApiCaller caller) {
+	public ApiResponse<ConsumerRole> crudReadTest(ConsumerRole res, ApiCaller caller) {
 
 		// GET
 
@@ -56,7 +56,7 @@ public class ConsumerRoleTest extends IntegrationTest<ConsumerRole> {
 
 		ApiRequest<GetAccountConsumerRolesId> getReq = new ApiRequest<>(getOp);
 		
-		ApiResponse<ConsumerRole> getRes = test(getReq, ConsumerRole.class, caller);
+		ApiResponse<ConsumerRole> getRes = test(getReq, caller);
 
 		Assert.assertNotNull(getRes.getResource().getRoleId());
 
@@ -66,7 +66,7 @@ public class ConsumerRoleTest extends IntegrationTest<ConsumerRole> {
 
 
 	@Override
-	public ApiResponse<ConsumerRole> testUpdate(ConsumerRole oldRes, ApiCaller caller) {
+	public ApiResponse<ConsumerRole> crudUpdateTest(ConsumerRole oldRes, ApiCaller caller) {
 
 		// PUT
 
@@ -83,7 +83,7 @@ public class ConsumerRoleTest extends IntegrationTest<ConsumerRole> {
 
 		ApiRequest<PutAccountConsumerRolesId> putReq = new ApiRequest<>(putOp);
 		
-		ApiResponse<ConsumerRole> putRes = test(putReq, ConsumerRole.class, caller);
+		ApiResponse<ConsumerRole> putRes = test(putReq, caller);
 
 		Assert.assertNotEquals(oldRes.getName(), putRes.getResource().getName());
 
@@ -93,7 +93,7 @@ public class ConsumerRoleTest extends IntegrationTest<ConsumerRole> {
 
 
 	@Override
-	public ApiResponse<ConsumerRole> testDelete(ConsumerRole res, ApiCaller caller) {
+	public ApiResponse<ConsumerRole> crudDeleteTest(ConsumerRole res, ApiCaller caller) {
 
 		// DELETE
 
@@ -111,7 +111,7 @@ public class ConsumerRoleTest extends IntegrationTest<ConsumerRole> {
 
 		ApiRequest<GetAccountConsumerRolesId> getReq = new ApiRequest<>(getOp);
 		
-		ApiResponse<ConsumerRole> getRes = test(getReq, ConsumerRole.class, caller, false);
+		ApiResponse<ConsumerRole> getRes = test(getReq, caller, false);
 
 		Assert.assertNull(getRes.getResource());
 

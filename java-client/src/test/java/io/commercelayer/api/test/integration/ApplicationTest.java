@@ -19,7 +19,7 @@ import io.commercelayer.api.test.common.IntegrationTest;
 public class ApplicationTest extends IntegrationTest<Application> {
 
 	@Override
-	public ApiResponse<Application> testCreate(ApiCaller caller) {
+	public ApiResponse<Application> crudCreateTest(ApiCaller caller) {
 
 		// POST
 
@@ -33,7 +33,7 @@ public class ApplicationTest extends IntegrationTest<Application> {
 
 		ApiRequest<PostAccountApplications> postReq = new ApiRequest<>(postOp);
 		
-		ApiResponse<Application> postRes = test(postReq, Application.class, caller);
+		ApiResponse<Application> postRes = test(postReq, caller);
 
 		Assert.assertNotNull(postRes.getResource().getId());
 
@@ -43,7 +43,7 @@ public class ApplicationTest extends IntegrationTest<Application> {
 
 
 	@Override
-	public ApiResponse<Application> testRead(Application res, ApiCaller caller) {
+	public ApiResponse<Application> crudReadTest(Application res, ApiCaller caller) {
 
 		// GET
 
@@ -52,7 +52,7 @@ public class ApplicationTest extends IntegrationTest<Application> {
 
 		ApiRequest<GetAccountApplicationsId> getReq = new ApiRequest<>(getOp);
 		
-		ApiResponse<Application> getRes = test(getReq, Application.class, caller);
+		ApiResponse<Application> getRes = test(getReq, caller);
 
 		Assert.assertNotNull(getRes.getResource().getName());
 
@@ -62,7 +62,7 @@ public class ApplicationTest extends IntegrationTest<Application> {
 
 
 	@Override
-	public ApiResponse<Application> testUpdate(Application oldRes, ApiCaller caller) {
+	public ApiResponse<Application> crudUpdateTest(Application oldRes, ApiCaller caller) {
 
 		// PUT
 
@@ -77,7 +77,7 @@ public class ApplicationTest extends IntegrationTest<Application> {
 
 		ApiRequest<PutAccountApplicationsId> putReq = new ApiRequest<>(putOp);
 		
-		ApiResponse<Application> putRes = test(putReq, Application.class, caller);
+		ApiResponse<Application> putRes = test(putReq, caller);
 
 		Assert.assertNotEquals(oldRes.getName(), putRes.getResource().getName());
 
@@ -87,7 +87,7 @@ public class ApplicationTest extends IntegrationTest<Application> {
 
 
 	@Override
-	public ApiResponse<Application> testDelete(Application res, ApiCaller caller) {
+	public ApiResponse<Application> crudDeleteTest(Application res, ApiCaller caller) {
 
 		// DELETE
 
@@ -105,7 +105,7 @@ public class ApplicationTest extends IntegrationTest<Application> {
 
 		ApiRequest<GetAccountApplicationsId> getReq = new ApiRequest<>(getOp);
 		
-		ApiResponse<Application> getRes = test(getReq, Application.class, caller, false);
+		ApiResponse<Application> getRes = test(getReq, caller, false);
 
 		Assert.assertNull(getRes.getResource());
 

@@ -11,7 +11,7 @@ import java.util.Objects;
  */
 public class PaymentType extends ApiResource {
 
-	private static final long serialVersionUID = -1484903988915L;
+	private static final long serialVersionUID = -1484907257267L;
 
 
 	private Integer gatewayId;

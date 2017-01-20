@@ -12,25 +12,25 @@ import io.commercelayer.api.test.common.IntegrationTest;
 public class CreditCardTest extends IntegrationTest<CreditCard> {
 
 	@Override
-	public ApiResponse<CreditCard> testCreate(ApiCaller caller) {
+	public ApiResponse<CreditCard> crudCreateTest(ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<CreditCard> testRead(CreditCard res, ApiCaller caller) {
+	public ApiResponse<CreditCard> crudReadTest(CreditCard res, ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<CreditCard> testUpdate(CreditCard oldRes, ApiCaller caller) {
+	public ApiResponse<CreditCard> crudUpdateTest(CreditCard oldRes, ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<CreditCard> testDelete(CreditCard res, ApiCaller caller) {
+	public ApiResponse<CreditCard> crudDeleteTest(CreditCard res, ApiCaller caller) {
 		return null;
 	}
 	

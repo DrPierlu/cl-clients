@@ -12,25 +12,25 @@ import io.commercelayer.api.test.common.IntegrationTest;
 public class TaxonomyTest extends IntegrationTest<Taxonomy> {
 
 	@Override
-	public ApiResponse<Taxonomy> testCreate(ApiCaller caller) {
+	public ApiResponse<Taxonomy> crudCreateTest(ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<Taxonomy> testRead(Taxonomy res, ApiCaller caller) {
+	public ApiResponse<Taxonomy> crudReadTest(Taxonomy res, ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<Taxonomy> testUpdate(Taxonomy oldRes, ApiCaller caller) {
+	public ApiResponse<Taxonomy> crudUpdateTest(Taxonomy oldRes, ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<Taxonomy> testDelete(Taxonomy res, ApiCaller caller) {
+	public ApiResponse<Taxonomy> crudDeleteTest(Taxonomy res, ApiCaller caller) {
 		return null;
 	}
 	

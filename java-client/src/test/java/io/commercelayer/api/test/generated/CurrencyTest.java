@@ -12,25 +12,25 @@ import io.commercelayer.api.test.common.IntegrationTest;
 public class CurrencyTest extends IntegrationTest<Currency> {
 
 	@Override
-	public ApiResponse<Currency> testCreate(ApiCaller caller) {
+	public ApiResponse<Currency> crudCreateTest(ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<Currency> testRead(Currency res, ApiCaller caller) {
+	public ApiResponse<Currency> crudReadTest(Currency res, ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<Currency> testUpdate(Currency oldRes, ApiCaller caller) {
+	public ApiResponse<Currency> crudUpdateTest(Currency oldRes, ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<Currency> testDelete(Currency res, ApiCaller caller) {
+	public ApiResponse<Currency> crudDeleteTest(Currency res, ApiCaller caller) {
 		return null;
 	}
 	

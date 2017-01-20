@@ -12,25 +12,25 @@ import io.commercelayer.api.test.common.IntegrationTest;
 public class TransactionTest extends IntegrationTest<Transaction> {
 
 	@Override
-	public ApiResponse<Transaction> testCreate(ApiCaller caller) {
+	public ApiResponse<Transaction> crudCreateTest(ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<Transaction> testRead(Transaction res, ApiCaller caller) {
+	public ApiResponse<Transaction> crudReadTest(Transaction res, ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<Transaction> testUpdate(Transaction oldRes, ApiCaller caller) {
+	public ApiResponse<Transaction> crudUpdateTest(Transaction oldRes, ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<Transaction> testDelete(Transaction res, ApiCaller caller) {
+	public ApiResponse<Transaction> crudDeleteTest(Transaction res, ApiCaller caller) {
 		return null;
 	}
 	

@@ -1,6 +1,8 @@
 package io.commercelayer.api.operation.common;
 
-public class GetIdOperation extends GetOperation implements IdOperation {
+import io.commercelayer.api.model.common.ApiResource;
+
+public class GetIdOperation<T extends ApiResource> extends GetOperation<T> implements IdOperation {
 	
 	protected GetIdOperation(String path) {
 		super(path);

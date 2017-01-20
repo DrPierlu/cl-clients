@@ -1,14 +1,13 @@
 package io.commercelayer.api.operation;
 
 import io.commercelayer.api.model.OptionValue;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.operation.common.SearchOperation;
 
 
 /**
  * GetAccountOptionValues
  */
-public class GetAccountOptionValues extends SearchOperation {
+public class GetAccountOptionValues extends SearchOperation<OptionValue> {
 
 	public static final String OPERATION_PATH = "/account/option_values";
 
@@ -18,7 +17,7 @@ public class GetAccountOptionValues extends SearchOperation {
 	}
 	
 
-	public Class<? extends ApiResource> getResourceType() {
+	public Class<OptionValue> getResourceType() {
 		return OptionValue.class;
 	}
 	

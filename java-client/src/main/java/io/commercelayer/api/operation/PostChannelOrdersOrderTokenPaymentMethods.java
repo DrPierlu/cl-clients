@@ -1,14 +1,13 @@
 package io.commercelayer.api.operation;
 
 import io.commercelayer.api.model.PaymentMethod;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.operation.common.PostOperation;
 
 
 /**
  * PostChannelOrdersOrderTokenPaymentMethods
  */
-public class PostChannelOrdersOrderTokenPaymentMethods extends PostOperation {
+public class PostChannelOrdersOrderTokenPaymentMethods extends PostOperation<PaymentMethod> {
 
 	public static final String OPERATION_PATH = "/channel/orders/{order_token}/payment_methods";
 
@@ -39,7 +38,7 @@ public class PostChannelOrdersOrderTokenPaymentMethods extends PostOperation {
 	}
 	
 
-	public Class<? extends ApiResource> getResourceType() {
+	public Class<PaymentMethod> getResourceType() {
 		return PaymentMethod.class;
 	}
 	

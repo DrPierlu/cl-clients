@@ -12,25 +12,25 @@ import io.commercelayer.api.test.common.IntegrationTest;
 public class ChannelTest extends IntegrationTest<Channel> {
 
 	@Override
-	public ApiResponse<Channel> testCreate(ApiCaller caller) {
+	public ApiResponse<Channel> crudCreateTest(ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<Channel> testRead(Channel res, ApiCaller caller) {
+	public ApiResponse<Channel> crudReadTest(Channel res, ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<Channel> testUpdate(Channel oldRes, ApiCaller caller) {
+	public ApiResponse<Channel> crudUpdateTest(Channel oldRes, ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<Channel> testDelete(Channel res, ApiCaller caller) {
+	public ApiResponse<Channel> crudDeleteTest(Channel res, ApiCaller caller) {
 		return null;
 	}
 	

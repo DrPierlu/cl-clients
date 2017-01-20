@@ -1,14 +1,13 @@
 package io.commercelayer.api.operation;
 
 import io.commercelayer.api.model.LineItem;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.operation.common.PostOperation;
 
 
 /**
  * PostAccountLineItems
  */
-public class PostAccountLineItems extends PostOperation {
+public class PostAccountLineItems extends PostOperation<LineItem> {
 
 	public static final String OPERATION_PATH = "/account/line_items";
 
@@ -26,7 +25,7 @@ public class PostAccountLineItems extends PostOperation {
 	}
 	
 
-	public Class<? extends ApiResource> getResourceType() {
+	public Class<LineItem> getResourceType() {
 		return LineItem.class;
 	}
 	

@@ -1,14 +1,13 @@
 package io.commercelayer.api.operation;
 
 import io.commercelayer.api.model.Currency;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.operation.common.SearchOperation;
 
 
 /**
  * GetAccountCurrencies
  */
-public class GetAccountCurrencies extends SearchOperation {
+public class GetAccountCurrencies extends SearchOperation<Currency> {
 
 	public static final String OPERATION_PATH = "/account/currencies";
 
@@ -18,7 +17,7 @@ public class GetAccountCurrencies extends SearchOperation {
 	}
 	
 
-	public Class<? extends ApiResource> getResourceType() {
+	public Class<Currency> getResourceType() {
 		return Currency.class;
 	}
 	

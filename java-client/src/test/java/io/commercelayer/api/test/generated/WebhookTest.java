@@ -12,25 +12,25 @@ import io.commercelayer.api.test.common.IntegrationTest;
 public class WebhookTest extends IntegrationTest<Webhook> {
 
 	@Override
-	public ApiResponse<Webhook> testCreate(ApiCaller caller) {
+	public ApiResponse<Webhook> crudCreateTest(ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<Webhook> testRead(Webhook res, ApiCaller caller) {
+	public ApiResponse<Webhook> crudReadTest(Webhook res, ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<Webhook> testUpdate(Webhook oldRes, ApiCaller caller) {
+	public ApiResponse<Webhook> crudUpdateTest(Webhook oldRes, ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<Webhook> testDelete(Webhook res, ApiCaller caller) {
+	public ApiResponse<Webhook> crudDeleteTest(Webhook res, ApiCaller caller) {
 		return null;
 	}
 	

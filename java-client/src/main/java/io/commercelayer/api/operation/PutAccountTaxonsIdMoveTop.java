@@ -1,14 +1,13 @@
 package io.commercelayer.api.operation;
 
 import io.commercelayer.api.model.Taxon;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.operation.common.MoveOperation;
 
 
 /**
  * PutAccountTaxonsIdMoveTop
  */
-public class PutAccountTaxonsIdMoveTop extends MoveOperation {
+public class PutAccountTaxonsIdMoveTop extends MoveOperation<Taxon> {
 
 	public static final String OPERATION_PATH = "/account/taxons/{id}/move_top";
 
@@ -23,7 +22,7 @@ public class PutAccountTaxonsIdMoveTop extends MoveOperation {
 	}
 	
 
-	public Class<? extends ApiResource> getResourceType() {
+	public Class<Taxon> getResourceType() {
 		return Taxon.class;
 	}
 	

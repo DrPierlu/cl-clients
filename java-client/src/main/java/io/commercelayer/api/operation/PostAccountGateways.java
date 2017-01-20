@@ -1,14 +1,13 @@
 package io.commercelayer.api.operation;
 
 import io.commercelayer.api.model.Gateway;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.operation.common.PostOperation;
 
 
 /**
  * PostAccountGateways
  */
-public class PostAccountGateways extends PostOperation {
+public class PostAccountGateways extends PostOperation<Gateway> {
 
 	public static final String OPERATION_PATH = "/account/gateways";
 
@@ -23,7 +22,7 @@ public class PostAccountGateways extends PostOperation {
 	}
 	
 
-	public Class<? extends ApiResource> getResourceType() {
+	public Class<Gateway> getResourceType() {
 		return Gateway.class;
 	}
 	

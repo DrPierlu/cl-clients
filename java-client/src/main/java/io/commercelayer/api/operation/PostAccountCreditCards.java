@@ -1,14 +1,13 @@
 package io.commercelayer.api.operation;
 
 import io.commercelayer.api.model.CreditCard;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.operation.common.PostOperation;
 
 
 /**
  * PostAccountCreditCards
  */
-public class PostAccountCreditCards extends PostOperation {
+public class PostAccountCreditCards extends PostOperation<CreditCard> {
 
 	public static final String OPERATION_PATH = "/account/credit_cards";
 
@@ -27,7 +26,7 @@ public class PostAccountCreditCards extends PostOperation {
 	}
 	
 
-	public Class<? extends ApiResource> getResourceType() {
+	public Class<CreditCard> getResourceType() {
 		return CreditCard.class;
 	}
 	

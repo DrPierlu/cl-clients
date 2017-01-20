@@ -19,7 +19,7 @@ import io.commercelayer.api.test.common.IntegrationTest;
 public class LanguageTest extends IntegrationTest<Language> {
 
 	@Override
-	public ApiResponse<Language> testCreate(ApiCaller caller) {
+	public ApiResponse<Language> crudCreateTest(ApiCaller caller) {
 
 		// POST
 
@@ -33,7 +33,7 @@ public class LanguageTest extends IntegrationTest<Language> {
 
 		ApiRequest<PostAccountLanguages> postReq = new ApiRequest<>(postOp);
 		
-		ApiResponse<Language> postRes = test(postReq, Language.class, caller);
+		ApiResponse<Language> postRes = test(postReq, caller);
 
 		Assert.assertNotNull(postRes.getResource().getId());
 		Assert.assertNotNull(postRes.getResource().getCode());
@@ -44,7 +44,7 @@ public class LanguageTest extends IntegrationTest<Language> {
 
 
 	@Override
-	public ApiResponse<Language> testRead(Language res, ApiCaller caller) {
+	public ApiResponse<Language> crudReadTest(Language res, ApiCaller caller) {
 
 		// GET
 
@@ -53,7 +53,7 @@ public class LanguageTest extends IntegrationTest<Language> {
 
 		ApiRequest<GetAccountLanguagesId> getReq = new ApiRequest<>(getOp);
 		
-		ApiResponse<Language> getRes = test(getReq, Language.class, caller);
+		ApiResponse<Language> getRes = test(getReq, caller);
 
 		Assert.assertNotNull(getRes.getResource().getCode());
 
@@ -63,7 +63,7 @@ public class LanguageTest extends IntegrationTest<Language> {
 
 
 	@Override
-	public ApiResponse<Language> testUpdate(Language oldRes, ApiCaller caller) {
+	public ApiResponse<Language> crudUpdateTest(Language oldRes, ApiCaller caller) {
 
 		// PUT
 
@@ -78,7 +78,7 @@ public class LanguageTest extends IntegrationTest<Language> {
 
 		ApiRequest<PutAccountLanguagesId> putReq = new ApiRequest<>(putOp);
 		
-		ApiResponse<Language> putRes = test(putReq, Language.class, caller);
+		ApiResponse<Language> putRes = test(putReq, caller);
 
 		Assert.assertNotEquals(oldRes.getCode(), putRes.getResource().getCode());
 
@@ -88,7 +88,7 @@ public class LanguageTest extends IntegrationTest<Language> {
 
 
 	@Override
-	public ApiResponse<Language> testDelete(Language res, ApiCaller caller) {
+	public ApiResponse<Language> crudDeleteTest(Language res, ApiCaller caller) {
 
 		// DELETE
 
@@ -106,7 +106,7 @@ public class LanguageTest extends IntegrationTest<Language> {
 
 		ApiRequest<GetAccountLanguagesId> getReq = new ApiRequest<>(getOp);
 		
-		ApiResponse<Language> getRes = test(getReq, Language.class, caller, false);
+		ApiResponse<Language> getRes = test(getReq, caller, false);
 
 		Assert.assertNull(getRes.getResource());
 

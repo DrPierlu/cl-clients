@@ -11,7 +11,7 @@ import java.util.Objects;
  */
 public class StockLocation extends ApiResource {
 
-	private static final long serialVersionUID = -1484903989132L;
+	private static final long serialVersionUID = -1484907257507L;
 
 
 	private Integer addressId;

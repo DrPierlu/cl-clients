@@ -12,25 +12,25 @@ import io.commercelayer.api.test.common.IntegrationTest;
 public class ShippingZoneTest extends IntegrationTest<ShippingZone> {
 
 	@Override
-	public ApiResponse<ShippingZone> testCreate(ApiCaller caller) {
+	public ApiResponse<ShippingZone> crudCreateTest(ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<ShippingZone> testRead(ShippingZone res, ApiCaller caller) {
+	public ApiResponse<ShippingZone> crudReadTest(ShippingZone res, ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<ShippingZone> testUpdate(ShippingZone oldRes, ApiCaller caller) {
+	public ApiResponse<ShippingZone> crudUpdateTest(ShippingZone oldRes, ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<ShippingZone> testDelete(ShippingZone res, ApiCaller caller) {
+	public ApiResponse<ShippingZone> crudDeleteTest(ShippingZone res, ApiCaller caller) {
 		return null;
 	}
 	

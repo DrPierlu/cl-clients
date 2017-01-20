@@ -19,7 +19,7 @@ import io.commercelayer.api.test.common.IntegrationTest;
 public class CurrencyTest extends IntegrationTest<Currency> {
 
 	@Override
-	public ApiResponse<Currency> testCreate(ApiCaller caller) {
+	public ApiResponse<Currency> crudCreateTest(ApiCaller caller) {
 
 		// POST
 
@@ -34,7 +34,7 @@ public class CurrencyTest extends IntegrationTest<Currency> {
 
 		ApiRequest<PostAccountCurrencies> postReq = new ApiRequest<>(postOp);
 		
-		ApiResponse<Currency> postRes = test(postReq, Currency.class, caller);
+		ApiResponse<Currency> postRes = test(postReq, caller);
 
 		Assert.assertNotNull(postRes.getResource().getId());
 
@@ -44,7 +44,7 @@ public class CurrencyTest extends IntegrationTest<Currency> {
 
 
 	@Override
-	public ApiResponse<Currency> testRead(Currency res, ApiCaller caller) {
+	public ApiResponse<Currency> crudReadTest(Currency res, ApiCaller caller) {
 
 		// GET
 
@@ -53,7 +53,7 @@ public class CurrencyTest extends IntegrationTest<Currency> {
 
 		ApiRequest<GetAccountCurrenciesId> getReq = new ApiRequest<>(getOp);
 
-		ApiResponse<Currency> getRes = test(getReq, Currency.class, caller);
+		ApiResponse<Currency> getRes = test(getReq, caller);
 
 		Assert.assertNotNull(getRes.getResource().getName());
 		Assert.assertNotNull(getRes.getResource().getCode());
@@ -64,7 +64,7 @@ public class CurrencyTest extends IntegrationTest<Currency> {
 
 
 	@Override
-	public ApiResponse<Currency> testUpdate(Currency oldRes, ApiCaller caller) {
+	public ApiResponse<Currency> crudUpdateTest(Currency oldRes, ApiCaller caller) {
 
 		// PUT
 
@@ -80,7 +80,7 @@ public class CurrencyTest extends IntegrationTest<Currency> {
 
 		ApiRequest<PutAccountCurrenciesId> putReq = new ApiRequest<>(putOp);
 		
-		ApiResponse<Currency> putRes = test(putReq, Currency.class, caller);
+		ApiResponse<Currency> putRes = test(putReq, caller);
 
 		Assert.assertNotEquals(oldRes.getName(), putRes.getResource().getName());
 		Assert.assertNotEquals(oldRes.getCode(), putRes.getResource().getCode());
@@ -91,7 +91,7 @@ public class CurrencyTest extends IntegrationTest<Currency> {
 
 
 	@Override
-	public ApiResponse<Currency> testDelete(Currency res, ApiCaller caller) {
+	public ApiResponse<Currency> crudDeleteTest(Currency res, ApiCaller caller) {
 
 		// DELETE
 
@@ -109,7 +109,7 @@ public class CurrencyTest extends IntegrationTest<Currency> {
 
 		ApiRequest<GetAccountCurrenciesId> getReq = new ApiRequest<>(getOp);
 
-		ApiResponse<Currency> getRes = test(getReq, Currency.class, caller, false);
+		ApiResponse<Currency> getRes = test(getReq, caller, false);
 
 		Assert.assertNull(getRes.getResource());
 

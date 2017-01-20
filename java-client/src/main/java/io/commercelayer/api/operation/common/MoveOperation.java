@@ -1,6 +1,8 @@
 package io.commercelayer.api.operation.common;
 
-public class MoveOperation extends GetIdOperation {
+import io.commercelayer.api.model.common.ApiResource;
+
+public class MoveOperation<T extends ApiResource> extends GetIdOperation<T> {
 	
 	public static final String PARAM_POSITION = "position";
 

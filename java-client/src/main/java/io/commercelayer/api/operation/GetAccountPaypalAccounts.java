@@ -1,14 +1,13 @@
 package io.commercelayer.api.operation;
 
 import io.commercelayer.api.model.PaypalAccount;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.operation.common.SearchOperation;
 
 
 /**
  * GetAccountPaypalAccounts
  */
-public class GetAccountPaypalAccounts extends SearchOperation {
+public class GetAccountPaypalAccounts extends SearchOperation<PaypalAccount> {
 
 	public static final String OPERATION_PATH = "/account/paypal_accounts";
 
@@ -18,7 +17,7 @@ public class GetAccountPaypalAccounts extends SearchOperation {
 	}
 	
 
-	public Class<? extends ApiResource> getResourceType() {
+	public Class<PaypalAccount> getResourceType() {
 		return PaypalAccount.class;
 	}
 	

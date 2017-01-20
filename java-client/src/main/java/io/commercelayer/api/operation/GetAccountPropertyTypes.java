@@ -1,14 +1,13 @@
 package io.commercelayer.api.operation;
 
 import io.commercelayer.api.model.PropertyType;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.operation.common.SearchOperation;
 
 
 /**
  * GetAccountPropertyTypes
  */
-public class GetAccountPropertyTypes extends SearchOperation {
+public class GetAccountPropertyTypes extends SearchOperation<PropertyType> {
 
 	public static final String OPERATION_PATH = "/account/property_types";
 
@@ -18,7 +17,7 @@ public class GetAccountPropertyTypes extends SearchOperation {
 	}
 	
 
-	public Class<? extends ApiResource> getResourceType() {
+	public Class<PropertyType> getResourceType() {
 		return PropertyType.class;
 	}
 	

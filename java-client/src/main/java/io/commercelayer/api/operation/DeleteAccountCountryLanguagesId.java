@@ -1,14 +1,13 @@
 package io.commercelayer.api.operation;
 
 import io.commercelayer.api.model.CountryLanguage;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.operation.common.DeleteOperation;
 
 
 /**
  * DeleteAccountCountryLanguagesId
  */
-public class DeleteAccountCountryLanguagesId extends DeleteOperation {
+public class DeleteAccountCountryLanguagesId extends DeleteOperation<CountryLanguage> {
 
 	public static final String OPERATION_PATH = "/account/country_languages/{id}";
 
@@ -23,7 +22,7 @@ public class DeleteAccountCountryLanguagesId extends DeleteOperation {
 	}
 	
 
-	public Class<? extends ApiResource> getResourceType() {
+	public Class<CountryLanguage> getResourceType() {
 		return CountryLanguage.class;
 	}
 	

@@ -12,25 +12,25 @@ import io.commercelayer.api.test.common.IntegrationTest;
 public class MarketPaymentTypeTest extends IntegrationTest<MarketPaymentType> {
 
 	@Override
-	public ApiResponse<MarketPaymentType> testCreate(ApiCaller caller) {
+	public ApiResponse<MarketPaymentType> crudCreateTest(ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<MarketPaymentType> testRead(MarketPaymentType res, ApiCaller caller) {
+	public ApiResponse<MarketPaymentType> crudReadTest(MarketPaymentType res, ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<MarketPaymentType> testUpdate(MarketPaymentType oldRes, ApiCaller caller) {
+	public ApiResponse<MarketPaymentType> crudUpdateTest(MarketPaymentType oldRes, ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<MarketPaymentType> testDelete(MarketPaymentType res, ApiCaller caller) {
+	public ApiResponse<MarketPaymentType> crudDeleteTest(MarketPaymentType res, ApiCaller caller) {
 		return null;
 	}
 	

@@ -1,14 +1,13 @@
 package io.commercelayer.api.operation;
 
 import io.commercelayer.api.model.Gateway;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.operation.common.PutOperation;
 
 
 /**
  * PutAccountGatewaysId
  */
-public class PutAccountGatewaysId extends PutOperation {
+public class PutAccountGatewaysId extends PutOperation<Gateway> {
 
 	public static final String OPERATION_PATH = "/account/gateways/{id}";
 
@@ -29,7 +28,7 @@ public class PutAccountGatewaysId extends PutOperation {
 	}
 	
 
-	public Class<? extends ApiResource> getResourceType() {
+	public Class<Gateway> getResourceType() {
 		return Gateway.class;
 	}
 	

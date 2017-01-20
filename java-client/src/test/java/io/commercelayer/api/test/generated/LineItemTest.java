@@ -12,25 +12,25 @@ import io.commercelayer.api.test.common.IntegrationTest;
 public class LineItemTest extends IntegrationTest<LineItem> {
 
 	@Override
-	public ApiResponse<LineItem> testCreate(ApiCaller caller) {
+	public ApiResponse<LineItem> crudCreateTest(ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<LineItem> testRead(LineItem res, ApiCaller caller) {
+	public ApiResponse<LineItem> crudReadTest(LineItem res, ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<LineItem> testUpdate(LineItem oldRes, ApiCaller caller) {
+	public ApiResponse<LineItem> crudUpdateTest(LineItem oldRes, ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<LineItem> testDelete(LineItem res, ApiCaller caller) {
+	public ApiResponse<LineItem> crudDeleteTest(LineItem res, ApiCaller caller) {
 		return null;
 	}
 	

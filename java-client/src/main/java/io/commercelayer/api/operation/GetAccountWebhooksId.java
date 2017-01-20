@@ -1,14 +1,13 @@
 package io.commercelayer.api.operation;
 
 import io.commercelayer.api.model.Webhook;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.operation.common.GetIdOperation;
 
 
 /**
  * GetAccountWebhooksId
  */
-public class GetAccountWebhooksId extends GetIdOperation {
+public class GetAccountWebhooksId extends GetIdOperation<Webhook> {
 
 	public static final String OPERATION_PATH = "/account/webhooks/{id}";
 
@@ -23,7 +22,7 @@ public class GetAccountWebhooksId extends GetIdOperation {
 	}
 	
 
-	public Class<? extends ApiResource> getResourceType() {
+	public Class<Webhook> getResourceType() {
 		return Webhook.class;
 	}
 	

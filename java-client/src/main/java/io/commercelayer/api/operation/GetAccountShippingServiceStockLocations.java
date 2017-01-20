@@ -1,14 +1,13 @@
 package io.commercelayer.api.operation;
 
 import io.commercelayer.api.model.ShippingServiceStockLocation;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.operation.common.SearchOperation;
 
 
 /**
  * GetAccountShippingServiceStockLocations
  */
-public class GetAccountShippingServiceStockLocations extends SearchOperation {
+public class GetAccountShippingServiceStockLocations extends SearchOperation<ShippingServiceStockLocation> {
 
 	public static final String OPERATION_PATH = "/account/shipping_service_stock_locations";
 
@@ -18,7 +17,7 @@ public class GetAccountShippingServiceStockLocations extends SearchOperation {
 	}
 	
 
-	public Class<? extends ApiResource> getResourceType() {
+	public Class<ShippingServiceStockLocation> getResourceType() {
 		return ShippingServiceStockLocation.class;
 	}
 	

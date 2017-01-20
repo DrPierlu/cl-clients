@@ -1,14 +1,13 @@
 package io.commercelayer.api.operation;
 
 import io.commercelayer.api.model.CreditCard;
-import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.operation.common.PutOperation;
 
 
 /**
  * PutAccountCreditCardsId
  */
-public class PutAccountCreditCardsId extends PutOperation {
+public class PutAccountCreditCardsId extends PutOperation<CreditCard> {
 
 	public static final String OPERATION_PATH = "/account/credit_cards/{id}";
 
@@ -33,7 +32,7 @@ public class PutAccountCreditCardsId extends PutOperation {
 	}
 	
 
-	public Class<? extends ApiResource> getResourceType() {
+	public Class<CreditCard> getResourceType() {
 		return CreditCard.class;
 	}
 	

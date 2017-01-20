@@ -12,25 +12,25 @@ import io.commercelayer.api.test.common.IntegrationTest;
 public class OptionTypeTest extends IntegrationTest<OptionType> {
 
 	@Override
-	public ApiResponse<OptionType> testCreate(ApiCaller caller) {
+	public ApiResponse<OptionType> crudCreateTest(ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<OptionType> testRead(OptionType res, ApiCaller caller) {
+	public ApiResponse<OptionType> crudReadTest(OptionType res, ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<OptionType> testUpdate(OptionType oldRes, ApiCaller caller) {
+	public ApiResponse<OptionType> crudUpdateTest(OptionType oldRes, ApiCaller caller) {
 		return null;
 	}
 	
 
 	@Override
-	public ApiResponse<OptionType> testDelete(OptionType res, ApiCaller caller) {
+	public ApiResponse<OptionType> crudDeleteTest(OptionType res, ApiCaller caller) {
 		return null;
 	}
 	
