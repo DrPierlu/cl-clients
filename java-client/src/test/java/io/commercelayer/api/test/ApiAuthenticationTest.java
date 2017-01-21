@@ -6,11 +6,11 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
+import io.commercelayer.api.ApiAuthenticator;
 import io.commercelayer.api.config.ApiConfig;
 import io.commercelayer.api.config.ApiConfig.Group;
 import io.commercelayer.api.exception.AuthException;
 import io.commercelayer.api.security.ApiAccount;
-import io.commercelayer.api.security.ApiAuthenticator;
 import io.commercelayer.api.security.ApiToken;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)

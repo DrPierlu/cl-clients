@@ -3,9 +3,6 @@ package io.commercelayer.api;
 import java.util.List;
 import java.util.Map;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import io.commercelayer.api.config.ApiConfig;
 import io.commercelayer.api.domain.ContentType;
 import io.commercelayer.api.exception.ApiException;
@@ -18,7 +15,6 @@ import io.commercelayer.api.http.HttpRequest;
 import io.commercelayer.api.http.HttpRequest.Header;
 import io.commercelayer.api.http.HttpResponse;
 import io.commercelayer.api.http.auth.HttpAuthOAuth2;
-import io.commercelayer.api.json.JsonCodec;
 import io.commercelayer.api.json.JsonCodecFactory;
 import io.commercelayer.api.model.common.ApiError;
 import io.commercelayer.api.model.common.ApiResource;
@@ -42,34 +38,30 @@ import io.commercelayer.api.search.SortParam;
 import io.commercelayer.api.security.ApiToken;
 import io.commercelayer.api.util.ApiUtils;
 
-public class ApiCaller {
+public class ApiCaller extends ApiConnector {
 
-	private static final Logger logger = LoggerFactory.getLogger(ApiCaller.class);
-
-	private final ApiToken apiToken;
-
-	private HttpClient httpClient;
-	private final JsonCodec jsonCodec;
-
+	private ApiToken apiToken;
 	
 	public ApiCaller(ApiToken apiToken) {
+		super();
 		this.apiToken = apiToken;
-		this.httpClient = HttpClientFactory.getHttpClientInstance();
-		this.jsonCodec = JsonCodecFactory.getJsonCodecInstance();
 	}
 
 	public ApiCaller(ApiToken apiToken, HttpClient httpClient) {
 		this.apiToken = apiToken;
-		this.httpClient = (httpClient == null) ? HttpClientFactory.getHttpClientInstance() : httpClient;
-		this.jsonCodec = JsonCodecFactory.getJsonCodecInstance();
+		useHttpClient((httpClient == null) ? HttpClientFactory.getHttpClientInstance() : httpClient);
+		useJsonCodec(JsonCodecFactory.getJsonCodecInstance());
 	}
 
 	public void setCustomHttpClient(HttpClient httpClient) {
-		if (httpClient != null) this.httpClient = httpClient;
+		if (httpClient != null) useHttpClient(httpClient);
 		else logger.error("Custom HttpClient implementation required");
 	}
 	
 
+	void useToken(ApiToken token) {
+		this.apiToken = token;
+	}
 	
 	public <T extends ApiResource, O extends MoveOperation<T>> ApiResponse<T> move(ApiRequest<O> apiRequest) throws ApiException, AuthException {
 		return get(apiRequest);

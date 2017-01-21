@@ -1,30 +1,32 @@
 package io.commercelayer.api.security;
 
-public final class AuthPasswordRequest extends ApiAccount implements AuthRequest {
+public final class AuthPasswordRequest extends AuthRequest {
 
+	private String username;
+	private String environmentId;
 	private String password = "supersecret";
-	private String grantType = GrantType.PASSWORD;
 
 	public AuthPasswordRequest(ApiAccount account) {
-		super.setUsername(account.getUsername());
-		super.setEnvironmentId(account.getEnvironmentId());
-		super.setAuthKey(account.getAuthKey());
-		super.setAuthSecret(account.getAuthSecret());
+		super();
+		this.username = account.getUsername();
+		this.environmentId = account.getEnvironmentId();
 	}
-	
+
+	public String getUsername() {
+		return username;
+	}
+
+	public String getEnvironmentId() {
+		return environmentId;
+	}
 
 	public String getPassword() {
 		return password;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-
 	@Override
-	public String getGrantType() {
-		return this.grantType;
+	public String grantType() {
+		return GrantType.PASSWORD;
 	}
-	
+
 }

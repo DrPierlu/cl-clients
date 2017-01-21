@@ -8,6 +8,7 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import io.commercelayer.api.ApiAuthenticator;
 import io.commercelayer.api.ApiCaller;
 import io.commercelayer.api.ApiRequest;
 import io.commercelayer.api.ApiResponse;
@@ -25,7 +26,6 @@ import io.commercelayer.api.operation.common.PutOperation;
 import io.commercelayer.api.search.ApiSearchRequest;
 import io.commercelayer.api.search.ApiSearchResponse;
 import io.commercelayer.api.security.ApiAccount;
-import io.commercelayer.api.security.ApiAuthenticator;
 import io.commercelayer.api.security.ApiToken;
 import io.commercelayer.api.test.common.mock.ApiCallerMock;
 
