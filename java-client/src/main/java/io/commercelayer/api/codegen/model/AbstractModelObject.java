@@ -4,7 +4,12 @@ import java.lang.annotation.Annotation;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public abstract class AbstractModelObject {
+	
+	protected Logger logger = LoggerFactory.getLogger(getClass());
 
 	protected String name;
 	protected Integer modifier;

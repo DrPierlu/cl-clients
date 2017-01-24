@@ -10,7 +10,7 @@ import java.util.Objects;
  */
 public class ShippingServiceStockLocation extends ApiResource {
 
-	private static final long serialVersionUID = -1485265142710L;
+	private static final long serialVersionUID = -1L;
 
 
 	private Integer maxLeadTimeHours;

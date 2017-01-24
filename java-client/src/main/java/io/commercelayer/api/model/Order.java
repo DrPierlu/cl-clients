@@ -12,7 +12,7 @@ import java.util.Objects;
  */
 public class Order extends ApiResource {
 
-	private static final long serialVersionUID = -1485265142480L;
+	private static final long serialVersionUID = -1L;
 
 
 	private Integer channelId;

@@ -9,6 +9,7 @@ import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 
+import io.commercelayer.api.codegen.CodegenConfig;
 import io.commercelayer.api.codegen.model.Method.Param;
 
 public class ModelClass extends AbstractModelObject {
@@ -312,7 +313,7 @@ public class ModelClass extends AbstractModelObject {
 		sb.append(" {").append(newLine());
 
 		// serialVersionUID
-		sb.append(serialVersionUID());
+		sb.append(serialVersionUID(CodegenConfig.getProperty("model.object.serialVersionUID")));
 
 		// Fields
 		final List<Field> fieldList = getFieldList();
@@ -370,16 +371,29 @@ public class ModelClass extends AbstractModelObject {
 	}
 
 	private String serialVersionUID() {
-		return serialVersionUID(null);
+		return serialVersionUID((Long)null);
+	}
+	
+	private String serialVersionUID(String uid) {
+		if (StringUtils.isBlank(uid)) return serialVersionUID();
+		else 
+			try {
+				return serialVersionUID(Long.valueOf(uid));
+			}
+			catch (NumberFormatException nfe) {
+				return serialVersionUID();
+			}
 	}
 	
 	private String serialVersionUID(Long uid) {
 
 		String sv = "";
 
-		boolean serializable = ((getExtendedClass() != null) 
-				&& (getExtendedClass().getTypeClass() != null) 
-				&& Serializable.class.isAssignableFrom(getExtendedClass().getTypeClass()));
+		boolean serializable = (
+			(getExtendedClass() != null) 
+			&& (getExtendedClass().getTypeClass() != null) 
+			&& Serializable.class.isAssignableFrom(getExtendedClass().getTypeClass())
+		);
 
 		if (!serializable)
 			for (Class<?> c : getImplementList()) {
@@ -390,7 +404,7 @@ public class ModelClass extends AbstractModelObject {
 			}
 
 		if (serializable)
-			sv = String.format("\n\tprivate static final long serialVersionUID = -%dL;\n\n", (uid != null)? uid : System.currentTimeMillis());
+			sv = String.format("\n\tprivate static final long serialVersionUID = %dL;\n\n", (uid != null)? uid : System.currentTimeMillis());
 
 		return sv;
 

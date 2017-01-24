@@ -11,7 +11,7 @@ import java.util.Objects;
  */
 public class LineItem extends ApiResource {
 
-	private static final long serialVersionUID = -1485265142366L;
+	private static final long serialVersionUID = -1L;
 
 
 	private Integer orderId;
