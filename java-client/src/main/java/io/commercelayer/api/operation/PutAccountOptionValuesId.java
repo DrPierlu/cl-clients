@@ -15,7 +15,6 @@ public class PutAccountOptionValuesId extends PutOperation<OptionValue> {
 	{
 		addRequiredField("optionTypeId");
 		addRequiredField("name");
-		addRequiredField("id");
 	}
 
 

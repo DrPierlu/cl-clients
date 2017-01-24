@@ -16,7 +16,6 @@ public class PutAccountConsumerRolesId extends PutOperation<ConsumerRole> {
 		addRequiredField("consumerResource");
 		addRequiredField("consumerId");
 		addRequiredField("roleId");
-		addRequiredField("id");
 	}
 
 

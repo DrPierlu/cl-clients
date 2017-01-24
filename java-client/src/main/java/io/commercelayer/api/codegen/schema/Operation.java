@@ -3,6 +3,8 @@ package io.commercelayer.api.codegen.schema;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
+
 import io.commercelayer.api.http.HttpRequest.Method;
 
 public class Operation {
@@ -60,6 +62,10 @@ public class Operation {
 
 	public void setReference(Definition reference) {
 		this.reference = reference;
+	}
+	
+	public String getName() {
+		return StringUtils.capitalize(getId());
 	}
 
 }

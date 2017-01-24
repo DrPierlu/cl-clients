@@ -12,7 +12,7 @@ public class PutAccountTransactionsTransactionTokenCapture extends PutOperation 
 
 
 	{
-		addRequiredField("transactionToken");
+		
 	}
 
 

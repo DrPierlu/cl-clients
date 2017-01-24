@@ -15,7 +15,6 @@ public class PutAccountEnvironmentsId extends PutOperation<Environment> {
 	{
 		addRequiredField("name");
 		addRequiredField("organizationId");
-		addRequiredField("id");
 	}
 
 

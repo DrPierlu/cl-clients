@@ -11,14 +11,14 @@ import java.util.Objects;
  */
 public class StockItem extends ApiResource {
 
-	private static final long serialVersionUID = -1484907257497L;
+	private static final long serialVersionUID = -1485265142744L;
 
 
 	private Integer stockLocationId;
 	private Integer stockableId;
 	private String stockableResource;
 	@JsonExclude
-	private Object backorderable;
+	private Boolean backorderable;
 	@JsonExclude
 	private List<String> lineItemStocks;
 	@JsonExclude
@@ -131,23 +131,23 @@ public class StockItem extends ApiResource {
 	}
 	
 
-	public void setBackorderable(Object backorderable) {
+	public void setBackorderable(Boolean backorderable) {
 		this.backorderable = backorderable;
 	}
 	
 
-	public Object getBackorderable() {
+	public Boolean getBackorderable() {
 		return this.backorderable;
 	}
 	
 
-	public StockItem backorderable(Object backorderable) {
+	public StockItem backorderable(Boolean backorderable) {
 		setBackorderable(backorderable);
 		return this;
 	}
 	
 
-	public Object backorderable() {
+	public Boolean backorderable() {
 		return getBackorderable();
 	}
 	

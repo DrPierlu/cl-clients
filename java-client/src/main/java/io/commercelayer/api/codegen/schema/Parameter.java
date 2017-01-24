@@ -90,5 +90,21 @@ public class Parameter {
 	public void setAllowEmptyValue(boolean allowEmptyValue) {
 		this.allowEmptyValue = allowEmptyValue;
 	}
+	
+	public boolean isStringField() {
+		return Property.Types.STRING.equals(this.type);
+	}
+	
+	public boolean isIntegerField() {
+		return Property.Types.INTEGER.equals(this.type) || Property.Types.NUMBER.equals(this.type);
+	}
+	
+	public boolean isFormDataParam() {
+		return "formData".equals(this.inputType);
+	}
+	
+	public boolean isBooleanField() {
+		return Property.Types.BOOLEAN.equals(this.type);
+	}
 
 }

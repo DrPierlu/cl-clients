@@ -16,7 +16,6 @@ public class PutAccountPriceListsId extends PutOperation<PriceList> {
 		addRequiredField("currencyId");
 		addRequiredField("name");
 		addRequiredField("taxIncluded");
-		addRequiredField("id");
 	}
 
 

@@ -11,7 +11,7 @@ import java.util.Objects;
  */
 public class LineItem extends ApiResource {
 
-	private static final long serialVersionUID = -1484907257122L;
+	private static final long serialVersionUID = -1485265142366L;
 
 
 	private Integer orderId;
@@ -70,11 +70,11 @@ public class LineItem extends ApiResource {
 	@JsonExclude
 	private String taxAmount;
 	@JsonExclude
-	private Object taxIncluded;
+	private Boolean taxIncluded;
 	@JsonExclude
 	private String taxableAmount;
 	@JsonExclude
-	private Object trackInventory;
+	private Boolean trackInventory;
 	@JsonExclude
 	private String unitAmount;
 	@JsonExclude
@@ -261,23 +261,23 @@ public class LineItem extends ApiResource {
 	}
 	
 
-	public void setTrackInventory(Object trackInventory) {
+	public void setTrackInventory(Boolean trackInventory) {
 		this.trackInventory = trackInventory;
 	}
 	
 
-	public Object getTrackInventory() {
+	public Boolean getTrackInventory() {
 		return this.trackInventory;
 	}
 	
 
-	public LineItem trackInventory(Object trackInventory) {
+	public LineItem trackInventory(Boolean trackInventory) {
 		setTrackInventory(trackInventory);
 		return this;
 	}
 	
 
-	public Object trackInventory() {
+	public Boolean trackInventory() {
 		return getTrackInventory();
 	}
 	
@@ -324,23 +324,23 @@ public class LineItem extends ApiResource {
 	}
 	
 
-	public void setTaxIncluded(Object taxIncluded) {
+	public void setTaxIncluded(Boolean taxIncluded) {
 		this.taxIncluded = taxIncluded;
 	}
 	
 
-	public Object getTaxIncluded() {
+	public Boolean getTaxIncluded() {
 		return this.taxIncluded;
 	}
 	
 
-	public LineItem taxIncluded(Object taxIncluded) {
+	public LineItem taxIncluded(Boolean taxIncluded) {
 		setTaxIncluded(taxIncluded);
 		return this;
 	}
 	
 
-	public Object taxIncluded() {
+	public Boolean taxIncluded() {
 		return getTaxIncluded();
 	}
 	

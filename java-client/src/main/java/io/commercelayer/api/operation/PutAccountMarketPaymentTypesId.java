@@ -18,7 +18,6 @@ public class PutAccountMarketPaymentTypesId extends PutOperation<MarketPaymentTy
 		addRequiredField("price");
 		addRequiredField("countryCodeRegex");
 		addRequiredField("notCountryCodeRegex");
-		addRequiredField("id");
 	}
 
 

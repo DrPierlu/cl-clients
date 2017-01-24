@@ -15,7 +15,6 @@ public class PutAccountMarketStockLocationsId extends PutOperation<MarketStockLo
 	{
 		addRequiredField("marketId");
 		addRequiredField("stockLocationId");
-		addRequiredField("id");
 	}
 
 

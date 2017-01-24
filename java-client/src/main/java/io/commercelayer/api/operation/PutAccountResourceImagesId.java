@@ -16,7 +16,6 @@ public class PutAccountResourceImagesId extends PutOperation<ResourceImage> {
 		addRequiredField("imageableResource");
 		addRequiredField("imageableId");
 		addRequiredField("imageId");
-		addRequiredField("id");
 	}
 
 

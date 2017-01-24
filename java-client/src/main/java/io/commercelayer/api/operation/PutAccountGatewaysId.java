@@ -14,7 +14,6 @@ public class PutAccountGatewaysId extends PutOperation<Gateway> {
 
 	{
 		addRequiredField("kind");
-		addRequiredField("id");
 	}
 
 

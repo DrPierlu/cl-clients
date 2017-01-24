@@ -73,6 +73,7 @@ public class Property {
 		String NUMBER = "number";
 		String OBJECT = "object";
 		String ARRAY = "array";
+		String BOOLEAN = "boolean";
 	}
 
 	public static interface Formats {

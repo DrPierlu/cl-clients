@@ -15,7 +15,6 @@ public class PutAccountShippingServiceZonesId extends PutOperation<ShippingServi
 	{
 		addRequiredField("shippingServiceId");
 		addRequiredField("shippingZoneId");
-		addRequiredField("id");
 	}
 
 

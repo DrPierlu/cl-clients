@@ -256,6 +256,10 @@ public class ModelClass extends AbstractModelObject {
 	public void addImportItem(Class<?> class_) {
 		addImportItem(new Type(class_));
 	}
+	
+	public void addImportItem(String class_) {
+		addImportItem(new Type(class_));
+	}
 
 	public String generate() {
 

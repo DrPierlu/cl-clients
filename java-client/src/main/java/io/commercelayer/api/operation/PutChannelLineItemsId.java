@@ -16,7 +16,6 @@ public class PutChannelLineItemsId extends PutOperation<LineItem> {
 		addRequiredField("sellableResource");
 		addRequiredField("sellableId");
 		addRequiredField("quantity");
-		addRequiredField("id");
 	}
 
 

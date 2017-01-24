@@ -14,7 +14,6 @@ public class PutAccountImagesId extends PutOperation<Image> {
 
 	{
 		addRequiredField("attachment");
-		addRequiredField("id");
 	}
 
 

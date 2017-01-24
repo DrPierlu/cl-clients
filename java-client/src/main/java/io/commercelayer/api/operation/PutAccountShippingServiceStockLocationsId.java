@@ -17,7 +17,6 @@ public class PutAccountShippingServiceStockLocationsId extends PutOperation<Ship
 		addRequiredField("stockLocationId");
 		addRequiredField("minLeadTimeHours");
 		addRequiredField("maxLeadTimeHours");
-		addRequiredField("id");
 	}
 
 

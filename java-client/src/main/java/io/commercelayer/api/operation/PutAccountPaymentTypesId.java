@@ -17,7 +17,6 @@ public class PutAccountPaymentTypesId extends PutOperation<PaymentType> {
 		addRequiredField("merchantId");
 		addRequiredField("gatewayId");
 		addRequiredField("description");
-		addRequiredField("id");
 	}
 
 

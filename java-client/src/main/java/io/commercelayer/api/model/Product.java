@@ -12,7 +12,7 @@ import java.util.Objects;
  */
 public class Product extends ApiResource {
 
-	private static final long serialVersionUID = -1484907257314L;
+	private static final long serialVersionUID = -1485265142570L;
 
 
 	private String name;
@@ -60,7 +60,7 @@ public class Product extends ApiResource {
 	@JsonExclude
 	private String taxCode;
 	@JsonExclude
-	private Object trackInventory;
+	private Boolean trackInventory;
 	@JsonExclude
 	private List<String> translations;
 	@JsonExclude
@@ -161,23 +161,23 @@ public class Product extends ApiResource {
 	}
 	
 
-	public void setTrackInventory(Object trackInventory) {
+	public void setTrackInventory(Boolean trackInventory) {
 		this.trackInventory = trackInventory;
 	}
 	
 
-	public Object getTrackInventory() {
+	public Boolean getTrackInventory() {
 		return this.trackInventory;
 	}
 	
 
-	public Product trackInventory(Object trackInventory) {
+	public Product trackInventory(Boolean trackInventory) {
 		setTrackInventory(trackInventory);
 		return this;
 	}
 	
 
-	public Object trackInventory() {
+	public Boolean trackInventory() {
 		return getTrackInventory();
 	}
 	

@@ -12,7 +12,7 @@ public class PostAccountMarketsIdResetIndex extends PostOperation {
 
 
 	{
-		addRequiredField("id");
+		
 	}
 
 

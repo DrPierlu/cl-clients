@@ -12,7 +12,7 @@ public class PutAccountOrdersIdCancel extends PutOperation {
 
 
 	{
-		addRequiredField("id");
+		
 	}
 
 

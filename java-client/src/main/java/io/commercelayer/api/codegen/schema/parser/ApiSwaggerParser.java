@@ -85,7 +85,7 @@ public class ApiSwaggerParser extends ApiParser {
 				// Reference
 				for (Map.Entry<String, Response> res : op.getResponses().entrySet()) {
 					RefProperty reference = (RefProperty)res.getValue().getSchema();
-					if (reference == null) logger.warn("Found operation without Schema Reference: {}", op.getOperationId());
+					if (reference == null) logger.warn("Operation without Schema Reference: {}", op.getOperationId());
 					else
 					if (reference.getSimpleRef() != null) {
 						Definition def = schema.getDefinitions().get(reference.getSimpleRef());

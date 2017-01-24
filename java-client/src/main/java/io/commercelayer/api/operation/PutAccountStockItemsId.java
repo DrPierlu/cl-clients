@@ -17,7 +17,6 @@ public class PutAccountStockItemsId extends PutOperation<StockItem> {
 		addRequiredField("stockableResource");
 		addRequiredField("stockableId");
 		addRequiredField("quantity");
-		addRequiredField("id");
 	}
 
 

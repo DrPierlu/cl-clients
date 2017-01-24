@@ -16,7 +16,6 @@ public class PostChannelOrdersOrderTokenLineItems extends PostOperation<LineItem
 		addRequiredField("sellableResource");
 		addRequiredField("sellableId");
 		addRequiredField("quantity");
-		addRequiredField("orderToken");
 	}
 
 

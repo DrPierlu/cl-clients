@@ -15,7 +15,6 @@ public class PutAccountRolesId extends PutOperation<Role> {
 	{
 		addRequiredField("name");
 		addRequiredField("description");
-		addRequiredField("id");
 	}
 
 

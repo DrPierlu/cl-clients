@@ -4,6 +4,7 @@ import java.lang.reflect.Modifier;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -14,8 +15,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import io.commercelayer.api.ApiCaller;
+import io.commercelayer.api.ApiRequest;
 import io.commercelayer.api.ApiResponse;
 import io.commercelayer.api.codegen.ApiCodegenException;
+import io.commercelayer.api.codegen.CodegenConfig;
 import io.commercelayer.api.codegen.model.Constructor;
 import io.commercelayer.api.codegen.model.CustomConstructor;
 import io.commercelayer.api.codegen.model.Field;
@@ -41,19 +44,16 @@ import io.commercelayer.api.operation.common.PayloadOperation;
 import io.commercelayer.api.operation.common.PostOperation;
 import io.commercelayer.api.operation.common.PutOperation;
 import io.commercelayer.api.operation.common.SearchOperation;
+import io.commercelayer.api.operation.common.util.ApiOperations;
 import io.commercelayer.api.util.ModelUtils;
 
 public class ApiModelGen {
 
 	private static final Logger logger = LoggerFactory.getLogger(ApiModelGen.class);
 
-	private static final boolean GENERATE_OBJECT_CLASSES = true;
-	private static final boolean GENERATE_OPERATION_CLASSES = true;
-	private static final boolean GENERATE_TEST_CLASSES = true;
-
 	public static final String PACKAGE_OBJECT = ApiResource.class.getPackage().getName().replaceFirst(".common", "");
 	public static final String PACKAGE_OPERATION = ApiOperation.class.getPackage().getName().replaceFirst(".common", "");
-	public static final String PACKAGE_TEST = "io.commercelayer.api.test.generated";
+	public static final String PACKAGE_TEST = CodegenConfig.getProperty("model.package.test");
 	public static final String PACKAGE_UTIL = ApiOperation.class.getPackage().getName().concat(".util");
 
 
@@ -66,7 +66,7 @@ public class ApiModelGen {
 		// Object classes
 		logger.info("Generating model objects ...");
 
-		if (GENERATE_OBJECT_CLASSES) {
+		if (CodegenConfig.isPropertyEnabled("model.generator.classes.object.enabled")) {
 			for (Definition def : schema.getDefinitions().values()) {
 				ModelClass objClass = createObjectClass(PACKAGE_OBJECT, def);
 				if (model.addClass(objClass)) /* logger.info("Definition: {}", objClass.getName()) */;
@@ -78,7 +78,7 @@ public class ApiModelGen {
 		// Operation classes
 		logger.info("Generating operations ...");
 
-		if (GENERATE_OPERATION_CLASSES) {
+		if (CodegenConfig.isPropertyEnabled("model.generator.classes.operation.enabled")) {
 			List<Resource> resources = schema.getResources();
 			for (Resource res : resources) {
 				for (Operation op : res.getOperations()) {
@@ -93,7 +93,7 @@ public class ApiModelGen {
 		// Test classes
 		logger.info("Generating tests ...");
 
-		if (GENERATE_TEST_CLASSES) {
+		if (CodegenConfig.isPropertyEnabled("model.generator.classes.test.enabled")) {
 			for (Definition def : schema.getDefinitions().values()) {
 				ModelClass testClass = createTestClass(PACKAGE_TEST, def);
 				if (model.addClass(testClass)) /* logger.info("Test: {}", testClass.getName()) */;
@@ -150,7 +150,7 @@ public class ApiModelGen {
 
 		Class<?> type = null;
 		Class<?> typeGen = null;
-
+		
 		switch (p.getType()) {
 			case Property.Types.STRING: {
 				type = String.class;
@@ -192,6 +192,10 @@ public class ApiModelGen {
 							type = Integer.class;
 					}
 				}
+				break;
+			}
+			case Property.Types.BOOLEAN: {
+				type = Boolean.class;
 				break;
 			}
 			case Property.Types.ARRAY: {
@@ -395,7 +399,7 @@ public class ApiModelGen {
 			}
 		}
 
-		mc.setExtendedClass(new Type(extClass, (op.getReference() != null)? op.getReference().getTitle() : null));
+		mc.setExtendedClass(new Type(extClass, (op.getReference() != null) ? op.getReference().getTitle() : null));
 
 		final String operationPathField = "OPERATION_PATH";
 
@@ -433,10 +437,11 @@ public class ApiModelGen {
 			StringBuilder sb = new StringBuilder();
 
 			for (Parameter p : op.getParameters()) {
-			if (sb.length() > 0) sb.append('\n');
-			String name = ModelUtils.getObjectField(p.getName(), true);
-			// if (IdOperation.class.isAssignableFrom(mc.getExtendedClass().getTypeClass()) && (IdOperation.PARAM_ID.equals(name))) continue;
-			sb.append("addRequiredField(\"").append(name).append("\");");
+				if (!p.isFormDataParam()) continue;
+				if (sb.length() > 0) sb.append('\n');
+				String name = ModelUtils.getObjectField(p.getName(), true);
+//				 if (IdOperation.class.isAssignableFrom(mc.getExtendedClass().getTypeClass()) && (IdOperation.PARAM_ID.equals(name))) continue;
+				sb.append("addRequiredField(\"").append(name).append("\");");
 			}
 
 			mc.setInitBlock(sb.toString());
@@ -481,7 +486,7 @@ public class ApiModelGen {
 		if (op.getReference() != null) {
 
 			String ref = op.getReference().getTitle();
-			
+
 			Method m = new Method(Modifier.PUBLIC);
 			m.setName("getResourceType");
 			m.setReturnType(new Type(Class.class, ref));
@@ -501,14 +506,15 @@ public class ApiModelGen {
 
 		final class OPERATION {
 			final class CRUD {
-				public static final String CREATE 	= "crudCreateTest";
-				public static final String READ 	= "crudReadTest";
-				public static final String UPDATE 	= "crudUpdateTest";
-				public static final String DELETE 	= "crudDeleteTest";
+				public static final String CREATE = "crudCreateTest";
+				public static final String READ = "crudReadTest";
+				public static final String UPDATE = "crudUpdateTest";
+				public static final String DELETE = "crudDeleteTest";
 			}
+
 			final class LIST {
-				public static final String MOVE 	= "listMoveTest";
-				public static final String SEARCH 	= "listSearchTest";
+				public static final String MOVE = "listMoveTest";
+				public static final String SEARCH = "listSearchTest";
 			}
 		}
 
@@ -517,10 +523,16 @@ public class ApiModelGen {
 
 		mc.setExtendedClass(new Type("io.commercelayer.api.test.common.IntegrationTest", def.getTitle()));
 
-		// mc.addImportItem(new Type("io.commercelayer.api.test.common.TestException"));
-
 		final String res = ApiResource.class.getPackage().getName().replace(".common", ".").concat(def.getTitle());
 
+		final Map<io.commercelayer.api.http.HttpRequest.Method, Operation> crudOps = def.getCRUDOperations();
+		for (Operation op : crudOps.values()) mc.addImportItem(String.format("%s.%s", PACKAGE_OPERATION, op.getName()));
+		mc.addImportItem("org.junit.Assert");
+		mc.addImportItem(ApiRequest.class);
+		mc.addImportItem(ApiOperations.class);
+		mc.addImportItem("io.commercelayer.api.test.common.TestException");
+	
+		
 		// Test Create Method
 		Method tcm = new Method(Modifier.PUBLIC);
 
@@ -528,12 +540,12 @@ public class ApiModelGen {
 		tcm.setReturnType(new Type(ApiResponse.class, res));
 		tcm.setName(OPERATION.CRUD.CREATE);
 		tcm.addSignatureParam(new Param(ApiCaller.class, "caller"));
-
-		// tcm.addBodyLine("throw new TestException(\"%s.%s not implemented\");", mc.getName(), tcm.getName());
-		tcm.addBodyLine("return null;");
+		
+		CRUDUtils.crudCreateMethodBody(crudOps.get(io.commercelayer.api.http.HttpRequest.Method.POST), tcm);
 
 		mc.addMethod(tcm);
 
+		
 		// Test Read Method
 		Method trm = new Method(Modifier.PUBLIC);
 
@@ -542,11 +554,11 @@ public class ApiModelGen {
 		trm.setName(OPERATION.CRUD.READ);
 		trm.setSignatureParams(new Param(new Type(res), "res"), new Param(ApiCaller.class, "caller"));
 
-		// trm.addBodyLine("throw new TestException(\"%s.%s not implemented\");", mc.getName(), trm.getName());
-		trm.addBodyLine("return null;");
+		CRUDUtils.crudReadMethodBody(crudOps.get(io.commercelayer.api.http.HttpRequest.Method.GET), trm);
 
 		mc.addMethod(trm);
 
+		
 		// Test Update Method
 		Method tum = new Method(Modifier.PUBLIC);
 
@@ -555,10 +567,10 @@ public class ApiModelGen {
 		tum.setName(OPERATION.CRUD.UPDATE);
 		tum.setSignatureParams(new Param(new Type(res), "oldRes"), new Param(ApiCaller.class, "caller"));
 
-		// tum.addBodyLine("throw new TestException(\"%s.%s not implemented\");", mc.getName(), tum.getName());
-		tum.addBodyLine("return null;");
+		CRUDUtils.crudUpdateMethodBody(crudOps.get(io.commercelayer.api.http.HttpRequest.Method.PUT), tum);
 
 		mc.addMethod(tum);
+		
 
 		// Test Delete Method
 		Method tdm = new Method(Modifier.PUBLIC);
@@ -568,11 +580,15 @@ public class ApiModelGen {
 		tdm.setName(OPERATION.CRUD.DELETE);
 		tdm.setSignatureParams(new Param(new Type(res), "res"), new Param(ApiCaller.class, "caller"));
 
-		// tdm.addBodyLine("throw new TestException(\"%s.%s not implemented\");", mc.getName(), tdm.getName());
-		tdm.addBodyLine("return null;");
+		CRUDUtils.crudDeleteMethodBody(
+			crudOps.get(io.commercelayer.api.http.HttpRequest.Method.DELETE),
+			crudOps.get(io.commercelayer.api.http.HttpRequest.Method.GET), 
+			tdm
+		);
 
 		mc.addMethod(tdm);
 
+		
 		// Main method
 		Method mm = new Method(Modifier.PUBLIC | Modifier.STATIC);
 		mm.setName("main");
@@ -591,6 +607,7 @@ public class ApiModelGen {
 
 		mc.addMethod(mm);
 
+		
 		return mc;
 
 	}

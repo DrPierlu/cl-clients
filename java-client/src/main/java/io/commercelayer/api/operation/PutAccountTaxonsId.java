@@ -16,7 +16,6 @@ public class PutAccountTaxonsId extends PutOperation<Taxon> {
 		addRequiredField("taxonomyId");
 		addRequiredField("name");
 		addRequiredField("parentId");
-		addRequiredField("id");
 	}
 
 

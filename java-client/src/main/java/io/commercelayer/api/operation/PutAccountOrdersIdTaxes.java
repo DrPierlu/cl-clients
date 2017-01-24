@@ -12,7 +12,7 @@ public class PutAccountOrdersIdTaxes extends PutOperation {
 
 
 	{
-		addRequiredField("id");
+		
 	}
 
 

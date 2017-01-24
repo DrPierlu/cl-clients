@@ -14,7 +14,6 @@ public class PutAccountLanguagesId extends PutOperation<Language> {
 
 	{
 		addRequiredField("code");
-		addRequiredField("id");
 	}
 
 

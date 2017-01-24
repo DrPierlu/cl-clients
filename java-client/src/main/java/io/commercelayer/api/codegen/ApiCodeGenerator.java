@@ -14,10 +14,7 @@ import io.commercelayer.api.util.LogUtils;
 public final class ApiCodeGenerator {
 	
 	private static final Logger logger = LoggerFactory.getLogger(ApiCodeGenerator.class);
-
-	public static final String TEST_SCHEMA_PATH = "E:/cl-schema_swagger.json";
 	
-	public static final String DATE_FORMAT = "dd/MM/yyyy HH:mm:ss";
 
 	private ApiCodeGenerator() {
 		super();
@@ -38,7 +35,7 @@ public final class ApiCodeGenerator {
 			catch (ApiCodegenException ace) {
 				logger.error(ace.getMessage());
 				logger.info("Online schema is not accessible, I will try to use the local one ...");
-				schema = parser.parseSchema(TEST_SCHEMA_PATH);
+				schema = parser.parseSchema(CodegenConfig.getProperty("schema.parser.swagger.test"));
 			}
 			
 			ApiModelGen modeller = new ApiModelGen();

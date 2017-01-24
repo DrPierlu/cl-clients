@@ -14,7 +14,6 @@ public class PutAccountCurrenciesId extends PutOperation<Currency> {
 
 	{
 		addRequiredField("code");
-		addRequiredField("id");
 	}
 
 

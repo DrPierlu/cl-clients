@@ -15,7 +15,6 @@ public class PutChannelLineItemStocksId extends PutOperation<LineItemStock> {
 	{
 		addRequiredField("shippingMethodId");
 		addRequiredField("shippingMethodAttributes");
-		addRequiredField("id");
 	}
 
 

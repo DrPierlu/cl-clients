@@ -14,7 +14,6 @@ public class PutAccountCountryGroupsId extends PutOperation<CountryGroup> {
 
 	{
 		addRequiredField("name");
-		addRequiredField("id");
 	}
 
 

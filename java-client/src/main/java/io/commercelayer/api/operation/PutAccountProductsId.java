@@ -18,7 +18,6 @@ public class PutAccountProductsId extends PutOperation<Product> {
 		addRequiredField("description");
 		addRequiredField("taxCode");
 		addRequiredField("trackInventory");
-		addRequiredField("id");
 	}
 
 

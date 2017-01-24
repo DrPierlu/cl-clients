@@ -15,7 +15,6 @@ public class PutAccountStatesId extends PutOperation<State> {
 	{
 		addRequiredField("countryId");
 		addRequiredField("code");
-		addRequiredField("id");
 	}
 
 

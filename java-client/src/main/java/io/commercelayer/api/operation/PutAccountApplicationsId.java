@@ -14,7 +14,6 @@ public class PutAccountApplicationsId extends PutOperation<Application> {
 
 	{
 		addRequiredField("name");
-		addRequiredField("id");
 	}
 
 

@@ -230,7 +230,6 @@ public abstract class ApiTest<T extends ApiResource> {
 		ApiResponse<T> response = caller.put(request);
 		
 		// Assertions
-		// Assertions
 		if (enableAssertions)
 		try {
 		

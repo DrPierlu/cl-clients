@@ -10,7 +10,7 @@ import java.util.Objects;
  */
 public class MerchandisingRule extends ApiResource {
 
-	private static final long serialVersionUID = -1484907257187L;
+	private static final long serialVersionUID = -1485265142423L;
 
 
 	private Integer catalogId;
@@ -19,7 +19,7 @@ public class MerchandisingRule extends ApiResource {
 	@JsonExclude
 	private Object catalog;
 	@JsonExclude
-	private Object hero;
+	private Boolean hero;
 	@JsonExclude
 	private String name;
 	@JsonExclude
@@ -147,23 +147,23 @@ public class MerchandisingRule extends ApiResource {
 	}
 	
 
-	public void setHero(Object hero) {
+	public void setHero(Boolean hero) {
 		this.hero = hero;
 	}
 	
 
-	public Object getHero() {
+	public Boolean getHero() {
 		return this.hero;
 	}
 	
 
-	public MerchandisingRule hero(Object hero) {
+	public MerchandisingRule hero(Boolean hero) {
 		setHero(hero);
 		return this;
 	}
 	
 
-	public Object hero() {
+	public Boolean hero() {
 		return getHero();
 	}
 	

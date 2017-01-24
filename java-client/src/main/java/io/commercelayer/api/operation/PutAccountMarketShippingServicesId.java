@@ -17,7 +17,6 @@ public class PutAccountMarketShippingServicesId extends PutOperation<MarketShipp
 		addRequiredField("shippingServiceId");
 		addRequiredField("price");
 		addRequiredField("freeOverAmount");
-		addRequiredField("id");
 	}
 
 

@@ -11,7 +11,7 @@ import java.util.Objects;
  */
 public class ShippingMethod extends ApiResource {
 
-	private static final long serialVersionUID = -1484907257422L;
+	private static final long serialVersionUID = -1485265142673L;
 
 
 	private Integer orderId;
@@ -63,7 +63,7 @@ public class ShippingMethod extends ApiResource {
 	@JsonExclude
 	private Float taxRate;
 	@JsonExclude
-	private Object taxable;
+	private Boolean taxable;
 	@JsonExclude
 	private String taxableAmount;
 	@JsonExclude
@@ -227,23 +227,23 @@ public class ShippingMethod extends ApiResource {
 	}
 	
 
-	public void setTaxable(Object taxable) {
+	public void setTaxable(Boolean taxable) {
 		this.taxable = taxable;
 	}
 	
 
-	public Object getTaxable() {
+	public Boolean getTaxable() {
 		return this.taxable;
 	}
 	
 
-	public ShippingMethod taxable(Object taxable) {
+	public ShippingMethod taxable(Boolean taxable) {
 		setTaxable(taxable);
 		return this;
 	}
 	
 
-	public Object taxable() {
+	public Boolean taxable() {
 		return getTaxable();
 	}
 	

@@ -13,7 +13,7 @@ public class PutAccountTransactionsId extends PutOperation<Transaction> {
 
 
 	{
-		addRequiredField("id");
+		
 	}
 
 

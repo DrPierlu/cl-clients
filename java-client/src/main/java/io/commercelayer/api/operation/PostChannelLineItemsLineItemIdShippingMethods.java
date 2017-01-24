@@ -17,7 +17,6 @@ public class PostChannelLineItemsLineItemIdShippingMethods extends PostOperation
 		addRequiredField("shippingPackageId");
 		addRequiredField("shippingAddressAttributes");
 		addRequiredField("shippingAddressId");
-		addRequiredField("lineItemId");
 	}
 
 

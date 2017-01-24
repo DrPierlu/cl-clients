@@ -15,7 +15,6 @@ public class PutAccountProductPropertiesId extends PutOperation<ProductProperty>
 	{
 		addRequiredField("productId");
 		addRequiredField("propertyValueId");
-		addRequiredField("id");
 	}
 
 

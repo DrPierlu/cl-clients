@@ -13,7 +13,7 @@ public class PutAccountWireTransfersId extends PutOperation<WireTransfer> {
 
 
 	{
-		addRequiredField("id");
+		
 	}
 
 

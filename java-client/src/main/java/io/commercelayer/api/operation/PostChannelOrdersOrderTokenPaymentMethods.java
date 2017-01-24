@@ -19,7 +19,6 @@ public class PostChannelOrdersOrderTokenPaymentMethods extends PostOperation<Pay
 		addRequiredField("paymentSourceId");
 		addRequiredField("billingAddressAttributes");
 		addRequiredField("billingAddressId");
-		addRequiredField("orderToken");
 	}
 
 

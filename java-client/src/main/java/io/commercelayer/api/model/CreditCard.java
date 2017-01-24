@@ -11,7 +11,7 @@ import java.util.Objects;
  */
 public class CreditCard extends ApiResource {
 
-	private static final long serialVersionUID = -1484907257051L;
+	private static final long serialVersionUID = -1485265142299L;
 
 
 	private String firstName;

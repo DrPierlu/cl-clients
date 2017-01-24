@@ -13,7 +13,7 @@ public class PostCallbacksPaypalAccountsPaypalAccountToken extends PostOperation
 
 
 	{
-		addRequiredField("paypalAccountToken");
+		
 	}
 
 

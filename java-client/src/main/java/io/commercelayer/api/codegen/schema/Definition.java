@@ -1,7 +1,11 @@
 package io.commercelayer.api.codegen.schema;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import io.commercelayer.api.http.HttpRequest.Method;
 
 public class Definition {
 
@@ -51,6 +55,20 @@ public class Definition {
 	
 	public String toString() {
 		return getTitle();
+	}
+	
+	
+	public Map<Method, Operation> getCRUDOperations() {
+		
+		Map<Method, Operation> ops = new HashMap<>();
+		
+		for (Operation op : getOperations()) {
+			if (op.getId().endsWith("Id") || op.getMethod().equals(Method.POST)) ops.put(op.getMethod(), op);
+			
+		}
+		
+		return ops;
+		
 	}
 
 }

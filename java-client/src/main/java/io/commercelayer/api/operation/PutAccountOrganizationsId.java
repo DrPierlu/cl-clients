@@ -14,7 +14,6 @@ public class PutAccountOrganizationsId extends PutOperation<Organization> {
 
 	{
 		addRequiredField("name");
-		addRequiredField("id");
 	}
 
 

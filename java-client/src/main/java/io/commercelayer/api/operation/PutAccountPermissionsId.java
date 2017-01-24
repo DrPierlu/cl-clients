@@ -18,7 +18,6 @@ public class PutAccountPermissionsId extends PutOperation<Permission> {
 		addRequiredField("action");
 		addRequiredField("resource");
 		addRequiredField("restrictions");
-		addRequiredField("id");
 	}
 
 

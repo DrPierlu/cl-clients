@@ -10,8 +10,8 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import io.commercelayer.api.codegen.ApiCodeGenerator;
 import io.commercelayer.api.codegen.ApiCodegenException;
+import io.commercelayer.api.codegen.CodegenConfig;
 import io.commercelayer.api.codegen.model.Constructor;
 import io.commercelayer.api.codegen.model.Field;
 import io.commercelayer.api.codegen.model.Model;
@@ -23,6 +23,8 @@ import io.commercelayer.api.util.LogUtils;
 public abstract class DomainGenerator {
 
 	protected static final Logger logger = LoggerFactory.getLogger(CountryDomainGen.class);
+	
+	private static final SimpleDateFormat sdf = new SimpleDateFormat(CodegenConfig.getProperty("model.comment.date.format"));
 	
 
 	abstract protected List<Item> getDomainCollection();
@@ -69,7 +71,7 @@ public abstract class DomainGenerator {
 		ModelClass mc = new ModelClass(domainClass.getPackage().getName(), domainClass.getSimpleName());
 		mc.setModifier(Modifier.PUBLIC | Modifier.FINAL);
 		mc.addCommentLine(mc.getName());
-		mc.addCommentLine(String.format("[automatically generated on %s]", new SimpleDateFormat(ApiCodeGenerator.DATE_FORMAT).format(new Date())));
+		mc.addCommentLine(String.format("[automatically generated on %s]", sdf.format(new Date())));
 		
 		mc.setLinesBefore(2);
 

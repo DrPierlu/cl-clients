@@ -14,7 +14,6 @@ public class PutAccountTaxonomiesId extends PutOperation<Taxonomy> {
 
 	{
 		addRequiredField("name");
-		addRequiredField("id");
 	}
 
 

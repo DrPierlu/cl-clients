@@ -17,7 +17,6 @@ public class PutAccountVariantsId extends PutOperation<Variant> {
 		addRequiredField("sku");
 		addRequiredField("taxCode");
 		addRequiredField("trackInventory");
-		addRequiredField("id");
 	}
 
 

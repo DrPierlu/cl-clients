@@ -26,10 +26,10 @@ public final class ApiConfig {
 	
 	private static void loadConfiguration() {
 		
-		InputStream configStrieam = ClassLoader.class.getResourceAsStream("/META-INF/settings.properties");
+		InputStream configStream = ClassLoader.class.getResourceAsStream("/META-INF/settings.properties");
 		
 		try {
-			settings.load(configStrieam);
+			settings.load(configStream);
 		} catch (IOException ioe) {
 			logger.error(LogUtils.printStackTrace(ioe));
 		}

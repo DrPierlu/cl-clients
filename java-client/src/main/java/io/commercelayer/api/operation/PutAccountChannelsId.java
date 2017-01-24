@@ -14,7 +14,6 @@ public class PutAccountChannelsId extends PutOperation<Channel> {
 
 	{
 		addRequiredField("name");
-		addRequiredField("id");
 	}
 
 

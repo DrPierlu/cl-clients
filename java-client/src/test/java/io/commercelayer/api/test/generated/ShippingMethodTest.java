@@ -1,9 +1,17 @@
 package io.commercelayer.api.test.generated;
 
 import io.commercelayer.api.ApiCaller;
+import io.commercelayer.api.ApiRequest;
 import io.commercelayer.api.ApiResponse;
 import io.commercelayer.api.model.ShippingMethod;
+import io.commercelayer.api.operation.DeleteChannelShippingMethodsId;
+import io.commercelayer.api.operation.GetChannelShippingMethodsId;
+import io.commercelayer.api.operation.PostChannelOrdersOrderTokenShippingMethods;
+import io.commercelayer.api.operation.PutChannelShippingMethodsId;
+import io.commercelayer.api.operation.common.util.ApiOperations;
 import io.commercelayer.api.test.common.IntegrationTest;
+import io.commercelayer.api.test.common.TestException;
+import org.junit.Assert;
 
 
 /**
@@ -13,25 +21,128 @@ public class ShippingMethodTest extends IntegrationTest<ShippingMethod> {
 
 	@Override
 	public ApiResponse<ShippingMethod> crudCreateTest(ApiCaller caller) {
-		return null;
+	
+		// POST
+	
+		PostChannelOrdersOrderTokenShippingMethods postOp = ApiOperations.PostChannelOrdersOrderTokenShippingMethods();
+	
+		ShippingMethod res = new ShippingMethod();
+	
+		// FIELD NOT FOUND -> res.setShippingServiceId("shippingServiceId");
+		// FIELD NOT FOUND -> res.setShippingPackageId("shippingPackageId");
+		// FIELD NOT FOUND -> res.setShippingAddressId("shippingAddressId");
+		// FIELD NOT FOUND -> res.setShippingAddressAttributes("shippingAddressAttributes");
+	
+		postOp.setPayload(res);
+	
+	
+		ApiRequest<PostChannelOrdersOrderTokenShippingMethods> postReq = new ApiRequest<>(postOp);
+	
+		ApiResponse<ShippingMethod> postRes = test(postReq, caller);
+	
+	
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getShippingServiceId());
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getShippingPackageId());
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getShippingAddressId());
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getShippingAddressAttributes());
+	
+	
+		return postRes;
+	
 	}
 	
 
 	@Override
 	public ApiResponse<ShippingMethod> crudReadTest(ShippingMethod res, ApiCaller caller) {
-		return null;
+	
+		// GET
+	
+		GetChannelShippingMethodsId getOp = ApiOperations.GetChannelShippingMethodsId();
+		getOp.setId(res.getId());
+	
+	
+		ApiRequest<GetChannelShippingMethodsId> getReq = new ApiRequest<>(getOp);
+	
+		ApiResponse<ShippingMethod> getRes = test(getReq, caller);
+	
+	
+		/* No test assertions */
+	
+	
+		return getRes;
+	
 	}
 	
 
 	@Override
 	public ApiResponse<ShippingMethod> crudUpdateTest(ShippingMethod oldRes, ApiCaller caller) {
-		return null;
+	
+		// PUT
+	
+		PutChannelShippingMethodsId putOp = ApiOperations.PutChannelShippingMethodsId();
+		putOp.setId(oldRes.getId());
+	
+		ShippingMethod res = new ShippingMethod();
+	
+		// FIELD NOT FOUND -> res.setShippingServiceId(randomField(oldRes.getShippingServiceId()));
+		// FIELD NOT FOUND -> res.setShippingPackageId(randomField(oldRes.getShippingPackageId()));
+		// FIELD NOT FOUND -> res.setShippingAddressId(randomField(oldRes.getShippingAddressId()));
+		// FIELD NOT FOUND -> res.setShippingAddressAttributes(randomField(oldRes.getShippingAddressAttributes()));
+	
+		putOp.setPayload(res);
+	
+	
+		ApiRequest<PutChannelShippingMethodsId> putReq = new ApiRequest<>(putOp);
+	
+		ApiResponse<ShippingMethod> putRes = test(putReq, caller);
+	
+	
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getShippingServiceId(), putRes.getResource().getShippingServiceId());
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getShippingPackageId(), putRes.getResource().getShippingPackageId());
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getShippingAddressId(), putRes.getResource().getShippingAddressId());
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getShippingAddressAttributes(), putRes.getResource().getShippingAddressAttributes());
+	
+	
+		return putRes;
+	
 	}
 	
 
 	@Override
 	public ApiResponse<ShippingMethod> crudDeleteTest(ShippingMethod res, ApiCaller caller) {
-		return null;
+	
+		// DELETE
+	
+		DeleteChannelShippingMethodsId delOp = ApiOperations.DeleteChannelShippingMethodsId();
+		delOp.setId(res.getId());
+	
+		ApiRequest<DeleteChannelShippingMethodsId> delReq = new ApiRequest<>(delOp);
+	
+		ApiResponse<ShippingMethod> delRes = test(delReq, caller);
+	
+		// GET
+	
+		GetChannelShippingMethodsId getOp = ApiOperations.GetChannelShippingMethodsId();
+		getOp.setId(res.getId());
+	
+		ApiRequest<GetChannelShippingMethodsId> getReq = new ApiRequest<>(getOp);
+	
+		ApiResponse<ShippingMethod> getRes = null;
+	
+		try {
+			getRes = test(getReq, caller, false);
+		}
+		catch (TestException te) {
+			if (te.causedByApiError()) {
+				Assert.assertTrue(te.getError().getHttpErrorCode() == 404);
+				Assert.assertNull(getRes);
+			}
+			else throw te;
+		}
+	
+	
+		return delRes;
+	
 	}
 	
 
@@ -41,10 +152,10 @@ public class ShippingMethodTest extends IntegrationTest<ShippingMethod> {
 	
 		test.runTest();
 	
-		// testCreate();
-		// testRead();
-		// testUpdate();
-		// testDelete();
+		// crudCreateTest();
+		// crudReadTest();
+		// crudUpdateTest();
+		// crudDeleteTest();
 	
 	}
 	

@@ -18,7 +18,6 @@ public class PutAccountAddressesId extends PutOperation<Address> {
 		addRequiredField("geocodingCity");
 		addRequiredField("geocodingStreet");
 		addRequiredField("geocodingNumber");
-		addRequiredField("id");
 	}
 
 

@@ -12,7 +12,7 @@ public class PutAccountProductsIdApprove extends PutOperation {
 
 
 	{
-		addRequiredField("id");
+		
 	}
 
 

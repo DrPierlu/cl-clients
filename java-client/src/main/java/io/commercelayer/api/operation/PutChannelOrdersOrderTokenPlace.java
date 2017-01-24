@@ -12,7 +12,7 @@ public class PutChannelOrdersOrderTokenPlace extends PutOperation {
 
 
 	{
-		addRequiredField("orderToken");
+		
 	}
 
 

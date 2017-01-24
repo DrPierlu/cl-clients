@@ -13,7 +13,7 @@ public class PutAccountPaypalAccountsId extends PutOperation<PaypalAccount> {
 
 
 	{
-		addRequiredField("id");
+		
 	}
 
 

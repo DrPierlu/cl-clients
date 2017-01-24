@@ -15,7 +15,6 @@ public class PutChannelOrdersOrderToken extends PutOperation<Order> {
 	{
 		addRequiredField("customerId");
 		addRequiredField("customerAttributes");
-		addRequiredField("orderToken");
 	}
 
 

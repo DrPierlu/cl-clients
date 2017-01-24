@@ -18,7 +18,6 @@ public class PutAccountMerchandisingRulesId extends PutOperation<MerchandisingRu
 		addRequiredField("taxonId");
 		addRequiredField("position");
 		addRequiredField("hero");
-		addRequiredField("id");
 	}
 
 

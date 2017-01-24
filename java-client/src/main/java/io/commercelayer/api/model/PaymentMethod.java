@@ -10,7 +10,7 @@ import java.util.Objects;
  */
 public class PaymentMethod extends ApiResource {
 
-	private static final long serialVersionUID = -1484907257256L;
+	private static final long serialVersionUID = -1485265142520L;
 
 
 	private Integer billingAddressId;
@@ -58,7 +58,7 @@ public class PaymentMethod extends ApiResource {
 	@JsonExclude
 	private Float taxRate;
 	@JsonExclude
-	private Object taxable;
+	private Boolean taxable;
 	@JsonExclude
 	private String taxableAmount;
 
@@ -283,23 +283,23 @@ public class PaymentMethod extends ApiResource {
 	}
 	
 
-	public void setTaxable(Object taxable) {
+	public void setTaxable(Boolean taxable) {
 		this.taxable = taxable;
 	}
 	
 
-	public Object getTaxable() {
+	public Boolean getTaxable() {
 		return this.taxable;
 	}
 	
 
-	public PaymentMethod taxable(Object taxable) {
+	public PaymentMethod taxable(Boolean taxable) {
 		setTaxable(taxable);
 		return this;
 	}
 	
 
-	public Object taxable() {
+	public Boolean taxable() {
 		return getTaxable();
 	}
 	

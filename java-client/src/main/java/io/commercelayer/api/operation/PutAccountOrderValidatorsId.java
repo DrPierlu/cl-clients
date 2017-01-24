@@ -20,7 +20,6 @@ public class PutAccountOrderValidatorsId extends PutOperation<OrderValidator> {
 		addRequiredField("orderItemsMax");
 		addRequiredField("paymentMethodAction");
 		addRequiredField("paymentMethodRequiredPercentage");
-		addRequiredField("id");
 	}
 
 

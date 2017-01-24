@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import io.commercelayer.api.codegen.ApiCodegenException;
+import io.commercelayer.api.codegen.CodegenConfig;
 import io.commercelayer.api.codegen.schema.Definition;
 import io.commercelayer.api.codegen.schema.Operation;
 import io.commercelayer.api.codegen.schema.Parameter;
@@ -21,7 +22,7 @@ public abstract class ApiParser {
 	protected abstract Schema parse(String schemaPath) throws ApiCodegenException;
 	
 	public Schema parseSchema() throws ApiCodegenException {
-		return parse_(ApiConfig.getProperty(Group.api, "service.url").concat("/swagger"));
+		return parse_(ApiConfig.getProperty(Group.api, "service.url").concat(CodegenConfig.getProperty("schema.parser.swagger.path")));
 	}
 	
 	public Schema parseSchema(String schemaPath) throws ApiCodegenException {

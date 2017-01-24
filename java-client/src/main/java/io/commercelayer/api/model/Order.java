@@ -12,7 +12,7 @@ import java.util.Objects;
  */
 public class Order extends ApiResource {
 
-	private static final long serialVersionUID = -1484907257224L;
+	private static final long serialVersionUID = -1485265142480L;
 
 
 	private Integer channelId;
@@ -109,7 +109,7 @@ public class Order extends ApiResource {
 	@JsonExclude
 	private List<String> stockItems;
 	@JsonExclude
-	private Object taxIncluded;
+	private Boolean taxIncluded;
 	@JsonExclude
 	private String token;
 	@JsonExclude
@@ -326,23 +326,23 @@ public class Order extends ApiResource {
 	}
 	
 
-	public void setTaxIncluded(Object taxIncluded) {
+	public void setTaxIncluded(Boolean taxIncluded) {
 		this.taxIncluded = taxIncluded;
 	}
 	
 
-	public Object getTaxIncluded() {
+	public Boolean getTaxIncluded() {
 		return this.taxIncluded;
 	}
 	
 
-	public Order taxIncluded(Object taxIncluded) {
+	public Order taxIncluded(Boolean taxIncluded) {
 		setTaxIncluded(taxIncluded);
 		return this;
 	}
 	
 
-	public Object taxIncluded() {
+	public Boolean taxIncluded() {
 		return getTaxIncluded();
 	}
 	

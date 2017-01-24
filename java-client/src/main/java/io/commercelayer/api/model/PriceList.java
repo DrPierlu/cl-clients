@@ -11,7 +11,7 @@ import java.util.Objects;
  */
 public class PriceList extends ApiResource {
 
-	private static final long serialVersionUID = -1484907257306L;
+	private static final long serialVersionUID = -1485265142563L;
 
 
 	private Integer currencyId;
@@ -25,7 +25,7 @@ public class PriceList extends ApiResource {
 	@JsonExclude
 	private List<String> prices;
 	@JsonExclude
-	private Object taxIncluded;
+	private Boolean taxIncluded;
 
 
 	public PriceList() {
@@ -80,23 +80,23 @@ public class PriceList extends ApiResource {
 	}
 	
 
-	public void setTaxIncluded(Object taxIncluded) {
+	public void setTaxIncluded(Boolean taxIncluded) {
 		this.taxIncluded = taxIncluded;
 	}
 	
 
-	public Object getTaxIncluded() {
+	public Boolean getTaxIncluded() {
 		return this.taxIncluded;
 	}
 	
 
-	public PriceList taxIncluded(Object taxIncluded) {
+	public PriceList taxIncluded(Boolean taxIncluded) {
 		setTaxIncluded(taxIncluded);
 		return this;
 	}
 	
 
-	public Object taxIncluded() {
+	public Boolean taxIncluded() {
 		return getTaxIncluded();
 	}
 	
