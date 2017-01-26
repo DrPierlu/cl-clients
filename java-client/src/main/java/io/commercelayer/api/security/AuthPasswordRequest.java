@@ -1,28 +1,35 @@
 package io.commercelayer.api.security;
 
+import io.commercelayer.api.http.auth.HttpAuthBasic;
+
 public final class AuthPasswordRequest extends AuthRequest {
 
 	private String username;
-	private String environmentId;
 	private String password = "supersecret";
 
+
 	public AuthPasswordRequest(ApiAccount account) {
+		
 		super();
+		
 		this.username = account.getUsername();
+		if (account.getPassword() != null) this.password = account.getPassword();
 		this.environmentId = account.getEnvironmentId();
+		
+		setHttpAuth(new HttpAuthBasic(account));
+		
 	}
+
 
 	public String getUsername() {
 		return username;
 	}
 
-	public String getEnvironmentId() {
-		return environmentId;
-	}
 
 	public String getPassword() {
 		return password;
 	}
+
 
 	@Override
 	public String grantType() {

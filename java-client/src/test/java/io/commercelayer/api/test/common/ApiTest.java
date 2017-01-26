@@ -13,7 +13,6 @@ import io.commercelayer.api.ApiCaller;
 import io.commercelayer.api.ApiRequest;
 import io.commercelayer.api.ApiResponse;
 import io.commercelayer.api.config.ApiConfig;
-import io.commercelayer.api.config.ApiConfig.Group;
 import io.commercelayer.api.exception.ApiException;
 import io.commercelayer.api.exception.AuthException;
 import io.commercelayer.api.model.common.ApiResource;
@@ -321,10 +320,10 @@ public abstract class ApiTest<T extends ApiResource> {
 
 		ApiAccount account = new ApiAccount();
 		
-		account.setUsername(ApiConfig.getProperty(Group.authentication, "username"));
-		account.setEnvironmentId(ApiConfig.getProperty(Group.authentication, "environmentId"));
-		account.setAuthKey(ApiConfig.getProperty(Group.authentication, "authKey"));
-		account.setAuthSecret(ApiConfig.getProperty(Group.authentication, "authSecret"));
+		account.setUsername(TestConfig.getProperty("authentication.account.username"));
+		account.setEnvironmentId(TestConfig.getProperty("authentication.account.environmentId"));
+		account.setAuthKey(TestConfig.getProperty("authentication.account.authKey"));
+		account.setAuthSecret(TestConfig.getProperty("authentication.account.authSecret"));
 		
 		return account;
 		

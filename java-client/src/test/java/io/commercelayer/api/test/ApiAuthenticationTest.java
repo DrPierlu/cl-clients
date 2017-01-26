@@ -7,11 +7,10 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
 import io.commercelayer.api.ApiAuthenticator;
-import io.commercelayer.api.config.ApiConfig;
-import io.commercelayer.api.config.ApiConfig.Group;
 import io.commercelayer.api.exception.AuthException;
 import io.commercelayer.api.security.ApiAccount;
 import io.commercelayer.api.security.ApiToken;
+import io.commercelayer.api.test.common.TestConfig;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ApiAuthenticationTest {
@@ -26,10 +25,10 @@ public class ApiAuthenticationTest {
 		
 		account = new ApiAccount();
 		
-		account.setUsername(ApiConfig.getProperty(Group.authentication, "username"));
-		account.setEnvironmentId(ApiConfig.getProperty(Group.authentication, "environmentId"));
-		account.setAuthKey(ApiConfig.getProperty(Group.authentication, "authKey"));
-		account.setAuthSecret(ApiConfig.getProperty(Group.authentication, "authSecret"));
+		account.setUsername(TestConfig.getProperty("authentication.account.username"));
+		account.setEnvironmentId(TestConfig.getProperty("authentication.account.environmentId"));
+		account.setAuthKey(TestConfig.getProperty("authentication.account.authKey"));
+		account.setAuthSecret(TestConfig.getProperty("authentication.account.authSecret"));
 		
 	}
 
