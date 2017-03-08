@@ -4,6 +4,7 @@ import java.util.Random;
 
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,6 +36,8 @@ public abstract class ApiTest<T extends ApiResource> {
 	protected static final Random random = new Random(System.currentTimeMillis());
 	
 	
+	@Before
+	public abstract void initTest();
 	
 	@Test
 	public abstract void runTest() throws ApiException;
