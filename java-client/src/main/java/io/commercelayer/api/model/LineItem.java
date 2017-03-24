@@ -32,6 +32,8 @@ public class LineItem extends ApiResource {
 	@JsonExclude
 	private String defaultShippingMethodId;
 	@JsonExclude
+	private Object featuredImage;
+	@JsonExclude
 	private String formattedAmount;
 	@JsonExclude
 	private String formattedTaxAmount;
@@ -786,6 +788,27 @@ public class LineItem extends ApiResource {
 	}
 	
 
+	public void setFeaturedImage(Object featuredImage) {
+		this.featuredImage = featuredImage;
+	}
+	
+
+	public Object getFeaturedImage() {
+		return this.featuredImage;
+	}
+	
+
+	public LineItem featuredImage(Object featuredImage) {
+		setFeaturedImage(featuredImage);
+		return this;
+	}
+	
+
+	public Object featuredImage() {
+		return getFeaturedImage();
+	}
+	
+
 	public void setDefaultShippingMethodId(String defaultShippingMethodId) {
 		this.defaultShippingMethodId = defaultShippingMethodId;
 	}
@@ -870,6 +893,7 @@ public class LineItem extends ApiResource {
 			&& Objects.equals(this.formattedTaxAmount, x.formattedTaxAmount)
 			&& Objects.equals(this.unitAmount, x.unitAmount)
 			&& Objects.equals(this.formattedUnitAmount, x.formattedUnitAmount)
+			&& Objects.equals(this.featuredImage, x.featuredImage)
 			&& Objects.equals(this.defaultShippingMethodId, x.defaultShippingMethodId)
 			&& Objects.equals(this.availableShippingServiceIds, x.availableShippingServiceIds)
 		;
@@ -887,8 +911,8 @@ public class LineItem extends ApiResource {
 			sellable, market, country, currency, stockItems,
 			shippingServiceStockLocations, versions, lineItemStocks, shippingMethods, shipments,
 			amount, formattedAmount, taxableAmount, formattedTaxableAmount, taxAmount,
-			formattedTaxAmount, unitAmount, formattedUnitAmount, defaultShippingMethodId, availableShippingServiceIds
-			
+			formattedTaxAmount, unitAmount, formattedUnitAmount, featuredImage, defaultShippingMethodId,
+			availableShippingServiceIds 
 		);
 	
 	}
@@ -934,6 +958,7 @@ public class LineItem extends ApiResource {
 		no.formattedTaxAmount = this.formattedTaxAmount;
 		no.unitAmount = this.unitAmount;
 		no.formattedUnitAmount = this.formattedUnitAmount;
+		no.featuredImage = this.featuredImage;
 		no.defaultShippingMethodId = this.defaultShippingMethodId;
 		no.availableShippingServiceIds = this.availableShippingServiceIds;
 	

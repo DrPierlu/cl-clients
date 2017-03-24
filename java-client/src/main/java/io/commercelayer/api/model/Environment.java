@@ -25,6 +25,10 @@ public class Environment extends ApiResource {
 	@JsonExclude
 	private List<String> consumerRoles;
 	@JsonExclude
+	private List<String> contacts;
+	@JsonExclude
+	private List<String> contentFields;
+	@JsonExclude
 	private List<String> countries;
 	@JsonExclude
 	private List<String> countryGroups;
@@ -59,6 +63,8 @@ public class Environment extends ApiResource {
 	@JsonExclude
 	private List<String> merchants;
 	@JsonExclude
+	private List<String> metaFields;
+	@JsonExclude
 	private List<String> optionTypes;
 	@JsonExclude
 	private List<String> optionValues;
@@ -91,11 +97,15 @@ public class Environment extends ApiResource {
 	@JsonExclude
 	private List<String> propertyValues;
 	@JsonExclude
+	private List<String> resourceContentFields;
+	@JsonExclude
 	private List<String> resourceImages;
+	@JsonExclude
+	private List<String> resourceMetaFields;
 	@JsonExclude
 	private List<String> shipments;
 	@JsonExclude
-	private List<String> shippingCarrierTypes;
+	private List<String> shippingCarrierAccounts;
 	@JsonExclude
 	private List<String> shippingCarriers;
 	@JsonExclude
@@ -292,6 +302,48 @@ public class Environment extends ApiResource {
 
 	public List<String> channels() {
 		return getChannels();
+	}
+	
+
+	public void setContacts(List<String> contacts) {
+		this.contacts = contacts;
+	}
+	
+
+	public List<String> getContacts() {
+		return this.contacts;
+	}
+	
+
+	public Environment contacts(List<String> contacts) {
+		setContacts(contacts);
+		return this;
+	}
+	
+
+	public List<String> contacts() {
+		return getContacts();
+	}
+	
+
+	public void setContentFields(List<String> contentFields) {
+		this.contentFields = contentFields;
+	}
+	
+
+	public List<String> getContentFields() {
+		return this.contentFields;
+	}
+	
+
+	public Environment contentFields(List<String> contentFields) {
+		setContentFields(contentFields);
+		return this;
+	}
+	
+
+	public List<String> contentFields() {
+		return getContentFields();
 	}
 	
 
@@ -526,24 +578,24 @@ public class Environment extends ApiResource {
 	}
 	
 
-	public void setShippingCarriers(List<String> shippingCarriers) {
-		this.shippingCarriers = shippingCarriers;
+	public void setShippingCarrierAccounts(List<String> shippingCarrierAccounts) {
+		this.shippingCarrierAccounts = shippingCarrierAccounts;
 	}
 	
 
-	public List<String> getShippingCarriers() {
-		return this.shippingCarriers;
+	public List<String> getShippingCarrierAccounts() {
+		return this.shippingCarrierAccounts;
 	}
 	
 
-	public Environment shippingCarriers(List<String> shippingCarriers) {
-		setShippingCarriers(shippingCarriers);
+	public Environment shippingCarrierAccounts(List<String> shippingCarrierAccounts) {
+		setShippingCarrierAccounts(shippingCarrierAccounts);
 		return this;
 	}
 	
 
-	public List<String> shippingCarriers() {
-		return getShippingCarriers();
+	public List<String> shippingCarrierAccounts() {
+		return getShippingCarrierAccounts();
 	}
 	
 
@@ -649,6 +701,27 @@ public class Environment extends ApiResource {
 
 	public List<String> merchandisingRules() {
 		return getMerchandisingRules();
+	}
+	
+
+	public void setMetaFields(List<String> metaFields) {
+		this.metaFields = metaFields;
+	}
+	
+
+	public List<String> getMetaFields() {
+		return this.metaFields;
+	}
+	
+
+	public Environment metaFields(List<String> metaFields) {
+		setMetaFields(metaFields);
+		return this;
+	}
+	
+
+	public List<String> metaFields() {
+		return getMetaFields();
 	}
 	
 
@@ -967,6 +1040,27 @@ public class Environment extends ApiResource {
 	}
 	
 
+	public void setResourceContentFields(List<String> resourceContentFields) {
+		this.resourceContentFields = resourceContentFields;
+	}
+	
+
+	public List<String> getResourceContentFields() {
+		return this.resourceContentFields;
+	}
+	
+
+	public Environment resourceContentFields(List<String> resourceContentFields) {
+		setResourceContentFields(resourceContentFields);
+		return this;
+	}
+	
+
+	public List<String> resourceContentFields() {
+		return getResourceContentFields();
+	}
+	
+
 	public void setResourceImages(List<String> resourceImages) {
 		this.resourceImages = resourceImages;
 	}
@@ -985,6 +1079,27 @@ public class Environment extends ApiResource {
 
 	public List<String> resourceImages() {
 		return getResourceImages();
+	}
+	
+
+	public void setResourceMetaFields(List<String> resourceMetaFields) {
+		this.resourceMetaFields = resourceMetaFields;
+	}
+	
+
+	public List<String> getResourceMetaFields() {
+		return this.resourceMetaFields;
+	}
+	
+
+	public Environment resourceMetaFields(List<String> resourceMetaFields) {
+		setResourceMetaFields(resourceMetaFields);
+		return this;
+	}
+	
+
+	public List<String> resourceMetaFields() {
+		return getResourceMetaFields();
 	}
 	
 
@@ -1009,24 +1124,24 @@ public class Environment extends ApiResource {
 	}
 	
 
-	public void setShippingCarrierTypes(List<String> shippingCarrierTypes) {
-		this.shippingCarrierTypes = shippingCarrierTypes;
+	public void setShippingCarriers(List<String> shippingCarriers) {
+		this.shippingCarriers = shippingCarriers;
 	}
 	
 
-	public List<String> getShippingCarrierTypes() {
-		return this.shippingCarrierTypes;
+	public List<String> getShippingCarriers() {
+		return this.shippingCarriers;
 	}
 	
 
-	public Environment shippingCarrierTypes(List<String> shippingCarrierTypes) {
-		setShippingCarrierTypes(shippingCarrierTypes);
+	public Environment shippingCarriers(List<String> shippingCarriers) {
+		setShippingCarriers(shippingCarriers);
 		return this;
 	}
 	
 
-	public List<String> shippingCarrierTypes() {
-		return getShippingCarrierTypes();
+	public List<String> shippingCarriers() {
+		return getShippingCarriers();
 	}
 	
 
@@ -1466,6 +1581,8 @@ public class Environment extends ApiResource {
 			&& Objects.equals(this.addresses, x.addresses)
 			&& Objects.equals(this.catalogs, x.catalogs)
 			&& Objects.equals(this.channels, x.channels)
+			&& Objects.equals(this.contacts, x.contacts)
+			&& Objects.equals(this.contentFields, x.contentFields)
 			&& Objects.equals(this.countries, x.countries)
 			&& Objects.equals(this.countryGroups, x.countryGroups)
 			&& Objects.equals(this.countryLanguages, x.countryLanguages)
@@ -1477,12 +1594,13 @@ public class Environment extends ApiResource {
 			&& Objects.equals(this.lineItems, x.lineItems)
 			&& Objects.equals(this.lineItemStocks, x.lineItemStocks)
 			&& Objects.equals(this.markets, x.markets)
-			&& Objects.equals(this.shippingCarriers, x.shippingCarriers)
+			&& Objects.equals(this.shippingCarrierAccounts, x.shippingCarrierAccounts)
 			&& Objects.equals(this.marketPaymentTypes, x.marketPaymentTypes)
 			&& Objects.equals(this.marketShippingServices, x.marketShippingServices)
 			&& Objects.equals(this.marketStockLocations, x.marketStockLocations)
 			&& Objects.equals(this.merchants, x.merchants)
 			&& Objects.equals(this.merchandisingRules, x.merchandisingRules)
+			&& Objects.equals(this.metaFields, x.metaFields)
 			&& Objects.equals(this.optionTypes, x.optionTypes)
 			&& Objects.equals(this.optionValues, x.optionValues)
 			&& Objects.equals(this.orders, x.orders)
@@ -1498,9 +1616,11 @@ public class Environment extends ApiResource {
 			&& Objects.equals(this.productProperties, x.productProperties)
 			&& Objects.equals(this.propertyTypes, x.propertyTypes)
 			&& Objects.equals(this.propertyValues, x.propertyValues)
+			&& Objects.equals(this.resourceContentFields, x.resourceContentFields)
 			&& Objects.equals(this.resourceImages, x.resourceImages)
+			&& Objects.equals(this.resourceMetaFields, x.resourceMetaFields)
 			&& Objects.equals(this.shipments, x.shipments)
-			&& Objects.equals(this.shippingCarrierTypes, x.shippingCarrierTypes)
+			&& Objects.equals(this.shippingCarriers, x.shippingCarriers)
 			&& Objects.equals(this.shippingCategories, x.shippingCategories)
 			&& Objects.equals(this.shippingLabels, x.shippingLabels)
 			&& Objects.equals(this.shippingMethods, x.shippingMethods)
@@ -1531,14 +1651,15 @@ public class Environment extends ApiResource {
 	
 		return Objects.hash(
 			organizationId, name, previousChanges, organization, addresses,
-			catalogs, channels, countries, countryGroups, countryLanguages,
-			currencies, customers, creditCards, images, languages,
-			lineItems, lineItemStocks, markets, shippingCarriers, marketPaymentTypes,
-			marketShippingServices, marketStockLocations, merchants, merchandisingRules, optionTypes,
-			optionValues, orders, orderValidators, gateways, paymentTypes,
-			paymentMethods, paypalAccounts, priceLists, prices, products,
-			productTypes, productProperties, propertyTypes, propertyValues, resourceImages,
-			shipments, shippingCarrierTypes, shippingCategories, shippingLabels, shippingMethods,
+			catalogs, channels, contacts, contentFields, countries,
+			countryGroups, countryLanguages, currencies, customers, creditCards,
+			images, languages, lineItems, lineItemStocks, markets,
+			shippingCarrierAccounts, marketPaymentTypes, marketShippingServices, marketStockLocations, merchants,
+			merchandisingRules, metaFields, optionTypes, optionValues, orders,
+			orderValidators, gateways, paymentTypes, paymentMethods, paypalAccounts,
+			priceLists, prices, products, productTypes, productProperties,
+			propertyTypes, propertyValues, resourceContentFields, resourceImages, resourceMetaFields,
+			shipments, shippingCarriers, shippingCategories, shippingLabels, shippingMethods,
 			shippingPackages, shippingServices, shippingServiceCategories, shippingServiceStockLocations, shippingServiceZones,
 			shippingZones, states, stockLocations, stockItems, taxonomies,
 			taxons, transactions, consumerRoles, variantOptions, variants,
@@ -1562,6 +1683,8 @@ public class Environment extends ApiResource {
 		no.addresses = this.addresses;
 		no.catalogs = this.catalogs;
 		no.channels = this.channels;
+		no.contacts = this.contacts;
+		no.contentFields = this.contentFields;
 		no.countries = this.countries;
 		no.countryGroups = this.countryGroups;
 		no.countryLanguages = this.countryLanguages;
@@ -1573,12 +1696,13 @@ public class Environment extends ApiResource {
 		no.lineItems = this.lineItems;
 		no.lineItemStocks = this.lineItemStocks;
 		no.markets = this.markets;
-		no.shippingCarriers = this.shippingCarriers;
+		no.shippingCarrierAccounts = this.shippingCarrierAccounts;
 		no.marketPaymentTypes = this.marketPaymentTypes;
 		no.marketShippingServices = this.marketShippingServices;
 		no.marketStockLocations = this.marketStockLocations;
 		no.merchants = this.merchants;
 		no.merchandisingRules = this.merchandisingRules;
+		no.metaFields = this.metaFields;
 		no.optionTypes = this.optionTypes;
 		no.optionValues = this.optionValues;
 		no.orders = this.orders;
@@ -1594,9 +1718,11 @@ public class Environment extends ApiResource {
 		no.productProperties = this.productProperties;
 		no.propertyTypes = this.propertyTypes;
 		no.propertyValues = this.propertyValues;
+		no.resourceContentFields = this.resourceContentFields;
 		no.resourceImages = this.resourceImages;
+		no.resourceMetaFields = this.resourceMetaFields;
 		no.shipments = this.shipments;
-		no.shippingCarrierTypes = this.shippingCarrierTypes;
+		no.shippingCarriers = this.shippingCarriers;
 		no.shippingCategories = this.shippingCategories;
 		no.shippingLabels = this.shippingLabels;
 		no.shippingMethods = this.shippingMethods;

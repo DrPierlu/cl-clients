@@ -14,6 +14,7 @@ public class PutAccountShippingMethodsId extends PutOperation<ShippingMethod> {
 
 	{
 		addRequiredField("orderId");
+		addRequiredField("shippingRecipientId");
 		addRequiredField("shippingServiceId");
 		addRequiredField("shippingAddressId");
 		addRequiredField("shippingPackageId");

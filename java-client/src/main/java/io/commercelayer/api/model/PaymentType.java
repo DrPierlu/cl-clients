@@ -20,6 +20,8 @@ public class PaymentType extends ApiResource {
 	@JsonExclude
 	private String description;
 	@JsonExclude
+	private Object featuredImage;
+	@JsonExclude
 	private Object gateway;
 	@JsonExclude
 	private List<String> images;
@@ -345,6 +347,27 @@ public class PaymentType extends ApiResource {
 	}
 	
 
+	public void setFeaturedImage(Object featuredImage) {
+		this.featuredImage = featuredImage;
+	}
+	
+
+	public Object getFeaturedImage() {
+		return this.featuredImage;
+	}
+	
+
+	public PaymentType featuredImage(Object featuredImage) {
+		setFeaturedImage(featuredImage);
+		return this;
+	}
+	
+
+	public Object featuredImage() {
+		return getFeaturedImage();
+	}
+	
+
 	@Override
 	public boolean equals(Object o) {
 	
@@ -368,6 +391,7 @@ public class PaymentType extends ApiResource {
 			&& Objects.equals(this.translations, x.translations)
 			&& Objects.equals(this.marketPaymentTypes, x.marketPaymentTypes)
 			&& Objects.equals(this.markets, x.markets)
+			&& Objects.equals(this.featuredImage, x.featuredImage)
 		;
 	
 	}
@@ -379,7 +403,8 @@ public class PaymentType extends ApiResource {
 		return Objects.hash(
 			name, slug, description, merchantId, gatewayId,
 			paymentSourceKind, previousChanges, merchant, gateway, resourceImages,
-			images, translations, marketPaymentTypes, markets 
+			images, translations, marketPaymentTypes, markets, featuredImage
+			
 		);
 	
 	}
@@ -406,6 +431,7 @@ public class PaymentType extends ApiResource {
 		no.translations = this.translations;
 		no.marketPaymentTypes = this.marketPaymentTypes;
 		no.markets = this.markets;
+		no.featuredImage = this.featuredImage;
 	
 		return no;
 	

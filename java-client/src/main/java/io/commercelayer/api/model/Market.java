@@ -260,6 +260,27 @@ public class Market extends ApiResource {
 	}
 	
 
+	public void setChannel(Object channel) {
+		this.channel = channel;
+	}
+	
+
+	public Object getChannel() {
+		return this.channel;
+	}
+	
+
+	public Market channel(Object channel) {
+		setChannel(channel);
+		return this;
+	}
+	
+
+	public Object channel() {
+		return getChannel();
+	}
+	
+
 	public void setMerchant(Object merchant) {
 		this.merchant = merchant;
 	}
@@ -341,27 +362,6 @@ public class Market extends ApiResource {
 
 	public Object priceList() {
 		return getPriceList();
-	}
-	
-
-	public void setChannel(Object channel) {
-		this.channel = channel;
-	}
-	
-
-	public Object getChannel() {
-		return this.channel;
-	}
-	
-
-	public Market channel(Object channel) {
-		setChannel(channel);
-		return this;
-	}
-	
-
-	public Object channel() {
-		return getChannel();
 	}
 	
 
@@ -614,11 +614,11 @@ public class Market extends ApiResource {
 			&& Objects.equals(this.orderValidatorId, x.orderValidatorId)
 			&& Objects.equals(this.lastResetIndexAt, x.lastResetIndexAt)
 			&& Objects.equals(this.previousChanges, x.previousChanges)
+			&& Objects.equals(this.channel, x.channel)
 			&& Objects.equals(this.merchant, x.merchant)
 			&& Objects.equals(this.countryGroup, x.countryGroup)
 			&& Objects.equals(this.catalog, x.catalog)
 			&& Objects.equals(this.priceList, x.priceList)
-			&& Objects.equals(this.channel, x.channel)
 			&& Objects.equals(this.orderValidator, x.orderValidator)
 			&& Objects.equals(this.marketStockLocations, x.marketStockLocations)
 			&& Objects.equals(this.marketShippingServices, x.marketShippingServices)
@@ -640,8 +640,8 @@ public class Market extends ApiResource {
 	
 		return Objects.hash(
 			name, channelId, countryGroupId, merchantId, catalogId,
-			priceListId, orderValidatorId, lastResetIndexAt, previousChanges, merchant,
-			countryGroup, catalog, priceList, channel, orderValidator,
+			priceListId, orderValidatorId, lastResetIndexAt, previousChanges, channel,
+			merchant, countryGroup, catalog, priceList, orderValidator,
 			marketStockLocations, marketShippingServices, marketPaymentTypes, lineItemStocks, stockLocations,
 			stockItems, shippingServices, paymentTypes, shippingZones, countries
 			
@@ -666,11 +666,11 @@ public class Market extends ApiResource {
 		no.orderValidatorId = this.orderValidatorId;
 		no.lastResetIndexAt = this.lastResetIndexAt;
 		no.previousChanges = this.previousChanges;
+		no.channel = this.channel;
 		no.merchant = this.merchant;
 		no.countryGroup = this.countryGroup;
 		no.catalog = this.catalog;
 		no.priceList = this.priceList;
-		no.channel = this.channel;
 		no.orderValidator = this.orderValidator;
 		no.marketStockLocations = this.marketStockLocations;
 		no.marketShippingServices = this.marketShippingServices;

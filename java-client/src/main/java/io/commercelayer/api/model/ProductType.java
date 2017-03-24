@@ -16,6 +16,8 @@ public class ProductType extends ApiResource {
 
 	private String name;
 	@JsonExclude
+	private Object featuredImage;
+	@JsonExclude
 	private List<String> images;
 	@JsonExclude
 	private List<String> optionTypes;
@@ -232,6 +234,27 @@ public class ProductType extends ApiResource {
 	}
 	
 
+	public void setFeaturedImage(Object featuredImage) {
+		this.featuredImage = featuredImage;
+	}
+	
+
+	public Object getFeaturedImage() {
+		return this.featuredImage;
+	}
+	
+
+	public ProductType featuredImage(Object featuredImage) {
+		setFeaturedImage(featuredImage);
+		return this;
+	}
+	
+
+	public Object featuredImage() {
+		return getFeaturedImage();
+	}
+	
+
 	@Override
 	public boolean equals(Object o) {
 	
@@ -250,6 +273,7 @@ public class ProductType extends ApiResource {
 			&& Objects.equals(this.propertyTypes, x.propertyTypes)
 			&& Objects.equals(this.optionValues, x.optionValues)
 			&& Objects.equals(this.propertyValues, x.propertyValues)
+			&& Objects.equals(this.featuredImage, x.featuredImage)
 		;
 	
 	}
@@ -260,7 +284,8 @@ public class ProductType extends ApiResource {
 	
 		return Objects.hash(
 			name, previousChanges, resourceImages, images, products,
-			optionTypes, propertyTypes, optionValues, propertyValues 
+			optionTypes, propertyTypes, optionValues, propertyValues, featuredImage
+			
 		);
 	
 	}
@@ -282,6 +307,7 @@ public class ProductType extends ApiResource {
 		no.propertyTypes = this.propertyTypes;
 		no.optionValues = this.optionValues;
 		no.propertyValues = this.propertyValues;
+		no.featuredImage = this.featuredImage;
 	
 		return no;
 	

@@ -13,8 +13,7 @@ public class PostAccountShippingCarriers extends PostOperation<ShippingCarrier> 
 
 
 	{
-		addRequiredField("name");
-		addRequiredField("shippingCarrierTypeId");
+		addRequiredField("kind");
 	}
 
 

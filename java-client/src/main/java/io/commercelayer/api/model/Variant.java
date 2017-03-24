@@ -17,6 +17,8 @@ public class Variant extends ApiResource {
 	private Integer productId;
 	private String sku;
 	@JsonExclude
+	private Object featuredImage;
+	@JsonExclude
 	private List<String> images;
 	@JsonExclude
 	private List<String> lineItemStocks;
@@ -415,6 +417,27 @@ public class Variant extends ApiResource {
 	}
 	
 
+	public void setFeaturedImage(Object featuredImage) {
+		this.featuredImage = featuredImage;
+	}
+	
+
+	public Object getFeaturedImage() {
+		return this.featuredImage;
+	}
+	
+
+	public Variant featuredImage(Object featuredImage) {
+		setFeaturedImage(featuredImage);
+		return this;
+	}
+	
+
+	public Object featuredImage() {
+		return getFeaturedImage();
+	}
+	
+
 	@Override
 	public boolean equals(Object o) {
 	
@@ -441,6 +464,7 @@ public class Variant extends ApiResource {
 			&& Objects.equals(this.resourceImages, x.resourceImages)
 			&& Objects.equals(this.images, x.images)
 			&& Objects.equals(this.variantOptions, x.variantOptions)
+			&& Objects.equals(this.featuredImage, x.featuredImage)
 		;
 	
 	}
@@ -453,7 +477,7 @@ public class Variant extends ApiResource {
 			name, productId, trackInventory, shippingCategoryId, sku,
 			taxCode, previousChanges, shippingCategory, product, prices,
 			lineItems, lineItemStocks, stockItems, shippingServiceStockLocations, resourceImages,
-			images, variantOptions 
+			images, variantOptions, featuredImage 
 		);
 	
 	}
@@ -483,6 +507,7 @@ public class Variant extends ApiResource {
 		no.resourceImages = this.resourceImages;
 		no.images = this.images;
 		no.variantOptions = this.variantOptions;
+		no.featuredImage = this.featuredImage;
 	
 		return no;
 	

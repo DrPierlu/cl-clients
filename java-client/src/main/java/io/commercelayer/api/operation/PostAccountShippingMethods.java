@@ -14,6 +14,7 @@ public class PostAccountShippingMethods extends PostOperation<ShippingMethod> {
 
 	{
 		addRequiredField("orderId");
+		addRequiredField("shippingRecipientId");
 		addRequiredField("shippingServiceId");
 		addRequiredField("shippingAddressId");
 		addRequiredField("shippingPackageId");

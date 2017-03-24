@@ -28,8 +28,7 @@ public class ShippingCarrierTest extends IntegrationTest<ShippingCarrier> {
 	
 		ShippingCarrier res = new ShippingCarrier();
 	
-		// FIELD NOT FOUND -> res.setShippingCarrierTypeId("shippingCarrierTypeId");
-		res.setName("name");
+		res.setKind("kind");
 	
 		postOp.setPayload(res);
 	
@@ -39,8 +38,7 @@ public class ShippingCarrierTest extends IntegrationTest<ShippingCarrier> {
 		ApiResponse<ShippingCarrier> postRes = test(postReq, caller);
 	
 	
-		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getShippingCarrierTypeId());
-		Assert.assertNotNull(postRes.getResource().getName());
+		Assert.assertNotNull(postRes.getResource().getKind());
 	
 	
 		return postRes;
@@ -80,8 +78,7 @@ public class ShippingCarrierTest extends IntegrationTest<ShippingCarrier> {
 	
 		ShippingCarrier res = new ShippingCarrier();
 	
-		// FIELD NOT FOUND -> res.setShippingCarrierTypeId(randomField(oldRes.getShippingCarrierTypeId()));
-		res.setName(randomField(oldRes.getName()));
+		res.setKind(randomField(oldRes.getKind()));
 	
 		putOp.setPayload(res);
 	
@@ -91,8 +88,7 @@ public class ShippingCarrierTest extends IntegrationTest<ShippingCarrier> {
 		ApiResponse<ShippingCarrier> putRes = test(putReq, caller);
 	
 	
-		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getShippingCarrierTypeId(), putRes.getResource().getShippingCarrierTypeId());
-		Assert.assertNotEquals(oldRes.getName(), putRes.getResource().getName());
+		Assert.assertNotEquals(oldRes.getKind(), putRes.getResource().getKind());
 	
 	
 		return putRes;

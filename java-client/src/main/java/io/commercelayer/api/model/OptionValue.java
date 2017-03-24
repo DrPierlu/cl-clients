@@ -17,6 +17,8 @@ public class OptionValue extends ApiResource {
 	private String name;
 	private Integer optionTypeId;
 	@JsonExclude
+	private Object featuredImage;
+	@JsonExclude
 	private List<String> images;
 	@JsonExclude
 	private Object optionType;
@@ -277,6 +279,27 @@ public class OptionValue extends ApiResource {
 	}
 	
 
+	public void setFeaturedImage(Object featuredImage) {
+		this.featuredImage = featuredImage;
+	}
+	
+
+	public Object getFeaturedImage() {
+		return this.featuredImage;
+	}
+	
+
+	public OptionValue featuredImage(Object featuredImage) {
+		setFeaturedImage(featuredImage);
+		return this;
+	}
+	
+
+	public Object featuredImage() {
+		return getFeaturedImage();
+	}
+	
+
 	@Override
 	public boolean equals(Object o) {
 	
@@ -297,6 +320,7 @@ public class OptionValue extends ApiResource {
 			&& Objects.equals(this.translations, x.translations)
 			&& Objects.equals(this.variantOptions, x.variantOptions)
 			&& Objects.equals(this.variants, x.variants)
+			&& Objects.equals(this.featuredImage, x.featuredImage)
 		;
 	
 	}
@@ -308,7 +332,7 @@ public class OptionValue extends ApiResource {
 		return Objects.hash(
 			name, slug, optionTypeId, position, previousChanges,
 			optionType, resourceImages, images, translations, variantOptions,
-			variants 
+			variants, featuredImage 
 		);
 	
 	}
@@ -332,6 +356,7 @@ public class OptionValue extends ApiResource {
 		no.translations = this.translations;
 		no.variantOptions = this.variantOptions;
 		no.variants = this.variants;
+		no.featuredImage = this.featuredImage;
 	
 		return no;
 	

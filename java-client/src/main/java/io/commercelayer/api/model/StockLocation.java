@@ -16,8 +16,11 @@ public class StockLocation extends ApiResource {
 
 	private Integer addressId;
 	private String name;
+	private Integer shippingSenderId;
 	@JsonExclude
 	private Object address;
+	@JsonExclude
+	private String easypostAddressId;
 	@JsonExclude
 	private List<String> lineItemStocks;
 	@JsonExclude
@@ -28,6 +31,8 @@ public class StockLocation extends ApiResource {
 	private Integer position;
 	@JsonExclude
 	private Object previousChanges;
+	@JsonExclude
+	private Object shippingSender;
 	@JsonExclude
 	private List<String> shippingServiceStockLocations;
 	@JsonExclude
@@ -43,6 +48,27 @@ public class StockLocation extends ApiResource {
 
 	public StockLocation(Long id) {
 		super(id);
+	}
+	
+
+	public void setShippingSenderId(Integer shippingSenderId) {
+		this.shippingSenderId = shippingSenderId;
+	}
+	
+
+	public Integer getShippingSenderId() {
+		return this.shippingSenderId;
+	}
+	
+
+	public StockLocation shippingSenderId(Integer shippingSenderId) {
+		setShippingSenderId(shippingSenderId);
+		return this;
+	}
+	
+
+	public Integer shippingSenderId() {
+		return getShippingSenderId();
 	}
 	
 
@@ -109,6 +135,27 @@ public class StockLocation extends ApiResource {
 	}
 	
 
+	public void setEasypostAddressId(String easypostAddressId) {
+		this.easypostAddressId = easypostAddressId;
+	}
+	
+
+	public String getEasypostAddressId() {
+		return this.easypostAddressId;
+	}
+	
+
+	public StockLocation easypostAddressId(String easypostAddressId) {
+		setEasypostAddressId(easypostAddressId);
+		return this;
+	}
+	
+
+	public String easypostAddressId() {
+		return getEasypostAddressId();
+	}
+	
+
 	public void setPreviousChanges(Object previousChanges) {
 		this.previousChanges = previousChanges;
 	}
@@ -148,6 +195,27 @@ public class StockLocation extends ApiResource {
 
 	public Object address() {
 		return getAddress();
+	}
+	
+
+	public void setShippingSender(Object shippingSender) {
+		this.shippingSender = shippingSender;
+	}
+	
+
+	public Object getShippingSender() {
+		return this.shippingSender;
+	}
+	
+
+	public StockLocation shippingSender(Object shippingSender) {
+		setShippingSender(shippingSender);
+		return this;
+	}
+	
+
+	public Object shippingSender() {
+		return getShippingSender();
 	}
 	
 
@@ -286,11 +354,14 @@ public class StockLocation extends ApiResource {
 		StockLocation x = (StockLocation)o;
 	
 		return super.equals(o)
+			&& Objects.equals(this.shippingSenderId, x.shippingSenderId)
 			&& Objects.equals(this.addressId, x.addressId)
 			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.position, x.position)
+			&& Objects.equals(this.easypostAddressId, x.easypostAddressId)
 			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.address, x.address)
+			&& Objects.equals(this.shippingSender, x.shippingSender)
 			&& Objects.equals(this.stockItems, x.stockItems)
 			&& Objects.equals(this.lineItemStocks, x.lineItemStocks)
 			&& Objects.equals(this.shippingServiceStockLocations, x.shippingServiceStockLocations)
@@ -306,9 +377,9 @@ public class StockLocation extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			addressId, name, position, previousChanges, address,
-			stockItems, lineItemStocks, shippingServiceStockLocations, marketStockLocations, shippingServices,
-			markets 
+			shippingSenderId, addressId, name, position, easypostAddressId,
+			previousChanges, address, shippingSender, stockItems, lineItemStocks,
+			shippingServiceStockLocations, marketStockLocations, shippingServices, markets 
 		);
 	
 	}
@@ -321,11 +392,14 @@ public class StockLocation extends ApiResource {
 	
 		no = super.clone(no);
 	
+		no.shippingSenderId = this.shippingSenderId;
 		no.addressId = this.addressId;
 		no.name = this.name;
 		no.position = this.position;
+		no.easypostAddressId = this.easypostAddressId;
 		no.previousChanges = this.previousChanges;
 		no.address = this.address;
+		no.shippingSender = this.shippingSender;
 		no.stockItems = this.stockItems;
 		no.lineItemStocks = this.lineItemStocks;
 		no.shippingServiceStockLocations = this.shippingServiceStockLocations;

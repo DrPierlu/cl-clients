@@ -13,7 +13,9 @@ public class PutAccountShipmentsId extends PutOperation<Shipment> {
 
 
 	{
-		
+		addRequiredField("orderId");
+		addRequiredField("stockLocationId");
+		addRequiredField("shippingMethodId");
 	}
 
 

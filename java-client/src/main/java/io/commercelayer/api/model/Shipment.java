@@ -2,6 +2,7 @@ package io.commercelayer.api.model;
 
 import io.commercelayer.api.json.JsonExclude;
 import io.commercelayer.api.model.common.ApiResource;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 
@@ -14,19 +15,33 @@ public class Shipment extends ApiResource {
 	private static final long serialVersionUID = -1L;
 
 
-	private List<String> lineItemStocks;
-	private String name;
 	private Integer orderId;
 	private Integer shippingMethodId;
 	private Integer stockLocationId;
+	@JsonExclude
+	private List<String> lineItemStocks;
+	@JsonExclude
+	private String name;
 	@JsonExclude
 	private Object order;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
+	private LocalDateTime purchasedAt;
+	@JsonExclude
+	private LocalDateTime shippedAt;
+	@JsonExclude
+	private String shippingLabelFormat;
+	@JsonExclude
+	private String shippingLabelUrl;
+	@JsonExclude
 	private Object shippingMethod;
 	@JsonExclude
+	private String state;
+	@JsonExclude
 	private Object stockLocation;
+	@JsonExclude
+	private String trackingNumber;
 
 
 	public Shipment() {
@@ -120,6 +135,132 @@ public class Shipment extends ApiResource {
 
 	public Integer shippingMethodId() {
 		return getShippingMethodId();
+	}
+	
+
+	public void setState(String state) {
+		this.state = state;
+	}
+	
+
+	public String getState() {
+		return this.state;
+	}
+	
+
+	public Shipment state(String state) {
+		setState(state);
+		return this;
+	}
+	
+
+	public String state() {
+		return getState();
+	}
+	
+
+	public void setTrackingNumber(String trackingNumber) {
+		this.trackingNumber = trackingNumber;
+	}
+	
+
+	public String getTrackingNumber() {
+		return this.trackingNumber;
+	}
+	
+
+	public Shipment trackingNumber(String trackingNumber) {
+		setTrackingNumber(trackingNumber);
+		return this;
+	}
+	
+
+	public String trackingNumber() {
+		return getTrackingNumber();
+	}
+	
+
+	public void setShippingLabelUrl(String shippingLabelUrl) {
+		this.shippingLabelUrl = shippingLabelUrl;
+	}
+	
+
+	public String getShippingLabelUrl() {
+		return this.shippingLabelUrl;
+	}
+	
+
+	public Shipment shippingLabelUrl(String shippingLabelUrl) {
+		setShippingLabelUrl(shippingLabelUrl);
+		return this;
+	}
+	
+
+	public String shippingLabelUrl() {
+		return getShippingLabelUrl();
+	}
+	
+
+	public void setShippingLabelFormat(String shippingLabelFormat) {
+		this.shippingLabelFormat = shippingLabelFormat;
+	}
+	
+
+	public String getShippingLabelFormat() {
+		return this.shippingLabelFormat;
+	}
+	
+
+	public Shipment shippingLabelFormat(String shippingLabelFormat) {
+		setShippingLabelFormat(shippingLabelFormat);
+		return this;
+	}
+	
+
+	public String shippingLabelFormat() {
+		return getShippingLabelFormat();
+	}
+	
+
+	public void setPurchasedAt(LocalDateTime purchasedAt) {
+		this.purchasedAt = purchasedAt;
+	}
+	
+
+	public LocalDateTime getPurchasedAt() {
+		return this.purchasedAt;
+	}
+	
+
+	public Shipment purchasedAt(LocalDateTime purchasedAt) {
+		setPurchasedAt(purchasedAt);
+		return this;
+	}
+	
+
+	public LocalDateTime purchasedAt() {
+		return getPurchasedAt();
+	}
+	
+
+	public void setShippedAt(LocalDateTime shippedAt) {
+		this.shippedAt = shippedAt;
+	}
+	
+
+	public LocalDateTime getShippedAt() {
+		return this.shippedAt;
+	}
+	
+
+	public Shipment shippedAt(LocalDateTime shippedAt) {
+		setShippedAt(shippedAt);
+		return this;
+	}
+	
+
+	public LocalDateTime shippedAt() {
+		return getShippedAt();
 	}
 	
 
@@ -241,6 +382,12 @@ public class Shipment extends ApiResource {
 			&& Objects.equals(this.orderId, x.orderId)
 			&& Objects.equals(this.stockLocationId, x.stockLocationId)
 			&& Objects.equals(this.shippingMethodId, x.shippingMethodId)
+			&& Objects.equals(this.state, x.state)
+			&& Objects.equals(this.trackingNumber, x.trackingNumber)
+			&& Objects.equals(this.shippingLabelUrl, x.shippingLabelUrl)
+			&& Objects.equals(this.shippingLabelFormat, x.shippingLabelFormat)
+			&& Objects.equals(this.purchasedAt, x.purchasedAt)
+			&& Objects.equals(this.shippedAt, x.shippedAt)
 			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.order, x.order)
 			&& Objects.equals(this.stockLocation, x.stockLocation)
@@ -255,8 +402,10 @@ public class Shipment extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, orderId, stockLocationId, shippingMethodId, previousChanges,
-			order, stockLocation, shippingMethod, lineItemStocks 
+			name, orderId, stockLocationId, shippingMethodId, state,
+			trackingNumber, shippingLabelUrl, shippingLabelFormat, purchasedAt, shippedAt,
+			previousChanges, order, stockLocation, shippingMethod, lineItemStocks
+			
 		);
 	
 	}
@@ -273,6 +422,12 @@ public class Shipment extends ApiResource {
 		no.orderId = this.orderId;
 		no.stockLocationId = this.stockLocationId;
 		no.shippingMethodId = this.shippingMethodId;
+		no.state = this.state;
+		no.trackingNumber = this.trackingNumber;
+		no.shippingLabelUrl = this.shippingLabelUrl;
+		no.shippingLabelFormat = this.shippingLabelFormat;
+		no.purchasedAt = this.purchasedAt;
+		no.shippedAt = this.shippedAt;
 		no.previousChanges = this.previousChanges;
 		no.order = this.order;
 		no.stockLocation = this.stockLocation;

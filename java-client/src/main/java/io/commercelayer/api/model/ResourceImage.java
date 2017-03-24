@@ -21,13 +21,13 @@ public class ResourceImage extends ApiResource {
 	@JsonExclude
 	private Object imageable;
 	@JsonExclude
+	private String localizedUrl;
+	@JsonExclude
 	private String name;
 	@JsonExclude
 	private Integer position;
 	@JsonExclude
 	private Object previousChanges;
-	@JsonExclude
-	private String sluggedUrl;
 
 
 	public ResourceImage() {
@@ -208,24 +208,24 @@ public class ResourceImage extends ApiResource {
 	}
 	
 
-	public void setSluggedUrl(String sluggedUrl) {
-		this.sluggedUrl = sluggedUrl;
+	public void setLocalizedUrl(String localizedUrl) {
+		this.localizedUrl = localizedUrl;
 	}
 	
 
-	public String getSluggedUrl() {
-		return this.sluggedUrl;
+	public String getLocalizedUrl() {
+		return this.localizedUrl;
 	}
 	
 
-	public ResourceImage sluggedUrl(String sluggedUrl) {
-		setSluggedUrl(sluggedUrl);
+	public ResourceImage localizedUrl(String localizedUrl) {
+		setLocalizedUrl(localizedUrl);
 		return this;
 	}
 	
 
-	public String sluggedUrl() {
-		return getSluggedUrl();
+	public String localizedUrl() {
+		return getLocalizedUrl();
 	}
 	
 
@@ -246,7 +246,7 @@ public class ResourceImage extends ApiResource {
 			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.imageable, x.imageable)
 			&& Objects.equals(this.image, x.image)
-			&& Objects.equals(this.sluggedUrl, x.sluggedUrl)
+			&& Objects.equals(this.localizedUrl, x.localizedUrl)
 		;
 	
 	}
@@ -257,7 +257,7 @@ public class ResourceImage extends ApiResource {
 	
 		return Objects.hash(
 			name, imageableId, imageableResource, imageId, position,
-			previousChanges, imageable, image, sluggedUrl 
+			previousChanges, imageable, image, localizedUrl 
 		);
 	
 	}
@@ -278,7 +278,7 @@ public class ResourceImage extends ApiResource {
 		no.previousChanges = this.previousChanges;
 		no.imageable = this.imageable;
 		no.image = this.image;
-		no.sluggedUrl = this.sluggedUrl;
+		no.localizedUrl = this.localizedUrl;
 	
 		return no;
 	

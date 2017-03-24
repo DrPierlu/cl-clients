@@ -34,6 +34,8 @@ public class PaymentMethodTest extends IntegrationTest<PaymentMethod> {
 		// FIELD NOT FOUND -> res.setBillingAddressId("billingAddressId");
 		// FIELD NOT FOUND -> res.setBillingAddressAttributes("billingAddressAttributes");
 		// FIELD NOT FOUND -> res.setPaymentSourceAttributes("paymentSourceAttributes");
+		// FIELD NOT FOUND -> res.setBillingRecipientId("billingRecipientId");
+		// FIELD NOT FOUND -> res.setBillingRecipientAttributes("billingRecipientAttributes");
 	
 		postOp.setPayload(res);
 	
@@ -49,6 +51,8 @@ public class PaymentMethodTest extends IntegrationTest<PaymentMethod> {
 		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getBillingAddressId());
 		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getBillingAddressAttributes());
 		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getPaymentSourceAttributes());
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getBillingRecipientId());
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getBillingRecipientAttributes());
 	
 	
 		return postRes;
@@ -94,6 +98,8 @@ public class PaymentMethodTest extends IntegrationTest<PaymentMethod> {
 		// FIELD NOT FOUND -> res.setBillingAddressId(randomField(oldRes.getBillingAddressId()));
 		// FIELD NOT FOUND -> res.setBillingAddressAttributes(randomField(oldRes.getBillingAddressAttributes()));
 		// FIELD NOT FOUND -> res.setPaymentSourceAttributes(randomField(oldRes.getPaymentSourceAttributes()));
+		// FIELD NOT FOUND -> res.setBillingRecipientId(randomField(oldRes.getBillingRecipientId()));
+		// FIELD NOT FOUND -> res.setBillingRecipientAttributes(randomField(oldRes.getBillingRecipientAttributes()));
 	
 		putOp.setPayload(res);
 	
@@ -109,6 +115,8 @@ public class PaymentMethodTest extends IntegrationTest<PaymentMethod> {
 		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getBillingAddressId(), putRes.getResource().getBillingAddressId());
 		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getBillingAddressAttributes(), putRes.getResource().getBillingAddressAttributes());
 		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getPaymentSourceAttributes(), putRes.getResource().getPaymentSourceAttributes());
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getBillingRecipientId(), putRes.getResource().getBillingRecipientId());
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getBillingRecipientAttributes(), putRes.getResource().getBillingRecipientAttributes());
 	
 	
 		return putRes;

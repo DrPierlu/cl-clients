@@ -12,6 +12,15 @@ public class PostChannelOrders extends PostOperation<Order> {
 	public static final String OPERATION_PATH = "/channel/orders";
 
 
+	{
+		addRequiredField("customerId");
+		addRequiredField("customerAttributes");
+		addRequiredField("lineItemAttributes");
+		addRequiredField("lineItemAttributes");
+		addRequiredField("lineItemAttributes");
+	}
+
+
 	public PostChannelOrders() {
 		super(OPERATION_PATH);
 	}

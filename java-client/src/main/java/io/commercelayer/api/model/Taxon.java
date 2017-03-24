@@ -23,6 +23,8 @@ public class Taxon extends ApiResource {
 	@JsonExclude
 	private List<String> descendantHierarchies;
 	@JsonExclude
+	private Object featuredImage;
+	@JsonExclude
 	private List<String> images;
 	@JsonExclude
 	private List<String> merchandisingRules;
@@ -438,6 +440,27 @@ public class Taxon extends ApiResource {
 	}
 	
 
+	public void setFeaturedImage(Object featuredImage) {
+		this.featuredImage = featuredImage;
+	}
+	
+
+	public Object getFeaturedImage() {
+		return this.featuredImage;
+	}
+	
+
+	public Taxon featuredImage(Object featuredImage) {
+		setFeaturedImage(featuredImage);
+		return this;
+	}
+	
+
+	public Object featuredImage() {
+		return getFeaturedImage();
+	}
+	
+
 	@Override
 	public boolean equals(Object o) {
 	
@@ -465,6 +488,7 @@ public class Taxon extends ApiResource {
 			&& Objects.equals(this.selfAndAncestors, x.selfAndAncestors)
 			&& Objects.equals(this.descendantHierarchies, x.descendantHierarchies)
 			&& Objects.equals(this.selfAndDescendants, x.selfAndDescendants)
+			&& Objects.equals(this.featuredImage, x.featuredImage)
 		;
 	
 	}
@@ -477,7 +501,7 @@ public class Taxon extends ApiResource {
 			name, slug, taxonomyId, position, parentId,
 			previousChanges, taxonomy, parent, resourceImages, images,
 			translations, merchandisingRules, products, children, ancestorHierarchies,
-			selfAndAncestors, descendantHierarchies, selfAndDescendants 
+			selfAndAncestors, descendantHierarchies, selfAndDescendants, featuredImage 
 		);
 	
 	}
@@ -508,6 +532,7 @@ public class Taxon extends ApiResource {
 		no.selfAndAncestors = this.selfAndAncestors;
 		no.descendantHierarchies = this.descendantHierarchies;
 		no.selfAndDescendants = this.selfAndDescendants;
+		no.featuredImage = this.featuredImage;
 	
 		return no;
 	

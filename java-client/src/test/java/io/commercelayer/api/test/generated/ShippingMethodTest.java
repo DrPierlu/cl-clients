@@ -30,7 +30,9 @@ public class ShippingMethodTest extends IntegrationTest<ShippingMethod> {
 	
 		// FIELD NOT FOUND -> res.setShippingServiceId("shippingServiceId");
 		// FIELD NOT FOUND -> res.setShippingPackageId("shippingPackageId");
+		// FIELD NOT FOUND -> res.setShippingRecipientId("shippingRecipientId");
 		// FIELD NOT FOUND -> res.setShippingAddressId("shippingAddressId");
+		// FIELD NOT FOUND -> res.setShippingRecipientAttributes("shippingRecipientAttributes");
 		// FIELD NOT FOUND -> res.setShippingAddressAttributes("shippingAddressAttributes");
 	
 		postOp.setPayload(res);
@@ -43,7 +45,9 @@ public class ShippingMethodTest extends IntegrationTest<ShippingMethod> {
 	
 		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getShippingServiceId());
 		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getShippingPackageId());
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getShippingRecipientId());
 		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getShippingAddressId());
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getShippingRecipientAttributes());
 		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getShippingAddressAttributes());
 	
 	
@@ -86,7 +90,9 @@ public class ShippingMethodTest extends IntegrationTest<ShippingMethod> {
 	
 		// FIELD NOT FOUND -> res.setShippingServiceId(randomField(oldRes.getShippingServiceId()));
 		// FIELD NOT FOUND -> res.setShippingPackageId(randomField(oldRes.getShippingPackageId()));
+		// FIELD NOT FOUND -> res.setShippingRecipientId(randomField(oldRes.getShippingRecipientId()));
 		// FIELD NOT FOUND -> res.setShippingAddressId(randomField(oldRes.getShippingAddressId()));
+		// FIELD NOT FOUND -> res.setShippingRecipientAttributes(randomField(oldRes.getShippingRecipientAttributes()));
 		// FIELD NOT FOUND -> res.setShippingAddressAttributes(randomField(oldRes.getShippingAddressAttributes()));
 	
 		putOp.setPayload(res);
@@ -99,7 +105,9 @@ public class ShippingMethodTest extends IntegrationTest<ShippingMethod> {
 	
 		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getShippingServiceId(), putRes.getResource().getShippingServiceId());
 		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getShippingPackageId(), putRes.getResource().getShippingPackageId());
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getShippingRecipientId(), putRes.getResource().getShippingRecipientId());
 		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getShippingAddressId(), putRes.getResource().getShippingAddressId());
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getShippingRecipientAttributes(), putRes.getResource().getShippingRecipientAttributes());
 		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getShippingAddressAttributes(), putRes.getResource().getShippingAddressAttributes());
 	
 	

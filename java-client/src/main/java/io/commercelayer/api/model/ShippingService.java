@@ -14,8 +14,9 @@ public class ShippingService extends ApiResource {
 	private static final long serialVersionUID = -1L;
 
 
+	private String kind;
 	private String name;
-	private Integer shippingCarrierId;
+	private Integer shippingCarrierAccountId;
 	@JsonExclude
 	private String description;
 	@JsonExclude
@@ -25,7 +26,7 @@ public class ShippingService extends ApiResource {
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
-	private Object shippingCarrier;
+	private Object shippingCarrierAccount;
 	@JsonExclude
 	private List<String> shippingCategories;
 	@JsonExclude
@@ -117,24 +118,45 @@ public class ShippingService extends ApiResource {
 	}
 	
 
-	public void setShippingCarrierId(Integer shippingCarrierId) {
-		this.shippingCarrierId = shippingCarrierId;
+	public void setShippingCarrierAccountId(Integer shippingCarrierAccountId) {
+		this.shippingCarrierAccountId = shippingCarrierAccountId;
 	}
 	
 
-	public Integer getShippingCarrierId() {
-		return this.shippingCarrierId;
+	public Integer getShippingCarrierAccountId() {
+		return this.shippingCarrierAccountId;
 	}
 	
 
-	public ShippingService shippingCarrierId(Integer shippingCarrierId) {
-		setShippingCarrierId(shippingCarrierId);
+	public ShippingService shippingCarrierAccountId(Integer shippingCarrierAccountId) {
+		setShippingCarrierAccountId(shippingCarrierAccountId);
 		return this;
 	}
 	
 
-	public Integer shippingCarrierId() {
-		return getShippingCarrierId();
+	public Integer shippingCarrierAccountId() {
+		return getShippingCarrierAccountId();
+	}
+	
+
+	public void setKind(String kind) {
+		this.kind = kind;
+	}
+	
+
+	public String getKind() {
+		return this.kind;
+	}
+	
+
+	public ShippingService kind(String kind) {
+		setKind(kind);
+		return this;
+	}
+	
+
+	public String kind() {
+		return getKind();
 	}
 	
 
@@ -159,24 +181,24 @@ public class ShippingService extends ApiResource {
 	}
 	
 
-	public void setShippingCarrier(Object shippingCarrier) {
-		this.shippingCarrier = shippingCarrier;
+	public void setShippingCarrierAccount(Object shippingCarrierAccount) {
+		this.shippingCarrierAccount = shippingCarrierAccount;
 	}
 	
 
-	public Object getShippingCarrier() {
-		return this.shippingCarrier;
+	public Object getShippingCarrierAccount() {
+		return this.shippingCarrierAccount;
 	}
 	
 
-	public ShippingService shippingCarrier(Object shippingCarrier) {
-		setShippingCarrier(shippingCarrier);
+	public ShippingService shippingCarrierAccount(Object shippingCarrierAccount) {
+		setShippingCarrierAccount(shippingCarrierAccount);
 		return this;
 	}
 	
 
-	public Object shippingCarrier() {
-		return getShippingCarrier();
+	public Object shippingCarrierAccount() {
+		return getShippingCarrierAccount();
 	}
 	
 
@@ -381,9 +403,10 @@ public class ShippingService extends ApiResource {
 			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.slug, x.slug)
 			&& Objects.equals(this.description, x.description)
-			&& Objects.equals(this.shippingCarrierId, x.shippingCarrierId)
+			&& Objects.equals(this.shippingCarrierAccountId, x.shippingCarrierAccountId)
+			&& Objects.equals(this.kind, x.kind)
 			&& Objects.equals(this.previousChanges, x.previousChanges)
-			&& Objects.equals(this.shippingCarrier, x.shippingCarrier)
+			&& Objects.equals(this.shippingCarrierAccount, x.shippingCarrierAccount)
 			&& Objects.equals(this.translations, x.translations)
 			&& Objects.equals(this.marketShippingServices, x.marketShippingServices)
 			&& Objects.equals(this.shippingServiceCategories, x.shippingServiceCategories)
@@ -402,10 +425,10 @@ public class ShippingService extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, slug, description, shippingCarrierId, previousChanges,
-			shippingCarrier, translations, marketShippingServices, shippingServiceCategories, shippingServiceZones,
-			shippingServiceStockLocations, markets, shippingCategories, stockLocations, shippingZones
-			
+			name, slug, description, shippingCarrierAccountId, kind,
+			previousChanges, shippingCarrierAccount, translations, marketShippingServices, shippingServiceCategories,
+			shippingServiceZones, shippingServiceStockLocations, markets, shippingCategories, stockLocations,
+			shippingZones 
 		);
 	
 	}
@@ -421,9 +444,10 @@ public class ShippingService extends ApiResource {
 		no.name = this.name;
 		no.slug = this.slug;
 		no.description = this.description;
-		no.shippingCarrierId = this.shippingCarrierId;
+		no.shippingCarrierAccountId = this.shippingCarrierAccountId;
+		no.kind = this.kind;
 		no.previousChanges = this.previousChanges;
-		no.shippingCarrier = this.shippingCarrier;
+		no.shippingCarrierAccount = this.shippingCarrierAccount;
 		no.translations = this.translations;
 		no.marketShippingServices = this.marketShippingServices;
 		no.shippingServiceCategories = this.shippingServiceCategories;

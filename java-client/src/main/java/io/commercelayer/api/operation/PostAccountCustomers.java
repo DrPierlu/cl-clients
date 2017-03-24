@@ -14,6 +14,8 @@ public class PostAccountCustomers extends PostOperation<Customer> {
 
 	{
 		addRequiredField("email");
+		addRequiredField("password");
+		addRequiredField("passwordConfirmation");
 	}
 
 

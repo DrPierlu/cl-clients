@@ -28,6 +28,7 @@ public class StockLocationTest extends IntegrationTest<StockLocation> {
 	
 		StockLocation res = new StockLocation();
 	
+		// FIELD NOT FOUND -> res.setShippingSenderId("shippingSenderId");
 		res.setName("name");
 		// FIELD NOT FOUND -> res.setAddressId("addressId");
 	
@@ -39,6 +40,7 @@ public class StockLocationTest extends IntegrationTest<StockLocation> {
 		ApiResponse<StockLocation> postRes = test(postReq, caller);
 	
 	
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getShippingSenderId());
 		Assert.assertNotNull(postRes.getResource().getName());
 		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getAddressId());
 	
@@ -80,6 +82,7 @@ public class StockLocationTest extends IntegrationTest<StockLocation> {
 	
 		StockLocation res = new StockLocation();
 	
+		// FIELD NOT FOUND -> res.setShippingSenderId(randomField(oldRes.getShippingSenderId()));
 		res.setName(randomField(oldRes.getName()));
 		// FIELD NOT FOUND -> res.setAddressId(randomField(oldRes.getAddressId()));
 	
@@ -91,6 +94,7 @@ public class StockLocationTest extends IntegrationTest<StockLocation> {
 		ApiResponse<StockLocation> putRes = test(putReq, caller);
 	
 	
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getShippingSenderId(), putRes.getResource().getShippingSenderId());
 		Assert.assertNotEquals(oldRes.getName(), putRes.getResource().getName());
 		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getAddressId(), putRes.getResource().getAddressId());
 	

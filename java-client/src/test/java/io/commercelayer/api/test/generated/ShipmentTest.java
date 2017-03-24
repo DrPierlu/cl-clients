@@ -28,7 +28,9 @@ public class ShipmentTest extends IntegrationTest<Shipment> {
 	
 		Shipment res = new Shipment();
 	
-		/* No payload data */
+		// FIELD NOT FOUND -> res.setOrderId("orderId");
+		// FIELD NOT FOUND -> res.setStockLocationId("stockLocationId");
+		// FIELD NOT FOUND -> res.setShippingMethodId("shippingMethodId");
 	
 		postOp.setPayload(res);
 	
@@ -38,7 +40,9 @@ public class ShipmentTest extends IntegrationTest<Shipment> {
 		ApiResponse<Shipment> postRes = test(postReq, caller);
 	
 	
-		/* No test assertions */
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getOrderId());
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getStockLocationId());
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getShippingMethodId());
 	
 	
 		return postRes;
@@ -78,7 +82,9 @@ public class ShipmentTest extends IntegrationTest<Shipment> {
 	
 		Shipment res = new Shipment();
 	
-	
+		// FIELD NOT FOUND -> res.setOrderId(randomField(oldRes.getOrderId()));
+		// FIELD NOT FOUND -> res.setStockLocationId(randomField(oldRes.getStockLocationId()));
+		// FIELD NOT FOUND -> res.setShippingMethodId(randomField(oldRes.getShippingMethodId()));
 	
 		putOp.setPayload(res);
 	
@@ -88,7 +94,9 @@ public class ShipmentTest extends IntegrationTest<Shipment> {
 		ApiResponse<Shipment> putRes = test(putReq, caller);
 	
 	
-	
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getOrderId(), putRes.getResource().getOrderId());
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getStockLocationId(), putRes.getResource().getStockLocationId());
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getShippingMethodId(), putRes.getResource().getShippingMethodId());
 	
 	
 		return putRes;

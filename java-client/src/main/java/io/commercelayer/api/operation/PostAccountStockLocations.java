@@ -14,6 +14,7 @@ public class PostAccountStockLocations extends PostOperation<StockLocation> {
 
 	{
 		addRequiredField("name");
+		addRequiredField("shippingSenderId");
 		addRequiredField("addressId");
 	}
 

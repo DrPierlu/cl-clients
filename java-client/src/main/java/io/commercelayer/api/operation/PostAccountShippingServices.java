@@ -14,7 +14,8 @@ public class PostAccountShippingServices extends PostOperation<ShippingService> 
 
 	{
 		addRequiredField("name");
-		addRequiredField("shippingCarrierId");
+		addRequiredField("kind");
+		addRequiredField("shippingCarrierAccountId");
 	}
 
 

@@ -17,9 +17,14 @@ public class ShippingMethod extends ApiResource {
 	private Integer orderId;
 	private Integer shippingAddressId;
 	private Integer shippingPackageId;
+	private Integer shippingRecipientId;
 	private Integer shippingServiceId;
 	@JsonExclude
 	private String amount;
+	@JsonExclude
+	private String easypostAddressId;
+	@JsonExclude
+	private String easypostParcelId;
 	@JsonExclude
 	private String formattedAmount;
 	@JsonExclude
@@ -56,6 +61,8 @@ public class ShippingMethod extends ApiResource {
 	private Object shippingAddress;
 	@JsonExclude
 	private Object shippingPackage;
+	@JsonExclude
+	private Object shippingRecipient;
 	@JsonExclude
 	private Object shippingService;
 	@JsonExclude
@@ -119,6 +126,27 @@ public class ShippingMethod extends ApiResource {
 
 	public Integer orderId() {
 		return getOrderId();
+	}
+	
+
+	public void setShippingRecipientId(Integer shippingRecipientId) {
+		this.shippingRecipientId = shippingRecipientId;
+	}
+	
+
+	public Integer getShippingRecipientId() {
+		return this.shippingRecipientId;
+	}
+	
+
+	public ShippingMethod shippingRecipientId(Integer shippingRecipientId) {
+		setShippingRecipientId(shippingRecipientId);
+		return this;
+	}
+	
+
+	public Integer shippingRecipientId() {
+		return getShippingRecipientId();
 	}
 	
 
@@ -269,6 +297,48 @@ public class ShippingMethod extends ApiResource {
 	}
 	
 
+	public void setEasypostAddressId(String easypostAddressId) {
+		this.easypostAddressId = easypostAddressId;
+	}
+	
+
+	public String getEasypostAddressId() {
+		return this.easypostAddressId;
+	}
+	
+
+	public ShippingMethod easypostAddressId(String easypostAddressId) {
+		setEasypostAddressId(easypostAddressId);
+		return this;
+	}
+	
+
+	public String easypostAddressId() {
+		return getEasypostAddressId();
+	}
+	
+
+	public void setEasypostParcelId(String easypostParcelId) {
+		this.easypostParcelId = easypostParcelId;
+	}
+	
+
+	public String getEasypostParcelId() {
+		return this.easypostParcelId;
+	}
+	
+
+	public ShippingMethod easypostParcelId(String easypostParcelId) {
+		setEasypostParcelId(easypostParcelId);
+		return this;
+	}
+	
+
+	public String easypostParcelId() {
+		return getEasypostParcelId();
+	}
+	
+
 	public void setPreviousChanges(Object previousChanges) {
 		this.previousChanges = previousChanges;
 	}
@@ -311,24 +381,24 @@ public class ShippingMethod extends ApiResource {
 	}
 	
 
-	public void setShippingPackage(Object shippingPackage) {
-		this.shippingPackage = shippingPackage;
+	public void setShippingRecipient(Object shippingRecipient) {
+		this.shippingRecipient = shippingRecipient;
 	}
 	
 
-	public Object getShippingPackage() {
-		return this.shippingPackage;
+	public Object getShippingRecipient() {
+		return this.shippingRecipient;
 	}
 	
 
-	public ShippingMethod shippingPackage(Object shippingPackage) {
-		setShippingPackage(shippingPackage);
+	public ShippingMethod shippingRecipient(Object shippingRecipient) {
+		setShippingRecipient(shippingRecipient);
 		return this;
 	}
 	
 
-	public Object shippingPackage() {
-		return getShippingPackage();
+	public Object shippingRecipient() {
+		return getShippingRecipient();
 	}
 	
 
@@ -371,6 +441,27 @@ public class ShippingMethod extends ApiResource {
 
 	public Object shippingService() {
 		return getShippingService();
+	}
+	
+
+	public void setShippingPackage(Object shippingPackage) {
+		this.shippingPackage = shippingPackage;
+	}
+	
+
+	public Object getShippingPackage() {
+		return this.shippingPackage;
+	}
+	
+
+	public ShippingMethod shippingPackage(Object shippingPackage) {
+		setShippingPackage(shippingPackage);
+		return this;
+	}
+	
+
+	public Object shippingPackage() {
+		return getShippingPackage();
 	}
 	
 
@@ -700,6 +791,7 @@ public class ShippingMethod extends ApiResource {
 		return super.equals(o)
 			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.orderId, x.orderId)
+			&& Objects.equals(this.shippingRecipientId, x.shippingRecipientId)
 			&& Objects.equals(this.shippingAddressId, x.shippingAddressId)
 			&& Objects.equals(this.shippingServiceId, x.shippingServiceId)
 			&& Objects.equals(this.shippingPackageId, x.shippingPackageId)
@@ -707,11 +799,14 @@ public class ShippingMethod extends ApiResource {
 			&& Objects.equals(this.freeOverAmountCents, x.freeOverAmountCents)
 			&& Objects.equals(this.taxable, x.taxable)
 			&& Objects.equals(this.taxRate, x.taxRate)
+			&& Objects.equals(this.easypostAddressId, x.easypostAddressId)
+			&& Objects.equals(this.easypostParcelId, x.easypostParcelId)
 			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.order, x.order)
-			&& Objects.equals(this.shippingPackage, x.shippingPackage)
+			&& Objects.equals(this.shippingRecipient, x.shippingRecipient)
 			&& Objects.equals(this.shippingAddress, x.shippingAddress)
 			&& Objects.equals(this.shippingService, x.shippingService)
+			&& Objects.equals(this.shippingPackage, x.shippingPackage)
 			&& Objects.equals(this.lineItemStocks, x.lineItemStocks)
 			&& Objects.equals(this.shipments, x.shipments)
 			&& Objects.equals(this.lineItems, x.lineItems)
@@ -736,12 +831,13 @@ public class ShippingMethod extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, orderId, shippingAddressId, shippingServiceId, shippingPackageId,
-			priceCents, freeOverAmountCents, taxable, taxRate, previousChanges,
-			order, shippingPackage, shippingAddress, shippingService, lineItemStocks,
-			shipments, lineItems, amount, formattedAmount, totalLineItemAmount,
-			formattedTotalLineItemAmount, taxableAmount, formattedTaxableAmount, taxAmount, formattedTaxAmount,
-			price, formattedPrice, freeOverAmount, formattedFreeOverAmount 
+			name, orderId, shippingRecipientId, shippingAddressId, shippingServiceId,
+			shippingPackageId, priceCents, freeOverAmountCents, taxable, taxRate,
+			easypostAddressId, easypostParcelId, previousChanges, order, shippingRecipient,
+			shippingAddress, shippingService, shippingPackage, lineItemStocks, shipments,
+			lineItems, amount, formattedAmount, totalLineItemAmount, formattedTotalLineItemAmount,
+			taxableAmount, formattedTaxableAmount, taxAmount, formattedTaxAmount, price,
+			formattedPrice, freeOverAmount, formattedFreeOverAmount 
 		);
 	
 	}
@@ -756,6 +852,7 @@ public class ShippingMethod extends ApiResource {
 	
 		no.name = this.name;
 		no.orderId = this.orderId;
+		no.shippingRecipientId = this.shippingRecipientId;
 		no.shippingAddressId = this.shippingAddressId;
 		no.shippingServiceId = this.shippingServiceId;
 		no.shippingPackageId = this.shippingPackageId;
@@ -763,11 +860,14 @@ public class ShippingMethod extends ApiResource {
 		no.freeOverAmountCents = this.freeOverAmountCents;
 		no.taxable = this.taxable;
 		no.taxRate = this.taxRate;
+		no.easypostAddressId = this.easypostAddressId;
+		no.easypostParcelId = this.easypostParcelId;
 		no.previousChanges = this.previousChanges;
 		no.order = this.order;
-		no.shippingPackage = this.shippingPackage;
+		no.shippingRecipient = this.shippingRecipient;
 		no.shippingAddress = this.shippingAddress;
 		no.shippingService = this.shippingService;
+		no.shippingPackage = this.shippingPackage;
 		no.lineItemStocks = this.lineItemStocks;
 		no.shipments = this.shipments;
 		no.lineItems = this.lineItems;

@@ -2,7 +2,6 @@ package io.commercelayer.api.model;
 
 import io.commercelayer.api.json.JsonExclude;
 import io.commercelayer.api.model.common.ApiResource;
-import java.util.List;
 import java.util.Objects;
 
 
@@ -14,14 +13,11 @@ public class ShippingCarrier extends ApiResource {
 	private static final long serialVersionUID = -1L;
 
 
+	private String kind;
+	@JsonExclude
 	private String name;
-	private Integer shippingCarrierTypeId;
 	@JsonExclude
 	private Object previousChanges;
-	@JsonExclude
-	private Object shippingCarrierType;
-	@JsonExclude
-	private List<String> shippingServices;
 
 
 	public ShippingCarrier() {
@@ -31,27 +27,6 @@ public class ShippingCarrier extends ApiResource {
 
 	public ShippingCarrier(Long id) {
 		super(id);
-	}
-	
-
-	public void setShippingCarrierTypeId(Integer shippingCarrierTypeId) {
-		this.shippingCarrierTypeId = shippingCarrierTypeId;
-	}
-	
-
-	public Integer getShippingCarrierTypeId() {
-		return this.shippingCarrierTypeId;
-	}
-	
-
-	public ShippingCarrier shippingCarrierTypeId(Integer shippingCarrierTypeId) {
-		setShippingCarrierTypeId(shippingCarrierTypeId);
-		return this;
-	}
-	
-
-	public Integer shippingCarrierTypeId() {
-		return getShippingCarrierTypeId();
 	}
 	
 
@@ -76,6 +51,27 @@ public class ShippingCarrier extends ApiResource {
 	}
 	
 
+	public void setKind(String kind) {
+		this.kind = kind;
+	}
+	
+
+	public String getKind() {
+		return this.kind;
+	}
+	
+
+	public ShippingCarrier kind(String kind) {
+		setKind(kind);
+		return this;
+	}
+	
+
+	public String kind() {
+		return getKind();
+	}
+	
+
 	public void setPreviousChanges(Object previousChanges) {
 		this.previousChanges = previousChanges;
 	}
@@ -97,48 +93,6 @@ public class ShippingCarrier extends ApiResource {
 	}
 	
 
-	public void setShippingCarrierType(Object shippingCarrierType) {
-		this.shippingCarrierType = shippingCarrierType;
-	}
-	
-
-	public Object getShippingCarrierType() {
-		return this.shippingCarrierType;
-	}
-	
-
-	public ShippingCarrier shippingCarrierType(Object shippingCarrierType) {
-		setShippingCarrierType(shippingCarrierType);
-		return this;
-	}
-	
-
-	public Object shippingCarrierType() {
-		return getShippingCarrierType();
-	}
-	
-
-	public void setShippingServices(List<String> shippingServices) {
-		this.shippingServices = shippingServices;
-	}
-	
-
-	public List<String> getShippingServices() {
-		return this.shippingServices;
-	}
-	
-
-	public ShippingCarrier shippingServices(List<String> shippingServices) {
-		setShippingServices(shippingServices);
-		return this;
-	}
-	
-
-	public List<String> shippingServices() {
-		return getShippingServices();
-	}
-	
-
 	@Override
 	public boolean equals(Object o) {
 	
@@ -148,11 +102,9 @@ public class ShippingCarrier extends ApiResource {
 		ShippingCarrier x = (ShippingCarrier)o;
 	
 		return super.equals(o)
-			&& Objects.equals(this.shippingCarrierTypeId, x.shippingCarrierTypeId)
 			&& Objects.equals(this.name, x.name)
+			&& Objects.equals(this.kind, x.kind)
 			&& Objects.equals(this.previousChanges, x.previousChanges)
-			&& Objects.equals(this.shippingCarrierType, x.shippingCarrierType)
-			&& Objects.equals(this.shippingServices, x.shippingServices)
 		;
 	
 	}
@@ -162,8 +114,7 @@ public class ShippingCarrier extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			shippingCarrierTypeId, name, previousChanges, shippingCarrierType, shippingServices
-			
+			name, kind, previousChanges 
 		);
 	
 	}
@@ -176,11 +127,9 @@ public class ShippingCarrier extends ApiResource {
 	
 		no = super.clone(no);
 	
-		no.shippingCarrierTypeId = this.shippingCarrierTypeId;
 		no.name = this.name;
+		no.kind = this.kind;
 		no.previousChanges = this.previousChanges;
-		no.shippingCarrierType = this.shippingCarrierType;
-		no.shippingServices = this.shippingServices;
 	
 		return no;
 	

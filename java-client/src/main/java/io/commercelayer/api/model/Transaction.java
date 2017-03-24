@@ -13,6 +13,7 @@ public class Transaction extends ApiResource {
 	private static final long serialVersionUID = -1L;
 
 
+	private String amount;
 	private Integer amountCents;
 	private String avsCode;
 	private String avsMessage;
@@ -22,6 +23,7 @@ public class Transaction extends ApiResource {
 	private String cvvMessage;
 	private String errorCode;
 	private String errorDetail;
+	private String formattedAmount;
 	private Integer gatewayId;
 	private String kind;
 	private String message;
@@ -29,6 +31,7 @@ public class Transaction extends ApiResource {
 	private Integer orderId;
 	private Integer paymentSourceId;
 	private String paymentSourceResource;
+	private Integer referenceTransactionId;
 	private String state;
 	private String token;
 	@JsonExclude
@@ -41,6 +44,8 @@ public class Transaction extends ApiResource {
 	private Object paymentSource;
 	@JsonExclude
 	private Object previousChanges;
+	@JsonExclude
+	private Object referenceTransaction;
 
 
 	public Transaction() {
@@ -176,6 +181,27 @@ public class Transaction extends ApiResource {
 
 	public String paymentSourceResource() {
 		return getPaymentSourceResource();
+	}
+	
+
+	public void setReferenceTransactionId(Integer referenceTransactionId) {
+		this.referenceTransactionId = referenceTransactionId;
+	}
+	
+
+	public Integer getReferenceTransactionId() {
+		return this.referenceTransactionId;
+	}
+	
+
+	public Transaction referenceTransactionId(Integer referenceTransactionId) {
+		setReferenceTransactionId(referenceTransactionId);
+		return this;
+	}
+	
+
+	public Integer referenceTransactionId() {
+		return getReferenceTransactionId();
 	}
 	
 
@@ -536,6 +562,69 @@ public class Transaction extends ApiResource {
 	}
 	
 
+	public void setReferenceTransaction(Object referenceTransaction) {
+		this.referenceTransaction = referenceTransaction;
+	}
+	
+
+	public Object getReferenceTransaction() {
+		return this.referenceTransaction;
+	}
+	
+
+	public Transaction referenceTransaction(Object referenceTransaction) {
+		setReferenceTransaction(referenceTransaction);
+		return this;
+	}
+	
+
+	public Object referenceTransaction() {
+		return getReferenceTransaction();
+	}
+	
+
+	public void setAmount(String amount) {
+		this.amount = amount;
+	}
+	
+
+	public String getAmount() {
+		return this.amount;
+	}
+	
+
+	public Transaction amount(String amount) {
+		setAmount(amount);
+		return this;
+	}
+	
+
+	public String amount() {
+		return getAmount();
+	}
+	
+
+	public void setFormattedAmount(String formattedAmount) {
+		this.formattedAmount = formattedAmount;
+	}
+	
+
+	public String getFormattedAmount() {
+		return this.formattedAmount;
+	}
+	
+
+	public Transaction formattedAmount(String formattedAmount) {
+		setFormattedAmount(formattedAmount);
+		return this;
+	}
+	
+
+	public String formattedAmount() {
+		return getFormattedAmount();
+	}
+	
+
 	@Override
 	public boolean equals(Object o) {
 	
@@ -551,6 +640,7 @@ public class Transaction extends ApiResource {
 			&& Objects.equals(this.currencyId, x.currencyId)
 			&& Objects.equals(this.paymentSourceId, x.paymentSourceId)
 			&& Objects.equals(this.paymentSourceResource, x.paymentSourceResource)
+			&& Objects.equals(this.referenceTransactionId, x.referenceTransactionId)
 			&& Objects.equals(this.token, x.token)
 			&& Objects.equals(this.kind, x.kind)
 			&& Objects.equals(this.amountCents, x.amountCents)
@@ -568,6 +658,9 @@ public class Transaction extends ApiResource {
 			&& Objects.equals(this.gateway, x.gateway)
 			&& Objects.equals(this.currency, x.currency)
 			&& Objects.equals(this.paymentSource, x.paymentSource)
+			&& Objects.equals(this.referenceTransaction, x.referenceTransaction)
+			&& Objects.equals(this.amount, x.amount)
+			&& Objects.equals(this.formattedAmount, x.formattedAmount)
 		;
 	
 	}
@@ -578,10 +671,11 @@ public class Transaction extends ApiResource {
 	
 		return Objects.hash(
 			name, orderId, gatewayId, currencyId, paymentSourceId,
-			paymentSourceResource, token, kind, amountCents, state,
-			message, checkoutUrl, avsCode, avsMessage, cvvCode,
-			cvvMessage, errorCode, errorDetail, previousChanges, order,
-			gateway, currency, paymentSource 
+			paymentSourceResource, referenceTransactionId, token, kind, amountCents,
+			state, message, checkoutUrl, avsCode, avsMessage,
+			cvvCode, cvvMessage, errorCode, errorDetail, previousChanges,
+			order, gateway, currency, paymentSource, referenceTransaction,
+			amount, formattedAmount 
 		);
 	
 	}
@@ -600,6 +694,7 @@ public class Transaction extends ApiResource {
 		no.currencyId = this.currencyId;
 		no.paymentSourceId = this.paymentSourceId;
 		no.paymentSourceResource = this.paymentSourceResource;
+		no.referenceTransactionId = this.referenceTransactionId;
 		no.token = this.token;
 		no.kind = this.kind;
 		no.amountCents = this.amountCents;
@@ -617,6 +712,9 @@ public class Transaction extends ApiResource {
 		no.gateway = this.gateway;
 		no.currency = this.currency;
 		no.paymentSource = this.paymentSource;
+		no.referenceTransaction = this.referenceTransaction;
+		no.amount = this.amount;
+		no.formattedAmount = this.formattedAmount;
 	
 		return no;
 	

@@ -16,6 +16,7 @@ public class PutAccountPaymentMethodsId extends PutOperation<PaymentMethod> {
 		addRequiredField("orderId");
 		addRequiredField("paymentSourceResource");
 		addRequiredField("paymentSourceId");
+		addRequiredField("billingRecipientId");
 		addRequiredField("billingAddressId");
 		addRequiredField("amount");
 	}

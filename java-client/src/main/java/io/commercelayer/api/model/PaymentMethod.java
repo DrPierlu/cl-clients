@@ -14,6 +14,7 @@ public class PaymentMethod extends ApiResource {
 
 
 	private Integer billingAddressId;
+	private Integer billingRecipientId;
 	private Integer orderId;
 	private Integer paymentSourceId;
 	private String paymentSourceResource;
@@ -23,6 +24,8 @@ public class PaymentMethod extends ApiResource {
 	private Integer amountCents;
 	@JsonExclude
 	private Object billingAddress;
+	@JsonExclude
+	private Object billingRecipient;
 	@JsonExclude
 	private String formattedAmount;
 	@JsonExclude
@@ -196,6 +199,27 @@ public class PaymentMethod extends ApiResource {
 
 	public Integer gatewayId() {
 		return getGatewayId();
+	}
+	
+
+	public void setBillingRecipientId(Integer billingRecipientId) {
+		this.billingRecipientId = billingRecipientId;
+	}
+	
+
+	public Integer getBillingRecipientId() {
+		return this.billingRecipientId;
+	}
+	
+
+	public PaymentMethod billingRecipientId(Integer billingRecipientId) {
+		setBillingRecipientId(billingRecipientId);
+		return this;
+	}
+	
+
+	public Integer billingRecipientId() {
+		return getBillingRecipientId();
 	}
 	
 
@@ -430,6 +454,27 @@ public class PaymentMethod extends ApiResource {
 	}
 	
 
+	public void setBillingRecipient(Object billingRecipient) {
+		this.billingRecipient = billingRecipient;
+	}
+	
+
+	public Object getBillingRecipient() {
+		return this.billingRecipient;
+	}
+	
+
+	public PaymentMethod billingRecipient(Object billingRecipient) {
+		setBillingRecipient(billingRecipient);
+		return this;
+	}
+	
+
+	public Object billingRecipient() {
+		return getBillingRecipient();
+	}
+	
+
 	public void setBillingAddress(Object billingAddress) {
 		this.billingAddress = billingAddress;
 	}
@@ -634,6 +679,7 @@ public class PaymentMethod extends ApiResource {
 			&& Objects.equals(this.paymentSourceId, x.paymentSourceId)
 			&& Objects.equals(this.paymentSourceResource, x.paymentSourceResource)
 			&& Objects.equals(this.gatewayId, x.gatewayId)
+			&& Objects.equals(this.billingRecipientId, x.billingRecipientId)
 			&& Objects.equals(this.billingAddressId, x.billingAddressId)
 			&& Objects.equals(this.priceCents, x.priceCents)
 			&& Objects.equals(this.amountCents, x.amountCents)
@@ -645,6 +691,7 @@ public class PaymentMethod extends ApiResource {
 			&& Objects.equals(this.paymentType, x.paymentType)
 			&& Objects.equals(this.paymentSource, x.paymentSource)
 			&& Objects.equals(this.gateway, x.gateway)
+			&& Objects.equals(this.billingRecipient, x.billingRecipient)
 			&& Objects.equals(this.billingAddress, x.billingAddress)
 			&& Objects.equals(this.taxableAmount, x.taxableAmount)
 			&& Objects.equals(this.formattedTaxableAmount, x.formattedTaxableAmount)
@@ -664,11 +711,11 @@ public class PaymentMethod extends ApiResource {
 	
 		return Objects.hash(
 			name, orderId, paymentTypeId, paymentSourceId, paymentSourceResource,
-			gatewayId, billingAddressId, priceCents, amountCents, redirectUrl,
-			taxable, taxRate, previousChanges, order, paymentType,
-			paymentSource, gateway, billingAddress, taxableAmount, formattedTaxableAmount,
-			taxAmount, formattedTaxAmount, price, formattedPrice, amount,
-			formattedAmount 
+			gatewayId, billingRecipientId, billingAddressId, priceCents, amountCents,
+			redirectUrl, taxable, taxRate, previousChanges, order,
+			paymentType, paymentSource, gateway, billingRecipient, billingAddress,
+			taxableAmount, formattedTaxableAmount, taxAmount, formattedTaxAmount, price,
+			formattedPrice, amount, formattedAmount 
 		);
 	
 	}
@@ -687,6 +734,7 @@ public class PaymentMethod extends ApiResource {
 		no.paymentSourceId = this.paymentSourceId;
 		no.paymentSourceResource = this.paymentSourceResource;
 		no.gatewayId = this.gatewayId;
+		no.billingRecipientId = this.billingRecipientId;
 		no.billingAddressId = this.billingAddressId;
 		no.priceCents = this.priceCents;
 		no.amountCents = this.amountCents;
@@ -698,6 +746,7 @@ public class PaymentMethod extends ApiResource {
 		no.paymentType = this.paymentType;
 		no.paymentSource = this.paymentSource;
 		no.gateway = this.gateway;
+		no.billingRecipient = this.billingRecipient;
 		no.billingAddress = this.billingAddress;
 		no.taxableAmount = this.taxableAmount;
 		no.formattedTaxableAmount = this.formattedTaxableAmount;

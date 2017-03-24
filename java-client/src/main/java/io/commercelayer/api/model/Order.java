@@ -21,9 +21,9 @@ public class Order extends ApiResource {
 	@JsonExclude
 	private LocalDateTime approvedAt;
 	@JsonExclude
-	private String availablePaymentTypeIds;
+	private Object availablePaymentTypes;
 	@JsonExclude
-	private String availableShippingServiceIds;
+	private Object availableShippingServices;
 	@JsonExclude
 	private LocalDateTime canceledAt;
 	@JsonExclude
@@ -109,6 +109,8 @@ public class Order extends ApiResource {
 	@JsonExclude
 	private List<String> stockItems;
 	@JsonExclude
+	private String taxCalculated;
+	@JsonExclude
 	private Boolean taxIncluded;
 	@JsonExclude
 	private String token;
@@ -126,6 +128,8 @@ public class Order extends ApiResource {
 	private String totalLineItemTaxAmount;
 	@JsonExclude
 	private String totalLineItemTaxableAmount;
+	@JsonExclude
+	private String totalLineItemsCount;
 	@JsonExclude
 	private String totalPaymentMethodAmount;
 	@JsonExclude
@@ -473,27 +477,6 @@ public class Order extends ApiResource {
 	}
 	
 
-	public void setCustomer(Object customer) {
-		this.customer = customer;
-	}
-	
-
-	public Object getCustomer() {
-		return this.customer;
-	}
-	
-
-	public Order customer(Object customer) {
-		setCustomer(customer);
-		return this;
-	}
-	
-
-	public Object customer() {
-		return getCustomer();
-	}
-	
-
 	public void setChannel(Object channel) {
 		this.channel = channel;
 	}
@@ -512,6 +495,27 @@ public class Order extends ApiResource {
 
 	public Object channel() {
 		return getChannel();
+	}
+	
+
+	public void setCustomer(Object customer) {
+		this.customer = customer;
+	}
+	
+
+	public Object getCustomer() {
+		return this.customer;
+	}
+	
+
+	public Order customer(Object customer) {
+		setCustomer(customer);
+		return this;
+	}
+	
+
+	public Object customer() {
+		return getCustomer();
 	}
 	
 
@@ -1502,45 +1506,87 @@ public class Order extends ApiResource {
 	}
 	
 
-	public void setAvailableShippingServiceIds(String availableShippingServiceIds) {
-		this.availableShippingServiceIds = availableShippingServiceIds;
+	public void setTotalLineItemsCount(String totalLineItemsCount) {
+		this.totalLineItemsCount = totalLineItemsCount;
 	}
 	
 
-	public String getAvailableShippingServiceIds() {
-		return this.availableShippingServiceIds;
+	public String getTotalLineItemsCount() {
+		return this.totalLineItemsCount;
 	}
 	
 
-	public Order availableShippingServiceIds(String availableShippingServiceIds) {
-		setAvailableShippingServiceIds(availableShippingServiceIds);
+	public Order totalLineItemsCount(String totalLineItemsCount) {
+		setTotalLineItemsCount(totalLineItemsCount);
 		return this;
 	}
 	
 
-	public String availableShippingServiceIds() {
-		return getAvailableShippingServiceIds();
+	public String totalLineItemsCount() {
+		return getTotalLineItemsCount();
 	}
 	
 
-	public void setAvailablePaymentTypeIds(String availablePaymentTypeIds) {
-		this.availablePaymentTypeIds = availablePaymentTypeIds;
+	public void setTaxCalculated(String taxCalculated) {
+		this.taxCalculated = taxCalculated;
 	}
 	
 
-	public String getAvailablePaymentTypeIds() {
-		return this.availablePaymentTypeIds;
+	public String getTaxCalculated() {
+		return this.taxCalculated;
 	}
 	
 
-	public Order availablePaymentTypeIds(String availablePaymentTypeIds) {
-		setAvailablePaymentTypeIds(availablePaymentTypeIds);
+	public Order taxCalculated(String taxCalculated) {
+		setTaxCalculated(taxCalculated);
 		return this;
 	}
 	
 
-	public String availablePaymentTypeIds() {
-		return getAvailablePaymentTypeIds();
+	public String taxCalculated() {
+		return getTaxCalculated();
+	}
+	
+
+	public void setAvailableShippingServices(Object availableShippingServices) {
+		this.availableShippingServices = availableShippingServices;
+	}
+	
+
+	public Object getAvailableShippingServices() {
+		return this.availableShippingServices;
+	}
+	
+
+	public Order availableShippingServices(Object availableShippingServices) {
+		setAvailableShippingServices(availableShippingServices);
+		return this;
+	}
+	
+
+	public Object availableShippingServices() {
+		return getAvailableShippingServices();
+	}
+	
+
+	public void setAvailablePaymentTypes(Object availablePaymentTypes) {
+		this.availablePaymentTypes = availablePaymentTypes;
+	}
+	
+
+	public Object getAvailablePaymentTypes() {
+		return this.availablePaymentTypes;
+	}
+	
+
+	public Order availablePaymentTypes(Object availablePaymentTypes) {
+		setAvailablePaymentTypes(availablePaymentTypes);
+		return this;
+	}
+	
+
+	public Object availablePaymentTypes() {
+		return getAvailablePaymentTypes();
 	}
 	
 
@@ -1589,8 +1635,8 @@ public class Order extends ApiResource {
 			&& Objects.equals(this.canceledAt, x.canceledAt)
 			&& Objects.equals(this.fulfilledAt, x.fulfilledAt)
 			&& Objects.equals(this.previousChanges, x.previousChanges)
-			&& Objects.equals(this.customer, x.customer)
 			&& Objects.equals(this.channel, x.channel)
+			&& Objects.equals(this.customer, x.customer)
 			&& Objects.equals(this.country, x.country)
 			&& Objects.equals(this.market, x.market)
 			&& Objects.equals(this.merchant, x.merchant)
@@ -1638,8 +1684,10 @@ public class Order extends ApiResource {
 			&& Objects.equals(this.formattedTotalShippingMethodTaxAmount, x.formattedTotalShippingMethodTaxAmount)
 			&& Objects.equals(this.totalPaymentMethodTaxAmount, x.totalPaymentMethodTaxAmount)
 			&& Objects.equals(this.formattedTotalPaymentMethodTaxAmount, x.formattedTotalPaymentMethodTaxAmount)
-			&& Objects.equals(this.availableShippingServiceIds, x.availableShippingServiceIds)
-			&& Objects.equals(this.availablePaymentTypeIds, x.availablePaymentTypeIds)
+			&& Objects.equals(this.totalLineItemsCount, x.totalLineItemsCount)
+			&& Objects.equals(this.taxCalculated, x.taxCalculated)
+			&& Objects.equals(this.availableShippingServices, x.availableShippingServices)
+			&& Objects.equals(this.availablePaymentTypes, x.availablePaymentTypes)
 			&& Objects.equals(this.pendingTransactions, x.pendingTransactions)
 		;
 	
@@ -1653,7 +1701,7 @@ public class Order extends ApiResource {
 			name, customerId, merchantId, channelId, countryId,
 			marketId, currencyId, token, taxIncluded, state,
 			placedAt, approvedAt, canceledAt, fulfilledAt, previousChanges,
-			customer, channel, country, market, merchant,
+			channel, customer, country, market, merchant,
 			currency, lineItems, lineItemStocks, paymentMethods, shippingMethods,
 			shipments, transactions, marketPaymentTypes, paymentTypes, marketShippingServices,
 			shippingServices, stockItems, totalAmountWithTax, formattedTotalAmountWithTax, totalAmount,
@@ -1662,8 +1710,8 @@ public class Order extends ApiResource {
 			formattedTotalPaymentMethodAmount, totalAmountWithMissingPaymentMethod, formattedTotalAmountWithMissingPaymentMethod, totalTaxableAmount, formattedTotalTaxableAmount,
 			totalLineItemTaxableAmount, formattedTotalLineItemTaxableAmount, totalShippingMethodTaxableAmount, formattedTotalShippingMethodTaxableAmount, totalPaymentMethodTaxableAmount,
 			formattedTotalPaymentMethodTaxableAmount, totalTaxAmount, formattedTotalTaxAmount, totalLineItemTaxAmount, formattedTotalLineItemTaxAmount,
-			totalShippingMethodTaxAmount, formattedTotalShippingMethodTaxAmount, totalPaymentMethodTaxAmount, formattedTotalPaymentMethodTaxAmount, availableShippingServiceIds,
-			availablePaymentTypeIds, pendingTransactions 
+			totalShippingMethodTaxAmount, formattedTotalShippingMethodTaxAmount, totalPaymentMethodTaxAmount, formattedTotalPaymentMethodTaxAmount, totalLineItemsCount,
+			taxCalculated, availableShippingServices, availablePaymentTypes, pendingTransactions 
 		);
 	
 	}
@@ -1691,8 +1739,8 @@ public class Order extends ApiResource {
 		no.canceledAt = this.canceledAt;
 		no.fulfilledAt = this.fulfilledAt;
 		no.previousChanges = this.previousChanges;
-		no.customer = this.customer;
 		no.channel = this.channel;
+		no.customer = this.customer;
 		no.country = this.country;
 		no.market = this.market;
 		no.merchant = this.merchant;
@@ -1740,8 +1788,10 @@ public class Order extends ApiResource {
 		no.formattedTotalShippingMethodTaxAmount = this.formattedTotalShippingMethodTaxAmount;
 		no.totalPaymentMethodTaxAmount = this.totalPaymentMethodTaxAmount;
 		no.formattedTotalPaymentMethodTaxAmount = this.formattedTotalPaymentMethodTaxAmount;
-		no.availableShippingServiceIds = this.availableShippingServiceIds;
-		no.availablePaymentTypeIds = this.availablePaymentTypeIds;
+		no.totalLineItemsCount = this.totalLineItemsCount;
+		no.taxCalculated = this.taxCalculated;
+		no.availableShippingServices = this.availableShippingServices;
+		no.availablePaymentTypes = this.availablePaymentTypes;
 		no.pendingTransactions = this.pendingTransactions;
 	
 		return no;

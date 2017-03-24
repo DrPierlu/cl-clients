@@ -24,6 +24,8 @@ public class Product extends ApiResource {
 	@JsonExclude
 	private LocalDateTime discontinuedAt;
 	@JsonExclude
+	private Object featuredImage;
+	@JsonExclude
 	private String hasVariants;
 	@JsonExclude
 	private List<String> images;
@@ -602,6 +604,27 @@ public class Product extends ApiResource {
 	}
 	
 
+	public void setFeaturedImage(Object featuredImage) {
+		this.featuredImage = featuredImage;
+	}
+	
+
+	public Object getFeaturedImage() {
+		return this.featuredImage;
+	}
+	
+
+	public Product featuredImage(Object featuredImage) {
+		setFeaturedImage(featuredImage);
+		return this;
+	}
+	
+
+	public Object featuredImage() {
+		return getFeaturedImage();
+	}
+	
+
 	public void setHasVariants(String hasVariants) {
 		this.hasVariants = hasVariants;
 	}
@@ -657,6 +680,7 @@ public class Product extends ApiResource {
 			&& Objects.equals(this.variants, x.variants)
 			&& Objects.equals(this.merchandisingRules, x.merchandisingRules)
 			&& Objects.equals(this.productProperties, x.productProperties)
+			&& Objects.equals(this.featuredImage, x.featuredImage)
 			&& Objects.equals(this.hasVariants, x.hasVariants)
 		;
 	
@@ -672,7 +696,7 @@ public class Product extends ApiResource {
 			discontinuedAt, previousChanges, shippingCategory, productType, prices,
 			lineItems, lineItemStocks, stockItems, shippingServiceStockLocations, resourceImages,
 			images, translations, variants, merchandisingRules, productProperties,
-			hasVariants 
+			featuredImage, hasVariants 
 		);
 	
 	}
@@ -710,6 +734,7 @@ public class Product extends ApiResource {
 		no.variants = this.variants;
 		no.merchandisingRules = this.merchandisingRules;
 		no.productProperties = this.productProperties;
+		no.featuredImage = this.featuredImage;
 		no.hasVariants = this.hasVariants;
 	
 		return no;

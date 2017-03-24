@@ -16,6 +16,8 @@ public class Taxonomy extends ApiResource {
 
 	private String name;
 	@JsonExclude
+	private Object featuredImage;
+	@JsonExclude
 	private List<String> images;
 	@JsonExclude
 	private Object previousChanges;
@@ -209,6 +211,27 @@ public class Taxonomy extends ApiResource {
 	}
 	
 
+	public void setFeaturedImage(Object featuredImage) {
+		this.featuredImage = featuredImage;
+	}
+	
+
+	public Object getFeaturedImage() {
+		return this.featuredImage;
+	}
+	
+
+	public Taxonomy featuredImage(Object featuredImage) {
+		setFeaturedImage(featuredImage);
+		return this;
+	}
+	
+
+	public Object featuredImage() {
+		return getFeaturedImage();
+	}
+	
+
 	@Override
 	public boolean equals(Object o) {
 	
@@ -226,6 +249,7 @@ public class Taxonomy extends ApiResource {
 			&& Objects.equals(this.translations, x.translations)
 			&& Objects.equals(this.taxons, x.taxons)
 			&& Objects.equals(this.products, x.products)
+			&& Objects.equals(this.featuredImage, x.featuredImage)
 		;
 	
 	}
@@ -236,7 +260,7 @@ public class Taxonomy extends ApiResource {
 	
 		return Objects.hash(
 			name, slug, previousChanges, resourceImages, images,
-			translations, taxons, products 
+			translations, taxons, products, featuredImage 
 		);
 	
 	}
@@ -257,6 +281,7 @@ public class Taxonomy extends ApiResource {
 		no.translations = this.translations;
 		no.taxons = this.taxons;
 		no.products = this.products;
+		no.featuredImage = this.featuredImage;
 	
 		return no;
 	

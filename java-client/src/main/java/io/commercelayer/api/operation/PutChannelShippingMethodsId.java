@@ -17,6 +17,8 @@ public class PutChannelShippingMethodsId extends PutOperation<ShippingMethod> {
 		addRequiredField("shippingPackageId");
 		addRequiredField("shippingAddressId");
 		addRequiredField("shippingAddressAttributes");
+		addRequiredField("shippingRecipientId");
+		addRequiredField("shippingRecipientAttributes");
 	}
 
 

@@ -16,9 +16,19 @@ public class Customer extends ApiResource {
 
 	private String email;
 	@JsonExclude
+	private Object featuredImage;
+	@JsonExclude
+	private String hasPassword;
+	@JsonExclude
 	private List<String> images;
 	@JsonExclude
 	private String name;
+	@JsonExclude
+	private List<String> orders;
+	@JsonExclude
+	private String passwordHash;
+	@JsonExclude
+	private String passwordSalt;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
@@ -74,6 +84,48 @@ public class Customer extends ApiResource {
 
 	public String email() {
 		return getEmail();
+	}
+	
+
+	public void setPasswordHash(String passwordHash) {
+		this.passwordHash = passwordHash;
+	}
+	
+
+	public String getPasswordHash() {
+		return this.passwordHash;
+	}
+	
+
+	public Customer passwordHash(String passwordHash) {
+		setPasswordHash(passwordHash);
+		return this;
+	}
+	
+
+	public String passwordHash() {
+		return getPasswordHash();
+	}
+	
+
+	public void setPasswordSalt(String passwordSalt) {
+		this.passwordSalt = passwordSalt;
+	}
+	
+
+	public String getPasswordSalt() {
+		return this.passwordSalt;
+	}
+	
+
+	public Customer passwordSalt(String passwordSalt) {
+		setPasswordSalt(passwordSalt);
+		return this;
+	}
+	
+
+	public String passwordSalt() {
+		return getPasswordSalt();
 	}
 	
 
@@ -140,6 +192,69 @@ public class Customer extends ApiResource {
 	}
 	
 
+	public void setOrders(List<String> orders) {
+		this.orders = orders;
+	}
+	
+
+	public List<String> getOrders() {
+		return this.orders;
+	}
+	
+
+	public Customer orders(List<String> orders) {
+		setOrders(orders);
+		return this;
+	}
+	
+
+	public List<String> orders() {
+		return getOrders();
+	}
+	
+
+	public void setFeaturedImage(Object featuredImage) {
+		this.featuredImage = featuredImage;
+	}
+	
+
+	public Object getFeaturedImage() {
+		return this.featuredImage;
+	}
+	
+
+	public Customer featuredImage(Object featuredImage) {
+		setFeaturedImage(featuredImage);
+		return this;
+	}
+	
+
+	public Object featuredImage() {
+		return getFeaturedImage();
+	}
+	
+
+	public void setHasPassword(String hasPassword) {
+		this.hasPassword = hasPassword;
+	}
+	
+
+	public String getHasPassword() {
+		return this.hasPassword;
+	}
+	
+
+	public Customer hasPassword(String hasPassword) {
+		setHasPassword(hasPassword);
+		return this;
+	}
+	
+
+	public String hasPassword() {
+		return getHasPassword();
+	}
+	
+
 	@Override
 	public boolean equals(Object o) {
 	
@@ -151,9 +266,14 @@ public class Customer extends ApiResource {
 		return super.equals(o)
 			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.email, x.email)
+			&& Objects.equals(this.passwordHash, x.passwordHash)
+			&& Objects.equals(this.passwordSalt, x.passwordSalt)
 			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.resourceImages, x.resourceImages)
 			&& Objects.equals(this.images, x.images)
+			&& Objects.equals(this.orders, x.orders)
+			&& Objects.equals(this.featuredImage, x.featuredImage)
+			&& Objects.equals(this.hasPassword, x.hasPassword)
 		;
 	
 	}
@@ -163,7 +283,8 @@ public class Customer extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, email, previousChanges, resourceImages, images
+			name, email, passwordHash, passwordSalt, previousChanges,
+			resourceImages, images, orders, featuredImage, hasPassword
 			
 		);
 	
@@ -179,9 +300,14 @@ public class Customer extends ApiResource {
 	
 		no.name = this.name;
 		no.email = this.email;
+		no.passwordHash = this.passwordHash;
+		no.passwordSalt = this.passwordSalt;
 		no.previousChanges = this.previousChanges;
 		no.resourceImages = this.resourceImages;
 		no.images = this.images;
+		no.orders = this.orders;
+		no.featuredImage = this.featuredImage;
+		no.hasPassword = this.hasPassword;
 	
 		return no;
 	

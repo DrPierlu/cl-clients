@@ -18,7 +18,15 @@ public class ShippingPackage extends ApiResource {
 	@JsonExclude
 	private String description;
 	@JsonExclude
+	private Object featuredImage;
+	@JsonExclude
+	private Float height;
+	@JsonExclude
 	private List<String> images;
+	@JsonExclude
+	private String kind;
+	@JsonExclude
+	private Float length;
 	@JsonExclude
 	private Object previousChanges;
 	@JsonExclude
@@ -27,6 +35,8 @@ public class ShippingPackage extends ApiResource {
 	private String slug;
 	@JsonExclude
 	private List<String> translations;
+	@JsonExclude
+	private Float width;
 
 
 	public ShippingPackage() {
@@ -99,6 +109,90 @@ public class ShippingPackage extends ApiResource {
 
 	public String description() {
 		return getDescription();
+	}
+	
+
+	public void setLength(Float length) {
+		this.length = length;
+	}
+	
+
+	public Float getLength() {
+		return this.length;
+	}
+	
+
+	public ShippingPackage length(Float length) {
+		setLength(length);
+		return this;
+	}
+	
+
+	public Float length() {
+		return getLength();
+	}
+	
+
+	public void setWidth(Float width) {
+		this.width = width;
+	}
+	
+
+	public Float getWidth() {
+		return this.width;
+	}
+	
+
+	public ShippingPackage width(Float width) {
+		setWidth(width);
+		return this;
+	}
+	
+
+	public Float width() {
+		return getWidth();
+	}
+	
+
+	public void setHeight(Float height) {
+		this.height = height;
+	}
+	
+
+	public Float getHeight() {
+		return this.height;
+	}
+	
+
+	public ShippingPackage height(Float height) {
+		setHeight(height);
+		return this;
+	}
+	
+
+	public Float height() {
+		return getHeight();
+	}
+	
+
+	public void setKind(String kind) {
+		this.kind = kind;
+	}
+	
+
+	public String getKind() {
+		return this.kind;
+	}
+	
+
+	public ShippingPackage kind(String kind) {
+		setKind(kind);
+		return this;
+	}
+	
+
+	public String kind() {
+		return getKind();
 	}
 	
 
@@ -186,6 +280,27 @@ public class ShippingPackage extends ApiResource {
 	}
 	
 
+	public void setFeaturedImage(Object featuredImage) {
+		this.featuredImage = featuredImage;
+	}
+	
+
+	public Object getFeaturedImage() {
+		return this.featuredImage;
+	}
+	
+
+	public ShippingPackage featuredImage(Object featuredImage) {
+		setFeaturedImage(featuredImage);
+		return this;
+	}
+	
+
+	public Object featuredImage() {
+		return getFeaturedImage();
+	}
+	
+
 	@Override
 	public boolean equals(Object o) {
 	
@@ -198,10 +313,15 @@ public class ShippingPackage extends ApiResource {
 			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.slug, x.slug)
 			&& Objects.equals(this.description, x.description)
+			&& Objects.equals(this.length, x.length)
+			&& Objects.equals(this.width, x.width)
+			&& Objects.equals(this.height, x.height)
+			&& Objects.equals(this.kind, x.kind)
 			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.resourceImages, x.resourceImages)
 			&& Objects.equals(this.images, x.images)
 			&& Objects.equals(this.translations, x.translations)
+			&& Objects.equals(this.featuredImage, x.featuredImage)
 		;
 	
 	}
@@ -211,8 +331,9 @@ public class ShippingPackage extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, slug, description, previousChanges, resourceImages,
-			images, translations 
+			name, slug, description, length, width,
+			height, kind, previousChanges, resourceImages, images,
+			translations, featuredImage 
 		);
 	
 	}
@@ -228,10 +349,15 @@ public class ShippingPackage extends ApiResource {
 		no.name = this.name;
 		no.slug = this.slug;
 		no.description = this.description;
+		no.length = this.length;
+		no.width = this.width;
+		no.height = this.height;
+		no.kind = this.kind;
 		no.previousChanges = this.previousChanges;
 		no.resourceImages = this.resourceImages;
 		no.images = this.images;
 		no.translations = this.translations;
+		no.featuredImage = this.featuredImage;
 	
 		return no;
 	

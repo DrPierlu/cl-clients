@@ -20,6 +20,8 @@ public class User extends ApiResource {
 	@JsonExclude
 	private List<String> consumerRoles;
 	@JsonExclude
+	private Object featuredImage;
+	@JsonExclude
 	private List<String> images;
 	@JsonExclude
 	private String name;
@@ -299,6 +301,27 @@ public class User extends ApiResource {
 	}
 	
 
+	public void setFeaturedImage(Object featuredImage) {
+		this.featuredImage = featuredImage;
+	}
+	
+
+	public Object getFeaturedImage() {
+		return this.featuredImage;
+	}
+	
+
+	public User featuredImage(Object featuredImage) {
+		setFeaturedImage(featuredImage);
+		return this;
+	}
+	
+
+	public Object featuredImage() {
+		return getFeaturedImage();
+	}
+	
+
 	@Override
 	public boolean equals(Object o) {
 	
@@ -320,6 +343,7 @@ public class User extends ApiResource {
 			&& Objects.equals(this.permissions, x.permissions)
 			&& Objects.equals(this.resourceImages, x.resourceImages)
 			&& Objects.equals(this.images, x.images)
+			&& Objects.equals(this.featuredImage, x.featuredImage)
 		;
 	
 	}
@@ -331,7 +355,7 @@ public class User extends ApiResource {
 		return Objects.hash(
 			name, firstName, lastName, email, passwordHash,
 			passwordSalt, previousChanges, consumerRoles, roles, permissions,
-			resourceImages, images 
+			resourceImages, images, featuredImage 
 		);
 	
 	}
@@ -356,6 +380,7 @@ public class User extends ApiResource {
 		no.permissions = this.permissions;
 		no.resourceImages = this.resourceImages;
 		no.images = this.images;
+		no.featuredImage = this.featuredImage;
 	
 		return no;
 	

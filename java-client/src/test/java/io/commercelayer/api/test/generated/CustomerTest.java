@@ -28,6 +28,8 @@ public class CustomerTest extends IntegrationTest<Customer> {
 	
 		Customer res = new Customer();
 	
+		// FIELD NOT FOUND -> res.setPasswordConfirmation("passwordConfirmation");
+		// FIELD NOT FOUND -> res.setPassword("password");
 		res.setEmail("email");
 	
 		postOp.setPayload(res);
@@ -38,6 +40,8 @@ public class CustomerTest extends IntegrationTest<Customer> {
 		ApiResponse<Customer> postRes = test(postReq, caller);
 	
 	
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getPasswordConfirmation());
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getPassword());
 		Assert.assertNotNull(postRes.getResource().getEmail());
 	
 	
@@ -78,6 +82,8 @@ public class CustomerTest extends IntegrationTest<Customer> {
 	
 		Customer res = new Customer();
 	
+		// FIELD NOT FOUND -> res.setPasswordConfirmation(randomField(oldRes.getPasswordConfirmation()));
+		// FIELD NOT FOUND -> res.setPassword(randomField(oldRes.getPassword()));
 		res.setEmail(randomField(oldRes.getEmail()));
 	
 		putOp.setPayload(res);
@@ -88,6 +94,8 @@ public class CustomerTest extends IntegrationTest<Customer> {
 		ApiResponse<Customer> putRes = test(putReq, caller);
 	
 	
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getPasswordConfirmation(), putRes.getResource().getPasswordConfirmation());
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getPassword(), putRes.getResource().getPassword());
 		Assert.assertNotEquals(oldRes.getEmail(), putRes.getResource().getEmail());
 	
 	

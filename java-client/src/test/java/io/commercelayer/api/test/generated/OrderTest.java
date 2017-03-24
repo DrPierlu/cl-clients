@@ -5,9 +5,9 @@ import io.commercelayer.api.ApiRequest;
 import io.commercelayer.api.ApiResponse;
 import io.commercelayer.api.model.Order;
 import io.commercelayer.api.operation.DeleteAccountOrdersId;
-import io.commercelayer.api.operation.GetAccountOrdersId;
+import io.commercelayer.api.operation.GetCustomerOrdersId;
 import io.commercelayer.api.operation.PostChannelOrders;
-import io.commercelayer.api.operation.PutAccountOrdersId;
+import io.commercelayer.api.operation.PutCustomerOrdersId;
 import io.commercelayer.api.operation.common.util.ApiOperations;
 import io.commercelayer.api.test.common.IntegrationTest;
 import io.commercelayer.api.test.common.TestException;
@@ -28,7 +28,9 @@ public class OrderTest extends IntegrationTest<Order> {
 	
 		Order res = new Order();
 	
-		/* No payload data */
+		// FIELD NOT FOUND -> res.setCustomerAttributes("customerAttributes");
+		// FIELD NOT FOUND -> res.setLineItemAttributes("lineItemAttributes");
+		// FIELD NOT FOUND -> res.setCustomerId("customerId");
 	
 		postOp.setPayload(res);
 	
@@ -38,7 +40,9 @@ public class OrderTest extends IntegrationTest<Order> {
 		ApiResponse<Order> postRes = test(postReq, caller);
 	
 	
-		/* No test assertions */
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getCustomerAttributes());
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getLineItemAttributes());
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getCustomerId());
 	
 	
 		return postRes;
@@ -51,11 +55,11 @@ public class OrderTest extends IntegrationTest<Order> {
 	
 		// GET
 	
-		GetAccountOrdersId getOp = ApiOperations.GetAccountOrdersId();
+		GetCustomerOrdersId getOp = ApiOperations.GetCustomerOrdersId();
 		getOp.setId(res.getId());
 	
 	
-		ApiRequest<GetAccountOrdersId> getReq = new ApiRequest<>(getOp);
+		ApiRequest<GetCustomerOrdersId> getReq = new ApiRequest<>(getOp);
 	
 		ApiResponse<Order> getRes = test(getReq, caller);
 	
@@ -73,26 +77,22 @@ public class OrderTest extends IntegrationTest<Order> {
 	
 		// PUT
 	
-		PutAccountOrdersId putOp = ApiOperations.PutAccountOrdersId();
+		PutCustomerOrdersId putOp = ApiOperations.PutCustomerOrdersId();
 		putOp.setId(oldRes.getId());
 	
 		Order res = new Order();
 	
-		// FIELD NOT FOUND -> res.setCustomerId(randomField(oldRes.getCustomerId()));
-		// FIELD NOT FOUND -> res.setChannelId(randomField(oldRes.getChannelId()));
-		// FIELD NOT FOUND -> res.setCountryId(randomField(oldRes.getCountryId()));
+	
 	
 		putOp.setPayload(res);
 	
 	
-		ApiRequest<PutAccountOrdersId> putReq = new ApiRequest<>(putOp);
+		ApiRequest<PutCustomerOrdersId> putReq = new ApiRequest<>(putOp);
 	
 		ApiResponse<Order> putRes = test(putReq, caller);
 	
 	
-		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getCustomerId(), putRes.getResource().getCustomerId());
-		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getChannelId(), putRes.getResource().getChannelId());
-		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getCountryId(), putRes.getResource().getCountryId());
+	
 	
 	
 		return putRes;
@@ -114,10 +114,10 @@ public class OrderTest extends IntegrationTest<Order> {
 	
 		// GET
 	
-		GetAccountOrdersId getOp = ApiOperations.GetAccountOrdersId();
+		GetCustomerOrdersId getOp = ApiOperations.GetCustomerOrdersId();
 		getOp.setId(res.getId());
 	
-		ApiRequest<GetAccountOrdersId> getReq = new ApiRequest<>(getOp);
+		ApiRequest<GetCustomerOrdersId> getReq = new ApiRequest<>(getOp);
 	
 		ApiResponse<Order> getRes = null;
 	

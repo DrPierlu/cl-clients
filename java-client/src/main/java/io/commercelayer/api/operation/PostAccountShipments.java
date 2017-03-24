@@ -12,6 +12,13 @@ public class PostAccountShipments extends PostOperation<Shipment> {
 	public static final String OPERATION_PATH = "/account/shipments";
 
 
+	{
+		addRequiredField("orderId");
+		addRequiredField("stockLocationId");
+		addRequiredField("shippingMethodId");
+	}
+
+
 	public PostAccountShipments() {
 		super(OPERATION_PATH);
 	}

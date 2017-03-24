@@ -14,6 +14,8 @@ public class PutAccountCustomersId extends PutOperation<Customer> {
 
 	{
 		addRequiredField("email");
+		addRequiredField("password");
+		addRequiredField("passwordConfirmation");
 	}
 
 

@@ -219,6 +219,76 @@ public final class ApiOperations {
 	}
 	
 	/**
+	 * GET /account/contacts
+	 */
+	public static GetAccountContacts GetAccountContacts() {
+		return new GetAccountContacts();
+	}
+	
+	/**
+	 * POST /account/contacts
+	 */
+	public static PostAccountContacts PostAccountContacts() {
+		return new PostAccountContacts();
+	}
+	
+	/**
+	 * GET /account/contacts/{id}
+	 */
+	public static GetAccountContactsId GetAccountContactsId() {
+		return new GetAccountContactsId();
+	}
+	
+	/**
+	 * PUT /account/contacts/{id}
+	 */
+	public static PutAccountContactsId PutAccountContactsId() {
+		return new PutAccountContactsId();
+	}
+	
+	/**
+	 * DELETE /account/contacts/{id}
+	 */
+	public static DeleteAccountContactsId DeleteAccountContactsId() {
+		return new DeleteAccountContactsId();
+	}
+	
+	/**
+	 * GET /account/content_fields
+	 */
+	public static GetAccountContentFields GetAccountContentFields() {
+		return new GetAccountContentFields();
+	}
+	
+	/**
+	 * POST /account/content_fields
+	 */
+	public static PostAccountContentFields PostAccountContentFields() {
+		return new PostAccountContentFields();
+	}
+	
+	/**
+	 * GET /account/content_fields/{id}
+	 */
+	public static GetAccountContentFieldsId GetAccountContentFieldsId() {
+		return new GetAccountContentFieldsId();
+	}
+	
+	/**
+	 * PUT /account/content_fields/{id}
+	 */
+	public static PutAccountContentFieldsId PutAccountContentFieldsId() {
+		return new PutAccountContentFieldsId();
+	}
+	
+	/**
+	 * DELETE /account/content_fields/{id}
+	 */
+	public static DeleteAccountContentFieldsId DeleteAccountContentFieldsId() {
+		return new DeleteAccountContentFieldsId();
+	}
+	
+	/**
 	 * GET /account/country_languages
 	 */
 	public static GetAccountCountryLanguages GetAccountCountryLanguages() {
@@ -853,6 +923,41 @@ public final class ApiOperations {
 	 */
 	public static DeleteAccountMerchantsId DeleteAccountMerchantsId() {
 		return new DeleteAccountMerchantsId();
+	}
+	
+	/**
+	 * GET /account/meta_fields
+	 */
+	public static GetAccountMetaFields GetAccountMetaFields() {
+		return new GetAccountMetaFields();
+	}
+	
+	/**
+	 * POST /account/meta_fields
+	 */
+	public static PostAccountMetaFields PostAccountMetaFields() {
+		return new PostAccountMetaFields();
+	}
+	
+	/**
+	 * GET /account/meta_fields/{id}
+	 */
+	public static GetAccountMetaFieldsId GetAccountMetaFieldsId() {
+		return new GetAccountMetaFieldsId();
+	}
+	
+	/**
+	 * PUT /account/meta_fields/{id}
+	 */
+	public static PutAccountMetaFieldsId PutAccountMetaFieldsId() {
+		return new PutAccountMetaFieldsId();
+	}
+	
+	/**
+	 * DELETE /account/meta_fields/{id}
+	 */
+	public static DeleteAccountMetaFieldsId DeleteAccountMetaFieldsId() {
+		return new DeleteAccountMetaFieldsId();
 	}
 	
 	/**
@@ -1633,6 +1738,41 @@ public final class ApiOperations {
 	}
 	
 	/**
+	 * GET /account/resource_content_fields
+	 */
+	public static GetAccountResourceContentFields GetAccountResourceContentFields() {
+		return new GetAccountResourceContentFields();
+	}
+	
+	/**
+	 * POST /account/resource_content_fields
+	 */
+	public static PostAccountResourceContentFields PostAccountResourceContentFields() {
+		return new PostAccountResourceContentFields();
+	}
+	
+	/**
+	 * GET /account/resource_content_fields/{id}
+	 */
+	public static GetAccountResourceContentFieldsId GetAccountResourceContentFieldsId() {
+		return new GetAccountResourceContentFieldsId();
+	}
+	
+	/**
+	 * PUT /account/resource_content_fields/{id}
+	 */
+	public static PutAccountResourceContentFieldsId PutAccountResourceContentFieldsId() {
+		return new PutAccountResourceContentFieldsId();
+	}
+	
+	/**
+	 * DELETE /account/resource_content_fields/{id}
+	 */
+	public static DeleteAccountResourceContentFieldsId DeleteAccountResourceContentFieldsId() {
+		return new DeleteAccountResourceContentFieldsId();
+	}
+	
+	/**
 	 * GET /account/resource_images
 	 */
 	public static GetAccountResourceImages GetAccountResourceImages() {
@@ -1703,6 +1843,41 @@ public final class ApiOperations {
 	}
 	
 	/**
+	 * GET /account/resource_meta_fields
+	 */
+	public static GetAccountResourceMetaFields GetAccountResourceMetaFields() {
+		return new GetAccountResourceMetaFields();
+	}
+	
+	/**
+	 * POST /account/resource_meta_fields
+	 */
+	public static PostAccountResourceMetaFields PostAccountResourceMetaFields() {
+		return new PostAccountResourceMetaFields();
+	}
+	
+	/**
+	 * GET /account/resource_meta_fields/{id}
+	 */
+	public static GetAccountResourceMetaFieldsId GetAccountResourceMetaFieldsId() {
+		return new GetAccountResourceMetaFieldsId();
+	}
+	
+	/**
+	 * PUT /account/resource_meta_fields/{id}
+	 */
+	public static PutAccountResourceMetaFieldsId PutAccountResourceMetaFieldsId() {
+		return new PutAccountResourceMetaFieldsId();
+	}
+	
+	/**
+	 * DELETE /account/resource_meta_fields/{id}
+	 */
+	public static DeleteAccountResourceMetaFieldsId DeleteAccountResourceMetaFieldsId() {
+		return new DeleteAccountResourceMetaFieldsId();
+	}
+	
+	/**
 	 * GET /account/roles
 	 */
 	public static GetAccountRoles GetAccountRoles() {
@@ -1738,6 +1913,41 @@ public final class ApiOperations {
 	}
 	
 	/**
+	 * GET /account/shipping_carrier_accounts
+	 */
+	public static GetAccountShippingCarrierAccounts GetAccountShippingCarrierAccounts() {
+		return new GetAccountShippingCarrierAccounts();
+	}
+	
+	/**
+	 * POST /account/shipping_carrier_accounts
+	 */
+	public static PostAccountShippingCarrierAccounts PostAccountShippingCarrierAccounts() {
+		return new PostAccountShippingCarrierAccounts();
+	}
+	
+	/**
+	 * GET /account/shipping_carrier_accounts/{id}
+	 */
+	public static GetAccountShippingCarrierAccountsId GetAccountShippingCarrierAccountsId() {
+		return new GetAccountShippingCarrierAccountsId();
+	}
+	
+	/**
+	 * PUT /account/shipping_carrier_accounts/{id}
+	 */
+	public static PutAccountShippingCarrierAccountsId PutAccountShippingCarrierAccountsId() {
+		return new PutAccountShippingCarrierAccountsId();
+	}
+	
+	/**
+	 * DELETE /account/shipping_carrier_accounts/{id}
+	 */
+	public static DeleteAccountShippingCarrierAccountsId DeleteAccountShippingCarrierAccountsId() {
+		return new DeleteAccountShippingCarrierAccountsId();
+	}
+	
+	/**
 	 * GET /account/shipping_carriers
 	 */
 	public static GetAccountShippingCarriers GetAccountShippingCarriers() {
@@ -1770,41 +1980,6 @@ public final class ApiOperations {
 	 */
 	public static DeleteAccountShippingCarriersId DeleteAccountShippingCarriersId() {
 		return new DeleteAccountShippingCarriersId();
-	}
-	
-	/**
-	 * GET /account/shipping_carrier_types
-	 */
-	public static GetAccountShippingCarrierTypes GetAccountShippingCarrierTypes() {
-		return new GetAccountShippingCarrierTypes();
-	}
-	
-	/**
-	 * POST /account/shipping_carrier_types
-	 */
-	public static PostAccountShippingCarrierTypes PostAccountShippingCarrierTypes() {
-		return new PostAccountShippingCarrierTypes();
-	}
-	
-	/**
-	 * GET /account/shipping_carrier_types/{id}
-	 */
-	public static GetAccountShippingCarrierTypesId GetAccountShippingCarrierTypesId() {
-		return new GetAccountShippingCarrierTypesId();
-	}
-	
-	/**
-	 * PUT /account/shipping_carrier_types/{id}
-	 */
-	public static PutAccountShippingCarrierTypesId PutAccountShippingCarrierTypesId() {
-		return new PutAccountShippingCarrierTypesId();
-	}
-	
-	/**
-	 * DELETE /account/shipping_carrier_types/{id}
-	 */
-	public static DeleteAccountShippingCarrierTypesId DeleteAccountShippingCarrierTypesId() {
-		return new DeleteAccountShippingCarrierTypesId();
 	}
 	
 	/**
@@ -2155,6 +2330,34 @@ public final class ApiOperations {
 	 */
 	public static DeleteAccountShipmentsId DeleteAccountShipmentsId() {
 		return new DeleteAccountShipmentsId();
+	}
+	
+	/**
+	 * PUT /account/shipments/{id}/purchase
+	 */
+	public static PutAccountShipmentsIdPurchase PutAccountShipmentsIdPurchase() {
+		return new PutAccountShipmentsIdPurchase();
+	}
+	
+	/**
+	 * PUT /account/shipments/{id}/cancel
+	 */
+	public static PutAccountShipmentsIdCancel PutAccountShipmentsIdCancel() {
+		return new PutAccountShipmentsIdCancel();
+	}
+	
+	/**
+	 * PUT /account/shipments/{id}/resume
+	 */
+	public static PutAccountShipmentsIdResume PutAccountShipmentsIdResume() {
+		return new PutAccountShipmentsIdResume();
+	}
+	
+	/**
+	 * PUT /account/shipments/{id}/ship
+	 */
+	public static PutAccountShipmentsIdShip PutAccountShipmentsIdShip() {
+		return new PutAccountShipmentsIdShip();
 	}
 	
 	/**
@@ -2767,6 +2970,20 @@ public final class ApiOperations {
 	}
 	
 	/**
+	 * GET /channel/markets/current/prices
+	 */
+	public static GetChannelMarketsCurrentPrices GetChannelMarketsCurrentPrices() {
+		return new GetChannelMarketsCurrentPrices();
+	}
+	
+	/**
+	 * GET /channel/markets/current/stock_items
+	 */
+	public static GetChannelMarketsCurrentStockItems GetChannelMarketsCurrentStockItems() {
+		return new GetChannelMarketsCurrentStockItems();
+	}
+	
+	/**
 	 * POST /channel/orders
 	 */
 	public static PostChannelOrders PostChannelOrders() {
@@ -2893,6 +3110,13 @@ public final class ApiOperations {
 	}
 	
 	/**
+	 * GET /channel/product_properties
+	 */
+	public static GetChannelProductProperties GetChannelProductProperties() {
+		return new GetChannelProductProperties();
+	}
+	
+	/**
 	 * GET /channel/shipping_methods/{id}
 	 */
 	public static GetChannelShippingMethodsId GetChannelShippingMethodsId() {
@@ -2925,6 +3149,34 @@ public final class ApiOperations {
 	 */
 	public static GetChannelTransactionsTransactionToken GetChannelTransactionsTransactionToken() {
 		return new GetChannelTransactionsTransactionToken();
+	}
+	
+	/**
+	 * GET /channel/variant_options
+	 */
+	public static GetChannelVariantOptions GetChannelVariantOptions() {
+		return new GetChannelVariantOptions();
+	}
+	
+	/**
+	 * GET /customer/orders
+	 */
+	public static GetCustomerOrders GetCustomerOrders() {
+		return new GetCustomerOrders();
+	}
+	
+	/**
+	 * GET /customer/orders/{id}
+	 */
+	public static GetCustomerOrdersId GetCustomerOrdersId() {
+		return new GetCustomerOrdersId();
+	}
+	
+	/**
+	 * PUT /customer/orders/{id}
+	 */
+	public static PutCustomerOrdersId PutCustomerOrdersId() {
+		return new PutCustomerOrdersId();
 	}
 	
 	/**
