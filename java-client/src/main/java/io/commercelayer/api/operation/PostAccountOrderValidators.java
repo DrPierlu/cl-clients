@@ -20,6 +20,7 @@ public class PostAccountOrderValidators extends PostOperation<OrderValidator> {
 		addRequiredField("orderItemsMax");
 		addRequiredField("paymentMethodAction");
 		addRequiredField("paymentMethodRequiredPercentage");
+		addRequiredField("marketIds");
 	}
 
 

@@ -2,6 +2,7 @@ package io.commercelayer.api.model;
 
 import io.commercelayer.api.json.JsonExclude;
 import io.commercelayer.api.model.common.ApiResource;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -22,9 +23,9 @@ public class MarketStockLocation extends ApiResource {
 	@JsonExclude
 	private Integer position;
 	@JsonExclude
-	private Object previousChanges;
-	@JsonExclude
 	private Object stockLocation;
+	@JsonExclude
+	private List<String> versions;
 
 
 	public MarketStockLocation() {
@@ -121,27 +122,6 @@ public class MarketStockLocation extends ApiResource {
 	}
 	
 
-	public void setPreviousChanges(Object previousChanges) {
-		this.previousChanges = previousChanges;
-	}
-	
-
-	public Object getPreviousChanges() {
-		return this.previousChanges;
-	}
-	
-
-	public MarketStockLocation previousChanges(Object previousChanges) {
-		setPreviousChanges(previousChanges);
-		return this;
-	}
-	
-
-	public Object previousChanges() {
-		return getPreviousChanges();
-	}
-	
-
 	public void setMarket(Object market) {
 		this.market = market;
 	}
@@ -184,6 +164,27 @@ public class MarketStockLocation extends ApiResource {
 	}
 	
 
+	public void setVersions(List<String> versions) {
+		this.versions = versions;
+	}
+	
+
+	public List<String> getVersions() {
+		return this.versions;
+	}
+	
+
+	public MarketStockLocation versions(List<String> versions) {
+		setVersions(versions);
+		return this;
+	}
+	
+
+	public List<String> versions() {
+		return getVersions();
+	}
+	
+
 	@Override
 	public boolean equals(Object o) {
 	
@@ -197,9 +198,9 @@ public class MarketStockLocation extends ApiResource {
 			&& Objects.equals(this.marketId, x.marketId)
 			&& Objects.equals(this.stockLocationId, x.stockLocationId)
 			&& Objects.equals(this.position, x.position)
-			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.market, x.market)
 			&& Objects.equals(this.stockLocation, x.stockLocation)
+			&& Objects.equals(this.versions, x.versions)
 		;
 	
 	}
@@ -209,8 +210,8 @@ public class MarketStockLocation extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, marketId, stockLocationId, position, previousChanges,
-			market, stockLocation 
+			name, marketId, stockLocationId, position, market,
+			stockLocation, versions 
 		);
 	
 	}
@@ -227,9 +228,9 @@ public class MarketStockLocation extends ApiResource {
 		no.marketId = this.marketId;
 		no.stockLocationId = this.stockLocationId;
 		no.position = this.position;
-		no.previousChanges = this.previousChanges;
 		no.market = this.market;
 		no.stockLocation = this.stockLocation;
+		no.versions = this.versions;
 	
 		return no;
 	

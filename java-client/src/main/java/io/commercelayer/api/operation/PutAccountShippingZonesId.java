@@ -21,6 +21,8 @@ public class PutAccountShippingZonesId extends PutOperation<ShippingZone> {
 		addRequiredField("notStateCodeRegex");
 		addRequiredField("zipCodeRegex");
 		addRequiredField("notZipCodeRegex");
+		addRequiredField("shippingServiceZoneIds");
+		addRequiredField("shippingServiceIds");
 	}
 
 

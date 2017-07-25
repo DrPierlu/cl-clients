@@ -19,13 +19,13 @@ public class OptionValue extends ApiResource {
 	@JsonExclude
 	private Object featuredImage;
 	@JsonExclude
+	private String featuredImageId;
+	@JsonExclude
 	private List<String> images;
 	@JsonExclude
 	private Object optionType;
 	@JsonExclude
 	private Integer position;
-	@JsonExclude
-	private Object previousChanges;
 	@JsonExclude
 	private List<String> resourceImages;
 	@JsonExclude
@@ -36,6 +36,8 @@ public class OptionValue extends ApiResource {
 	private List<String> variantOptions;
 	@JsonExclude
 	private List<String> variants;
+	@JsonExclude
+	private List<String> versions;
 
 
 	public OptionValue() {
@@ -132,27 +134,6 @@ public class OptionValue extends ApiResource {
 	}
 	
 
-	public void setPreviousChanges(Object previousChanges) {
-		this.previousChanges = previousChanges;
-	}
-	
-
-	public Object getPreviousChanges() {
-		return this.previousChanges;
-	}
-	
-
-	public OptionValue previousChanges(Object previousChanges) {
-		setPreviousChanges(previousChanges);
-		return this;
-	}
-	
-
-	public Object previousChanges() {
-		return getPreviousChanges();
-	}
-	
-
 	public void setOptionType(Object optionType) {
 		this.optionType = optionType;
 	}
@@ -171,6 +152,27 @@ public class OptionValue extends ApiResource {
 
 	public Object optionType() {
 		return getOptionType();
+	}
+	
+
+	public void setVersions(List<String> versions) {
+		this.versions = versions;
+	}
+	
+
+	public List<String> getVersions() {
+		return this.versions;
+	}
+	
+
+	public OptionValue versions(List<String> versions) {
+		setVersions(versions);
+		return this;
+	}
+	
+
+	public List<String> versions() {
+		return getVersions();
 	}
 	
 
@@ -279,6 +281,27 @@ public class OptionValue extends ApiResource {
 	}
 	
 
+	public void setFeaturedImageId(String featuredImageId) {
+		this.featuredImageId = featuredImageId;
+	}
+	
+
+	public String getFeaturedImageId() {
+		return this.featuredImageId;
+	}
+	
+
+	public OptionValue featuredImageId(String featuredImageId) {
+		setFeaturedImageId(featuredImageId);
+		return this;
+	}
+	
+
+	public String featuredImageId() {
+		return getFeaturedImageId();
+	}
+	
+
 	public void setFeaturedImage(Object featuredImage) {
 		this.featuredImage = featuredImage;
 	}
@@ -313,13 +336,14 @@ public class OptionValue extends ApiResource {
 			&& Objects.equals(this.slug, x.slug)
 			&& Objects.equals(this.optionTypeId, x.optionTypeId)
 			&& Objects.equals(this.position, x.position)
-			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.optionType, x.optionType)
+			&& Objects.equals(this.versions, x.versions)
 			&& Objects.equals(this.resourceImages, x.resourceImages)
 			&& Objects.equals(this.images, x.images)
 			&& Objects.equals(this.translations, x.translations)
 			&& Objects.equals(this.variantOptions, x.variantOptions)
 			&& Objects.equals(this.variants, x.variants)
+			&& Objects.equals(this.featuredImageId, x.featuredImageId)
 			&& Objects.equals(this.featuredImage, x.featuredImage)
 		;
 	
@@ -330,9 +354,9 @@ public class OptionValue extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, slug, optionTypeId, position, previousChanges,
-			optionType, resourceImages, images, translations, variantOptions,
-			variants, featuredImage 
+			name, slug, optionTypeId, position, optionType,
+			versions, resourceImages, images, translations, variantOptions,
+			variants, featuredImageId, featuredImage 
 		);
 	
 	}
@@ -349,13 +373,14 @@ public class OptionValue extends ApiResource {
 		no.slug = this.slug;
 		no.optionTypeId = this.optionTypeId;
 		no.position = this.position;
-		no.previousChanges = this.previousChanges;
 		no.optionType = this.optionType;
+		no.versions = this.versions;
 		no.resourceImages = this.resourceImages;
 		no.images = this.images;
 		no.translations = this.translations;
 		no.variantOptions = this.variantOptions;
 		no.variants = this.variants;
+		no.featuredImageId = this.featuredImageId;
 		no.featuredImage = this.featuredImage;
 	
 		return no;

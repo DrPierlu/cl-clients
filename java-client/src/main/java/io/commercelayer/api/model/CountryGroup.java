@@ -18,11 +18,13 @@ public class CountryGroup extends ApiResource {
 	@JsonExclude
 	private List<String> countries;
 	@JsonExclude
-	private Object previousChanges;
+	private List<String> markets;
 	@JsonExclude
 	private List<String> shippingMethods;
 	@JsonExclude
 	private List<String> shippingZones;
+	@JsonExclude
+	private List<String> versions;
 
 
 	public CountryGroup() {
@@ -56,24 +58,24 @@ public class CountryGroup extends ApiResource {
 	}
 	
 
-	public void setPreviousChanges(Object previousChanges) {
-		this.previousChanges = previousChanges;
+	public void setVersions(List<String> versions) {
+		this.versions = versions;
 	}
 	
 
-	public Object getPreviousChanges() {
-		return this.previousChanges;
+	public List<String> getVersions() {
+		return this.versions;
 	}
 	
 
-	public CountryGroup previousChanges(Object previousChanges) {
-		setPreviousChanges(previousChanges);
+	public CountryGroup versions(List<String> versions) {
+		setVersions(versions);
 		return this;
 	}
 	
 
-	public Object previousChanges() {
-		return getPreviousChanges();
+	public List<String> versions() {
+		return getVersions();
 	}
 	
 
@@ -119,6 +121,27 @@ public class CountryGroup extends ApiResource {
 	}
 	
 
+	public void setMarkets(List<String> markets) {
+		this.markets = markets;
+	}
+	
+
+	public List<String> getMarkets() {
+		return this.markets;
+	}
+	
+
+	public CountryGroup markets(List<String> markets) {
+		setMarkets(markets);
+		return this;
+	}
+	
+
+	public List<String> markets() {
+		return getMarkets();
+	}
+	
+
 	public void setShippingMethods(List<String> shippingMethods) {
 		this.shippingMethods = shippingMethods;
 	}
@@ -150,9 +173,10 @@ public class CountryGroup extends ApiResource {
 	
 		return super.equals(o)
 			&& Objects.equals(this.name, x.name)
-			&& Objects.equals(this.previousChanges, x.previousChanges)
+			&& Objects.equals(this.versions, x.versions)
 			&& Objects.equals(this.countries, x.countries)
 			&& Objects.equals(this.shippingZones, x.shippingZones)
+			&& Objects.equals(this.markets, x.markets)
 			&& Objects.equals(this.shippingMethods, x.shippingMethods)
 		;
 	
@@ -163,8 +187,8 @@ public class CountryGroup extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, previousChanges, countries, shippingZones, shippingMethods
-			
+			name, versions, countries, shippingZones, markets,
+			shippingMethods 
 		);
 	
 	}
@@ -178,9 +202,10 @@ public class CountryGroup extends ApiResource {
 		no = super.clone(no);
 	
 		no.name = this.name;
-		no.previousChanges = this.previousChanges;
+		no.versions = this.versions;
 		no.countries = this.countries;
 		no.shippingZones = this.shippingZones;
+		no.markets = this.markets;
 		no.shippingMethods = this.shippingMethods;
 	
 		return no;

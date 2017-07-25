@@ -2,6 +2,7 @@ package io.commercelayer.api.model;
 
 import io.commercelayer.api.json.JsonExclude;
 import io.commercelayer.api.model.common.ApiResource;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -18,11 +19,11 @@ public class ShippingServiceZone extends ApiResource {
 	@JsonExclude
 	private String name;
 	@JsonExclude
-	private Object previousChanges;
-	@JsonExclude
 	private Object shippingService;
 	@JsonExclude
 	private Object shippingZone;
+	@JsonExclude
+	private List<String> versions;
 
 
 	public ShippingServiceZone() {
@@ -98,27 +99,6 @@ public class ShippingServiceZone extends ApiResource {
 	}
 	
 
-	public void setPreviousChanges(Object previousChanges) {
-		this.previousChanges = previousChanges;
-	}
-	
-
-	public Object getPreviousChanges() {
-		return this.previousChanges;
-	}
-	
-
-	public ShippingServiceZone previousChanges(Object previousChanges) {
-		setPreviousChanges(previousChanges);
-		return this;
-	}
-	
-
-	public Object previousChanges() {
-		return getPreviousChanges();
-	}
-	
-
 	public void setShippingService(Object shippingService) {
 		this.shippingService = shippingService;
 	}
@@ -161,6 +141,27 @@ public class ShippingServiceZone extends ApiResource {
 	}
 	
 
+	public void setVersions(List<String> versions) {
+		this.versions = versions;
+	}
+	
+
+	public List<String> getVersions() {
+		return this.versions;
+	}
+	
+
+	public ShippingServiceZone versions(List<String> versions) {
+		setVersions(versions);
+		return this;
+	}
+	
+
+	public List<String> versions() {
+		return getVersions();
+	}
+	
+
 	@Override
 	public boolean equals(Object o) {
 	
@@ -173,9 +174,9 @@ public class ShippingServiceZone extends ApiResource {
 			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.shippingServiceId, x.shippingServiceId)
 			&& Objects.equals(this.shippingZoneId, x.shippingZoneId)
-			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.shippingService, x.shippingService)
 			&& Objects.equals(this.shippingZone, x.shippingZone)
+			&& Objects.equals(this.versions, x.versions)
 		;
 	
 	}
@@ -185,8 +186,8 @@ public class ShippingServiceZone extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, shippingServiceId, shippingZoneId, previousChanges, shippingService,
-			shippingZone 
+			name, shippingServiceId, shippingZoneId, shippingService, shippingZone,
+			versions 
 		);
 	
 	}
@@ -202,9 +203,9 @@ public class ShippingServiceZone extends ApiResource {
 		no.name = this.name;
 		no.shippingServiceId = this.shippingServiceId;
 		no.shippingZoneId = this.shippingZoneId;
-		no.previousChanges = this.previousChanges;
 		no.shippingService = this.shippingService;
 		no.shippingZone = this.shippingZone;
+		no.versions = this.versions;
 	
 		return no;
 	

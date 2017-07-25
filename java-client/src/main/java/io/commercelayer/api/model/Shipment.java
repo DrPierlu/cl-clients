@@ -19,13 +19,17 @@ public class Shipment extends ApiResource {
 	private Integer shippingMethodId;
 	private Integer stockLocationId;
 	@JsonExclude
+	private Object customsForm;
+	@JsonExclude
+	private List<String> events;
+	@JsonExclude
 	private List<String> lineItemStocks;
+	@JsonExclude
+	private List<String> lineItems;
 	@JsonExclude
 	private String name;
 	@JsonExclude
 	private Object order;
-	@JsonExclude
-	private Object previousChanges;
 	@JsonExclude
 	private LocalDateTime purchasedAt;
 	@JsonExclude
@@ -35,6 +39,8 @@ public class Shipment extends ApiResource {
 	@JsonExclude
 	private String shippingLabelUrl;
 	@JsonExclude
+	private List<String> shippingLabels;
+	@JsonExclude
 	private Object shippingMethod;
 	@JsonExclude
 	private String state;
@@ -42,6 +48,8 @@ public class Shipment extends ApiResource {
 	private Object stockLocation;
 	@JsonExclude
 	private String trackingNumber;
+	@JsonExclude
+	private List<String> versions;
 
 
 	public Shipment() {
@@ -264,27 +272,6 @@ public class Shipment extends ApiResource {
 	}
 	
 
-	public void setPreviousChanges(Object previousChanges) {
-		this.previousChanges = previousChanges;
-	}
-	
-
-	public Object getPreviousChanges() {
-		return this.previousChanges;
-	}
-	
-
-	public Shipment previousChanges(Object previousChanges) {
-		setPreviousChanges(previousChanges);
-		return this;
-	}
-	
-
-	public Object previousChanges() {
-		return getPreviousChanges();
-	}
-	
-
 	public void setOrder(Object order) {
 		this.order = order;
 	}
@@ -348,6 +335,69 @@ public class Shipment extends ApiResource {
 	}
 	
 
+	public void setVersions(List<String> versions) {
+		this.versions = versions;
+	}
+	
+
+	public List<String> getVersions() {
+		return this.versions;
+	}
+	
+
+	public Shipment versions(List<String> versions) {
+		setVersions(versions);
+		return this;
+	}
+	
+
+	public List<String> versions() {
+		return getVersions();
+	}
+	
+
+	public void setEvents(List<String> events) {
+		this.events = events;
+	}
+	
+
+	public List<String> getEvents() {
+		return this.events;
+	}
+	
+
+	public Shipment events(List<String> events) {
+		setEvents(events);
+		return this;
+	}
+	
+
+	public List<String> events() {
+		return getEvents();
+	}
+	
+
+	public void setShippingLabels(List<String> shippingLabels) {
+		this.shippingLabels = shippingLabels;
+	}
+	
+
+	public List<String> getShippingLabels() {
+		return this.shippingLabels;
+	}
+	
+
+	public Shipment shippingLabels(List<String> shippingLabels) {
+		setShippingLabels(shippingLabels);
+		return this;
+	}
+	
+
+	public List<String> shippingLabels() {
+		return getShippingLabels();
+	}
+	
+
 	public void setLineItemStocks(List<String> lineItemStocks) {
 		this.lineItemStocks = lineItemStocks;
 	}
@@ -366,6 +416,48 @@ public class Shipment extends ApiResource {
 
 	public List<String> lineItemStocks() {
 		return getLineItemStocks();
+	}
+	
+
+	public void setLineItems(List<String> lineItems) {
+		this.lineItems = lineItems;
+	}
+	
+
+	public List<String> getLineItems() {
+		return this.lineItems;
+	}
+	
+
+	public Shipment lineItems(List<String> lineItems) {
+		setLineItems(lineItems);
+		return this;
+	}
+	
+
+	public List<String> lineItems() {
+		return getLineItems();
+	}
+	
+
+	public void setCustomsForm(Object customsForm) {
+		this.customsForm = customsForm;
+	}
+	
+
+	public Object getCustomsForm() {
+		return this.customsForm;
+	}
+	
+
+	public Shipment customsForm(Object customsForm) {
+		setCustomsForm(customsForm);
+		return this;
+	}
+	
+
+	public Object customsForm() {
+		return getCustomsForm();
 	}
 	
 
@@ -388,11 +480,15 @@ public class Shipment extends ApiResource {
 			&& Objects.equals(this.shippingLabelFormat, x.shippingLabelFormat)
 			&& Objects.equals(this.purchasedAt, x.purchasedAt)
 			&& Objects.equals(this.shippedAt, x.shippedAt)
-			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.order, x.order)
 			&& Objects.equals(this.stockLocation, x.stockLocation)
 			&& Objects.equals(this.shippingMethod, x.shippingMethod)
+			&& Objects.equals(this.versions, x.versions)
+			&& Objects.equals(this.events, x.events)
+			&& Objects.equals(this.shippingLabels, x.shippingLabels)
 			&& Objects.equals(this.lineItemStocks, x.lineItemStocks)
+			&& Objects.equals(this.lineItems, x.lineItems)
+			&& Objects.equals(this.customsForm, x.customsForm)
 		;
 	
 	}
@@ -404,8 +500,8 @@ public class Shipment extends ApiResource {
 		return Objects.hash(
 			name, orderId, stockLocationId, shippingMethodId, state,
 			trackingNumber, shippingLabelUrl, shippingLabelFormat, purchasedAt, shippedAt,
-			previousChanges, order, stockLocation, shippingMethod, lineItemStocks
-			
+			order, stockLocation, shippingMethod, versions, events,
+			shippingLabels, lineItemStocks, lineItems, customsForm 
 		);
 	
 	}
@@ -428,11 +524,15 @@ public class Shipment extends ApiResource {
 		no.shippingLabelFormat = this.shippingLabelFormat;
 		no.purchasedAt = this.purchasedAt;
 		no.shippedAt = this.shippedAt;
-		no.previousChanges = this.previousChanges;
 		no.order = this.order;
 		no.stockLocation = this.stockLocation;
 		no.shippingMethod = this.shippingMethod;
+		no.versions = this.versions;
+		no.events = this.events;
+		no.shippingLabels = this.shippingLabels;
 		no.lineItemStocks = this.lineItemStocks;
+		no.lineItems = this.lineItems;
+		no.customsForm = this.customsForm;
 	
 		return no;
 	

@@ -20,7 +20,7 @@ public class PaymentType extends ApiResource {
 	@JsonExclude
 	private String description;
 	@JsonExclude
-	private Object featuredImage;
+	private String formattedPrice;
 	@JsonExclude
 	private Object gateway;
 	@JsonExclude
@@ -32,15 +32,21 @@ public class PaymentType extends ApiResource {
 	@JsonExclude
 	private Object merchant;
 	@JsonExclude
+	private List<String> paymentMethods;
+	@JsonExclude
+	private List<String> paymentPrices;
+	@JsonExclude
 	private String paymentSourceKind;
 	@JsonExclude
-	private Object previousChanges;
+	private Boolean referenceTransactionsSupported;
 	@JsonExclude
 	private List<String> resourceImages;
 	@JsonExclude
 	private String slug;
 	@JsonExclude
 	private List<String> translations;
+	@JsonExclude
+	private List<String> versions;
 
 
 	public PaymentType() {
@@ -179,24 +185,24 @@ public class PaymentType extends ApiResource {
 	}
 	
 
-	public void setPreviousChanges(Object previousChanges) {
-		this.previousChanges = previousChanges;
+	public void setReferenceTransactionsSupported(Boolean referenceTransactionsSupported) {
+		this.referenceTransactionsSupported = referenceTransactionsSupported;
 	}
 	
 
-	public Object getPreviousChanges() {
-		return this.previousChanges;
+	public Boolean getReferenceTransactionsSupported() {
+		return this.referenceTransactionsSupported;
 	}
 	
 
-	public PaymentType previousChanges(Object previousChanges) {
-		setPreviousChanges(previousChanges);
+	public PaymentType referenceTransactionsSupported(Boolean referenceTransactionsSupported) {
+		setReferenceTransactionsSupported(referenceTransactionsSupported);
 		return this;
 	}
 	
 
-	public Object previousChanges() {
-		return getPreviousChanges();
+	public Boolean referenceTransactionsSupported() {
+		return getReferenceTransactionsSupported();
 	}
 	
 
@@ -239,6 +245,27 @@ public class PaymentType extends ApiResource {
 
 	public Object gateway() {
 		return getGateway();
+	}
+	
+
+	public void setVersions(List<String> versions) {
+		this.versions = versions;
+	}
+	
+
+	public List<String> getVersions() {
+		return this.versions;
+	}
+	
+
+	public PaymentType versions(List<String> versions) {
+		setVersions(versions);
+		return this;
+	}
+	
+
+	public List<String> versions() {
+		return getVersions();
 	}
 	
 
@@ -326,6 +353,48 @@ public class PaymentType extends ApiResource {
 	}
 	
 
+	public void setPaymentMethods(List<String> paymentMethods) {
+		this.paymentMethods = paymentMethods;
+	}
+	
+
+	public List<String> getPaymentMethods() {
+		return this.paymentMethods;
+	}
+	
+
+	public PaymentType paymentMethods(List<String> paymentMethods) {
+		setPaymentMethods(paymentMethods);
+		return this;
+	}
+	
+
+	public List<String> paymentMethods() {
+		return getPaymentMethods();
+	}
+	
+
+	public void setPaymentPrices(List<String> paymentPrices) {
+		this.paymentPrices = paymentPrices;
+	}
+	
+
+	public List<String> getPaymentPrices() {
+		return this.paymentPrices;
+	}
+	
+
+	public PaymentType paymentPrices(List<String> paymentPrices) {
+		setPaymentPrices(paymentPrices);
+		return this;
+	}
+	
+
+	public List<String> paymentPrices() {
+		return getPaymentPrices();
+	}
+	
+
 	public void setMarkets(List<String> markets) {
 		this.markets = markets;
 	}
@@ -347,24 +416,24 @@ public class PaymentType extends ApiResource {
 	}
 	
 
-	public void setFeaturedImage(Object featuredImage) {
-		this.featuredImage = featuredImage;
+	public void setFormattedPrice(String formattedPrice) {
+		this.formattedPrice = formattedPrice;
 	}
 	
 
-	public Object getFeaturedImage() {
-		return this.featuredImage;
+	public String getFormattedPrice() {
+		return this.formattedPrice;
 	}
 	
 
-	public PaymentType featuredImage(Object featuredImage) {
-		setFeaturedImage(featuredImage);
+	public PaymentType formattedPrice(String formattedPrice) {
+		setFormattedPrice(formattedPrice);
 		return this;
 	}
 	
 
-	public Object featuredImage() {
-		return getFeaturedImage();
+	public String formattedPrice() {
+		return getFormattedPrice();
 	}
 	
 
@@ -383,15 +452,18 @@ public class PaymentType extends ApiResource {
 			&& Objects.equals(this.merchantId, x.merchantId)
 			&& Objects.equals(this.gatewayId, x.gatewayId)
 			&& Objects.equals(this.paymentSourceKind, x.paymentSourceKind)
-			&& Objects.equals(this.previousChanges, x.previousChanges)
+			&& Objects.equals(this.referenceTransactionsSupported, x.referenceTransactionsSupported)
 			&& Objects.equals(this.merchant, x.merchant)
 			&& Objects.equals(this.gateway, x.gateway)
+			&& Objects.equals(this.versions, x.versions)
 			&& Objects.equals(this.resourceImages, x.resourceImages)
 			&& Objects.equals(this.images, x.images)
 			&& Objects.equals(this.translations, x.translations)
 			&& Objects.equals(this.marketPaymentTypes, x.marketPaymentTypes)
+			&& Objects.equals(this.paymentMethods, x.paymentMethods)
+			&& Objects.equals(this.paymentPrices, x.paymentPrices)
 			&& Objects.equals(this.markets, x.markets)
-			&& Objects.equals(this.featuredImage, x.featuredImage)
+			&& Objects.equals(this.formattedPrice, x.formattedPrice)
 		;
 	
 	}
@@ -402,9 +474,9 @@ public class PaymentType extends ApiResource {
 	
 		return Objects.hash(
 			name, slug, description, merchantId, gatewayId,
-			paymentSourceKind, previousChanges, merchant, gateway, resourceImages,
-			images, translations, marketPaymentTypes, markets, featuredImage
-			
+			paymentSourceKind, referenceTransactionsSupported, merchant, gateway, versions,
+			resourceImages, images, translations, marketPaymentTypes, paymentMethods,
+			paymentPrices, markets, formattedPrice 
 		);
 	
 	}
@@ -423,15 +495,18 @@ public class PaymentType extends ApiResource {
 		no.merchantId = this.merchantId;
 		no.gatewayId = this.gatewayId;
 		no.paymentSourceKind = this.paymentSourceKind;
-		no.previousChanges = this.previousChanges;
+		no.referenceTransactionsSupported = this.referenceTransactionsSupported;
 		no.merchant = this.merchant;
 		no.gateway = this.gateway;
+		no.versions = this.versions;
 		no.resourceImages = this.resourceImages;
 		no.images = this.images;
 		no.translations = this.translations;
 		no.marketPaymentTypes = this.marketPaymentTypes;
+		no.paymentMethods = this.paymentMethods;
+		no.paymentPrices = this.paymentPrices;
 		no.markets = this.markets;
-		no.featuredImage = this.featuredImage;
+		no.formattedPrice = this.formattedPrice;
 	
 		return no;
 	

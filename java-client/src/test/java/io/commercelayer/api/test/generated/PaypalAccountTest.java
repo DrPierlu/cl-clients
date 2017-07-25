@@ -6,7 +6,7 @@ import io.commercelayer.api.ApiResponse;
 import io.commercelayer.api.model.PaypalAccount;
 import io.commercelayer.api.operation.DeleteAccountPaypalAccountsId;
 import io.commercelayer.api.operation.GetAccountPaypalAccountsId;
-import io.commercelayer.api.operation.PostCallbacksPaypalAccountsPaypalAccountToken;
+import io.commercelayer.api.operation.PostCallbacksPaypalAccountsToken;
 import io.commercelayer.api.operation.PutAccountPaypalAccountsId;
 import io.commercelayer.api.operation.common.util.ApiOperations;
 import io.commercelayer.api.test.common.IntegrationTest;
@@ -24,7 +24,7 @@ public class PaypalAccountTest extends IntegrationTest<PaypalAccount> {
 	
 		// POST
 	
-		PostCallbacksPaypalAccountsPaypalAccountToken postOp = ApiOperations.PostCallbacksPaypalAccountsPaypalAccountToken();
+		PostCallbacksPaypalAccountsToken postOp = ApiOperations.PostCallbacksPaypalAccountsToken();
 	
 		PaypalAccount res = new PaypalAccount();
 	
@@ -33,7 +33,7 @@ public class PaypalAccountTest extends IntegrationTest<PaypalAccount> {
 		postOp.setPayload(res);
 	
 	
-		ApiRequest<PostCallbacksPaypalAccountsPaypalAccountToken> postReq = new ApiRequest<>(postOp);
+		ApiRequest<PostCallbacksPaypalAccountsToken> postReq = new ApiRequest<>(postOp);
 	
 		ApiResponse<PaypalAccount> postRes = test(postReq, caller);
 	

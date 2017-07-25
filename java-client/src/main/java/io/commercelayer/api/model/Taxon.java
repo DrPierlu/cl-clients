@@ -25,6 +25,8 @@ public class Taxon extends ApiResource {
 	@JsonExclude
 	private Object featuredImage;
 	@JsonExclude
+	private String featuredImageId;
+	@JsonExclude
 	private List<String> images;
 	@JsonExclude
 	private List<String> merchandisingRules;
@@ -34,8 +36,6 @@ public class Taxon extends ApiResource {
 	private Integer parentId;
 	@JsonExclude
 	private Integer position;
-	@JsonExclude
-	private Object previousChanges;
 	@JsonExclude
 	private List<String> products;
 	@JsonExclude
@@ -50,6 +50,8 @@ public class Taxon extends ApiResource {
 	private Object taxonomy;
 	@JsonExclude
 	private List<String> translations;
+	@JsonExclude
+	private List<String> versions;
 
 
 	public Taxon() {
@@ -167,27 +169,6 @@ public class Taxon extends ApiResource {
 	}
 	
 
-	public void setPreviousChanges(Object previousChanges) {
-		this.previousChanges = previousChanges;
-	}
-	
-
-	public Object getPreviousChanges() {
-		return this.previousChanges;
-	}
-	
-
-	public Taxon previousChanges(Object previousChanges) {
-		setPreviousChanges(previousChanges);
-		return this;
-	}
-	
-
-	public Object previousChanges() {
-		return getPreviousChanges();
-	}
-	
-
 	public void setTaxonomy(Object taxonomy) {
 		this.taxonomy = taxonomy;
 	}
@@ -227,6 +208,27 @@ public class Taxon extends ApiResource {
 
 	public Object parent() {
 		return getParent();
+	}
+	
+
+	public void setVersions(List<String> versions) {
+		this.versions = versions;
+	}
+	
+
+	public List<String> getVersions() {
+		return this.versions;
+	}
+	
+
+	public Taxon versions(List<String> versions) {
+		setVersions(versions);
+		return this;
+	}
+	
+
+	public List<String> versions() {
+		return getVersions();
 	}
 	
 
@@ -440,6 +442,27 @@ public class Taxon extends ApiResource {
 	}
 	
 
+	public void setFeaturedImageId(String featuredImageId) {
+		this.featuredImageId = featuredImageId;
+	}
+	
+
+	public String getFeaturedImageId() {
+		return this.featuredImageId;
+	}
+	
+
+	public Taxon featuredImageId(String featuredImageId) {
+		setFeaturedImageId(featuredImageId);
+		return this;
+	}
+	
+
+	public String featuredImageId() {
+		return getFeaturedImageId();
+	}
+	
+
 	public void setFeaturedImage(Object featuredImage) {
 		this.featuredImage = featuredImage;
 	}
@@ -475,9 +498,9 @@ public class Taxon extends ApiResource {
 			&& Objects.equals(this.taxonomyId, x.taxonomyId)
 			&& Objects.equals(this.position, x.position)
 			&& Objects.equals(this.parentId, x.parentId)
-			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.taxonomy, x.taxonomy)
 			&& Objects.equals(this.parent, x.parent)
+			&& Objects.equals(this.versions, x.versions)
 			&& Objects.equals(this.resourceImages, x.resourceImages)
 			&& Objects.equals(this.images, x.images)
 			&& Objects.equals(this.translations, x.translations)
@@ -488,6 +511,7 @@ public class Taxon extends ApiResource {
 			&& Objects.equals(this.selfAndAncestors, x.selfAndAncestors)
 			&& Objects.equals(this.descendantHierarchies, x.descendantHierarchies)
 			&& Objects.equals(this.selfAndDescendants, x.selfAndDescendants)
+			&& Objects.equals(this.featuredImageId, x.featuredImageId)
 			&& Objects.equals(this.featuredImage, x.featuredImage)
 		;
 	
@@ -499,9 +523,10 @@ public class Taxon extends ApiResource {
 	
 		return Objects.hash(
 			name, slug, taxonomyId, position, parentId,
-			previousChanges, taxonomy, parent, resourceImages, images,
+			taxonomy, parent, versions, resourceImages, images,
 			translations, merchandisingRules, products, children, ancestorHierarchies,
-			selfAndAncestors, descendantHierarchies, selfAndDescendants, featuredImage 
+			selfAndAncestors, descendantHierarchies, selfAndDescendants, featuredImageId, featuredImage
+			
 		);
 	
 	}
@@ -519,9 +544,9 @@ public class Taxon extends ApiResource {
 		no.taxonomyId = this.taxonomyId;
 		no.position = this.position;
 		no.parentId = this.parentId;
-		no.previousChanges = this.previousChanges;
 		no.taxonomy = this.taxonomy;
 		no.parent = this.parent;
+		no.versions = this.versions;
 		no.resourceImages = this.resourceImages;
 		no.images = this.images;
 		no.translations = this.translations;
@@ -532,6 +557,7 @@ public class Taxon extends ApiResource {
 		no.selfAndAncestors = this.selfAndAncestors;
 		no.descendantHierarchies = this.descendantHierarchies;
 		no.selfAndDescendants = this.selfAndDescendants;
+		no.featuredImageId = this.featuredImageId;
 		no.featuredImage = this.featuredImage;
 	
 		return no;

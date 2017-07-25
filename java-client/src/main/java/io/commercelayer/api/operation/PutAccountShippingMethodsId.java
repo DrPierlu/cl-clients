@@ -14,12 +14,13 @@ public class PutAccountShippingMethodsId extends PutOperation<ShippingMethod> {
 
 	{
 		addRequiredField("orderId");
+		addRequiredField("lineItemIds");
 		addRequiredField("shippingRecipientId");
-		addRequiredField("shippingServiceId");
 		addRequiredField("shippingAddressId");
 		addRequiredField("shippingPackageId");
-		addRequiredField("orderDefault");
-		addRequiredField("lineItemDefaultId");
+		addRequiredField("shippingServiceId");
+		addRequiredField("shipmentIds");
+		addRequiredField("lineItemIds");
 	}
 
 

@@ -17,6 +17,7 @@ import org.slf4j.LoggerFactory;
 
 import io.commercelayer.api.codegen.model.Method;
 import io.commercelayer.api.codegen.model.gen.template.Placeholder;
+import io.commercelayer.api.codegen.schema.Definition;
 import io.commercelayer.api.codegen.schema.Operation;
 import io.commercelayer.api.codegen.schema.Parameter;
 import io.commercelayer.api.codegen.schema.Property;
@@ -114,6 +115,20 @@ public final class CRUDUtils {
 
 		return lines;
 
+	}
+	
+	
+	public static boolean areCRUDOperationsAvailable(Definition def) {
+		Map<io.commercelayer.api.http.HttpRequest.Method, Operation> crudOps = def.getCRUDOperations();
+		return
+			crudOps.containsKey(io.commercelayer.api.http.HttpRequest.Method.POST)
+			&&
+			crudOps.containsKey(io.commercelayer.api.http.HttpRequest.Method.GET)
+			&&
+			crudOps.containsKey(io.commercelayer.api.http.HttpRequest.Method.PUT)
+			&&
+			crudOps.containsKey(io.commercelayer.api.http.HttpRequest.Method.DELETE)
+		;
 	}
 	
 	

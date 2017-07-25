@@ -9,6 +9,13 @@ import io.commercelayer.api.operation.*;
 public final class ApiOperations {
 
 	/**
+	 * GET /account
+	 */
+	public static GetAccount GetAccount() {
+		return new GetAccount();
+	}
+	
+	/**
 	 * GET /account/addresses
 	 */
 	public static GetAccountAddresses GetAccountAddresses() {
@@ -534,6 +541,76 @@ public final class ApiOperations {
 	}
 	
 	/**
+	 * GET /account/customs_forms
+	 */
+	public static GetAccountCustomsForms GetAccountCustomsForms() {
+		return new GetAccountCustomsForms();
+	}
+	
+	/**
+	 * POST /account/customs_forms
+	 */
+	public static PostAccountCustomsForms PostAccountCustomsForms() {
+		return new PostAccountCustomsForms();
+	}
+	
+	/**
+	 * GET /account/customs_forms/{id}
+	 */
+	public static GetAccountCustomsFormsId GetAccountCustomsFormsId() {
+		return new GetAccountCustomsFormsId();
+	}
+	
+	/**
+	 * PUT /account/customs_forms/{id}
+	 */
+	public static PutAccountCustomsFormsId PutAccountCustomsFormsId() {
+		return new PutAccountCustomsFormsId();
+	}
+	
+	/**
+	 * DELETE /account/customs_forms/{id}
+	 */
+	public static DeleteAccountCustomsFormsId DeleteAccountCustomsFormsId() {
+		return new DeleteAccountCustomsFormsId();
+	}
+	
+	/**
+	 * GET /account/customs_items
+	 */
+	public static GetAccountCustomsItems GetAccountCustomsItems() {
+		return new GetAccountCustomsItems();
+	}
+	
+	/**
+	 * POST /account/customs_items
+	 */
+	public static PostAccountCustomsItems PostAccountCustomsItems() {
+		return new PostAccountCustomsItems();
+	}
+	
+	/**
+	 * GET /account/customs_items/{id}
+	 */
+	public static GetAccountCustomsItemsId GetAccountCustomsItemsId() {
+		return new GetAccountCustomsItemsId();
+	}
+	
+	/**
+	 * PUT /account/customs_items/{id}
+	 */
+	public static PutAccountCustomsItemsId PutAccountCustomsItemsId() {
+		return new PutAccountCustomsItemsId();
+	}
+	
+	/**
+	 * DELETE /account/customs_items/{id}
+	 */
+	public static DeleteAccountCustomsItemsId DeleteAccountCustomsItemsId() {
+		return new DeleteAccountCustomsItemsId();
+	}
+	
+	/**
 	 * GET /account/environments
 	 */
 	public static GetAccountEnvironments GetAccountEnvironments() {
@@ -671,6 +748,20 @@ public final class ApiOperations {
 	 */
 	public static DeleteAccountImagesId DeleteAccountImagesId() {
 		return new DeleteAccountImagesId();
+	}
+	
+	/**
+	 * GET /account/invoices
+	 */
+	public static GetAccountInvoices GetAccountInvoices() {
+		return new GetAccountInvoices();
+	}
+	
+	/**
+	 * GET /account/invoices/{id}
+	 */
+	public static GetAccountInvoicesId GetAccountInvoicesId() {
+		return new GetAccountInvoicesId();
 	}
 	
 	/**
@@ -818,6 +909,41 @@ public final class ApiOperations {
 	 */
 	public static DeleteAccountMarketPaymentTypesId DeleteAccountMarketPaymentTypesId() {
 		return new DeleteAccountMarketPaymentTypesId();
+	}
+	
+	/**
+	 * GET /account/market_price_lists
+	 */
+	public static GetAccountMarketPriceLists GetAccountMarketPriceLists() {
+		return new GetAccountMarketPriceLists();
+	}
+	
+	/**
+	 * POST /account/market_price_lists
+	 */
+	public static PostAccountMarketPriceLists PostAccountMarketPriceLists() {
+		return new PostAccountMarketPriceLists();
+	}
+	
+	/**
+	 * GET /account/market_price_lists/{id}
+	 */
+	public static GetAccountMarketPriceListsId GetAccountMarketPriceListsId() {
+		return new GetAccountMarketPriceListsId();
+	}
+	
+	/**
+	 * PUT /account/market_price_lists/{id}
+	 */
+	public static PutAccountMarketPriceListsId PutAccountMarketPriceListsId() {
+		return new PutAccountMarketPriceListsId();
+	}
+	
+	/**
+	 * DELETE /account/market_price_lists/{id}
+	 */
+	public static DeleteAccountMarketPriceListsId DeleteAccountMarketPriceListsId() {
+		return new DeleteAccountMarketPriceListsId();
 	}
 	
 	/**
@@ -1262,41 +1388,6 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * GET /account/payment_types
-	 */
-	public static GetAccountPaymentTypes GetAccountPaymentTypes() {
-		return new GetAccountPaymentTypes();
-	}
-	
-	/**
-	 * POST /account/payment_types
-	 */
-	public static PostAccountPaymentTypes PostAccountPaymentTypes() {
-		return new PostAccountPaymentTypes();
-	}
-	
-	/**
-	 * GET /account/payment_types/{id}
-	 */
-	public static GetAccountPaymentTypesId GetAccountPaymentTypesId() {
-		return new GetAccountPaymentTypesId();
-	}
-	
-	/**
-	 * PUT /account/payment_types/{id}
-	 */
-	public static PutAccountPaymentTypesId PutAccountPaymentTypesId() {
-		return new PutAccountPaymentTypesId();
-	}
-	
-	/**
-	 * DELETE /account/payment_types/{id}
-	 */
-	public static DeleteAccountPaymentTypesId DeleteAccountPaymentTypesId() {
-		return new DeleteAccountPaymentTypesId();
-	}
-	
-	/**
 	 * GET /account/payment_methods
 	 */
 	public static GetAccountPaymentMethods GetAccountPaymentMethods() {
@@ -1329,6 +1420,76 @@ public final class ApiOperations {
 	 */
 	public static DeleteAccountPaymentMethodsId DeleteAccountPaymentMethodsId() {
 		return new DeleteAccountPaymentMethodsId();
+	}
+	
+	/**
+	 * GET /account/payment_prices
+	 */
+	public static GetAccountPaymentPrices GetAccountPaymentPrices() {
+		return new GetAccountPaymentPrices();
+	}
+	
+	/**
+	 * POST /account/payment_prices
+	 */
+	public static PostAccountPaymentPrices PostAccountPaymentPrices() {
+		return new PostAccountPaymentPrices();
+	}
+	
+	/**
+	 * GET /account/payment_prices/{id}
+	 */
+	public static GetAccountPaymentPricesId GetAccountPaymentPricesId() {
+		return new GetAccountPaymentPricesId();
+	}
+	
+	/**
+	 * PUT /account/payment_prices/{id}
+	 */
+	public static PutAccountPaymentPricesId PutAccountPaymentPricesId() {
+		return new PutAccountPaymentPricesId();
+	}
+	
+	/**
+	 * DELETE /account/payment_prices/{id}
+	 */
+	public static DeleteAccountPaymentPricesId DeleteAccountPaymentPricesId() {
+		return new DeleteAccountPaymentPricesId();
+	}
+	
+	/**
+	 * GET /account/payment_types
+	 */
+	public static GetAccountPaymentTypes GetAccountPaymentTypes() {
+		return new GetAccountPaymentTypes();
+	}
+	
+	/**
+	 * POST /account/payment_types
+	 */
+	public static PostAccountPaymentTypes PostAccountPaymentTypes() {
+		return new PostAccountPaymentTypes();
+	}
+	
+	/**
+	 * GET /account/payment_types/{id}
+	 */
+	public static GetAccountPaymentTypesId GetAccountPaymentTypesId() {
+		return new GetAccountPaymentTypesId();
+	}
+	
+	/**
+	 * PUT /account/payment_types/{id}
+	 */
+	public static PutAccountPaymentTypesId PutAccountPaymentTypesId() {
+		return new PutAccountPaymentTypesId();
+	}
+	
+	/**
+	 * DELETE /account/payment_types/{id}
+	 */
+	public static DeleteAccountPaymentTypesId DeleteAccountPaymentTypesId() {
+		return new DeleteAccountPaymentTypesId();
 	}
 	
 	/**
@@ -2123,6 +2284,41 @@ public final class ApiOperations {
 	}
 	
 	/**
+	 * GET /account/shipping_prices
+	 */
+	public static GetAccountShippingPrices GetAccountShippingPrices() {
+		return new GetAccountShippingPrices();
+	}
+	
+	/**
+	 * POST /account/shipping_prices
+	 */
+	public static PostAccountShippingPrices PostAccountShippingPrices() {
+		return new PostAccountShippingPrices();
+	}
+	
+	/**
+	 * GET /account/shipping_prices/{id}
+	 */
+	public static GetAccountShippingPricesId GetAccountShippingPricesId() {
+		return new GetAccountShippingPricesId();
+	}
+	
+	/**
+	 * PUT /account/shipping_prices/{id}
+	 */
+	public static PutAccountShippingPricesId PutAccountShippingPricesId() {
+		return new PutAccountShippingPricesId();
+	}
+	
+	/**
+	 * DELETE /account/shipping_prices/{id}
+	 */
+	public static DeleteAccountShippingPricesId DeleteAccountShippingPricesId() {
+		return new DeleteAccountShippingPricesId();
+	}
+	
+	/**
 	 * GET /account/shipping_services
 	 */
 	public static GetAccountShippingServices GetAccountShippingServices() {
@@ -2333,13 +2529,6 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * PUT /account/shipments/{id}/purchase
-	 */
-	public static PutAccountShipmentsIdPurchase PutAccountShipmentsIdPurchase() {
-		return new PutAccountShipmentsIdPurchase();
-	}
-	
-	/**
 	 * PUT /account/shipments/{id}/cancel
 	 */
 	public static PutAccountShipmentsIdCancel PutAccountShipmentsIdCancel() {
@@ -2358,6 +2547,13 @@ public final class ApiOperations {
 	 */
 	public static PutAccountShipmentsIdShip PutAccountShipmentsIdShip() {
 		return new PutAccountShipmentsIdShip();
+	}
+	
+	/**
+	 * PUT /account/shipments/{id}/purchase
+	 */
+	public static PutAccountShipmentsIdPurchase PutAccountShipmentsIdPurchase() {
+		return new PutAccountShipmentsIdPurchase();
 	}
 	
 	/**
@@ -2830,52 +3026,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * GET /account
-	 */
-	public static GetAccount GetAccount() {
-		return new GetAccount();
-	}
-	
-	/**
 	 * POST /accounts
 	 */
 	public static PostAccounts PostAccounts() {
 		return new PostAccounts();
-	}
-	
-	/**
-	 * GET /all/countries
-	 */
-	public static GetAllCountries GetAllCountries() {
-		return new GetAllCountries();
-	}
-	
-	/**
-	 * GET /all/currencies
-	 */
-	public static GetAllCurrencies GetAllCurrencies() {
-		return new GetAllCurrencies();
-	}
-	
-	/**
-	 * GET /all/gateways
-	 */
-	public static GetAllGateways GetAllGateways() {
-		return new GetAllGateways();
-	}
-	
-	/**
-	 * GET /all/states
-	 */
-	public static GetAllStates GetAllStates() {
-		return new GetAllStates();
-	}
-	
-	/**
-	 * GET /all/tax_categories
-	 */
-	public static GetAllTaxCategories GetAllTaxCategories() {
-		return new GetAllTaxCategories();
 	}
 	
 	/**
@@ -2886,17 +3040,45 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * POST /callbacks/paypal_accounts/{paypal_account_token}
+	 * POST /callbacks/paypal_accounts/{token}
 	 */
-	public static PostCallbacksPaypalAccountsPaypalAccountToken PostCallbacksPaypalAccountsPaypalAccountToken() {
-		return new PostCallbacksPaypalAccountsPaypalAccountToken();
+	public static PostCallbacksPaypalAccountsToken PostCallbacksPaypalAccountsToken() {
+		return new PostCallbacksPaypalAccountsToken();
 	}
 	
 	/**
-	 * GET /channel/country_languages
+	 * POST /channel/orders
 	 */
-	public static GetChannelCountryLanguages GetChannelCountryLanguages() {
-		return new GetChannelCountryLanguages();
+	public static PostChannelOrders PostChannelOrders() {
+		return new PostChannelOrders();
+	}
+	
+	/**
+	 * GET /channel
+	 */
+	public static GetChannel GetChannel() {
+		return new GetChannel();
+	}
+	
+	/**
+	 * GET /channel/countries
+	 */
+	public static GetChannelCountries GetChannelCountries() {
+		return new GetChannelCountries();
+	}
+	
+	/**
+	 * GET /channel/aggregations
+	 */
+	public static GetChannelAggregations GetChannelAggregations() {
+		return new GetChannelAggregations();
+	}
+	
+	/**
+	 * POST /channel/aggregations
+	 */
+	public static PostChannelAggregations PostChannelAggregations() {
+		return new PostChannelAggregations();
 	}
 	
 	/**
@@ -2984,13 +3166,6 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * POST /channel/orders
-	 */
-	public static PostChannelOrders PostChannelOrders() {
-		return new PostChannelOrders();
-	}
-	
-	/**
 	 * GET /channel/orders/{order_token}
 	 */
 	public static GetChannelOrdersOrderToken GetChannelOrdersOrderToken() {
@@ -3023,6 +3198,20 @@ public final class ApiOperations {
 	 */
 	public static PutChannelOrdersOrderTokenPlace PutChannelOrdersOrderTokenPlace() {
 		return new PutChannelOrdersOrderTokenPlace();
+	}
+	
+	/**
+	 * GET /channel/orders/{order_token}/available_shipping_services
+	 */
+	public static GetChannelOrdersOrderTokenAvailableShippingServices GetChannelOrdersOrderTokenAvailableShippingServices() {
+		return new GetChannelOrdersOrderTokenAvailableShippingServices();
+	}
+	
+	/**
+	 * GET /channel/orders/{order_token}/available_payment_types
+	 */
+	public static GetChannelOrdersOrderTokenAvailablePaymentTypes GetChannelOrdersOrderTokenAvailablePaymentTypes() {
+		return new GetChannelOrdersOrderTokenAvailablePaymentTypes();
 	}
 	
 	/**
@@ -3089,10 +3278,10 @@ public final class ApiOperations {
 	}
 	
 	/**
-	 * GET /channel/products
+	 * GET /channel/products/{id}
 	 */
-	public static GetChannelProducts GetChannelProducts() {
-		return new GetChannelProducts();
+	public static GetChannelProductsId GetChannelProductsId() {
+		return new GetChannelProductsId();
 	}
 	
 	/**
@@ -3100,13 +3289,6 @@ public final class ApiOperations {
 	 */
 	public static PostChannelProducts PostChannelProducts() {
 		return new PostChannelProducts();
-	}
-	
-	/**
-	 * GET /channel/products/{id}
-	 */
-	public static GetChannelProductsId GetChannelProductsId() {
-		return new GetChannelProductsId();
 	}
 	
 	/**
@@ -3135,6 +3317,13 @@ public final class ApiOperations {
 	 */
 	public static DeleteChannelShippingMethodsId DeleteChannelShippingMethodsId() {
 		return new DeleteChannelShippingMethodsId();
+	}
+	
+	/**
+	 * GET /channel/shipping_methods/{shipping_method_id}/available_shipping_services
+	 */
+	public static GetChannelShippingMethodsShippingMethodIdAvailableShippingServices GetChannelShippingMethodsShippingMethodIdAvailableShippingServices() {
+		return new GetChannelShippingMethodsShippingMethodIdAvailableShippingServices();
 	}
 	
 	/**
@@ -3180,10 +3369,52 @@ public final class ApiOperations {
 	}
 	
 	/**
+	 * GET /public/countries
+	 */
+	public static GetPublicCountries GetPublicCountries() {
+		return new GetPublicCountries();
+	}
+	
+	/**
+	 * GET /public/currencies
+	 */
+	public static GetPublicCurrencies GetPublicCurrencies() {
+		return new GetPublicCurrencies();
+	}
+	
+	/**
+	 * GET /public/gateways
+	 */
+	public static GetPublicGateways GetPublicGateways() {
+		return new GetPublicGateways();
+	}
+	
+	/**
+	 * GET /public/states
+	 */
+	public static GetPublicStates GetPublicStates() {
+		return new GetPublicStates();
+	}
+	
+	/**
+	 * GET /public/tax_categories
+	 */
+	public static GetPublicTaxCategories GetPublicTaxCategories() {
+		return new GetPublicTaxCategories();
+	}
+	
+	/**
 	 * GET /schema
 	 */
 	public static GetSchema GetSchema() {
 		return new GetSchema();
+	}
+	
+	/**
+	 * HEAD /healthcheck
+	 */
+	public static HeadHealthcheck HeadHealthcheck() {
+		return new HeadHealthcheck();
 	}
 	
 }

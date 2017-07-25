@@ -2,6 +2,7 @@ package io.commercelayer.api.model;
 
 import io.commercelayer.api.json.JsonExclude;
 import io.commercelayer.api.model.common.ApiResource;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -23,13 +24,21 @@ public class Contact extends ApiResource {
 	@JsonExclude
 	private String email;
 	@JsonExclude
+	private List<String> invoices;
+	@JsonExclude
 	private String nationalIdNumber;
+	@JsonExclude
+	private List<String> paymentMethods;
 	@JsonExclude
 	private String phone;
 	@JsonExclude
-	private Object previousChanges;
+	private List<String> shippingMethods;
+	@JsonExclude
+	private List<String> stockLocations;
 	@JsonExclude
 	private String taxIdNumber;
+	@JsonExclude
+	private List<String> versions;
 
 
 	public Contact() {
@@ -210,24 +219,108 @@ public class Contact extends ApiResource {
 	}
 	
 
-	public void setPreviousChanges(Object previousChanges) {
-		this.previousChanges = previousChanges;
+	public void setVersions(List<String> versions) {
+		this.versions = versions;
 	}
 	
 
-	public Object getPreviousChanges() {
-		return this.previousChanges;
+	public List<String> getVersions() {
+		return this.versions;
 	}
 	
 
-	public Contact previousChanges(Object previousChanges) {
-		setPreviousChanges(previousChanges);
+	public Contact versions(List<String> versions) {
+		setVersions(versions);
 		return this;
 	}
 	
 
-	public Object previousChanges() {
-		return getPreviousChanges();
+	public List<String> versions() {
+		return getVersions();
+	}
+	
+
+	public void setStockLocations(List<String> stockLocations) {
+		this.stockLocations = stockLocations;
+	}
+	
+
+	public List<String> getStockLocations() {
+		return this.stockLocations;
+	}
+	
+
+	public Contact stockLocations(List<String> stockLocations) {
+		setStockLocations(stockLocations);
+		return this;
+	}
+	
+
+	public List<String> stockLocations() {
+		return getStockLocations();
+	}
+	
+
+	public void setShippingMethods(List<String> shippingMethods) {
+		this.shippingMethods = shippingMethods;
+	}
+	
+
+	public List<String> getShippingMethods() {
+		return this.shippingMethods;
+	}
+	
+
+	public Contact shippingMethods(List<String> shippingMethods) {
+		setShippingMethods(shippingMethods);
+		return this;
+	}
+	
+
+	public List<String> shippingMethods() {
+		return getShippingMethods();
+	}
+	
+
+	public void setPaymentMethods(List<String> paymentMethods) {
+		this.paymentMethods = paymentMethods;
+	}
+	
+
+	public List<String> getPaymentMethods() {
+		return this.paymentMethods;
+	}
+	
+
+	public Contact paymentMethods(List<String> paymentMethods) {
+		setPaymentMethods(paymentMethods);
+		return this;
+	}
+	
+
+	public List<String> paymentMethods() {
+		return getPaymentMethods();
+	}
+	
+
+	public void setInvoices(List<String> invoices) {
+		this.invoices = invoices;
+	}
+	
+
+	public List<String> getInvoices() {
+		return this.invoices;
+	}
+	
+
+	public Contact invoices(List<String> invoices) {
+		setInvoices(invoices);
+		return this;
+	}
+	
+
+	public List<String> invoices() {
+		return getInvoices();
 	}
 	
 
@@ -248,7 +341,11 @@ public class Contact extends ApiResource {
 			&& Objects.equals(this.custom1, x.custom1)
 			&& Objects.equals(this.custom2, x.custom2)
 			&& Objects.equals(this.custom3, x.custom3)
-			&& Objects.equals(this.previousChanges, x.previousChanges)
+			&& Objects.equals(this.versions, x.versions)
+			&& Objects.equals(this.stockLocations, x.stockLocations)
+			&& Objects.equals(this.shippingMethods, x.shippingMethods)
+			&& Objects.equals(this.paymentMethods, x.paymentMethods)
+			&& Objects.equals(this.invoices, x.invoices)
 		;
 	
 	}
@@ -259,7 +356,8 @@ public class Contact extends ApiResource {
 	
 		return Objects.hash(
 			name, nationalIdNumber, taxIdNumber, email, phone,
-			custom1, custom2, custom3, previousChanges 
+			custom1, custom2, custom3, versions, stockLocations,
+			shippingMethods, paymentMethods, invoices 
 		);
 	
 	}
@@ -280,7 +378,11 @@ public class Contact extends ApiResource {
 		no.custom1 = this.custom1;
 		no.custom2 = this.custom2;
 		no.custom3 = this.custom3;
-		no.previousChanges = this.previousChanges;
+		no.versions = this.versions;
+		no.stockLocations = this.stockLocations;
+		no.shippingMethods = this.shippingMethods;
+		no.paymentMethods = this.paymentMethods;
+		no.invoices = this.invoices;
 	
 		return no;
 	

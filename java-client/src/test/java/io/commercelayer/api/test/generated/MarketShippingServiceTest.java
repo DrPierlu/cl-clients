@@ -30,7 +30,7 @@ public class MarketShippingServiceTest extends IntegrationTest<MarketShippingSer
 	
 		// FIELD NOT FOUND -> res.setFreeOverAmount("freeOverAmount");
 		// FIELD NOT FOUND -> res.setShippingServiceId("shippingServiceId");
-		res.setPrice("price");
+		// FIELD NOT FOUND -> res.setPrice("price");
 		// FIELD NOT FOUND -> res.setMarketId("marketId");
 	
 		postOp.setPayload(res);
@@ -43,7 +43,7 @@ public class MarketShippingServiceTest extends IntegrationTest<MarketShippingSer
 	
 		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getFreeOverAmount());
 		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getShippingServiceId());
-		Assert.assertNotNull(postRes.getResource().getPrice());
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getPrice());
 		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getMarketId());
 	
 	
@@ -86,7 +86,7 @@ public class MarketShippingServiceTest extends IntegrationTest<MarketShippingSer
 	
 		// FIELD NOT FOUND -> res.setFreeOverAmount(randomField(oldRes.getFreeOverAmount()));
 		// FIELD NOT FOUND -> res.setShippingServiceId(randomField(oldRes.getShippingServiceId()));
-		res.setPrice(randomField(oldRes.getPrice()));
+		// FIELD NOT FOUND -> res.setPrice(randomField(oldRes.getPrice()));
 		// FIELD NOT FOUND -> res.setMarketId(randomField(oldRes.getMarketId()));
 	
 		putOp.setPayload(res);
@@ -99,7 +99,7 @@ public class MarketShippingServiceTest extends IntegrationTest<MarketShippingSer
 	
 		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getFreeOverAmount(), putRes.getResource().getFreeOverAmount());
 		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getShippingServiceId(), putRes.getResource().getShippingServiceId());
-		Assert.assertNotEquals(oldRes.getPrice(), putRes.getResource().getPrice());
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getPrice(), putRes.getResource().getPrice());
 		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getMarketId(), putRes.getResource().getMarketId());
 	
 	

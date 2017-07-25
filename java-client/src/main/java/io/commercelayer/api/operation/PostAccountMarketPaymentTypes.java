@@ -15,7 +15,6 @@ public class PostAccountMarketPaymentTypes extends PostOperation<MarketPaymentTy
 	{
 		addRequiredField("marketId");
 		addRequiredField("paymentTypeId");
-		addRequiredField("price");
 		addRequiredField("countryCodeRegex");
 		addRequiredField("notCountryCodeRegex");
 	}

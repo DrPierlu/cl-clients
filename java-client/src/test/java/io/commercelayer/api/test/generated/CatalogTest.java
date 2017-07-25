@@ -28,8 +28,13 @@ public class CatalogTest extends IntegrationTest<Catalog> {
 	
 		Catalog res = new Catalog();
 	
+		// FIELD NOT FOUND -> res.setMerchandisingRuleIds("merchandisingRuleIds");
+		// FIELD NOT FOUND -> res.setProductIds("productIds");
+		// FIELD NOT FOUND -> res.setTaxonIds("taxonIds");
 		res.setName("name");
 		// FIELD NOT FOUND -> res.setDescription("description");
+		// FIELD NOT FOUND -> res.setMarketIds("marketIds");
+		// FIELD NOT FOUND -> res.setTaxonomyIds("taxonomyIds");
 	
 		postOp.setPayload(res);
 	
@@ -39,8 +44,13 @@ public class CatalogTest extends IntegrationTest<Catalog> {
 		ApiResponse<Catalog> postRes = test(postReq, caller);
 	
 	
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getMerchandisingRuleIds());
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getProductIds());
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getTaxonIds());
 		Assert.assertNotNull(postRes.getResource().getName());
 		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getDescription());
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getMarketIds());
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getTaxonomyIds());
 	
 	
 		return postRes;
@@ -80,8 +90,13 @@ public class CatalogTest extends IntegrationTest<Catalog> {
 	
 		Catalog res = new Catalog();
 	
+		// FIELD NOT FOUND -> res.setMerchandisingRuleIds(randomField(oldRes.getMerchandisingRuleIds()));
+		// FIELD NOT FOUND -> res.setProductIds(randomField(oldRes.getProductIds()));
+		// FIELD NOT FOUND -> res.setTaxonIds(randomField(oldRes.getTaxonIds()));
 		res.setName(randomField(oldRes.getName()));
 		// FIELD NOT FOUND -> res.setDescription(randomField(oldRes.getDescription()));
+		// FIELD NOT FOUND -> res.setMarketIds(randomField(oldRes.getMarketIds()));
+		// FIELD NOT FOUND -> res.setTaxonomyIds(randomField(oldRes.getTaxonomyIds()));
 	
 		putOp.setPayload(res);
 	
@@ -91,8 +106,13 @@ public class CatalogTest extends IntegrationTest<Catalog> {
 		ApiResponse<Catalog> putRes = test(putReq, caller);
 	
 	
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getMerchandisingRuleIds(), putRes.getResource().getMerchandisingRuleIds());
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getProductIds(), putRes.getResource().getProductIds());
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getTaxonIds(), putRes.getResource().getTaxonIds());
 		Assert.assertNotEquals(oldRes.getName(), putRes.getResource().getName());
 		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getDescription(), putRes.getResource().getDescription());
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getMarketIds(), putRes.getResource().getMarketIds());
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getTaxonomyIds(), putRes.getResource().getTaxonomyIds());
 	
 	
 		return putRes;

@@ -29,7 +29,7 @@ public class Merchant extends ApiResource {
 	@JsonExclude
 	private List<String> paymentTypes;
 	@JsonExclude
-	private Object previousChanges;
+	private List<String> versions;
 
 
 	public Merchant() {
@@ -105,27 +105,6 @@ public class Merchant extends ApiResource {
 	}
 	
 
-	public void setPreviousChanges(Object previousChanges) {
-		this.previousChanges = previousChanges;
-	}
-	
-
-	public Object getPreviousChanges() {
-		return this.previousChanges;
-	}
-	
-
-	public Merchant previousChanges(Object previousChanges) {
-		setPreviousChanges(previousChanges);
-		return this;
-	}
-	
-
-	public Object previousChanges() {
-		return getPreviousChanges();
-	}
-	
-
 	public void setAddress(Object address) {
 		this.address = address;
 	}
@@ -144,6 +123,27 @@ public class Merchant extends ApiResource {
 
 	public Object address() {
 		return getAddress();
+	}
+	
+
+	public void setVersions(List<String> versions) {
+		this.versions = versions;
+	}
+	
+
+	public List<String> getVersions() {
+		return this.versions;
+	}
+	
+
+	public Merchant versions(List<String> versions) {
+		setVersions(versions);
+		return this;
+	}
+	
+
+	public List<String> versions() {
+		return getVersions();
 	}
 	
 
@@ -243,8 +243,8 @@ public class Merchant extends ApiResource {
 			&& Objects.equals(this.addressId, x.addressId)
 			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.description, x.description)
-			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.address, x.address)
+			&& Objects.equals(this.versions, x.versions)
 			&& Objects.equals(this.markets, x.markets)
 			&& Objects.equals(this.gateways, x.gateways)
 			&& Objects.equals(this.orders, x.orders)
@@ -258,7 +258,7 @@ public class Merchant extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			addressId, name, description, previousChanges, address,
+			addressId, name, description, address, versions,
 			markets, gateways, orders, paymentTypes 
 		);
 	
@@ -275,8 +275,8 @@ public class Merchant extends ApiResource {
 		no.addressId = this.addressId;
 		no.name = this.name;
 		no.description = this.description;
-		no.previousChanges = this.previousChanges;
 		no.address = this.address;
+		no.versions = this.versions;
 		no.markets = this.markets;
 		no.gateways = this.gateways;
 		no.orders = this.orders;

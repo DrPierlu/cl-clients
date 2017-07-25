@@ -18,9 +18,9 @@ public class Taxonomy extends ApiResource {
 	@JsonExclude
 	private Object featuredImage;
 	@JsonExclude
-	private List<String> images;
+	private String featuredImageId;
 	@JsonExclude
-	private Object previousChanges;
+	private List<String> images;
 	@JsonExclude
 	private List<String> products;
 	@JsonExclude
@@ -31,6 +31,8 @@ public class Taxonomy extends ApiResource {
 	private List<String> taxons;
 	@JsonExclude
 	private List<String> translations;
+	@JsonExclude
+	private List<String> versions;
 
 
 	public Taxonomy() {
@@ -85,24 +87,24 @@ public class Taxonomy extends ApiResource {
 	}
 	
 
-	public void setPreviousChanges(Object previousChanges) {
-		this.previousChanges = previousChanges;
+	public void setVersions(List<String> versions) {
+		this.versions = versions;
 	}
 	
 
-	public Object getPreviousChanges() {
-		return this.previousChanges;
+	public List<String> getVersions() {
+		return this.versions;
 	}
 	
 
-	public Taxonomy previousChanges(Object previousChanges) {
-		setPreviousChanges(previousChanges);
+	public Taxonomy versions(List<String> versions) {
+		setVersions(versions);
 		return this;
 	}
 	
 
-	public Object previousChanges() {
-		return getPreviousChanges();
+	public List<String> versions() {
+		return getVersions();
 	}
 	
 
@@ -211,6 +213,27 @@ public class Taxonomy extends ApiResource {
 	}
 	
 
+	public void setFeaturedImageId(String featuredImageId) {
+		this.featuredImageId = featuredImageId;
+	}
+	
+
+	public String getFeaturedImageId() {
+		return this.featuredImageId;
+	}
+	
+
+	public Taxonomy featuredImageId(String featuredImageId) {
+		setFeaturedImageId(featuredImageId);
+		return this;
+	}
+	
+
+	public String featuredImageId() {
+		return getFeaturedImageId();
+	}
+	
+
 	public void setFeaturedImage(Object featuredImage) {
 		this.featuredImage = featuredImage;
 	}
@@ -243,12 +266,13 @@ public class Taxonomy extends ApiResource {
 		return super.equals(o)
 			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.slug, x.slug)
-			&& Objects.equals(this.previousChanges, x.previousChanges)
+			&& Objects.equals(this.versions, x.versions)
 			&& Objects.equals(this.resourceImages, x.resourceImages)
 			&& Objects.equals(this.images, x.images)
 			&& Objects.equals(this.translations, x.translations)
 			&& Objects.equals(this.taxons, x.taxons)
 			&& Objects.equals(this.products, x.products)
+			&& Objects.equals(this.featuredImageId, x.featuredImageId)
 			&& Objects.equals(this.featuredImage, x.featuredImage)
 		;
 	
@@ -259,8 +283,9 @@ public class Taxonomy extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, slug, previousChanges, resourceImages, images,
-			translations, taxons, products, featuredImage 
+			name, slug, versions, resourceImages, images,
+			translations, taxons, products, featuredImageId, featuredImage
+			
 		);
 	
 	}
@@ -275,12 +300,13 @@ public class Taxonomy extends ApiResource {
 	
 		no.name = this.name;
 		no.slug = this.slug;
-		no.previousChanges = this.previousChanges;
+		no.versions = this.versions;
 		no.resourceImages = this.resourceImages;
 		no.images = this.images;
 		no.translations = this.translations;
 		no.taxons = this.taxons;
 		no.products = this.products;
+		no.featuredImageId = this.featuredImageId;
 		no.featuredImage = this.featuredImage;
 	
 		return no;

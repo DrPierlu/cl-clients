@@ -2,6 +2,7 @@ package io.commercelayer.api.model;
 
 import io.commercelayer.api.json.JsonExclude;
 import io.commercelayer.api.model.common.ApiResource;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -16,9 +17,11 @@ public class Image extends ApiResource {
 	@JsonExclude
 	private String name;
 	@JsonExclude
-	private Object previousChanges;
+	private List<String> resourceImages;
 	@JsonExclude
 	private String url;
+	@JsonExclude
+	private List<String> versions;
 
 
 	public Image() {
@@ -52,24 +55,45 @@ public class Image extends ApiResource {
 	}
 	
 
-	public void setPreviousChanges(Object previousChanges) {
-		this.previousChanges = previousChanges;
+	public void setVersions(List<String> versions) {
+		this.versions = versions;
 	}
 	
 
-	public Object getPreviousChanges() {
-		return this.previousChanges;
+	public List<String> getVersions() {
+		return this.versions;
 	}
 	
 
-	public Image previousChanges(Object previousChanges) {
-		setPreviousChanges(previousChanges);
+	public Image versions(List<String> versions) {
+		setVersions(versions);
 		return this;
 	}
 	
 
-	public Object previousChanges() {
-		return getPreviousChanges();
+	public List<String> versions() {
+		return getVersions();
+	}
+	
+
+	public void setResourceImages(List<String> resourceImages) {
+		this.resourceImages = resourceImages;
+	}
+	
+
+	public List<String> getResourceImages() {
+		return this.resourceImages;
+	}
+	
+
+	public Image resourceImages(List<String> resourceImages) {
+		setResourceImages(resourceImages);
+		return this;
+	}
+	
+
+	public List<String> resourceImages() {
+		return getResourceImages();
 	}
 	
 
@@ -104,7 +128,8 @@ public class Image extends ApiResource {
 	
 		return super.equals(o)
 			&& Objects.equals(this.name, x.name)
-			&& Objects.equals(this.previousChanges, x.previousChanges)
+			&& Objects.equals(this.versions, x.versions)
+			&& Objects.equals(this.resourceImages, x.resourceImages)
 			&& Objects.equals(this.url, x.url)
 		;
 	
@@ -115,7 +140,7 @@ public class Image extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, previousChanges, url 
+			name, versions, resourceImages, url 
 		);
 	
 	}
@@ -129,7 +154,8 @@ public class Image extends ApiResource {
 		no = super.clone(no);
 	
 		no.name = this.name;
-		no.previousChanges = this.previousChanges;
+		no.versions = this.versions;
+		no.resourceImages = this.resourceImages;
 		no.url = this.url;
 	
 		return no;

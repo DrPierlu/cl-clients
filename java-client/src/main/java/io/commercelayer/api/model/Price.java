@@ -2,6 +2,7 @@ package io.commercelayer.api.model;
 
 import io.commercelayer.api.json.JsonExclude;
 import io.commercelayer.api.model.common.ApiResource;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -32,6 +33,8 @@ public class Price extends ApiResource {
 	@JsonExclude
 	private String discounted;
 	@JsonExclude
+	private List<String> events;
+	@JsonExclude
 	private String exchanges;
 	@JsonExclude
 	private String formattedAmount;
@@ -42,11 +45,11 @@ public class Price extends ApiResource {
 	@JsonExclude
 	private String name;
 	@JsonExclude
-	private Object previousChanges;
-	@JsonExclude
 	private Object priceList;
 	@JsonExclude
 	private Object sellable;
+	@JsonExclude
+	private List<String> versions;
 
 
 	public Price() {
@@ -185,27 +188,6 @@ public class Price extends ApiResource {
 	}
 	
 
-	public void setPreviousChanges(Object previousChanges) {
-		this.previousChanges = previousChanges;
-	}
-	
-
-	public Object getPreviousChanges() {
-		return this.previousChanges;
-	}
-	
-
-	public Price previousChanges(Object previousChanges) {
-		setPreviousChanges(previousChanges);
-		return this;
-	}
-	
-
-	public Object previousChanges() {
-		return getPreviousChanges();
-	}
-	
-
 	public void setPriceList(Object priceList) {
 		this.priceList = priceList;
 	}
@@ -245,6 +227,48 @@ public class Price extends ApiResource {
 
 	public Object sellable() {
 		return getSellable();
+	}
+	
+
+	public void setVersions(List<String> versions) {
+		this.versions = versions;
+	}
+	
+
+	public List<String> getVersions() {
+		return this.versions;
+	}
+	
+
+	public Price versions(List<String> versions) {
+		setVersions(versions);
+		return this;
+	}
+	
+
+	public List<String> versions() {
+		return getVersions();
+	}
+	
+
+	public void setEvents(List<String> events) {
+		this.events = events;
+	}
+	
+
+	public List<String> getEvents() {
+		return this.events;
+	}
+	
+
+	public Price events(List<String> events) {
+		setEvents(events);
+		return this;
+	}
+	
+
+	public List<String> events() {
+		return getEvents();
 	}
 	
 
@@ -473,9 +497,10 @@ public class Price extends ApiResource {
 			&& Objects.equals(this.sellableResource, x.sellableResource)
 			&& Objects.equals(this.amountCents, x.amountCents)
 			&& Objects.equals(this.compareAtAmountCents, x.compareAtAmountCents)
-			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.priceList, x.priceList)
 			&& Objects.equals(this.sellable, x.sellable)
+			&& Objects.equals(this.versions, x.versions)
+			&& Objects.equals(this.events, x.events)
 			&& Objects.equals(this.discountAmount, x.discountAmount)
 			&& Objects.equals(this.formattedDiscountAmount, x.formattedDiscountAmount)
 			&& Objects.equals(this.amount, x.amount)
@@ -496,9 +521,10 @@ public class Price extends ApiResource {
 	
 		return Objects.hash(
 			name, priceListId, sellableId, sellableResource, amountCents,
-			compareAtAmountCents, previousChanges, priceList, sellable, discountAmount,
-			formattedDiscountAmount, amount, formattedAmount, compareAtAmount, formattedCompareAtAmount,
-			discounted, discountPercentage, discountPercentageRounded, exchanges 
+			compareAtAmountCents, priceList, sellable, versions, events,
+			discountAmount, formattedDiscountAmount, amount, formattedAmount, compareAtAmount,
+			formattedCompareAtAmount, discounted, discountPercentage, discountPercentageRounded, exchanges
+			
 		);
 	
 	}
@@ -517,9 +543,10 @@ public class Price extends ApiResource {
 		no.sellableResource = this.sellableResource;
 		no.amountCents = this.amountCents;
 		no.compareAtAmountCents = this.compareAtAmountCents;
-		no.previousChanges = this.previousChanges;
 		no.priceList = this.priceList;
 		no.sellable = this.sellable;
+		no.versions = this.versions;
+		no.events = this.events;
 		no.discountAmount = this.discountAmount;
 		no.formattedDiscountAmount = this.formattedDiscountAmount;
 		no.amount = this.amount;

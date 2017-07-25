@@ -30,7 +30,7 @@ public class StockLocation extends ApiResource {
 	@JsonExclude
 	private Integer position;
 	@JsonExclude
-	private Object previousChanges;
+	private List<String> shipments;
 	@JsonExclude
 	private Object shippingSender;
 	@JsonExclude
@@ -39,6 +39,8 @@ public class StockLocation extends ApiResource {
 	private List<String> shippingServices;
 	@JsonExclude
 	private List<String> stockItems;
+	@JsonExclude
+	private List<String> versions;
 
 
 	public StockLocation() {
@@ -156,27 +158,6 @@ public class StockLocation extends ApiResource {
 	}
 	
 
-	public void setPreviousChanges(Object previousChanges) {
-		this.previousChanges = previousChanges;
-	}
-	
-
-	public Object getPreviousChanges() {
-		return this.previousChanges;
-	}
-	
-
-	public StockLocation previousChanges(Object previousChanges) {
-		setPreviousChanges(previousChanges);
-		return this;
-	}
-	
-
-	public Object previousChanges() {
-		return getPreviousChanges();
-	}
-	
-
 	public void setAddress(Object address) {
 		this.address = address;
 	}
@@ -216,6 +197,27 @@ public class StockLocation extends ApiResource {
 
 	public Object shippingSender() {
 		return getShippingSender();
+	}
+	
+
+	public void setVersions(List<String> versions) {
+		this.versions = versions;
+	}
+	
+
+	public List<String> getVersions() {
+		return this.versions;
+	}
+	
+
+	public StockLocation versions(List<String> versions) {
+		setVersions(versions);
+		return this;
+	}
+	
+
+	public List<String> versions() {
+		return getVersions();
 	}
 	
 
@@ -303,6 +305,27 @@ public class StockLocation extends ApiResource {
 	}
 	
 
+	public void setShipments(List<String> shipments) {
+		this.shipments = shipments;
+	}
+	
+
+	public List<String> getShipments() {
+		return this.shipments;
+	}
+	
+
+	public StockLocation shipments(List<String> shipments) {
+		setShipments(shipments);
+		return this;
+	}
+	
+
+	public List<String> shipments() {
+		return getShipments();
+	}
+	
+
 	public void setShippingServices(List<String> shippingServices) {
 		this.shippingServices = shippingServices;
 	}
@@ -359,13 +382,14 @@ public class StockLocation extends ApiResource {
 			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.position, x.position)
 			&& Objects.equals(this.easypostAddressId, x.easypostAddressId)
-			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.address, x.address)
 			&& Objects.equals(this.shippingSender, x.shippingSender)
+			&& Objects.equals(this.versions, x.versions)
 			&& Objects.equals(this.stockItems, x.stockItems)
 			&& Objects.equals(this.lineItemStocks, x.lineItemStocks)
 			&& Objects.equals(this.shippingServiceStockLocations, x.shippingServiceStockLocations)
 			&& Objects.equals(this.marketStockLocations, x.marketStockLocations)
+			&& Objects.equals(this.shipments, x.shipments)
 			&& Objects.equals(this.shippingServices, x.shippingServices)
 			&& Objects.equals(this.markets, x.markets)
 		;
@@ -378,8 +402,9 @@ public class StockLocation extends ApiResource {
 	
 		return Objects.hash(
 			shippingSenderId, addressId, name, position, easypostAddressId,
-			previousChanges, address, shippingSender, stockItems, lineItemStocks,
-			shippingServiceStockLocations, marketStockLocations, shippingServices, markets 
+			address, shippingSender, versions, stockItems, lineItemStocks,
+			shippingServiceStockLocations, marketStockLocations, shipments, shippingServices, markets
+			
 		);
 	
 	}
@@ -397,13 +422,14 @@ public class StockLocation extends ApiResource {
 		no.name = this.name;
 		no.position = this.position;
 		no.easypostAddressId = this.easypostAddressId;
-		no.previousChanges = this.previousChanges;
 		no.address = this.address;
 		no.shippingSender = this.shippingSender;
+		no.versions = this.versions;
 		no.stockItems = this.stockItems;
 		no.lineItemStocks = this.lineItemStocks;
 		no.shippingServiceStockLocations = this.shippingServiceStockLocations;
 		no.marketStockLocations = this.marketStockLocations;
+		no.shipments = this.shipments;
 		no.shippingServices = this.shippingServices;
 		no.markets = this.markets;
 	

@@ -16,6 +16,13 @@ public class PostAccountTaxons extends PostOperation<Taxon> {
 		addRequiredField("taxonomyId");
 		addRequiredField("name");
 		addRequiredField("parentId");
+		addRequiredField("resourceImageIds");
+		addRequiredField("imageIds");
+		addRequiredField("merchandisingRuleIds");
+		addRequiredField("productIds");
+		addRequiredField("childIds");
+		addRequiredField("descendantHierarchyIds");
+		addRequiredField("selfAndDescendantIds");
 	}
 
 

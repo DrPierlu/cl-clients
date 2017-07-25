@@ -2,6 +2,7 @@ package io.commercelayer.api.model;
 
 import io.commercelayer.api.json.JsonExclude;
 import io.commercelayer.api.model.common.ApiResource;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -24,9 +25,9 @@ public class VariantOption extends ApiResource {
 	@JsonExclude
 	private Object optionValue;
 	@JsonExclude
-	private Object previousChanges;
-	@JsonExclude
 	private Object variant;
+	@JsonExclude
+	private List<String> versions;
 
 
 	public VariantOption() {
@@ -123,27 +124,6 @@ public class VariantOption extends ApiResource {
 	}
 	
 
-	public void setPreviousChanges(Object previousChanges) {
-		this.previousChanges = previousChanges;
-	}
-	
-
-	public Object getPreviousChanges() {
-		return this.previousChanges;
-	}
-	
-
-	public VariantOption previousChanges(Object previousChanges) {
-		setPreviousChanges(previousChanges);
-		return this;
-	}
-	
-
-	public Object previousChanges() {
-		return getPreviousChanges();
-	}
-	
-
 	public void setVariant(Object variant) {
 		this.variant = variant;
 	}
@@ -207,6 +187,27 @@ public class VariantOption extends ApiResource {
 	}
 	
 
+	public void setVersions(List<String> versions) {
+		this.versions = versions;
+	}
+	
+
+	public List<String> getVersions() {
+		return this.versions;
+	}
+	
+
+	public VariantOption versions(List<String> versions) {
+		setVersions(versions);
+		return this;
+	}
+	
+
+	public List<String> versions() {
+		return getVersions();
+	}
+	
+
 	@Override
 	public boolean equals(Object o) {
 	
@@ -220,10 +221,10 @@ public class VariantOption extends ApiResource {
 			&& Objects.equals(this.variantId, x.variantId)
 			&& Objects.equals(this.optionTypeId, x.optionTypeId)
 			&& Objects.equals(this.optionValueId, x.optionValueId)
-			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.variant, x.variant)
 			&& Objects.equals(this.optionType, x.optionType)
 			&& Objects.equals(this.optionValue, x.optionValue)
+			&& Objects.equals(this.versions, x.versions)
 		;
 	
 	}
@@ -233,8 +234,8 @@ public class VariantOption extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, variantId, optionTypeId, optionValueId, previousChanges,
-			variant, optionType, optionValue 
+			name, variantId, optionTypeId, optionValueId, variant,
+			optionType, optionValue, versions 
 		);
 	
 	}
@@ -251,10 +252,10 @@ public class VariantOption extends ApiResource {
 		no.variantId = this.variantId;
 		no.optionTypeId = this.optionTypeId;
 		no.optionValueId = this.optionValueId;
-		no.previousChanges = this.previousChanges;
 		no.variant = this.variant;
 		no.optionType = this.optionType;
 		no.optionValue = this.optionValue;
+		no.versions = this.versions;
 	
 		return no;
 	

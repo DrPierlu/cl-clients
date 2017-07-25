@@ -2,6 +2,7 @@ package io.commercelayer.api.model;
 
 import io.commercelayer.api.json.JsonExclude;
 import io.commercelayer.api.model.common.ApiResource;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -17,7 +18,9 @@ public class ShippingCarrier extends ApiResource {
 	@JsonExclude
 	private String name;
 	@JsonExclude
-	private Object previousChanges;
+	private List<String> shippingCarrierAccounts;
+	@JsonExclude
+	private List<String> versions;
 
 
 	public ShippingCarrier() {
@@ -72,24 +75,45 @@ public class ShippingCarrier extends ApiResource {
 	}
 	
 
-	public void setPreviousChanges(Object previousChanges) {
-		this.previousChanges = previousChanges;
+	public void setVersions(List<String> versions) {
+		this.versions = versions;
 	}
 	
 
-	public Object getPreviousChanges() {
-		return this.previousChanges;
+	public List<String> getVersions() {
+		return this.versions;
 	}
 	
 
-	public ShippingCarrier previousChanges(Object previousChanges) {
-		setPreviousChanges(previousChanges);
+	public ShippingCarrier versions(List<String> versions) {
+		setVersions(versions);
 		return this;
 	}
 	
 
-	public Object previousChanges() {
-		return getPreviousChanges();
+	public List<String> versions() {
+		return getVersions();
+	}
+	
+
+	public void setShippingCarrierAccounts(List<String> shippingCarrierAccounts) {
+		this.shippingCarrierAccounts = shippingCarrierAccounts;
+	}
+	
+
+	public List<String> getShippingCarrierAccounts() {
+		return this.shippingCarrierAccounts;
+	}
+	
+
+	public ShippingCarrier shippingCarrierAccounts(List<String> shippingCarrierAccounts) {
+		setShippingCarrierAccounts(shippingCarrierAccounts);
+		return this;
+	}
+	
+
+	public List<String> shippingCarrierAccounts() {
+		return getShippingCarrierAccounts();
 	}
 	
 
@@ -104,7 +128,8 @@ public class ShippingCarrier extends ApiResource {
 		return super.equals(o)
 			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.kind, x.kind)
-			&& Objects.equals(this.previousChanges, x.previousChanges)
+			&& Objects.equals(this.versions, x.versions)
+			&& Objects.equals(this.shippingCarrierAccounts, x.shippingCarrierAccounts)
 		;
 	
 	}
@@ -114,7 +139,7 @@ public class ShippingCarrier extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, kind, previousChanges 
+			name, kind, versions, shippingCarrierAccounts 
 		);
 	
 	}
@@ -129,7 +154,8 @@ public class ShippingCarrier extends ApiResource {
 	
 		no.name = this.name;
 		no.kind = this.kind;
-		no.previousChanges = this.previousChanges;
+		no.versions = this.versions;
+		no.shippingCarrierAccounts = this.shippingCarrierAccounts;
 	
 		return no;
 	

@@ -29,8 +29,8 @@ public class MetaFieldTest extends IntegrationTest<MetaField> {
 		MetaField res = new MetaField();
 	
 		res.setNamespace("namespace");
+		res.setName("name");
 		res.setValue("value");
-		res.setKey("key");
 	
 		postOp.setPayload(res);
 	
@@ -41,8 +41,8 @@ public class MetaFieldTest extends IntegrationTest<MetaField> {
 	
 	
 		Assert.assertNotNull(postRes.getResource().getNamespace());
+		Assert.assertNotNull(postRes.getResource().getName());
 		Assert.assertNotNull(postRes.getResource().getValue());
-		Assert.assertNotNull(postRes.getResource().getKey());
 	
 	
 		return postRes;
@@ -83,8 +83,8 @@ public class MetaFieldTest extends IntegrationTest<MetaField> {
 		MetaField res = new MetaField();
 	
 		res.setNamespace(randomField(oldRes.getNamespace()));
+		res.setName(randomField(oldRes.getName()));
 		res.setValue(randomField(oldRes.getValue()));
-		res.setKey(randomField(oldRes.getKey()));
 	
 		putOp.setPayload(res);
 	
@@ -95,8 +95,8 @@ public class MetaFieldTest extends IntegrationTest<MetaField> {
 	
 	
 		Assert.assertNotEquals(oldRes.getNamespace(), putRes.getResource().getNamespace());
+		Assert.assertNotEquals(oldRes.getName(), putRes.getResource().getName());
 		Assert.assertNotEquals(oldRes.getValue(), putRes.getResource().getValue());
-		Assert.assertNotEquals(oldRes.getKey(), putRes.getResource().getKey());
 	
 	
 		return putRes;

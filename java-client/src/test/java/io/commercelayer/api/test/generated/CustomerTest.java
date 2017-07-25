@@ -30,7 +30,10 @@ public class CustomerTest extends IntegrationTest<Customer> {
 	
 		// FIELD NOT FOUND -> res.setPasswordConfirmation("passwordConfirmation");
 		// FIELD NOT FOUND -> res.setPassword("password");
+		// FIELD NOT FOUND -> res.setResourceImageIds("resourceImageIds");
+		// FIELD NOT FOUND -> res.setOrderIds("orderIds");
 		res.setEmail("email");
+		// FIELD NOT FOUND -> res.setImageIds("imageIds");
 	
 		postOp.setPayload(res);
 	
@@ -42,7 +45,10 @@ public class CustomerTest extends IntegrationTest<Customer> {
 	
 		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getPasswordConfirmation());
 		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getPassword());
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getResourceImageIds());
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getOrderIds());
 		Assert.assertNotNull(postRes.getResource().getEmail());
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getImageIds());
 	
 	
 		return postRes;
@@ -84,7 +90,10 @@ public class CustomerTest extends IntegrationTest<Customer> {
 	
 		// FIELD NOT FOUND -> res.setPasswordConfirmation(randomField(oldRes.getPasswordConfirmation()));
 		// FIELD NOT FOUND -> res.setPassword(randomField(oldRes.getPassword()));
+		// FIELD NOT FOUND -> res.setResourceImageIds(randomField(oldRes.getResourceImageIds()));
+		// FIELD NOT FOUND -> res.setOrderIds(randomField(oldRes.getOrderIds()));
 		res.setEmail(randomField(oldRes.getEmail()));
+		// FIELD NOT FOUND -> res.setImageIds(randomField(oldRes.getImageIds()));
 	
 		putOp.setPayload(res);
 	
@@ -96,7 +105,10 @@ public class CustomerTest extends IntegrationTest<Customer> {
 	
 		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getPasswordConfirmation(), putRes.getResource().getPasswordConfirmation());
 		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getPassword(), putRes.getResource().getPassword());
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getResourceImageIds(), putRes.getResource().getResourceImageIds());
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getOrderIds(), putRes.getResource().getOrderIds());
 		Assert.assertNotEquals(oldRes.getEmail(), putRes.getResource().getEmail());
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getImageIds(), putRes.getResource().getImageIds());
 	
 	
 		return putRes;

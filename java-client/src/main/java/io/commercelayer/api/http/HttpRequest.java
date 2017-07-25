@@ -11,7 +11,7 @@ public class HttpRequest extends HttpMessage {
 
 
 	public static enum Method {
-		GET, PUT, POST, DELETE
+		GET, PUT, POST, DELETE, HEAD
 	}
 
 	private Method method;

@@ -2,6 +2,7 @@ package io.commercelayer.api.model;
 
 import io.commercelayer.api.json.JsonExclude;
 import io.commercelayer.api.model.common.ApiResource;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -27,7 +28,7 @@ public class ResourceImage extends ApiResource {
 	@JsonExclude
 	private Integer position;
 	@JsonExclude
-	private Object previousChanges;
+	private List<String> versions;
 
 
 	public ResourceImage() {
@@ -145,27 +146,6 @@ public class ResourceImage extends ApiResource {
 	}
 	
 
-	public void setPreviousChanges(Object previousChanges) {
-		this.previousChanges = previousChanges;
-	}
-	
-
-	public Object getPreviousChanges() {
-		return this.previousChanges;
-	}
-	
-
-	public ResourceImage previousChanges(Object previousChanges) {
-		setPreviousChanges(previousChanges);
-		return this;
-	}
-	
-
-	public Object previousChanges() {
-		return getPreviousChanges();
-	}
-	
-
 	public void setImageable(Object imageable) {
 		this.imageable = imageable;
 	}
@@ -208,6 +188,27 @@ public class ResourceImage extends ApiResource {
 	}
 	
 
+	public void setVersions(List<String> versions) {
+		this.versions = versions;
+	}
+	
+
+	public List<String> getVersions() {
+		return this.versions;
+	}
+	
+
+	public ResourceImage versions(List<String> versions) {
+		setVersions(versions);
+		return this;
+	}
+	
+
+	public List<String> versions() {
+		return getVersions();
+	}
+	
+
 	public void setLocalizedUrl(String localizedUrl) {
 		this.localizedUrl = localizedUrl;
 	}
@@ -243,9 +244,9 @@ public class ResourceImage extends ApiResource {
 			&& Objects.equals(this.imageableResource, x.imageableResource)
 			&& Objects.equals(this.imageId, x.imageId)
 			&& Objects.equals(this.position, x.position)
-			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.imageable, x.imageable)
 			&& Objects.equals(this.image, x.image)
+			&& Objects.equals(this.versions, x.versions)
 			&& Objects.equals(this.localizedUrl, x.localizedUrl)
 		;
 	
@@ -257,7 +258,7 @@ public class ResourceImage extends ApiResource {
 	
 		return Objects.hash(
 			name, imageableId, imageableResource, imageId, position,
-			previousChanges, imageable, image, localizedUrl 
+			imageable, image, versions, localizedUrl 
 		);
 	
 	}
@@ -275,9 +276,9 @@ public class ResourceImage extends ApiResource {
 		no.imageableResource = this.imageableResource;
 		no.imageId = this.imageId;
 		no.position = this.position;
-		no.previousChanges = this.previousChanges;
 		no.imageable = this.imageable;
 		no.image = this.image;
+		no.versions = this.versions;
 		no.localizedUrl = this.localizedUrl;
 	
 		return no;

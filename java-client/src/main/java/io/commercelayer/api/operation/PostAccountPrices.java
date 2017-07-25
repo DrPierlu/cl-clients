@@ -17,6 +17,7 @@ public class PostAccountPrices extends PostOperation<Price> {
 		addRequiredField("amount");
 		addRequiredField("sellableResource");
 		addRequiredField("sellableId");
+		addRequiredField("compareAtAmount");
 	}
 
 

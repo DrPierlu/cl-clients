@@ -20,13 +20,13 @@ public class StockItem extends ApiResource {
 	@JsonExclude
 	private Boolean backorderable;
 	@JsonExclude
+	private List<String> events;
+	@JsonExclude
 	private List<String> lineItemStocks;
 	@JsonExclude
 	private List<String> markets;
 	@JsonExclude
 	private String name;
-	@JsonExclude
-	private Object previousChanges;
 	@JsonExclude
 	private Integer quantity;
 	@JsonExclude
@@ -35,6 +35,8 @@ public class StockItem extends ApiResource {
 	private Object stockLocation;
 	@JsonExclude
 	private Object stockable;
+	@JsonExclude
+	private List<String> versions;
 
 
 	public StockItem() {
@@ -173,27 +175,6 @@ public class StockItem extends ApiResource {
 	}
 	
 
-	public void setPreviousChanges(Object previousChanges) {
-		this.previousChanges = previousChanges;
-	}
-	
-
-	public Object getPreviousChanges() {
-		return this.previousChanges;
-	}
-	
-
-	public StockItem previousChanges(Object previousChanges) {
-		setPreviousChanges(previousChanges);
-		return this;
-	}
-	
-
-	public Object previousChanges() {
-		return getPreviousChanges();
-	}
-	
-
 	public void setStockLocation(Object stockLocation) {
 		this.stockLocation = stockLocation;
 	}
@@ -233,6 +214,48 @@ public class StockItem extends ApiResource {
 
 	public Object stockable() {
 		return getStockable();
+	}
+	
+
+	public void setVersions(List<String> versions) {
+		this.versions = versions;
+	}
+	
+
+	public List<String> getVersions() {
+		return this.versions;
+	}
+	
+
+	public StockItem versions(List<String> versions) {
+		setVersions(versions);
+		return this;
+	}
+	
+
+	public List<String> versions() {
+		return getVersions();
+	}
+	
+
+	public void setEvents(List<String> events) {
+		this.events = events;
+	}
+	
+
+	public List<String> getEvents() {
+		return this.events;
+	}
+	
+
+	public StockItem events(List<String> events) {
+		setEvents(events);
+		return this;
+	}
+	
+
+	public List<String> events() {
+		return getEvents();
 	}
 	
 
@@ -314,9 +337,10 @@ public class StockItem extends ApiResource {
 			&& Objects.equals(this.stockableResource, x.stockableResource)
 			&& Objects.equals(this.backorderable, x.backorderable)
 			&& Objects.equals(this.quantity, x.quantity)
-			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.stockLocation, x.stockLocation)
 			&& Objects.equals(this.stockable, x.stockable)
+			&& Objects.equals(this.versions, x.versions)
+			&& Objects.equals(this.events, x.events)
 			&& Objects.equals(this.shippingServiceStockLocations, x.shippingServiceStockLocations)
 			&& Objects.equals(this.markets, x.markets)
 			&& Objects.equals(this.lineItemStocks, x.lineItemStocks)
@@ -330,8 +354,8 @@ public class StockItem extends ApiResource {
 	
 		return Objects.hash(
 			name, stockLocationId, stockableId, stockableResource, backorderable,
-			quantity, previousChanges, stockLocation, stockable, shippingServiceStockLocations,
-			markets, lineItemStocks 
+			quantity, stockLocation, stockable, versions, events,
+			shippingServiceStockLocations, markets, lineItemStocks 
 		);
 	
 	}
@@ -350,9 +374,10 @@ public class StockItem extends ApiResource {
 		no.stockableResource = this.stockableResource;
 		no.backorderable = this.backorderable;
 		no.quantity = this.quantity;
-		no.previousChanges = this.previousChanges;
 		no.stockLocation = this.stockLocation;
 		no.stockable = this.stockable;
+		no.versions = this.versions;
+		no.events = this.events;
 		no.shippingServiceStockLocations = this.shippingServiceStockLocations;
 		no.markets = this.markets;
 		no.lineItemStocks = this.lineItemStocks;

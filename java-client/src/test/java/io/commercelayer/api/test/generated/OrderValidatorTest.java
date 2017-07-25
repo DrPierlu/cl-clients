@@ -33,6 +33,7 @@ public class OrderValidatorTest extends IntegrationTest<OrderValidator> {
 		// FIELD NOT FOUND -> res.setOrderTotalMin("orderTotalMin");
 		// FIELD NOT FOUND -> res.setOrderItemsMin("orderItemsMin");
 		// FIELD NOT FOUND -> res.setPaymentMethodAction("paymentMethodAction");
+		// FIELD NOT FOUND -> res.setMarketIds("marketIds");
 		// FIELD NOT FOUND -> res.setCurrencyCode("currencyCode");
 		// FIELD NOT FOUND -> res.setPaymentMethodRequiredPercentage("paymentMethodRequiredPercentage");
 	
@@ -49,6 +50,7 @@ public class OrderValidatorTest extends IntegrationTest<OrderValidator> {
 		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getOrderTotalMin());
 		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getOrderItemsMin());
 		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getPaymentMethodAction());
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getMarketIds());
 		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getCurrencyCode());
 		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getPaymentMethodRequiredPercentage());
 	
@@ -95,6 +97,7 @@ public class OrderValidatorTest extends IntegrationTest<OrderValidator> {
 		// FIELD NOT FOUND -> res.setOrderTotalMin(randomField(oldRes.getOrderTotalMin()));
 		// FIELD NOT FOUND -> res.setOrderItemsMin(randomField(oldRes.getOrderItemsMin()));
 		// FIELD NOT FOUND -> res.setPaymentMethodAction(randomField(oldRes.getPaymentMethodAction()));
+		// FIELD NOT FOUND -> res.setMarketIds(randomField(oldRes.getMarketIds()));
 		// FIELD NOT FOUND -> res.setCurrencyCode(randomField(oldRes.getCurrencyCode()));
 		// FIELD NOT FOUND -> res.setPaymentMethodRequiredPercentage(randomField(oldRes.getPaymentMethodRequiredPercentage()));
 	
@@ -111,6 +114,7 @@ public class OrderValidatorTest extends IntegrationTest<OrderValidator> {
 		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getOrderTotalMin(), putRes.getResource().getOrderTotalMin());
 		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getOrderItemsMin(), putRes.getResource().getOrderItemsMin());
 		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getPaymentMethodAction(), putRes.getResource().getPaymentMethodAction());
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getMarketIds(), putRes.getResource().getMarketIds());
 		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getCurrencyCode(), putRes.getResource().getCurrencyCode());
 		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getPaymentMethodRequiredPercentage(), putRes.getResource().getPaymentMethodRequiredPercentage());
 	

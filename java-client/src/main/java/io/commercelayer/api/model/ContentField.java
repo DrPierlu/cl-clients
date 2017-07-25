@@ -15,12 +15,14 @@ public class ContentField extends ApiResource {
 
 
 	private String content;
-	private String kind;
 	private String name;
+	private String namespace;
 	@JsonExclude
-	private Object previousChanges;
+	private List<String> resourceContentFields;
 	@JsonExclude
 	private List<String> translations;
+	@JsonExclude
+	private List<String> versions;
 
 
 	public ContentField() {
@@ -54,24 +56,24 @@ public class ContentField extends ApiResource {
 	}
 	
 
-	public void setKind(String kind) {
-		this.kind = kind;
+	public void setNamespace(String namespace) {
+		this.namespace = namespace;
 	}
 	
 
-	public String getKind() {
-		return this.kind;
+	public String getNamespace() {
+		return this.namespace;
 	}
 	
 
-	public ContentField kind(String kind) {
-		setKind(kind);
+	public ContentField namespace(String namespace) {
+		setNamespace(namespace);
 		return this;
 	}
 	
 
-	public String kind() {
-		return getKind();
+	public String namespace() {
+		return getNamespace();
 	}
 	
 
@@ -96,24 +98,24 @@ public class ContentField extends ApiResource {
 	}
 	
 
-	public void setPreviousChanges(Object previousChanges) {
-		this.previousChanges = previousChanges;
+	public void setVersions(List<String> versions) {
+		this.versions = versions;
 	}
 	
 
-	public Object getPreviousChanges() {
-		return this.previousChanges;
+	public List<String> getVersions() {
+		return this.versions;
 	}
 	
 
-	public ContentField previousChanges(Object previousChanges) {
-		setPreviousChanges(previousChanges);
+	public ContentField versions(List<String> versions) {
+		setVersions(versions);
 		return this;
 	}
 	
 
-	public Object previousChanges() {
-		return getPreviousChanges();
+	public List<String> versions() {
+		return getVersions();
 	}
 	
 
@@ -138,6 +140,27 @@ public class ContentField extends ApiResource {
 	}
 	
 
+	public void setResourceContentFields(List<String> resourceContentFields) {
+		this.resourceContentFields = resourceContentFields;
+	}
+	
+
+	public List<String> getResourceContentFields() {
+		return this.resourceContentFields;
+	}
+	
+
+	public ContentField resourceContentFields(List<String> resourceContentFields) {
+		setResourceContentFields(resourceContentFields);
+		return this;
+	}
+	
+
+	public List<String> resourceContentFields() {
+		return getResourceContentFields();
+	}
+	
+
 	@Override
 	public boolean equals(Object o) {
 	
@@ -148,10 +171,11 @@ public class ContentField extends ApiResource {
 	
 		return super.equals(o)
 			&& Objects.equals(this.content, x.content)
-			&& Objects.equals(this.kind, x.kind)
+			&& Objects.equals(this.namespace, x.namespace)
 			&& Objects.equals(this.name, x.name)
-			&& Objects.equals(this.previousChanges, x.previousChanges)
+			&& Objects.equals(this.versions, x.versions)
 			&& Objects.equals(this.translations, x.translations)
+			&& Objects.equals(this.resourceContentFields, x.resourceContentFields)
 		;
 	
 	}
@@ -161,8 +185,8 @@ public class ContentField extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			content, kind, name, previousChanges, translations
-			
+			content, namespace, name, versions, translations,
+			resourceContentFields 
 		);
 	
 	}
@@ -176,10 +200,11 @@ public class ContentField extends ApiResource {
 		no = super.clone(no);
 	
 		no.content = this.content;
-		no.kind = this.kind;
+		no.namespace = this.namespace;
 		no.name = this.name;
-		no.previousChanges = this.previousChanges;
+		no.versions = this.versions;
 		no.translations = this.translations;
+		no.resourceContentFields = this.resourceContentFields;
 	
 		return no;
 	

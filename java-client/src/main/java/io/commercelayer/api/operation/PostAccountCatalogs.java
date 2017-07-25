@@ -15,6 +15,11 @@ public class PostAccountCatalogs extends PostOperation<Catalog> {
 	{
 		addRequiredField("name");
 		addRequiredField("description");
+		addRequiredField("merchandisingRuleIds");
+		addRequiredField("marketIds");
+		addRequiredField("productIds");
+		addRequiredField("taxonIds");
+		addRequiredField("taxonomyIds");
 	}
 
 

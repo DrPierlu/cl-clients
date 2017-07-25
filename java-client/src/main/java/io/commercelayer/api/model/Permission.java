@@ -2,6 +2,7 @@ package io.commercelayer.api.model;
 
 import io.commercelayer.api.json.JsonExclude;
 import io.commercelayer.api.model.common.ApiResource;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -22,9 +23,9 @@ public class Permission extends ApiResource {
 	@JsonExclude
 	private Integer position;
 	@JsonExclude
-	private Object previousChanges;
-	@JsonExclude
 	private Object role;
+	@JsonExclude
+	private List<String> versions;
 
 
 	public Permission() {
@@ -163,27 +164,6 @@ public class Permission extends ApiResource {
 	}
 	
 
-	public void setPreviousChanges(Object previousChanges) {
-		this.previousChanges = previousChanges;
-	}
-	
-
-	public Object getPreviousChanges() {
-		return this.previousChanges;
-	}
-	
-
-	public Permission previousChanges(Object previousChanges) {
-		setPreviousChanges(previousChanges);
-		return this;
-	}
-	
-
-	public Object previousChanges() {
-		return getPreviousChanges();
-	}
-	
-
 	public void setRole(Object role) {
 		this.role = role;
 	}
@@ -205,6 +185,27 @@ public class Permission extends ApiResource {
 	}
 	
 
+	public void setVersions(List<String> versions) {
+		this.versions = versions;
+	}
+	
+
+	public List<String> getVersions() {
+		return this.versions;
+	}
+	
+
+	public Permission versions(List<String> versions) {
+		setVersions(versions);
+		return this;
+	}
+	
+
+	public List<String> versions() {
+		return getVersions();
+	}
+	
+
 	@Override
 	public boolean equals(Object o) {
 	
@@ -220,8 +221,8 @@ public class Permission extends ApiResource {
 			&& Objects.equals(this.action, x.action)
 			&& Objects.equals(this.resource, x.resource)
 			&& Objects.equals(this.position, x.position)
-			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.role, x.role)
+			&& Objects.equals(this.versions, x.versions)
 		;
 	
 	}
@@ -232,7 +233,7 @@ public class Permission extends ApiResource {
 	
 		return Objects.hash(
 			name, roleId, ability, action, resource,
-			position, previousChanges, role 
+			position, role, versions 
 		);
 	
 	}
@@ -251,8 +252,8 @@ public class Permission extends ApiResource {
 		no.action = this.action;
 		no.resource = this.resource;
 		no.position = this.position;
-		no.previousChanges = this.previousChanges;
 		no.role = this.role;
+		no.versions = this.versions;
 	
 		return no;
 	

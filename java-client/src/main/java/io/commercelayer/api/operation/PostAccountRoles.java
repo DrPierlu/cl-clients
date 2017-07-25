@@ -15,6 +15,9 @@ public class PostAccountRoles extends PostOperation<Role> {
 	{
 		addRequiredField("name");
 		addRequiredField("description");
+		addRequiredField("consumerRoleIds");
+		addRequiredField("permissionIds");
+		addRequiredField("consumerIds");
 	}
 
 

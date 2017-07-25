@@ -14,7 +14,7 @@ public class PutAccountMetaFieldsId extends PutOperation<MetaField> {
 
 	{
 		addRequiredField("namespace");
-		addRequiredField("key");
+		addRequiredField("name");
 		addRequiredField("value");
 	}
 

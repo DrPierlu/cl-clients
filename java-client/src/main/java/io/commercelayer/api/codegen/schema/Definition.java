@@ -64,7 +64,6 @@ public class Definition {
 		
 		for (Operation op : getOperations()) {
 			if (op.getId().endsWith("Id") || op.getMethod().equals(Method.POST)) ops.put(op.getMethod(), op);
-			
 		}
 		
 		return ops;

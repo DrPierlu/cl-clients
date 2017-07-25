@@ -1,6 +1,5 @@
 package io.commercelayer.api.model;
 
-import io.commercelayer.api.json.JsonExclude;
 import io.commercelayer.api.model.common.ApiResource;
 import java.util.List;
 import java.util.Objects;
@@ -14,11 +13,11 @@ public class WireTransfer extends ApiResource {
 	private static final long serialVersionUID = -1L;
 
 
+	private List<String> invoices;
 	private String name;
 	private List<String> paymentMethods;
 	private List<String> transactions;
-	@JsonExclude
-	private Object previousChanges;
+	private List<String> versions;
 
 
 	public WireTransfer() {
@@ -52,45 +51,24 @@ public class WireTransfer extends ApiResource {
 	}
 	
 
-	public void setPreviousChanges(Object previousChanges) {
-		this.previousChanges = previousChanges;
+	public void setVersions(List<String> versions) {
+		this.versions = versions;
 	}
 	
 
-	public Object getPreviousChanges() {
-		return this.previousChanges;
+	public List<String> getVersions() {
+		return this.versions;
 	}
 	
 
-	public WireTransfer previousChanges(Object previousChanges) {
-		setPreviousChanges(previousChanges);
+	public WireTransfer versions(List<String> versions) {
+		setVersions(versions);
 		return this;
 	}
 	
 
-	public Object previousChanges() {
-		return getPreviousChanges();
-	}
-	
-
-	public void setTransactions(List<String> transactions) {
-		this.transactions = transactions;
-	}
-	
-
-	public List<String> getTransactions() {
-		return this.transactions;
-	}
-	
-
-	public WireTransfer transactions(List<String> transactions) {
-		setTransactions(transactions);
-		return this;
-	}
-	
-
-	public List<String> transactions() {
-		return getTransactions();
+	public List<String> versions() {
+		return getVersions();
 	}
 	
 
@@ -115,6 +93,48 @@ public class WireTransfer extends ApiResource {
 	}
 	
 
+	public void setTransactions(List<String> transactions) {
+		this.transactions = transactions;
+	}
+	
+
+	public List<String> getTransactions() {
+		return this.transactions;
+	}
+	
+
+	public WireTransfer transactions(List<String> transactions) {
+		setTransactions(transactions);
+		return this;
+	}
+	
+
+	public List<String> transactions() {
+		return getTransactions();
+	}
+	
+
+	public void setInvoices(List<String> invoices) {
+		this.invoices = invoices;
+	}
+	
+
+	public List<String> getInvoices() {
+		return this.invoices;
+	}
+	
+
+	public WireTransfer invoices(List<String> invoices) {
+		setInvoices(invoices);
+		return this;
+	}
+	
+
+	public List<String> invoices() {
+		return getInvoices();
+	}
+	
+
 	@Override
 	public boolean equals(Object o) {
 	
@@ -125,9 +145,10 @@ public class WireTransfer extends ApiResource {
 	
 		return super.equals(o)
 			&& Objects.equals(this.name, x.name)
-			&& Objects.equals(this.previousChanges, x.previousChanges)
-			&& Objects.equals(this.transactions, x.transactions)
+			&& Objects.equals(this.versions, x.versions)
 			&& Objects.equals(this.paymentMethods, x.paymentMethods)
+			&& Objects.equals(this.transactions, x.transactions)
+			&& Objects.equals(this.invoices, x.invoices)
 		;
 	
 	}
@@ -137,7 +158,8 @@ public class WireTransfer extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, previousChanges, transactions, paymentMethods 
+			name, versions, paymentMethods, transactions, invoices
+			
 		);
 	
 	}
@@ -151,9 +173,10 @@ public class WireTransfer extends ApiResource {
 		no = super.clone(no);
 	
 		no.name = this.name;
-		no.previousChanges = this.previousChanges;
-		no.transactions = this.transactions;
+		no.versions = this.versions;
 		no.paymentMethods = this.paymentMethods;
+		no.transactions = this.transactions;
+		no.invoices = this.invoices;
 	
 		return no;
 	

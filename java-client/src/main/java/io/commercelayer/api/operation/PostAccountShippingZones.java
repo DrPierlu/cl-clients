@@ -21,6 +21,8 @@ public class PostAccountShippingZones extends PostOperation<ShippingZone> {
 		addRequiredField("notStateCodeRegex");
 		addRequiredField("zipCodeRegex");
 		addRequiredField("notZipCodeRegex");
+		addRequiredField("shippingServiceZoneIds");
+		addRequiredField("shippingServiceIds");
 	}
 
 

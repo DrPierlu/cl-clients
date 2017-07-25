@@ -2,6 +2,7 @@ package io.commercelayer.api.model;
 
 import io.commercelayer.api.json.JsonExclude;
 import io.commercelayer.api.model.common.ApiResource;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -20,7 +21,7 @@ public class State extends ApiResource {
 	@JsonExclude
 	private String name;
 	@JsonExclude
-	private Object previousChanges;
+	private List<String> versions;
 
 
 	public State() {
@@ -96,27 +97,6 @@ public class State extends ApiResource {
 	}
 	
 
-	public void setPreviousChanges(Object previousChanges) {
-		this.previousChanges = previousChanges;
-	}
-	
-
-	public Object getPreviousChanges() {
-		return this.previousChanges;
-	}
-	
-
-	public State previousChanges(Object previousChanges) {
-		setPreviousChanges(previousChanges);
-		return this;
-	}
-	
-
-	public Object previousChanges() {
-		return getPreviousChanges();
-	}
-	
-
 	public void setCountry(Object country) {
 		this.country = country;
 	}
@@ -138,6 +118,27 @@ public class State extends ApiResource {
 	}
 	
 
+	public void setVersions(List<String> versions) {
+		this.versions = versions;
+	}
+	
+
+	public List<String> getVersions() {
+		return this.versions;
+	}
+	
+
+	public State versions(List<String> versions) {
+		setVersions(versions);
+		return this;
+	}
+	
+
+	public List<String> versions() {
+		return getVersions();
+	}
+	
+
 	@Override
 	public boolean equals(Object o) {
 	
@@ -150,8 +151,8 @@ public class State extends ApiResource {
 			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.countryId, x.countryId)
 			&& Objects.equals(this.code, x.code)
-			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.country, x.country)
+			&& Objects.equals(this.versions, x.versions)
 		;
 	
 	}
@@ -161,7 +162,7 @@ public class State extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, countryId, code, previousChanges, country
+			name, countryId, code, country, versions
 			
 		);
 	
@@ -178,8 +179,8 @@ public class State extends ApiResource {
 		no.name = this.name;
 		no.countryId = this.countryId;
 		no.code = this.code;
-		no.previousChanges = this.previousChanges;
 		no.country = this.country;
+		no.versions = this.versions;
 	
 		return no;
 	

@@ -29,12 +29,14 @@ public class PaymentMethodTest extends IntegrationTest<PaymentMethod> {
 		PaymentMethod res = new PaymentMethod();
 	
 		// FIELD NOT FOUND -> res.setPaymentSourceResource("paymentSourceResource");
+		// FIELD NOT FOUND -> res.setTransactionIds("transactionIds");
 		res.setAmount("amount");
 		// FIELD NOT FOUND -> res.setPaymentSourceId("paymentSourceId");
 		// FIELD NOT FOUND -> res.setBillingAddressId("billingAddressId");
 		// FIELD NOT FOUND -> res.setBillingAddressAttributes("billingAddressAttributes");
 		// FIELD NOT FOUND -> res.setPaymentSourceAttributes("paymentSourceAttributes");
 		// FIELD NOT FOUND -> res.setBillingRecipientId("billingRecipientId");
+		// FIELD NOT FOUND -> res.setInvoiceIds("invoiceIds");
 		// FIELD NOT FOUND -> res.setBillingRecipientAttributes("billingRecipientAttributes");
 	
 		postOp.setPayload(res);
@@ -46,12 +48,14 @@ public class PaymentMethodTest extends IntegrationTest<PaymentMethod> {
 	
 	
 		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getPaymentSourceResource());
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getTransactionIds());
 		Assert.assertNotNull(postRes.getResource().getAmount());
 		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getPaymentSourceId());
 		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getBillingAddressId());
 		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getBillingAddressAttributes());
 		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getPaymentSourceAttributes());
 		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getBillingRecipientId());
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getInvoiceIds());
 		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getBillingRecipientAttributes());
 	
 	
@@ -93,6 +97,7 @@ public class PaymentMethodTest extends IntegrationTest<PaymentMethod> {
 		PaymentMethod res = new PaymentMethod();
 	
 		// FIELD NOT FOUND -> res.setPaymentSourceResource(randomField(oldRes.getPaymentSourceResource()));
+		// FIELD NOT FOUND -> res.setTransactionIds(randomField(oldRes.getTransactionIds()));
 		res.setAmount(randomField(oldRes.getAmount()));
 		// FIELD NOT FOUND -> res.setPaymentSourceId(randomField(oldRes.getPaymentSourceId()));
 		// FIELD NOT FOUND -> res.setBillingAddressId(randomField(oldRes.getBillingAddressId()));
@@ -100,6 +105,7 @@ public class PaymentMethodTest extends IntegrationTest<PaymentMethod> {
 		// FIELD NOT FOUND -> res.setPaymentSourceAttributes(randomField(oldRes.getPaymentSourceAttributes()));
 		// FIELD NOT FOUND -> res.setBillingRecipientId(randomField(oldRes.getBillingRecipientId()));
 		// FIELD NOT FOUND -> res.setBillingRecipientAttributes(randomField(oldRes.getBillingRecipientAttributes()));
+		// FIELD NOT FOUND -> res.setInvoiceIds(randomField(oldRes.getInvoiceIds()));
 	
 		putOp.setPayload(res);
 	
@@ -110,6 +116,7 @@ public class PaymentMethodTest extends IntegrationTest<PaymentMethod> {
 	
 	
 		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getPaymentSourceResource(), putRes.getResource().getPaymentSourceResource());
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getTransactionIds(), putRes.getResource().getTransactionIds());
 		Assert.assertNotEquals(oldRes.getAmount(), putRes.getResource().getAmount());
 		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getPaymentSourceId(), putRes.getResource().getPaymentSourceId());
 		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getBillingAddressId(), putRes.getResource().getBillingAddressId());
@@ -117,6 +124,7 @@ public class PaymentMethodTest extends IntegrationTest<PaymentMethod> {
 		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getPaymentSourceAttributes(), putRes.getResource().getPaymentSourceAttributes());
 		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getBillingRecipientId(), putRes.getResource().getBillingRecipientId());
 		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getBillingRecipientAttributes(), putRes.getResource().getBillingRecipientAttributes());
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getInvoiceIds(), putRes.getResource().getInvoiceIds());
 	
 	
 		return putRes;

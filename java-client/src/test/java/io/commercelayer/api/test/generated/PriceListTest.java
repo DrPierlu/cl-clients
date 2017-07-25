@@ -28,9 +28,14 @@ public class PriceListTest extends IntegrationTest<PriceList> {
 	
 		PriceList res = new PriceList();
 	
+		// FIELD NOT FOUND -> res.setMarketPriceListIds("marketPriceListIds");
 		// FIELD NOT FOUND -> res.setTaxIncluded("taxIncluded");
+		// FIELD NOT FOUND -> res.setPriceIds("priceIds");
 		res.setName("name");
+		// FIELD NOT FOUND -> res.setShippingPriceIds("shippingPriceIds");
+		// FIELD NOT FOUND -> res.setMarketIds("marketIds");
 		// FIELD NOT FOUND -> res.setCurrencyId("currencyId");
+		// FIELD NOT FOUND -> res.setPaymentPriceIds("paymentPriceIds");
 	
 		postOp.setPayload(res);
 	
@@ -40,9 +45,14 @@ public class PriceListTest extends IntegrationTest<PriceList> {
 		ApiResponse<PriceList> postRes = test(postReq, caller);
 	
 	
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getMarketPriceListIds());
 		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getTaxIncluded());
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getPriceIds());
 		Assert.assertNotNull(postRes.getResource().getName());
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getShippingPriceIds());
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getMarketIds());
 		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getCurrencyId());
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getPaymentPriceIds());
 	
 	
 		return postRes;
@@ -82,9 +92,14 @@ public class PriceListTest extends IntegrationTest<PriceList> {
 	
 		PriceList res = new PriceList();
 	
+		// FIELD NOT FOUND -> res.setMarketPriceListIds(randomField(oldRes.getMarketPriceListIds()));
 		// FIELD NOT FOUND -> res.setTaxIncluded(randomField(oldRes.getTaxIncluded()));
+		// FIELD NOT FOUND -> res.setPriceIds(randomField(oldRes.getPriceIds()));
 		res.setName(randomField(oldRes.getName()));
+		// FIELD NOT FOUND -> res.setShippingPriceIds(randomField(oldRes.getShippingPriceIds()));
+		// FIELD NOT FOUND -> res.setMarketIds(randomField(oldRes.getMarketIds()));
 		// FIELD NOT FOUND -> res.setCurrencyId(randomField(oldRes.getCurrencyId()));
+		// FIELD NOT FOUND -> res.setPaymentPriceIds(randomField(oldRes.getPaymentPriceIds()));
 	
 		putOp.setPayload(res);
 	
@@ -94,9 +109,14 @@ public class PriceListTest extends IntegrationTest<PriceList> {
 		ApiResponse<PriceList> putRes = test(putReq, caller);
 	
 	
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getMarketPriceListIds(), putRes.getResource().getMarketPriceListIds());
 		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getTaxIncluded(), putRes.getResource().getTaxIncluded());
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getPriceIds(), putRes.getResource().getPriceIds());
 		Assert.assertNotEquals(oldRes.getName(), putRes.getResource().getName());
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getShippingPriceIds(), putRes.getResource().getShippingPriceIds());
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getMarketIds(), putRes.getResource().getMarketIds());
 		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getCurrencyId(), putRes.getResource().getCurrencyId());
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getPaymentPriceIds(), putRes.getResource().getPaymentPriceIds());
 	
 	
 		return putRes;

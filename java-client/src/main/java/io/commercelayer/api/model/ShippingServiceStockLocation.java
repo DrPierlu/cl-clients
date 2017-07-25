@@ -2,6 +2,7 @@ package io.commercelayer.api.model;
 
 import io.commercelayer.api.json.JsonExclude;
 import io.commercelayer.api.model.common.ApiResource;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -24,11 +25,11 @@ public class ShippingServiceStockLocation extends ApiResource {
 	@JsonExclude
 	private String name;
 	@JsonExclude
-	private Object previousChanges;
-	@JsonExclude
 	private Object shippingService;
 	@JsonExclude
 	private Object stockLocation;
+	@JsonExclude
+	private List<String> versions;
 
 
 	public ShippingServiceStockLocation() {
@@ -146,27 +147,6 @@ public class ShippingServiceStockLocation extends ApiResource {
 	}
 	
 
-	public void setPreviousChanges(Object previousChanges) {
-		this.previousChanges = previousChanges;
-	}
-	
-
-	public Object getPreviousChanges() {
-		return this.previousChanges;
-	}
-	
-
-	public ShippingServiceStockLocation previousChanges(Object previousChanges) {
-		setPreviousChanges(previousChanges);
-		return this;
-	}
-	
-
-	public Object previousChanges() {
-		return getPreviousChanges();
-	}
-	
-
 	public void setShippingService(Object shippingService) {
 		this.shippingService = shippingService;
 	}
@@ -206,6 +186,27 @@ public class ShippingServiceStockLocation extends ApiResource {
 
 	public Object stockLocation() {
 		return getStockLocation();
+	}
+	
+
+	public void setVersions(List<String> versions) {
+		this.versions = versions;
+	}
+	
+
+	public List<String> getVersions() {
+		return this.versions;
+	}
+	
+
+	public ShippingServiceStockLocation versions(List<String> versions) {
+		setVersions(versions);
+		return this;
+	}
+	
+
+	public List<String> versions() {
+		return getVersions();
 	}
 	
 
@@ -265,9 +266,9 @@ public class ShippingServiceStockLocation extends ApiResource {
 			&& Objects.equals(this.stockLocationId, x.stockLocationId)
 			&& Objects.equals(this.minLeadTimeHours, x.minLeadTimeHours)
 			&& Objects.equals(this.maxLeadTimeHours, x.maxLeadTimeHours)
-			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.shippingService, x.shippingService)
 			&& Objects.equals(this.stockLocation, x.stockLocation)
+			&& Objects.equals(this.versions, x.versions)
 			&& Objects.equals(this.minLeadTimeDays, x.minLeadTimeDays)
 			&& Objects.equals(this.maxLeadTimeDays, x.maxLeadTimeDays)
 		;
@@ -280,7 +281,7 @@ public class ShippingServiceStockLocation extends ApiResource {
 	
 		return Objects.hash(
 			name, shippingServiceId, stockLocationId, minLeadTimeHours, maxLeadTimeHours,
-			previousChanges, shippingService, stockLocation, minLeadTimeDays, maxLeadTimeDays
+			shippingService, stockLocation, versions, minLeadTimeDays, maxLeadTimeDays
 			
 		);
 	
@@ -299,9 +300,9 @@ public class ShippingServiceStockLocation extends ApiResource {
 		no.stockLocationId = this.stockLocationId;
 		no.minLeadTimeHours = this.minLeadTimeHours;
 		no.maxLeadTimeHours = this.maxLeadTimeHours;
-		no.previousChanges = this.previousChanges;
 		no.shippingService = this.shippingService;
 		no.stockLocation = this.stockLocation;
+		no.versions = this.versions;
 		no.minLeadTimeDays = this.minLeadTimeDays;
 		no.maxLeadTimeDays = this.maxLeadTimeDays;
 	

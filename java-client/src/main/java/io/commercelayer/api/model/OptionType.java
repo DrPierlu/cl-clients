@@ -19,11 +19,11 @@ public class OptionType extends ApiResource {
 	@JsonExclude
 	private Object featuredImage;
 	@JsonExclude
+	private String featuredImageId;
+	@JsonExclude
 	private List<String> images;
 	@JsonExclude
 	private List<String> optionValues;
-	@JsonExclude
-	private Object previousChanges;
 	@JsonExclude
 	private Object productType;
 	@JsonExclude
@@ -33,7 +33,11 @@ public class OptionType extends ApiResource {
 	@JsonExclude
 	private List<String> translations;
 	@JsonExclude
+	private List<String> variantOptions;
+	@JsonExclude
 	private List<String> variants;
+	@JsonExclude
+	private List<String> versions;
 
 
 	public OptionType() {
@@ -109,27 +113,6 @@ public class OptionType extends ApiResource {
 	}
 	
 
-	public void setPreviousChanges(Object previousChanges) {
-		this.previousChanges = previousChanges;
-	}
-	
-
-	public Object getPreviousChanges() {
-		return this.previousChanges;
-	}
-	
-
-	public OptionType previousChanges(Object previousChanges) {
-		setPreviousChanges(previousChanges);
-		return this;
-	}
-	
-
-	public Object previousChanges() {
-		return getPreviousChanges();
-	}
-	
-
 	public void setProductType(Object productType) {
 		this.productType = productType;
 	}
@@ -148,6 +131,27 @@ public class OptionType extends ApiResource {
 
 	public Object productType() {
 		return getProductType();
+	}
+	
+
+	public void setVersions(List<String> versions) {
+		this.versions = versions;
+	}
+	
+
+	public List<String> getVersions() {
+		return this.versions;
+	}
+	
+
+	public OptionType versions(List<String> versions) {
+		setVersions(versions);
+		return this;
+	}
+	
+
+	public List<String> versions() {
+		return getVersions();
 	}
 	
 
@@ -235,6 +239,27 @@ public class OptionType extends ApiResource {
 	}
 	
 
+	public void setVariantOptions(List<String> variantOptions) {
+		this.variantOptions = variantOptions;
+	}
+	
+
+	public List<String> getVariantOptions() {
+		return this.variantOptions;
+	}
+	
+
+	public OptionType variantOptions(List<String> variantOptions) {
+		setVariantOptions(variantOptions);
+		return this;
+	}
+	
+
+	public List<String> variantOptions() {
+		return getVariantOptions();
+	}
+	
+
 	public void setVariants(List<String> variants) {
 		this.variants = variants;
 	}
@@ -253,6 +278,27 @@ public class OptionType extends ApiResource {
 
 	public List<String> variants() {
 		return getVariants();
+	}
+	
+
+	public void setFeaturedImageId(String featuredImageId) {
+		this.featuredImageId = featuredImageId;
+	}
+	
+
+	public String getFeaturedImageId() {
+		return this.featuredImageId;
+	}
+	
+
+	public OptionType featuredImageId(String featuredImageId) {
+		setFeaturedImageId(featuredImageId);
+		return this;
+	}
+	
+
+	public String featuredImageId() {
+		return getFeaturedImageId();
 	}
 	
 
@@ -289,13 +335,15 @@ public class OptionType extends ApiResource {
 			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.slug, x.slug)
 			&& Objects.equals(this.productTypeId, x.productTypeId)
-			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.productType, x.productType)
+			&& Objects.equals(this.versions, x.versions)
 			&& Objects.equals(this.resourceImages, x.resourceImages)
 			&& Objects.equals(this.images, x.images)
 			&& Objects.equals(this.translations, x.translations)
 			&& Objects.equals(this.optionValues, x.optionValues)
+			&& Objects.equals(this.variantOptions, x.variantOptions)
 			&& Objects.equals(this.variants, x.variants)
+			&& Objects.equals(this.featuredImageId, x.featuredImageId)
 			&& Objects.equals(this.featuredImage, x.featuredImage)
 		;
 	
@@ -306,9 +354,9 @@ public class OptionType extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, slug, productTypeId, previousChanges, productType,
-			resourceImages, images, translations, optionValues, variants,
-			featuredImage 
+			name, slug, productTypeId, productType, versions,
+			resourceImages, images, translations, optionValues, variantOptions,
+			variants, featuredImageId, featuredImage 
 		);
 	
 	}
@@ -324,13 +372,15 @@ public class OptionType extends ApiResource {
 		no.name = this.name;
 		no.slug = this.slug;
 		no.productTypeId = this.productTypeId;
-		no.previousChanges = this.previousChanges;
 		no.productType = this.productType;
+		no.versions = this.versions;
 		no.resourceImages = this.resourceImages;
 		no.images = this.images;
 		no.translations = this.translations;
 		no.optionValues = this.optionValues;
+		no.variantOptions = this.variantOptions;
 		no.variants = this.variants;
+		no.featuredImageId = this.featuredImageId;
 		no.featuredImage = this.featuredImage;
 	
 		return no;

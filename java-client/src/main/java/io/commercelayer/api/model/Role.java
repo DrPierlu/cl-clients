@@ -22,7 +22,7 @@ public class Role extends ApiResource {
 	@JsonExclude
 	private List<String> permissions;
 	@JsonExclude
-	private Object previousChanges;
+	private List<String> versions;
 
 
 	public Role() {
@@ -56,24 +56,24 @@ public class Role extends ApiResource {
 	}
 	
 
-	public void setPreviousChanges(Object previousChanges) {
-		this.previousChanges = previousChanges;
+	public void setVersions(List<String> versions) {
+		this.versions = versions;
 	}
 	
 
-	public Object getPreviousChanges() {
-		return this.previousChanges;
+	public List<String> getVersions() {
+		return this.versions;
 	}
 	
 
-	public Role previousChanges(Object previousChanges) {
-		setPreviousChanges(previousChanges);
+	public Role versions(List<String> versions) {
+		setVersions(versions);
 		return this;
 	}
 	
 
-	public Object previousChanges() {
-		return getPreviousChanges();
+	public List<String> versions() {
+		return getVersions();
 	}
 	
 
@@ -98,27 +98,6 @@ public class Role extends ApiResource {
 	}
 	
 
-	public void setConsumers(List<String> consumers) {
-		this.consumers = consumers;
-	}
-	
-
-	public List<String> getConsumers() {
-		return this.consumers;
-	}
-	
-
-	public Role consumers(List<String> consumers) {
-		setConsumers(consumers);
-		return this;
-	}
-	
-
-	public List<String> consumers() {
-		return getConsumers();
-	}
-	
-
 	public void setPermissions(List<String> permissions) {
 		this.permissions = permissions;
 	}
@@ -140,6 +119,27 @@ public class Role extends ApiResource {
 	}
 	
 
+	public void setConsumers(List<String> consumers) {
+		this.consumers = consumers;
+	}
+	
+
+	public List<String> getConsumers() {
+		return this.consumers;
+	}
+	
+
+	public Role consumers(List<String> consumers) {
+		setConsumers(consumers);
+		return this;
+	}
+	
+
+	public List<String> consumers() {
+		return getConsumers();
+	}
+	
+
 	@Override
 	public boolean equals(Object o) {
 	
@@ -150,10 +150,10 @@ public class Role extends ApiResource {
 	
 		return super.equals(o)
 			&& Objects.equals(this.name, x.name)
-			&& Objects.equals(this.previousChanges, x.previousChanges)
+			&& Objects.equals(this.versions, x.versions)
 			&& Objects.equals(this.consumerRoles, x.consumerRoles)
-			&& Objects.equals(this.consumers, x.consumers)
 			&& Objects.equals(this.permissions, x.permissions)
+			&& Objects.equals(this.consumers, x.consumers)
 		;
 	
 	}
@@ -163,7 +163,7 @@ public class Role extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, previousChanges, consumerRoles, consumers, permissions
+			name, versions, consumerRoles, permissions, consumers
 			
 		);
 	
@@ -178,10 +178,10 @@ public class Role extends ApiResource {
 		no = super.clone(no);
 	
 		no.name = this.name;
-		no.previousChanges = this.previousChanges;
+		no.versions = this.versions;
 		no.consumerRoles = this.consumerRoles;
-		no.consumers = this.consumers;
 		no.permissions = this.permissions;
+		no.consumers = this.consumers;
 	
 		return no;
 	

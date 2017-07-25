@@ -28,8 +28,12 @@ public class MerchantTest extends IntegrationTest<Merchant> {
 	
 		Merchant res = new Merchant();
 	
+		// FIELD NOT FOUND -> res.setPaymentTypeIds("paymentTypeIds");
 		res.setName("name");
 		res.setDescription("description");
+		// FIELD NOT FOUND -> res.setMarketIds("marketIds");
+		// FIELD NOT FOUND -> res.setOrderIds("orderIds");
+		// FIELD NOT FOUND -> res.setGatewayIds("gatewayIds");
 		// FIELD NOT FOUND -> res.setAddressId("addressId");
 	
 		postOp.setPayload(res);
@@ -40,8 +44,12 @@ public class MerchantTest extends IntegrationTest<Merchant> {
 		ApiResponse<Merchant> postRes = test(postReq, caller);
 	
 	
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getPaymentTypeIds());
 		Assert.assertNotNull(postRes.getResource().getName());
 		Assert.assertNotNull(postRes.getResource().getDescription());
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getMarketIds());
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getOrderIds());
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getGatewayIds());
 		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getAddressId());
 	
 	
@@ -82,8 +90,12 @@ public class MerchantTest extends IntegrationTest<Merchant> {
 	
 		Merchant res = new Merchant();
 	
+		// FIELD NOT FOUND -> res.setPaymentTypeIds(randomField(oldRes.getPaymentTypeIds()));
 		res.setName(randomField(oldRes.getName()));
 		res.setDescription(randomField(oldRes.getDescription()));
+		// FIELD NOT FOUND -> res.setMarketIds(randomField(oldRes.getMarketIds()));
+		// FIELD NOT FOUND -> res.setOrderIds(randomField(oldRes.getOrderIds()));
+		// FIELD NOT FOUND -> res.setGatewayIds(randomField(oldRes.getGatewayIds()));
 		// FIELD NOT FOUND -> res.setAddressId(randomField(oldRes.getAddressId()));
 	
 		putOp.setPayload(res);
@@ -94,8 +106,12 @@ public class MerchantTest extends IntegrationTest<Merchant> {
 		ApiResponse<Merchant> putRes = test(putReq, caller);
 	
 	
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getPaymentTypeIds(), putRes.getResource().getPaymentTypeIds());
 		Assert.assertNotEquals(oldRes.getName(), putRes.getResource().getName());
 		Assert.assertNotEquals(oldRes.getDescription(), putRes.getResource().getDescription());
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getMarketIds(), putRes.getResource().getMarketIds());
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getOrderIds(), putRes.getResource().getOrderIds());
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getGatewayIds(), putRes.getResource().getGatewayIds());
 		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getAddressId(), putRes.getResource().getAddressId());
 	
 	

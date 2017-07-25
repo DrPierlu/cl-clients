@@ -22,13 +22,15 @@ public class Gateway extends ApiResource {
 	@JsonExclude
 	private String name;
 	@JsonExclude
-	private List<String> paymentTypes;
+	private List<String> paymentMethods;
 	@JsonExclude
-	private Object previousChanges;
+	private List<String> paymentTypes;
 	@JsonExclude
 	private String token;
 	@JsonExclude
 	private List<String> transactions;
+	@JsonExclude
+	private List<String> versions;
 
 
 	public Gateway() {
@@ -125,27 +127,6 @@ public class Gateway extends ApiResource {
 	}
 	
 
-	public void setPreviousChanges(Object previousChanges) {
-		this.previousChanges = previousChanges;
-	}
-	
-
-	public Object getPreviousChanges() {
-		return this.previousChanges;
-	}
-	
-
-	public Gateway previousChanges(Object previousChanges) {
-		setPreviousChanges(previousChanges);
-		return this;
-	}
-	
-
-	public Object previousChanges() {
-		return getPreviousChanges();
-	}
-	
-
 	public void setMerchant(Object merchant) {
 		this.merchant = merchant;
 	}
@@ -164,6 +145,27 @@ public class Gateway extends ApiResource {
 
 	public Object merchant() {
 		return getMerchant();
+	}
+	
+
+	public void setVersions(List<String> versions) {
+		this.versions = versions;
+	}
+	
+
+	public List<String> getVersions() {
+		return this.versions;
+	}
+	
+
+	public Gateway versions(List<String> versions) {
+		setVersions(versions);
+		return this;
+	}
+	
+
+	public List<String> versions() {
+		return getVersions();
 	}
 	
 
@@ -209,6 +211,27 @@ public class Gateway extends ApiResource {
 	}
 	
 
+	public void setPaymentMethods(List<String> paymentMethods) {
+		this.paymentMethods = paymentMethods;
+	}
+	
+
+	public List<String> getPaymentMethods() {
+		return this.paymentMethods;
+	}
+	
+
+	public Gateway paymentMethods(List<String> paymentMethods) {
+		setPaymentMethods(paymentMethods);
+		return this;
+	}
+	
+
+	public List<String> paymentMethods() {
+		return getPaymentMethods();
+	}
+	
+
 	@Override
 	public boolean equals(Object o) {
 	
@@ -222,10 +245,11 @@ public class Gateway extends ApiResource {
 			&& Objects.equals(this.merchantId, x.merchantId)
 			&& Objects.equals(this.kind, x.kind)
 			&& Objects.equals(this.token, x.token)
-			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.merchant, x.merchant)
+			&& Objects.equals(this.versions, x.versions)
 			&& Objects.equals(this.transactions, x.transactions)
 			&& Objects.equals(this.paymentTypes, x.paymentTypes)
+			&& Objects.equals(this.paymentMethods, x.paymentMethods)
 		;
 	
 	}
@@ -235,8 +259,8 @@ public class Gateway extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, merchantId, kind, token, previousChanges,
-			merchant, transactions, paymentTypes 
+			name, merchantId, kind, token, merchant,
+			versions, transactions, paymentTypes, paymentMethods 
 		);
 	
 	}
@@ -253,10 +277,11 @@ public class Gateway extends ApiResource {
 		no.merchantId = this.merchantId;
 		no.kind = this.kind;
 		no.token = this.token;
-		no.previousChanges = this.previousChanges;
 		no.merchant = this.merchant;
+		no.versions = this.versions;
 		no.transactions = this.transactions;
 		no.paymentTypes = this.paymentTypes;
+		no.paymentMethods = this.paymentMethods;
 	
 		return no;
 	

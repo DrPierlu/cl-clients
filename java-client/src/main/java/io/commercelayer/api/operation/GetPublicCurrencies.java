@@ -5,14 +5,14 @@ import io.commercelayer.api.operation.common.SearchOperation;
 
 
 /**
- * GetAllCurrencies
+ * GetPublicCurrencies
  */
-public class GetAllCurrencies extends SearchOperation<Currency> {
+public class GetPublicCurrencies extends SearchOperation<Currency> {
 
-	public static final String OPERATION_PATH = "/all/currencies";
+	public static final String OPERATION_PATH = "/public/currencies";
 
 
-	public GetAllCurrencies() {
+	public GetPublicCurrencies() {
 		super(OPERATION_PATH);
 	}
 	

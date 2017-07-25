@@ -22,7 +22,9 @@ public class Language extends ApiResource {
 	@JsonExclude
 	private String name;
 	@JsonExclude
-	private Object previousChanges;
+	private List<String> orders;
+	@JsonExclude
+	private List<String> versions;
 
 
 	public Language() {
@@ -77,24 +79,24 @@ public class Language extends ApiResource {
 	}
 	
 
-	public void setPreviousChanges(Object previousChanges) {
-		this.previousChanges = previousChanges;
+	public void setVersions(List<String> versions) {
+		this.versions = versions;
 	}
 	
 
-	public Object getPreviousChanges() {
-		return this.previousChanges;
+	public List<String> getVersions() {
+		return this.versions;
 	}
 	
 
-	public Language previousChanges(Object previousChanges) {
-		setPreviousChanges(previousChanges);
+	public Language versions(List<String> versions) {
+		setVersions(versions);
 		return this;
 	}
 	
 
-	public Object previousChanges() {
-		return getPreviousChanges();
+	public List<String> versions() {
+		return getVersions();
 	}
 	
 
@@ -116,6 +118,27 @@ public class Language extends ApiResource {
 
 	public List<String> countryLanguages() {
 		return getCountryLanguages();
+	}
+	
+
+	public void setOrders(List<String> orders) {
+		this.orders = orders;
+	}
+	
+
+	public List<String> getOrders() {
+		return this.orders;
+	}
+	
+
+	public Language orders(List<String> orders) {
+		setOrders(orders);
+		return this;
+	}
+	
+
+	public List<String> orders() {
+		return getOrders();
 	}
 	
 
@@ -151,8 +174,9 @@ public class Language extends ApiResource {
 		return super.equals(o)
 			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.code, x.code)
-			&& Objects.equals(this.previousChanges, x.previousChanges)
+			&& Objects.equals(this.versions, x.versions)
 			&& Objects.equals(this.countryLanguages, x.countryLanguages)
+			&& Objects.equals(this.orders, x.orders)
 			&& Objects.equals(this.countries, x.countries)
 		;
 	
@@ -163,8 +187,8 @@ public class Language extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, code, previousChanges, countryLanguages, countries
-			
+			name, code, versions, countryLanguages, orders,
+			countries 
 		);
 	
 	}
@@ -179,8 +203,9 @@ public class Language extends ApiResource {
 	
 		no.name = this.name;
 		no.code = this.code;
-		no.previousChanges = this.previousChanges;
+		no.versions = this.versions;
 		no.countryLanguages = this.countryLanguages;
+		no.orders = this.orders;
 		no.countries = this.countries;
 	
 		return no;

@@ -19,13 +19,19 @@ public class PriceList extends ApiResource {
 	@JsonExclude
 	private Object currency;
 	@JsonExclude
+	private List<String> marketPriceLists;
+	@JsonExclude
 	private List<String> markets;
 	@JsonExclude
-	private Object previousChanges;
+	private List<String> paymentPrices;
 	@JsonExclude
 	private List<String> prices;
 	@JsonExclude
+	private List<String> shippingPrices;
+	@JsonExclude
 	private Boolean taxIncluded;
+	@JsonExclude
+	private List<String> versions;
 
 
 	public PriceList() {
@@ -101,27 +107,6 @@ public class PriceList extends ApiResource {
 	}
 	
 
-	public void setPreviousChanges(Object previousChanges) {
-		this.previousChanges = previousChanges;
-	}
-	
-
-	public Object getPreviousChanges() {
-		return this.previousChanges;
-	}
-	
-
-	public PriceList previousChanges(Object previousChanges) {
-		setPreviousChanges(previousChanges);
-		return this;
-	}
-	
-
-	public Object previousChanges() {
-		return getPreviousChanges();
-	}
-	
-
 	public void setCurrency(Object currency) {
 		this.currency = currency;
 	}
@@ -143,6 +128,27 @@ public class PriceList extends ApiResource {
 	}
 	
 
+	public void setVersions(List<String> versions) {
+		this.versions = versions;
+	}
+	
+
+	public List<String> getVersions() {
+		return this.versions;
+	}
+	
+
+	public PriceList versions(List<String> versions) {
+		setVersions(versions);
+		return this;
+	}
+	
+
+	public List<String> versions() {
+		return getVersions();
+	}
+	
+
 	public void setPrices(List<String> prices) {
 		this.prices = prices;
 	}
@@ -161,6 +167,69 @@ public class PriceList extends ApiResource {
 
 	public List<String> prices() {
 		return getPrices();
+	}
+	
+
+	public void setShippingPrices(List<String> shippingPrices) {
+		this.shippingPrices = shippingPrices;
+	}
+	
+
+	public List<String> getShippingPrices() {
+		return this.shippingPrices;
+	}
+	
+
+	public PriceList shippingPrices(List<String> shippingPrices) {
+		setShippingPrices(shippingPrices);
+		return this;
+	}
+	
+
+	public List<String> shippingPrices() {
+		return getShippingPrices();
+	}
+	
+
+	public void setPaymentPrices(List<String> paymentPrices) {
+		this.paymentPrices = paymentPrices;
+	}
+	
+
+	public List<String> getPaymentPrices() {
+		return this.paymentPrices;
+	}
+	
+
+	public PriceList paymentPrices(List<String> paymentPrices) {
+		setPaymentPrices(paymentPrices);
+		return this;
+	}
+	
+
+	public List<String> paymentPrices() {
+		return getPaymentPrices();
+	}
+	
+
+	public void setMarketPriceLists(List<String> marketPriceLists) {
+		this.marketPriceLists = marketPriceLists;
+	}
+	
+
+	public List<String> getMarketPriceLists() {
+		return this.marketPriceLists;
+	}
+	
+
+	public PriceList marketPriceLists(List<String> marketPriceLists) {
+		setMarketPriceLists(marketPriceLists);
+		return this;
+	}
+	
+
+	public List<String> marketPriceLists() {
+		return getMarketPriceLists();
 	}
 	
 
@@ -197,9 +266,12 @@ public class PriceList extends ApiResource {
 			&& Objects.equals(this.currencyId, x.currencyId)
 			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.taxIncluded, x.taxIncluded)
-			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.currency, x.currency)
+			&& Objects.equals(this.versions, x.versions)
 			&& Objects.equals(this.prices, x.prices)
+			&& Objects.equals(this.shippingPrices, x.shippingPrices)
+			&& Objects.equals(this.paymentPrices, x.paymentPrices)
+			&& Objects.equals(this.marketPriceLists, x.marketPriceLists)
 			&& Objects.equals(this.markets, x.markets)
 		;
 	
@@ -210,8 +282,9 @@ public class PriceList extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			currencyId, name, taxIncluded, previousChanges, currency,
-			prices, markets 
+			currencyId, name, taxIncluded, currency, versions,
+			prices, shippingPrices, paymentPrices, marketPriceLists, markets
+			
 		);
 	
 	}
@@ -227,9 +300,12 @@ public class PriceList extends ApiResource {
 		no.currencyId = this.currencyId;
 		no.name = this.name;
 		no.taxIncluded = this.taxIncluded;
-		no.previousChanges = this.previousChanges;
 		no.currency = this.currency;
+		no.versions = this.versions;
 		no.prices = this.prices;
+		no.shippingPrices = this.shippingPrices;
+		no.paymentPrices = this.paymentPrices;
+		no.marketPriceLists = this.marketPriceLists;
 		no.markets = this.markets;
 	
 		return no;

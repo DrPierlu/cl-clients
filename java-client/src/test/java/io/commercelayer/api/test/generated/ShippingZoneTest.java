@@ -36,6 +36,8 @@ public class ShippingZoneTest extends IntegrationTest<ShippingZone> {
 		// FIELD NOT FOUND -> res.setCountryGroupId("countryGroupId");
 		// FIELD NOT FOUND -> res.setCountryCodeRegex("countryCodeRegex");
 		// FIELD NOT FOUND -> res.setNotStateCodeRegex("notStateCodeRegex");
+		// FIELD NOT FOUND -> res.setShippingServiceZoneIds("shippingServiceZoneIds");
+		// FIELD NOT FOUND -> res.setShippingServiceIds("shippingServiceIds");
 	
 		postOp.setPayload(res);
 	
@@ -53,6 +55,8 @@ public class ShippingZoneTest extends IntegrationTest<ShippingZone> {
 		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getCountryGroupId());
 		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getCountryCodeRegex());
 		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getNotStateCodeRegex());
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getShippingServiceZoneIds());
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getShippingServiceIds());
 	
 	
 		return postRes;
@@ -100,6 +104,8 @@ public class ShippingZoneTest extends IntegrationTest<ShippingZone> {
 		// FIELD NOT FOUND -> res.setCountryGroupId(randomField(oldRes.getCountryGroupId()));
 		// FIELD NOT FOUND -> res.setCountryCodeRegex(randomField(oldRes.getCountryCodeRegex()));
 		// FIELD NOT FOUND -> res.setNotStateCodeRegex(randomField(oldRes.getNotStateCodeRegex()));
+		// FIELD NOT FOUND -> res.setShippingServiceZoneIds(randomField(oldRes.getShippingServiceZoneIds()));
+		// FIELD NOT FOUND -> res.setShippingServiceIds(randomField(oldRes.getShippingServiceIds()));
 	
 		putOp.setPayload(res);
 	
@@ -117,6 +123,8 @@ public class ShippingZoneTest extends IntegrationTest<ShippingZone> {
 		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getCountryGroupId(), putRes.getResource().getCountryGroupId());
 		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getCountryCodeRegex(), putRes.getResource().getCountryCodeRegex());
 		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getNotStateCodeRegex(), putRes.getResource().getNotStateCodeRegex());
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getShippingServiceZoneIds(), putRes.getResource().getShippingServiceZoneIds());
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getShippingServiceIds(), putRes.getResource().getShippingServiceIds());
 	
 	
 		return putRes;

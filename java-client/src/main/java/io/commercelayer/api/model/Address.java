@@ -30,17 +30,23 @@ public class Address extends ApiResource {
 	@JsonExclude
 	private String district;
 	@JsonExclude
+	private String geocoded;
+	@JsonExclude
+	private List<String> invoices;
+	@JsonExclude
 	private Float lat;
 	@JsonExclude
 	private Float lng;
 	@JsonExclude
+	private List<String> merchants;
+	@JsonExclude
 	private String name;
+	@JsonExclude
+	private List<String> paymentMethods;
 	@JsonExclude
 	private String placeId;
 	@JsonExclude
 	private String precision;
-	@JsonExclude
-	private Object previousChanges;
 	@JsonExclude
 	private String provider;
 	@JsonExclude
@@ -53,6 +59,10 @@ public class Address extends ApiResource {
 	private String stateCode;
 	@JsonExclude
 	private String stateName;
+	@JsonExclude
+	private String staticImageUrl;
+	@JsonExclude
+	private List<String> stockLocations;
 	@JsonExclude
 	private String streetAddress;
 	@JsonExclude
@@ -69,6 +79,8 @@ public class Address extends ApiResource {
 	private Float suggestedBoundsSwLat;
 	@JsonExclude
 	private Float suggestedBoundsSwLng;
+	@JsonExclude
+	private List<String> versions;
 	@JsonExclude
 	private String zip;
 
@@ -692,24 +704,66 @@ public class Address extends ApiResource {
 	}
 	
 
-	public void setPreviousChanges(Object previousChanges) {
-		this.previousChanges = previousChanges;
+	public void setVersions(List<String> versions) {
+		this.versions = versions;
 	}
 	
 
-	public Object getPreviousChanges() {
-		return this.previousChanges;
+	public List<String> getVersions() {
+		return this.versions;
 	}
 	
 
-	public Address previousChanges(Object previousChanges) {
-		setPreviousChanges(previousChanges);
+	public Address versions(List<String> versions) {
+		setVersions(versions);
 		return this;
 	}
 	
 
-	public Object previousChanges() {
-		return getPreviousChanges();
+	public List<String> versions() {
+		return getVersions();
+	}
+	
+
+	public void setStockLocations(List<String> stockLocations) {
+		this.stockLocations = stockLocations;
+	}
+	
+
+	public List<String> getStockLocations() {
+		return this.stockLocations;
+	}
+	
+
+	public Address stockLocations(List<String> stockLocations) {
+		setStockLocations(stockLocations);
+		return this;
+	}
+	
+
+	public List<String> stockLocations() {
+		return getStockLocations();
+	}
+	
+
+	public void setMerchants(List<String> merchants) {
+		this.merchants = merchants;
+	}
+	
+
+	public List<String> getMerchants() {
+		return this.merchants;
+	}
+	
+
+	public Address merchants(List<String> merchants) {
+		setMerchants(merchants);
+		return this;
+	}
+	
+
+	public List<String> merchants() {
+		return getMerchants();
 	}
 	
 
@@ -731,6 +785,90 @@ public class Address extends ApiResource {
 
 	public List<String> shippingMethods() {
 		return getShippingMethods();
+	}
+	
+
+	public void setPaymentMethods(List<String> paymentMethods) {
+		this.paymentMethods = paymentMethods;
+	}
+	
+
+	public List<String> getPaymentMethods() {
+		return this.paymentMethods;
+	}
+	
+
+	public Address paymentMethods(List<String> paymentMethods) {
+		setPaymentMethods(paymentMethods);
+		return this;
+	}
+	
+
+	public List<String> paymentMethods() {
+		return getPaymentMethods();
+	}
+	
+
+	public void setInvoices(List<String> invoices) {
+		this.invoices = invoices;
+	}
+	
+
+	public List<String> getInvoices() {
+		return this.invoices;
+	}
+	
+
+	public Address invoices(List<String> invoices) {
+		setInvoices(invoices);
+		return this;
+	}
+	
+
+	public List<String> invoices() {
+		return getInvoices();
+	}
+	
+
+	public void setGeocoded(String geocoded) {
+		this.geocoded = geocoded;
+	}
+	
+
+	public String getGeocoded() {
+		return this.geocoded;
+	}
+	
+
+	public Address geocoded(String geocoded) {
+		setGeocoded(geocoded);
+		return this;
+	}
+	
+
+	public String geocoded() {
+		return getGeocoded();
+	}
+	
+
+	public void setStaticImageUrl(String staticImageUrl) {
+		this.staticImageUrl = staticImageUrl;
+	}
+	
+
+	public String getStaticImageUrl() {
+		return this.staticImageUrl;
+	}
+	
+
+	public Address staticImageUrl(String staticImageUrl) {
+		setStaticImageUrl(staticImageUrl);
+		return this;
+	}
+	
+
+	public String staticImageUrl() {
+		return getStaticImageUrl();
 	}
 	
 
@@ -772,8 +910,14 @@ public class Address extends ApiResource {
 			&& Objects.equals(this.suggestedBoundsSwLng, x.suggestedBoundsSwLng)
 			&& Objects.equals(this.suggestedBoundsNeLat, x.suggestedBoundsNeLat)
 			&& Objects.equals(this.suggestedBoundsNeLng, x.suggestedBoundsNeLng)
-			&& Objects.equals(this.previousChanges, x.previousChanges)
+			&& Objects.equals(this.versions, x.versions)
+			&& Objects.equals(this.stockLocations, x.stockLocations)
+			&& Objects.equals(this.merchants, x.merchants)
 			&& Objects.equals(this.shippingMethods, x.shippingMethods)
+			&& Objects.equals(this.paymentMethods, x.paymentMethods)
+			&& Objects.equals(this.invoices, x.invoices)
+			&& Objects.equals(this.geocoded, x.geocoded)
+			&& Objects.equals(this.staticImageUrl, x.staticImageUrl)
 		;
 	
 	}
@@ -788,8 +932,9 @@ public class Address extends ApiResource {
 			countryCode, country, stateCode, stateName, state,
 			province, zip, city, district, streetName,
 			streetNumber, streetAddress, subPremise, lat, lng,
-			suggestedBoundsSwLat, suggestedBoundsSwLng, suggestedBoundsNeLat, suggestedBoundsNeLng, previousChanges,
-			shippingMethods 
+			suggestedBoundsSwLat, suggestedBoundsSwLng, suggestedBoundsNeLat, suggestedBoundsNeLng, versions,
+			stockLocations, merchants, shippingMethods, paymentMethods, invoices,
+			geocoded, staticImageUrl 
 		);
 	
 	}
@@ -831,8 +976,14 @@ public class Address extends ApiResource {
 		no.suggestedBoundsSwLng = this.suggestedBoundsSwLng;
 		no.suggestedBoundsNeLat = this.suggestedBoundsNeLat;
 		no.suggestedBoundsNeLng = this.suggestedBoundsNeLng;
-		no.previousChanges = this.previousChanges;
+		no.versions = this.versions;
+		no.stockLocations = this.stockLocations;
+		no.merchants = this.merchants;
 		no.shippingMethods = this.shippingMethods;
+		no.paymentMethods = this.paymentMethods;
+		no.invoices = this.invoices;
+		no.geocoded = this.geocoded;
+		no.staticImageUrl = this.staticImageUrl;
 	
 		return no;
 	

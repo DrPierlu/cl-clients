@@ -28,6 +28,7 @@ public class PriceTest extends IntegrationTest<Price> {
 	
 		Price res = new Price();
 	
+		// FIELD NOT FOUND -> res.setCompareAtAmount("compareAtAmount");
 		res.setAmount("amount");
 		// FIELD NOT FOUND -> res.setSellableResource("sellableResource");
 		// FIELD NOT FOUND -> res.setPriceListId("priceListId");
@@ -41,6 +42,7 @@ public class PriceTest extends IntegrationTest<Price> {
 		ApiResponse<Price> postRes = test(postReq, caller);
 	
 	
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getCompareAtAmount());
 		Assert.assertNotNull(postRes.getResource().getAmount());
 		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getSellableResource());
 		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getPriceListId());
@@ -84,6 +86,7 @@ public class PriceTest extends IntegrationTest<Price> {
 	
 		Price res = new Price();
 	
+		// FIELD NOT FOUND -> res.setCompareAtAmount(randomField(oldRes.getCompareAtAmount()));
 		res.setAmount(randomField(oldRes.getAmount()));
 		// FIELD NOT FOUND -> res.setSellableResource(randomField(oldRes.getSellableResource()));
 		// FIELD NOT FOUND -> res.setPriceListId(randomField(oldRes.getPriceListId()));
@@ -97,6 +100,7 @@ public class PriceTest extends IntegrationTest<Price> {
 		ApiResponse<Price> putRes = test(putReq, caller);
 	
 	
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getCompareAtAmount(), putRes.getResource().getCompareAtAmount());
 		Assert.assertNotEquals(oldRes.getAmount(), putRes.getResource().getAmount());
 		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getSellableResource(), putRes.getResource().getSellableResource());
 		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getPriceListId(), putRes.getResource().getPriceListId());

@@ -2,6 +2,7 @@ package io.commercelayer.api.model;
 
 import io.commercelayer.api.json.JsonExclude;
 import io.commercelayer.api.model.common.ApiResource;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -18,8 +19,6 @@ public class ProductProperty extends ApiResource {
 	@JsonExclude
 	private String name;
 	@JsonExclude
-	private Object previousChanges;
-	@JsonExclude
 	private Object product;
 	@JsonExclude
 	private Object propertyType;
@@ -27,6 +26,8 @@ public class ProductProperty extends ApiResource {
 	private Integer propertyTypeId;
 	@JsonExclude
 	private Object propertyValue;
+	@JsonExclude
+	private List<String> versions;
 
 
 	public ProductProperty() {
@@ -123,27 +124,6 @@ public class ProductProperty extends ApiResource {
 	}
 	
 
-	public void setPreviousChanges(Object previousChanges) {
-		this.previousChanges = previousChanges;
-	}
-	
-
-	public Object getPreviousChanges() {
-		return this.previousChanges;
-	}
-	
-
-	public ProductProperty previousChanges(Object previousChanges) {
-		setPreviousChanges(previousChanges);
-		return this;
-	}
-	
-
-	public Object previousChanges() {
-		return getPreviousChanges();
-	}
-	
-
 	public void setProduct(Object product) {
 		this.product = product;
 	}
@@ -207,6 +187,27 @@ public class ProductProperty extends ApiResource {
 	}
 	
 
+	public void setVersions(List<String> versions) {
+		this.versions = versions;
+	}
+	
+
+	public List<String> getVersions() {
+		return this.versions;
+	}
+	
+
+	public ProductProperty versions(List<String> versions) {
+		setVersions(versions);
+		return this;
+	}
+	
+
+	public List<String> versions() {
+		return getVersions();
+	}
+	
+
 	@Override
 	public boolean equals(Object o) {
 	
@@ -220,10 +221,10 @@ public class ProductProperty extends ApiResource {
 			&& Objects.equals(this.productId, x.productId)
 			&& Objects.equals(this.propertyTypeId, x.propertyTypeId)
 			&& Objects.equals(this.propertyValueId, x.propertyValueId)
-			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.product, x.product)
 			&& Objects.equals(this.propertyType, x.propertyType)
 			&& Objects.equals(this.propertyValue, x.propertyValue)
+			&& Objects.equals(this.versions, x.versions)
 		;
 	
 	}
@@ -233,8 +234,8 @@ public class ProductProperty extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, productId, propertyTypeId, propertyValueId, previousChanges,
-			product, propertyType, propertyValue 
+			name, productId, propertyTypeId, propertyValueId, product,
+			propertyType, propertyValue, versions 
 		);
 	
 	}
@@ -251,10 +252,10 @@ public class ProductProperty extends ApiResource {
 		no.productId = this.productId;
 		no.propertyTypeId = this.propertyTypeId;
 		no.propertyValueId = this.propertyValueId;
-		no.previousChanges = this.previousChanges;
 		no.product = this.product;
 		no.propertyType = this.propertyType;
 		no.propertyValue = this.propertyValue;
+		no.versions = this.versions;
 	
 		return no;
 	

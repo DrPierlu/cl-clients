@@ -28,7 +28,9 @@ public class ShippingMethodTest extends IntegrationTest<ShippingMethod> {
 	
 		ShippingMethod res = new ShippingMethod();
 	
+		// FIELD NOT FOUND -> res.setShipmentIds("shipmentIds");
 		// FIELD NOT FOUND -> res.setShippingServiceId("shippingServiceId");
+		// FIELD NOT FOUND -> res.setLineItemIds("lineItemIds");
 		// FIELD NOT FOUND -> res.setShippingPackageId("shippingPackageId");
 		// FIELD NOT FOUND -> res.setShippingRecipientId("shippingRecipientId");
 		// FIELD NOT FOUND -> res.setShippingAddressId("shippingAddressId");
@@ -43,7 +45,9 @@ public class ShippingMethodTest extends IntegrationTest<ShippingMethod> {
 		ApiResponse<ShippingMethod> postRes = test(postReq, caller);
 	
 	
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getShipmentIds());
 		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getShippingServiceId());
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getLineItemIds());
 		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getShippingPackageId());
 		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getShippingRecipientId());
 		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getShippingAddressId());
@@ -88,7 +92,9 @@ public class ShippingMethodTest extends IntegrationTest<ShippingMethod> {
 	
 		ShippingMethod res = new ShippingMethod();
 	
+		// FIELD NOT FOUND -> res.setShipmentIds(randomField(oldRes.getShipmentIds()));
 		// FIELD NOT FOUND -> res.setShippingServiceId(randomField(oldRes.getShippingServiceId()));
+		// FIELD NOT FOUND -> res.setLineItemIds(randomField(oldRes.getLineItemIds()));
 		// FIELD NOT FOUND -> res.setShippingPackageId(randomField(oldRes.getShippingPackageId()));
 		// FIELD NOT FOUND -> res.setShippingRecipientId(randomField(oldRes.getShippingRecipientId()));
 		// FIELD NOT FOUND -> res.setShippingAddressId(randomField(oldRes.getShippingAddressId()));
@@ -103,7 +109,9 @@ public class ShippingMethodTest extends IntegrationTest<ShippingMethod> {
 		ApiResponse<ShippingMethod> putRes = test(putReq, caller);
 	
 	
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getShipmentIds(), putRes.getResource().getShipmentIds());
 		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getShippingServiceId(), putRes.getResource().getShippingServiceId());
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getLineItemIds(), putRes.getResource().getLineItemIds());
 		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getShippingPackageId(), putRes.getResource().getShippingPackageId());
 		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getShippingRecipientId(), putRes.getResource().getShippingRecipientId());
 		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getShippingAddressId(), putRes.getResource().getShippingAddressId());

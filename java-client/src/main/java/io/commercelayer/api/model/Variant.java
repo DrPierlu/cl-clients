@@ -17,7 +17,13 @@ public class Variant extends ApiResource {
 	private Integer productId;
 	private String sku;
 	@JsonExclude
+	private List<String> contentFields;
+	@JsonExclude
+	private List<String> events;
+	@JsonExclude
 	private Object featuredImage;
+	@JsonExclude
+	private String featuredImageId;
 	@JsonExclude
 	private List<String> images;
 	@JsonExclude
@@ -25,15 +31,21 @@ public class Variant extends ApiResource {
 	@JsonExclude
 	private List<String> lineItems;
 	@JsonExclude
+	private List<String> metaFields;
+	@JsonExclude
 	private String name;
 	@JsonExclude
-	private Object previousChanges;
+	private List<String> optionValues;
 	@JsonExclude
 	private List<String> prices;
 	@JsonExclude
 	private Object product;
 	@JsonExclude
+	private List<String> resourceContentFields;
+	@JsonExclude
 	private List<String> resourceImages;
+	@JsonExclude
+	private List<String> resourceMetaFields;
 	@JsonExclude
 	private Object shippingCategory;
 	@JsonExclude
@@ -48,6 +60,8 @@ public class Variant extends ApiResource {
 	private Boolean trackInventory;
 	@JsonExclude
 	private List<String> variantOptions;
+	@JsonExclude
+	private List<String> versions;
 
 
 	public Variant() {
@@ -186,27 +200,6 @@ public class Variant extends ApiResource {
 	}
 	
 
-	public void setPreviousChanges(Object previousChanges) {
-		this.previousChanges = previousChanges;
-	}
-	
-
-	public Object getPreviousChanges() {
-		return this.previousChanges;
-	}
-	
-
-	public Variant previousChanges(Object previousChanges) {
-		setPreviousChanges(previousChanges);
-		return this;
-	}
-	
-
-	public Object previousChanges() {
-		return getPreviousChanges();
-	}
-	
-
 	public void setShippingCategory(Object shippingCategory) {
 		this.shippingCategory = shippingCategory;
 	}
@@ -246,6 +239,27 @@ public class Variant extends ApiResource {
 
 	public Object product() {
 		return getProduct();
+	}
+	
+
+	public void setVersions(List<String> versions) {
+		this.versions = versions;
+	}
+	
+
+	public List<String> getVersions() {
+		return this.versions;
+	}
+	
+
+	public Variant versions(List<String> versions) {
+		setVersions(versions);
+		return this;
+	}
+	
+
+	public List<String> versions() {
+		return getVersions();
 	}
 	
 
@@ -396,6 +410,111 @@ public class Variant extends ApiResource {
 	}
 	
 
+	public void setResourceContentFields(List<String> resourceContentFields) {
+		this.resourceContentFields = resourceContentFields;
+	}
+	
+
+	public List<String> getResourceContentFields() {
+		return this.resourceContentFields;
+	}
+	
+
+	public Variant resourceContentFields(List<String> resourceContentFields) {
+		setResourceContentFields(resourceContentFields);
+		return this;
+	}
+	
+
+	public List<String> resourceContentFields() {
+		return getResourceContentFields();
+	}
+	
+
+	public void setContentFields(List<String> contentFields) {
+		this.contentFields = contentFields;
+	}
+	
+
+	public List<String> getContentFields() {
+		return this.contentFields;
+	}
+	
+
+	public Variant contentFields(List<String> contentFields) {
+		setContentFields(contentFields);
+		return this;
+	}
+	
+
+	public List<String> contentFields() {
+		return getContentFields();
+	}
+	
+
+	public void setResourceMetaFields(List<String> resourceMetaFields) {
+		this.resourceMetaFields = resourceMetaFields;
+	}
+	
+
+	public List<String> getResourceMetaFields() {
+		return this.resourceMetaFields;
+	}
+	
+
+	public Variant resourceMetaFields(List<String> resourceMetaFields) {
+		setResourceMetaFields(resourceMetaFields);
+		return this;
+	}
+	
+
+	public List<String> resourceMetaFields() {
+		return getResourceMetaFields();
+	}
+	
+
+	public void setMetaFields(List<String> metaFields) {
+		this.metaFields = metaFields;
+	}
+	
+
+	public List<String> getMetaFields() {
+		return this.metaFields;
+	}
+	
+
+	public Variant metaFields(List<String> metaFields) {
+		setMetaFields(metaFields);
+		return this;
+	}
+	
+
+	public List<String> metaFields() {
+		return getMetaFields();
+	}
+	
+
+	public void setEvents(List<String> events) {
+		this.events = events;
+	}
+	
+
+	public List<String> getEvents() {
+		return this.events;
+	}
+	
+
+	public Variant events(List<String> events) {
+		setEvents(events);
+		return this;
+	}
+	
+
+	public List<String> events() {
+		return getEvents();
+	}
+	
+
 	public void setVariantOptions(List<String> variantOptions) {
 		this.variantOptions = variantOptions;
 	}
@@ -414,6 +533,48 @@ public class Variant extends ApiResource {
 
 	public List<String> variantOptions() {
 		return getVariantOptions();
+	}
+	
+
+	public void setOptionValues(List<String> optionValues) {
+		this.optionValues = optionValues;
+	}
+	
+
+	public List<String> getOptionValues() {
+		return this.optionValues;
+	}
+	
+
+	public Variant optionValues(List<String> optionValues) {
+		setOptionValues(optionValues);
+		return this;
+	}
+	
+
+	public List<String> optionValues() {
+		return getOptionValues();
+	}
+	
+
+	public void setFeaturedImageId(String featuredImageId) {
+		this.featuredImageId = featuredImageId;
+	}
+	
+
+	public String getFeaturedImageId() {
+		return this.featuredImageId;
+	}
+	
+
+	public Variant featuredImageId(String featuredImageId) {
+		setFeaturedImageId(featuredImageId);
+		return this;
+	}
+	
+
+	public String featuredImageId() {
+		return getFeaturedImageId();
 	}
 	
 
@@ -453,9 +614,9 @@ public class Variant extends ApiResource {
 			&& Objects.equals(this.shippingCategoryId, x.shippingCategoryId)
 			&& Objects.equals(this.sku, x.sku)
 			&& Objects.equals(this.taxCode, x.taxCode)
-			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.shippingCategory, x.shippingCategory)
 			&& Objects.equals(this.product, x.product)
+			&& Objects.equals(this.versions, x.versions)
 			&& Objects.equals(this.prices, x.prices)
 			&& Objects.equals(this.lineItems, x.lineItems)
 			&& Objects.equals(this.lineItemStocks, x.lineItemStocks)
@@ -463,7 +624,14 @@ public class Variant extends ApiResource {
 			&& Objects.equals(this.shippingServiceStockLocations, x.shippingServiceStockLocations)
 			&& Objects.equals(this.resourceImages, x.resourceImages)
 			&& Objects.equals(this.images, x.images)
+			&& Objects.equals(this.resourceContentFields, x.resourceContentFields)
+			&& Objects.equals(this.contentFields, x.contentFields)
+			&& Objects.equals(this.resourceMetaFields, x.resourceMetaFields)
+			&& Objects.equals(this.metaFields, x.metaFields)
+			&& Objects.equals(this.events, x.events)
 			&& Objects.equals(this.variantOptions, x.variantOptions)
+			&& Objects.equals(this.optionValues, x.optionValues)
+			&& Objects.equals(this.featuredImageId, x.featuredImageId)
 			&& Objects.equals(this.featuredImage, x.featuredImage)
 		;
 	
@@ -475,9 +643,11 @@ public class Variant extends ApiResource {
 	
 		return Objects.hash(
 			name, productId, trackInventory, shippingCategoryId, sku,
-			taxCode, previousChanges, shippingCategory, product, prices,
+			taxCode, shippingCategory, product, versions, prices,
 			lineItems, lineItemStocks, stockItems, shippingServiceStockLocations, resourceImages,
-			images, variantOptions, featuredImage 
+			images, resourceContentFields, contentFields, resourceMetaFields, metaFields,
+			events, variantOptions, optionValues, featuredImageId, featuredImage
+			
 		);
 	
 	}
@@ -496,9 +666,9 @@ public class Variant extends ApiResource {
 		no.shippingCategoryId = this.shippingCategoryId;
 		no.sku = this.sku;
 		no.taxCode = this.taxCode;
-		no.previousChanges = this.previousChanges;
 		no.shippingCategory = this.shippingCategory;
 		no.product = this.product;
+		no.versions = this.versions;
 		no.prices = this.prices;
 		no.lineItems = this.lineItems;
 		no.lineItemStocks = this.lineItemStocks;
@@ -506,7 +676,14 @@ public class Variant extends ApiResource {
 		no.shippingServiceStockLocations = this.shippingServiceStockLocations;
 		no.resourceImages = this.resourceImages;
 		no.images = this.images;
+		no.resourceContentFields = this.resourceContentFields;
+		no.contentFields = this.contentFields;
+		no.resourceMetaFields = this.resourceMetaFields;
+		no.metaFields = this.metaFields;
+		no.events = this.events;
 		no.variantOptions = this.variantOptions;
+		no.optionValues = this.optionValues;
+		no.featuredImageId = this.featuredImageId;
 		no.featuredImage = this.featuredImage;
 	
 		return no;

@@ -22,9 +22,9 @@ public class Application extends ApiResource {
 	@JsonExclude
 	private List<String> permissions;
 	@JsonExclude
-	private Object previousChanges;
-	@JsonExclude
 	private List<String> roles;
+	@JsonExclude
+	private List<String> versions;
 
 
 	public Application() {
@@ -58,24 +58,24 @@ public class Application extends ApiResource {
 	}
 	
 
-	public void setPreviousChanges(Object previousChanges) {
-		this.previousChanges = previousChanges;
+	public void setVersions(List<String> versions) {
+		this.versions = versions;
 	}
 	
 
-	public Object getPreviousChanges() {
-		return this.previousChanges;
+	public List<String> getVersions() {
+		return this.versions;
 	}
 	
 
-	public Application previousChanges(Object previousChanges) {
-		setPreviousChanges(previousChanges);
+	public Application versions(List<String> versions) {
+		setVersions(versions);
 		return this;
 	}
 	
 
-	public Object previousChanges() {
-		return getPreviousChanges();
+	public List<String> versions() {
+		return getVersions();
 	}
 	
 
@@ -173,7 +173,7 @@ public class Application extends ApiResource {
 	
 		return super.equals(o)
 			&& Objects.equals(this.name, x.name)
-			&& Objects.equals(this.previousChanges, x.previousChanges)
+			&& Objects.equals(this.versions, x.versions)
 			&& Objects.equals(this.consumerRoles, x.consumerRoles)
 			&& Objects.equals(this.roles, x.roles)
 			&& Objects.equals(this.permissions, x.permissions)
@@ -187,7 +187,7 @@ public class Application extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, previousChanges, consumerRoles, roles, permissions,
+			name, versions, consumerRoles, roles, permissions,
 			authCredentials 
 		);
 	
@@ -202,7 +202,7 @@ public class Application extends ApiResource {
 		no = super.clone(no);
 	
 		no.name = this.name;
-		no.previousChanges = this.previousChanges;
+		no.versions = this.versions;
 		no.consumerRoles = this.consumerRoles;
 		no.roles = this.roles;
 		no.permissions = this.permissions;

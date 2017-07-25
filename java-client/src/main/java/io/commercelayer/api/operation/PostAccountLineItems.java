@@ -17,6 +17,12 @@ public class PostAccountLineItems extends PostOperation<LineItem> {
 		addRequiredField("sellableResource");
 		addRequiredField("sellableId");
 		addRequiredField("quantity");
+		addRequiredField("stockItemIds");
+		addRequiredField("shippingServiceStockLocationIds");
+		addRequiredField("resourceMetaFieldIds");
+		addRequiredField("metaFieldIds");
+		addRequiredField("shippingMethodIds");
+		addRequiredField("shipmentIds");
 	}
 
 

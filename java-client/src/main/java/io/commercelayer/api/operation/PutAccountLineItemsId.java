@@ -17,6 +17,12 @@ public class PutAccountLineItemsId extends PutOperation<LineItem> {
 		addRequiredField("sellableResource");
 		addRequiredField("sellableId");
 		addRequiredField("quantity");
+		addRequiredField("stockItemIds");
+		addRequiredField("shippingServiceStockLocationIds");
+		addRequiredField("resourceMetaFieldIds");
+		addRequiredField("metaFieldIds");
+		addRequiredField("shippingMethodIds");
+		addRequiredField("shipmentIds");
 	}
 
 

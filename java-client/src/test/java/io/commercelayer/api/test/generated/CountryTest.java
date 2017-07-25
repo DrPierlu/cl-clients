@@ -28,8 +28,17 @@ public class CountryTest extends IntegrationTest<Country> {
 	
 		Country res = new Country();
 	
+		// FIELD NOT FOUND -> res.setCustomsItemIds("customsItemIds");
 		res.setCode("code");
+		// FIELD NOT FOUND -> res.setLineItemIds("lineItemIds");
+		// FIELD NOT FOUND -> res.setStateIds("stateIds");
+		// FIELD NOT FOUND -> res.setLanguageIds("languageIds");
 		// FIELD NOT FOUND -> res.setCountryGroupId("countryGroupId");
+		// FIELD NOT FOUND -> res.setOrderIds("orderIds");
+		// FIELD NOT FOUND -> res.setCurrencyId("currencyId");
+		// FIELD NOT FOUND -> res.setPriceListIds("priceListIds");
+		// FIELD NOT FOUND -> res.setCountryLanguageIds("countryLanguageIds");
+		// FIELD NOT FOUND -> res.setInvoiceIds("invoiceIds");
 	
 		postOp.setPayload(res);
 	
@@ -39,8 +48,17 @@ public class CountryTest extends IntegrationTest<Country> {
 		ApiResponse<Country> postRes = test(postReq, caller);
 	
 	
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getCustomsItemIds());
 		Assert.assertNotNull(postRes.getResource().getCode());
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getLineItemIds());
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getStateIds());
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getLanguageIds());
 		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getCountryGroupId());
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getOrderIds());
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getCurrencyId());
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getPriceListIds());
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getCountryLanguageIds());
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getInvoiceIds());
 	
 	
 		return postRes;
@@ -80,8 +98,17 @@ public class CountryTest extends IntegrationTest<Country> {
 	
 		Country res = new Country();
 	
+		// FIELD NOT FOUND -> res.setCustomsItemIds(randomField(oldRes.getCustomsItemIds()));
 		res.setCode(randomField(oldRes.getCode()));
+		// FIELD NOT FOUND -> res.setLineItemIds(randomField(oldRes.getLineItemIds()));
+		// FIELD NOT FOUND -> res.setStateIds(randomField(oldRes.getStateIds()));
+		// FIELD NOT FOUND -> res.setLanguageIds(randomField(oldRes.getLanguageIds()));
 		// FIELD NOT FOUND -> res.setCountryGroupId(randomField(oldRes.getCountryGroupId()));
+		// FIELD NOT FOUND -> res.setOrderIds(randomField(oldRes.getOrderIds()));
+		// FIELD NOT FOUND -> res.setCurrencyId(randomField(oldRes.getCurrencyId()));
+		// FIELD NOT FOUND -> res.setPriceListIds(randomField(oldRes.getPriceListIds()));
+		// FIELD NOT FOUND -> res.setCountryLanguageIds(randomField(oldRes.getCountryLanguageIds()));
+		// FIELD NOT FOUND -> res.setInvoiceIds(randomField(oldRes.getInvoiceIds()));
 	
 		putOp.setPayload(res);
 	
@@ -91,8 +118,17 @@ public class CountryTest extends IntegrationTest<Country> {
 		ApiResponse<Country> putRes = test(putReq, caller);
 	
 	
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getCustomsItemIds(), putRes.getResource().getCustomsItemIds());
 		Assert.assertNotEquals(oldRes.getCode(), putRes.getResource().getCode());
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getLineItemIds(), putRes.getResource().getLineItemIds());
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getStateIds(), putRes.getResource().getStateIds());
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getLanguageIds(), putRes.getResource().getLanguageIds());
 		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getCountryGroupId(), putRes.getResource().getCountryGroupId());
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getOrderIds(), putRes.getResource().getOrderIds());
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getCurrencyId(), putRes.getResource().getCurrencyId());
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getPriceListIds(), putRes.getResource().getPriceListIds());
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getCountryLanguageIds(), putRes.getResource().getCountryLanguageIds());
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getInvoiceIds(), putRes.getResource().getInvoiceIds());
 	
 	
 		return putRes;

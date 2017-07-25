@@ -18,13 +18,13 @@ public class ProductType extends ApiResource {
 	@JsonExclude
 	private Object featuredImage;
 	@JsonExclude
+	private String featuredImageId;
+	@JsonExclude
 	private List<String> images;
 	@JsonExclude
 	private List<String> optionTypes;
 	@JsonExclude
 	private List<String> optionValues;
-	@JsonExclude
-	private Object previousChanges;
 	@JsonExclude
 	private List<String> products;
 	@JsonExclude
@@ -33,6 +33,8 @@ public class ProductType extends ApiResource {
 	private List<String> propertyValues;
 	@JsonExclude
 	private List<String> resourceImages;
+	@JsonExclude
+	private List<String> versions;
 
 
 	public ProductType() {
@@ -66,24 +68,24 @@ public class ProductType extends ApiResource {
 	}
 	
 
-	public void setPreviousChanges(Object previousChanges) {
-		this.previousChanges = previousChanges;
+	public void setVersions(List<String> versions) {
+		this.versions = versions;
 	}
 	
 
-	public Object getPreviousChanges() {
-		return this.previousChanges;
+	public List<String> getVersions() {
+		return this.versions;
 	}
 	
 
-	public ProductType previousChanges(Object previousChanges) {
-		setPreviousChanges(previousChanges);
+	public ProductType versions(List<String> versions) {
+		setVersions(versions);
 		return this;
 	}
 	
 
-	public Object previousChanges() {
-		return getPreviousChanges();
+	public List<String> versions() {
+		return getVersions();
 	}
 	
 
@@ -234,6 +236,27 @@ public class ProductType extends ApiResource {
 	}
 	
 
+	public void setFeaturedImageId(String featuredImageId) {
+		this.featuredImageId = featuredImageId;
+	}
+	
+
+	public String getFeaturedImageId() {
+		return this.featuredImageId;
+	}
+	
+
+	public ProductType featuredImageId(String featuredImageId) {
+		setFeaturedImageId(featuredImageId);
+		return this;
+	}
+	
+
+	public String featuredImageId() {
+		return getFeaturedImageId();
+	}
+	
+
 	public void setFeaturedImage(Object featuredImage) {
 		this.featuredImage = featuredImage;
 	}
@@ -265,7 +288,7 @@ public class ProductType extends ApiResource {
 	
 		return super.equals(o)
 			&& Objects.equals(this.name, x.name)
-			&& Objects.equals(this.previousChanges, x.previousChanges)
+			&& Objects.equals(this.versions, x.versions)
 			&& Objects.equals(this.resourceImages, x.resourceImages)
 			&& Objects.equals(this.images, x.images)
 			&& Objects.equals(this.products, x.products)
@@ -273,6 +296,7 @@ public class ProductType extends ApiResource {
 			&& Objects.equals(this.propertyTypes, x.propertyTypes)
 			&& Objects.equals(this.optionValues, x.optionValues)
 			&& Objects.equals(this.propertyValues, x.propertyValues)
+			&& Objects.equals(this.featuredImageId, x.featuredImageId)
 			&& Objects.equals(this.featuredImage, x.featuredImage)
 		;
 	
@@ -283,9 +307,9 @@ public class ProductType extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, previousChanges, resourceImages, images, products,
-			optionTypes, propertyTypes, optionValues, propertyValues, featuredImage
-			
+			name, versions, resourceImages, images, products,
+			optionTypes, propertyTypes, optionValues, propertyValues, featuredImageId,
+			featuredImage 
 		);
 	
 	}
@@ -299,7 +323,7 @@ public class ProductType extends ApiResource {
 		no = super.clone(no);
 	
 		no.name = this.name;
-		no.previousChanges = this.previousChanges;
+		no.versions = this.versions;
 		no.resourceImages = this.resourceImages;
 		no.images = this.images;
 		no.products = this.products;
@@ -307,6 +331,7 @@ public class ProductType extends ApiResource {
 		no.propertyTypes = this.propertyTypes;
 		no.optionValues = this.optionValues;
 		no.propertyValues = this.propertyValues;
+		no.featuredImageId = this.featuredImageId;
 		no.featuredImage = this.featuredImage;
 	
 		return no;

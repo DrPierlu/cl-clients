@@ -15,6 +15,9 @@ public class PostChannelOrdersOrderTokenShippingMethods extends PostOperation<Sh
 	{
 		addRequiredField("shippingServiceId");
 		addRequiredField("shippingPackageId");
+		addRequiredField("lineItemIds");
+		addRequiredField("shipmentIds");
+		addRequiredField("lineItemIds");
 		addRequiredField("shippingAddressAttributes");
 		addRequiredField("shippingAddressId");
 		addRequiredField("shippingRecipientAttributes");

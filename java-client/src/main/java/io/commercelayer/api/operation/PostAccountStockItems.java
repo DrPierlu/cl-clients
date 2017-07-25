@@ -17,6 +17,8 @@ public class PostAccountStockItems extends PostOperation<StockItem> {
 		addRequiredField("stockableResource");
 		addRequiredField("stockableId");
 		addRequiredField("quantity");
+		addRequiredField("shippingServiceStockLocationIds");
+		addRequiredField("marketIds");
 	}
 
 

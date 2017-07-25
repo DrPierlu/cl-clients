@@ -2,6 +2,7 @@ package io.commercelayer.api.model;
 
 import io.commercelayer.api.json.JsonExclude;
 import io.commercelayer.api.model.common.ApiResource;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -23,9 +24,9 @@ public class ConsumerRole extends ApiResource {
 	@JsonExclude
 	private Integer position;
 	@JsonExclude
-	private Object previousChanges;
-	@JsonExclude
 	private Object role;
+	@JsonExclude
+	private List<String> versions;
 
 
 	public ConsumerRole() {
@@ -143,27 +144,6 @@ public class ConsumerRole extends ApiResource {
 	}
 	
 
-	public void setPreviousChanges(Object previousChanges) {
-		this.previousChanges = previousChanges;
-	}
-	
-
-	public Object getPreviousChanges() {
-		return this.previousChanges;
-	}
-	
-
-	public ConsumerRole previousChanges(Object previousChanges) {
-		setPreviousChanges(previousChanges);
-		return this;
-	}
-	
-
-	public Object previousChanges() {
-		return getPreviousChanges();
-	}
-	
-
 	public void setConsumer(Object consumer) {
 		this.consumer = consumer;
 	}
@@ -206,6 +186,27 @@ public class ConsumerRole extends ApiResource {
 	}
 	
 
+	public void setVersions(List<String> versions) {
+		this.versions = versions;
+	}
+	
+
+	public List<String> getVersions() {
+		return this.versions;
+	}
+	
+
+	public ConsumerRole versions(List<String> versions) {
+		setVersions(versions);
+		return this;
+	}
+	
+
+	public List<String> versions() {
+		return getVersions();
+	}
+	
+
 	@Override
 	public boolean equals(Object o) {
 	
@@ -220,9 +221,9 @@ public class ConsumerRole extends ApiResource {
 			&& Objects.equals(this.consumerResource, x.consumerResource)
 			&& Objects.equals(this.roleId, x.roleId)
 			&& Objects.equals(this.position, x.position)
-			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.consumer, x.consumer)
 			&& Objects.equals(this.role, x.role)
+			&& Objects.equals(this.versions, x.versions)
 		;
 	
 	}
@@ -233,7 +234,7 @@ public class ConsumerRole extends ApiResource {
 	
 		return Objects.hash(
 			name, consumerId, consumerResource, roleId, position,
-			previousChanges, consumer, role 
+			consumer, role, versions 
 		);
 	
 	}
@@ -251,9 +252,9 @@ public class ConsumerRole extends ApiResource {
 		no.consumerResource = this.consumerResource;
 		no.roleId = this.roleId;
 		no.position = this.position;
-		no.previousChanges = this.previousChanges;
 		no.consumer = this.consumer;
 		no.role = this.role;
+		no.versions = this.versions;
 	
 		return no;
 	

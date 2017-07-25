@@ -20,11 +20,17 @@ public class Product extends ApiResource {
 	@JsonExclude
 	private LocalDateTime approvedAt;
 	@JsonExclude
+	private List<String> contentFields;
+	@JsonExclude
 	private String description;
 	@JsonExclude
 	private LocalDateTime discontinuedAt;
 	@JsonExclude
+	private List<String> events;
+	@JsonExclude
 	private Object featuredImage;
+	@JsonExclude
+	private String featuredImageId;
 	@JsonExclude
 	private String hasVariants;
 	@JsonExclude
@@ -36,7 +42,7 @@ public class Product extends ApiResource {
 	@JsonExclude
 	private List<String> merchandisingRules;
 	@JsonExclude
-	private Object previousChanges;
+	private List<String> metaFields;
 	@JsonExclude
 	private List<String> prices;
 	@JsonExclude
@@ -44,7 +50,13 @@ public class Product extends ApiResource {
 	@JsonExclude
 	private Object productType;
 	@JsonExclude
+	private List<String> propertyValues;
+	@JsonExclude
+	private List<String> resourceContentFields;
+	@JsonExclude
 	private List<String> resourceImages;
+	@JsonExclude
+	private List<String> resourceMetaFields;
 	@JsonExclude
 	private Object shippingCategory;
 	@JsonExclude
@@ -67,6 +79,8 @@ public class Product extends ApiResource {
 	private List<String> translations;
 	@JsonExclude
 	private List<String> variants;
+	@JsonExclude
+	private List<String> versions;
 
 
 	public Product() {
@@ -310,27 +324,6 @@ public class Product extends ApiResource {
 	}
 	
 
-	public void setPreviousChanges(Object previousChanges) {
-		this.previousChanges = previousChanges;
-	}
-	
-
-	public Object getPreviousChanges() {
-		return this.previousChanges;
-	}
-	
-
-	public Product previousChanges(Object previousChanges) {
-		setPreviousChanges(previousChanges);
-		return this;
-	}
-	
-
-	public Object previousChanges() {
-		return getPreviousChanges();
-	}
-	
-
 	public void setShippingCategory(Object shippingCategory) {
 		this.shippingCategory = shippingCategory;
 	}
@@ -370,6 +363,27 @@ public class Product extends ApiResource {
 
 	public Object productType() {
 		return getProductType();
+	}
+	
+
+	public void setVersions(List<String> versions) {
+		this.versions = versions;
+	}
+	
+
+	public List<String> getVersions() {
+		return this.versions;
+	}
+	
+
+	public Product versions(List<String> versions) {
+		setVersions(versions);
+		return this;
+	}
+	
+
+	public List<String> versions() {
+		return getVersions();
 	}
 	
 
@@ -520,6 +534,111 @@ public class Product extends ApiResource {
 	}
 	
 
+	public void setResourceContentFields(List<String> resourceContentFields) {
+		this.resourceContentFields = resourceContentFields;
+	}
+	
+
+	public List<String> getResourceContentFields() {
+		return this.resourceContentFields;
+	}
+	
+
+	public Product resourceContentFields(List<String> resourceContentFields) {
+		setResourceContentFields(resourceContentFields);
+		return this;
+	}
+	
+
+	public List<String> resourceContentFields() {
+		return getResourceContentFields();
+	}
+	
+
+	public void setContentFields(List<String> contentFields) {
+		this.contentFields = contentFields;
+	}
+	
+
+	public List<String> getContentFields() {
+		return this.contentFields;
+	}
+	
+
+	public Product contentFields(List<String> contentFields) {
+		setContentFields(contentFields);
+		return this;
+	}
+	
+
+	public List<String> contentFields() {
+		return getContentFields();
+	}
+	
+
+	public void setResourceMetaFields(List<String> resourceMetaFields) {
+		this.resourceMetaFields = resourceMetaFields;
+	}
+	
+
+	public List<String> getResourceMetaFields() {
+		return this.resourceMetaFields;
+	}
+	
+
+	public Product resourceMetaFields(List<String> resourceMetaFields) {
+		setResourceMetaFields(resourceMetaFields);
+		return this;
+	}
+	
+
+	public List<String> resourceMetaFields() {
+		return getResourceMetaFields();
+	}
+	
+
+	public void setMetaFields(List<String> metaFields) {
+		this.metaFields = metaFields;
+	}
+	
+
+	public List<String> getMetaFields() {
+		return this.metaFields;
+	}
+	
+
+	public Product metaFields(List<String> metaFields) {
+		setMetaFields(metaFields);
+		return this;
+	}
+	
+
+	public List<String> metaFields() {
+		return getMetaFields();
+	}
+	
+
+	public void setEvents(List<String> events) {
+		this.events = events;
+	}
+	
+
+	public List<String> getEvents() {
+		return this.events;
+	}
+	
+
+	public Product events(List<String> events) {
+		setEvents(events);
+		return this;
+	}
+	
+
+	public List<String> events() {
+		return getEvents();
+	}
+	
+
 	public void setTranslations(List<String> translations) {
 		this.translations = translations;
 	}
@@ -604,6 +723,48 @@ public class Product extends ApiResource {
 	}
 	
 
+	public void setPropertyValues(List<String> propertyValues) {
+		this.propertyValues = propertyValues;
+	}
+	
+
+	public List<String> getPropertyValues() {
+		return this.propertyValues;
+	}
+	
+
+	public Product propertyValues(List<String> propertyValues) {
+		setPropertyValues(propertyValues);
+		return this;
+	}
+	
+
+	public List<String> propertyValues() {
+		return getPropertyValues();
+	}
+	
+
+	public void setFeaturedImageId(String featuredImageId) {
+		this.featuredImageId = featuredImageId;
+	}
+	
+
+	public String getFeaturedImageId() {
+		return this.featuredImageId;
+	}
+	
+
+	public Product featuredImageId(String featuredImageId) {
+		setFeaturedImageId(featuredImageId);
+		return this;
+	}
+	
+
+	public String featuredImageId() {
+		return getFeaturedImageId();
+	}
+	
+
 	public void setFeaturedImage(Object featuredImage) {
 		this.featuredImage = featuredImage;
 	}
@@ -666,9 +827,9 @@ public class Product extends ApiResource {
 			&& Objects.equals(this.state, x.state)
 			&& Objects.equals(this.approvedAt, x.approvedAt)
 			&& Objects.equals(this.discontinuedAt, x.discontinuedAt)
-			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.shippingCategory, x.shippingCategory)
 			&& Objects.equals(this.productType, x.productType)
+			&& Objects.equals(this.versions, x.versions)
 			&& Objects.equals(this.prices, x.prices)
 			&& Objects.equals(this.lineItems, x.lineItems)
 			&& Objects.equals(this.lineItemStocks, x.lineItemStocks)
@@ -676,10 +837,17 @@ public class Product extends ApiResource {
 			&& Objects.equals(this.shippingServiceStockLocations, x.shippingServiceStockLocations)
 			&& Objects.equals(this.resourceImages, x.resourceImages)
 			&& Objects.equals(this.images, x.images)
+			&& Objects.equals(this.resourceContentFields, x.resourceContentFields)
+			&& Objects.equals(this.contentFields, x.contentFields)
+			&& Objects.equals(this.resourceMetaFields, x.resourceMetaFields)
+			&& Objects.equals(this.metaFields, x.metaFields)
+			&& Objects.equals(this.events, x.events)
 			&& Objects.equals(this.translations, x.translations)
 			&& Objects.equals(this.variants, x.variants)
 			&& Objects.equals(this.merchandisingRules, x.merchandisingRules)
 			&& Objects.equals(this.productProperties, x.productProperties)
+			&& Objects.equals(this.propertyValues, x.propertyValues)
+			&& Objects.equals(this.featuredImageId, x.featuredImageId)
 			&& Objects.equals(this.featuredImage, x.featuredImage)
 			&& Objects.equals(this.hasVariants, x.hasVariants)
 		;
@@ -693,10 +861,11 @@ public class Product extends ApiResource {
 		return Objects.hash(
 			name, slug, description, productTypeId, trackInventory,
 			shippingCategoryId, sku, taxCode, state, approvedAt,
-			discontinuedAt, previousChanges, shippingCategory, productType, prices,
+			discontinuedAt, shippingCategory, productType, versions, prices,
 			lineItems, lineItemStocks, stockItems, shippingServiceStockLocations, resourceImages,
-			images, translations, variants, merchandisingRules, productProperties,
-			featuredImage, hasVariants 
+			images, resourceContentFields, contentFields, resourceMetaFields, metaFields,
+			events, translations, variants, merchandisingRules, productProperties,
+			propertyValues, featuredImageId, featuredImage, hasVariants 
 		);
 	
 	}
@@ -720,9 +889,9 @@ public class Product extends ApiResource {
 		no.state = this.state;
 		no.approvedAt = this.approvedAt;
 		no.discontinuedAt = this.discontinuedAt;
-		no.previousChanges = this.previousChanges;
 		no.shippingCategory = this.shippingCategory;
 		no.productType = this.productType;
+		no.versions = this.versions;
 		no.prices = this.prices;
 		no.lineItems = this.lineItems;
 		no.lineItemStocks = this.lineItemStocks;
@@ -730,10 +899,17 @@ public class Product extends ApiResource {
 		no.shippingServiceStockLocations = this.shippingServiceStockLocations;
 		no.resourceImages = this.resourceImages;
 		no.images = this.images;
+		no.resourceContentFields = this.resourceContentFields;
+		no.contentFields = this.contentFields;
+		no.resourceMetaFields = this.resourceMetaFields;
+		no.metaFields = this.metaFields;
+		no.events = this.events;
 		no.translations = this.translations;
 		no.variants = this.variants;
 		no.merchandisingRules = this.merchandisingRules;
 		no.productProperties = this.productProperties;
+		no.propertyValues = this.propertyValues;
+		no.featuredImageId = this.featuredImageId;
 		no.featuredImage = this.featuredImage;
 		no.hasVariants = this.hasVariants;
 	

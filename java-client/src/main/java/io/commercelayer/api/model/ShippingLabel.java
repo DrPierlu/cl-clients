@@ -2,6 +2,7 @@ package io.commercelayer.api.model;
 
 import io.commercelayer.api.json.JsonExclude;
 import io.commercelayer.api.model.common.ApiResource;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -17,9 +18,9 @@ public class ShippingLabel extends ApiResource {
 	@JsonExclude
 	private String name;
 	@JsonExclude
-	private Object previousChanges;
-	@JsonExclude
 	private Object shipment;
+	@JsonExclude
+	private List<String> versions;
 
 
 	public ShippingLabel() {
@@ -74,27 +75,6 @@ public class ShippingLabel extends ApiResource {
 	}
 	
 
-	public void setPreviousChanges(Object previousChanges) {
-		this.previousChanges = previousChanges;
-	}
-	
-
-	public Object getPreviousChanges() {
-		return this.previousChanges;
-	}
-	
-
-	public ShippingLabel previousChanges(Object previousChanges) {
-		setPreviousChanges(previousChanges);
-		return this;
-	}
-	
-
-	public Object previousChanges() {
-		return getPreviousChanges();
-	}
-	
-
 	public void setShipment(Object shipment) {
 		this.shipment = shipment;
 	}
@@ -116,6 +96,27 @@ public class ShippingLabel extends ApiResource {
 	}
 	
 
+	public void setVersions(List<String> versions) {
+		this.versions = versions;
+	}
+	
+
+	public List<String> getVersions() {
+		return this.versions;
+	}
+	
+
+	public ShippingLabel versions(List<String> versions) {
+		setVersions(versions);
+		return this;
+	}
+	
+
+	public List<String> versions() {
+		return getVersions();
+	}
+	
+
 	@Override
 	public boolean equals(Object o) {
 	
@@ -127,8 +128,8 @@ public class ShippingLabel extends ApiResource {
 		return super.equals(o)
 			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.shipmentId, x.shipmentId)
-			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.shipment, x.shipment)
+			&& Objects.equals(this.versions, x.versions)
 		;
 	
 	}
@@ -138,7 +139,7 @@ public class ShippingLabel extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, shipmentId, previousChanges, shipment 
+			name, shipmentId, shipment, versions 
 		);
 	
 	}
@@ -153,8 +154,8 @@ public class ShippingLabel extends ApiResource {
 	
 		no.name = this.name;
 		no.shipmentId = this.shipmentId;
-		no.previousChanges = this.previousChanges;
 		no.shipment = this.shipment;
+		no.versions = this.versions;
 	
 		return no;
 	

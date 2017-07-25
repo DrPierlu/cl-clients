@@ -15,6 +15,15 @@ public class PostAccountCountries extends PostOperation<Country> {
 	{
 		addRequiredField("countryGroupId");
 		addRequiredField("code");
+		addRequiredField("currencyId");
+		addRequiredField("priceListIds");
+		addRequiredField("stateIds");
+		addRequiredField("orderIds");
+		addRequiredField("lineItemIds");
+		addRequiredField("invoiceIds");
+		addRequiredField("customsItemIds");
+		addRequiredField("countryLanguageIds");
+		addRequiredField("languageIds");
 	}
 
 

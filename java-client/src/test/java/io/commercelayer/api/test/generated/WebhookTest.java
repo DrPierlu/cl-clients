@@ -28,9 +28,8 @@ public class WebhookTest extends IntegrationTest<Webhook> {
 	
 		Webhook res = new Webhook();
 	
+		// FIELD NOT FOUND -> res.setEventKind("eventKind");
 		// FIELD NOT FOUND -> res.setEventUrl("eventUrl");
-		// FIELD NOT FOUND -> res.setEventAction("eventAction");
-		// FIELD NOT FOUND -> res.setEventSubject("eventSubject");
 	
 		postOp.setPayload(res);
 	
@@ -40,9 +39,8 @@ public class WebhookTest extends IntegrationTest<Webhook> {
 		ApiResponse<Webhook> postRes = test(postReq, caller);
 	
 	
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getEventKind());
 		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getEventUrl());
-		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getEventAction());
-		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getEventSubject());
 	
 	
 		return postRes;
@@ -82,9 +80,8 @@ public class WebhookTest extends IntegrationTest<Webhook> {
 	
 		Webhook res = new Webhook();
 	
+		// FIELD NOT FOUND -> res.setEventKind(randomField(oldRes.getEventKind()));
 		// FIELD NOT FOUND -> res.setEventUrl(randomField(oldRes.getEventUrl()));
-		// FIELD NOT FOUND -> res.setEventAction(randomField(oldRes.getEventAction()));
-		// FIELD NOT FOUND -> res.setEventSubject(randomField(oldRes.getEventSubject()));
 	
 		putOp.setPayload(res);
 	
@@ -94,9 +91,8 @@ public class WebhookTest extends IntegrationTest<Webhook> {
 		ApiResponse<Webhook> putRes = test(putReq, caller);
 	
 	
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getEventKind(), putRes.getResource().getEventKind());
 		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getEventUrl(), putRes.getResource().getEventUrl());
-		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getEventAction(), putRes.getResource().getEventAction());
-		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getEventSubject(), putRes.getResource().getEventSubject());
 	
 	
 		return putRes;

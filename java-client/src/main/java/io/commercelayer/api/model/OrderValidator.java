@@ -2,6 +2,7 @@ package io.commercelayer.api.model;
 
 import io.commercelayer.api.json.JsonExclude;
 import io.commercelayer.api.model.common.ApiResource;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -22,6 +23,8 @@ public class OrderValidator extends ApiResource {
 	@JsonExclude
 	private String formattedOrderTotalMin;
 	@JsonExclude
+	private List<String> markets;
+	@JsonExclude
 	private String name;
 	@JsonExclude
 	private Integer orderItemsMax;
@@ -40,7 +43,7 @@ public class OrderValidator extends ApiResource {
 	@JsonExclude
 	private Integer paymentMethodRequiredPercentage;
 	@JsonExclude
-	private Object previousChanges;
+	private List<String> versions;
 
 
 	public OrderValidator() {
@@ -221,27 +224,6 @@ public class OrderValidator extends ApiResource {
 	}
 	
 
-	public void setPreviousChanges(Object previousChanges) {
-		this.previousChanges = previousChanges;
-	}
-	
-
-	public Object getPreviousChanges() {
-		return this.previousChanges;
-	}
-	
-
-	public OrderValidator previousChanges(Object previousChanges) {
-		setPreviousChanges(previousChanges);
-		return this;
-	}
-	
-
-	public Object previousChanges() {
-		return getPreviousChanges();
-	}
-	
-
 	public void setCurrency(Object currency) {
 		this.currency = currency;
 	}
@@ -260,6 +242,48 @@ public class OrderValidator extends ApiResource {
 
 	public Object currency() {
 		return getCurrency();
+	}
+	
+
+	public void setVersions(List<String> versions) {
+		this.versions = versions;
+	}
+	
+
+	public List<String> getVersions() {
+		return this.versions;
+	}
+	
+
+	public OrderValidator versions(List<String> versions) {
+		setVersions(versions);
+		return this;
+	}
+	
+
+	public List<String> versions() {
+		return getVersions();
+	}
+	
+
+	public void setMarkets(List<String> markets) {
+		this.markets = markets;
+	}
+	
+
+	public List<String> getMarkets() {
+		return this.markets;
+	}
+	
+
+	public OrderValidator markets(List<String> markets) {
+		setMarkets(markets);
+		return this;
+	}
+	
+
+	public List<String> markets() {
+		return getMarkets();
 	}
 	
 
@@ -364,8 +388,9 @@ public class OrderValidator extends ApiResource {
 			&& Objects.equals(this.orderItemsMax, x.orderItemsMax)
 			&& Objects.equals(this.paymentMethodAction, x.paymentMethodAction)
 			&& Objects.equals(this.paymentMethodRequiredPercentage, x.paymentMethodRequiredPercentage)
-			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.currency, x.currency)
+			&& Objects.equals(this.versions, x.versions)
+			&& Objects.equals(this.markets, x.markets)
 			&& Objects.equals(this.orderTotalMin, x.orderTotalMin)
 			&& Objects.equals(this.formattedOrderTotalMin, x.formattedOrderTotalMin)
 			&& Objects.equals(this.orderTotalMax, x.orderTotalMax)
@@ -380,8 +405,9 @@ public class OrderValidator extends ApiResource {
 	
 		return Objects.hash(
 			name, currencyId, orderTotalMinCents, orderTotalMaxCents, orderItemsMin,
-			orderItemsMax, paymentMethodAction, paymentMethodRequiredPercentage, previousChanges, currency,
-			orderTotalMin, formattedOrderTotalMin, orderTotalMax, formattedOrderTotalMax 
+			orderItemsMax, paymentMethodAction, paymentMethodRequiredPercentage, currency, versions,
+			markets, orderTotalMin, formattedOrderTotalMin, orderTotalMax, formattedOrderTotalMax
+			
 		);
 	
 	}
@@ -402,8 +428,9 @@ public class OrderValidator extends ApiResource {
 		no.orderItemsMax = this.orderItemsMax;
 		no.paymentMethodAction = this.paymentMethodAction;
 		no.paymentMethodRequiredPercentage = this.paymentMethodRequiredPercentage;
-		no.previousChanges = this.previousChanges;
 		no.currency = this.currency;
+		no.versions = this.versions;
+		no.markets = this.markets;
 		no.orderTotalMin = this.orderTotalMin;
 		no.formattedOrderTotalMin = this.formattedOrderTotalMin;
 		no.orderTotalMax = this.orderTotalMax;

@@ -17,6 +17,12 @@ public class PostAccountPaymentTypes extends PostOperation<PaymentType> {
 		addRequiredField("merchantId");
 		addRequiredField("gatewayId");
 		addRequiredField("description");
+		addRequiredField("resourceImageIds");
+		addRequiredField("imageIds");
+		addRequiredField("marketPaymentTypeIds");
+		addRequiredField("paymentMethodIds");
+		addRequiredField("paymentPriceIds");
+		addRequiredField("marketIds");
 	}
 
 

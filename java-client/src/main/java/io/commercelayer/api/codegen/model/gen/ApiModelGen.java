@@ -38,6 +38,7 @@ import io.commercelayer.api.model.common.ApiResource;
 import io.commercelayer.api.operation.common.ApiOperation;
 import io.commercelayer.api.operation.common.DeleteOperation;
 import io.commercelayer.api.operation.common.GetIdOperation;
+import io.commercelayer.api.operation.common.HeadOperation;
 import io.commercelayer.api.operation.common.IdOperation;
 import io.commercelayer.api.operation.common.MoveOperation;
 import io.commercelayer.api.operation.common.PayloadOperation;
@@ -397,6 +398,10 @@ public class ApiModelGen {
 				extClass = DeleteOperation.class;
 				break;
 			}
+			case HEAD: {
+				extClass = HeadOperation.class;
+				break;
+			}
 		}
 
 		mc.setExtendedClass(new Type(extClass, (op.getReference() != null) ? op.getReference().getTitle() : null));
@@ -517,6 +522,13 @@ public class ApiModelGen {
 				public static final String SEARCH = "listSearchTest";
 			}
 		}
+		
+		logger.debug("[{}] - Generating Test Class ...", def.getTitle());
+		
+		if (!CRUDUtils.areCRUDOperationsAvailable(def)) {
+			logger.warn("[{}] - Unavailable CRUD Test operations", def.getTitle());
+			return null;
+		}
 
 		ModelClass mc = new ModelClass(testPackage, def.getTitle().concat("Test"), Modifier.PUBLIC);
 		mc.setComment(mc.getName());
@@ -526,6 +538,9 @@ public class ApiModelGen {
 		final String res = ApiResource.class.getPackage().getName().replace(".common", ".").concat(def.getTitle());
 
 		final Map<io.commercelayer.api.http.HttpRequest.Method, Operation> crudOps = def.getCRUDOperations();
+		
+		
+		
 		for (Operation op : crudOps.values()) mc.addImportItem(String.format("%s.%s", PACKAGE_OPERATION, op.getName()));
 		mc.addImportItem("org.junit.Assert");
 		mc.addImportItem(ApiRequest.class);
@@ -607,6 +622,8 @@ public class ApiModelGen {
 
 		mc.addMethod(mm);
 
+		
+		logger.debug("[{}] - Test Class generation completed.", def.getTitle());
 		
 		return mc;
 

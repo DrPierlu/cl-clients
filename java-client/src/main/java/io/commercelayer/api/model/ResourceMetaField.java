@@ -2,6 +2,7 @@ package io.commercelayer.api.model;
 
 import io.commercelayer.api.json.JsonExclude;
 import io.commercelayer.api.model.common.ApiResource;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -23,7 +24,7 @@ public class ResourceMetaField extends ApiResource {
 	@JsonExclude
 	private String name;
 	@JsonExclude
-	private Object previousChanges;
+	private List<String> versions;
 
 
 	public ResourceMetaField() {
@@ -120,27 +121,6 @@ public class ResourceMetaField extends ApiResource {
 	}
 	
 
-	public void setPreviousChanges(Object previousChanges) {
-		this.previousChanges = previousChanges;
-	}
-	
-
-	public Object getPreviousChanges() {
-		return this.previousChanges;
-	}
-	
-
-	public ResourceMetaField previousChanges(Object previousChanges) {
-		setPreviousChanges(previousChanges);
-		return this;
-	}
-	
-
-	public Object previousChanges() {
-		return getPreviousChanges();
-	}
-	
-
 	public void setExtensible(Object extensible) {
 		this.extensible = extensible;
 	}
@@ -183,6 +163,27 @@ public class ResourceMetaField extends ApiResource {
 	}
 	
 
+	public void setVersions(List<String> versions) {
+		this.versions = versions;
+	}
+	
+
+	public List<String> getVersions() {
+		return this.versions;
+	}
+	
+
+	public ResourceMetaField versions(List<String> versions) {
+		setVersions(versions);
+		return this;
+	}
+	
+
+	public List<String> versions() {
+		return getVersions();
+	}
+	
+
 	@Override
 	public boolean equals(Object o) {
 	
@@ -196,9 +197,9 @@ public class ResourceMetaField extends ApiResource {
 			&& Objects.equals(this.extensibleId, x.extensibleId)
 			&& Objects.equals(this.extensibleResource, x.extensibleResource)
 			&& Objects.equals(this.metaFieldId, x.metaFieldId)
-			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.extensible, x.extensible)
 			&& Objects.equals(this.metaField, x.metaField)
+			&& Objects.equals(this.versions, x.versions)
 		;
 	
 	}
@@ -208,8 +209,8 @@ public class ResourceMetaField extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, extensibleId, extensibleResource, metaFieldId, previousChanges,
-			extensible, metaField 
+			name, extensibleId, extensibleResource, metaFieldId, extensible,
+			metaField, versions 
 		);
 	
 	}
@@ -226,9 +227,9 @@ public class ResourceMetaField extends ApiResource {
 		no.extensibleId = this.extensibleId;
 		no.extensibleResource = this.extensibleResource;
 		no.metaFieldId = this.metaFieldId;
-		no.previousChanges = this.previousChanges;
 		no.extensible = this.extensible;
 		no.metaField = this.metaField;
+		no.versions = this.versions;
 	
 		return no;
 	

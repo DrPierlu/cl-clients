@@ -30,7 +30,6 @@ public class MarketTest extends IntegrationTest<Market> {
 	
 		// FIELD NOT FOUND -> res.setCatalogId("catalogId");
 		// FIELD NOT FOUND -> res.setMerchantId("merchantId");
-		// FIELD NOT FOUND -> res.setPriceListId("priceListId");
 		// FIELD NOT FOUND -> res.setCountryGroupId("countryGroupId");
 		// FIELD NOT FOUND -> res.setOrderValidatorId("orderValidatorId");
 		// FIELD NOT FOUND -> res.setChannelId("channelId");
@@ -45,7 +44,6 @@ public class MarketTest extends IntegrationTest<Market> {
 	
 		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getCatalogId());
 		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getMerchantId());
-		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getPriceListId());
 		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getCountryGroupId());
 		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getOrderValidatorId());
 		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getChannelId());
@@ -90,7 +88,6 @@ public class MarketTest extends IntegrationTest<Market> {
 	
 		// FIELD NOT FOUND -> res.setCatalogId(randomField(oldRes.getCatalogId()));
 		// FIELD NOT FOUND -> res.setMerchantId(randomField(oldRes.getMerchantId()));
-		// FIELD NOT FOUND -> res.setPriceListId(randomField(oldRes.getPriceListId()));
 		// FIELD NOT FOUND -> res.setCountryGroupId(randomField(oldRes.getCountryGroupId()));
 		// FIELD NOT FOUND -> res.setOrderValidatorId(randomField(oldRes.getOrderValidatorId()));
 		// FIELD NOT FOUND -> res.setChannelId(randomField(oldRes.getChannelId()));
@@ -105,7 +102,6 @@ public class MarketTest extends IntegrationTest<Market> {
 	
 		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getCatalogId(), putRes.getResource().getCatalogId());
 		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getMerchantId(), putRes.getResource().getMerchantId());
-		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getPriceListId(), putRes.getResource().getPriceListId());
 		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getCountryGroupId(), putRes.getResource().getCountryGroupId());
 		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getOrderValidatorId(), putRes.getResource().getOrderValidatorId());
 		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getChannelId(), putRes.getResource().getChannelId());

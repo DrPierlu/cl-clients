@@ -18,6 +18,20 @@ public class PostAccountProducts extends PostOperation<Product> {
 		addRequiredField("description");
 		addRequiredField("taxCode");
 		addRequiredField("trackInventory");
+		addRequiredField("priceIds");
+		addRequiredField("lineItemIds");
+		addRequiredField("stockItemIds");
+		addRequiredField("shippingServiceStockLocationIds");
+		addRequiredField("resourceImageIds");
+		addRequiredField("imageIds");
+		addRequiredField("resourceContentFieldIds");
+		addRequiredField("contentFieldIds");
+		addRequiredField("resourceMetaFieldIds");
+		addRequiredField("metaFieldIds");
+		addRequiredField("variantIds");
+		addRequiredField("merchandisingRuleIds");
+		addRequiredField("productPropertyIds");
+		addRequiredField("propertyValueIds");
 	}
 
 

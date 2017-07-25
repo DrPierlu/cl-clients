@@ -20,13 +20,13 @@ public class ShippingCarrierAccount extends ApiResource {
 	@JsonExclude
 	private String name;
 	@JsonExclude
-	private Object previousChanges;
-	@JsonExclude
 	private Object shippingCarrier;
 	@JsonExclude
 	private String shippingLabelFormat;
 	@JsonExclude
 	private List<String> shippingServices;
+	@JsonExclude
+	private List<String> versions;
 
 
 	public ShippingCarrierAccount() {
@@ -123,27 +123,6 @@ public class ShippingCarrierAccount extends ApiResource {
 	}
 	
 
-	public void setPreviousChanges(Object previousChanges) {
-		this.previousChanges = previousChanges;
-	}
-	
-
-	public Object getPreviousChanges() {
-		return this.previousChanges;
-	}
-	
-
-	public ShippingCarrierAccount previousChanges(Object previousChanges) {
-		setPreviousChanges(previousChanges);
-		return this;
-	}
-	
-
-	public Object previousChanges() {
-		return getPreviousChanges();
-	}
-	
-
 	public void setShippingCarrier(Object shippingCarrier) {
 		this.shippingCarrier = shippingCarrier;
 	}
@@ -162,6 +141,27 @@ public class ShippingCarrierAccount extends ApiResource {
 
 	public Object shippingCarrier() {
 		return getShippingCarrier();
+	}
+	
+
+	public void setVersions(List<String> versions) {
+		this.versions = versions;
+	}
+	
+
+	public List<String> getVersions() {
+		return this.versions;
+	}
+	
+
+	public ShippingCarrierAccount versions(List<String> versions) {
+		setVersions(versions);
+		return this;
+	}
+	
+
+	public List<String> versions() {
+		return getVersions();
 	}
 	
 
@@ -199,8 +199,8 @@ public class ShippingCarrierAccount extends ApiResource {
 			&& Objects.equals(this.shippingCarrierId, x.shippingCarrierId)
 			&& Objects.equals(this.easypostId, x.easypostId)
 			&& Objects.equals(this.shippingLabelFormat, x.shippingLabelFormat)
-			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.shippingCarrier, x.shippingCarrier)
+			&& Objects.equals(this.versions, x.versions)
 			&& Objects.equals(this.shippingServices, x.shippingServices)
 		;
 	
@@ -211,8 +211,8 @@ public class ShippingCarrierAccount extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, shippingCarrierId, easypostId, shippingLabelFormat, previousChanges,
-			shippingCarrier, shippingServices 
+			name, shippingCarrierId, easypostId, shippingLabelFormat, shippingCarrier,
+			versions, shippingServices 
 		);
 	
 	}
@@ -229,8 +229,8 @@ public class ShippingCarrierAccount extends ApiResource {
 		no.shippingCarrierId = this.shippingCarrierId;
 		no.easypostId = this.easypostId;
 		no.shippingLabelFormat = this.shippingLabelFormat;
-		no.previousChanges = this.previousChanges;
 		no.shippingCarrier = this.shippingCarrier;
+		no.versions = this.versions;
 		no.shippingServices = this.shippingServices;
 	
 		return no;

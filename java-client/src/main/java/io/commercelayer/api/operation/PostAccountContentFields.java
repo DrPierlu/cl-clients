@@ -13,7 +13,7 @@ public class PostAccountContentFields extends PostOperation<ContentField> {
 
 
 	{
-		addRequiredField("kind");
+		addRequiredField("namespace");
 		addRequiredField("name");
 		addRequiredField("content");
 	}

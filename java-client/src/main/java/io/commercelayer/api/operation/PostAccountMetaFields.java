@@ -14,7 +14,7 @@ public class PostAccountMetaFields extends PostOperation<MetaField> {
 
 	{
 		addRequiredField("namespace");
-		addRequiredField("key");
+		addRequiredField("name");
 		addRequiredField("value");
 	}
 

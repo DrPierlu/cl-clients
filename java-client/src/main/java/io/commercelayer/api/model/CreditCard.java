@@ -30,13 +30,13 @@ public class CreditCard extends ApiResource {
 	@JsonExclude
 	private String firstSixDigits;
 	@JsonExclude
+	private List<String> invoices;
+	@JsonExclude
 	private String lastFourDigits;
 	@JsonExclude
 	private String name;
 	@JsonExclude
 	private List<String> paymentMethods;
-	@JsonExclude
-	private Object previousChanges;
 	@JsonExclude
 	private String storageState;
 	@JsonExclude
@@ -45,6 +45,8 @@ public class CreditCard extends ApiResource {
 	private List<String> transactions;
 	@JsonExclude
 	private String verificationValue;
+	@JsonExclude
+	private List<String> versions;
 
 
 	public CreditCard() {
@@ -372,24 +374,45 @@ public class CreditCard extends ApiResource {
 	}
 	
 
-	public void setPreviousChanges(Object previousChanges) {
-		this.previousChanges = previousChanges;
+	public void setVersions(List<String> versions) {
+		this.versions = versions;
 	}
 	
 
-	public Object getPreviousChanges() {
-		return this.previousChanges;
+	public List<String> getVersions() {
+		return this.versions;
 	}
 	
 
-	public CreditCard previousChanges(Object previousChanges) {
-		setPreviousChanges(previousChanges);
+	public CreditCard versions(List<String> versions) {
+		setVersions(versions);
 		return this;
 	}
 	
 
-	public Object previousChanges() {
-		return getPreviousChanges();
+	public List<String> versions() {
+		return getVersions();
+	}
+	
+
+	public void setPaymentMethods(List<String> paymentMethods) {
+		this.paymentMethods = paymentMethods;
+	}
+	
+
+	public List<String> getPaymentMethods() {
+		return this.paymentMethods;
+	}
+	
+
+	public CreditCard paymentMethods(List<String> paymentMethods) {
+		setPaymentMethods(paymentMethods);
+		return this;
+	}
+	
+
+	public List<String> paymentMethods() {
+		return getPaymentMethods();
 	}
 	
 
@@ -414,24 +437,24 @@ public class CreditCard extends ApiResource {
 	}
 	
 
-	public void setPaymentMethods(List<String> paymentMethods) {
-		this.paymentMethods = paymentMethods;
+	public void setInvoices(List<String> invoices) {
+		this.invoices = invoices;
 	}
 	
 
-	public List<String> getPaymentMethods() {
-		return this.paymentMethods;
+	public List<String> getInvoices() {
+		return this.invoices;
 	}
 	
 
-	public CreditCard paymentMethods(List<String> paymentMethods) {
-		setPaymentMethods(paymentMethods);
+	public CreditCard invoices(List<String> invoices) {
+		setInvoices(invoices);
 		return this;
 	}
 	
 
-	public List<String> paymentMethods() {
-		return getPaymentMethods();
+	public List<String> invoices() {
+		return getInvoices();
 	}
 	
 
@@ -459,9 +482,10 @@ public class CreditCard extends ApiResource {
 			&& Objects.equals(this.email, x.email)
 			&& Objects.equals(this.storageState, x.storageState)
 			&& Objects.equals(this.eligibleForCardUpdater, x.eligibleForCardUpdater)
-			&& Objects.equals(this.previousChanges, x.previousChanges)
-			&& Objects.equals(this.transactions, x.transactions)
+			&& Objects.equals(this.versions, x.versions)
 			&& Objects.equals(this.paymentMethods, x.paymentMethods)
+			&& Objects.equals(this.transactions, x.transactions)
+			&& Objects.equals(this.invoices, x.invoices)
 		;
 	
 	}
@@ -474,7 +498,7 @@ public class CreditCard extends ApiResource {
 			name, token, cardResource, fingerprint, firstName,
 			lastName, number, lastFourDigits, firstSixDigits, month,
 			year, verificationValue, email, storageState, eligibleForCardUpdater,
-			previousChanges, transactions, paymentMethods 
+			versions, paymentMethods, transactions, invoices 
 		);
 	
 	}
@@ -502,9 +526,10 @@ public class CreditCard extends ApiResource {
 		no.email = this.email;
 		no.storageState = this.storageState;
 		no.eligibleForCardUpdater = this.eligibleForCardUpdater;
-		no.previousChanges = this.previousChanges;
-		no.transactions = this.transactions;
+		no.versions = this.versions;
 		no.paymentMethods = this.paymentMethods;
+		no.transactions = this.transactions;
+		no.invoices = this.invoices;
 	
 		return no;
 	

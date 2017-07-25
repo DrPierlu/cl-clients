@@ -16,9 +16,13 @@ public class Customer extends ApiResource {
 
 	private String email;
 	@JsonExclude
-	private Object featuredImage;
+	private Object creator;
 	@JsonExclude
-	private String hasPassword;
+	private Integer creatorId;
+	@JsonExclude
+	private List<String> events;
+	@JsonExclude
+	private Boolean hasPassword;
 	@JsonExclude
 	private List<String> images;
 	@JsonExclude
@@ -30,9 +34,11 @@ public class Customer extends ApiResource {
 	@JsonExclude
 	private String passwordSalt;
 	@JsonExclude
-	private Object previousChanges;
-	@JsonExclude
 	private List<String> resourceImages;
+	@JsonExclude
+	private String state;
+	@JsonExclude
+	private List<String> versions;
 
 
 	public Customer() {
@@ -87,6 +93,27 @@ public class Customer extends ApiResource {
 	}
 	
 
+	public void setHasPassword(Boolean hasPassword) {
+		this.hasPassword = hasPassword;
+	}
+	
+
+	public Boolean getHasPassword() {
+		return this.hasPassword;
+	}
+	
+
+	public Customer hasPassword(Boolean hasPassword) {
+		setHasPassword(hasPassword);
+		return this;
+	}
+	
+
+	public Boolean hasPassword() {
+		return getHasPassword();
+	}
+	
+
 	public void setPasswordHash(String passwordHash) {
 		this.passwordHash = passwordHash;
 	}
@@ -129,24 +156,87 @@ public class Customer extends ApiResource {
 	}
 	
 
-	public void setPreviousChanges(Object previousChanges) {
-		this.previousChanges = previousChanges;
+	public void setCreatorId(Integer creatorId) {
+		this.creatorId = creatorId;
 	}
 	
 
-	public Object getPreviousChanges() {
-		return this.previousChanges;
+	public Integer getCreatorId() {
+		return this.creatorId;
 	}
 	
 
-	public Customer previousChanges(Object previousChanges) {
-		setPreviousChanges(previousChanges);
+	public Customer creatorId(Integer creatorId) {
+		setCreatorId(creatorId);
 		return this;
 	}
 	
 
-	public Object previousChanges() {
-		return getPreviousChanges();
+	public Integer creatorId() {
+		return getCreatorId();
+	}
+	
+
+	public void setState(String state) {
+		this.state = state;
+	}
+	
+
+	public String getState() {
+		return this.state;
+	}
+	
+
+	public Customer state(String state) {
+		setState(state);
+		return this;
+	}
+	
+
+	public String state() {
+		return getState();
+	}
+	
+
+	public void setCreator(Object creator) {
+		this.creator = creator;
+	}
+	
+
+	public Object getCreator() {
+		return this.creator;
+	}
+	
+
+	public Customer creator(Object creator) {
+		setCreator(creator);
+		return this;
+	}
+	
+
+	public Object creator() {
+		return getCreator();
+	}
+	
+
+	public void setVersions(List<String> versions) {
+		this.versions = versions;
+	}
+	
+
+	public List<String> getVersions() {
+		return this.versions;
+	}
+	
+
+	public Customer versions(List<String> versions) {
+		setVersions(versions);
+		return this;
+	}
+	
+
+	public List<String> versions() {
+		return getVersions();
 	}
 	
 
@@ -192,6 +282,27 @@ public class Customer extends ApiResource {
 	}
 	
 
+	public void setEvents(List<String> events) {
+		this.events = events;
+	}
+	
+
+	public List<String> getEvents() {
+		return this.events;
+	}
+	
+
+	public Customer events(List<String> events) {
+		setEvents(events);
+		return this;
+	}
+	
+
+	public List<String> events() {
+		return getEvents();
+	}
+	
+
 	public void setOrders(List<String> orders) {
 		this.orders = orders;
 	}
@@ -213,48 +324,6 @@ public class Customer extends ApiResource {
 	}
 	
 
-	public void setFeaturedImage(Object featuredImage) {
-		this.featuredImage = featuredImage;
-	}
-	
-
-	public Object getFeaturedImage() {
-		return this.featuredImage;
-	}
-	
-
-	public Customer featuredImage(Object featuredImage) {
-		setFeaturedImage(featuredImage);
-		return this;
-	}
-	
-
-	public Object featuredImage() {
-		return getFeaturedImage();
-	}
-	
-
-	public void setHasPassword(String hasPassword) {
-		this.hasPassword = hasPassword;
-	}
-	
-
-	public String getHasPassword() {
-		return this.hasPassword;
-	}
-	
-
-	public Customer hasPassword(String hasPassword) {
-		setHasPassword(hasPassword);
-		return this;
-	}
-	
-
-	public String hasPassword() {
-		return getHasPassword();
-	}
-	
-
 	@Override
 	public boolean equals(Object o) {
 	
@@ -266,14 +335,17 @@ public class Customer extends ApiResource {
 		return super.equals(o)
 			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.email, x.email)
+			&& Objects.equals(this.hasPassword, x.hasPassword)
 			&& Objects.equals(this.passwordHash, x.passwordHash)
 			&& Objects.equals(this.passwordSalt, x.passwordSalt)
-			&& Objects.equals(this.previousChanges, x.previousChanges)
+			&& Objects.equals(this.creatorId, x.creatorId)
+			&& Objects.equals(this.state, x.state)
+			&& Objects.equals(this.creator, x.creator)
+			&& Objects.equals(this.versions, x.versions)
 			&& Objects.equals(this.resourceImages, x.resourceImages)
 			&& Objects.equals(this.images, x.images)
+			&& Objects.equals(this.events, x.events)
 			&& Objects.equals(this.orders, x.orders)
-			&& Objects.equals(this.featuredImage, x.featuredImage)
-			&& Objects.equals(this.hasPassword, x.hasPassword)
 		;
 	
 	}
@@ -283,9 +355,9 @@ public class Customer extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, email, passwordHash, passwordSalt, previousChanges,
-			resourceImages, images, orders, featuredImage, hasPassword
-			
+			name, email, hasPassword, passwordHash, passwordSalt,
+			creatorId, state, creator, versions, resourceImages,
+			images, events, orders 
 		);
 	
 	}
@@ -300,14 +372,17 @@ public class Customer extends ApiResource {
 	
 		no.name = this.name;
 		no.email = this.email;
+		no.hasPassword = this.hasPassword;
 		no.passwordHash = this.passwordHash;
 		no.passwordSalt = this.passwordSalt;
-		no.previousChanges = this.previousChanges;
+		no.creatorId = this.creatorId;
+		no.state = this.state;
+		no.creator = this.creator;
+		no.versions = this.versions;
 		no.resourceImages = this.resourceImages;
 		no.images = this.images;
+		no.events = this.events;
 		no.orders = this.orders;
-		no.featuredImage = this.featuredImage;
-		no.hasPassword = this.hasPassword;
 	
 		return no;
 	

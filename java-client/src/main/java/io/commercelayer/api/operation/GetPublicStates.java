@@ -5,14 +5,14 @@ import io.commercelayer.api.operation.common.SearchOperation;
 
 
 /**
- * GetAllStates
+ * GetPublicStates
  */
-public class GetAllStates extends SearchOperation<State> {
+public class GetPublicStates extends SearchOperation<State> {
 
-	public static final String OPERATION_PATH = "/all/states";
+	public static final String OPERATION_PATH = "/public/states";
 
 
-	public GetAllStates() {
+	public GetPublicStates() {
 		super(OPERATION_PATH);
 	}
 	

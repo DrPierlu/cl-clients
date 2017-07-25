@@ -16,6 +16,10 @@ public class PostAccountMerchants extends PostOperation<Merchant> {
 		addRequiredField("name");
 		addRequiredField("addressId");
 		addRequiredField("description");
+		addRequiredField("marketIds");
+		addRequiredField("gatewayIds");
+		addRequiredField("orderIds");
+		addRequiredField("paymentTypeIds");
 	}
 
 

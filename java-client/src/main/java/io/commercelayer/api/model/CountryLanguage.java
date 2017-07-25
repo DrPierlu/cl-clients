@@ -2,6 +2,7 @@ package io.commercelayer.api.model;
 
 import io.commercelayer.api.json.JsonExclude;
 import io.commercelayer.api.model.common.ApiResource;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -24,7 +25,7 @@ public class CountryLanguage extends ApiResource {
 	@JsonExclude
 	private Integer position;
 	@JsonExclude
-	private Object previousChanges;
+	private List<String> versions;
 
 
 	public CountryLanguage() {
@@ -121,27 +122,6 @@ public class CountryLanguage extends ApiResource {
 	}
 	
 
-	public void setPreviousChanges(Object previousChanges) {
-		this.previousChanges = previousChanges;
-	}
-	
-
-	public Object getPreviousChanges() {
-		return this.previousChanges;
-	}
-	
-
-	public CountryLanguage previousChanges(Object previousChanges) {
-		setPreviousChanges(previousChanges);
-		return this;
-	}
-	
-
-	public Object previousChanges() {
-		return getPreviousChanges();
-	}
-	
-
 	public void setCountry(Object country) {
 		this.country = country;
 	}
@@ -184,6 +164,27 @@ public class CountryLanguage extends ApiResource {
 	}
 	
 
+	public void setVersions(List<String> versions) {
+		this.versions = versions;
+	}
+	
+
+	public List<String> getVersions() {
+		return this.versions;
+	}
+	
+
+	public CountryLanguage versions(List<String> versions) {
+		setVersions(versions);
+		return this;
+	}
+	
+
+	public List<String> versions() {
+		return getVersions();
+	}
+	
+
 	@Override
 	public boolean equals(Object o) {
 	
@@ -197,9 +198,9 @@ public class CountryLanguage extends ApiResource {
 			&& Objects.equals(this.countryId, x.countryId)
 			&& Objects.equals(this.languageId, x.languageId)
 			&& Objects.equals(this.position, x.position)
-			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.country, x.country)
 			&& Objects.equals(this.language, x.language)
+			&& Objects.equals(this.versions, x.versions)
 		;
 	
 	}
@@ -209,8 +210,8 @@ public class CountryLanguage extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, countryId, languageId, position, previousChanges,
-			country, language 
+			name, countryId, languageId, position, country,
+			language, versions 
 		);
 	
 	}
@@ -227,9 +228,9 @@ public class CountryLanguage extends ApiResource {
 		no.countryId = this.countryId;
 		no.languageId = this.languageId;
 		no.position = this.position;
-		no.previousChanges = this.previousChanges;
 		no.country = this.country;
 		no.language = this.language;
+		no.versions = this.versions;
 	
 		return no;
 	

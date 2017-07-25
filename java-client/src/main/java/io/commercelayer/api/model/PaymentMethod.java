@@ -2,6 +2,7 @@ package io.commercelayer.api.model;
 
 import io.commercelayer.api.json.JsonExclude;
 import io.commercelayer.api.model.common.ApiResource;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -23,13 +24,23 @@ public class PaymentMethod extends ApiResource {
 	@JsonExclude
 	private Integer amountCents;
 	@JsonExclude
+	private String amountDue;
+	@JsonExclude
 	private Object billingAddress;
 	@JsonExclude
 	private Object billingRecipient;
 	@JsonExclude
+	private String creditCard;
+	@JsonExclude
 	private String formattedAmount;
 	@JsonExclude
+	private String formattedAmountDue;
+	@JsonExclude
+	private String formattedPaidAmount;
+	@JsonExclude
 	private String formattedPrice;
+	@JsonExclude
+	private String formattedRefundedAmount;
 	@JsonExclude
 	private String formattedTaxAmount;
 	@JsonExclude
@@ -39,9 +50,13 @@ public class PaymentMethod extends ApiResource {
 	@JsonExclude
 	private Integer gatewayId;
 	@JsonExclude
+	private List<String> invoices;
+	@JsonExclude
 	private String name;
 	@JsonExclude
 	private Object order;
+	@JsonExclude
+	private String paidAmount;
 	@JsonExclude
 	private Object paymentSource;
 	@JsonExclude
@@ -49,7 +64,7 @@ public class PaymentMethod extends ApiResource {
 	@JsonExclude
 	private Integer paymentTypeId;
 	@JsonExclude
-	private Object previousChanges;
+	private String paypalAccount;
 	@JsonExclude
 	private String price;
 	@JsonExclude
@@ -57,13 +72,17 @@ public class PaymentMethod extends ApiResource {
 	@JsonExclude
 	private String redirectUrl;
 	@JsonExclude
+	private String refundedAmount;
+	@JsonExclude
 	private String taxAmount;
 	@JsonExclude
-	private Float taxRate;
-	@JsonExclude
-	private Boolean taxable;
-	@JsonExclude
 	private String taxableAmount;
+	@JsonExclude
+	private List<String> transactions;
+	@JsonExclude
+	private List<String> versions;
+	@JsonExclude
+	private String wireTransfer;
 
 
 	public PaymentMethod() {
@@ -307,69 +326,6 @@ public class PaymentMethod extends ApiResource {
 	}
 	
 
-	public void setTaxable(Boolean taxable) {
-		this.taxable = taxable;
-	}
-	
-
-	public Boolean getTaxable() {
-		return this.taxable;
-	}
-	
-
-	public PaymentMethod taxable(Boolean taxable) {
-		setTaxable(taxable);
-		return this;
-	}
-	
-
-	public Boolean taxable() {
-		return getTaxable();
-	}
-	
-
-	public void setTaxRate(Float taxRate) {
-		this.taxRate = taxRate;
-	}
-	
-
-	public Float getTaxRate() {
-		return this.taxRate;
-	}
-	
-
-	public PaymentMethod taxRate(Float taxRate) {
-		setTaxRate(taxRate);
-		return this;
-	}
-	
-
-	public Float taxRate() {
-		return getTaxRate();
-	}
-	
-
-	public void setPreviousChanges(Object previousChanges) {
-		this.previousChanges = previousChanges;
-	}
-	
-
-	public Object getPreviousChanges() {
-		return this.previousChanges;
-	}
-	
-
-	public PaymentMethod previousChanges(Object previousChanges) {
-		setPreviousChanges(previousChanges);
-		return this;
-	}
-	
-
-	public Object previousChanges() {
-		return getPreviousChanges();
-	}
-	
-
 	public void setOrder(Object order) {
 		this.order = order;
 	}
@@ -409,27 +365,6 @@ public class PaymentMethod extends ApiResource {
 
 	public Object paymentType() {
 		return getPaymentType();
-	}
-	
-
-	public void setPaymentSource(Object paymentSource) {
-		this.paymentSource = paymentSource;
-	}
-	
-
-	public Object getPaymentSource() {
-		return this.paymentSource;
-	}
-	
-
-	public PaymentMethod paymentSource(Object paymentSource) {
-		setPaymentSource(paymentSource);
-		return this;
-	}
-	
-
-	public Object paymentSource() {
-		return getPaymentSource();
 	}
 	
 
@@ -496,45 +431,87 @@ public class PaymentMethod extends ApiResource {
 	}
 	
 
-	public void setTaxableAmount(String taxableAmount) {
-		this.taxableAmount = taxableAmount;
+	public void setPaymentSource(Object paymentSource) {
+		this.paymentSource = paymentSource;
 	}
 	
 
-	public String getTaxableAmount() {
-		return this.taxableAmount;
+	public Object getPaymentSource() {
+		return this.paymentSource;
 	}
 	
 
-	public PaymentMethod taxableAmount(String taxableAmount) {
-		setTaxableAmount(taxableAmount);
+	public PaymentMethod paymentSource(Object paymentSource) {
+		setPaymentSource(paymentSource);
 		return this;
 	}
 	
 
-	public String taxableAmount() {
-		return getTaxableAmount();
+	public Object paymentSource() {
+		return getPaymentSource();
 	}
 	
 
-	public void setFormattedTaxableAmount(String formattedTaxableAmount) {
-		this.formattedTaxableAmount = formattedTaxableAmount;
+	public void setVersions(List<String> versions) {
+		this.versions = versions;
 	}
 	
 
-	public String getFormattedTaxableAmount() {
-		return this.formattedTaxableAmount;
+	public List<String> getVersions() {
+		return this.versions;
 	}
 	
 
-	public PaymentMethod formattedTaxableAmount(String formattedTaxableAmount) {
-		setFormattedTaxableAmount(formattedTaxableAmount);
+	public PaymentMethod versions(List<String> versions) {
+		setVersions(versions);
 		return this;
 	}
 	
 
-	public String formattedTaxableAmount() {
-		return getFormattedTaxableAmount();
+	public List<String> versions() {
+		return getVersions();
+	}
+	
+
+	public void setTransactions(List<String> transactions) {
+		this.transactions = transactions;
+	}
+	
+
+	public List<String> getTransactions() {
+		return this.transactions;
+	}
+	
+
+	public PaymentMethod transactions(List<String> transactions) {
+		setTransactions(transactions);
+		return this;
+	}
+	
+
+	public List<String> transactions() {
+		return getTransactions();
+	}
+	
+
+	public void setInvoices(List<String> invoices) {
+		this.invoices = invoices;
+	}
+	
+
+	public List<String> getInvoices() {
+		return this.invoices;
+	}
+	
+
+	public PaymentMethod invoices(List<String> invoices) {
+		setInvoices(invoices);
+		return this;
+	}
+	
+
+	public List<String> invoices() {
+		return getInvoices();
 	}
 	
 
@@ -577,6 +554,174 @@ public class PaymentMethod extends ApiResource {
 
 	public String formattedTaxAmount() {
 		return getFormattedTaxAmount();
+	}
+	
+
+	public void setTaxableAmount(String taxableAmount) {
+		this.taxableAmount = taxableAmount;
+	}
+	
+
+	public String getTaxableAmount() {
+		return this.taxableAmount;
+	}
+	
+
+	public PaymentMethod taxableAmount(String taxableAmount) {
+		setTaxableAmount(taxableAmount);
+		return this;
+	}
+	
+
+	public String taxableAmount() {
+		return getTaxableAmount();
+	}
+	
+
+	public void setFormattedTaxableAmount(String formattedTaxableAmount) {
+		this.formattedTaxableAmount = formattedTaxableAmount;
+	}
+	
+
+	public String getFormattedTaxableAmount() {
+		return this.formattedTaxableAmount;
+	}
+	
+
+	public PaymentMethod formattedTaxableAmount(String formattedTaxableAmount) {
+		setFormattedTaxableAmount(formattedTaxableAmount);
+		return this;
+	}
+	
+
+	public String formattedTaxableAmount() {
+		return getFormattedTaxableAmount();
+	}
+	
+
+	public void setPaidAmount(String paidAmount) {
+		this.paidAmount = paidAmount;
+	}
+	
+
+	public String getPaidAmount() {
+		return this.paidAmount;
+	}
+	
+
+	public PaymentMethod paidAmount(String paidAmount) {
+		setPaidAmount(paidAmount);
+		return this;
+	}
+	
+
+	public String paidAmount() {
+		return getPaidAmount();
+	}
+	
+
+	public void setFormattedPaidAmount(String formattedPaidAmount) {
+		this.formattedPaidAmount = formattedPaidAmount;
+	}
+	
+
+	public String getFormattedPaidAmount() {
+		return this.formattedPaidAmount;
+	}
+	
+
+	public PaymentMethod formattedPaidAmount(String formattedPaidAmount) {
+		setFormattedPaidAmount(formattedPaidAmount);
+		return this;
+	}
+	
+
+	public String formattedPaidAmount() {
+		return getFormattedPaidAmount();
+	}
+	
+
+	public void setRefundedAmount(String refundedAmount) {
+		this.refundedAmount = refundedAmount;
+	}
+	
+
+	public String getRefundedAmount() {
+		return this.refundedAmount;
+	}
+	
+
+	public PaymentMethod refundedAmount(String refundedAmount) {
+		setRefundedAmount(refundedAmount);
+		return this;
+	}
+	
+
+	public String refundedAmount() {
+		return getRefundedAmount();
+	}
+	
+
+	public void setFormattedRefundedAmount(String formattedRefundedAmount) {
+		this.formattedRefundedAmount = formattedRefundedAmount;
+	}
+	
+
+	public String getFormattedRefundedAmount() {
+		return this.formattedRefundedAmount;
+	}
+	
+
+	public PaymentMethod formattedRefundedAmount(String formattedRefundedAmount) {
+		setFormattedRefundedAmount(formattedRefundedAmount);
+		return this;
+	}
+	
+
+	public String formattedRefundedAmount() {
+		return getFormattedRefundedAmount();
+	}
+	
+
+	public void setAmountDue(String amountDue) {
+		this.amountDue = amountDue;
+	}
+	
+
+	public String getAmountDue() {
+		return this.amountDue;
+	}
+	
+
+	public PaymentMethod amountDue(String amountDue) {
+		setAmountDue(amountDue);
+		return this;
+	}
+	
+
+	public String amountDue() {
+		return getAmountDue();
+	}
+	
+
+	public void setFormattedAmountDue(String formattedAmountDue) {
+		this.formattedAmountDue = formattedAmountDue;
+	}
+	
+
+	public String getFormattedAmountDue() {
+		return this.formattedAmountDue;
+	}
+	
+
+	public PaymentMethod formattedAmountDue(String formattedAmountDue) {
+		setFormattedAmountDue(formattedAmountDue);
+		return this;
+	}
+	
+
+	public String formattedAmountDue() {
+		return getFormattedAmountDue();
 	}
 	
 
@@ -664,6 +809,69 @@ public class PaymentMethod extends ApiResource {
 	}
 	
 
+	public void setWireTransfer(String wireTransfer) {
+		this.wireTransfer = wireTransfer;
+	}
+	
+
+	public String getWireTransfer() {
+		return this.wireTransfer;
+	}
+	
+
+	public PaymentMethod wireTransfer(String wireTransfer) {
+		setWireTransfer(wireTransfer);
+		return this;
+	}
+	
+
+	public String wireTransfer() {
+		return getWireTransfer();
+	}
+	
+
+	public void setCreditCard(String creditCard) {
+		this.creditCard = creditCard;
+	}
+	
+
+	public String getCreditCard() {
+		return this.creditCard;
+	}
+	
+
+	public PaymentMethod creditCard(String creditCard) {
+		setCreditCard(creditCard);
+		return this;
+	}
+	
+
+	public String creditCard() {
+		return getCreditCard();
+	}
+	
+
+	public void setPaypalAccount(String paypalAccount) {
+		this.paypalAccount = paypalAccount;
+	}
+	
+
+	public String getPaypalAccount() {
+		return this.paypalAccount;
+	}
+	
+
+	public PaymentMethod paypalAccount(String paypalAccount) {
+		setPaypalAccount(paypalAccount);
+		return this;
+	}
+	
+
+	public String paypalAccount() {
+		return getPaypalAccount();
+	}
+	
+
 	@Override
 	public boolean equals(Object o) {
 	
@@ -684,23 +892,32 @@ public class PaymentMethod extends ApiResource {
 			&& Objects.equals(this.priceCents, x.priceCents)
 			&& Objects.equals(this.amountCents, x.amountCents)
 			&& Objects.equals(this.redirectUrl, x.redirectUrl)
-			&& Objects.equals(this.taxable, x.taxable)
-			&& Objects.equals(this.taxRate, x.taxRate)
-			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.order, x.order)
 			&& Objects.equals(this.paymentType, x.paymentType)
-			&& Objects.equals(this.paymentSource, x.paymentSource)
 			&& Objects.equals(this.gateway, x.gateway)
 			&& Objects.equals(this.billingRecipient, x.billingRecipient)
 			&& Objects.equals(this.billingAddress, x.billingAddress)
-			&& Objects.equals(this.taxableAmount, x.taxableAmount)
-			&& Objects.equals(this.formattedTaxableAmount, x.formattedTaxableAmount)
+			&& Objects.equals(this.paymentSource, x.paymentSource)
+			&& Objects.equals(this.versions, x.versions)
+			&& Objects.equals(this.transactions, x.transactions)
+			&& Objects.equals(this.invoices, x.invoices)
 			&& Objects.equals(this.taxAmount, x.taxAmount)
 			&& Objects.equals(this.formattedTaxAmount, x.formattedTaxAmount)
+			&& Objects.equals(this.taxableAmount, x.taxableAmount)
+			&& Objects.equals(this.formattedTaxableAmount, x.formattedTaxableAmount)
+			&& Objects.equals(this.paidAmount, x.paidAmount)
+			&& Objects.equals(this.formattedPaidAmount, x.formattedPaidAmount)
+			&& Objects.equals(this.refundedAmount, x.refundedAmount)
+			&& Objects.equals(this.formattedRefundedAmount, x.formattedRefundedAmount)
+			&& Objects.equals(this.amountDue, x.amountDue)
+			&& Objects.equals(this.formattedAmountDue, x.formattedAmountDue)
 			&& Objects.equals(this.price, x.price)
 			&& Objects.equals(this.formattedPrice, x.formattedPrice)
 			&& Objects.equals(this.amount, x.amount)
 			&& Objects.equals(this.formattedAmount, x.formattedAmount)
+			&& Objects.equals(this.wireTransfer, x.wireTransfer)
+			&& Objects.equals(this.creditCard, x.creditCard)
+			&& Objects.equals(this.paypalAccount, x.paypalAccount)
 		;
 	
 	}
@@ -712,10 +929,12 @@ public class PaymentMethod extends ApiResource {
 		return Objects.hash(
 			name, orderId, paymentTypeId, paymentSourceId, paymentSourceResource,
 			gatewayId, billingRecipientId, billingAddressId, priceCents, amountCents,
-			redirectUrl, taxable, taxRate, previousChanges, order,
-			paymentType, paymentSource, gateway, billingRecipient, billingAddress,
-			taxableAmount, formattedTaxableAmount, taxAmount, formattedTaxAmount, price,
-			formattedPrice, amount, formattedAmount 
+			redirectUrl, order, paymentType, gateway, billingRecipient,
+			billingAddress, paymentSource, versions, transactions, invoices,
+			taxAmount, formattedTaxAmount, taxableAmount, formattedTaxableAmount, paidAmount,
+			formattedPaidAmount, refundedAmount, formattedRefundedAmount, amountDue, formattedAmountDue,
+			price, formattedPrice, amount, formattedAmount, wireTransfer,
+			creditCard, paypalAccount 
 		);
 	
 	}
@@ -739,23 +958,32 @@ public class PaymentMethod extends ApiResource {
 		no.priceCents = this.priceCents;
 		no.amountCents = this.amountCents;
 		no.redirectUrl = this.redirectUrl;
-		no.taxable = this.taxable;
-		no.taxRate = this.taxRate;
-		no.previousChanges = this.previousChanges;
 		no.order = this.order;
 		no.paymentType = this.paymentType;
-		no.paymentSource = this.paymentSource;
 		no.gateway = this.gateway;
 		no.billingRecipient = this.billingRecipient;
 		no.billingAddress = this.billingAddress;
-		no.taxableAmount = this.taxableAmount;
-		no.formattedTaxableAmount = this.formattedTaxableAmount;
+		no.paymentSource = this.paymentSource;
+		no.versions = this.versions;
+		no.transactions = this.transactions;
+		no.invoices = this.invoices;
 		no.taxAmount = this.taxAmount;
 		no.formattedTaxAmount = this.formattedTaxAmount;
+		no.taxableAmount = this.taxableAmount;
+		no.formattedTaxableAmount = this.formattedTaxableAmount;
+		no.paidAmount = this.paidAmount;
+		no.formattedPaidAmount = this.formattedPaidAmount;
+		no.refundedAmount = this.refundedAmount;
+		no.formattedRefundedAmount = this.formattedRefundedAmount;
+		no.amountDue = this.amountDue;
+		no.formattedAmountDue = this.formattedAmountDue;
 		no.price = this.price;
 		no.formattedPrice = this.formattedPrice;
 		no.amount = this.amount;
 		no.formattedAmount = this.formattedAmount;
+		no.wireTransfer = this.wireTransfer;
+		no.creditCard = this.creditCard;
+		no.paypalAccount = this.paypalAccount;
 	
 		return no;
 	

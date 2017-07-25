@@ -16,6 +16,11 @@ public class PostAccountPriceLists extends PostOperation<PriceList> {
 		addRequiredField("currencyId");
 		addRequiredField("name");
 		addRequiredField("taxIncluded");
+		addRequiredField("priceIds");
+		addRequiredField("shippingPriceIds");
+		addRequiredField("paymentPriceIds");
+		addRequiredField("marketPriceListIds");
+		addRequiredField("marketIds");
 	}
 
 

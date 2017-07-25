@@ -21,17 +21,33 @@ public class Country extends ApiResource {
 	@JsonExclude
 	private List<String> countryLanguages;
 	@JsonExclude
+	private Object currency;
+	@JsonExclude
+	private Integer currencyId;
+	@JsonExclude
+	private List<String> customsItems;
+	@JsonExclude
+	private Object defaultLanguage;
+	@JsonExclude
+	private List<String> invoices;
+	@JsonExclude
 	private List<String> languages;
 	@JsonExclude
 	private List<String> lineItemStocks;
+	@JsonExclude
+	private List<String> lineItems;
 	@JsonExclude
 	private String name;
 	@JsonExclude
 	private List<String> orders;
 	@JsonExclude
-	private Object previousChanges;
+	private List<String> priceLists;
+	@JsonExclude
+	private String selling;
 	@JsonExclude
 	private List<String> states;
+	@JsonExclude
+	private List<String> versions;
 
 
 	public Country() {
@@ -86,6 +102,27 @@ public class Country extends ApiResource {
 	}
 	
 
+	public void setCurrencyId(Integer currencyId) {
+		this.currencyId = currencyId;
+	}
+	
+
+	public Integer getCurrencyId() {
+		return this.currencyId;
+	}
+	
+
+	public Country currencyId(Integer currencyId) {
+		setCurrencyId(currencyId);
+		return this;
+	}
+	
+
+	public Integer currencyId() {
+		return getCurrencyId();
+	}
+	
+
 	public void setCode(String code) {
 		this.code = code;
 	}
@@ -104,27 +141,6 @@ public class Country extends ApiResource {
 
 	public String code() {
 		return getCode();
-	}
-	
-
-	public void setPreviousChanges(Object previousChanges) {
-		this.previousChanges = previousChanges;
-	}
-	
-
-	public Object getPreviousChanges() {
-		return this.previousChanges;
-	}
-	
-
-	public Country previousChanges(Object previousChanges) {
-		setPreviousChanges(previousChanges);
-		return this;
-	}
-	
-
-	public Object previousChanges() {
-		return getPreviousChanges();
 	}
 	
 
@@ -149,24 +165,66 @@ public class Country extends ApiResource {
 	}
 	
 
-	public void setCountryLanguages(List<String> countryLanguages) {
-		this.countryLanguages = countryLanguages;
+	public void setCurrency(Object currency) {
+		this.currency = currency;
 	}
 	
 
-	public List<String> getCountryLanguages() {
-		return this.countryLanguages;
+	public Object getCurrency() {
+		return this.currency;
 	}
 	
 
-	public Country countryLanguages(List<String> countryLanguages) {
-		setCountryLanguages(countryLanguages);
+	public Country currency(Object currency) {
+		setCurrency(currency);
 		return this;
 	}
 	
 
-	public List<String> countryLanguages() {
-		return getCountryLanguages();
+	public Object currency() {
+		return getCurrency();
+	}
+	
+
+	public void setVersions(List<String> versions) {
+		this.versions = versions;
+	}
+	
+
+	public List<String> getVersions() {
+		return this.versions;
+	}
+	
+
+	public Country versions(List<String> versions) {
+		setVersions(versions);
+		return this;
+	}
+	
+
+	public List<String> versions() {
+		return getVersions();
+	}
+	
+
+	public void setPriceLists(List<String> priceLists) {
+		this.priceLists = priceLists;
+	}
+	
+
+	public List<String> getPriceLists() {
+		return this.priceLists;
+	}
+	
+
+	public Country priceLists(List<String> priceLists) {
+		setPriceLists(priceLists);
+		return this;
+	}
+	
+
+	public List<String> priceLists() {
+		return getPriceLists();
 	}
 	
 
@@ -233,6 +291,90 @@ public class Country extends ApiResource {
 	}
 	
 
+	public void setLineItems(List<String> lineItems) {
+		this.lineItems = lineItems;
+	}
+	
+
+	public List<String> getLineItems() {
+		return this.lineItems;
+	}
+	
+
+	public Country lineItems(List<String> lineItems) {
+		setLineItems(lineItems);
+		return this;
+	}
+	
+
+	public List<String> lineItems() {
+		return getLineItems();
+	}
+	
+
+	public void setInvoices(List<String> invoices) {
+		this.invoices = invoices;
+	}
+	
+
+	public List<String> getInvoices() {
+		return this.invoices;
+	}
+	
+
+	public Country invoices(List<String> invoices) {
+		setInvoices(invoices);
+		return this;
+	}
+	
+
+	public List<String> invoices() {
+		return getInvoices();
+	}
+	
+
+	public void setCustomsItems(List<String> customsItems) {
+		this.customsItems = customsItems;
+	}
+	
+
+	public List<String> getCustomsItems() {
+		return this.customsItems;
+	}
+	
+
+	public Country customsItems(List<String> customsItems) {
+		setCustomsItems(customsItems);
+		return this;
+	}
+	
+
+	public List<String> customsItems() {
+		return getCustomsItems();
+	}
+	
+
+	public void setCountryLanguages(List<String> countryLanguages) {
+		this.countryLanguages = countryLanguages;
+	}
+	
+
+	public List<String> getCountryLanguages() {
+		return this.countryLanguages;
+	}
+	
+
+	public Country countryLanguages(List<String> countryLanguages) {
+		setCountryLanguages(countryLanguages);
+		return this;
+	}
+	
+
+	public List<String> countryLanguages() {
+		return getCountryLanguages();
+	}
+	
+
 	public void setLanguages(List<String> languages) {
 		this.languages = languages;
 	}
@@ -254,6 +396,48 @@ public class Country extends ApiResource {
 	}
 	
 
+	public void setDefaultLanguage(Object defaultLanguage) {
+		this.defaultLanguage = defaultLanguage;
+	}
+	
+
+	public Object getDefaultLanguage() {
+		return this.defaultLanguage;
+	}
+	
+
+	public Country defaultLanguage(Object defaultLanguage) {
+		setDefaultLanguage(defaultLanguage);
+		return this;
+	}
+	
+
+	public Object defaultLanguage() {
+		return getDefaultLanguage();
+	}
+	
+
+	public void setSelling(String selling) {
+		this.selling = selling;
+	}
+	
+
+	public String getSelling() {
+		return this.selling;
+	}
+	
+
+	public Country selling(String selling) {
+		setSelling(selling);
+		return this;
+	}
+	
+
+	public String selling() {
+		return getSelling();
+	}
+	
+
 	@Override
 	public boolean equals(Object o) {
 	
@@ -265,14 +449,22 @@ public class Country extends ApiResource {
 		return super.equals(o)
 			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.countryGroupId, x.countryGroupId)
+			&& Objects.equals(this.currencyId, x.currencyId)
 			&& Objects.equals(this.code, x.code)
-			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.countryGroup, x.countryGroup)
-			&& Objects.equals(this.countryLanguages, x.countryLanguages)
+			&& Objects.equals(this.currency, x.currency)
+			&& Objects.equals(this.versions, x.versions)
+			&& Objects.equals(this.priceLists, x.priceLists)
 			&& Objects.equals(this.states, x.states)
 			&& Objects.equals(this.orders, x.orders)
 			&& Objects.equals(this.lineItemStocks, x.lineItemStocks)
+			&& Objects.equals(this.lineItems, x.lineItems)
+			&& Objects.equals(this.invoices, x.invoices)
+			&& Objects.equals(this.customsItems, x.customsItems)
+			&& Objects.equals(this.countryLanguages, x.countryLanguages)
 			&& Objects.equals(this.languages, x.languages)
+			&& Objects.equals(this.defaultLanguage, x.defaultLanguage)
+			&& Objects.equals(this.selling, x.selling)
 		;
 	
 	}
@@ -282,9 +474,10 @@ public class Country extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, countryGroupId, code, previousChanges, countryGroup,
-			countryLanguages, states, orders, lineItemStocks, languages
-			
+			name, countryGroupId, currencyId, code, countryGroup,
+			currency, versions, priceLists, states, orders,
+			lineItemStocks, lineItems, invoices, customsItems, countryLanguages,
+			languages, defaultLanguage, selling 
 		);
 	
 	}
@@ -299,14 +492,22 @@ public class Country extends ApiResource {
 	
 		no.name = this.name;
 		no.countryGroupId = this.countryGroupId;
+		no.currencyId = this.currencyId;
 		no.code = this.code;
-		no.previousChanges = this.previousChanges;
 		no.countryGroup = this.countryGroup;
-		no.countryLanguages = this.countryLanguages;
+		no.currency = this.currency;
+		no.versions = this.versions;
+		no.priceLists = this.priceLists;
 		no.states = this.states;
 		no.orders = this.orders;
 		no.lineItemStocks = this.lineItemStocks;
+		no.lineItems = this.lineItems;
+		no.invoices = this.invoices;
+		no.customsItems = this.customsItems;
+		no.countryLanguages = this.countryLanguages;
 		no.languages = this.languages;
+		no.defaultLanguage = this.defaultLanguage;
+		no.selling = this.selling;
 	
 		return no;
 	

@@ -16,7 +16,6 @@ public class PutAccountMarketsId extends PutOperation<Market> {
 		addRequiredField("merchantId");
 		addRequiredField("countryGroupId");
 		addRequiredField("catalogId");
-		addRequiredField("priceListId");
 		addRequiredField("channelId");
 		addRequiredField("orderValidatorId");
 	}

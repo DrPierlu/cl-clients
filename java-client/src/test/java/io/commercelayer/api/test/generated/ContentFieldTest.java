@@ -28,7 +28,7 @@ public class ContentFieldTest extends IntegrationTest<ContentField> {
 	
 		ContentField res = new ContentField();
 	
-		res.setKind("kind");
+		res.setNamespace("namespace");
 		res.setName("name");
 		res.setContent("content");
 	
@@ -40,7 +40,7 @@ public class ContentFieldTest extends IntegrationTest<ContentField> {
 		ApiResponse<ContentField> postRes = test(postReq, caller);
 	
 	
-		Assert.assertNotNull(postRes.getResource().getKind());
+		Assert.assertNotNull(postRes.getResource().getNamespace());
 		Assert.assertNotNull(postRes.getResource().getName());
 		Assert.assertNotNull(postRes.getResource().getContent());
 	
@@ -82,7 +82,7 @@ public class ContentFieldTest extends IntegrationTest<ContentField> {
 	
 		ContentField res = new ContentField();
 	
-		res.setKind(randomField(oldRes.getKind()));
+		res.setNamespace(randomField(oldRes.getNamespace()));
 		res.setName(randomField(oldRes.getName()));
 		res.setContent(randomField(oldRes.getContent()));
 	
@@ -94,7 +94,7 @@ public class ContentFieldTest extends IntegrationTest<ContentField> {
 		ApiResponse<ContentField> putRes = test(putReq, caller);
 	
 	
-		Assert.assertNotEquals(oldRes.getKind(), putRes.getResource().getKind());
+		Assert.assertNotEquals(oldRes.getNamespace(), putRes.getResource().getNamespace());
 		Assert.assertNotEquals(oldRes.getName(), putRes.getResource().getName());
 		Assert.assertNotEquals(oldRes.getContent(), putRes.getResource().getContent());
 	

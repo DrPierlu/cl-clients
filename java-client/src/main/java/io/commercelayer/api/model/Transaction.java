@@ -2,6 +2,7 @@ package io.commercelayer.api.model;
 
 import io.commercelayer.api.json.JsonExclude;
 import io.commercelayer.api.model.common.ApiResource;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -29,21 +30,25 @@ public class Transaction extends ApiResource {
 	private String message;
 	private String name;
 	private Integer orderId;
+	private Integer paymentMethodId;
 	private Integer paymentSourceId;
 	private String paymentSourceResource;
 	private Integer referenceTransactionId;
 	private String state;
 	private String token;
+	private List<String> versions;
 	@JsonExclude
 	private Object currency;
 	@JsonExclude
 	private Object gateway;
 	@JsonExclude
+	private Object invoice;
+	@JsonExclude
 	private Object order;
 	@JsonExclude
-	private Object paymentSource;
+	private Object paymentMethod;
 	@JsonExclude
-	private Object previousChanges;
+	private Object paymentSource;
 	@JsonExclude
 	private Object referenceTransaction;
 
@@ -142,6 +147,27 @@ public class Transaction extends ApiResource {
 	}
 	
 
+	public void setPaymentSourceResource(String paymentSourceResource) {
+		this.paymentSourceResource = paymentSourceResource;
+	}
+	
+
+	public String getPaymentSourceResource() {
+		return this.paymentSourceResource;
+	}
+	
+
+	public Transaction paymentSourceResource(String paymentSourceResource) {
+		setPaymentSourceResource(paymentSourceResource);
+		return this;
+	}
+	
+
+	public String paymentSourceResource() {
+		return getPaymentSourceResource();
+	}
+	
+
 	public void setPaymentSourceId(Integer paymentSourceId) {
 		this.paymentSourceId = paymentSourceId;
 	}
@@ -163,24 +189,24 @@ public class Transaction extends ApiResource {
 	}
 	
 
-	public void setPaymentSourceResource(String paymentSourceResource) {
-		this.paymentSourceResource = paymentSourceResource;
+	public void setPaymentMethodId(Integer paymentMethodId) {
+		this.paymentMethodId = paymentMethodId;
 	}
 	
 
-	public String getPaymentSourceResource() {
-		return this.paymentSourceResource;
+	public Integer getPaymentMethodId() {
+		return this.paymentMethodId;
 	}
 	
 
-	public Transaction paymentSourceResource(String paymentSourceResource) {
-		setPaymentSourceResource(paymentSourceResource);
+	public Transaction paymentMethodId(Integer paymentMethodId) {
+		setPaymentMethodId(paymentMethodId);
 		return this;
 	}
 	
 
-	public String paymentSourceResource() {
-		return getPaymentSourceResource();
+	public Integer paymentMethodId() {
+		return getPaymentMethodId();
 	}
 	
 
@@ -457,27 +483,6 @@ public class Transaction extends ApiResource {
 	}
 	
 
-	public void setPreviousChanges(Object previousChanges) {
-		this.previousChanges = previousChanges;
-	}
-	
-
-	public Object getPreviousChanges() {
-		return this.previousChanges;
-	}
-	
-
-	public Transaction previousChanges(Object previousChanges) {
-		setPreviousChanges(previousChanges);
-		return this;
-	}
-	
-
-	public Object previousChanges() {
-		return getPreviousChanges();
-	}
-	
-
 	public void setOrder(Object order) {
 		this.order = order;
 	}
@@ -541,6 +546,27 @@ public class Transaction extends ApiResource {
 	}
 	
 
+	public void setReferenceTransaction(Object referenceTransaction) {
+		this.referenceTransaction = referenceTransaction;
+	}
+	
+
+	public Object getReferenceTransaction() {
+		return this.referenceTransaction;
+	}
+	
+
+	public Transaction referenceTransaction(Object referenceTransaction) {
+		setReferenceTransaction(referenceTransaction);
+		return this;
+	}
+	
+
+	public Object referenceTransaction() {
+		return getReferenceTransaction();
+	}
+	
+
 	public void setPaymentSource(Object paymentSource) {
 		this.paymentSource = paymentSource;
 	}
@@ -562,24 +588,66 @@ public class Transaction extends ApiResource {
 	}
 	
 
-	public void setReferenceTransaction(Object referenceTransaction) {
-		this.referenceTransaction = referenceTransaction;
+	public void setPaymentMethod(Object paymentMethod) {
+		this.paymentMethod = paymentMethod;
 	}
 	
 
-	public Object getReferenceTransaction() {
-		return this.referenceTransaction;
+	public Object getPaymentMethod() {
+		return this.paymentMethod;
 	}
 	
 
-	public Transaction referenceTransaction(Object referenceTransaction) {
-		setReferenceTransaction(referenceTransaction);
+	public Transaction paymentMethod(Object paymentMethod) {
+		setPaymentMethod(paymentMethod);
 		return this;
 	}
 	
 
-	public Object referenceTransaction() {
-		return getReferenceTransaction();
+	public Object paymentMethod() {
+		return getPaymentMethod();
+	}
+	
+
+	public void setVersions(List<String> versions) {
+		this.versions = versions;
+	}
+	
+
+	public List<String> getVersions() {
+		return this.versions;
+	}
+	
+
+	public Transaction versions(List<String> versions) {
+		setVersions(versions);
+		return this;
+	}
+	
+
+	public List<String> versions() {
+		return getVersions();
+	}
+	
+
+	public void setInvoice(Object invoice) {
+		this.invoice = invoice;
+	}
+	
+
+	public Object getInvoice() {
+		return this.invoice;
+	}
+	
+
+	public Transaction invoice(Object invoice) {
+		setInvoice(invoice);
+		return this;
+	}
+	
+
+	public Object invoice() {
+		return getInvoice();
 	}
 	
 
@@ -638,8 +706,9 @@ public class Transaction extends ApiResource {
 			&& Objects.equals(this.orderId, x.orderId)
 			&& Objects.equals(this.gatewayId, x.gatewayId)
 			&& Objects.equals(this.currencyId, x.currencyId)
-			&& Objects.equals(this.paymentSourceId, x.paymentSourceId)
 			&& Objects.equals(this.paymentSourceResource, x.paymentSourceResource)
+			&& Objects.equals(this.paymentSourceId, x.paymentSourceId)
+			&& Objects.equals(this.paymentMethodId, x.paymentMethodId)
 			&& Objects.equals(this.referenceTransactionId, x.referenceTransactionId)
 			&& Objects.equals(this.token, x.token)
 			&& Objects.equals(this.kind, x.kind)
@@ -653,12 +722,14 @@ public class Transaction extends ApiResource {
 			&& Objects.equals(this.cvvMessage, x.cvvMessage)
 			&& Objects.equals(this.errorCode, x.errorCode)
 			&& Objects.equals(this.errorDetail, x.errorDetail)
-			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.order, x.order)
 			&& Objects.equals(this.gateway, x.gateway)
 			&& Objects.equals(this.currency, x.currency)
-			&& Objects.equals(this.paymentSource, x.paymentSource)
 			&& Objects.equals(this.referenceTransaction, x.referenceTransaction)
+			&& Objects.equals(this.paymentSource, x.paymentSource)
+			&& Objects.equals(this.paymentMethod, x.paymentMethod)
+			&& Objects.equals(this.versions, x.versions)
+			&& Objects.equals(this.invoice, x.invoice)
 			&& Objects.equals(this.amount, x.amount)
 			&& Objects.equals(this.formattedAmount, x.formattedAmount)
 		;
@@ -670,12 +741,13 @@ public class Transaction extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, orderId, gatewayId, currencyId, paymentSourceId,
-			paymentSourceResource, referenceTransactionId, token, kind, amountCents,
-			state, message, checkoutUrl, avsCode, avsMessage,
-			cvvCode, cvvMessage, errorCode, errorDetail, previousChanges,
-			order, gateway, currency, paymentSource, referenceTransaction,
-			amount, formattedAmount 
+			name, orderId, gatewayId, currencyId, paymentSourceResource,
+			paymentSourceId, paymentMethodId, referenceTransactionId, token, kind,
+			amountCents, state, message, checkoutUrl, avsCode,
+			avsMessage, cvvCode, cvvMessage, errorCode, errorDetail,
+			order, gateway, currency, referenceTransaction, paymentSource,
+			paymentMethod, versions, invoice, amount, formattedAmount
+			
 		);
 	
 	}
@@ -692,8 +764,9 @@ public class Transaction extends ApiResource {
 		no.orderId = this.orderId;
 		no.gatewayId = this.gatewayId;
 		no.currencyId = this.currencyId;
-		no.paymentSourceId = this.paymentSourceId;
 		no.paymentSourceResource = this.paymentSourceResource;
+		no.paymentSourceId = this.paymentSourceId;
+		no.paymentMethodId = this.paymentMethodId;
 		no.referenceTransactionId = this.referenceTransactionId;
 		no.token = this.token;
 		no.kind = this.kind;
@@ -707,12 +780,14 @@ public class Transaction extends ApiResource {
 		no.cvvMessage = this.cvvMessage;
 		no.errorCode = this.errorCode;
 		no.errorDetail = this.errorDetail;
-		no.previousChanges = this.previousChanges;
 		no.order = this.order;
 		no.gateway = this.gateway;
 		no.currency = this.currency;
-		no.paymentSource = this.paymentSource;
 		no.referenceTransaction = this.referenceTransaction;
+		no.paymentSource = this.paymentSource;
+		no.paymentMethod = this.paymentMethod;
+		no.versions = this.versions;
+		no.invoice = this.invoice;
 		no.amount = this.amount;
 		no.formattedAmount = this.formattedAmount;
 	

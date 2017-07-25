@@ -18,7 +18,7 @@ public class Organization extends ApiResource {
 	@JsonExclude
 	private List<String> environments;
 	@JsonExclude
-	private Object previousChanges;
+	private List<String> versions;
 
 
 	public Organization() {
@@ -52,24 +52,24 @@ public class Organization extends ApiResource {
 	}
 	
 
-	public void setPreviousChanges(Object previousChanges) {
-		this.previousChanges = previousChanges;
+	public void setVersions(List<String> versions) {
+		this.versions = versions;
 	}
 	
 
-	public Object getPreviousChanges() {
-		return this.previousChanges;
+	public List<String> getVersions() {
+		return this.versions;
 	}
 	
 
-	public Organization previousChanges(Object previousChanges) {
-		setPreviousChanges(previousChanges);
+	public Organization versions(List<String> versions) {
+		setVersions(versions);
 		return this;
 	}
 	
 
-	public Object previousChanges() {
-		return getPreviousChanges();
+	public List<String> versions() {
+		return getVersions();
 	}
 	
 
@@ -104,7 +104,7 @@ public class Organization extends ApiResource {
 	
 		return super.equals(o)
 			&& Objects.equals(this.name, x.name)
-			&& Objects.equals(this.previousChanges, x.previousChanges)
+			&& Objects.equals(this.versions, x.versions)
 			&& Objects.equals(this.environments, x.environments)
 		;
 	
@@ -115,7 +115,7 @@ public class Organization extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, previousChanges, environments 
+			name, versions, environments 
 		);
 	
 	}
@@ -129,7 +129,7 @@ public class Organization extends ApiResource {
 		no = super.clone(no);
 	
 		no.name = this.name;
-		no.previousChanges = this.previousChanges;
+		no.versions = this.versions;
 		no.environments = this.environments;
 	
 		return no;

@@ -20,21 +20,28 @@ public class Market extends ApiResource {
 	private Integer countryGroupId;
 	private Integer merchantId;
 	private Integer orderValidatorId;
-	private Integer priceListId;
 	@JsonExclude
 	private Object catalog;
 	@JsonExclude
 	private Object channel;
 	@JsonExclude
+	private String code;
+	@JsonExclude
 	private List<String> countries;
 	@JsonExclude
 	private Object countryGroup;
+	@JsonExclude
+	private List<String> invoices;
 	@JsonExclude
 	private LocalDateTime lastResetIndexAt;
 	@JsonExclude
 	private List<String> lineItemStocks;
 	@JsonExclude
+	private List<String> lineItems;
+	@JsonExclude
 	private List<String> marketPaymentTypes;
+	@JsonExclude
+	private List<String> marketPriceLists;
 	@JsonExclude
 	private List<String> marketShippingServices;
 	@JsonExclude
@@ -46,11 +53,15 @@ public class Market extends ApiResource {
 	@JsonExclude
 	private Object orderValidator;
 	@JsonExclude
+	private List<String> orders;
+	@JsonExclude
 	private List<String> paymentTypes;
 	@JsonExclude
-	private Object previousChanges;
+	private List<String> priceLists;
 	@JsonExclude
-	private Object priceList;
+	private List<String> prices;
+	@JsonExclude
+	private List<String> shippingServiceStockLocations;
 	@JsonExclude
 	private List<String> shippingServices;
 	@JsonExclude
@@ -59,6 +70,8 @@ public class Market extends ApiResource {
 	private List<String> stockItems;
 	@JsonExclude
 	private List<String> stockLocations;
+	@JsonExclude
+	private List<String> versions;
 
 
 	public Market() {
@@ -176,27 +189,6 @@ public class Market extends ApiResource {
 	}
 	
 
-	public void setPriceListId(Integer priceListId) {
-		this.priceListId = priceListId;
-	}
-	
-
-	public Integer getPriceListId() {
-		return this.priceListId;
-	}
-	
-
-	public Market priceListId(Integer priceListId) {
-		setPriceListId(priceListId);
-		return this;
-	}
-	
-
-	public Integer priceListId() {
-		return getPriceListId();
-	}
-	
-
 	public void setOrderValidatorId(Integer orderValidatorId) {
 		this.orderValidatorId = orderValidatorId;
 	}
@@ -218,6 +210,27 @@ public class Market extends ApiResource {
 	}
 	
 
+	public void setCode(String code) {
+		this.code = code;
+	}
+	
+
+	public String getCode() {
+		return this.code;
+	}
+	
+
+	public Market code(String code) {
+		setCode(code);
+		return this;
+	}
+	
+
+	public String code() {
+		return getCode();
+	}
+	
+
 	public void setLastResetIndexAt(LocalDateTime lastResetIndexAt) {
 		this.lastResetIndexAt = lastResetIndexAt;
 	}
@@ -236,27 +249,6 @@ public class Market extends ApiResource {
 
 	public LocalDateTime lastResetIndexAt() {
 		return getLastResetIndexAt();
-	}
-	
-
-	public void setPreviousChanges(Object previousChanges) {
-		this.previousChanges = previousChanges;
-	}
-	
-
-	public Object getPreviousChanges() {
-		return this.previousChanges;
-	}
-	
-
-	public Market previousChanges(Object previousChanges) {
-		setPreviousChanges(previousChanges);
-		return this;
-	}
-	
-
-	public Object previousChanges() {
-		return getPreviousChanges();
 	}
 	
 
@@ -344,27 +336,6 @@ public class Market extends ApiResource {
 	}
 	
 
-	public void setPriceList(Object priceList) {
-		this.priceList = priceList;
-	}
-	
-
-	public Object getPriceList() {
-		return this.priceList;
-	}
-	
-
-	public Market priceList(Object priceList) {
-		setPriceList(priceList);
-		return this;
-	}
-	
-
-	public Object priceList() {
-		return getPriceList();
-	}
-	
-
 	public void setOrderValidator(Object orderValidator) {
 		this.orderValidator = orderValidator;
 	}
@@ -383,6 +354,48 @@ public class Market extends ApiResource {
 
 	public Object orderValidator() {
 		return getOrderValidator();
+	}
+	
+
+	public void setVersions(List<String> versions) {
+		this.versions = versions;
+	}
+	
+
+	public List<String> getVersions() {
+		return this.versions;
+	}
+	
+
+	public Market versions(List<String> versions) {
+		setVersions(versions);
+		return this;
+	}
+	
+
+	public List<String> versions() {
+		return getVersions();
+	}
+	
+
+	public void setMarketPriceLists(List<String> marketPriceLists) {
+		this.marketPriceLists = marketPriceLists;
+	}
+	
+
+	public List<String> getMarketPriceLists() {
+		return this.marketPriceLists;
+	}
+	
+
+	public Market marketPriceLists(List<String> marketPriceLists) {
+		setMarketPriceLists(marketPriceLists);
+		return this;
+	}
+	
+
+	public List<String> marketPriceLists() {
+		return getMarketPriceLists();
 	}
 	
 
@@ -470,6 +483,111 @@ public class Market extends ApiResource {
 	}
 	
 
+	public void setOrders(List<String> orders) {
+		this.orders = orders;
+	}
+	
+
+	public List<String> getOrders() {
+		return this.orders;
+	}
+	
+
+	public Market orders(List<String> orders) {
+		setOrders(orders);
+		return this;
+	}
+	
+
+	public List<String> orders() {
+		return getOrders();
+	}
+	
+
+	public void setLineItems(List<String> lineItems) {
+		this.lineItems = lineItems;
+	}
+	
+
+	public List<String> getLineItems() {
+		return this.lineItems;
+	}
+	
+
+	public Market lineItems(List<String> lineItems) {
+		setLineItems(lineItems);
+		return this;
+	}
+	
+
+	public List<String> lineItems() {
+		return getLineItems();
+	}
+	
+
+	public void setInvoices(List<String> invoices) {
+		this.invoices = invoices;
+	}
+	
+
+	public List<String> getInvoices() {
+		return this.invoices;
+	}
+	
+
+	public Market invoices(List<String> invoices) {
+		setInvoices(invoices);
+		return this;
+	}
+	
+
+	public List<String> invoices() {
+		return getInvoices();
+	}
+	
+
+	public void setPriceLists(List<String> priceLists) {
+		this.priceLists = priceLists;
+	}
+	
+
+	public List<String> getPriceLists() {
+		return this.priceLists;
+	}
+	
+
+	public Market priceLists(List<String> priceLists) {
+		setPriceLists(priceLists);
+		return this;
+	}
+	
+
+	public List<String> priceLists() {
+		return getPriceLists();
+	}
+	
+
+	public void setPrices(List<String> prices) {
+		this.prices = prices;
+	}
+	
+
+	public List<String> getPrices() {
+		return this.prices;
+	}
+	
+
+	public Market prices(List<String> prices) {
+		setPrices(prices);
+		return this;
+	}
+	
+
+	public List<String> prices() {
+		return getPrices();
+	}
+	
+
 	public void setStockLocations(List<String> stockLocations) {
 		this.stockLocations = stockLocations;
 	}
@@ -488,6 +606,27 @@ public class Market extends ApiResource {
 
 	public List<String> stockLocations() {
 		return getStockLocations();
+	}
+	
+
+	public void setShippingServiceStockLocations(List<String> shippingServiceStockLocations) {
+		this.shippingServiceStockLocations = shippingServiceStockLocations;
+	}
+	
+
+	public List<String> getShippingServiceStockLocations() {
+		return this.shippingServiceStockLocations;
+	}
+	
+
+	public Market shippingServiceStockLocations(List<String> shippingServiceStockLocations) {
+		setShippingServiceStockLocations(shippingServiceStockLocations);
+		return this;
+	}
+	
+
+	public List<String> shippingServiceStockLocations() {
+		return getShippingServiceStockLocations();
 	}
 	
 
@@ -610,21 +749,27 @@ public class Market extends ApiResource {
 			&& Objects.equals(this.countryGroupId, x.countryGroupId)
 			&& Objects.equals(this.merchantId, x.merchantId)
 			&& Objects.equals(this.catalogId, x.catalogId)
-			&& Objects.equals(this.priceListId, x.priceListId)
 			&& Objects.equals(this.orderValidatorId, x.orderValidatorId)
+			&& Objects.equals(this.code, x.code)
 			&& Objects.equals(this.lastResetIndexAt, x.lastResetIndexAt)
-			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.channel, x.channel)
 			&& Objects.equals(this.merchant, x.merchant)
 			&& Objects.equals(this.countryGroup, x.countryGroup)
 			&& Objects.equals(this.catalog, x.catalog)
-			&& Objects.equals(this.priceList, x.priceList)
 			&& Objects.equals(this.orderValidator, x.orderValidator)
+			&& Objects.equals(this.versions, x.versions)
+			&& Objects.equals(this.marketPriceLists, x.marketPriceLists)
 			&& Objects.equals(this.marketStockLocations, x.marketStockLocations)
 			&& Objects.equals(this.marketShippingServices, x.marketShippingServices)
 			&& Objects.equals(this.marketPaymentTypes, x.marketPaymentTypes)
 			&& Objects.equals(this.lineItemStocks, x.lineItemStocks)
+			&& Objects.equals(this.orders, x.orders)
+			&& Objects.equals(this.lineItems, x.lineItems)
+			&& Objects.equals(this.invoices, x.invoices)
+			&& Objects.equals(this.priceLists, x.priceLists)
+			&& Objects.equals(this.prices, x.prices)
 			&& Objects.equals(this.stockLocations, x.stockLocations)
+			&& Objects.equals(this.shippingServiceStockLocations, x.shippingServiceStockLocations)
 			&& Objects.equals(this.stockItems, x.stockItems)
 			&& Objects.equals(this.shippingServices, x.shippingServices)
 			&& Objects.equals(this.paymentTypes, x.paymentTypes)
@@ -640,11 +785,12 @@ public class Market extends ApiResource {
 	
 		return Objects.hash(
 			name, channelId, countryGroupId, merchantId, catalogId,
-			priceListId, orderValidatorId, lastResetIndexAt, previousChanges, channel,
-			merchant, countryGroup, catalog, priceList, orderValidator,
-			marketStockLocations, marketShippingServices, marketPaymentTypes, lineItemStocks, stockLocations,
-			stockItems, shippingServices, paymentTypes, shippingZones, countries
-			
+			orderValidatorId, code, lastResetIndexAt, channel, merchant,
+			countryGroup, catalog, orderValidator, versions, marketPriceLists,
+			marketStockLocations, marketShippingServices, marketPaymentTypes, lineItemStocks, orders,
+			lineItems, invoices, priceLists, prices, stockLocations,
+			shippingServiceStockLocations, stockItems, shippingServices, paymentTypes, shippingZones,
+			countries 
 		);
 	
 	}
@@ -662,21 +808,27 @@ public class Market extends ApiResource {
 		no.countryGroupId = this.countryGroupId;
 		no.merchantId = this.merchantId;
 		no.catalogId = this.catalogId;
-		no.priceListId = this.priceListId;
 		no.orderValidatorId = this.orderValidatorId;
+		no.code = this.code;
 		no.lastResetIndexAt = this.lastResetIndexAt;
-		no.previousChanges = this.previousChanges;
 		no.channel = this.channel;
 		no.merchant = this.merchant;
 		no.countryGroup = this.countryGroup;
 		no.catalog = this.catalog;
-		no.priceList = this.priceList;
 		no.orderValidator = this.orderValidator;
+		no.versions = this.versions;
+		no.marketPriceLists = this.marketPriceLists;
 		no.marketStockLocations = this.marketStockLocations;
 		no.marketShippingServices = this.marketShippingServices;
 		no.marketPaymentTypes = this.marketPaymentTypes;
 		no.lineItemStocks = this.lineItemStocks;
+		no.orders = this.orders;
+		no.lineItems = this.lineItems;
+		no.invoices = this.invoices;
+		no.priceLists = this.priceLists;
+		no.prices = this.prices;
 		no.stockLocations = this.stockLocations;
+		no.shippingServiceStockLocations = this.shippingServiceStockLocations;
 		no.stockItems = this.stockItems;
 		no.shippingServices = this.shippingServices;
 		no.paymentTypes = this.paymentTypes;

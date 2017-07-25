@@ -19,6 +19,8 @@ public class PostAccountPaymentMethods extends PostOperation<PaymentMethod> {
 		addRequiredField("billingRecipientId");
 		addRequiredField("billingAddressId");
 		addRequiredField("amount");
+		addRequiredField("transactionIds");
+		addRequiredField("invoiceIds");
 	}
 
 

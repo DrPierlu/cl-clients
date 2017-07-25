@@ -15,6 +15,7 @@ public class PostAccountOrders extends PostOperation<Order> {
 	{
 		addRequiredField("channelId");
 		addRequiredField("countryId");
+		addRequiredField("languageId");
 		addRequiredField("customerId");
 	}
 

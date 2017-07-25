@@ -13,8 +13,7 @@ public class PutAccountWebhooksId extends PutOperation<Webhook> {
 
 
 	{
-		addRequiredField("eventSubject");
-		addRequiredField("eventAction");
+		addRequiredField("eventKind");
 		addRequiredField("eventUrl");
 	}
 

@@ -2,6 +2,7 @@ package io.commercelayer.api.model;
 
 import io.commercelayer.api.json.JsonExclude;
 import io.commercelayer.api.model.common.ApiResource;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -16,25 +17,13 @@ public class MarketShippingService extends ApiResource {
 	private Integer marketId;
 	private Integer shippingServiceId;
 	@JsonExclude
-	private String formattedFreeOverAmount;
-	@JsonExclude
-	private String formattedPrice;
-	@JsonExclude
-	private String freeOverAmount;
-	@JsonExclude
-	private Integer freeOverAmountCents;
-	@JsonExclude
 	private Object market;
 	@JsonExclude
 	private String name;
 	@JsonExclude
-	private Object previousChanges;
-	@JsonExclude
-	private String price;
-	@JsonExclude
-	private Integer priceCents;
-	@JsonExclude
 	private Object shippingService;
+	@JsonExclude
+	private List<String> versions;
 
 
 	public MarketShippingService() {
@@ -110,69 +99,6 @@ public class MarketShippingService extends ApiResource {
 	}
 	
 
-	public void setPriceCents(Integer priceCents) {
-		this.priceCents = priceCents;
-	}
-	
-
-	public Integer getPriceCents() {
-		return this.priceCents;
-	}
-	
-
-	public MarketShippingService priceCents(Integer priceCents) {
-		setPriceCents(priceCents);
-		return this;
-	}
-	
-
-	public Integer priceCents() {
-		return getPriceCents();
-	}
-	
-
-	public void setFreeOverAmountCents(Integer freeOverAmountCents) {
-		this.freeOverAmountCents = freeOverAmountCents;
-	}
-	
-
-	public Integer getFreeOverAmountCents() {
-		return this.freeOverAmountCents;
-	}
-	
-
-	public MarketShippingService freeOverAmountCents(Integer freeOverAmountCents) {
-		setFreeOverAmountCents(freeOverAmountCents);
-		return this;
-	}
-	
-
-	public Integer freeOverAmountCents() {
-		return getFreeOverAmountCents();
-	}
-	
-
-	public void setPreviousChanges(Object previousChanges) {
-		this.previousChanges = previousChanges;
-	}
-	
-
-	public Object getPreviousChanges() {
-		return this.previousChanges;
-	}
-	
-
-	public MarketShippingService previousChanges(Object previousChanges) {
-		setPreviousChanges(previousChanges);
-		return this;
-	}
-	
-
-	public Object previousChanges() {
-		return getPreviousChanges();
-	}
-	
-
 	public void setMarket(Object market) {
 		this.market = market;
 	}
@@ -215,87 +141,24 @@ public class MarketShippingService extends ApiResource {
 	}
 	
 
-	public void setPrice(String price) {
-		this.price = price;
+	public void setVersions(List<String> versions) {
+		this.versions = versions;
 	}
 	
 
-	public String getPrice() {
-		return this.price;
+	public List<String> getVersions() {
+		return this.versions;
 	}
 	
 
-	public MarketShippingService price(String price) {
-		setPrice(price);
+	public MarketShippingService versions(List<String> versions) {
+		setVersions(versions);
 		return this;
 	}
 	
 
-	public String price() {
-		return getPrice();
-	}
-	
-
-	public void setFormattedPrice(String formattedPrice) {
-		this.formattedPrice = formattedPrice;
-	}
-	
-
-	public String getFormattedPrice() {
-		return this.formattedPrice;
-	}
-	
-
-	public MarketShippingService formattedPrice(String formattedPrice) {
-		setFormattedPrice(formattedPrice);
-		return this;
-	}
-	
-
-	public String formattedPrice() {
-		return getFormattedPrice();
-	}
-	
-
-	public void setFreeOverAmount(String freeOverAmount) {
-		this.freeOverAmount = freeOverAmount;
-	}
-	
-
-	public String getFreeOverAmount() {
-		return this.freeOverAmount;
-	}
-	
-
-	public MarketShippingService freeOverAmount(String freeOverAmount) {
-		setFreeOverAmount(freeOverAmount);
-		return this;
-	}
-	
-
-	public String freeOverAmount() {
-		return getFreeOverAmount();
-	}
-	
-
-	public void setFormattedFreeOverAmount(String formattedFreeOverAmount) {
-		this.formattedFreeOverAmount = formattedFreeOverAmount;
-	}
-	
-
-	public String getFormattedFreeOverAmount() {
-		return this.formattedFreeOverAmount;
-	}
-	
-
-	public MarketShippingService formattedFreeOverAmount(String formattedFreeOverAmount) {
-		setFormattedFreeOverAmount(formattedFreeOverAmount);
-		return this;
-	}
-	
-
-	public String formattedFreeOverAmount() {
-		return getFormattedFreeOverAmount();
+	public List<String> versions() {
+		return getVersions();
 	}
 	
 
@@ -311,15 +174,9 @@ public class MarketShippingService extends ApiResource {
 			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.marketId, x.marketId)
 			&& Objects.equals(this.shippingServiceId, x.shippingServiceId)
-			&& Objects.equals(this.priceCents, x.priceCents)
-			&& Objects.equals(this.freeOverAmountCents, x.freeOverAmountCents)
-			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.market, x.market)
 			&& Objects.equals(this.shippingService, x.shippingService)
-			&& Objects.equals(this.price, x.price)
-			&& Objects.equals(this.formattedPrice, x.formattedPrice)
-			&& Objects.equals(this.freeOverAmount, x.freeOverAmount)
-			&& Objects.equals(this.formattedFreeOverAmount, x.formattedFreeOverAmount)
+			&& Objects.equals(this.versions, x.versions)
 		;
 	
 	}
@@ -329,9 +186,8 @@ public class MarketShippingService extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, marketId, shippingServiceId, priceCents, freeOverAmountCents,
-			previousChanges, market, shippingService, price, formattedPrice,
-			freeOverAmount, formattedFreeOverAmount 
+			name, marketId, shippingServiceId, market, shippingService,
+			versions 
 		);
 	
 	}
@@ -347,15 +203,9 @@ public class MarketShippingService extends ApiResource {
 		no.name = this.name;
 		no.marketId = this.marketId;
 		no.shippingServiceId = this.shippingServiceId;
-		no.priceCents = this.priceCents;
-		no.freeOverAmountCents = this.freeOverAmountCents;
-		no.previousChanges = this.previousChanges;
 		no.market = this.market;
 		no.shippingService = this.shippingService;
-		no.price = this.price;
-		no.formattedPrice = this.formattedPrice;
-		no.freeOverAmount = this.freeOverAmount;
-		no.formattedFreeOverAmount = this.formattedFreeOverAmount;
+		no.versions = this.versions;
 	
 		return no;
 	

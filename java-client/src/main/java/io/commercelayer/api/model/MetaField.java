@@ -2,6 +2,7 @@ package io.commercelayer.api.model;
 
 import io.commercelayer.api.json.JsonExclude;
 import io.commercelayer.api.model.common.ApiResource;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -13,13 +14,13 @@ public class MetaField extends ApiResource {
 	private static final long serialVersionUID = -1L;
 
 
-	private String key;
+	private String name;
 	private String namespace;
 	private String value;
 	@JsonExclude
-	private String name;
+	private List<String> resourceMetaFields;
 	@JsonExclude
-	private Object previousChanges;
+	private List<String> versions;
 
 
 	public MetaField() {
@@ -29,27 +30,6 @@ public class MetaField extends ApiResource {
 
 	public MetaField(Long id) {
 		super(id);
-	}
-	
-
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-
-	public String getName() {
-		return this.name;
-	}
-	
-
-	public MetaField name(String name) {
-		setName(name);
-		return this;
-	}
-	
-
-	public String name() {
-		return getName();
 	}
 	
 
@@ -74,24 +54,24 @@ public class MetaField extends ApiResource {
 	}
 	
 
-	public void setKey(String key) {
-		this.key = key;
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 
-	public String getKey() {
-		return this.key;
+	public String getName() {
+		return this.name;
 	}
 	
 
-	public MetaField key(String key) {
-		setKey(key);
+	public MetaField name(String name) {
+		setName(name);
 		return this;
 	}
 	
 
-	public String key() {
-		return getKey();
+	public String name() {
+		return getName();
 	}
 	
 
@@ -116,24 +96,45 @@ public class MetaField extends ApiResource {
 	}
 	
 
-	public void setPreviousChanges(Object previousChanges) {
-		this.previousChanges = previousChanges;
+	public void setVersions(List<String> versions) {
+		this.versions = versions;
 	}
 	
 
-	public Object getPreviousChanges() {
-		return this.previousChanges;
+	public List<String> getVersions() {
+		return this.versions;
 	}
 	
 
-	public MetaField previousChanges(Object previousChanges) {
-		setPreviousChanges(previousChanges);
+	public MetaField versions(List<String> versions) {
+		setVersions(versions);
 		return this;
 	}
 	
 
-	public Object previousChanges() {
-		return getPreviousChanges();
+	public List<String> versions() {
+		return getVersions();
+	}
+	
+
+	public void setResourceMetaFields(List<String> resourceMetaFields) {
+		this.resourceMetaFields = resourceMetaFields;
+	}
+	
+
+	public List<String> getResourceMetaFields() {
+		return this.resourceMetaFields;
+	}
+	
+
+	public MetaField resourceMetaFields(List<String> resourceMetaFields) {
+		setResourceMetaFields(resourceMetaFields);
+		return this;
+	}
+	
+
+	public List<String> resourceMetaFields() {
+		return getResourceMetaFields();
 	}
 	
 
@@ -146,11 +147,11 @@ public class MetaField extends ApiResource {
 		MetaField x = (MetaField)o;
 	
 		return super.equals(o)
-			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.namespace, x.namespace)
-			&& Objects.equals(this.key, x.key)
+			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.value, x.value)
-			&& Objects.equals(this.previousChanges, x.previousChanges)
+			&& Objects.equals(this.versions, x.versions)
+			&& Objects.equals(this.resourceMetaFields, x.resourceMetaFields)
 		;
 	
 	}
@@ -160,7 +161,7 @@ public class MetaField extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, namespace, key, value, previousChanges
+			namespace, name, value, versions, resourceMetaFields
 			
 		);
 	
@@ -174,11 +175,11 @@ public class MetaField extends ApiResource {
 	
 		no = super.clone(no);
 	
-		no.name = this.name;
 		no.namespace = this.namespace;
-		no.key = this.key;
+		no.name = this.name;
 		no.value = this.value;
-		no.previousChanges = this.previousChanges;
+		no.versions = this.versions;
+		no.resourceMetaFields = this.resourceMetaFields;
 	
 		return no;
 	

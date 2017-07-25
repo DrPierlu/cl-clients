@@ -2,6 +2,7 @@ package io.commercelayer.api.model;
 
 import io.commercelayer.api.json.JsonExclude;
 import io.commercelayer.api.model.common.ApiResource;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -25,11 +26,11 @@ public class MerchandisingRule extends ApiResource {
 	@JsonExclude
 	private Integer position;
 	@JsonExclude
-	private Object previousChanges;
-	@JsonExclude
 	private Object product;
 	@JsonExclude
 	private Object taxon;
+	@JsonExclude
+	private List<String> versions;
 
 
 	public MerchandisingRule() {
@@ -168,27 +169,6 @@ public class MerchandisingRule extends ApiResource {
 	}
 	
 
-	public void setPreviousChanges(Object previousChanges) {
-		this.previousChanges = previousChanges;
-	}
-	
-
-	public Object getPreviousChanges() {
-		return this.previousChanges;
-	}
-	
-
-	public MerchandisingRule previousChanges(Object previousChanges) {
-		setPreviousChanges(previousChanges);
-		return this;
-	}
-	
-
-	public Object previousChanges() {
-		return getPreviousChanges();
-	}
-	
-
 	public void setCatalog(Object catalog) {
 		this.catalog = catalog;
 	}
@@ -252,6 +232,27 @@ public class MerchandisingRule extends ApiResource {
 	}
 	
 
+	public void setVersions(List<String> versions) {
+		this.versions = versions;
+	}
+	
+
+	public List<String> getVersions() {
+		return this.versions;
+	}
+	
+
+	public MerchandisingRule versions(List<String> versions) {
+		setVersions(versions);
+		return this;
+	}
+	
+
+	public List<String> versions() {
+		return getVersions();
+	}
+	
+
 	@Override
 	public boolean equals(Object o) {
 	
@@ -267,10 +268,10 @@ public class MerchandisingRule extends ApiResource {
 			&& Objects.equals(this.productId, x.productId)
 			&& Objects.equals(this.position, x.position)
 			&& Objects.equals(this.hero, x.hero)
-			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.catalog, x.catalog)
 			&& Objects.equals(this.taxon, x.taxon)
 			&& Objects.equals(this.product, x.product)
+			&& Objects.equals(this.versions, x.versions)
 		;
 	
 	}
@@ -281,7 +282,7 @@ public class MerchandisingRule extends ApiResource {
 	
 		return Objects.hash(
 			name, catalogId, taxonId, productId, position,
-			hero, previousChanges, catalog, taxon, product
+			hero, catalog, taxon, product, versions
 			
 		);
 	
@@ -301,10 +302,10 @@ public class MerchandisingRule extends ApiResource {
 		no.productId = this.productId;
 		no.position = this.position;
 		no.hero = this.hero;
-		no.previousChanges = this.previousChanges;
 		no.catalog = this.catalog;
 		no.taxon = this.taxon;
 		no.product = this.product;
+		no.versions = this.versions;
 	
 		return no;
 	

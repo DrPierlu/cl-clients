@@ -29,9 +29,15 @@ public class PaymentTypeTest extends IntegrationTest<PaymentType> {
 		PaymentType res = new PaymentType();
 	
 		// FIELD NOT FOUND -> res.setMerchantId("merchantId");
+		// FIELD NOT FOUND -> res.setPaymentMethodIds("paymentMethodIds");
 		res.setName("name");
+		// FIELD NOT FOUND -> res.setResourceImageIds("resourceImageIds");
 		res.setDescription("description");
+		// FIELD NOT FOUND -> res.setMarketIds("marketIds");
+		// FIELD NOT FOUND -> res.setPaymentPriceIds("paymentPriceIds");
 		// FIELD NOT FOUND -> res.setGatewayId("gatewayId");
+		// FIELD NOT FOUND -> res.setImageIds("imageIds");
+		// FIELD NOT FOUND -> res.setMarketPaymentTypeIds("marketPaymentTypeIds");
 	
 		postOp.setPayload(res);
 	
@@ -42,9 +48,15 @@ public class PaymentTypeTest extends IntegrationTest<PaymentType> {
 	
 	
 		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getMerchantId());
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getPaymentMethodIds());
 		Assert.assertNotNull(postRes.getResource().getName());
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getResourceImageIds());
 		Assert.assertNotNull(postRes.getResource().getDescription());
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getMarketIds());
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getPaymentPriceIds());
 		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getGatewayId());
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getImageIds());
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getMarketPaymentTypeIds());
 	
 	
 		return postRes;
@@ -85,9 +97,15 @@ public class PaymentTypeTest extends IntegrationTest<PaymentType> {
 		PaymentType res = new PaymentType();
 	
 		// FIELD NOT FOUND -> res.setMerchantId(randomField(oldRes.getMerchantId()));
+		// FIELD NOT FOUND -> res.setPaymentMethodIds(randomField(oldRes.getPaymentMethodIds()));
 		res.setName(randomField(oldRes.getName()));
+		// FIELD NOT FOUND -> res.setResourceImageIds(randomField(oldRes.getResourceImageIds()));
 		res.setDescription(randomField(oldRes.getDescription()));
+		// FIELD NOT FOUND -> res.setMarketIds(randomField(oldRes.getMarketIds()));
+		// FIELD NOT FOUND -> res.setPaymentPriceIds(randomField(oldRes.getPaymentPriceIds()));
 		// FIELD NOT FOUND -> res.setGatewayId(randomField(oldRes.getGatewayId()));
+		// FIELD NOT FOUND -> res.setImageIds(randomField(oldRes.getImageIds()));
+		// FIELD NOT FOUND -> res.setMarketPaymentTypeIds(randomField(oldRes.getMarketPaymentTypeIds()));
 	
 		putOp.setPayload(res);
 	
@@ -98,9 +116,15 @@ public class PaymentTypeTest extends IntegrationTest<PaymentType> {
 	
 	
 		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getMerchantId(), putRes.getResource().getMerchantId());
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getPaymentMethodIds(), putRes.getResource().getPaymentMethodIds());
 		Assert.assertNotEquals(oldRes.getName(), putRes.getResource().getName());
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getResourceImageIds(), putRes.getResource().getResourceImageIds());
 		Assert.assertNotEquals(oldRes.getDescription(), putRes.getResource().getDescription());
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getMarketIds(), putRes.getResource().getMarketIds());
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getPaymentPriceIds(), putRes.getResource().getPaymentPriceIds());
 		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getGatewayId(), putRes.getResource().getGatewayId());
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getImageIds(), putRes.getResource().getImageIds());
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getMarketPaymentTypeIds(), putRes.getResource().getMarketPaymentTypeIds());
 	
 	
 		return putRes;

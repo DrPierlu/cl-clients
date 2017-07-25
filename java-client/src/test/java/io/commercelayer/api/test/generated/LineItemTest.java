@@ -82,9 +82,15 @@ public class LineItemTest extends IntegrationTest<LineItem> {
 	
 		LineItem res = new LineItem();
 	
+		// FIELD NOT FOUND -> res.setShipmentIds(randomField(oldRes.getShipmentIds()));
 		// FIELD TYPE MISMATCH -> res.setQuantity(randomField(oldRes.getQuantity()));
+		// FIELD NOT FOUND -> res.setShippingMethodIds(randomField(oldRes.getShippingMethodIds()));
 		// FIELD NOT FOUND -> res.setSellableResource(randomField(oldRes.getSellableResource()));
+		// FIELD NOT FOUND -> res.setShippingServiceStockLocationIds(randomField(oldRes.getShippingServiceStockLocationIds()));
+		// FIELD NOT FOUND -> res.setResourceMetaFieldIds(randomField(oldRes.getResourceMetaFieldIds()));
+		// FIELD NOT FOUND -> res.setStockItemIds(randomField(oldRes.getStockItemIds()));
 		// FIELD NOT FOUND -> res.setSellableId(randomField(oldRes.getSellableId()));
+		// FIELD NOT FOUND -> res.setMetaFieldIds(randomField(oldRes.getMetaFieldIds()));
 	
 		putOp.setPayload(res);
 	
@@ -94,9 +100,15 @@ public class LineItemTest extends IntegrationTest<LineItem> {
 		ApiResponse<LineItem> putRes = test(putReq, caller);
 	
 	
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getShipmentIds(), putRes.getResource().getShipmentIds());
 		// FIELD TYPE MISMATCH -> Assert.assertNotEquals(oldRes.getQuantity(), putRes.getResource().getQuantity());
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getShippingMethodIds(), putRes.getResource().getShippingMethodIds());
 		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getSellableResource(), putRes.getResource().getSellableResource());
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getShippingServiceStockLocationIds(), putRes.getResource().getShippingServiceStockLocationIds());
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getResourceMetaFieldIds(), putRes.getResource().getResourceMetaFieldIds());
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getStockItemIds(), putRes.getResource().getStockItemIds());
 		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getSellableId(), putRes.getResource().getSellableId());
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getMetaFieldIds(), putRes.getResource().getMetaFieldIds());
 	
 	
 		return putRes;

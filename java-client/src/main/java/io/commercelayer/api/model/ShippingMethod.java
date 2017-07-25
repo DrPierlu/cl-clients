@@ -15,9 +15,6 @@ public class ShippingMethod extends ApiResource {
 
 
 	private Integer orderId;
-	private Integer shippingAddressId;
-	private Integer shippingPackageId;
-	private Integer shippingRecipientId;
 	private Integer shippingServiceId;
 	@JsonExclude
 	private String amount;
@@ -50,8 +47,6 @@ public class ShippingMethod extends ApiResource {
 	@JsonExclude
 	private Object order;
 	@JsonExclude
-	private Object previousChanges;
-	@JsonExclude
 	private String price;
 	@JsonExclude
 	private Integer priceCents;
@@ -60,21 +55,29 @@ public class ShippingMethod extends ApiResource {
 	@JsonExclude
 	private Object shippingAddress;
 	@JsonExclude
+	private Integer shippingAddressId;
+	@JsonExclude
 	private Object shippingPackage;
+	@JsonExclude
+	private Integer shippingPackageId;
 	@JsonExclude
 	private Object shippingRecipient;
 	@JsonExclude
+	private Integer shippingRecipientId;
+	@JsonExclude
 	private Object shippingService;
+	@JsonExclude
+	private String state;
 	@JsonExclude
 	private String taxAmount;
 	@JsonExclude
 	private Float taxRate;
 	@JsonExclude
-	private Boolean taxable;
-	@JsonExclude
 	private String taxableAmount;
 	@JsonExclude
 	private String totalLineItemAmount;
+	@JsonExclude
+	private List<String> versions;
 
 
 	public ShippingMethod() {
@@ -129,6 +132,27 @@ public class ShippingMethod extends ApiResource {
 	}
 	
 
+	public void setShippingServiceId(Integer shippingServiceId) {
+		this.shippingServiceId = shippingServiceId;
+	}
+	
+
+	public Integer getShippingServiceId() {
+		return this.shippingServiceId;
+	}
+	
+
+	public ShippingMethod shippingServiceId(Integer shippingServiceId) {
+		setShippingServiceId(shippingServiceId);
+		return this;
+	}
+	
+
+	public Integer shippingServiceId() {
+		return getShippingServiceId();
+	}
+	
+
 	public void setShippingRecipientId(Integer shippingRecipientId) {
 		this.shippingRecipientId = shippingRecipientId;
 	}
@@ -168,27 +192,6 @@ public class ShippingMethod extends ApiResource {
 
 	public Integer shippingAddressId() {
 		return getShippingAddressId();
-	}
-	
-
-	public void setShippingServiceId(Integer shippingServiceId) {
-		this.shippingServiceId = shippingServiceId;
-	}
-	
-
-	public Integer getShippingServiceId() {
-		return this.shippingServiceId;
-	}
-	
-
-	public ShippingMethod shippingServiceId(Integer shippingServiceId) {
-		setShippingServiceId(shippingServiceId);
-		return this;
-	}
-	
-
-	public Integer shippingServiceId() {
-		return getShippingServiceId();
 	}
 	
 
@@ -255,27 +258,6 @@ public class ShippingMethod extends ApiResource {
 	}
 	
 
-	public void setTaxable(Boolean taxable) {
-		this.taxable = taxable;
-	}
-	
-
-	public Boolean getTaxable() {
-		return this.taxable;
-	}
-	
-
-	public ShippingMethod taxable(Boolean taxable) {
-		setTaxable(taxable);
-		return this;
-	}
-	
-
-	public Boolean taxable() {
-		return getTaxable();
-	}
-	
-
 	public void setTaxRate(Float taxRate) {
 		this.taxRate = taxRate;
 	}
@@ -339,24 +321,24 @@ public class ShippingMethod extends ApiResource {
 	}
 	
 
-	public void setPreviousChanges(Object previousChanges) {
-		this.previousChanges = previousChanges;
+	public void setState(String state) {
+		this.state = state;
 	}
 	
 
-	public Object getPreviousChanges() {
-		return this.previousChanges;
+	public String getState() {
+		return this.state;
 	}
 	
 
-	public ShippingMethod previousChanges(Object previousChanges) {
-		setPreviousChanges(previousChanges);
+	public ShippingMethod state(String state) {
+		setState(state);
 		return this;
 	}
 	
 
-	public Object previousChanges() {
-		return getPreviousChanges();
+	public String state() {
+		return getState();
 	}
 	
 
@@ -465,24 +447,24 @@ public class ShippingMethod extends ApiResource {
 	}
 	
 
-	public void setLineItemStocks(List<String> lineItemStocks) {
-		this.lineItemStocks = lineItemStocks;
+	public void setVersions(List<String> versions) {
+		this.versions = versions;
 	}
 	
 
-	public List<String> getLineItemStocks() {
-		return this.lineItemStocks;
+	public List<String> getVersions() {
+		return this.versions;
 	}
 	
 
-	public ShippingMethod lineItemStocks(List<String> lineItemStocks) {
-		setLineItemStocks(lineItemStocks);
+	public ShippingMethod versions(List<String> versions) {
+		setVersions(versions);
 		return this;
 	}
 	
 
-	public List<String> lineItemStocks() {
-		return getLineItemStocks();
+	public List<String> versions() {
+		return getVersions();
 	}
 	
 
@@ -507,6 +489,27 @@ public class ShippingMethod extends ApiResource {
 	}
 	
 
+	public void setLineItemStocks(List<String> lineItemStocks) {
+		this.lineItemStocks = lineItemStocks;
+	}
+	
+
+	public List<String> getLineItemStocks() {
+		return this.lineItemStocks;
+	}
+	
+
+	public ShippingMethod lineItemStocks(List<String> lineItemStocks) {
+		setLineItemStocks(lineItemStocks);
+		return this;
+	}
+	
+
+	public List<String> lineItemStocks() {
+		return getLineItemStocks();
+	}
+	
+
 	public void setLineItems(List<String> lineItems) {
 		this.lineItems = lineItems;
 	}
@@ -525,6 +528,90 @@ public class ShippingMethod extends ApiResource {
 
 	public List<String> lineItems() {
 		return getLineItems();
+	}
+	
+
+	public void setTaxAmount(String taxAmount) {
+		this.taxAmount = taxAmount;
+	}
+	
+
+	public String getTaxAmount() {
+		return this.taxAmount;
+	}
+	
+
+	public ShippingMethod taxAmount(String taxAmount) {
+		setTaxAmount(taxAmount);
+		return this;
+	}
+	
+
+	public String taxAmount() {
+		return getTaxAmount();
+	}
+	
+
+	public void setFormattedTaxAmount(String formattedTaxAmount) {
+		this.formattedTaxAmount = formattedTaxAmount;
+	}
+	
+
+	public String getFormattedTaxAmount() {
+		return this.formattedTaxAmount;
+	}
+	
+
+	public ShippingMethod formattedTaxAmount(String formattedTaxAmount) {
+		setFormattedTaxAmount(formattedTaxAmount);
+		return this;
+	}
+	
+
+	public String formattedTaxAmount() {
+		return getFormattedTaxAmount();
+	}
+	
+
+	public void setTaxableAmount(String taxableAmount) {
+		this.taxableAmount = taxableAmount;
+	}
+	
+
+	public String getTaxableAmount() {
+		return this.taxableAmount;
+	}
+	
+
+	public ShippingMethod taxableAmount(String taxableAmount) {
+		setTaxableAmount(taxableAmount);
+		return this;
+	}
+	
+
+	public String taxableAmount() {
+		return getTaxableAmount();
+	}
+	
+
+	public void setFormattedTaxableAmount(String formattedTaxableAmount) {
+		this.formattedTaxableAmount = formattedTaxableAmount;
+	}
+	
+
+	public String getFormattedTaxableAmount() {
+		return this.formattedTaxableAmount;
+	}
+	
+
+	public ShippingMethod formattedTaxableAmount(String formattedTaxableAmount) {
+		setFormattedTaxableAmount(formattedTaxableAmount);
+		return this;
+	}
+	
+
+	public String formattedTaxableAmount() {
+		return getFormattedTaxableAmount();
 	}
 	
 
@@ -609,90 +696,6 @@ public class ShippingMethod extends ApiResource {
 
 	public String formattedTotalLineItemAmount() {
 		return getFormattedTotalLineItemAmount();
-	}
-	
-
-	public void setTaxableAmount(String taxableAmount) {
-		this.taxableAmount = taxableAmount;
-	}
-	
-
-	public String getTaxableAmount() {
-		return this.taxableAmount;
-	}
-	
-
-	public ShippingMethod taxableAmount(String taxableAmount) {
-		setTaxableAmount(taxableAmount);
-		return this;
-	}
-	
-
-	public String taxableAmount() {
-		return getTaxableAmount();
-	}
-	
-
-	public void setFormattedTaxableAmount(String formattedTaxableAmount) {
-		this.formattedTaxableAmount = formattedTaxableAmount;
-	}
-	
-
-	public String getFormattedTaxableAmount() {
-		return this.formattedTaxableAmount;
-	}
-	
-
-	public ShippingMethod formattedTaxableAmount(String formattedTaxableAmount) {
-		setFormattedTaxableAmount(formattedTaxableAmount);
-		return this;
-	}
-	
-
-	public String formattedTaxableAmount() {
-		return getFormattedTaxableAmount();
-	}
-	
-
-	public void setTaxAmount(String taxAmount) {
-		this.taxAmount = taxAmount;
-	}
-	
-
-	public String getTaxAmount() {
-		return this.taxAmount;
-	}
-	
-
-	public ShippingMethod taxAmount(String taxAmount) {
-		setTaxAmount(taxAmount);
-		return this;
-	}
-	
-
-	public String taxAmount() {
-		return getTaxAmount();
-	}
-	
-
-	public void setFormattedTaxAmount(String formattedTaxAmount) {
-		this.formattedTaxAmount = formattedTaxAmount;
-	}
-	
-
-	public String getFormattedTaxAmount() {
-		return this.formattedTaxAmount;
-	}
-	
-
-	public ShippingMethod formattedTaxAmount(String formattedTaxAmount) {
-		setFormattedTaxAmount(formattedTaxAmount);
-		return this;
-	}
-	
-
-	public String formattedTaxAmount() {
-		return getFormattedTaxAmount();
 	}
 	
 
@@ -791,33 +794,33 @@ public class ShippingMethod extends ApiResource {
 		return super.equals(o)
 			&& Objects.equals(this.name, x.name)
 			&& Objects.equals(this.orderId, x.orderId)
+			&& Objects.equals(this.shippingServiceId, x.shippingServiceId)
 			&& Objects.equals(this.shippingRecipientId, x.shippingRecipientId)
 			&& Objects.equals(this.shippingAddressId, x.shippingAddressId)
-			&& Objects.equals(this.shippingServiceId, x.shippingServiceId)
 			&& Objects.equals(this.shippingPackageId, x.shippingPackageId)
 			&& Objects.equals(this.priceCents, x.priceCents)
 			&& Objects.equals(this.freeOverAmountCents, x.freeOverAmountCents)
-			&& Objects.equals(this.taxable, x.taxable)
 			&& Objects.equals(this.taxRate, x.taxRate)
 			&& Objects.equals(this.easypostAddressId, x.easypostAddressId)
 			&& Objects.equals(this.easypostParcelId, x.easypostParcelId)
-			&& Objects.equals(this.previousChanges, x.previousChanges)
+			&& Objects.equals(this.state, x.state)
 			&& Objects.equals(this.order, x.order)
 			&& Objects.equals(this.shippingRecipient, x.shippingRecipient)
 			&& Objects.equals(this.shippingAddress, x.shippingAddress)
 			&& Objects.equals(this.shippingService, x.shippingService)
 			&& Objects.equals(this.shippingPackage, x.shippingPackage)
-			&& Objects.equals(this.lineItemStocks, x.lineItemStocks)
+			&& Objects.equals(this.versions, x.versions)
 			&& Objects.equals(this.shipments, x.shipments)
+			&& Objects.equals(this.lineItemStocks, x.lineItemStocks)
 			&& Objects.equals(this.lineItems, x.lineItems)
+			&& Objects.equals(this.taxAmount, x.taxAmount)
+			&& Objects.equals(this.formattedTaxAmount, x.formattedTaxAmount)
+			&& Objects.equals(this.taxableAmount, x.taxableAmount)
+			&& Objects.equals(this.formattedTaxableAmount, x.formattedTaxableAmount)
 			&& Objects.equals(this.amount, x.amount)
 			&& Objects.equals(this.formattedAmount, x.formattedAmount)
 			&& Objects.equals(this.totalLineItemAmount, x.totalLineItemAmount)
 			&& Objects.equals(this.formattedTotalLineItemAmount, x.formattedTotalLineItemAmount)
-			&& Objects.equals(this.taxableAmount, x.taxableAmount)
-			&& Objects.equals(this.formattedTaxableAmount, x.formattedTaxableAmount)
-			&& Objects.equals(this.taxAmount, x.taxAmount)
-			&& Objects.equals(this.formattedTaxAmount, x.formattedTaxAmount)
 			&& Objects.equals(this.price, x.price)
 			&& Objects.equals(this.formattedPrice, x.formattedPrice)
 			&& Objects.equals(this.freeOverAmount, x.freeOverAmount)
@@ -831,12 +834,12 @@ public class ShippingMethod extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, orderId, shippingRecipientId, shippingAddressId, shippingServiceId,
-			shippingPackageId, priceCents, freeOverAmountCents, taxable, taxRate,
-			easypostAddressId, easypostParcelId, previousChanges, order, shippingRecipient,
-			shippingAddress, shippingService, shippingPackage, lineItemStocks, shipments,
-			lineItems, amount, formattedAmount, totalLineItemAmount, formattedTotalLineItemAmount,
-			taxableAmount, formattedTaxableAmount, taxAmount, formattedTaxAmount, price,
+			name, orderId, shippingServiceId, shippingRecipientId, shippingAddressId,
+			shippingPackageId, priceCents, freeOverAmountCents, taxRate, easypostAddressId,
+			easypostParcelId, state, order, shippingRecipient, shippingAddress,
+			shippingService, shippingPackage, versions, shipments, lineItemStocks,
+			lineItems, taxAmount, formattedTaxAmount, taxableAmount, formattedTaxableAmount,
+			amount, formattedAmount, totalLineItemAmount, formattedTotalLineItemAmount, price,
 			formattedPrice, freeOverAmount, formattedFreeOverAmount 
 		);
 	
@@ -852,33 +855,33 @@ public class ShippingMethod extends ApiResource {
 	
 		no.name = this.name;
 		no.orderId = this.orderId;
+		no.shippingServiceId = this.shippingServiceId;
 		no.shippingRecipientId = this.shippingRecipientId;
 		no.shippingAddressId = this.shippingAddressId;
-		no.shippingServiceId = this.shippingServiceId;
 		no.shippingPackageId = this.shippingPackageId;
 		no.priceCents = this.priceCents;
 		no.freeOverAmountCents = this.freeOverAmountCents;
-		no.taxable = this.taxable;
 		no.taxRate = this.taxRate;
 		no.easypostAddressId = this.easypostAddressId;
 		no.easypostParcelId = this.easypostParcelId;
-		no.previousChanges = this.previousChanges;
+		no.state = this.state;
 		no.order = this.order;
 		no.shippingRecipient = this.shippingRecipient;
 		no.shippingAddress = this.shippingAddress;
 		no.shippingService = this.shippingService;
 		no.shippingPackage = this.shippingPackage;
-		no.lineItemStocks = this.lineItemStocks;
+		no.versions = this.versions;
 		no.shipments = this.shipments;
+		no.lineItemStocks = this.lineItemStocks;
 		no.lineItems = this.lineItems;
+		no.taxAmount = this.taxAmount;
+		no.formattedTaxAmount = this.formattedTaxAmount;
+		no.taxableAmount = this.taxableAmount;
+		no.formattedTaxableAmount = this.formattedTaxableAmount;
 		no.amount = this.amount;
 		no.formattedAmount = this.formattedAmount;
 		no.totalLineItemAmount = this.totalLineItemAmount;
 		no.formattedTotalLineItemAmount = this.formattedTotalLineItemAmount;
-		no.taxableAmount = this.taxableAmount;
-		no.formattedTaxableAmount = this.formattedTaxableAmount;
-		no.taxAmount = this.taxAmount;
-		no.formattedTaxAmount = this.formattedTaxAmount;
 		no.price = this.price;
 		no.formattedPrice = this.formattedPrice;
 		no.freeOverAmount = this.freeOverAmount;

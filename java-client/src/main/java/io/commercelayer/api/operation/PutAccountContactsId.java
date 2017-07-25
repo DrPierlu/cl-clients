@@ -21,6 +21,10 @@ public class PutAccountContactsId extends PutOperation<Contact> {
 		addRequiredField("custom1");
 		addRequiredField("custom2");
 		addRequiredField("custom3");
+		addRequiredField("stockLocationIds");
+		addRequiredField("shippingMethodIds");
+		addRequiredField("paymentMethodIds");
+		addRequiredField("invoiceIds");
 	}
 
 

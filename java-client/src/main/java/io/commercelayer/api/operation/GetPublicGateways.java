@@ -5,14 +5,14 @@ import io.commercelayer.api.operation.common.SearchOperation;
 
 
 /**
- * GetAllGateways
+ * GetPublicGateways
  */
-public class GetAllGateways extends SearchOperation<Gateway> {
+public class GetPublicGateways extends SearchOperation<Gateway> {
 
-	public static final String OPERATION_PATH = "/all/gateways";
+	public static final String OPERATION_PATH = "/public/gateways";
 
 
-	public GetAllGateways() {
+	public GetPublicGateways() {
 		super(OPERATION_PATH);
 	}
 	

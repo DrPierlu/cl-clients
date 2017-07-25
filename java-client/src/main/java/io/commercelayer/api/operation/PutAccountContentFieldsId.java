@@ -13,7 +13,7 @@ public class PutAccountContentFieldsId extends PutOperation<ContentField> {
 
 
 	{
-		addRequiredField("kind");
+		addRequiredField("namespace");
 		addRequiredField("name");
 		addRequiredField("content");
 	}

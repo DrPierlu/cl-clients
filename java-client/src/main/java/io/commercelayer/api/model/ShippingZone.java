@@ -27,13 +27,13 @@ public class ShippingZone extends ApiResource {
 	@JsonExclude
 	private String notZipCodeRegex;
 	@JsonExclude
-	private Object previousChanges;
-	@JsonExclude
 	private List<String> shippingServiceZones;
 	@JsonExclude
 	private List<String> shippingServices;
 	@JsonExclude
 	private String stateCodeRegex;
+	@JsonExclude
+	private List<String> versions;
 	@JsonExclude
 	private String zipCodeRegex;
 
@@ -216,27 +216,6 @@ public class ShippingZone extends ApiResource {
 	}
 	
 
-	public void setPreviousChanges(Object previousChanges) {
-		this.previousChanges = previousChanges;
-	}
-	
-
-	public Object getPreviousChanges() {
-		return this.previousChanges;
-	}
-	
-
-	public ShippingZone previousChanges(Object previousChanges) {
-		setPreviousChanges(previousChanges);
-		return this;
-	}
-	
-
-	public Object previousChanges() {
-		return getPreviousChanges();
-	}
-	
-
 	public void setCountryGroup(Object countryGroup) {
 		this.countryGroup = countryGroup;
 	}
@@ -255,6 +234,27 @@ public class ShippingZone extends ApiResource {
 
 	public Object countryGroup() {
 		return getCountryGroup();
+	}
+	
+
+	public void setVersions(List<String> versions) {
+		this.versions = versions;
+	}
+	
+
+	public List<String> getVersions() {
+		return this.versions;
+	}
+	
+
+	public ShippingZone versions(List<String> versions) {
+		setVersions(versions);
+		return this;
+	}
+	
+
+	public List<String> versions() {
+		return getVersions();
 	}
 	
 
@@ -317,8 +317,8 @@ public class ShippingZone extends ApiResource {
 			&& Objects.equals(this.notStateCodeRegex, x.notStateCodeRegex)
 			&& Objects.equals(this.zipCodeRegex, x.zipCodeRegex)
 			&& Objects.equals(this.notZipCodeRegex, x.notZipCodeRegex)
-			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.countryGroup, x.countryGroup)
+			&& Objects.equals(this.versions, x.versions)
 			&& Objects.equals(this.shippingServiceZones, x.shippingServiceZones)
 			&& Objects.equals(this.shippingServices, x.shippingServices)
 		;
@@ -331,7 +331,7 @@ public class ShippingZone extends ApiResource {
 	
 		return Objects.hash(
 			countryGroupId, name, countryCodeRegex, notCountryCodeRegex, stateCodeRegex,
-			notStateCodeRegex, zipCodeRegex, notZipCodeRegex, previousChanges, countryGroup,
+			notStateCodeRegex, zipCodeRegex, notZipCodeRegex, countryGroup, versions,
 			shippingServiceZones, shippingServices 
 		);
 	
@@ -353,8 +353,8 @@ public class ShippingZone extends ApiResource {
 		no.notStateCodeRegex = this.notStateCodeRegex;
 		no.zipCodeRegex = this.zipCodeRegex;
 		no.notZipCodeRegex = this.notZipCodeRegex;
-		no.previousChanges = this.previousChanges;
 		no.countryGroup = this.countryGroup;
+		no.versions = this.versions;
 		no.shippingServiceZones = this.shippingServiceZones;
 		no.shippingServices = this.shippingServices;
 	

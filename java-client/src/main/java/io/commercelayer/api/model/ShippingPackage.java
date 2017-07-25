@@ -20,6 +20,8 @@ public class ShippingPackage extends ApiResource {
 	@JsonExclude
 	private Object featuredImage;
 	@JsonExclude
+	private String featuredImageId;
+	@JsonExclude
 	private Float height;
 	@JsonExclude
 	private List<String> images;
@@ -28,13 +30,15 @@ public class ShippingPackage extends ApiResource {
 	@JsonExclude
 	private Float length;
 	@JsonExclude
-	private Object previousChanges;
-	@JsonExclude
 	private List<String> resourceImages;
+	@JsonExclude
+	private List<String> shippingMethods;
 	@JsonExclude
 	private String slug;
 	@JsonExclude
 	private List<String> translations;
+	@JsonExclude
+	private List<String> versions;
 	@JsonExclude
 	private Float width;
 
@@ -196,24 +200,24 @@ public class ShippingPackage extends ApiResource {
 	}
 	
 
-	public void setPreviousChanges(Object previousChanges) {
-		this.previousChanges = previousChanges;
+	public void setVersions(List<String> versions) {
+		this.versions = versions;
 	}
 	
 
-	public Object getPreviousChanges() {
-		return this.previousChanges;
+	public List<String> getVersions() {
+		return this.versions;
 	}
 	
 
-	public ShippingPackage previousChanges(Object previousChanges) {
-		setPreviousChanges(previousChanges);
+	public ShippingPackage versions(List<String> versions) {
+		setVersions(versions);
 		return this;
 	}
 	
 
-	public Object previousChanges() {
-		return getPreviousChanges();
+	public List<String> versions() {
+		return getVersions();
 	}
 	
 
@@ -280,6 +284,48 @@ public class ShippingPackage extends ApiResource {
 	}
 	
 
+	public void setShippingMethods(List<String> shippingMethods) {
+		this.shippingMethods = shippingMethods;
+	}
+	
+
+	public List<String> getShippingMethods() {
+		return this.shippingMethods;
+	}
+	
+
+	public ShippingPackage shippingMethods(List<String> shippingMethods) {
+		setShippingMethods(shippingMethods);
+		return this;
+	}
+	
+
+	public List<String> shippingMethods() {
+		return getShippingMethods();
+	}
+	
+
+	public void setFeaturedImageId(String featuredImageId) {
+		this.featuredImageId = featuredImageId;
+	}
+	
+
+	public String getFeaturedImageId() {
+		return this.featuredImageId;
+	}
+	
+
+	public ShippingPackage featuredImageId(String featuredImageId) {
+		setFeaturedImageId(featuredImageId);
+		return this;
+	}
+	
+
+	public String featuredImageId() {
+		return getFeaturedImageId();
+	}
+	
+
 	public void setFeaturedImage(Object featuredImage) {
 		this.featuredImage = featuredImage;
 	}
@@ -317,10 +363,12 @@ public class ShippingPackage extends ApiResource {
 			&& Objects.equals(this.width, x.width)
 			&& Objects.equals(this.height, x.height)
 			&& Objects.equals(this.kind, x.kind)
-			&& Objects.equals(this.previousChanges, x.previousChanges)
+			&& Objects.equals(this.versions, x.versions)
 			&& Objects.equals(this.resourceImages, x.resourceImages)
 			&& Objects.equals(this.images, x.images)
 			&& Objects.equals(this.translations, x.translations)
+			&& Objects.equals(this.shippingMethods, x.shippingMethods)
+			&& Objects.equals(this.featuredImageId, x.featuredImageId)
 			&& Objects.equals(this.featuredImage, x.featuredImage)
 		;
 	
@@ -332,8 +380,8 @@ public class ShippingPackage extends ApiResource {
 	
 		return Objects.hash(
 			name, slug, description, length, width,
-			height, kind, previousChanges, resourceImages, images,
-			translations, featuredImage 
+			height, kind, versions, resourceImages, images,
+			translations, shippingMethods, featuredImageId, featuredImage 
 		);
 	
 	}
@@ -353,10 +401,12 @@ public class ShippingPackage extends ApiResource {
 		no.width = this.width;
 		no.height = this.height;
 		no.kind = this.kind;
-		no.previousChanges = this.previousChanges;
+		no.versions = this.versions;
 		no.resourceImages = this.resourceImages;
 		no.images = this.images;
 		no.translations = this.translations;
+		no.shippingMethods = this.shippingMethods;
+		no.featuredImageId = this.featuredImageId;
 		no.featuredImage = this.featuredImage;
 	
 		return no;

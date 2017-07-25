@@ -28,10 +28,22 @@ public class VariantTest extends IntegrationTest<Variant> {
 	
 		Variant res = new Variant();
 	
+		// FIELD NOT FOUND -> res.setContentFieldIds("contentFieldIds");
 		// FIELD NOT FOUND -> res.setProductId("productId");
-		res.setSku("sku");
+		// FIELD NOT FOUND -> res.setLineItemIds("lineItemIds");
+		// FIELD NOT FOUND -> res.setResourceImageIds("resourceImageIds");
+		// FIELD NOT FOUND -> res.setOptionValueIds("optionValueIds");
 		// FIELD NOT FOUND -> res.setTaxCode("taxCode");
+		// FIELD NOT FOUND -> res.setMetaFieldIds("metaFieldIds");
+		// FIELD NOT FOUND -> res.setVariantOptionIds("variantOptionIds");
+		// FIELD NOT FOUND -> res.setPriceIds("priceIds");
+		// FIELD NOT FOUND -> res.setShippingServiceStockLocationIds("shippingServiceStockLocationIds");
+		// FIELD NOT FOUND -> res.setResourceMetaFieldIds("resourceMetaFieldIds");
+		// FIELD NOT FOUND -> res.setStockItemIds("stockItemIds");
+		res.setSku("sku");
 		// FIELD NOT FOUND -> res.setTrackInventory("trackInventory");
+		// FIELD NOT FOUND -> res.setImageIds("imageIds");
+		// FIELD NOT FOUND -> res.setResourceContentFieldIds("resourceContentFieldIds");
 	
 		postOp.setPayload(res);
 	
@@ -41,10 +53,22 @@ public class VariantTest extends IntegrationTest<Variant> {
 		ApiResponse<Variant> postRes = test(postReq, caller);
 	
 	
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getContentFieldIds());
 		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getProductId());
-		Assert.assertNotNull(postRes.getResource().getSku());
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getLineItemIds());
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getResourceImageIds());
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getOptionValueIds());
 		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getTaxCode());
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getMetaFieldIds());
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getVariantOptionIds());
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getPriceIds());
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getShippingServiceStockLocationIds());
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getResourceMetaFieldIds());
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getStockItemIds());
+		Assert.assertNotNull(postRes.getResource().getSku());
 		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getTrackInventory());
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getImageIds());
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getResourceContentFieldIds());
 	
 	
 		return postRes;
@@ -84,10 +108,22 @@ public class VariantTest extends IntegrationTest<Variant> {
 	
 		Variant res = new Variant();
 	
+		// FIELD NOT FOUND -> res.setContentFieldIds(randomField(oldRes.getContentFieldIds()));
 		// FIELD NOT FOUND -> res.setProductId(randomField(oldRes.getProductId()));
-		res.setSku(randomField(oldRes.getSku()));
+		// FIELD NOT FOUND -> res.setLineItemIds(randomField(oldRes.getLineItemIds()));
+		// FIELD NOT FOUND -> res.setResourceImageIds(randomField(oldRes.getResourceImageIds()));
+		// FIELD NOT FOUND -> res.setOptionValueIds(randomField(oldRes.getOptionValueIds()));
 		// FIELD NOT FOUND -> res.setTaxCode(randomField(oldRes.getTaxCode()));
+		// FIELD NOT FOUND -> res.setMetaFieldIds(randomField(oldRes.getMetaFieldIds()));
+		// FIELD NOT FOUND -> res.setVariantOptionIds(randomField(oldRes.getVariantOptionIds()));
+		// FIELD NOT FOUND -> res.setPriceIds(randomField(oldRes.getPriceIds()));
+		// FIELD NOT FOUND -> res.setShippingServiceStockLocationIds(randomField(oldRes.getShippingServiceStockLocationIds()));
+		// FIELD NOT FOUND -> res.setResourceMetaFieldIds(randomField(oldRes.getResourceMetaFieldIds()));
+		// FIELD NOT FOUND -> res.setStockItemIds(randomField(oldRes.getStockItemIds()));
+		res.setSku(randomField(oldRes.getSku()));
 		// FIELD NOT FOUND -> res.setTrackInventory(randomField(oldRes.getTrackInventory()));
+		// FIELD NOT FOUND -> res.setImageIds(randomField(oldRes.getImageIds()));
+		// FIELD NOT FOUND -> res.setResourceContentFieldIds(randomField(oldRes.getResourceContentFieldIds()));
 	
 		putOp.setPayload(res);
 	
@@ -97,10 +133,22 @@ public class VariantTest extends IntegrationTest<Variant> {
 		ApiResponse<Variant> putRes = test(putReq, caller);
 	
 	
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getContentFieldIds(), putRes.getResource().getContentFieldIds());
 		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getProductId(), putRes.getResource().getProductId());
-		Assert.assertNotEquals(oldRes.getSku(), putRes.getResource().getSku());
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getLineItemIds(), putRes.getResource().getLineItemIds());
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getResourceImageIds(), putRes.getResource().getResourceImageIds());
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getOptionValueIds(), putRes.getResource().getOptionValueIds());
 		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getTaxCode(), putRes.getResource().getTaxCode());
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getMetaFieldIds(), putRes.getResource().getMetaFieldIds());
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getVariantOptionIds(), putRes.getResource().getVariantOptionIds());
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getPriceIds(), putRes.getResource().getPriceIds());
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getShippingServiceStockLocationIds(), putRes.getResource().getShippingServiceStockLocationIds());
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getResourceMetaFieldIds(), putRes.getResource().getResourceMetaFieldIds());
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getStockItemIds(), putRes.getResource().getStockItemIds());
+		Assert.assertNotEquals(oldRes.getSku(), putRes.getResource().getSku());
 		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getTrackInventory(), putRes.getResource().getTrackInventory());
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getImageIds(), putRes.getResource().getImageIds());
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getResourceContentFieldIds(), putRes.getResource().getResourceContentFieldIds());
 	
 	
 		return putRes;

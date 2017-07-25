@@ -28,14 +28,18 @@ public class ContactTest extends IntegrationTest<Contact> {
 	
 		Contact res = new Contact();
 	
+		// FIELD NOT FOUND -> res.setStockLocationIds("stockLocationIds");
+		// FIELD NOT FOUND -> res.setShippingMethodIds("shippingMethodIds");
 		// FIELD NOT FOUND -> res.setTaxIdNumber("taxIdNumber");
 		res.setPhone("phone");
+		// FIELD NOT FOUND -> res.setPaymentMethodIds("paymentMethodIds");
 		res.setName("name");
 		// FIELD NOT FOUND -> res.setNationalIdNumber("nationalIdNumber");
 		res.setCustom3("custom3");
 		res.setCustom1("custom1");
 		res.setCustom2("custom2");
 		res.setEmail("email");
+		// FIELD NOT FOUND -> res.setInvoiceIds("invoiceIds");
 	
 		postOp.setPayload(res);
 	
@@ -45,14 +49,18 @@ public class ContactTest extends IntegrationTest<Contact> {
 		ApiResponse<Contact> postRes = test(postReq, caller);
 	
 	
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getStockLocationIds());
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getShippingMethodIds());
 		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getTaxIdNumber());
 		Assert.assertNotNull(postRes.getResource().getPhone());
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getPaymentMethodIds());
 		Assert.assertNotNull(postRes.getResource().getName());
 		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getNationalIdNumber());
 		Assert.assertNotNull(postRes.getResource().getCustom3());
 		Assert.assertNotNull(postRes.getResource().getCustom1());
 		Assert.assertNotNull(postRes.getResource().getCustom2());
 		Assert.assertNotNull(postRes.getResource().getEmail());
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getInvoiceIds());
 	
 	
 		return postRes;
@@ -92,14 +100,18 @@ public class ContactTest extends IntegrationTest<Contact> {
 	
 		Contact res = new Contact();
 	
+		// FIELD NOT FOUND -> res.setStockLocationIds(randomField(oldRes.getStockLocationIds()));
+		// FIELD NOT FOUND -> res.setShippingMethodIds(randomField(oldRes.getShippingMethodIds()));
 		// FIELD NOT FOUND -> res.setTaxIdNumber(randomField(oldRes.getTaxIdNumber()));
 		res.setPhone(randomField(oldRes.getPhone()));
+		// FIELD NOT FOUND -> res.setPaymentMethodIds(randomField(oldRes.getPaymentMethodIds()));
 		res.setName(randomField(oldRes.getName()));
 		// FIELD NOT FOUND -> res.setNationalIdNumber(randomField(oldRes.getNationalIdNumber()));
 		res.setCustom3(randomField(oldRes.getCustom3()));
 		res.setCustom1(randomField(oldRes.getCustom1()));
 		res.setCustom2(randomField(oldRes.getCustom2()));
 		res.setEmail(randomField(oldRes.getEmail()));
+		// FIELD NOT FOUND -> res.setInvoiceIds(randomField(oldRes.getInvoiceIds()));
 	
 		putOp.setPayload(res);
 	
@@ -109,14 +121,18 @@ public class ContactTest extends IntegrationTest<Contact> {
 		ApiResponse<Contact> putRes = test(putReq, caller);
 	
 	
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getStockLocationIds(), putRes.getResource().getStockLocationIds());
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getShippingMethodIds(), putRes.getResource().getShippingMethodIds());
 		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getTaxIdNumber(), putRes.getResource().getTaxIdNumber());
 		Assert.assertNotEquals(oldRes.getPhone(), putRes.getResource().getPhone());
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getPaymentMethodIds(), putRes.getResource().getPaymentMethodIds());
 		Assert.assertNotEquals(oldRes.getName(), putRes.getResource().getName());
 		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getNationalIdNumber(), putRes.getResource().getNationalIdNumber());
 		Assert.assertNotEquals(oldRes.getCustom3(), putRes.getResource().getCustom3());
 		Assert.assertNotEquals(oldRes.getCustom1(), putRes.getResource().getCustom1());
 		Assert.assertNotEquals(oldRes.getCustom2(), putRes.getResource().getCustom2());
 		Assert.assertNotEquals(oldRes.getEmail(), putRes.getResource().getEmail());
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getInvoiceIds(), putRes.getResource().getInvoiceIds());
 	
 	
 		return putRes;

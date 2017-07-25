@@ -18,7 +18,13 @@ public class Channel extends ApiResource {
 	@JsonExclude
 	private Object authCredentials;
 	@JsonExclude
+	private String code;
+	@JsonExclude
+	private List<String> countries;
+	@JsonExclude
 	private List<String> customers;
+	@JsonExclude
+	private List<String> invoices;
 	@JsonExclude
 	private List<String> lineItemStocks;
 	@JsonExclude
@@ -30,11 +36,11 @@ public class Channel extends ApiResource {
 	@JsonExclude
 	private List<String> paymentMethods;
 	@JsonExclude
-	private Object previousChanges;
-	@JsonExclude
 	private List<String> shippingMethods;
 	@JsonExclude
 	private List<String> transactions;
+	@JsonExclude
+	private List<String> versions;
 
 
 	public Channel() {
@@ -44,6 +50,27 @@ public class Channel extends ApiResource {
 
 	public Channel(Long id) {
 		super(id);
+	}
+	
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+	
+
+	public String getCode() {
+		return this.code;
+	}
+	
+
+	public Channel code(String code) {
+		setCode(code);
+		return this;
+	}
+	
+
+	public String code() {
+		return getCode();
 	}
 	
 
@@ -68,24 +95,24 @@ public class Channel extends ApiResource {
 	}
 	
 
-	public void setPreviousChanges(Object previousChanges) {
-		this.previousChanges = previousChanges;
+	public void setVersions(List<String> versions) {
+		this.versions = versions;
 	}
 	
 
-	public Object getPreviousChanges() {
-		return this.previousChanges;
+	public List<String> getVersions() {
+		return this.versions;
 	}
 	
 
-	public Channel previousChanges(Object previousChanges) {
-		setPreviousChanges(previousChanges);
+	public Channel versions(List<String> versions) {
+		setVersions(versions);
 		return this;
 	}
 	
 
-	public Object previousChanges() {
-		return getPreviousChanges();
+	public List<String> versions() {
+		return getVersions();
 	}
 	
 
@@ -128,6 +155,48 @@ public class Channel extends ApiResource {
 
 	public List<String> markets() {
 		return getMarkets();
+	}
+	
+
+	public void setInvoices(List<String> invoices) {
+		this.invoices = invoices;
+	}
+	
+
+	public List<String> getInvoices() {
+		return this.invoices;
+	}
+	
+
+	public Channel invoices(List<String> invoices) {
+		setInvoices(invoices);
+		return this;
+	}
+	
+
+	public List<String> invoices() {
+		return getInvoices();
+	}
+	
+
+	public void setCountries(List<String> countries) {
+		this.countries = countries;
+	}
+	
+
+	public List<String> getCountries() {
+		return this.countries;
+	}
+	
+
+	public Channel countries(List<String> countries) {
+		setCountries(countries);
+		return this;
+	}
+	
+
+	public List<String> countries() {
+		return getCountries();
 	}
 	
 
@@ -287,10 +356,13 @@ public class Channel extends ApiResource {
 		Channel x = (Channel)o;
 	
 		return super.equals(o)
+			&& Objects.equals(this.code, x.code)
 			&& Objects.equals(this.name, x.name)
-			&& Objects.equals(this.previousChanges, x.previousChanges)
+			&& Objects.equals(this.versions, x.versions)
 			&& Objects.equals(this.orders, x.orders)
 			&& Objects.equals(this.markets, x.markets)
+			&& Objects.equals(this.invoices, x.invoices)
+			&& Objects.equals(this.countries, x.countries)
 			&& Objects.equals(this.lineItems, x.lineItems)
 			&& Objects.equals(this.shippingMethods, x.shippingMethods)
 			&& Objects.equals(this.paymentMethods, x.paymentMethods)
@@ -307,9 +379,9 @@ public class Channel extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, previousChanges, orders, markets, lineItems,
-			shippingMethods, paymentMethods, transactions, lineItemStocks, customers,
-			authCredentials 
+			code, name, versions, orders, markets,
+			invoices, countries, lineItems, shippingMethods, paymentMethods,
+			transactions, lineItemStocks, customers, authCredentials 
 		);
 	
 	}
@@ -322,10 +394,13 @@ public class Channel extends ApiResource {
 	
 		no = super.clone(no);
 	
+		no.code = this.code;
 		no.name = this.name;
-		no.previousChanges = this.previousChanges;
+		no.versions = this.versions;
 		no.orders = this.orders;
 		no.markets = this.markets;
+		no.invoices = this.invoices;
+		no.countries = this.countries;
 		no.lineItems = this.lineItems;
 		no.shippingMethods = this.shippingMethods;
 		no.paymentMethods = this.paymentMethods;

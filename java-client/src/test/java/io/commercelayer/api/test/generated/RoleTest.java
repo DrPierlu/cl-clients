@@ -28,8 +28,11 @@ public class RoleTest extends IntegrationTest<Role> {
 	
 		Role res = new Role();
 	
+		// FIELD NOT FOUND -> res.setConsumerRoleIds("consumerRoleIds");
+		// FIELD NOT FOUND -> res.setConsumerIds("consumerIds");
 		res.setName("name");
 		// FIELD NOT FOUND -> res.setDescription("description");
+		// FIELD NOT FOUND -> res.setPermissionIds("permissionIds");
 	
 		postOp.setPayload(res);
 	
@@ -39,8 +42,11 @@ public class RoleTest extends IntegrationTest<Role> {
 		ApiResponse<Role> postRes = test(postReq, caller);
 	
 	
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getConsumerRoleIds());
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getConsumerIds());
 		Assert.assertNotNull(postRes.getResource().getName());
 		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getDescription());
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getPermissionIds());
 	
 	
 		return postRes;
@@ -80,8 +86,11 @@ public class RoleTest extends IntegrationTest<Role> {
 	
 		Role res = new Role();
 	
+		// FIELD NOT FOUND -> res.setConsumerRoleIds(randomField(oldRes.getConsumerRoleIds()));
+		// FIELD NOT FOUND -> res.setConsumerIds(randomField(oldRes.getConsumerIds()));
 		res.setName(randomField(oldRes.getName()));
 		// FIELD NOT FOUND -> res.setDescription(randomField(oldRes.getDescription()));
+		// FIELD NOT FOUND -> res.setPermissionIds(randomField(oldRes.getPermissionIds()));
 	
 		putOp.setPayload(res);
 	
@@ -91,8 +100,11 @@ public class RoleTest extends IntegrationTest<Role> {
 		ApiResponse<Role> putRes = test(putReq, caller);
 	
 	
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getConsumerRoleIds(), putRes.getResource().getConsumerRoleIds());
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getConsumerIds(), putRes.getResource().getConsumerIds());
 		Assert.assertNotEquals(oldRes.getName(), putRes.getResource().getName());
 		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getDescription(), putRes.getResource().getDescription());
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getPermissionIds(), putRes.getResource().getPermissionIds());
 	
 	
 		return putRes;

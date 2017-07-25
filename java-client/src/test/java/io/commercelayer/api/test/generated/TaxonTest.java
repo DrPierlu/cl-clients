@@ -28,9 +28,16 @@ public class TaxonTest extends IntegrationTest<Taxon> {
 	
 		Taxon res = new Taxon();
 	
+		// FIELD NOT FOUND -> res.setDescendantHierarchyIds("descendantHierarchyIds");
+		// FIELD NOT FOUND -> res.setMerchandisingRuleIds("merchandisingRuleIds");
+		// FIELD NOT FOUND -> res.setProductIds("productIds");
+		// FIELD NOT FOUND -> res.setChildIds("childIds");
 		// FIELD NOT FOUND -> res.setTaxonomyId("taxonomyId");
 		res.setName("name");
+		// FIELD NOT FOUND -> res.setResourceImageIds("resourceImageIds");
+		// FIELD NOT FOUND -> res.setSelfAndDescendantIds("selfAndDescendantIds");
 		// FIELD NOT FOUND -> res.setParentId("parentId");
+		// FIELD NOT FOUND -> res.setImageIds("imageIds");
 	
 		postOp.setPayload(res);
 	
@@ -40,9 +47,16 @@ public class TaxonTest extends IntegrationTest<Taxon> {
 		ApiResponse<Taxon> postRes = test(postReq, caller);
 	
 	
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getDescendantHierarchyIds());
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getMerchandisingRuleIds());
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getProductIds());
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getChildIds());
 		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getTaxonomyId());
 		Assert.assertNotNull(postRes.getResource().getName());
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getResourceImageIds());
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getSelfAndDescendantIds());
 		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getParentId());
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getImageIds());
 	
 	
 		return postRes;
@@ -82,9 +96,16 @@ public class TaxonTest extends IntegrationTest<Taxon> {
 	
 		Taxon res = new Taxon();
 	
+		// FIELD NOT FOUND -> res.setDescendantHierarchyIds(randomField(oldRes.getDescendantHierarchyIds()));
+		// FIELD NOT FOUND -> res.setMerchandisingRuleIds(randomField(oldRes.getMerchandisingRuleIds()));
+		// FIELD NOT FOUND -> res.setProductIds(randomField(oldRes.getProductIds()));
+		// FIELD NOT FOUND -> res.setChildIds(randomField(oldRes.getChildIds()));
 		// FIELD NOT FOUND -> res.setTaxonomyId(randomField(oldRes.getTaxonomyId()));
 		res.setName(randomField(oldRes.getName()));
+		// FIELD NOT FOUND -> res.setResourceImageIds(randomField(oldRes.getResourceImageIds()));
+		// FIELD NOT FOUND -> res.setSelfAndDescendantIds(randomField(oldRes.getSelfAndDescendantIds()));
 		// FIELD NOT FOUND -> res.setParentId(randomField(oldRes.getParentId()));
+		// FIELD NOT FOUND -> res.setImageIds(randomField(oldRes.getImageIds()));
 	
 		putOp.setPayload(res);
 	
@@ -94,9 +115,16 @@ public class TaxonTest extends IntegrationTest<Taxon> {
 		ApiResponse<Taxon> putRes = test(putReq, caller);
 	
 	
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getDescendantHierarchyIds(), putRes.getResource().getDescendantHierarchyIds());
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getMerchandisingRuleIds(), putRes.getResource().getMerchandisingRuleIds());
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getProductIds(), putRes.getResource().getProductIds());
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getChildIds(), putRes.getResource().getChildIds());
 		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getTaxonomyId(), putRes.getResource().getTaxonomyId());
 		Assert.assertNotEquals(oldRes.getName(), putRes.getResource().getName());
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getResourceImageIds(), putRes.getResource().getResourceImageIds());
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getSelfAndDescendantIds(), putRes.getResource().getSelfAndDescendantIds());
 		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getParentId(), putRes.getResource().getParentId());
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getImageIds(), putRes.getResource().getImageIds());
 	
 	
 		return putRes;

@@ -21,8 +21,6 @@ public class PropertyValue extends ApiResource {
 	@JsonExclude
 	private Integer position;
 	@JsonExclude
-	private Object previousChanges;
-	@JsonExclude
 	private List<String> productProperties;
 	@JsonExclude
 	private List<String> products;
@@ -34,6 +32,8 @@ public class PropertyValue extends ApiResource {
 	private String slug;
 	@JsonExclude
 	private List<String> translations;
+	@JsonExclude
+	private List<String> versions;
 
 
 	public PropertyValue() {
@@ -130,27 +130,6 @@ public class PropertyValue extends ApiResource {
 	}
 	
 
-	public void setPreviousChanges(Object previousChanges) {
-		this.previousChanges = previousChanges;
-	}
-	
-
-	public Object getPreviousChanges() {
-		return this.previousChanges;
-	}
-	
-
-	public PropertyValue previousChanges(Object previousChanges) {
-		setPreviousChanges(previousChanges);
-		return this;
-	}
-	
-
-	public Object previousChanges() {
-		return getPreviousChanges();
-	}
-	
-
 	public void setPropertyType(Object propertyType) {
 		this.propertyType = propertyType;
 	}
@@ -169,6 +148,27 @@ public class PropertyValue extends ApiResource {
 
 	public Object propertyType() {
 		return getPropertyType();
+	}
+	
+
+	public void setVersions(List<String> versions) {
+		this.versions = versions;
+	}
+	
+
+	public List<String> getVersions() {
+		return this.versions;
+	}
+	
+
+	public PropertyValue versions(List<String> versions) {
+		setVersions(versions);
+		return this;
+	}
+	
+
+	public List<String> versions() {
+		return getVersions();
 	}
 	
 
@@ -290,8 +290,8 @@ public class PropertyValue extends ApiResource {
 			&& Objects.equals(this.slug, x.slug)
 			&& Objects.equals(this.propertyTypeId, x.propertyTypeId)
 			&& Objects.equals(this.position, x.position)
-			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.propertyType, x.propertyType)
+			&& Objects.equals(this.versions, x.versions)
 			&& Objects.equals(this.resourceImages, x.resourceImages)
 			&& Objects.equals(this.images, x.images)
 			&& Objects.equals(this.translations, x.translations)
@@ -306,8 +306,8 @@ public class PropertyValue extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, slug, propertyTypeId, position, previousChanges,
-			propertyType, resourceImages, images, translations, productProperties,
+			name, slug, propertyTypeId, position, propertyType,
+			versions, resourceImages, images, translations, productProperties,
 			products 
 		);
 	
@@ -325,8 +325,8 @@ public class PropertyValue extends ApiResource {
 		no.slug = this.slug;
 		no.propertyTypeId = this.propertyTypeId;
 		no.position = this.position;
-		no.previousChanges = this.previousChanges;
 		no.propertyType = this.propertyType;
+		no.versions = this.versions;
 		no.resourceImages = this.resourceImages;
 		no.images = this.images;
 		no.translations = this.translations;

@@ -31,6 +31,8 @@ public class StockItemTest extends IntegrationTest<StockItem> {
 		// FIELD TYPE MISMATCH -> res.setQuantity("quantity");
 		// FIELD NOT FOUND -> res.setStockLocationId("stockLocationId");
 		// FIELD NOT FOUND -> res.setStockableId("stockableId");
+		// FIELD NOT FOUND -> res.setShippingServiceStockLocationIds("shippingServiceStockLocationIds");
+		// FIELD NOT FOUND -> res.setMarketIds("marketIds");
 		// FIELD NOT FOUND -> res.setStockableResource("stockableResource");
 	
 		postOp.setPayload(res);
@@ -44,6 +46,8 @@ public class StockItemTest extends IntegrationTest<StockItem> {
 		// FIELD TYPE MISMATCH -> Assert.assertNotNull(postRes.getResource().getQuantity());
 		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getStockLocationId());
 		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getStockableId());
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getShippingServiceStockLocationIds());
+		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getMarketIds());
 		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getStockableResource());
 	
 	
@@ -87,6 +91,8 @@ public class StockItemTest extends IntegrationTest<StockItem> {
 		// FIELD TYPE MISMATCH -> res.setQuantity(randomField(oldRes.getQuantity()));
 		// FIELD NOT FOUND -> res.setStockLocationId(randomField(oldRes.getStockLocationId()));
 		// FIELD NOT FOUND -> res.setStockableId(randomField(oldRes.getStockableId()));
+		// FIELD NOT FOUND -> res.setShippingServiceStockLocationIds(randomField(oldRes.getShippingServiceStockLocationIds()));
+		// FIELD NOT FOUND -> res.setMarketIds(randomField(oldRes.getMarketIds()));
 		// FIELD NOT FOUND -> res.setStockableResource(randomField(oldRes.getStockableResource()));
 	
 		putOp.setPayload(res);
@@ -100,6 +106,8 @@ public class StockItemTest extends IntegrationTest<StockItem> {
 		// FIELD TYPE MISMATCH -> Assert.assertNotEquals(oldRes.getQuantity(), putRes.getResource().getQuantity());
 		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getStockLocationId(), putRes.getResource().getStockLocationId());
 		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getStockableId(), putRes.getResource().getStockableId());
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getShippingServiceStockLocationIds(), putRes.getResource().getShippingServiceStockLocationIds());
+		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getMarketIds(), putRes.getResource().getMarketIds());
 		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getStockableResource(), putRes.getResource().getStockableResource());
 	
 	

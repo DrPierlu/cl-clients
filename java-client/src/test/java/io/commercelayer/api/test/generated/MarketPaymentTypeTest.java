@@ -29,7 +29,6 @@ public class MarketPaymentTypeTest extends IntegrationTest<MarketPaymentType> {
 		MarketPaymentType res = new MarketPaymentType();
 	
 		// FIELD NOT FOUND -> res.setPaymentTypeId("paymentTypeId");
-		res.setPrice("price");
 		// FIELD NOT FOUND -> res.setNotCountryCodeRegex("notCountryCodeRegex");
 		// FIELD NOT FOUND -> res.setCountryCodeRegex("countryCodeRegex");
 		// FIELD NOT FOUND -> res.setMarketId("marketId");
@@ -43,7 +42,6 @@ public class MarketPaymentTypeTest extends IntegrationTest<MarketPaymentType> {
 	
 	
 		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getPaymentTypeId());
-		Assert.assertNotNull(postRes.getResource().getPrice());
 		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getNotCountryCodeRegex());
 		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getCountryCodeRegex());
 		// FIELD NOT FOUND -> Assert.assertNotNull(postRes.getResource().getMarketId());
@@ -87,7 +85,6 @@ public class MarketPaymentTypeTest extends IntegrationTest<MarketPaymentType> {
 		MarketPaymentType res = new MarketPaymentType();
 	
 		// FIELD NOT FOUND -> res.setPaymentTypeId(randomField(oldRes.getPaymentTypeId()));
-		res.setPrice(randomField(oldRes.getPrice()));
 		// FIELD NOT FOUND -> res.setNotCountryCodeRegex(randomField(oldRes.getNotCountryCodeRegex()));
 		// FIELD NOT FOUND -> res.setCountryCodeRegex(randomField(oldRes.getCountryCodeRegex()));
 		// FIELD NOT FOUND -> res.setMarketId(randomField(oldRes.getMarketId()));
@@ -101,7 +98,6 @@ public class MarketPaymentTypeTest extends IntegrationTest<MarketPaymentType> {
 	
 	
 		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getPaymentTypeId(), putRes.getResource().getPaymentTypeId());
-		Assert.assertNotEquals(oldRes.getPrice(), putRes.getResource().getPrice());
 		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getNotCountryCodeRegex(), putRes.getResource().getNotCountryCodeRegex());
 		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getCountryCodeRegex(), putRes.getResource().getCountryCodeRegex());
 		// FIELD NOT FOUND -> Assert.assertNotEquals(oldRes.getMarketId(), putRes.getResource().getMarketId());

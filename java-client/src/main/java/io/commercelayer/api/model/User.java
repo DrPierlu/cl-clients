@@ -18,9 +18,9 @@ public class User extends ApiResource {
 	private String firstName;
 	private String lastName;
 	@JsonExclude
-	private List<String> consumerRoles;
+	private Boolean admin;
 	@JsonExclude
-	private Object featuredImage;
+	private List<String> consumerRoles;
 	@JsonExclude
 	private List<String> images;
 	@JsonExclude
@@ -32,11 +32,11 @@ public class User extends ApiResource {
 	@JsonExclude
 	private List<String> permissions;
 	@JsonExclude
-	private Object previousChanges;
-	@JsonExclude
 	private List<String> resourceImages;
 	@JsonExclude
 	private List<String> roles;
+	@JsonExclude
+	private List<String> versions;
 
 
 	public User() {
@@ -175,24 +175,45 @@ public class User extends ApiResource {
 	}
 	
 
-	public void setPreviousChanges(Object previousChanges) {
-		this.previousChanges = previousChanges;
+	public void setAdmin(Boolean admin) {
+		this.admin = admin;
 	}
 	
 
-	public Object getPreviousChanges() {
-		return this.previousChanges;
+	public Boolean getAdmin() {
+		return this.admin;
 	}
 	
 
-	public User previousChanges(Object previousChanges) {
-		setPreviousChanges(previousChanges);
+	public User admin(Boolean admin) {
+		setAdmin(admin);
 		return this;
 	}
 	
 
-	public Object previousChanges() {
-		return getPreviousChanges();
+	public Boolean admin() {
+		return getAdmin();
+	}
+	
+
+	public void setVersions(List<String> versions) {
+		this.versions = versions;
+	}
+	
+
+	public List<String> getVersions() {
+		return this.versions;
+	}
+	
+
+	public User versions(List<String> versions) {
+		setVersions(versions);
+		return this;
+	}
+	
+
+	public List<String> versions() {
+		return getVersions();
 	}
 	
 
@@ -301,27 +322,6 @@ public class User extends ApiResource {
 	}
 	
 
-	public void setFeaturedImage(Object featuredImage) {
-		this.featuredImage = featuredImage;
-	}
-	
-
-	public Object getFeaturedImage() {
-		return this.featuredImage;
-	}
-	
-
-	public User featuredImage(Object featuredImage) {
-		setFeaturedImage(featuredImage);
-		return this;
-	}
-	
-
-	public Object featuredImage() {
-		return getFeaturedImage();
-	}
-	
-
 	@Override
 	public boolean equals(Object o) {
 	
@@ -337,13 +337,13 @@ public class User extends ApiResource {
 			&& Objects.equals(this.email, x.email)
 			&& Objects.equals(this.passwordHash, x.passwordHash)
 			&& Objects.equals(this.passwordSalt, x.passwordSalt)
-			&& Objects.equals(this.previousChanges, x.previousChanges)
+			&& Objects.equals(this.admin, x.admin)
+			&& Objects.equals(this.versions, x.versions)
 			&& Objects.equals(this.consumerRoles, x.consumerRoles)
 			&& Objects.equals(this.roles, x.roles)
 			&& Objects.equals(this.permissions, x.permissions)
 			&& Objects.equals(this.resourceImages, x.resourceImages)
 			&& Objects.equals(this.images, x.images)
-			&& Objects.equals(this.featuredImage, x.featuredImage)
 		;
 	
 	}
@@ -354,8 +354,8 @@ public class User extends ApiResource {
 	
 		return Objects.hash(
 			name, firstName, lastName, email, passwordHash,
-			passwordSalt, previousChanges, consumerRoles, roles, permissions,
-			resourceImages, images, featuredImage 
+			passwordSalt, admin, versions, consumerRoles, roles,
+			permissions, resourceImages, images 
 		);
 	
 	}
@@ -374,13 +374,13 @@ public class User extends ApiResource {
 		no.email = this.email;
 		no.passwordHash = this.passwordHash;
 		no.passwordSalt = this.passwordSalt;
-		no.previousChanges = this.previousChanges;
+		no.admin = this.admin;
+		no.versions = this.versions;
 		no.consumerRoles = this.consumerRoles;
 		no.roles = this.roles;
 		no.permissions = this.permissions;
 		no.resourceImages = this.resourceImages;
 		no.images = this.images;
-		no.featuredImage = this.featuredImage;
 	
 		return no;
 	

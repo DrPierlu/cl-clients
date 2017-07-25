@@ -2,6 +2,7 @@ package io.commercelayer.api.model;
 
 import io.commercelayer.api.json.JsonExclude;
 import io.commercelayer.api.model.common.ApiResource;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -18,8 +19,6 @@ public class MarketPaymentType extends ApiResource {
 	@JsonExclude
 	private String countryCodeRegex;
 	@JsonExclude
-	private String formattedPrice;
-	@JsonExclude
 	private Object market;
 	@JsonExclude
 	private String name;
@@ -28,11 +27,7 @@ public class MarketPaymentType extends ApiResource {
 	@JsonExclude
 	private Object paymentType;
 	@JsonExclude
-	private Object previousChanges;
-	@JsonExclude
-	private String price;
-	@JsonExclude
-	private Integer priceCents;
+	private List<String> versions;
 
 
 	public MarketPaymentType() {
@@ -150,48 +145,6 @@ public class MarketPaymentType extends ApiResource {
 	}
 	
 
-	public void setPriceCents(Integer priceCents) {
-		this.priceCents = priceCents;
-	}
-	
-
-	public Integer getPriceCents() {
-		return this.priceCents;
-	}
-	
-
-	public MarketPaymentType priceCents(Integer priceCents) {
-		setPriceCents(priceCents);
-		return this;
-	}
-	
-
-	public Integer priceCents() {
-		return getPriceCents();
-	}
-	
-
-	public void setPreviousChanges(Object previousChanges) {
-		this.previousChanges = previousChanges;
-	}
-	
-
-	public Object getPreviousChanges() {
-		return this.previousChanges;
-	}
-	
-
-	public MarketPaymentType previousChanges(Object previousChanges) {
-		setPreviousChanges(previousChanges);
-		return this;
-	}
-	
-
-	public Object previousChanges() {
-		return getPreviousChanges();
-	}
-	
-
 	public void setMarket(Object market) {
 		this.market = market;
 	}
@@ -234,45 +187,24 @@ public class MarketPaymentType extends ApiResource {
 	}
 	
 
-	public void setPrice(String price) {
-		this.price = price;
+	public void setVersions(List<String> versions) {
+		this.versions = versions;
 	}
 	
 
-	public String getPrice() {
-		return this.price;
+	public List<String> getVersions() {
+		return this.versions;
 	}
 	
 
-	public MarketPaymentType price(String price) {
-		setPrice(price);
+	public MarketPaymentType versions(List<String> versions) {
+		setVersions(versions);
 		return this;
 	}
 	
 
-	public String price() {
-		return getPrice();
-	}
-	
-
-	public void setFormattedPrice(String formattedPrice) {
-		this.formattedPrice = formattedPrice;
-	}
-	
-
-	public String getFormattedPrice() {
-		return this.formattedPrice;
-	}
-	
-
-	public MarketPaymentType formattedPrice(String formattedPrice) {
-		setFormattedPrice(formattedPrice);
-		return this;
-	}
-	
-
-	public String formattedPrice() {
-		return getFormattedPrice();
+	public List<String> versions() {
+		return getVersions();
 	}
 	
 
@@ -290,12 +222,9 @@ public class MarketPaymentType extends ApiResource {
 			&& Objects.equals(this.paymentTypeId, x.paymentTypeId)
 			&& Objects.equals(this.countryCodeRegex, x.countryCodeRegex)
 			&& Objects.equals(this.notCountryCodeRegex, x.notCountryCodeRegex)
-			&& Objects.equals(this.priceCents, x.priceCents)
-			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.market, x.market)
 			&& Objects.equals(this.paymentType, x.paymentType)
-			&& Objects.equals(this.price, x.price)
-			&& Objects.equals(this.formattedPrice, x.formattedPrice)
+			&& Objects.equals(this.versions, x.versions)
 		;
 	
 	}
@@ -306,8 +235,7 @@ public class MarketPaymentType extends ApiResource {
 	
 		return Objects.hash(
 			name, marketId, paymentTypeId, countryCodeRegex, notCountryCodeRegex,
-			priceCents, previousChanges, market, paymentType, price,
-			formattedPrice 
+			market, paymentType, versions 
 		);
 	
 	}
@@ -325,12 +253,9 @@ public class MarketPaymentType extends ApiResource {
 		no.paymentTypeId = this.paymentTypeId;
 		no.countryCodeRegex = this.countryCodeRegex;
 		no.notCountryCodeRegex = this.notCountryCodeRegex;
-		no.priceCents = this.priceCents;
-		no.previousChanges = this.previousChanges;
 		no.market = this.market;
 		no.paymentType = this.paymentType;
-		no.price = this.price;
-		no.formattedPrice = this.formattedPrice;
+		no.versions = this.versions;
 	
 		return no;
 	

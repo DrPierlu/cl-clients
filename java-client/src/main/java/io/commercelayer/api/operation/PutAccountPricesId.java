@@ -17,6 +17,7 @@ public class PutAccountPricesId extends PutOperation<Price> {
 		addRequiredField("amount");
 		addRequiredField("sellableResource");
 		addRequiredField("sellableId");
+		addRequiredField("compareAtAmount");
 	}
 
 

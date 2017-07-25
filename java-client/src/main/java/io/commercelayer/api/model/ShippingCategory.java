@@ -18,7 +18,7 @@ public class ShippingCategory extends ApiResource {
 	@JsonExclude
 	private List<String> lineItemStocks;
 	@JsonExclude
-	private Object previousChanges;
+	private List<String> lineItems;
 	@JsonExclude
 	private List<String> products;
 	@JsonExclude
@@ -27,6 +27,8 @@ public class ShippingCategory extends ApiResource {
 	private List<String> shippingServices;
 	@JsonExclude
 	private List<String> variants;
+	@JsonExclude
+	private List<String> versions;
 
 
 	public ShippingCategory() {
@@ -60,24 +62,24 @@ public class ShippingCategory extends ApiResource {
 	}
 	
 
-	public void setPreviousChanges(Object previousChanges) {
-		this.previousChanges = previousChanges;
+	public void setVersions(List<String> versions) {
+		this.versions = versions;
 	}
 	
 
-	public Object getPreviousChanges() {
-		return this.previousChanges;
+	public List<String> getVersions() {
+		return this.versions;
 	}
 	
 
-	public ShippingCategory previousChanges(Object previousChanges) {
-		setPreviousChanges(previousChanges);
+	public ShippingCategory versions(List<String> versions) {
+		setVersions(versions);
 		return this;
 	}
 	
 
-	public Object previousChanges() {
-		return getPreviousChanges();
+	public List<String> versions() {
+		return getVersions();
 	}
 	
 
@@ -165,6 +167,27 @@ public class ShippingCategory extends ApiResource {
 	}
 	
 
+	public void setLineItems(List<String> lineItems) {
+		this.lineItems = lineItems;
+	}
+	
+
+	public List<String> getLineItems() {
+		return this.lineItems;
+	}
+	
+
+	public ShippingCategory lineItems(List<String> lineItems) {
+		setLineItems(lineItems);
+		return this;
+	}
+	
+
+	public List<String> lineItems() {
+		return getLineItems();
+	}
+	
+
 	public void setShippingServices(List<String> shippingServices) {
 		this.shippingServices = shippingServices;
 	}
@@ -196,11 +219,12 @@ public class ShippingCategory extends ApiResource {
 	
 		return super.equals(o)
 			&& Objects.equals(this.name, x.name)
-			&& Objects.equals(this.previousChanges, x.previousChanges)
+			&& Objects.equals(this.versions, x.versions)
 			&& Objects.equals(this.products, x.products)
 			&& Objects.equals(this.variants, x.variants)
 			&& Objects.equals(this.shippingServiceCategories, x.shippingServiceCategories)
 			&& Objects.equals(this.lineItemStocks, x.lineItemStocks)
+			&& Objects.equals(this.lineItems, x.lineItems)
 			&& Objects.equals(this.shippingServices, x.shippingServices)
 		;
 	
@@ -211,8 +235,8 @@ public class ShippingCategory extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, previousChanges, products, variants, shippingServiceCategories,
-			lineItemStocks, shippingServices 
+			name, versions, products, variants, shippingServiceCategories,
+			lineItemStocks, lineItems, shippingServices 
 		);
 	
 	}
@@ -226,11 +250,12 @@ public class ShippingCategory extends ApiResource {
 		no = super.clone(no);
 	
 		no.name = this.name;
-		no.previousChanges = this.previousChanges;
+		no.versions = this.versions;
 		no.products = this.products;
 		no.variants = this.variants;
 		no.shippingServiceCategories = this.shippingServiceCategories;
 		no.lineItemStocks = this.lineItemStocks;
+		no.lineItems = this.lineItems;
 		no.shippingServices = this.shippingServices;
 	
 		return no;

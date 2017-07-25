@@ -20,15 +20,21 @@ public class ShippingService extends ApiResource {
 	@JsonExclude
 	private String description;
 	@JsonExclude
+	private String formattedFreeOverAmount;
+	@JsonExclude
+	private String formattedPrice;
+	@JsonExclude
 	private List<String> marketShippingServices;
 	@JsonExclude
 	private List<String> markets;
 	@JsonExclude
-	private Object previousChanges;
-	@JsonExclude
 	private Object shippingCarrierAccount;
 	@JsonExclude
 	private List<String> shippingCategories;
+	@JsonExclude
+	private List<String> shippingMethods;
+	@JsonExclude
+	private List<String> shippingPrices;
 	@JsonExclude
 	private List<String> shippingServiceCategories;
 	@JsonExclude
@@ -43,6 +49,8 @@ public class ShippingService extends ApiResource {
 	private List<String> stockLocations;
 	@JsonExclude
 	private List<String> translations;
+	@JsonExclude
+	private List<String> versions;
 
 
 	public ShippingService() {
@@ -160,27 +168,6 @@ public class ShippingService extends ApiResource {
 	}
 	
 
-	public void setPreviousChanges(Object previousChanges) {
-		this.previousChanges = previousChanges;
-	}
-	
-
-	public Object getPreviousChanges() {
-		return this.previousChanges;
-	}
-	
-
-	public ShippingService previousChanges(Object previousChanges) {
-		setPreviousChanges(previousChanges);
-		return this;
-	}
-	
-
-	public Object previousChanges() {
-		return getPreviousChanges();
-	}
-	
-
 	public void setShippingCarrierAccount(Object shippingCarrierAccount) {
 		this.shippingCarrierAccount = shippingCarrierAccount;
 	}
@@ -199,6 +186,27 @@ public class ShippingService extends ApiResource {
 
 	public Object shippingCarrierAccount() {
 		return getShippingCarrierAccount();
+	}
+	
+
+	public void setVersions(List<String> versions) {
+		this.versions = versions;
+	}
+	
+
+	public List<String> getVersions() {
+		return this.versions;
+	}
+	
+
+	public ShippingService versions(List<String> versions) {
+		setVersions(versions);
+		return this;
+	}
+	
+
+	public List<String> versions() {
+		return getVersions();
 	}
 	
 
@@ -307,6 +315,48 @@ public class ShippingService extends ApiResource {
 	}
 	
 
+	public void setShippingMethods(List<String> shippingMethods) {
+		this.shippingMethods = shippingMethods;
+	}
+	
+
+	public List<String> getShippingMethods() {
+		return this.shippingMethods;
+	}
+	
+
+	public ShippingService shippingMethods(List<String> shippingMethods) {
+		setShippingMethods(shippingMethods);
+		return this;
+	}
+	
+
+	public List<String> shippingMethods() {
+		return getShippingMethods();
+	}
+	
+
+	public void setShippingPrices(List<String> shippingPrices) {
+		this.shippingPrices = shippingPrices;
+	}
+	
+
+	public List<String> getShippingPrices() {
+		return this.shippingPrices;
+	}
+	
+
+	public ShippingService shippingPrices(List<String> shippingPrices) {
+		setShippingPrices(shippingPrices);
+		return this;
+	}
+	
+
+	public List<String> shippingPrices() {
+		return getShippingPrices();
+	}
+	
+
 	public void setMarkets(List<String> markets) {
 		this.markets = markets;
 	}
@@ -391,6 +441,48 @@ public class ShippingService extends ApiResource {
 	}
 	
 
+	public void setFormattedPrice(String formattedPrice) {
+		this.formattedPrice = formattedPrice;
+	}
+	
+
+	public String getFormattedPrice() {
+		return this.formattedPrice;
+	}
+	
+
+	public ShippingService formattedPrice(String formattedPrice) {
+		setFormattedPrice(formattedPrice);
+		return this;
+	}
+	
+
+	public String formattedPrice() {
+		return getFormattedPrice();
+	}
+	
+
+	public void setFormattedFreeOverAmount(String formattedFreeOverAmount) {
+		this.formattedFreeOverAmount = formattedFreeOverAmount;
+	}
+	
+
+	public String getFormattedFreeOverAmount() {
+		return this.formattedFreeOverAmount;
+	}
+	
+
+	public ShippingService formattedFreeOverAmount(String formattedFreeOverAmount) {
+		setFormattedFreeOverAmount(formattedFreeOverAmount);
+		return this;
+	}
+	
+
+	public String formattedFreeOverAmount() {
+		return getFormattedFreeOverAmount();
+	}
+	
+
 	@Override
 	public boolean equals(Object o) {
 	
@@ -405,17 +497,21 @@ public class ShippingService extends ApiResource {
 			&& Objects.equals(this.description, x.description)
 			&& Objects.equals(this.shippingCarrierAccountId, x.shippingCarrierAccountId)
 			&& Objects.equals(this.kind, x.kind)
-			&& Objects.equals(this.previousChanges, x.previousChanges)
 			&& Objects.equals(this.shippingCarrierAccount, x.shippingCarrierAccount)
+			&& Objects.equals(this.versions, x.versions)
 			&& Objects.equals(this.translations, x.translations)
 			&& Objects.equals(this.marketShippingServices, x.marketShippingServices)
 			&& Objects.equals(this.shippingServiceCategories, x.shippingServiceCategories)
 			&& Objects.equals(this.shippingServiceZones, x.shippingServiceZones)
 			&& Objects.equals(this.shippingServiceStockLocations, x.shippingServiceStockLocations)
+			&& Objects.equals(this.shippingMethods, x.shippingMethods)
+			&& Objects.equals(this.shippingPrices, x.shippingPrices)
 			&& Objects.equals(this.markets, x.markets)
 			&& Objects.equals(this.shippingCategories, x.shippingCategories)
 			&& Objects.equals(this.stockLocations, x.stockLocations)
 			&& Objects.equals(this.shippingZones, x.shippingZones)
+			&& Objects.equals(this.formattedPrice, x.formattedPrice)
+			&& Objects.equals(this.formattedFreeOverAmount, x.formattedFreeOverAmount)
 		;
 	
 	}
@@ -426,9 +522,10 @@ public class ShippingService extends ApiResource {
 	
 		return Objects.hash(
 			name, slug, description, shippingCarrierAccountId, kind,
-			previousChanges, shippingCarrierAccount, translations, marketShippingServices, shippingServiceCategories,
-			shippingServiceZones, shippingServiceStockLocations, markets, shippingCategories, stockLocations,
-			shippingZones 
+			shippingCarrierAccount, versions, translations, marketShippingServices, shippingServiceCategories,
+			shippingServiceZones, shippingServiceStockLocations, shippingMethods, shippingPrices, markets,
+			shippingCategories, stockLocations, shippingZones, formattedPrice, formattedFreeOverAmount
+			
 		);
 	
 	}
@@ -446,17 +543,21 @@ public class ShippingService extends ApiResource {
 		no.description = this.description;
 		no.shippingCarrierAccountId = this.shippingCarrierAccountId;
 		no.kind = this.kind;
-		no.previousChanges = this.previousChanges;
 		no.shippingCarrierAccount = this.shippingCarrierAccount;
+		no.versions = this.versions;
 		no.translations = this.translations;
 		no.marketShippingServices = this.marketShippingServices;
 		no.shippingServiceCategories = this.shippingServiceCategories;
 		no.shippingServiceZones = this.shippingServiceZones;
 		no.shippingServiceStockLocations = this.shippingServiceStockLocations;
+		no.shippingMethods = this.shippingMethods;
+		no.shippingPrices = this.shippingPrices;
 		no.markets = this.markets;
 		no.shippingCategories = this.shippingCategories;
 		no.stockLocations = this.stockLocations;
 		no.shippingZones = this.shippingZones;
+		no.formattedPrice = this.formattedPrice;
+		no.formattedFreeOverAmount = this.formattedFreeOverAmount;
 	
 		return no;
 	

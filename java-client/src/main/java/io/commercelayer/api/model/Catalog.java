@@ -16,15 +16,17 @@ public class Catalog extends ApiResource {
 
 	private String name;
 	@JsonExclude
-	private List<String> merchandisingRules;
+	private List<String> markets;
 	@JsonExclude
-	private Object previousChanges;
+	private List<String> merchandisingRules;
 	@JsonExclude
 	private List<String> products;
 	@JsonExclude
 	private List<String> taxonomies;
 	@JsonExclude
 	private List<String> taxons;
+	@JsonExclude
+	private List<String> versions;
 
 
 	public Catalog() {
@@ -58,24 +60,24 @@ public class Catalog extends ApiResource {
 	}
 	
 
-	public void setPreviousChanges(Object previousChanges) {
-		this.previousChanges = previousChanges;
+	public void setVersions(List<String> versions) {
+		this.versions = versions;
 	}
 	
 
-	public Object getPreviousChanges() {
-		return this.previousChanges;
+	public List<String> getVersions() {
+		return this.versions;
 	}
 	
 
-	public Catalog previousChanges(Object previousChanges) {
-		setPreviousChanges(previousChanges);
+	public Catalog versions(List<String> versions) {
+		setVersions(versions);
 		return this;
 	}
 	
 
-	public Object previousChanges() {
-		return getPreviousChanges();
+	public List<String> versions() {
+		return getVersions();
 	}
 	
 
@@ -97,6 +99,27 @@ public class Catalog extends ApiResource {
 
 	public List<String> merchandisingRules() {
 		return getMerchandisingRules();
+	}
+	
+
+	public void setMarkets(List<String> markets) {
+		this.markets = markets;
+	}
+	
+
+	public List<String> getMarkets() {
+		return this.markets;
+	}
+	
+
+	public Catalog markets(List<String> markets) {
+		setMarkets(markets);
+		return this;
+	}
+	
+
+	public List<String> markets() {
+		return getMarkets();
 	}
 	
 
@@ -173,8 +196,9 @@ public class Catalog extends ApiResource {
 	
 		return super.equals(o)
 			&& Objects.equals(this.name, x.name)
-			&& Objects.equals(this.previousChanges, x.previousChanges)
+			&& Objects.equals(this.versions, x.versions)
 			&& Objects.equals(this.merchandisingRules, x.merchandisingRules)
+			&& Objects.equals(this.markets, x.markets)
 			&& Objects.equals(this.products, x.products)
 			&& Objects.equals(this.taxons, x.taxons)
 			&& Objects.equals(this.taxonomies, x.taxonomies)
@@ -187,8 +211,8 @@ public class Catalog extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, previousChanges, merchandisingRules, products, taxons,
-			taxonomies 
+			name, versions, merchandisingRules, markets, products,
+			taxons, taxonomies 
 		);
 	
 	}
@@ -202,8 +226,9 @@ public class Catalog extends ApiResource {
 		no = super.clone(no);
 	
 		no.name = this.name;
-		no.previousChanges = this.previousChanges;
+		no.versions = this.versions;
 		no.merchandisingRules = this.merchandisingRules;
+		no.markets = this.markets;
 		no.products = this.products;
 		no.taxons = this.taxons;
 		no.taxonomies = this.taxonomies;

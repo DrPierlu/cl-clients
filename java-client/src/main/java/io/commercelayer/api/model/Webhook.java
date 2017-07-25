@@ -3,6 +3,7 @@ package io.commercelayer.api.model;
 import io.commercelayer.api.json.JsonExclude;
 import io.commercelayer.api.model.common.ApiResource;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -14,19 +15,20 @@ public class Webhook extends ApiResource {
 	private static final long serialVersionUID = -1L;
 
 
-	private String eventAction;
-	private String eventSubject;
+	private String eventKind;
 	private String eventUrl;
 	@JsonExclude
-	private String expand;
+	private Object creator;
+	@JsonExclude
+	private Integer creatorId;
 	@JsonExclude
 	private LocalDateTime lastFiredAt;
 	@JsonExclude
 	private String name;
 	@JsonExclude
-	private Object previousChanges;
-	@JsonExclude
 	private String sharedSecret;
+	@JsonExclude
+	private List<String> versions;
 
 
 	public Webhook() {
@@ -60,45 +62,24 @@ public class Webhook extends ApiResource {
 	}
 	
 
-	public void setEventSubject(String eventSubject) {
-		this.eventSubject = eventSubject;
+	public void setEventKind(String eventKind) {
+		this.eventKind = eventKind;
 	}
 	
 
-	public String getEventSubject() {
-		return this.eventSubject;
+	public String getEventKind() {
+		return this.eventKind;
 	}
 	
 
-	public Webhook eventSubject(String eventSubject) {
-		setEventSubject(eventSubject);
+	public Webhook eventKind(String eventKind) {
+		setEventKind(eventKind);
 		return this;
 	}
 	
 
-	public String eventSubject() {
-		return getEventSubject();
-	}
-	
-
-	public void setEventAction(String eventAction) {
-		this.eventAction = eventAction;
-	}
-	
-
-	public String getEventAction() {
-		return this.eventAction;
-	}
-	
-
-	public Webhook eventAction(String eventAction) {
-		setEventAction(eventAction);
-		return this;
-	}
-	
-
-	public String eventAction() {
-		return getEventAction();
+	public String eventKind() {
+		return getEventKind();
 	}
 	
 
@@ -144,27 +125,6 @@ public class Webhook extends ApiResource {
 	}
 	
 
-	public void setExpand(String expand) {
-		this.expand = expand;
-	}
-	
-
-	public String getExpand() {
-		return this.expand;
-	}
-	
-
-	public Webhook expand(String expand) {
-		setExpand(expand);
-		return this;
-	}
-	
-
-	public String expand() {
-		return getExpand();
-	}
-	
-
 	public void setLastFiredAt(LocalDateTime lastFiredAt) {
 		this.lastFiredAt = lastFiredAt;
 	}
@@ -186,24 +146,66 @@ public class Webhook extends ApiResource {
 	}
 	
 
-	public void setPreviousChanges(Object previousChanges) {
-		this.previousChanges = previousChanges;
+	public void setCreatorId(Integer creatorId) {
+		this.creatorId = creatorId;
 	}
 	
 
-	public Object getPreviousChanges() {
-		return this.previousChanges;
+	public Integer getCreatorId() {
+		return this.creatorId;
 	}
 	
 
-	public Webhook previousChanges(Object previousChanges) {
-		setPreviousChanges(previousChanges);
+	public Webhook creatorId(Integer creatorId) {
+		setCreatorId(creatorId);
 		return this;
 	}
 	
 
-	public Object previousChanges() {
-		return getPreviousChanges();
+	public Integer creatorId() {
+		return getCreatorId();
+	}
+	
+
+	public void setCreator(Object creator) {
+		this.creator = creator;
+	}
+	
+
+	public Object getCreator() {
+		return this.creator;
+	}
+	
+
+	public Webhook creator(Object creator) {
+		setCreator(creator);
+		return this;
+	}
+	
+
+	public Object creator() {
+		return getCreator();
+	}
+	
+
+	public void setVersions(List<String> versions) {
+		this.versions = versions;
+	}
+	
+
+	public List<String> getVersions() {
+		return this.versions;
+	}
+	
+
+	public Webhook versions(List<String> versions) {
+		setVersions(versions);
+		return this;
+	}
+	
+
+	public List<String> versions() {
+		return getVersions();
 	}
 	
 
@@ -217,13 +219,13 @@ public class Webhook extends ApiResource {
 	
 		return super.equals(o)
 			&& Objects.equals(this.name, x.name)
-			&& Objects.equals(this.eventSubject, x.eventSubject)
-			&& Objects.equals(this.eventAction, x.eventAction)
+			&& Objects.equals(this.eventKind, x.eventKind)
 			&& Objects.equals(this.eventUrl, x.eventUrl)
 			&& Objects.equals(this.sharedSecret, x.sharedSecret)
-			&& Objects.equals(this.expand, x.expand)
 			&& Objects.equals(this.lastFiredAt, x.lastFiredAt)
-			&& Objects.equals(this.previousChanges, x.previousChanges)
+			&& Objects.equals(this.creatorId, x.creatorId)
+			&& Objects.equals(this.creator, x.creator)
+			&& Objects.equals(this.versions, x.versions)
 		;
 	
 	}
@@ -233,8 +235,8 @@ public class Webhook extends ApiResource {
 	public int hashCode() {
 	
 		return Objects.hash(
-			name, eventSubject, eventAction, eventUrl, sharedSecret,
-			expand, lastFiredAt, previousChanges 
+			name, eventKind, eventUrl, sharedSecret, lastFiredAt,
+			creatorId, creator, versions 
 		);
 	
 	}
@@ -248,13 +250,13 @@ public class Webhook extends ApiResource {
 		no = super.clone(no);
 	
 		no.name = this.name;
-		no.eventSubject = this.eventSubject;
-		no.eventAction = this.eventAction;
+		no.eventKind = this.eventKind;
 		no.eventUrl = this.eventUrl;
 		no.sharedSecret = this.sharedSecret;
-		no.expand = this.expand;
 		no.lastFiredAt = this.lastFiredAt;
-		no.previousChanges = this.previousChanges;
+		no.creatorId = this.creatorId;
+		no.creator = this.creator;
+		no.versions = this.versions;
 	
 		return no;
 	
